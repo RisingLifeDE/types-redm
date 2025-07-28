@@ -4,7 +4,7 @@ This package contains "easy-to-use" types for redm.
 
 For example:
 ```js
-import * as client from '@risinglife/redm-natives';
+import * as game from '@risinglife/redm-natives';
 
 game.shutdownLoadingScreen();
 ```
