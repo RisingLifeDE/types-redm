@@ -50212,7 +50212,8 @@ export function forcePlaybackRecordedVehicleUpdate(vehicle, p1) {
  * Hash: 0x35DC1877312FBA0F | ApiSet: undefined
  */
 export function fadeAndDestroyVehicle() {
-    return FadeAndDestroyVehicle();
+    const _vehicle = vehicle instanceof Entity ? vehicle.handle() : vehicle;
+    FadeAndDestroyVehicle(_vehicle);
 }
 /**
  * Hash: 0x35D302397E524939 | ApiSet: undefined

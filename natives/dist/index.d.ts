@@ -33245,7 +33245,7 @@ export declare function forcePlaybackRecordedVehicleUpdate(vehicle: number | Veh
 /**
  * Hash: 0x35DC1877312FBA0F | ApiSet: undefined
  */
-export declare function fadeAndDestroyVehicle(): number;
+export declare function fadeAndDestroyVehicle(vehicle: number): void;
 /**
  * Hash: 0x35D302397E524939 | ApiSet: undefined
  */
