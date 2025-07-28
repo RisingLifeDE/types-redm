@@ -11912,7 +11912,7 @@ export declare function removePropFromMinimap(minimapProp: number | string): voi
 /**
  * Hash: 0xF2C3C9DA47AAA54A | ApiSet: undefined
  */
-export declare function removeBlip(): number;
+export declare function removeBlip(blip: number | Entity): void;
 /**
  * Hash: 0xF8096DF9B87246E3 | ApiSet: undefined
  */
@@ -18463,7 +18463,7 @@ export declare function addFormationLocation(groupId: number, p1: number, p2: nu
 /**
  * Hash: 0x4E23CD07BD161E06 | ApiSet: undefined
  */
-export declare function addCustomFormationLocation(groupId: number, position: Vector3, position: number): void;
+export declare function addCustomFormationLocation(groupId: number, pos: Vector3, position: number): void;
 /**
  * ```
  * NativeDB Introduced: v1311
@@ -26328,7 +26328,7 @@ export declare function clearSpawnerInfoPriority(p0: number | string, p1: number
 /**
  * Hash: 0xA6E6A66FC4CA4224 | ApiSet: undefined
  */
-export declare function deleteScriptPopzone(popZone: popzone): void;
+export declare function deleteScriptPopzone(popZone: number): void;
 /**
  * Hash: 0xC6DCC2A3A8825C85 | ApiSet: undefined
  */
@@ -26336,7 +26336,7 @@ export declare function disableAmbientRoadPopulation(unk: boolean): void;
 /**
  * Hash: 0x9AC1C64FE46B6D09 | ApiSet: undefined
  */
-export declare function createPopzoneFromVolume(volume: number): popzone;
+export declare function createPopzoneFromVolume(volume: number): number;
 /**
  * Hash: 0x3EAFA1C533B7139E | ApiSet: undefined
  */
@@ -26356,7 +26356,7 @@ export declare function getNumModelsInPopulationSet(popSetHash: number | string)
 /**
  * Hash: 0xA5BD585005EFCAD4 | ApiSet: undefined
  */
-export declare function isPopzoneValid(popZone: popzone): any;
+export declare function isPopzoneValid(popZone: number): any;
 /**
  * ```
  * Returns model hash of the closest fish
@@ -26367,11 +26367,11 @@ export declare function getRandomFishTypeForLocation(): number;
 /**
  * Hash: 0x0F1861101C9A9944 | ApiSet: undefined
  */
-export declare function _0x0F1861101C9A9944(popZone: popzone, p1: boolean): void;
+export declare function _0x0F1861101C9A9944(popZone: number, p1: boolean): void;
 /**
  * Hash: 0x08892122769770D5 | ApiSet: undefined
  */
-export declare function _0x08892122769770D5(popZone: popzone, p1: boolean): void;
+export declare function _0x08892122769770D5(popZone: number, p1: boolean): void;
 /**
  * Hash: 0x247F86595D396344 | ApiSet: undefined
  */
@@ -26379,7 +26379,7 @@ export declare function _0x247F86595D396344(p0: any): void;
 /**
  * Hash: 0x578E2FA64E847C60 | ApiSet: undefined
  */
-export declare function _0x578E2FA64E847C60(popZone: popzone, p1: number): void;
+export declare function _0x578E2FA64E847C60(popZone: number, p1: number): void;
 /**
  * Hash: 0x2161278C6322F740 | ApiSet: undefined
  */
@@ -26402,7 +26402,7 @@ export declare function _0x324AB2A68AD8AEE5(): void;
 /**
  * Hash: 0x7E6BC0B94F5928F0 | ApiSet: undefined
  */
-export declare function _0x7E6BC0B94F5928F0(popZone: popzone, p1: number, p2: number): void;
+export declare function _0x7E6BC0B94F5928F0(popZone: number, p1: number, p2: number): void;
 /**
  * Hash: 0xC4533E3E87125C9E | ApiSet: undefined
  */
@@ -26448,7 +26448,7 @@ export declare function setPedShouldIgnoreAvoidanceVolumes(ped: number | Ped, p1
 /**
  * Hash: 0x3E6A49D9B519E85C | ApiSet: undefined
  */
-export declare function setPopzonePopulationSet(popZone: popzone, populationSetHash: number | string): void;
+export declare function setPopzonePopulationSet(popZone: number, populationSetHash: number | string): void;
 /**
  * Hash: 0x60CDE717A6D47769 | ApiSet: undefined
  */

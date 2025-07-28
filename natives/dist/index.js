@@ -17691,8 +17691,9 @@ export function removePropFromMinimap(minimapProp) {
 /**
  * Hash: 0xF2C3C9DA47AAA54A | ApiSet: undefined
  */
-export function removeBlip() {
-    return RemoveBlip();
+export function removeBlip(blip) {
+    const _blip = blip instanceof Entity ? blip.handle() : blip;
+    RemoveBlip(_blip);
 }
 /**
  * Hash: 0xF8096DF9B87246E3 | ApiSet: undefined
@@ -27273,8 +27274,8 @@ export function addFormationLocation(groupId, p1, p2, p3) {
 /**
  * Hash: 0x4E23CD07BD161E06 | ApiSet: undefined
  */
-export function addCustomFormationLocation(groupId, position, position) {
-    AddCustomFormationLocation(groupId, position.x, position.y, position.z, position);
+export function addCustomFormationLocation(groupId, pos, position) {
+    AddCustomFormationLocation(groupId, pos.x, pos.y, pos.z, position);
 }
 /**
  * ```
