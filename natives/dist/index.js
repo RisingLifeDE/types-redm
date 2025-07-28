@@ -27962,7 +27962,8 @@ export function equipMetaPedSuboutfit(ped, suboutfit, p2) {
  * Hash: 0x7043D0681285BA2D | ApiSet: undefined
  */
 export function fadeAndDestroyPed() {
-    return FadeAndDestroyPed();
+    const _ped = ped instanceof Ped ? ped.handle() : ped;
+    FadeAndDestroyPed(_ped);
 }
 /**
  * ```

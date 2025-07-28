@@ -18910,7 +18910,7 @@ export declare function equipMetaPedSuboutfit(ped: number | Ped, suboutfit: numb
 /**
  * Hash: 0x7043D0681285BA2D | ApiSet: undefined
  */
-export declare function fadeAndDestroyPed(): number;
+export declare function fadeAndDestroyPed(ped: number | Ped): void;
 /**
  * ```
  * Sets the outfit preset for the ped. The presetId is an index which determines its preset outfit. p2 is always false in the scripts.
