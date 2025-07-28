@@ -1,0 +1,25 @@
+{
+  "name": "@risinglife/redm-server",
+  "version": "0.0.1",
+  "private": false,
+  "repository": "https://github.com/RisingLifeDE/types-redm",
+  "description": "This package contains the type definitions for the RedM JS module server types",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build",
+    "preversion": "npm run test",
+    "release": "npm version patch --no-git-tag-version"
+  },
+  "devDependencies": {
+    "typescript": "^5.x.x"
+  },
+  "dependencies": {
+    "@risinglife/redm-shared": "^0.0.1"
+  }
+}

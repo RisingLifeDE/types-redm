@@ -1,0 +1,9 @@
+.vscode
+dist/
+node_modules/
+yarn-error.log
+yarn.lock
+.idea
+resources
+scripts/data/GEN
+scripts/generator/GEN
