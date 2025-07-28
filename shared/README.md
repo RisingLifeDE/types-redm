@@ -1,4 +1,4 @@
-# RedM Shared
+# RedM Shared Data
 
 This package contains shared data for all types.
 It is required by all types for the data.

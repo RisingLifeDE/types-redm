@@ -1,6 +1,6 @@
-# RedM Native/Game Types
+# RedM Server Types
 
-This package contains "easy-to-use" types for redm.
+This package contains "easy-to-use" types for RedM.
 
 It contains every method which can be used on server side.
 

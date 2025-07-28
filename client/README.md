@@ -1,6 +1,6 @@
 # RedM Client Types
 
-This package contains "easy-to-use" types for redm.
+This package contains "easy-to-use" types for RedM.
 
 For example:
 ```js
