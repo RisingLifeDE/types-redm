@@ -5068,7 +5068,7 @@ export declare function applyForceToEntityCenterOfMass(entity: number | Entity, 
  * ```
  * Hash: 0x6B9BBD38AB0796DF | ApiSet: undefined
  */
-export declare function attachEntityToEntity(entity1: number | Entity, entity2: number | Entity, boneIndex: number, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, p9: boolean, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean, p15: boolean, p16: boolean): void;
+export declare function attachEntityToEntity(entity1: number | Entity, entity2: number | Entity, boneIndex: number, pos, xRot: number, yRot: number, zRot: number, p9: boolean, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean, p15: boolean, p16: boolean): void;
 /**
  * Hash: 0xB629A43CA1643481 | ApiSet: undefined
  */
@@ -5522,7 +5522,7 @@ export declare function hasAnimEventFired(entity: number | Entity, actionHash: n
 /**
  * Hash: 0x6BFBDC46139C45AB | ApiSet: undefined
  */
-export declare function hasCollisionLoadedAroundPosition(xPos: number, yPos: number, zPos: number): any;
+export declare function hasCollisionLoadedAroundPosition(pos): any;
 /**
  * Hash: 0xAEB40615337EF1E3 | ApiSet: undefined
  */
@@ -5589,7 +5589,7 @@ export declare function isEntityAPed(entity: number | Entity): boolean;
  * ```
  * Hash: 0x5E58342602E94718 | ApiSet: undefined
  */
-export declare function isEntityAtCoord(entity: number | Entity, xPos: number, yPos: number, zPos: number, xSize: number, ySize: number, zSize: number, p7: boolean, p8: boolean, p9: number): boolean;
+export declare function isEntityAtCoord(entity: number | Entity, pos, xSize: number, ySize: number, zSize: number, p7: boolean, p8: boolean, p9: number): boolean;
 /**
  * Hash: 0x0A27A546A375FDEF | ApiSet: undefined
  */
@@ -6221,7 +6221,7 @@ export declare function setEntityCollision(entity: number | Entity, toggle: bool
 /**
  * Hash: 0x203BEFFDBE12E96A | ApiSet: undefined
  */
-export declare function setEntityCoordsAndHeading(entity: number | Entity, xPos: number, yPos: number, zPos: number, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+export declare function setEntityCoordsAndHeading(entity: number | Entity, pos, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
 /**
  * Hash: 0xE0580EC84813875A | ApiSet: undefined
  */
@@ -6232,15 +6232,15 @@ export declare function setEntityCompletelyDisableCollision(entity: number | Ent
  * ```
  * Hash: 0x239A3351AC1DA385 | ApiSet: undefined
  */
-export declare function setEntityCoordsNoOffset(entity: number | Entity, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+export declare function setEntityCoordsNoOffset(entity: number | Entity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
 /**
  * Hash: 0x06843DA7060A026B | ApiSet: undefined
  */
-export declare function setEntityCoords(entity: number | Entity, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
+export declare function setEntityCoords(entity: number | Entity, pos, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
 /**
  * Hash: 0x0918E3565C20F03C | ApiSet: undefined
  */
-export declare function setEntityCoordsAndHeadingNoOffset(entity: number | Entity, xPos: number, yPos: number, zPos: number, heading: number, p5: boolean, p6: boolean): void;
+export declare function setEntityCoordsAndHeadingNoOffset(entity: number | Entity, pos, heading: number, p5: boolean, p6: boolean): void;
 /**
  * Hash: 0xFBFC4473F66CE344 | ApiSet: undefined
  */
@@ -8625,7 +8625,7 @@ export declare function startParticleFxLoopedAtCoord(effectName: string, positio
 /**
  * Hash: 0xFB97618457994A62 | ApiSet: undefined
  */
-export declare function startNetworkedParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): boolean;
+export declare function startNetworkedParticleFxNonLoopedAtCoord(effectName: string, pos, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): boolean;
 /**
  * Hash: 0xE6CFE43937061143 | ApiSet: undefined
  */
@@ -8648,7 +8648,7 @@ export declare function startParticleFxLoopedOnPedBone(effectName: string, ped: 
  * ```
  * Hash: 0x2E80BF72EF7C87AC | ApiSet: undefined
  */
-export declare function startParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+export declare function startParticleFxNonLoopedAtCoord(effectName: string, pos, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 /**
  * Hash: 0x46F246D6504F0031 | ApiSet: undefined
  */
@@ -17173,7 +17173,7 @@ export declare function getClosestObjectOfType(position: Vector3, radius: number
 /**
  * Hash: 0x163E252DE035A133 | ApiSet: undefined
  */
-export declare function getOffsetFromCoordAndHeadingInWorldCoords(xPos: number, yPos: number, zPos: number, heading: number, xOffset: number, yOffset: number, zOffset: number): Vector3;
+export declare function getOffsetFromCoordAndHeadingInWorldCoords(pos, heading: number, xOffset: number, yOffset: number, zOffset: number): Vector3;
 /**
  * Hash: 0xFA3B61EC249B4674 | ApiSet: undefined
  */
@@ -18749,7 +18749,7 @@ export declare function countPedsInCombatWithTargetWithinRadius(ped: number | Pe
  * ```
  * Hash: 0x4F5EBE70081E5A20 | ApiSet: undefined
  */
-export declare function createGravityWell(xPos: number, yPos: number, zPos: number, heading: number, radius: number, p5: number, p6: number, p7: number, stopAtDestination: boolean): number;
+export declare function createGravityWell(pos, heading: number, radius: number, p5: number, p6: number, p7: number, stopAtDestination: boolean): number;
 /**
  * ```
  * Only used in SP scripts, for example odriscolls1: BOOLS: true, true, true, false, false
@@ -29737,7 +29737,7 @@ export declare function doesScriptedCoverPointExistAtCoords(p0: any, p1: any, p2
 /**
  * Hash: 0xF533D68FF970D190 | ApiSet: undefined
  */
-export declare function findScenarioOfTypeHash(xPos: number, yPos: number, zPos: number, scenarioType: number | string, distance: number, p5: any, p6: boolean): number;
+export declare function findScenarioOfTypeHash(pos, scenarioType: number | string, distance: number, p5: any, p6: boolean): number;
 /**
  * Hash: 0x0CCFE72B43C9CF96 | ApiSet: undefined
  */
@@ -31171,7 +31171,7 @@ export declare function setPedWaypointRouteOffset(ped: number | Ped, p1: number,
 /**
  * Hash: 0x2056AB38DF06825C | ApiSet: undefined
  */
-export declare function setScenarioPointCoords(scenario: number, xPos: number, yPos: number, zPos: number, p4: boolean): void;
+export declare function setScenarioPointCoords(scenario: number, pos, p4: boolean): void;
 /**
  * Hash: 0x02C8E5B49848664E | ApiSet: undefined
  */
@@ -31943,7 +31943,7 @@ export declare function taskMoveInTrafficAwayFromEntity(ped: number | Ped, p1: a
 /**
  * Hash: 0x7B6A04F98BBAFB2C | ApiSet: undefined
  */
-export declare function taskMoveNetworkAdvancedByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, p9: number, p10: number, p11: number, p12: number, flag: number, p14: number): any;
+export declare function taskMoveNetworkAdvancedByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, pos, xRot: number, yRot: number, zRot: number, p9: number, p10: number, p11: number, p12: number, flag: number, p14: number): any;
 /**
  * Hash: 0xF92171093BCABED4 | ApiSet: undefined
  */
@@ -34596,7 +34596,7 @@ export declare function setMissionTrainWarpToCoords(train: number | Vehicle, pos
  * ```
  * Hash: 0xBBE7648349B49BE8 | ApiSet: undefined
  */
-export declare function setMissionTrainAsNoLongerNeeded(flags: number): number;
+export declare function setMissionTrainAsNoLongerNeeded(train: number | Vehicle, flags: number): void;
 /**
  * Hash: 0xFEDFA97638D61D4A | ApiSet: undefined
  */

@@ -7500,10 +7500,10 @@ export function applyForceToEntityCenterOfMass(entity, forceType, position, comp
  * ```
  * Hash: 0x6B9BBD38AB0796DF | ApiSet: undefined
  */
-export function attachEntityToEntity(entity1, entity2, boneIndex, xPos, yPos, zPos, xRot, yRot, zRot, p9, useSoftPinning, collision, isPed, vertexIndex, fixedRot, p15, p16) {
+export function attachEntityToEntity(entity1, entity2, boneIndex, pos, xRot, yRot, zRot, p9, useSoftPinning, collision, isPed, vertexIndex, fixedRot, p15, p16) {
     const _entity1 = entity1 instanceof Entity ? entity1.handle() : entity1;
     const _entity2 = entity2 instanceof Entity ? entity2.handle() : entity2;
-    AttachEntityToEntity(_entity1, _entity2, boneIndex, xPos, yPos, zPos, xRot, yRot, zRot, p9, useSoftPinning, collision, isPed, vertexIndex, fixedRot, p15, p16);
+    AttachEntityToEntity(_entity1, _entity2, boneIndex, pos.x, pos.y, pos.z, xRot, yRot, zRot, p9, useSoftPinning, collision, isPed, vertexIndex, fixedRot, p15, p16);
 }
 /**
  * Hash: 0xB629A43CA1643481 | ApiSet: undefined
@@ -8216,8 +8216,8 @@ export function hasAnimEventFired(entity, actionHash) {
 /**
  * Hash: 0x6BFBDC46139C45AB | ApiSet: undefined
  */
-export function hasCollisionLoadedAroundPosition(xPos, yPos, zPos) {
-    return HasCollisionLoadedAroundPosition(xPos, yPos, zPos);
+export function hasCollisionLoadedAroundPosition(pos) {
+    return HasCollisionLoadedAroundPosition(pos.x, pos.y, pos.z);
 }
 /**
  * Hash: 0xAEB40615337EF1E3 | ApiSet: undefined
@@ -8330,9 +8330,9 @@ export function isEntityAPed(entity) {
  * ```
  * Hash: 0x5E58342602E94718 | ApiSet: undefined
  */
-export function isEntityAtCoord(entity, xPos, yPos, zPos, xSize, ySize, zSize, p7, p8, p9) {
+export function isEntityAtCoord(entity, pos, xSize, ySize, zSize, p7, p8, p9) {
     const _entity = entity instanceof Entity ? entity.handle() : entity;
-    return IsEntityAtCoord(_entity, xPos, yPos, zPos, xSize, ySize, zSize, p7, p8, p9);
+    return IsEntityAtCoord(_entity, pos.x, pos.y, pos.z, xSize, ySize, zSize, p7, p8, p9);
 }
 /**
  * Hash: 0x0A27A546A375FDEF | ApiSet: undefined
@@ -9317,9 +9317,9 @@ export function setEntityCollision(entity, toggle, keepPhysics) {
 /**
  * Hash: 0x203BEFFDBE12E96A | ApiSet: undefined
  */
-export function setEntityCoordsAndHeading(entity, xPos, yPos, zPos, heading, xAxis, yAxis, zAxis) {
+export function setEntityCoordsAndHeading(entity, pos, heading, xAxis, yAxis, zAxis) {
     const _entity = entity instanceof Entity ? entity.handle() : entity;
-    SetEntityCoordsAndHeading(_entity, xPos, yPos, zPos, heading, xAxis, yAxis, zAxis);
+    SetEntityCoordsAndHeading(_entity, pos.x, pos.y, pos.z, heading, xAxis, yAxis, zAxis);
 }
 /**
  * Hash: 0xE0580EC84813875A | ApiSet: undefined
@@ -9334,23 +9334,23 @@ export function setEntityCompletelyDisableCollision(entity, toggle, keepPhysics)
  * ```
  * Hash: 0x239A3351AC1DA385 | ApiSet: undefined
  */
-export function setEntityCoordsNoOffset(entity, xPos, yPos, zPos, xAxis, yAxis, zAxis) {
+export function setEntityCoordsNoOffset(entity, pos, xAxis, yAxis, zAxis) {
     const _entity = entity instanceof Entity ? entity.handle() : entity;
-    SetEntityCoordsNoOffset(_entity, xPos, yPos, zPos, xAxis, yAxis, zAxis);
+    SetEntityCoordsNoOffset(_entity, pos.x, pos.y, pos.z, xAxis, yAxis, zAxis);
 }
 /**
  * Hash: 0x06843DA7060A026B | ApiSet: undefined
  */
-export function setEntityCoords(entity, xPos, yPos, zPos, xAxis, yAxis, zAxis, clearArea) {
+export function setEntityCoords(entity, pos, xAxis, yAxis, zAxis, clearArea) {
     const _entity = entity instanceof Entity ? entity.handle() : entity;
-    SetEntityCoords(_entity, xPos, yPos, zPos, xAxis, yAxis, zAxis, clearArea);
+    SetEntityCoords(_entity, pos.x, pos.y, pos.z, xAxis, yAxis, zAxis, clearArea);
 }
 /**
  * Hash: 0x0918E3565C20F03C | ApiSet: undefined
  */
-export function setEntityCoordsAndHeadingNoOffset(entity, xPos, yPos, zPos, heading, p5, p6) {
+export function setEntityCoordsAndHeadingNoOffset(entity, pos, heading, p5, p6) {
     const _entity = entity instanceof Entity ? entity.handle() : entity;
-    SetEntityCoordsAndHeadingNoOffset(_entity, xPos, yPos, zPos, heading, p5, p6);
+    SetEntityCoordsAndHeadingNoOffset(_entity, pos.x, pos.y, pos.z, heading, p5, p6);
 }
 /**
  * Hash: 0xFBFC4473F66CE344 | ApiSet: undefined
@@ -12802,8 +12802,8 @@ export function startParticleFxLoopedAtCoord(effectName, position, xRot, yRot, z
 /**
  * Hash: 0xFB97618457994A62 | ApiSet: undefined
  */
-export function startNetworkedParticleFxNonLoopedAtCoord(effectName, xPos, yPos, zPos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis) {
-    return StartNetworkedParticleFxNonLoopedAtCoord(effectName, xPos, yPos, zPos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis);
+export function startNetworkedParticleFxNonLoopedAtCoord(effectName, pos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis) {
+    return StartNetworkedParticleFxNonLoopedAtCoord(effectName, pos.x, pos.y, pos.z, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis);
 }
 /**
  * Hash: 0xE6CFE43937061143 | ApiSet: undefined
@@ -12839,8 +12839,8 @@ export function startParticleFxLoopedOnPedBone(effectName, ped, xOffset, yOffset
  * ```
  * Hash: 0x2E80BF72EF7C87AC | ApiSet: undefined
  */
-export function startParticleFxNonLoopedAtCoord(effectName, xPos, yPos, zPos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis) {
-    return StartParticleFxNonLoopedAtCoord(effectName, xPos, yPos, zPos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis);
+export function startParticleFxNonLoopedAtCoord(effectName, pos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis) {
+    return StartParticleFxNonLoopedAtCoord(effectName, pos.x, pos.y, pos.z, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis);
 }
 /**
  * Hash: 0x46F246D6504F0031 | ApiSet: undefined
@@ -25330,8 +25330,8 @@ export function getClosestObjectOfType(position, radius, modelHash, missionScrip
 /**
  * Hash: 0x163E252DE035A133 | ApiSet: undefined
  */
-export function getOffsetFromCoordAndHeadingInWorldCoords(xPos, yPos, zPos, heading, xOffset, yOffset, zOffset) {
-    return new Vector3(GetOffsetFromCoordAndHeadingInWorldCoords(xPos, yPos, zPos, heading, xOffset, yOffset, zOffset));
+export function getOffsetFromCoordAndHeadingInWorldCoords(pos, heading, xOffset, yOffset, zOffset) {
+    return new Vector3(GetOffsetFromCoordAndHeadingInWorldCoords(pos.x, pos.y, pos.z, heading, xOffset, yOffset, zOffset));
 }
 /**
  * Hash: 0xFA3B61EC249B4674 | ApiSet: undefined
@@ -27728,8 +27728,8 @@ export function countPedsInCombatWithTargetWithinRadius(ped, position, radius, f
  * ```
  * Hash: 0x4F5EBE70081E5A20 | ApiSet: undefined
  */
-export function createGravityWell(xPos, yPos, zPos, heading, radius, p5, p6, p7, stopAtDestination) {
-    return CreateGravityWell(xPos, yPos, zPos, heading, radius, p5, p6, p7, stopAtDestination);
+export function createGravityWell(pos, heading, radius, p5, p6, p7, stopAtDestination) {
+    return CreateGravityWell(pos.x, pos.y, pos.z, heading, radius, p5, p6, p7, stopAtDestination);
 }
 /**
  * ```
@@ -44615,10 +44615,10 @@ export function doesScriptedCoverPointExistAtCoords(p0, p1, p2, p3) {
 /**
  * Hash: 0xF533D68FF970D190 | ApiSet: undefined
  */
-export function findScenarioOfTypeHash(xPos, yPos, zPos, scenarioType, distance, p5, p6) {
+export function findScenarioOfTypeHash(pos, scenarioType, distance, p5, p6) {
     if (typeof scenarioType === 'string')
         scenarioType = this.getHashKey(scenarioType);
-    return FindScenarioOfTypeHash(xPos, yPos, zPos, scenarioType, distance, p5, p6);
+    return FindScenarioOfTypeHash(pos.x, pos.y, pos.z, scenarioType, distance, p5, p6);
 }
 /**
  * Hash: 0x0CCFE72B43C9CF96 | ApiSet: undefined
@@ -46822,8 +46822,8 @@ export function setPedWaypointRouteOffset(ped, p1, p2, p3) {
 /**
  * Hash: 0x2056AB38DF06825C | ApiSet: undefined
  */
-export function setScenarioPointCoords(scenario, xPos, yPos, zPos, p4) {
-    SetScenarioPointCoords(scenario, xPos, yPos, zPos, p4);
+export function setScenarioPointCoords(scenario, pos, p4) {
+    SetScenarioPointCoords(scenario, pos.x, pos.y, pos.z, p4);
 }
 /**
  * Hash: 0x02C8E5B49848664E | ApiSet: undefined
@@ -48127,9 +48127,9 @@ export function taskMoveInTrafficAwayFromEntity(ped, p1, p2, p3, p4) {
 /**
  * Hash: 0x7B6A04F98BBAFB2C | ApiSet: undefined
  */
-export function taskMoveNetworkAdvancedByNameWithInitParams(ped, moveNetworkDefName, xPos, yPos, zPos, xRot, yRot, zRot, p9, p10, p11, p12, flag, p14) {
+export function taskMoveNetworkAdvancedByNameWithInitParams(ped, moveNetworkDefName, pos, xRot, yRot, zRot, p9, p10, p11, p12, flag, p14) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return TaskMoveNetworkAdvancedByNameWithInitParams(_ped, moveNetworkDefName, xPos, yPos, zPos, xRot, yRot, zRot, p9, p10, p11, p12, flag, p14);
+    return TaskMoveNetworkAdvancedByNameWithInitParams(_ped, moveNetworkDefName, pos.x, pos.y, pos.z, xRot, yRot, zRot, p9, p10, p11, p12, flag, p14);
 }
 /**
  * Hash: 0xF92171093BCABED4 | ApiSet: undefined
@@ -52266,8 +52266,9 @@ export function setMissionTrainWarpToCoords(train, position, direction) {
  * ```
  * Hash: 0xBBE7648349B49BE8 | ApiSet: undefined
  */
-export function setMissionTrainAsNoLongerNeeded(flags) {
-    return SetMissionTrainAsNoLongerNeeded(flags);
+export function setMissionTrainAsNoLongerNeeded(train, flags) {
+    const _train = train instanceof Entity ? train.handle() : train;
+    SetMissionTrainAsNoLongerNeeded(_train, flags);
 }
 /**
  * Hash: 0xFEDFA97638D61D4A | ApiSet: undefined
