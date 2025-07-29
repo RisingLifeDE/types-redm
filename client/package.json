@@ -1,7 +1,7 @@
 {
   "name": "@risinglife/redm-client",
   "description": "This package contains the type definitions for the RedM JS module shared types",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "url": "git+https://github.com/RisingLifeDE/types-redm.git"
   },
@@ -21,6 +21,6 @@
     "typescript": "^5.x.x"
   },
   "dependencies": {
-    "@risinglife/redm-shared": "^0.0.1"
+    "@risinglife/redm-shared": "^0.0.9"
   }
 }
