@@ -1,7 +1,7 @@
 {
   "name": "@risinglife/redm-natives",
   "description": "This package contains the type definitions for the RedM JS module shared types",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "repository": {
     "url": "git+https://github.com/RisingLifeDE/types-redm.git"
   },
@@ -21,6 +21,6 @@
     "typescript": "^5.x.x"
   },
   "dependencies": {
-    "@risinglife/redm-shared": "^0.0.3"
+    "@risinglife/redm-shared": "^0.0.4"
   }
 }
