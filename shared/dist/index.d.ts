@@ -179,6 +179,8 @@ export declare abstract class Player extends Entity {
 }
 export declare abstract class Vehicle extends Entity {
 }
+export declare abstract class Object extends Entity {
+}
 declare type Handle = number;
 declare type Hash = number;
 declare type HashOrString = Hash | string;

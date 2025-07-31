@@ -286,6 +286,8 @@ export class Player extends Entity {
 }
 export class Vehicle extends Entity {
 }
+export class Object extends Entity {
+}
 export var Enums;
 (function (Enums) {
     let ColShapeType;
