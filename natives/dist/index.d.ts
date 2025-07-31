@@ -104531,3 +104531,4 @@ export declare function getWaterMapZoneAtCoords(pos: Vector3): number;
  * @deprecated Use Namespace4.reportPlayerBadSportBehavior() instead
  */
 export declare function reportPlayerBadSportBehavior(gamerHandle: any, badSportBehaviorType: number): void;
+export * from "@risinglife/redm-shared";

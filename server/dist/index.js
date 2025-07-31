@@ -4574,3 +4574,4 @@ export function taskShootAtEntity(entity, target, duration, firingPattern) {
         firingPattern = this.getHashKey(firingPattern);
     TaskShootAtEntity(_entity, _target, duration, firingPattern);
 }
+export * from "@risinglife/redm-shared";

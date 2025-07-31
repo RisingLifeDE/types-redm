@@ -3612,3 +3612,4 @@ export declare function taskGoStraightToCoord(ped: number | Ped, pos: Vector3, s
  * Hash: 0xAC0631C9 | Since: server
  */
 export declare function taskShootAtEntity(entity: number | Entity, target: number | Entity, duration: number, firingPattern: number | string): void;
+export * from "@risinglife/redm-shared";

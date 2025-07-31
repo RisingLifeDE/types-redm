@@ -5735,3 +5735,4 @@ export function setResourceKvpInt(key, value) {
 export function setResourceKvpIntNoSync(key, value) {
     SetResourceKvpIntNoSync(key, value);
 }
+export * from "@risinglife/redm-shared";

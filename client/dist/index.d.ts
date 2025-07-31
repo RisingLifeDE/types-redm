@@ -4310,3 +4310,4 @@ export declare function setResourceKvpInt(key: string, value: number): void;
  * Hash: 0x26AEB707 | Since: shared
  */
 export declare function setResourceKvpIntNoSync(key: string, value: number): void;
+export * from "@risinglife/redm-shared";
