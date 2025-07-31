@@ -2427,7 +2427,7 @@ export declare function mumbleSetVolumeOverride(player: number | string | Player
  *
  * Hash: 0xE6EB2CD8 | Since: client
  */
-export declare function mumbleSetServerAddress(port: number): string;
+export declare function mumbleSetServerAddress(host: string, port: number): void;
 /**
  * No comment provided
  *
