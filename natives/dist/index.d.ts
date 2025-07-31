@@ -37,14 +37,6 @@ export declare namespace aicoverpoint {
      */
     function _0x64340DC208D671D5(coverLayer: string): void;
     /**
-     * args: f_0 = Volume Handle
-     * f_1 = integer (?) (only the number 1 is ever used here, or is not used at all)
-     * f_2 = integer (-1 to 32 in R* Scripts)
-     *
-     * Hash: 0x733077295AB51304 | Since: 1207
-     */
-    function addCoverBlockingArea(): any;
-    /**
      * coverLayer: see levels_0/levels/rdr3/coverlayers
      *
      * Hash: 0x7A1FDCF35EAA140F | Since: 1207
@@ -62,6 +54,14 @@ export declare namespace aicoverpoint {
      * Hash: 0xEBA51A294C73292E | Since: 1207
      */
     function _0xEBA51A294C73292E(): any;
+    /**
+     * args: f_0 = Volume Handle
+     * f_1 = integer (?) (only the number 1 is ever used here, or is not used at all)
+     * f_2 = integer (-1 to 32 in R* Scripts)
+     *
+     * Hash: 0x733077295AB51304 | Since: 1207
+     */
+    function addCoverBlockingArea(): any;
     /**
      * No comment provided
      *
@@ -730,7 +730,7 @@ export declare namespace animscene {
      *
      * Hash: 0x84EEDB2C6E650000 | Since: 1207
      */
-    function delete_(animScene: any): void;
+    function deleteAnimScene(animScene: any): void;
     /**
      * No comment provided
      *
@@ -2506,6 +2506,16 @@ export declare namespace audio {
      */
     function updateSoundCoord(soundId: number, pos: Vector3): void;
 }
+export declare namespace badsport {
+    /**
+     * nullsub, doesn't do anything
+     * however it is being used in tty scripts: [NET_BAD_SPORT_REPORT_PLAYER] Detected bad sport behavior from Player
+     * badSportBehavior: BS_QUITTER = 0, BS_VEHICLE_DESTRUCTION = 1, BS_VOTED_OUT = 2
+     *
+     * Hash: 0xC31C44C43B48FDE3 | Since: 1207
+     */
+    function reportPlayerBehavior(badSportBehaviorType: number): any;
+}
 export declare namespace bounty {
     /**
      * No comment provided
@@ -2561,6 +2571,12 @@ export declare namespace bounty {
      * Hash: 0x86EC5F83867C4B70 | Since: 1436
      */
     function _0x86EC5F83867C4B70(): [boolean, any];
+    /**
+     * No comment provided
+     *
+     * Hash: 0xC1F04FB37E3F0E57 | Since: unknown
+     */
+    function _0xC1F04FB37E3F0E57(): any;
     /**
      * _BOUNTY_GET_*
      *
@@ -5916,7 +5932,7 @@ export declare namespace datafile {
      *
      * Hash: 0x9FB90EEDEA9F2D5C | Since: 1207
      */
-    function delete_(index: number): void;
+    function datafileDelete(index: number): void;
     /**
      * No comment provided
      *
@@ -6358,7 +6374,7 @@ export declare namespace entity {
      *
      * Hash: 0x4CD38C78BD19A497 | Since: 1207
      */
-    function delete_(entity: number | Entity): void;
+    function deleteEntity(entity: number | Entity): void;
     /**
      * No comment provided
      *
@@ -8576,12 +8592,6 @@ export declare namespace flock {
      */
     function _0x8049B17BEC937662(): any;
     /**
-     * Return whether the ped is in the herd.
-     *
-     * Hash: 0x9E13ACC38BA8F9C3 | Since: 1207
-     */
-    function isPedInHerd(herd: number | Entity, ped: number | Ped): boolean;
-    /**
      * No comment provided
      *
      * Hash: 0xA881F5C77A560906 | Since: 1207
@@ -8702,6 +8712,12 @@ export declare namespace flock {
      * Hash: 0x8D913E493BAFE0A3 | Since: 1207
      */
     function isHerdValid(herdHandle: number): boolean;
+    /**
+     * Return whether the ped is in the herd.
+     *
+     * Hash: 0x9E13ACC38BA8F9C3 | Since: 1207
+     */
+    function isPedInHerd(herd: number | Entity, ped: number | Ped): boolean;
     /**
      * No comment provided
      *
@@ -9867,6 +9883,12 @@ export declare namespace graphics {
      */
     function _0x4BD66B4E3427689B(): void;
     /**
+     * No comment provided
+     *
+     * Hash: 0x4D14AF567FC02885 | Since: unknown
+     */
+    function _0x4D14AF567FC02885(): void;
+    /**
      * p1: AMB_ANN_COAL_CHUTE_DIVE, AMB_ANN_COAL_CHUTE
      * p2: EMIT
      * p3: either 0.0f or 1.0f
@@ -10915,9 +10937,27 @@ export declare namespace hud {
     /**
      * No comment provided
      *
+     * Hash: 0xBE5261939FBECB8C | Since: unknown
+     */
+    function setTextCentre(align: boolean): void;
+    /**
+     * No comment provided
+     *
+     * Hash: 0x1BE39DBAA7263CA5 | Since: unknown
+     */
+    function setTextDropshadow(distance: number, r: number, g: number, b: number, a: number): void;
+    /**
+     * No comment provided
+     *
      * Hash: 0xE550CDE128D56757 | Since: 1207
      */
     function setTextRenderId(renderId: number): void;
+    /**
+     * No comment provided
+     *
+     * Hash: 0x4170B650590B3B00 | Since: unknown
+     */
+    function setTextScale(scale: number, size: number): void;
     /**
      * No comment provided
      *
@@ -11089,6 +11129,12 @@ export declare namespace hud {
     /**
      * No comment provided
      *
+     * Hash: 0xF1AD3DD218E6558A | Since: unknown
+     */
+    function _0xF1AD3DD218E6558A(): any;
+    /**
+     * No comment provided
+     *
      * Hash: 0xF1E6979C0B779985 | Since: 1207
      */
     function _0xF1E6979C0B779985(uiscene: number): void;
@@ -11154,6 +11200,12 @@ export declare namespace hud {
      */
     function enableReducedMenuTimeScale(): void;
     /**
+     * No comment provided
+     *
+     * Hash: 0xFBBF5943E4C2C992 | Since: unknown
+     */
+    function forceCloseTextInputBox(): void;
+    /**
      * colorNameHash: https://alloc8or.re/rdr3/doc/enums/eColor.txt
      *
      * Hash: 0xB981DD2DFAF9B1C9 | Since: 1207
@@ -11183,6 +11235,12 @@ export declare namespace hud {
      * Hash: 0x502E1591A504F843 | Since: 1207
      */
     function isMpGamerTagActiveOnEntity(gamerTagId: number, entity: number | Entity): boolean;
+    /**
+     * No comment provided
+     *
+     * Hash: 0xBC19069D5FBB5C46 | Since: unknown
+     */
+    function isMultiplayerChatActive(): boolean;
     /**
      * No comment provided
      *
@@ -12198,6 +12256,12 @@ export declare namespace inventory {
      */
     function _0x6968CE7AC32F6788(inventoryId: number): void;
     /**
+     * No comment provided
+     *
+     * Hash: 0x751A7E0EAEDAD0D3 | Since: unknown
+     */
+    function _0x751A7E0EAEDAD0D3(): any;
+    /**
      * Apply the weapon stats to the CatalogItemInspection stats entry id. get entryId with _INVENTORY_GET_CATALOG_ITEM_INSPECTION_STATS_ENTRY
      *
      * Hash: 0x75CFAC49301E134E | Since: 1207
@@ -12722,6 +12786,12 @@ export declare namespace itemdatabase {
      */
     function _0x537A0555F62CA01A(key: number | string): boolean;
     /**
+     * No comment provided
+     *
+     * Hash: 0x74C3B1093728D263 | Since: 1207
+     */
+    function filloutBundleUiData(bundle: number | string): [boolean, any];
+    /**
      * Returns Item Count
      *
      * Hash: 0x799FCD53358ED5FA | Since: 1355
@@ -12746,6 +12816,12 @@ export declare namespace itemdatabase {
      */
     function _0x8D029948CA29409B(award: number | string, index: number): [boolean, any];
     /**
+     * No comment provided
+     *
+     * Hash: 0xA97EE5E4589FCF5A | Since: 1207
+     */
+    function getBundleAcquireCostModifiers(bundle: number | string): [boolean, any];
+    /**
      * Returns Pathset Hash
      *
      * Hash: 0xAA29A5F13B2C20B2 | Since: 1232
@@ -12769,6 +12845,30 @@ export declare namespace itemdatabase {
      * Hash: 0xDBEADA0DF5F9AB9F | Since: 1355
      */
     function _0xDBEADA0DF5F9AB9F(layout: number | string, index: number): [boolean, number];
+    /**
+     * No comment provided
+     *
+     * Hash: 0xDEE7B3C76ED664BE | Since: 1232
+     */
+    function getAcquireCostsCountFromCostType(key: number | string, costtype: number | string): number;
+    /**
+     * No comment provided
+     *
+     * Hash: 0xF27F01BBF5ACD3F3 | Since: 1232
+     */
+    function filloutAwardAcquireCost(award: number | string, costtype: number | string, index: number): [boolean, any];
+    /**
+     * No comment provided
+     *
+     * Hash: 0xF540239F9937033B | Since: 1232
+     */
+    function getAwardAcquireCostCountFromCostType(award: number | string, costtype: number | string): number;
+    /**
+     * No comment provided
+     *
+     * Hash: 0xF8D09EF8CE61D7BF | Since: 1207
+     */
+    function filloutBuyAwardUiData(award: number | string): [boolean, any];
     /**
      * No comment provided
      *
@@ -12802,12 +12902,6 @@ export declare namespace itemdatabase {
     /**
      * No comment provided
      *
-     * Hash: 0xF27F01BBF5ACD3F3 | Since: 1232
-     */
-    function filloutAwardAcquireCost(award: number | string, costtype: number | string, index: number): [boolean, any];
-    /**
-     * No comment provided
-     *
      * Hash: 0x121D2005DD64496B | Since: 1207
      */
     function filloutAwardItemInfo(award: number | string, index: number): [boolean, number];
@@ -12820,21 +12914,9 @@ export declare namespace itemdatabase {
     /**
      * No comment provided
      *
-     * Hash: 0x74C3B1093728D263 | Since: 1207
-     */
-    function filloutBundleUiData(bundle: number | string): [boolean, any];
-    /**
-     * No comment provided
-     *
      * Hash: 0xB52E20F6767A09A2 | Since: 1207
      */
     function filloutBuyAwardAcquireCosts(award: number | string): [boolean, any, number];
-    /**
-     * No comment provided
-     *
-     * Hash: 0xF8D09EF8CE61D7BF | Since: 1207
-     */
-    function filloutBuyAwardUiData(award: number | string): [boolean, any];
     /**
      * No comment provided
      *
@@ -12896,23 +12978,15 @@ export declare namespace itemdatabase {
      */
     function getAcquireCostsCount(key: number | string): number;
     /**
-     * No comment provided
+     * _ITEMDATABASE_GET_(A)* - _ITEMDATABASE_GET_(B)*
+     * ```
      *
-     * Hash: 0xDEE7B3C76ED664BE | Since: 1232
-     */
-    function getAcquireCostsCountFromCostType(key: number | string, costtype: number | string): number;
-    /**
-     * No comment provided
+     * ```
+     * NativeDB Introduced: v1311
      *
      * Hash: 0x12DF9C58201DD19A | Since: 1311
      */
-    function getAwardAcquireCostCount(key: number | string): number;
-    /**
-     * No comment provided
-     *
-     * Hash: 0xF540239F9937033B | Since: 1232
-     */
-    function getAwardAcquireCostCountFromCostType(award: number | string, costtype: number | string): number;
+    function getAwardAcquireCostType(): number;
     /**
      * No comment provided
      *
@@ -12925,12 +12999,6 @@ export declare namespace itemdatabase {
      * Hash: 0x3FAA928A79591761 | Since: 1207
      */
     function getAwardItemCount(award: number | string): number;
-    /**
-     * No comment provided
-     *
-     * Hash: 0xA97EE5E4589FCF5A | Since: 1207
-     */
-    function getBundleAcquireCostModifiers(bundle: number | string): [boolean, any];
     /**
      * No comment provided
      *
@@ -14286,7 +14354,7 @@ export declare namespace map {
      *
      * Hash: 0xF2C3C9DA47AAA54A | Since: 1207
      */
-    function removeBlip(): number;
+    function removeBlip(blip: number): void;
     /**
      * No comment provided
      *
@@ -14619,7 +14687,7 @@ export declare namespace map {
      *
      * Hash: 0x9CB1A1623062F402 | Since: 1207
      */
-    function setBlipName(blip: number): string;
+    function setBlipName(blip: number, name: string): void;
     /**
      * Used for GUARMA MODE; Enabled: toggle = false, 0; Disabled: toggle = true, 0
      * Hash p1 seems to be unused, always 0
@@ -17089,6 +17157,18 @@ export declare namespace netshopping {
     /**
      * No comment provided
      *
+     * Hash: 0x3745C002F5A21C45 | Since: unknown
+     */
+    function cashinventoryTransactionAddItem(id: number, item: any): boolean;
+    /**
+     * No comment provided
+     *
+     * Hash: 0xF65D2D35037BF5EC | Since: unknown
+     */
+    function cashinventoryTransactionAddItemWithIngredients(id: number, item: any): boolean;
+    /**
+     * No comment provided
+     *
      * Hash: 0x592BC00BF6629BE7 | Since: 1207
      */
     function cashinventoryTransactionCheckout(id: number): boolean;
@@ -17862,6 +17942,12 @@ export declare namespace network {
      * Hash: 0x6C0E2E0125610278 | Since: 1207
      */
     function getPlayerIndexFromPed(ped: number | Ped): number | string;
+    /**
+     * No comment provided
+     *
+     * Hash: 0x3B39236746714134 | Since: unknown
+     */
+    function getPlayerTutorialSessionInstance(player: number | string | Player): number;
     /**
      * Hardcoded to return zero.
      *
@@ -19496,6 +19582,12 @@ export declare namespace network {
     /**
      * No comment provided
      *
+     * Hash: 0x9F24A34863FD35DA | Since: unknown
+     */
+    function _0x9F24A34863FD35DA(): void;
+    /**
+     * No comment provided
+     *
      * Hash: 0xA2837A5E21FB5A58 | Since: 1207
      */
     function _0xA2837A5E21FB5A58(): boolean;
@@ -20754,7 +20846,7 @@ export declare namespace object {
      *
      * Hash: 0x931914268722C263 | Since: 1207
      */
-    function delete_(object: number | Object): void;
+    function deleteObject(object: number | Object): void;
     /**
      * No comment provided
      *
@@ -22571,7 +22663,7 @@ export declare namespace ped {
      *
      * Hash: 0xCC0EF140F99365C5 | Since: 1207
      */
-    function delete_(ped: number | Ped): void;
+    function deletePed(ped: number | Ped): void;
     /**
      * No comment provided
      *
@@ -22603,7 +22695,7 @@ export declare namespace ped {
      *
      * Hash: 0x7043D0681285BA2D | Since: 1207
      */
-    function fadeAndDestroy(): number;
+    function fadeAndDestroy(ped: number | Ped): void;
     /**
      * No comment provided
      *
@@ -25664,6 +25756,12 @@ export declare namespace ped {
     /**
      * No comment provided
      *
+     * Hash: 0x8B74032DDD2156FE | Since: unknown
+     */
+    function _0x8B74032DDD2156FE(): void;
+    /**
+     * No comment provided
+     *
      * Hash: 0x8BA0C65AC15A7D33 | Since: 1207
      */
     function _0x8BA0C65AC15A7D33(): void;
@@ -26668,6 +26766,12 @@ export declare namespace ped {
      * Hash: 0xFEA6126C34DF2532 | Since: 1207
      */
     function _0xFEA6126C34DF2532(ped: number | Ped): void;
+    /**
+     * No comment provided
+     *
+     * Hash: 0xFEAB3DB4EDB236EB | Since: unknown
+     */
+    function _0xFEAB3DB4EDB236EB(): any;
     /**
      * No comment provided
      *
@@ -29160,7 +29264,7 @@ export declare namespace perschar {
      *
      * Hash: 0xFC77C5B44D5FF7C0 | Since: 1207
      */
-    function delete_(persChar: any): void;
+    function deletePerschar(persChar: any): void;
     /**
      * No comment provided
      *
@@ -32743,7 +32847,7 @@ export declare namespace propset {
      *
      * Hash: 0x58AC173A55D9D7B4 | Since: 1207
      */
-    function delete_(propSet: any): void;
+    function deletePropSet(propSet: any): void;
     /**
      * No comment provided
      *
@@ -34309,6 +34413,12 @@ export declare namespace stats {
     /**
      * No comment provided
      *
+     * Hash: 0x332630B862277879 | Since: unknown
+     */
+    function _0x332630B862277879(): any;
+    /**
+     * No comment provided
+     *
      * Hash: 0x378D3B1B11D9385B | Since: 1207
      */
     function _0x378D3B1B11D9385B(): void;
@@ -34361,6 +34471,12 @@ export declare namespace stats {
      */
     function _0x6123E2832C34243D(): void;
     /**
+     * No comment provided
+     *
+     * Hash: 0x70379B5C3FF1D209 | Since: unknown
+     */
+    function _0x70379B5C3FF1D209(): any;
+    /**
      * Only used in R* SP Scripts
      *
      * Hash: 0x8312F09C56149A8A | Since: 1207
@@ -34390,6 +34506,12 @@ export declare namespace stats {
      * Hash: 0x99230691875FC218 | Since: 1207
      */
     function _0x99230691875FC218(p1: number | string, pos: Vector3): void;
+    /**
+     * No comment provided
+     *
+     * Hash: 0x997060BC223ADFF9 | Since: unknown
+     */
+    function _0x997060BC223ADFF9(): any;
     /**
      * No comment provided
      *
@@ -34447,6 +34569,12 @@ export declare namespace stats {
     /**
      * No comment provided
      *
+     * Hash: 0xCAAE29CB5591B2A5 | Since: unknown
+     */
+    function _0xCAAE29CB5591B2A5(): any;
+    /**
+     * No comment provided
+     *
      * Hash: 0xD64DBC8B0424135F | Since: 1207
      */
     function _0xD64DBC8B0424135F(ped: number | Ped, animalType: number | string): void;
@@ -34456,6 +34584,12 @@ export declare namespace stats {
      * Hash: 0xDA26263C07CCE9C2 | Since: 1207
      */
     function _0xDA26263C07CCE9C2(): void;
+    /**
+     * No comment provided
+     *
+     * Hash: 0xDCEC875A02991AD0 | Since: unknown
+     */
+    function _0xDCEC875A02991AD0(): any;
     /**
      * No comment provided
      *
@@ -34783,7 +34917,7 @@ export declare namespace streaming {
      *
      * Hash: 0x817FA1B1EE7CD6F0 | Since: 1207
      */
-    function removeClipSet(): string;
+    function removeClipSet(clipSet: string): void;
     /**
      * Old name: _REMOVE_IMAP_2
      *
@@ -34801,7 +34935,7 @@ export declare namespace streaming {
      *
      * Hash: 0x57A197AD83F66BBF | Since: 1207
      */
-    function removeMoveNetworkDef(): string;
+    function removeMoveNetworkDef(name: string): void;
     /**
      * No comment provided
      *
@@ -35833,7 +35967,7 @@ export declare namespace task {
      *
      * Hash: 0xFF1B8B4AA1C25DC8 | Since: 1207
      */
-    function removeWaypointRecording(): string;
+    function removeWaypointRecording(waypointRecording: string): void;
     /**
      * No comment provided
      *
@@ -36308,6 +36442,12 @@ export declare namespace task {
      * Hash: 0x5F22926E1BCE9B08 | Since: 1207
      */
     function evasiveAnim(ped1: number | Ped, ped2: number | Ped): void;
+    /**
+     * No comment provided
+     *
+     * Hash: 0x7F93691AB4B92272 | Since: unknown
+     */
+    function everyoneLeaveVehicle(): void;
     /**
      * No comment provided
      *
@@ -40601,7 +40741,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xE20A909D8C4A70F8 | Since: 1207
      */
-    function delete_(vehicle: number | Vehicle): void;
+    function deleteVehicle(vehicle: number | Vehicle): void;
     /**
      * No comment provided
      *
@@ -42554,7 +42694,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x35DC1877312FBA0F | Since: 1207
      */
-    function fadeAndDestroy(): number;
+    function fadeAndDestroy(vehicle: number | Vehicle): void;
     /**
      * No comment provided
      *
@@ -43151,7 +43291,7 @@ export declare namespace volume {
      *
      * Hash: 0x43F867EF5C463A53 | Since: 1207
      */
-    function delete_(volume: number): void;
+    function deleteVolume(volume: number): void;
     /**
      * No comment provided
      *
@@ -44500,6 +44640,12 @@ export declare namespace weapon {
      */
     function _0xF8204EF17410BF43(weaponGroupHash: number | string): number;
     /**
+     * No comment provided
+     *
+     * Hash: 0xFDCEDFB0577A390D | Since: unknown
+     */
+    function _0xFDCEDFB0577A390D(): any;
+    /**
      * addReason:
      * enum eAddItemReason : Hash
      * {
@@ -44819,7 +44965,7 @@ export declare namespace weapon {
      *
      * Hash: 0x1A47699E8D533E8F | Since: 1207
      */
-    function giveComponentToWeaponObject(ped: number | Ped, componentHash: number | string): number;
+    function giveComponentToWeaponObject(weaponObject: number | Object, ped: number | Ped, componentHash: number | string): void;
     /**
      * No comment provided
      *
@@ -45217,16 +45363,6 @@ export declare namespace zone {
      * Hash: 0x5BA7A68A346A5A91 | Since: 1207
      */
     function getWaterMapAtCoords(pos: Vector3): number;
-}
-export declare namespace _namespace4 {
-    /**
-     * nullsub, doesn't do anything
-     * however it is being used in tty scripts: [NET_BAD_SPORT_REPORT_PLAYER] Detected bad sport behavior from Player
-     * badSportBehavior: BS_QUITTER = 0, BS_VEHICLE_DESTRUCTION = 1, BS_VOTED_OUT = 2
-     *
-     * Hash: 0xC31C44C43B48FDE3 | Since: 1207
-     */
-    function reportPlayerBadSportBehavior(badSportBehaviorType: number): any;
 }
 /**
  * No comment provided
@@ -46054,7 +46190,7 @@ export declare function createMgmSystem(mgmFilename: string): number;
  * No comment provided
  *
  * Hash: 0x84EEDB2C6E650000 | Since: 1207
- * @deprecated Use animscene.delete_(animScene1) instead
+ * @deprecated Use animscene.deleteAnimScene(animScene1) instead
  */
 export declare function deleteAnimScene(animScene1: any): void;
 /**
@@ -48105,6 +48241,15 @@ export declare function unloadSpeechContext(speechContext: string): void;
  */
 export declare function updateSoundCoord(soundId: number, pos: Vector3): void;
 /**
+ * nullsub, doesn't do anything
+ * however it is being used in tty scripts: [NET_BAD_SPORT_REPORT_PLAYER] Detected bad sport behavior from Player
+ * badSportBehavior: BS_QUITTER = 0, BS_VEHICLE_DESTRUCTION = 1, BS_VOTED_OUT = 2
+ *
+ * Hash: 0xC31C44C43B48FDE3 | Since: 1207
+ * @deprecated Use badsport.reportPlayerBehavior(badSportBehaviorType) instead
+ */
+export declare function reportPlayerBadSportBehavior(badSportBehaviorType: number): any;
+/**
  * No comment provided
  *
  * Hash: 0x4EF23E04A0C8FF51 | Since: 1207
@@ -48167,6 +48312,13 @@ export declare function _0x81847C2134039BDC(): [boolean, any];
  * @deprecated Use bounty._0x86EC5F83867C4B70() instead
  */
 export declare function _0x86EC5F83867C4B70(): [boolean, any];
+/**
+ * No comment provided
+ *
+ * Hash: 0xC1F04FB37E3F0E57 | Since: unknown
+ * @deprecated Use bounty._0xC1F04FB37E3F0E57() instead
+ */
+export declare function _0xC1F04FB37E3F0E57(): any;
 /**
  * _BOUNTY_GET_*
  *
@@ -52035,7 +52187,7 @@ export declare function datafileCreate(index: number): void;
  * No comment provided
  *
  * Hash: 0x9FB90EEDEA9F2D5C | Since: 1207
- * @deprecated Use datafile.delete_(index) instead
+ * @deprecated Use datafile.datafileDelete(index) instead
  */
 export declare function datafileDelete(index: number): void;
 /**
@@ -52539,7 +52691,7 @@ export declare function createModelSwap(pos: Vector3, radius: number, originalMo
  * Deletes the specified entity, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0x4CD38C78BD19A497 | Since: 1207
- * @deprecated Use entity.delete_(entity1) instead
+ * @deprecated Use entity.deleteEntity(entity1) instead
  */
 export declare function deleteEntity(entity1: number | Entity): void;
 /**
@@ -55101,13 +55253,6 @@ export declare function _0x706B434FEFAD6A24(): void;
  */
 export declare function _0x8049B17BEC937662(): any;
 /**
- * Return whether the ped is in the herd.
- *
- * Hash: 0x9E13ACC38BA8F9C3 | Since: 1207
- * @deprecated Use flock.isPedInHerd(herd, ped) instead
- */
-export declare function isPedInHerd(herd: number | Entity, ped: number | Ped): boolean;
-/**
  * No comment provided
  *
  * Hash: 0xA881F5C77A560906 | Since: 1207
@@ -55247,6 +55392,13 @@ export declare function getAnimalRarity(ped: number | Ped): number;
  * @deprecated Use flock.isHerdValid(herdHandle) instead
  */
 export declare function isHerdValid(herdHandle: number): boolean;
+/**
+ * Return whether the ped is in the herd.
+ *
+ * Hash: 0x9E13ACC38BA8F9C3 | Since: 1207
+ * @deprecated Use flock.isPedInHerd(herd, ped) instead
+ */
+export declare function isPedInHerd(herd: number | Entity, ped: number | Ped): boolean;
 /**
  * No comment provided
  *
@@ -56588,6 +56740,13 @@ export declare function _0x48FE0DB54045B975(): void;
  */
 export declare function _0x4BD66B4E3427689B(): void;
 /**
+ * No comment provided
+ *
+ * Hash: 0x4D14AF567FC02885 | Since: unknown
+ * @deprecated Use graphics._0x4D14AF567FC02885() instead
+ */
+export declare function _0x4D14AF567FC02885(): void;
+/**
  * p1: AMB_ANN_COAL_CHUTE_DIVE, AMB_ANN_COAL_CHUTE
  * p2: EMIT
  * p3: either 0.0f or 1.0f
@@ -57802,10 +57961,31 @@ export declare function setMpGamerTagName(gamerTagId: number, string: string): v
 /**
  * No comment provided
  *
+ * Hash: 0xBE5261939FBECB8C | Since: unknown
+ * @deprecated Use hud.setTextCentre(align) instead
+ */
+export declare function setTextCentre(align: boolean): void;
+/**
+ * No comment provided
+ *
+ * Hash: 0x1BE39DBAA7263CA5 | Since: unknown
+ * @deprecated Use hud.setTextDropshadow(distance, r, g, b, a) instead
+ */
+export declare function setTextDropshadow(distance: number, r: number, g: number, b: number, a: number): void;
+/**
+ * No comment provided
+ *
  * Hash: 0xE550CDE128D56757 | Since: 1207
  * @deprecated Use hud.setTextRenderId(renderId) instead
  */
 export declare function setTextRenderId(renderId: number): void;
+/**
+ * No comment provided
+ *
+ * Hash: 0x4170B650590B3B00 | Since: unknown
+ * @deprecated Use hud.setTextScale(scale, size) instead
+ */
+export declare function setTextScale(scale: number, size: number): void;
 /**
  * No comment provided
  *
@@ -58004,6 +58184,13 @@ export declare function _0xD6BD313CFA41E57A(): any;
 /**
  * No comment provided
  *
+ * Hash: 0xF1AD3DD218E6558A | Since: unknown
+ * @deprecated Use hud._0xF1AD3DD218E6558A() instead
+ */
+export declare function _0xF1AD3DD218E6558A(): any;
+/**
+ * No comment provided
+ *
  * Hash: 0xF1E6979C0B779985 | Since: 1207
  * @deprecated Use hud._0xF1E6979C0B779985(uiscene) instead
  */
@@ -58080,6 +58267,13 @@ export declare function enableHudContextThisFrame(component: number | string): v
  */
 export declare function enableReducedMenuTimeScale(): void;
 /**
+ * No comment provided
+ *
+ * Hash: 0xFBBF5943E4C2C992 | Since: unknown
+ * @deprecated Use hud.forceCloseTextInputBox() instead
+ */
+export declare function forceCloseTextInputBox(): void;
+/**
  * colorNameHash: https://alloc8or.re/rdr3/doc/enums/eColor.txt
  *
  * Hash: 0xB981DD2DFAF9B1C9 | Since: 1207
@@ -58114,6 +58308,13 @@ export declare function hideHudThisFrame(): void;
  * @deprecated Use hud.isMpGamerTagActiveOnEntity(gamerTagId, entity) instead
  */
 export declare function isMpGamerTagActiveOnEntity(gamerTagId: number, entity: number | Entity): boolean;
+/**
+ * No comment provided
+ *
+ * Hash: 0xBC19069D5FBB5C46 | Since: unknown
+ * @deprecated Use hud.isMultiplayerChatActive() instead
+ */
+export declare function isMultiplayerChatActive(): boolean;
 /**
  * No comment provided
  *
@@ -59283,6 +59484,13 @@ export declare function _0x6862E4D93F64CF01(inventoryId: number, p2: number | st
  */
 export declare function _0x6968CE7AC32F6788(inventoryId: number): void;
 /**
+ * No comment provided
+ *
+ * Hash: 0x751A7E0EAEDAD0D3 | Since: unknown
+ * @deprecated Use inventory._0x751A7E0EAEDAD0D3() instead
+ */
+export declare function _0x751A7E0EAEDAD0D3(): any;
+/**
  * Apply the weapon stats to the CatalogItemInspection stats entry id. get entryId with _INVENTORY_GET_CATALOG_ITEM_INSPECTION_STATS_ENTRY
  *
  * Hash: 0x75CFAC49301E134E | Since: 1207
@@ -59886,6 +60094,13 @@ export declare function _0x48229CE0C7938237(award: number | string): number;
  */
 export declare function _0x537A0555F62CA01A(key: number | string): boolean;
 /**
+ * No comment provided
+ *
+ * Hash: 0x74C3B1093728D263 | Since: 1207
+ * @deprecated Use itemdatabase.filloutBundleUiData(bundle) instead
+ */
+export declare function itemdatabaseFilloutBundleUiData(bundle: number | string): [boolean, any];
+/**
  * Returns Item Count
  *
  * Hash: 0x799FCD53358ED5FA | Since: 1355
@@ -59914,6 +60129,13 @@ export declare function _0x8870895BA5ED9385(key: number | string, tagType: numbe
  */
 export declare function _0x8D029948CA29409B(award: number | string, index: number): [boolean, any];
 /**
+ * No comment provided
+ *
+ * Hash: 0xA97EE5E4589FCF5A | Since: 1207
+ * @deprecated Use itemdatabase.getBundleAcquireCostModifiers(bundle) instead
+ */
+export declare function itemdatabaseGetBundleAcquireCostModifiers(bundle: number | string): [boolean, any];
+/**
  * Returns Pathset Hash
  *
  * Hash: 0xAA29A5F13B2C20B2 | Since: 1232
@@ -59941,6 +60163,34 @@ export declare function _0xD076DB9B96FAADF1(award: number | string): [boolean, a
  * @deprecated Use itemdatabase._0xDBEADA0DF5F9AB9F(layout, index) instead
  */
 export declare function _0xDBEADA0DF5F9AB9F(layout: number | string, index: number): [boolean, number];
+/**
+ * No comment provided
+ *
+ * Hash: 0xDEE7B3C76ED664BE | Since: 1232
+ * @deprecated Use itemdatabase.getAcquireCostsCountFromCostType(key, costtype) instead
+ */
+export declare function itemdatabaseGetAcquireCostsCountFromCostType(key: number | string, costtype: number | string): number;
+/**
+ * No comment provided
+ *
+ * Hash: 0xF27F01BBF5ACD3F3 | Since: 1232
+ * @deprecated Use itemdatabase.filloutAwardAcquireCost(award, costtype, index) instead
+ */
+export declare function itemdatabaseFilloutAwardAcquireCost(award: number | string, costtype: number | string, index: number): [boolean, any];
+/**
+ * No comment provided
+ *
+ * Hash: 0xF540239F9937033B | Since: 1232
+ * @deprecated Use itemdatabase.getAwardAcquireCostCountFromCostType(award, costtype) instead
+ */
+export declare function itemdatabaseGetAwardAcquireCostCountFromCostType(award: number | string, costtype: number | string): number;
+/**
+ * No comment provided
+ *
+ * Hash: 0xF8D09EF8CE61D7BF | Since: 1207
+ * @deprecated Use itemdatabase.filloutBuyAwardUiData(award) instead
+ */
+export declare function itemdatabaseFilloutBuyAwardUiData(award: number | string): [boolean, any];
 /**
  * No comment provided
  *
@@ -59979,13 +60229,6 @@ export declare function itemdatabaseFilloutAcquireCost(key: number | string, cos
 /**
  * No comment provided
  *
- * Hash: 0xF27F01BBF5ACD3F3 | Since: 1232
- * @deprecated Use itemdatabase.filloutAwardAcquireCost(award, costtype, index) instead
- */
-export declare function itemdatabaseFilloutAwardAcquireCost(award: number | string, costtype: number | string, index: number): [boolean, any];
-/**
- * No comment provided
- *
  * Hash: 0x121D2005DD64496B | Since: 1207
  * @deprecated Use itemdatabase.filloutAwardItemInfo(award, index) instead
  */
@@ -60000,24 +60243,10 @@ export declare function itemdatabaseFilloutBundle(bundle: number | string, costt
 /**
  * No comment provided
  *
- * Hash: 0x74C3B1093728D263 | Since: 1207
- * @deprecated Use itemdatabase.filloutBundleUiData(bundle) instead
- */
-export declare function itemdatabaseFilloutBundleUiData(bundle: number | string): [boolean, any];
-/**
- * No comment provided
- *
  * Hash: 0xB52E20F6767A09A2 | Since: 1207
  * @deprecated Use itemdatabase.filloutBuyAwardAcquireCosts(award) instead
  */
 export declare function itemdatabaseFilloutBuyAwardAcquireCosts(award: number | string): [boolean, any, number];
-/**
- * No comment provided
- *
- * Hash: 0xF8D09EF8CE61D7BF | Since: 1207
- * @deprecated Use itemdatabase.filloutBuyAwardUiData(award) instead
- */
-export declare function itemdatabaseFilloutBuyAwardUiData(award: number | string): [boolean, any];
 /**
  * No comment provided
  *
@@ -60089,26 +60318,16 @@ export declare function itemdatabaseGetAcquireCost(key: number | string, index: 
  */
 export declare function itemdatabaseGetAcquireCostsCount(key: number | string): number;
 /**
- * No comment provided
+ * _ITEMDATABASE_GET_(A)* - _ITEMDATABASE_GET_(B)*
+ * ```
  *
- * Hash: 0xDEE7B3C76ED664BE | Since: 1232
- * @deprecated Use itemdatabase.getAcquireCostsCountFromCostType(key, costtype) instead
- */
-export declare function itemdatabaseGetAcquireCostsCountFromCostType(key: number | string, costtype: number | string): number;
-/**
- * No comment provided
+ * ```
+ * NativeDB Introduced: v1311
  *
  * Hash: 0x12DF9C58201DD19A | Since: 1311
- * @deprecated Use itemdatabase.getAwardAcquireCostCount(key) instead
+ * @deprecated Use itemdatabase.getAwardAcquireCostType() instead
  */
-export declare function itemdatabaseGetAwardAcquireCostCount(key: number | string): number;
-/**
- * No comment provided
- *
- * Hash: 0xF540239F9937033B | Since: 1232
- * @deprecated Use itemdatabase.getAwardAcquireCostCountFromCostType(award, costtype) instead
- */
-export declare function itemdatabaseGetAwardAcquireCostCountFromCostType(award: number | string, costtype: number | string): number;
+export declare function itemdatabaseGetAwardAcquireCostType(): number;
 /**
  * No comment provided
  *
@@ -60123,13 +60342,6 @@ export declare function itemdatabaseGetAwardCostModifiers(award: number | string
  * @deprecated Use itemdatabase.getAwardItemCount(award) instead
  */
 export declare function itemdatabaseGetAwardItemCount(award: number | string): number;
-/**
- * No comment provided
- *
- * Hash: 0xA97EE5E4589FCF5A | Since: 1207
- * @deprecated Use itemdatabase.getBundleAcquireCostModifiers(bundle) instead
- */
-export declare function itemdatabaseGetBundleAcquireCostModifiers(bundle: number | string): [boolean, any];
 /**
  * No comment provided
  *
@@ -61675,9 +61887,9 @@ export declare function lockMinimapAngle(angle: number): void;
  * No comment provided
  *
  * Hash: 0xF2C3C9DA47AAA54A | Since: 1207
- * @deprecated Use map.removeBlip() instead
+ * @deprecated Use map.removeBlip(blip) instead
  */
-export declare function removeBlip(): number;
+export declare function removeBlip(blip: number): void;
 /**
  * No comment provided
  *
@@ -62062,9 +62274,9 @@ export declare function revealMinimapFow(hash: number | string): void;
  * No comment provided
  *
  * Hash: 0x9CB1A1623062F402 | Since: 1207
- * @deprecated Use map.setBlipName(blip) instead
+ * @deprecated Use map.setBlipName(blip, name) instead
  */
-export declare function setBlipName(blip: number): string;
+export declare function setBlipName(blip: number, name: string): void;
 /**
  * Used for GUARMA MODE; Enabled: toggle = false, 0; Disabled: toggle = true, 0
  * Hash p1 seems to be unused, always 0
@@ -64908,6 +65120,20 @@ export declare function cashinventoryTransactionAddAward(id: number, hash: numbe
 /**
  * No comment provided
  *
+ * Hash: 0x3745C002F5A21C45 | Since: unknown
+ * @deprecated Use netshopping.cashinventoryTransactionAddItem(id, item) instead
+ */
+export declare function cashinventoryTransactionAddItem(id: number, item: any): boolean;
+/**
+ * No comment provided
+ *
+ * Hash: 0xF65D2D35037BF5EC | Since: unknown
+ * @deprecated Use netshopping.cashinventoryTransactionAddItemWithIngredients(id, item) instead
+ */
+export declare function cashinventoryTransactionAddItemWithIngredients(id: number, item: any): boolean;
+/**
+ * No comment provided
+ *
  * Hash: 0x592BC00BF6629BE7 | Since: 1207
  * @deprecated Use netshopping.cashinventoryTransactionCheckout(id) instead
  */
@@ -65801,6 +66027,13 @@ export declare function networkGetPlayerIndex(player: number | string | Player):
  * @deprecated Use network.getPlayerIndexFromPed(ped) instead
  */
 export declare function networkGetPlayerIndexFromPed(ped: number | Ped): number | string;
+/**
+ * No comment provided
+ *
+ * Hash: 0x3B39236746714134 | Since: unknown
+ * @deprecated Use network.getPlayerTutorialSessionInstance(player) instead
+ */
+export declare function networkGetPlayerTutorialSessionInstance(player: number | string | Player): number;
 /**
  * Hardcoded to return zero.
  *
@@ -67700,6 +67933,13 @@ export declare function _0x9E5A47744C0F0376(): boolean;
 /**
  * No comment provided
  *
+ * Hash: 0x9F24A34863FD35DA | Since: unknown
+ * @deprecated Use network._0x9F24A34863FD35DA() instead
+ */
+export declare function _0x9F24A34863FD35DA(): void;
+/**
+ * No comment provided
+ *
  * Hash: 0xA2837A5E21FB5A58 | Since: 1207
  * @deprecated Use network._0xA2837A5E21FB5A58() instead
  */
@@ -69158,7 +69398,7 @@ export declare function createPortablePickup(pickupHash: number | string, pos: V
  * Deletes the specified object, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0x931914268722C263 | Since: 1207
- * @deprecated Use object.delete_(object1) instead
+ * @deprecated Use object.deleteObject(object1) instead
  */
 export declare function deleteObject(object1: number | Object): void;
 /**
@@ -71259,7 +71499,7 @@ export declare function createPedOnMount(mount: number | Ped, modelHash: number 
  * Deletes the specified ped, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0xCC0EF140F99365C5 | Since: 1207
- * @deprecated Use ped.delete_(ped1) instead
+ * @deprecated Use ped.deletePed(ped1) instead
  */
 export declare function deletePed(ped1: number | Ped): void;
 /**
@@ -71296,9 +71536,9 @@ export declare function explodePedHead(ped1: number | Ped, weaponHash: number | 
  * No comment provided
  *
  * Hash: 0x7043D0681285BA2D | Since: 1207
- * @deprecated Use ped.fadeAndDestroy() instead
+ * @deprecated Use ped.fadeAndDestroy(ped1) instead
  */
-export declare function fadeAndDestroyPed(): number;
+export declare function fadeAndDestroyPed(ped1: number | Ped): void;
 /**
  * No comment provided
  *
@@ -74841,6 +75081,13 @@ export declare function _0x8AFCCC0F18D70018(groupId: number): void;
 /**
  * No comment provided
  *
+ * Hash: 0x8B74032DDD2156FE | Since: unknown
+ * @deprecated Use ped._0x8B74032DDD2156FE() instead
+ */
+export declare function _0x8B74032DDD2156FE(): void;
+/**
+ * No comment provided
+ *
  * Hash: 0x8BA0C65AC15A7D33 | Since: 1207
  * @deprecated Use ped._0x8BA0C65AC15A7D33() instead
  */
@@ -76008,6 +76255,13 @@ export declare function _0xFD8E853F0BC2E942(): void;
  * @deprecated Use ped._0xFEA6126C34DF2532(ped1) instead
  */
 export declare function _0xFEA6126C34DF2532(ped1: number | Ped): void;
+/**
+ * No comment provided
+ *
+ * Hash: 0xFEAB3DB4EDB236EB | Since: unknown
+ * @deprecated Use ped._0xFEAB3DB4EDB236EB() instead
+ */
+export declare function _0xFEAB3DB4EDB236EB(): any;
 /**
  * No comment provided
  *
@@ -78862,7 +79116,7 @@ export declare function createPersistentCharacter(hash: number | string): any;
  * No comment provided
  *
  * Hash: 0xFC77C5B44D5FF7C0 | Since: 1207
- * @deprecated Use perschar.delete_(persChar1) instead
+ * @deprecated Use perschar.deletePerschar(persChar1) instead
  */
 export declare function deletePerschar(persChar1: any): void;
 /**
@@ -83006,7 +83260,7 @@ export declare function createPropSetInstanceAttachedToEntity2(hash: number | st
  * No comment provided
  *
  * Hash: 0x58AC173A55D9D7B4 | Since: 1207
- * @deprecated Use propset.delete_(propSet1) instead
+ * @deprecated Use propset.deletePropSet(propSet1) instead
  */
 export declare function deletePropSet(propSet1: any): void;
 /**
@@ -84800,6 +85054,13 @@ export declare function _0x302E71C1D9EE75B9(p1: number | string): [boolean, any,
 /**
  * No comment provided
  *
+ * Hash: 0x332630B862277879 | Since: unknown
+ * @deprecated Use stats._0x332630B862277879() instead
+ */
+export declare function _0x332630B862277879(): any;
+/**
+ * No comment provided
+ *
  * Hash: 0x378D3B1B11D9385B | Since: 1207
  * @deprecated Use stats._0x378D3B1B11D9385B() instead
  */
@@ -84861,6 +85122,13 @@ export declare function _0x4FCBCC0584CD08E9(p0: number | string): void;
  */
 export declare function _0x6123E2832C34243D(): void;
 /**
+ * No comment provided
+ *
+ * Hash: 0x70379B5C3FF1D209 | Since: unknown
+ * @deprecated Use stats._0x70379B5C3FF1D209() instead
+ */
+export declare function _0x70379B5C3FF1D209(): any;
+/**
  * Only used in R* SP Scripts
  *
  * Hash: 0x8312F09C56149A8A | Since: 1207
@@ -84895,6 +85163,13 @@ export declare function _0x91A4F58E01ED5E4C(value: number): any;
  * @deprecated Use stats._0x99230691875FC218(p1, pos) instead
  */
 export declare function _0x99230691875FC218(p1: number | string, pos: Vector3): void;
+/**
+ * No comment provided
+ *
+ * Hash: 0x997060BC223ADFF9 | Since: unknown
+ * @deprecated Use stats._0x997060BC223ADFF9() instead
+ */
+export declare function _0x997060BC223ADFF9(): any;
 /**
  * No comment provided
  *
@@ -84961,6 +85236,13 @@ export declare function _0xCA41E86545413B5B(): void;
 /**
  * No comment provided
  *
+ * Hash: 0xCAAE29CB5591B2A5 | Since: unknown
+ * @deprecated Use stats._0xCAAE29CB5591B2A5() instead
+ */
+export declare function _0xCAAE29CB5591B2A5(): any;
+/**
+ * No comment provided
+ *
  * Hash: 0xD64DBC8B0424135F | Since: 1207
  * @deprecated Use stats._0xD64DBC8B0424135F(ped, animalType) instead
  */
@@ -84972,6 +85254,13 @@ export declare function _0xD64DBC8B0424135F(ped: number | Ped, animalType: numbe
  * @deprecated Use stats._0xDA26263C07CCE9C2() instead
  */
 export declare function _0xDA26263C07CCE9C2(): void;
+/**
+ * No comment provided
+ *
+ * Hash: 0xDCEC875A02991AD0 | Since: unknown
+ * @deprecated Use stats._0xDCEC875A02991AD0() instead
+ */
+export declare function _0xDCEC875A02991AD0(): any;
 /**
  * No comment provided
  *
@@ -85349,9 +85638,9 @@ export declare function removeAnimDict(): string;
  * Alias for REMOVE_ANIM_SET.
  *
  * Hash: 0x817FA1B1EE7CD6F0 | Since: 1207
- * @deprecated Use streaming.removeClipSet() instead
+ * @deprecated Use streaming.removeClipSet(clipSet) instead
  */
-export declare function removeClipSet(): string;
+export declare function removeClipSet(clipSet: string): void;
 /**
  * Old name: _REMOVE_IMAP_2
  *
@@ -85370,9 +85659,9 @@ export declare function removeIplHash(iplHash: number | string): void;
  * No comment provided
  *
  * Hash: 0x57A197AD83F66BBF | Since: 1207
- * @deprecated Use streaming.removeMoveNetworkDef() instead
+ * @deprecated Use streaming.removeMoveNetworkDef(name) instead
  */
-export declare function removeMoveNetworkDef(): string;
+export declare function removeMoveNetworkDef(name: string): void;
 /**
  * No comment provided
  *
@@ -86561,9 +86850,9 @@ export declare function removeCoverPoint(coverpoint: number): void;
  * No comment provided
  *
  * Hash: 0xFF1B8B4AA1C25DC8 | Since: 1207
- * @deprecated Use task.removeWaypointRecording() instead
+ * @deprecated Use task.removeWaypointRecording(waypointRecording) instead
  */
-export declare function removeWaypointRecording(): string;
+export declare function removeWaypointRecording(waypointRecording: string): void;
 /**
  * No comment provided
  *
@@ -87114,6 +87403,13 @@ export declare function taskEnterVehicle(ped: number | Ped, vehicle: number | Ve
  * @deprecated Use task.evasiveAnim(ped1, ped2) instead
  */
 export declare function taskEvasiveAnim(ped1: number | Ped, ped2: number | Ped): void;
+/**
+ * No comment provided
+ *
+ * Hash: 0x7F93691AB4B92272 | Since: unknown
+ * @deprecated Use task.everyoneLeaveVehicle() instead
+ */
+export declare function taskEveryoneLeaveVehicle(): void;
 /**
  * No comment provided
  *
@@ -92063,7 +92359,7 @@ export declare function deleteMissionTrain(train: number | Vehicle): void;
  * Deletes the specified vehicle, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0xE20A909D8C4A70F8 | Since: 1207
- * @deprecated Use vehicle.delete_(vehicle1) instead
+ * @deprecated Use vehicle.deleteVehicle(vehicle1) instead
  */
 export declare function deleteVehicle(vehicle1: number | Vehicle): void;
 /**
@@ -94325,9 +94621,9 @@ export declare function doesTrainExistOnTrack(trackIndex: number): boolean;
  * No comment provided
  *
  * Hash: 0x35DC1877312FBA0F | Since: 1207
- * @deprecated Use vehicle.fadeAndDestroy() instead
+ * @deprecated Use vehicle.fadeAndDestroy(vehicle1) instead
  */
-export declare function fadeAndDestroyVehicle(): number;
+export declare function fadeAndDestroyVehicle(vehicle1: number | Vehicle): void;
 /**
  * No comment provided
  *
@@ -95014,7 +95310,7 @@ export declare function createVolumeSphere(pos: Vector3, rot: Vector3, scale: Ve
  * No comment provided
  *
  * Hash: 0x43F867EF5C463A53 | Since: 1207
- * @deprecated Use volume.delete_(volume1) instead
+ * @deprecated Use volume.deleteVolume(volume1) instead
  */
 export declare function deleteVolume(volume1: number): void;
 /**
@@ -96570,6 +96866,13 @@ export declare function _0xF2F585411E748B9C(): any;
  */
 export declare function _0xF8204EF17410BF43(weaponGroupHash: number | string): number;
 /**
+ * No comment provided
+ *
+ * Hash: 0xFDCEDFB0577A390D | Since: unknown
+ * @deprecated Use weapon._0xFDCEDFB0577A390D() instead
+ */
+export declare function _0xFDCEDFB0577A390D(): any;
+/**
  * addReason:
  * enum eAddItemReason : Hash
  * {
@@ -96935,9 +97238,9 @@ export declare function giveWeaponComponentToEntity(entity: number | Entity, com
  * No comment provided
  *
  * Hash: 0x1A47699E8D533E8F | Since: 1207
- * @deprecated Use weapon.giveComponentToWeaponObject(ped, componentHash) instead
+ * @deprecated Use weapon.giveComponentToWeaponObject(weaponObject, ped, componentHash) instead
  */
-export declare function giveWeaponComponentToWeaponObject(ped: number | Ped, componentHash: number | string): number;
+export declare function giveWeaponComponentToWeaponObject(weaponObject: number | Object, ped: number | Ped, componentHash: number | string): void;
 /**
  * No comment provided
  *
@@ -97392,13 +97695,4 @@ export declare function getMapZoneAtCoords(pos: Vector3, type: number): number;
  * @deprecated Use zone.getWaterMapAtCoords(pos) instead
  */
 export declare function getWaterMapZoneAtCoords(pos: Vector3): number;
-/**
- * nullsub, doesn't do anything
- * however it is being used in tty scripts: [NET_BAD_SPORT_REPORT_PLAYER] Detected bad sport behavior from Player
- * badSportBehavior: BS_QUITTER = 0, BS_VEHICLE_DESTRUCTION = 1, BS_VOTED_OUT = 2
- *
- * Hash: 0xC31C44C43B48FDE3 | Since: 1207
- * @deprecated Use _namespace4.reportPlayerBadSportBehavior(badSportBehaviorType) instead
- */
-export declare function reportPlayerBadSportBehavior(badSportBehaviorType: number): any;
 export * from "@risinglife/redm-shared";
