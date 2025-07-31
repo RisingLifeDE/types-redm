@@ -2822,7 +2822,7 @@ export function setResourceKvp(key, value) {
  *
  * Hash: 0x6228F159 | Since: server
  */
-export function _addBlipForArea(pos, width, height) {
+export function addBlipForArea(pos, width, height) {
     return AddBlipForArea(pos.x, pos.y, pos.z, width, height);
 }
 /**
@@ -3263,7 +3263,7 @@ export function setBlipSprite(blip, spriteId) {
  *
  * Hash: 0x78935A27 | Since: server
  */
-export function _setPedHeadOverlayColor(ped, overlayID, colorType, colorID, secondColorID) {
+export function setPedHeadOverlayColor(ped, overlayID, colorType, colorID, secondColorID) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
     SetPedHeadOverlayColor(_ped, overlayID, colorType, colorID, secondColorID);
 }
@@ -3536,7 +3536,7 @@ export function setPedToRagdoll(ped, minTime, maxTime, ragdollType, bAbortIfInju
  *
  * Hash: 0xEC09DB1B | Since: server
  */
-export function _setPedEyeColor(ped, index) {
+export function setPedEyeColor(ped, index) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
     SetPedEyeColor(_ped, index);
 }
@@ -3609,7 +3609,7 @@ export function setPedHairTint(ped, colorID, highlightColorID) {
  *
  * Hash: 0x6C8D4458 | Since: server
  */
-export function _setPedFaceFeature(ped, index, scale) {
+export function setPedFaceFeature(ped, index, scale) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
     SetPedFaceFeature(_ped, index, scale);
 }

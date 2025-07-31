@@ -2122,7 +2122,7 @@ export declare function setResourceKvp(key: string, value: string): void;
  *
  * Hash: 0x6228F159 | Since: server
  */
-export declare function _addBlipForArea(pos: Vector3, width: number, height: number): number;
+export declare function addBlipForArea(pos: Vector3, width: number, height: number): number;
 /**
  * Create a blip with a radius for the specified coordinates (it doesnt create the blip sprite, so you need to use [AddBlipCoords](#\_0xC6F43D0E))
  * Example image:
@@ -2455,7 +2455,7 @@ export declare function setBlipSprite(blip: number, spriteId: number): void;
  *
  * Hash: 0x78935A27 | Since: server
  */
-export declare function _setPedHeadOverlayColor(ped: number | Ped, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
+export declare function setPedHeadOverlayColor(ped: number | Ped, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
 /**
  * Parameter `p1` does not seem to be used or referenced in game binaries.\
  * **Note:** When called for networked entities, a `CRemoveAllWeaponsEvent` will be created per request.
@@ -2684,7 +2684,7 @@ export declare function setPedToRagdoll(ped: number | Ped, minTime: number, maxT
  *
  * Hash: 0xEC09DB1B | Since: server
  */
-export declare function _setPedEyeColor(ped: number | Ped, index: number): void;
+export declare function setPedEyeColor(ped: number | Ped, index: number): void;
 /**
  * ```
  * Example:
@@ -2744,7 +2744,7 @@ export declare function setPedHairTint(ped: number | Ped, colorID: number, highl
  *
  * Hash: 0x6C8D4458 | Since: server
  */
-export declare function _setPedFaceFeature(ped: number | Ped, index: number, scale: number): void;
+export declare function setPedFaceFeature(ped: number | Ped, index: number, scale: number): void;
 /**
  * Locks the doors of a specified vehicle to a defined lock state, affecting how players and NPCs can interact with the vehicle.
  *
