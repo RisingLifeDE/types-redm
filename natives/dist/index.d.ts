@@ -5976,7 +5976,7 @@ export declare namespace datafile {
      *
      * Hash: 0xFBFF3FF2F5E80C0B | Since: 1207
      */
-    function parseddataRqFilloutHash(): [boolean, number | string, any];
+    function parseddataRqFilloutHash(): [boolean, number, any];
     /**
      * Old name: _DATAFILE_GET_DATA_NODE_INDEX
      *
@@ -6358,7 +6358,7 @@ export declare namespace entity {
      *
      * Hash: 0x4CD38C78BD19A497 | Since: 1207
      */
-    function delete_(): number | Entity;
+    function delete_(entity: number | Entity): void;
     /**
      * No comment provided
      *
@@ -7010,7 +7010,7 @@ export declare namespace entity {
      *
      * Hash: 0x4971D2F8162B9674 | Since: 1207
      */
-    function setAsNoLongerNeeded(): number | Entity;
+    function setAsNoLongerNeeded(): number;
     /**
      * No comment provided
      *
@@ -7191,19 +7191,19 @@ export declare namespace entity {
      *
      * Hash: 0x3AE22DEB5BA5A3E6 | Since: 1207
      */
-    function setObjectAsNoLongerNeeded(): number | Object;
+    function setObjectAsNoLongerNeeded(): number;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
      * Hash: 0x2595DD4236549CE3 | Since: 1207
      */
-    function setPedAsNoLongerNeeded(): number | Ped;
+    function setPedAsNoLongerNeeded(): number;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
      * Hash: 0x629BFA74418D6239 | Since: 1207
      */
-    function setVehicleAsNoLongerNeeded(): number | Vehicle;
+    function setVehicleAsNoLongerNeeded(): number;
     /**
      * No comment provided
      *
@@ -7671,13 +7671,13 @@ export declare namespace entity {
      *
      * Hash: 0x0D0DB2B6AF19A987 | Since: 1207
      */
-    function deleteCarriable(): number | Entity;
+    function deleteCarriable(entity: number | Entity): void;
     /**
      * Must be called from a background script, otherwise it will do nothing.
      *
      * Hash: 0x5E94EA09E7207C16 | Since: 1207
      */
-    function delete2(): number | Entity;
+    function delete2(entity: number | Entity): void;
     /**
      * Returns true if calling script owns specified entity
      *
@@ -7814,7 +7814,7 @@ export declare namespace entity {
      *
      * Hash: 0x1E804EA9B12030A4 | Since: 1207
      */
-    function getScriptOverrideLootTablePermanent(entity: number | Entity): [boolean, number | string];
+    function getScriptOverrideLootTablePermanent(entity: number | Entity): [boolean, number];
     /**
      * No comment provided
      *
@@ -12020,7 +12020,7 @@ export declare namespace interior {
      *
      * Hash: 0x8451E87D3C2B0286 | Since: 1207
      */
-    function getLocationAndNamehash(interior: number): [Vector3, number | string];
+    function getLocationAndNamehash(interior: number): [Vector3, number];
     /**
      * `Seems to do the exact same as INTERIOR::GET_ROOM_KEY_FROM_ENTITY`
      *
@@ -12810,7 +12810,7 @@ export declare namespace itemdatabase {
      *
      * Hash: 0x121D2005DD64496B | Since: 1207
      */
-    function filloutAwardItemInfo(award: number | string, index: number): [boolean, number | string];
+    function filloutAwardItemInfo(award: number | string, index: number): [boolean, number];
     /**
      * No comment provided
      *
@@ -12948,7 +12948,7 @@ export declare namespace itemdatabase {
      *
      * Hash: 0x5D48A77E4B668B57 | Since: 1207
      */
-    function getBundleItemInfo(bundleId: number, index: number): [boolean, any, number | string];
+    function getBundleItemInfo(bundleId: number, index: number): [boolean, any, number];
     /**
      * Returns (collection?) size/index (?)
      * _ITEMDATABASE_GET_(A)* - _ITEMDATABASE_GET_(B)*
@@ -12961,7 +12961,7 @@ export declare namespace itemdatabase {
      *
      * Hash: 0x8750F69A720C2E41 | Since: 1207
      */
-    function getComponentItem(collectionId: number, index: number): [boolean, number | string];
+    function getComponentItem(collectionId: number, index: number): [boolean, number];
     /**
      * No comment provided
      *
@@ -12973,7 +12973,7 @@ export declare namespace itemdatabase {
      *
      * Hash: 0x77210C146CED5261 | Since: 1207
      */
-    function getFitsSlotInfo(category: number | string, index: number): [boolean, number | string];
+    function getFitsSlotInfo(category: number | string, index: number): [boolean, number];
     /**
      * No comment provided
      *
@@ -12985,7 +12985,7 @@ export declare namespace itemdatabase {
      *
      * Hash: 0x8A9BD0DB7E8376CF | Since: 1207
      */
-    function getHasSlotInfo(category: number | string, index: number): [boolean, number | string];
+    function getHasSlotInfo(category: number | string, index: number): [boolean, number];
     /**
      * No comment provided
      *
@@ -13081,7 +13081,7 @@ export declare namespace itemdatabase {
      *
      * Hash: 0x9A60570657A7B635 | Since: 1207
      */
-    function getShopLayoutMenuPageKey(layout: number | string, menu: number | string, index: number): [boolean, number | string];
+    function getShopLayoutMenuPageKey(layout: number | string, menu: number | string, index: number): [boolean, number];
     /**
      * No comment provided
      *
@@ -13093,7 +13093,7 @@ export declare namespace itemdatabase {
      *
      * Hash: 0xF32BEF578B3DBAE8 | Since: 1207
      */
-    function getShopLayoutPageItemKey(layout: number | string, pageKey: number | string, index: number): [boolean, number | string, number, number | string];
+    function getShopLayoutPageItemKey(layout: number | string, pageKey: number | string, index: number): [boolean, number, number, number];
     /**
      * No comment provided
      *
@@ -13277,7 +13277,7 @@ export declare namespace law {
      *
      * Hash: 0x532C5FDDB986EE5C | Since: 1207
      */
-    function getPlayerRegisteredCrime(player: number | string | Player): [boolean, number | string];
+    function getPlayerRegisteredCrime(player: number | string | Player): [boolean, number];
     /**
      * No comment provided
      *
@@ -13516,7 +13516,7 @@ export declare namespace law {
      *
      * Hash: 0x6ABC50979655BEE7 | Since: 1207
      */
-    function _0x6ABC50979655BEE7(player: number | string | Player): number | string;
+    function _0x6ABC50979655BEE7(player: number | string | Player): number;
     /**
      * Only used in shoprobberies
      *
@@ -13595,7 +13595,7 @@ export declare namespace law {
      *
      * Hash: 0x9C5BD8C562565CE6 | Since: 1207
      */
-    function _0x9C5BD8C562565CE6(): number | string;
+    function _0x9C5BD8C562565CE6(): number;
     /**
      * Only used in act_bankrobbery01 R* Script
      *
@@ -13619,7 +13619,7 @@ export declare namespace law {
      *
      * Hash: 0xB527099D1E1EED49 | Since: 1207
      */
-    function _0xB527099D1E1EED49(player: number | string | Player): [boolean, number | string];
+    function _0xB527099D1E1EED49(player: number | string | Player): [boolean, number];
     /**
      * Called together with REPORT_POLICE_SPOTTED_PLAYER
      *
@@ -14304,7 +14304,7 @@ export declare namespace map {
      *
      * Hash: 0x0DF2B55F717DDB10 | Since: 1207
      */
-    function setBlipFlashes(blip: number): [boolean, number, number | string];
+    function setBlipFlashes(blip: number): [boolean, number, number];
     /**
      * No comment provided
      *
@@ -15260,7 +15260,7 @@ export declare namespace misc {
      *
      * Hash: 0x0AC679B2342F14F2 | Since: 1207
      */
-    function getCurrWeatherState(): [number | string, number | string, number];
+    function getCurrWeatherState(): [number, number, number];
     /**
      * If useZ is false, only the 2D plane (X-Y) will be considered for calculating the distance.
      *
@@ -15354,7 +15354,7 @@ export declare namespace misc {
      *
      * Hash: 0x9578986A6105A6AD | Since: 1207
      */
-    function getProjectileOfProjectileTypeWithinDistance(ped: number | Ped, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3, number | Object];
+    function getProjectileOfProjectileTypeWithinDistance(ped: number | Ped, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3, number];
     /**
      * No comment provided
      *
@@ -16524,7 +16524,7 @@ export declare namespace misc {
      *
      * Hash: 0xDD560ABEF5D3784C | Since: 1207
      */
-    function getForcedWeather(): [number | string, number | string];
+    function getForcedWeather(): [number, number];
     /**
      * `Returns rage::fwTimer::sm_nonScaledClippedTime`
      *
@@ -17680,7 +17680,7 @@ export declare namespace network {
      *
      * Hash: 0x7A1ADEEF01740A24 | Since: 1207
      */
-    function getDestroyerOfNetworkId(netId: number): [number, number | string];
+    function getDestroyerOfNetworkId(netId: number): [number, number];
     /**
      * Hardcoded to return zero.
      *
@@ -17704,7 +17704,7 @@ export declare namespace network {
      *
      * Hash: 0x42B2DAA6B596F5F8 | Since: 1207
      */
-    function getEntityKillerOfPlayer(player: number | string | Player): [number, number | string];
+    function getEntityKillerOfPlayer(player: number | string | Player): [number, number];
     /**
      * Always returns a null string.
      *
@@ -20754,7 +20754,7 @@ export declare namespace object {
      *
      * Hash: 0x931914268722C263 | Since: 1207
      */
-    function delete_(): number | Object;
+    function delete_(object: number | Object): void;
     /**
      * No comment provided
      *
@@ -22571,7 +22571,7 @@ export declare namespace ped {
      *
      * Hash: 0xCC0EF140F99365C5 | Since: 1207
      */
-    function delete_(): number | Ped;
+    function delete_(ped: number | Ped): void;
     /**
      * No comment provided
      *
@@ -22603,7 +22603,7 @@ export declare namespace ped {
      *
      * Hash: 0x7043D0681285BA2D | Since: 1207
      */
-    function fadeAndDestroy(): number | Ped;
+    function fadeAndDestroy(): number;
     /**
      * No comment provided
      *
@@ -22651,7 +22651,7 @@ export declare namespace ped {
      *
      * Hash: 0xC33AB876A77F8164 | Since: 1207
      */
-    function getClosest(pos: Vector3, radius: number, pedType: number): [boolean, number | Ped];
+    function getClosest(pos: Vector3, radius: number, pedType: number): [boolean, number];
     /**
      * No comment provided
      *
@@ -22713,13 +22713,13 @@ export declare namespace ped {
      *
      * Hash: 0xA9C28516A6DC9D56 | Since: 1207
      */
-    function getMetaAssetGuids(ped: number | Ped, index: number): [boolean, number | string, number | string, number | string, number | string];
+    function getMetaAssetGuids(ped: number | Ped, index: number): [boolean, number, number, number, number];
     /**
      * No comment provided
      *
      * Hash: 0xE7998FEC53A33BBE | Since: 1207
      */
-    function getMetaAssetTint(ped: number | Ped, index: number): [boolean, number | string, number, number, number];
+    function getMetaAssetTint(ped: number | Ped, index: number): [boolean, number, number, number, number];
     /**
      * No comment provided
      *
@@ -23167,7 +23167,7 @@ export declare namespace ped {
      *
      * Hash: 0x414641C26E105898 | Since: 1207
      */
-    function isEvasiveDiving(ped: number | Ped): [boolean, number | Entity];
+    function isEvasiveDiving(ped: number | Ped): [boolean, number];
     /**
      * angle is ped's view cone
      *
@@ -27457,13 +27457,13 @@ export declare namespace ped {
      *
      * Hash: 0x63342C50EC115CE8 | Since: 1207
      */
-    function getShopItemBaseLayers(shopItem: number | string, ped: number | Ped, metapedType: number): [boolean, number | string, number | string, number | string, number | string, number | string, number | string, number | string, number | string];
+    function getShopItemBaseLayers(shopItem: number | string, ped: number | Ped, metapedType: number): [boolean, number, number, number, number, number, number, number, number];
     /**
      * Returns the current shop item component at index and it's wearable state
      *
      * Hash: 0x77BA37622E22023B | Since: 1207
      */
-    function getShopItemComponentAtIndex(ped: number | Ped, index: number): [number, any, number | string];
+    function getShopItemComponentAtIndex(ped: number | Ped, index: number): [number, any, number];
     /**
      * No comment provided
      *
@@ -27838,7 +27838,7 @@ export declare namespace ped {
      *
      * Hash: 0x5463C962BC7777C3 | Since: 1207
      */
-    function refreshLootStateFor(ped: number | Ped): [number, number | Ped];
+    function refreshLootStateFor(ped: number | Ped): [number, number];
     /**
      * p1 is always 1
      *
@@ -29395,7 +29395,7 @@ export declare namespace physics {
      *
      * Hash: 0x52B4829281364649 | Since: 1207
      */
-    function deleteRope(): number;
+    function deleteRope(ropeId: number): void;
     /**
      * No comment provided
      *
@@ -29870,13 +29870,13 @@ export declare namespace player {
      *
      * Hash: 0x0139637A3BFF8B6D | Since: 1207
      */
-    function getDiscoverableNameHashAndTypeForEntity(entity: number | Entity): [number, number | string];
+    function getDiscoverableNameHashAndTypeForEntity(entity: number | Entity): [number, number];
     /**
      * No comment provided
      *
      * Hash: 0xA6817C110B830EAD | Since: 1207
      */
-    function getEntityIsFreeAimingAt(player: number | string | Player): [boolean, number | Entity];
+    function getEntityIsFreeAimingAt(player: number | string | Player): [boolean, number];
     /**
      * No comment provided
      *
@@ -29931,7 +29931,7 @@ export declare namespace player {
      *
      * Hash: 0x3EE1F7A8C32F24E1 | Since: 1207
      */
-    function getInteractionTargetEntity(player: number | string | Player): [boolean, number | Entity];
+    function getInteractionTargetEntity(player: number | string | Player): [boolean, number];
     /**
      * Returns the player's invincibility status.
      *
@@ -29967,7 +29967,7 @@ export declare namespace player {
      *
      * Hash: 0xAE663DDD99C8A670 | Since: 1207
      */
-    function getTargetEntity(player: number | string | Player): [boolean, number | Entity];
+    function getTargetEntity(player: number | string | Player): [boolean, number];
     /**
      * Gets the player's team.
      * Returns -1 in singleplayer.
@@ -30972,7 +30972,7 @@ export declare namespace player {
      *
      * Hash: 0x7AE93C45EC14A166 | Since: 1207
      */
-    function _0x7AE93C45EC14A166(player: number | string | Player): [boolean, number | Ped];
+    function _0x7AE93C45EC14A166(player: number | string | Player): [boolean, number];
     /**
      * _SET_PLAYER_DAMAGE_* - _SET_PLAYER_DEFENSE_*
      *
@@ -33725,7 +33725,7 @@ export declare namespace shapetest {
      *
      * Hash: 0xEDE8AC7C5108FB1D | Since: 1207
      */
-    function getResult(shapeTestHandle: number): [number, boolean, Vector3, Vector3, number | Entity];
+    function getResult(shapeTestHandle: number): [number, boolean, Vector3, Vector3, number];
     /**
      * Does the same as 0x7EE9F5D83DD4F90E, except blocking until the shape test completes.
      *
@@ -34257,7 +34257,7 @@ export declare namespace stats {
      *
      * Hash: 0xBA61BA6205A3F5A8 | Since: 1207
      */
-    function weeklyCollectibleGetItemInSet(chalHash: number | string, setIndex: number, itemIndex: number): [boolean, number | string, number];
+    function weeklyCollectibleGetItemInSet(chalHash: number | string, setIndex: number, itemIndex: number): [boolean, number, number];
     /**
      * No comment provided
      *
@@ -34425,7 +34425,7 @@ export declare namespace stats {
      *
      * Hash: 0xB5E2EDA2135E0FA1 | Since: 1207
      */
-    function _0xB5E2EDA2135E0FA1(p0: number | string): [boolean, number | string];
+    function _0xB5E2EDA2135E0FA1(p0: number | string): [boolean, number];
     /**
      * No comment provided
      *
@@ -35384,7 +35384,7 @@ export declare namespace task {
      *
      * Hash: 0x7767DD9D65E91319 | Since: 1207
      */
-    function deletePatrolRoute(): string;
+    function deletePatrolRoute(patrolRoute: string): void;
     /**
      * No comment provided
      *
@@ -36867,7 +36867,7 @@ export declare namespace task {
      *
      * Hash: 0xEA47FE3719165B94 | Since: 1207
      */
-    function playAnim(ped: number | Ped, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flags: number, playbackRate: number, ikFlags: number): string;
+    function playAnim(ped: number | Ped, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flags: number, playbackRate: number, ikFlags: number, taskFilter: string): void;
     /**
      * flags: see TASK_PLAY_ANIM
      * ikFlags: see TASK_PLAY_ANIM
@@ -40588,7 +40588,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x0D3630FB07E8B570 | Since: 1207
      */
-    function deleteMissionTrain(): number | Vehicle;
+    function deleteMissionTrain(train: number | Vehicle): void;
     /**
      * Deletes a vehicle.
      * The vehicle must be a mission entity to delete, so call this before deleting: SET_ENTITY_AS_MISSION_ENTITY(vehicle, true, true);
@@ -40601,7 +40601,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xE20A909D8C4A70F8 | Since: 1207
      */
-    function delete_(): number | Vehicle;
+    function delete_(vehicle: number | Vehicle): void;
     /**
      * No comment provided
      *
@@ -40777,7 +40777,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xCF867A239EC30741 | Since: 1207
      */
-    function getTrailerVehicle(vehicle: number | Vehicle): [boolean, number | Vehicle];
+    function getTrailerVehicle(vehicle: number | Vehicle): [boolean, number];
     /**
      * No comment provided
      *
@@ -41129,7 +41129,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xBBE7648349B49BE8 | Since: 1207
      */
-    function setMissionTrainAsNoLongerNeeded(flags: number): number | Vehicle;
+    function setMissionTrainAsNoLongerNeeded(flags: number): number;
     /**
      * No comment provided
      *
@@ -41693,7 +41693,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x09034479E6E3E269 | Since: 1207
      */
-    function returnTrainInfoFromHandle(train: number | Vehicle): [boolean, number | string, number];
+    function returnTrainInfoFromHandle(train: number | Vehicle): [boolean, number, number];
     /**
      * No comment provided
      *
@@ -42554,7 +42554,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x35DC1877312FBA0F | Since: 1207
      */
-    function fadeAndDestroy(): number | Vehicle;
+    function fadeAndDestroy(): number;
     /**
      * No comment provided
      *
@@ -42629,7 +42629,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xA6E210FB4283B767 | Since: 1207
      */
-    function getRowingOars(vehicle: number | Vehicle): [number | Entity, number | Entity];
+    function getRowingOars(vehicle: number | Vehicle): [number, number];
     /**
      * Returns Coords of vStation
      * p0 - NET_TRAIN_MANAGER_GET_TRAIN_STATION_DATA
@@ -43761,13 +43761,13 @@ export declare namespace weapon {
      *
      * Hash: 0x1017582BCD3832DC | Since: 1207
      */
-    function getCurrentPedVehicle(ped: number | Ped): [boolean, number | string];
+    function getCurrentPedVehicle(ped: number | Ped): [boolean, number];
     /**
      * attachPoint: see SET_CURRENT_PED_WEAPON
      *
      * Hash: 0x3A87E44BB9A01D54 | Since: 1207
      */
-    function getCurrentPed(ped: number | Ped, attachPoint: number): [boolean, number | string];
+    function getCurrentPed(ped: number | Ped, attachPoint: number): [boolean, number];
     /**
      * Returns weaponObject, attachPoint: see SET_CURRENT_PED_WEAPON
      *
@@ -44819,7 +44819,7 @@ export declare namespace weapon {
      *
      * Hash: 0x1A47699E8D533E8F | Since: 1207
      */
-    function giveComponentToWeaponObject(ped: number | Ped, componentHash: number | string): number | Object;
+    function giveComponentToWeaponObject(ped: number | Ped, componentHash: number | string): number;
     /**
      * No comment provided
      *
@@ -52107,7 +52107,7 @@ export declare function parseddataIsFileValid(fileHandle: number): boolean;
  * Hash: 0xFBFF3FF2F5E80C0B | Since: 1207
  * @deprecated Use datafile.parseddataRqFilloutHash() instead
  */
-export declare function parseddataRqFilloutHash(): [boolean, number | string, any];
+export declare function parseddataRqFilloutHash(): [boolean, number, any];
 /**
  * Old name: _DATAFILE_GET_DATA_NODE_INDEX
  *
@@ -52539,9 +52539,9 @@ export declare function createModelSwap(pos: Vector3, radius: number, originalMo
  * Deletes the specified entity, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0x4CD38C78BD19A497 | Since: 1207
- * @deprecated Use entity.delete_() instead
+ * @deprecated Use entity.delete_(entity1) instead
  */
-export declare function deleteEntity(): number | Entity;
+export declare function deleteEntity(entity1: number | Entity): void;
 /**
  * No comment provided
  *
@@ -53296,7 +53296,7 @@ export declare function setEntityAsMissionEntity(entity1: number | Entity): void
  * Hash: 0x4971D2F8162B9674 | Since: 1207
  * @deprecated Use entity.setAsNoLongerNeeded() instead
  */
-export declare function setEntityAsNoLongerNeeded(): number | Entity;
+export declare function setEntityAsNoLongerNeeded(): number;
 /**
  * No comment provided
  *
@@ -53507,21 +53507,21 @@ export declare function setEntityVisible(entity1: number | Entity, toggle: boole
  * Hash: 0x3AE22DEB5BA5A3E6 | Since: 1207
  * @deprecated Use entity.setObjectAsNoLongerNeeded() instead
  */
-export declare function setObjectAsNoLongerNeeded(): number | Object;
+export declare function setObjectAsNoLongerNeeded(): number;
 /**
  * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
  *
  * Hash: 0x2595DD4236549CE3 | Since: 1207
  * @deprecated Use entity.setPedAsNoLongerNeeded() instead
  */
-export declare function setPedAsNoLongerNeeded(): number | Ped;
+export declare function setPedAsNoLongerNeeded(): number;
 /**
  * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
  *
  * Hash: 0x629BFA74418D6239 | Since: 1207
  * @deprecated Use entity.setVehicleAsNoLongerNeeded() instead
  */
-export declare function setVehicleAsNoLongerNeeded(): number | Vehicle;
+export declare function setVehicleAsNoLongerNeeded(): number;
 /**
  * No comment provided
  *
@@ -54064,16 +54064,16 @@ export declare function createFootpathTrail(waypointRecord: string, bUseSnowOffs
  * No comment provided
  *
  * Hash: 0x0D0DB2B6AF19A987 | Since: 1207
- * @deprecated Use entity.deleteCarriable() instead
+ * @deprecated Use entity.deleteCarriable(entity1) instead
  */
-export declare function deleteCarriable(): number | Entity;
+export declare function deleteCarriable(entity1: number | Entity): void;
 /**
  * Must be called from a background script, otherwise it will do nothing.
  *
  * Hash: 0x5E94EA09E7207C16 | Since: 1207
- * @deprecated Use entity.delete2() instead
+ * @deprecated Use entity.delete2(entity1) instead
  */
-export declare function deleteEntity2(): number | Entity;
+export declare function deleteEntity2(entity1: number | Entity): void;
 /**
  * Returns true if calling script owns specified entity
  *
@@ -54232,7 +54232,7 @@ export declare function getPinnedMapEntity(): number;
  * Hash: 0x1E804EA9B12030A4 | Since: 1207
  * @deprecated Use entity.getScriptOverrideLootTablePermanent(entity1) instead
  */
-export declare function getScriptOverrideEntityLootTablePermanent(entity1: number | Entity): [boolean, number | string];
+export declare function getScriptOverrideEntityLootTablePermanent(entity1: number | Entity): [boolean, number];
 /**
  * No comment provided
  *
@@ -59079,7 +59079,7 @@ export declare function getInteriorFromPrimaryView(): number;
  * Hash: 0x8451E87D3C2B0286 | Since: 1207
  * @deprecated Use interior.getLocationAndNamehash(interior1) instead
  */
-export declare function getInteriorLocationAndNamehash(interior1: number): [Vector3, number | string];
+export declare function getInteriorLocationAndNamehash(interior1: number): [Vector3, number];
 /**
  * `Seems to do the exact same as INTERIOR::GET_ROOM_KEY_FROM_ENTITY`
  *
@@ -59989,7 +59989,7 @@ export declare function itemdatabaseFilloutAwardAcquireCost(award: number | stri
  * Hash: 0x121D2005DD64496B | Since: 1207
  * @deprecated Use itemdatabase.filloutAwardItemInfo(award, index) instead
  */
-export declare function itemdatabaseFilloutAwardItemInfo(award: number | string, index: number): [boolean, number | string];
+export declare function itemdatabaseFilloutAwardItemInfo(award: number | string, index: number): [boolean, number];
 /**
  * No comment provided
  *
@@ -60150,7 +60150,7 @@ export declare function itemdatabaseGetBundleItemCount(bundleId: number): [numbe
  * Hash: 0x5D48A77E4B668B57 | Since: 1207
  * @deprecated Use itemdatabase.getBundleItemInfo(bundleId, index) instead
  */
-export declare function itemdatabaseGetBundleItemInfo(bundleId: number, index: number): [boolean, any, number | string];
+export declare function itemdatabaseGetBundleItemInfo(bundleId: number, index: number): [boolean, any, number];
 /**
  * Returns (collection?) size/index (?)
  * _ITEMDATABASE_GET_(A)* - _ITEMDATABASE_GET_(B)*
@@ -60165,7 +60165,7 @@ export declare function itemdatabaseGetCollectionSize(collectionId: number): num
  * Hash: 0x8750F69A720C2E41 | Since: 1207
  * @deprecated Use itemdatabase.getComponentItem(collectionId, index) instead
  */
-export declare function itemdatabaseGetComponentItem(collectionId: number, index: number): [boolean, number | string];
+export declare function itemdatabaseGetComponentItem(collectionId: number, index: number): [boolean, number];
 /**
  * No comment provided
  *
@@ -60179,7 +60179,7 @@ export declare function itemdatabaseGetFitsSlotCount(category: number | string):
  * Hash: 0x77210C146CED5261 | Since: 1207
  * @deprecated Use itemdatabase.getFitsSlotInfo(category, index) instead
  */
-export declare function itemdatabaseGetFitsSlotInfo(category: number | string, index: number): [boolean, number | string];
+export declare function itemdatabaseGetFitsSlotInfo(category: number | string, index: number): [boolean, number];
 /**
  * No comment provided
  *
@@ -60193,7 +60193,7 @@ export declare function itemdatabaseGetHasSlotCount(category: number | string): 
  * Hash: 0x8A9BD0DB7E8376CF | Since: 1207
  * @deprecated Use itemdatabase.getHasSlotInfo(category, index) instead
  */
-export declare function itemdatabaseGetHasSlotInfo(category: number | string, index: number): [boolean, number | string];
+export declare function itemdatabaseGetHasSlotInfo(category: number | string, index: number): [boolean, number];
 /**
  * No comment provided
  *
@@ -60305,7 +60305,7 @@ export declare function itemdatabaseGetShopLayoutMenuInfoByIndex(layout: number 
  * Hash: 0x9A60570657A7B635 | Since: 1207
  * @deprecated Use itemdatabase.getShopLayoutMenuPageKey(layout, menu, index) instead
  */
-export declare function itemdatabaseGetShopLayoutMenuPageKey(layout: number | string, menu: number | string, index: number): [boolean, number | string];
+export declare function itemdatabaseGetShopLayoutMenuPageKey(layout: number | string, menu: number | string, index: number): [boolean, number];
 /**
  * No comment provided
  *
@@ -60319,7 +60319,7 @@ export declare function itemdatabaseGetShopLayoutPageInfoByKey(layout: number | 
  * Hash: 0xF32BEF578B3DBAE8 | Since: 1207
  * @deprecated Use itemdatabase.getShopLayoutPageItemKey(layout, pageKey, index) instead
  */
-export declare function itemdatabaseGetShopLayoutPageItemKey(layout: number | string, pageKey: number | string, index: number): [boolean, number | string, number, number | string];
+export declare function itemdatabaseGetShopLayoutPageItemKey(layout: number | string, pageKey: number | string, index: number): [boolean, number, number, number];
 /**
  * No comment provided
  *
@@ -60529,7 +60529,7 @@ export declare function getBounty(player: number | string | Player): number;
  * Hash: 0x532C5FDDB986EE5C | Since: 1207
  * @deprecated Use law.getPlayerRegisteredCrime(player) instead
  */
-export declare function getPlayerRegisteredCrime(player: number | string | Player): [boolean, number | string];
+export declare function getPlayerRegisteredCrime(player: number | string | Player): [boolean, number];
 /**
  * No comment provided
  *
@@ -60807,7 +60807,7 @@ export declare function _0x61B98367D93F012F(player: number | string | Player): v
  * Hash: 0x6ABC50979655BEE7 | Since: 1207
  * @deprecated Use law._0x6ABC50979655BEE7(player) instead
  */
-export declare function _0x6ABC50979655BEE7(player: number | string | Player): number | string;
+export declare function _0x6ABC50979655BEE7(player: number | string | Player): number;
 /**
  * Only used in shoprobberies
  *
@@ -60899,7 +60899,7 @@ export declare function _0x9B4C564BFA7CFF37(): void;
  * Hash: 0x9C5BD8C562565CE6 | Since: 1207
  * @deprecated Use law._0x9C5BD8C562565CE6() instead
  */
-export declare function _0x9C5BD8C562565CE6(): number | string;
+export declare function _0x9C5BD8C562565CE6(): number;
 /**
  * Only used in act_bankrobbery01 R* Script
  *
@@ -60927,7 +60927,7 @@ export declare function _0x9EF07CFBB19A9733(): boolean;
  * Hash: 0xB527099D1E1EED49 | Since: 1207
  * @deprecated Use law._0xB527099D1E1EED49(player) instead
  */
-export declare function _0xB527099D1E1EED49(player: number | string | Player): [boolean, number | string];
+export declare function _0xB527099D1E1EED49(player: number | string | Player): [boolean, number];
 /**
  * Called together with REPORT_POLICE_SPOTTED_PLAYER
  *
@@ -61698,7 +61698,7 @@ export declare function setBlipCoords(blip: number, pos: Vector3): void;
  * Hash: 0x0DF2B55F717DDB10 | Since: 1207
  * @deprecated Use map.setBlipFlashes(blip) instead
  */
-export declare function setBlipFlashes(blip: number): [boolean, number, number | string];
+export declare function setBlipFlashes(blip: number): [boolean, number, number];
 /**
  * No comment provided
  *
@@ -62800,7 +62800,7 @@ export declare function getCoordsOfProjectileTypeWithinDistance(ped: number | Pe
  * Hash: 0x0AC679B2342F14F2 | Since: 1207
  * @deprecated Use misc.getCurrWeatherState() instead
  */
-export declare function getCurrWeatherState(): [number | string, number | string, number];
+export declare function getCurrWeatherState(): [number, number, number];
 /**
  * If useZ is false, only the 2D plane (X-Y) will be considered for calculating the distance.
  *
@@ -62909,7 +62909,7 @@ export declare function getOnscreenKeyboardResult(): string;
  * Hash: 0x9578986A6105A6AD | Since: 1207
  * @deprecated Use misc.getProjectileOfProjectileTypeWithinDistance(ped, weaponHash, distance, mustBeOwnedByThisPed) instead
  */
-export declare function getProjectileOfProjectileTypeWithinDistance(ped: number | Ped, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3, number | Object];
+export declare function getProjectileOfProjectileTypeWithinDistance(ped: number | Ped, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3, number];
 /**
  * No comment provided
  *
@@ -64260,7 +64260,7 @@ export declare function getEntityFromItem(item: number): number;
  * Hash: 0xDD560ABEF5D3784C | Since: 1207
  * @deprecated Use misc.getForcedWeather() instead
  */
-export declare function getForcedWeather(): [number | string, number | string];
+export declare function getForcedWeather(): [number, number];
 /**
  * `Returns rage::fwTimer::sm_nonScaledClippedTime`
  *
@@ -65592,7 +65592,7 @@ export declare function networkGetAveragePing(player: number | string | Player):
  * Hash: 0x7A1ADEEF01740A24 | Since: 1207
  * @deprecated Use network.getDestroyerOfNetworkId(netId) instead
  */
-export declare function networkGetDestroyerOfNetworkId(netId: number): [number, number | string];
+export declare function networkGetDestroyerOfNetworkId(netId: number): [number, number];
 /**
  * Hardcoded to return zero.
  *
@@ -65620,7 +65620,7 @@ export declare function networkGetEntityIsNetworked(entity: number | Entity): bo
  * Hash: 0x42B2DAA6B596F5F8 | Since: 1207
  * @deprecated Use network.getEntityKillerOfPlayer(player) instead
  */
-export declare function networkGetEntityKillerOfPlayer(player: number | string | Player): [number, number | string];
+export declare function networkGetEntityKillerOfPlayer(player: number | string | Player): [number, number];
 /**
  * Always returns a null string.
  *
@@ -69158,9 +69158,9 @@ export declare function createPortablePickup(pickupHash: number | string, pos: V
  * Deletes the specified object, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0x931914268722C263 | Since: 1207
- * @deprecated Use object.delete_() instead
+ * @deprecated Use object.delete_(object1) instead
  */
-export declare function deleteObject(): number | Object;
+export declare function deleteObject(object1: number | Object): void;
 /**
  * No comment provided
  *
@@ -71259,9 +71259,9 @@ export declare function createPedOnMount(mount: number | Ped, modelHash: number 
  * Deletes the specified ped, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0xCC0EF140F99365C5 | Since: 1207
- * @deprecated Use ped.delete_() instead
+ * @deprecated Use ped.delete_(ped1) instead
  */
-export declare function deletePed(): number | Ped;
+export declare function deletePed(ped1: number | Ped): void;
 /**
  * No comment provided
  *
@@ -71298,7 +71298,7 @@ export declare function explodePedHead(ped1: number | Ped, weaponHash: number | 
  * Hash: 0x7043D0681285BA2D | Since: 1207
  * @deprecated Use ped.fadeAndDestroy() instead
  */
-export declare function fadeAndDestroyPed(): number | Ped;
+export declare function fadeAndDestroyPed(): number;
 /**
  * No comment provided
  *
@@ -71354,7 +71354,7 @@ export declare function getCarriedAttachedInfoForSlot(): any;
  * Hash: 0xC33AB876A77F8164 | Since: 1207
  * @deprecated Use ped.getClosest(pos, radius, pedType) instead
  */
-export declare function getClosestPed(pos: Vector3, radius: number, pedType: number): [boolean, number | Ped];
+export declare function getClosestPed(pos: Vector3, radius: number, pedType: number): [boolean, number];
 /**
  * No comment provided
  *
@@ -71426,14 +71426,14 @@ export declare function getMeleeTargetForPed(ped1: number | Ped): number;
  * Hash: 0xA9C28516A6DC9D56 | Since: 1207
  * @deprecated Use ped.getMetaAssetGuids(ped1, index) instead
  */
-export declare function getMetaPedAssetGuids(ped1: number | Ped, index: number): [boolean, number | string, number | string, number | string, number | string];
+export declare function getMetaPedAssetGuids(ped1: number | Ped, index: number): [boolean, number, number, number, number];
 /**
  * No comment provided
  *
  * Hash: 0xE7998FEC53A33BBE | Since: 1207
  * @deprecated Use ped.getMetaAssetTint(ped1, index) instead
  */
-export declare function getMetaPedAssetTint(ped1: number | Ped, index: number): [boolean, number | string, number, number, number];
+export declare function getMetaPedAssetTint(ped1: number | Ped, index: number): [boolean, number, number, number, number];
 /**
  * No comment provided
  *
@@ -71953,7 +71953,7 @@ export declare function isPedEnteringAnyTransport(ped1: number | Ped): boolean;
  * Hash: 0x414641C26E105898 | Since: 1207
  * @deprecated Use ped.isEvasiveDiving(ped1) instead
  */
-export declare function isPedEvasiveDiving(ped1: number | Ped): [boolean, number | Entity];
+export declare function isPedEvasiveDiving(ped1: number | Ped): [boolean, number];
 /**
  * angle is ped's view cone
  *
@@ -76910,14 +76910,14 @@ export declare function getRiderOfMount(mount: number | Ped): number;
  * Hash: 0x63342C50EC115CE8 | Since: 1207
  * @deprecated Use ped.getShopItemBaseLayers(shopItem, ped1, metapedType) instead
  */
-export declare function getShopItemBaseLayers(shopItem: number | string, ped1: number | Ped, metapedType: number): [boolean, number | string, number | string, number | string, number | string, number | string, number | string, number | string, number | string];
+export declare function getShopItemBaseLayers(shopItem: number | string, ped1: number | Ped, metapedType: number): [boolean, number, number, number, number, number, number, number, number];
 /**
  * Returns the current shop item component at index and it's wearable state
  *
  * Hash: 0x77BA37622E22023B | Since: 1207
  * @deprecated Use ped.getShopItemComponentAtIndex(ped1, index) instead
  */
-export declare function getShopItemComponentAtIndex(ped1: number | Ped, index: number): [number, any, number | string];
+export declare function getShopItemComponentAtIndex(ped1: number | Ped, index: number): [number, any, number];
 /**
  * No comment provided
  *
@@ -77350,7 +77350,7 @@ export declare function pedWasKilledByHeadshot(ped1: number | Ped): boolean;
  * Hash: 0x5463C962BC7777C3 | Since: 1207
  * @deprecated Use ped.refreshLootStateFor(ped1) instead
  */
-export declare function refreshLootStateForPed(ped1: number | Ped): [number, number | Ped];
+export declare function refreshLootStateForPed(ped1: number | Ped): [number, number];
 /**
  * p1 is always 1
  *
@@ -79131,9 +79131,9 @@ export declare function deleteChildRope(ropeId: number): void;
  * No comment provided
  *
  * Hash: 0x52B4829281364649 | Since: 1207
- * @deprecated Use physics.deleteRope() instead
+ * @deprecated Use physics.deleteRope(ropeId) instead
  */
-export declare function deleteRope(): number;
+export declare function deleteRope(ropeId: number): void;
 /**
  * No comment provided
  *
@@ -79684,14 +79684,14 @@ export declare function getCauseOfMostRecentForceCleanup(): number;
  * Hash: 0x0139637A3BFF8B6D | Since: 1207
  * @deprecated Use player.getDiscoverableNameHashAndTypeForEntity(entity) instead
  */
-export declare function getDiscoverableNameHashAndTypeForEntity(entity: number | Entity): [number, number | string];
+export declare function getDiscoverableNameHashAndTypeForEntity(entity: number | Entity): [number, number];
 /**
  * No comment provided
  *
  * Hash: 0xA6817C110B830EAD | Since: 1207
  * @deprecated Use player.getEntityIsFreeAimingAt(player1) instead
  */
-export declare function getEntityPlayerIsFreeAimingAt(player1: number | string | Player): [boolean, number | Entity];
+export declare function getEntityPlayerIsFreeAimingAt(player1: number | string | Player): [boolean, number];
 /**
  * No comment provided
  *
@@ -79755,7 +79755,7 @@ export declare function getPlayerIndex(): number | string;
  * Hash: 0x3EE1F7A8C32F24E1 | Since: 1207
  * @deprecated Use player.getInteractionTargetEntity(player1) instead
  */
-export declare function getPlayerInteractionTargetEntity(player1: number | string | Player): [boolean, number | Entity];
+export declare function getPlayerInteractionTargetEntity(player1: number | string | Player): [boolean, number];
 /**
  * Returns the player's invincibility status.
  *
@@ -79797,7 +79797,7 @@ export declare function getPlayerReceivedBattleEventRecently(player1: number | s
  * Hash: 0xAE663DDD99C8A670 | Since: 1207
  * @deprecated Use player.getTargetEntity(player1) instead
  */
-export declare function getPlayerTargetEntity(player1: number | string | Player): [boolean, number | Entity];
+export declare function getPlayerTargetEntity(player1: number | string | Player): [boolean, number];
 /**
  * Gets the player's team.
  * Returns -1 in singleplayer.
@@ -80964,7 +80964,7 @@ export declare function _0x77E83C315A3B31CA(): void;
  * Hash: 0x7AE93C45EC14A166 | Since: 1207
  * @deprecated Use player._0x7AE93C45EC14A166(player1) instead
  */
-export declare function _0x7AE93C45EC14A166(player1: number | string | Player): [boolean, number | Ped];
+export declare function _0x7AE93C45EC14A166(player1: number | string | Player): [boolean, number];
 /**
  * _SET_PLAYER_DAMAGE_* - _SET_PLAYER_DEFENSE_*
  *
@@ -84130,7 +84130,7 @@ export declare function triggerScriptEvent2(eventDataSize: number, scriptMetadat
  * Hash: 0xEDE8AC7C5108FB1D | Since: 1207
  * @deprecated Use shapetest.getResult(shapeTestHandle) instead
  */
-export declare function getShapeTestResult(shapeTestHandle: number): [number, boolean, Vector3, Vector3, number | Entity];
+export declare function getShapeTestResult(shapeTestHandle: number): [number, boolean, Vector3, Vector3, number];
 /**
  * Does the same as 0x7EE9F5D83DD4F90E, except blocking until the shape test completes.
  *
@@ -84740,7 +84740,7 @@ export declare function statRegisterLegendaryAnimalDeed(deedHash: number | strin
  * Hash: 0xBA61BA6205A3F5A8 | Since: 1207
  * @deprecated Use stats.weeklyCollectibleGetItemInSet(chalHash, setIndex, itemIndex) instead
  */
-export declare function weeklyCollectibleGetItemInSet(chalHash: number | string, setIndex: number, itemIndex: number): [boolean, number | string, number];
+export declare function weeklyCollectibleGetItemInSet(chalHash: number | string, setIndex: number, itemIndex: number): [boolean, number, number];
 /**
  * No comment provided
  *
@@ -84936,7 +84936,7 @@ export declare function _0xB112B9262EC29C20(p0: number | string): string;
  * Hash: 0xB5E2EDA2135E0FA1 | Since: 1207
  * @deprecated Use stats._0xB5E2EDA2135E0FA1(p0) instead
  */
-export declare function _0xB5E2EDA2135E0FA1(p0: number | string): [boolean, number | string];
+export declare function _0xB5E2EDA2135E0FA1(p0: number | string): [boolean, number];
 /**
  * No comment provided
  *
@@ -86040,9 +86040,9 @@ export declare function createScenarioPointHashAttachedToEntity(entity: number |
  * No comment provided
  *
  * Hash: 0x7767DD9D65E91319 | Since: 1207
- * @deprecated Use task.deletePatrolRoute() instead
+ * @deprecated Use task.deletePatrolRoute(patrolRoute) instead
  */
-export declare function deletePatrolRoute(): string;
+export declare function deletePatrolRoute(patrolRoute: string): void;
 /**
  * No comment provided
  *
@@ -87760,9 +87760,9 @@ export declare function taskPlantBomb(ped: number | Ped, pos: Vector3, heading: 
  * ikFlags: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eIkControlFlags
  *
  * Hash: 0xEA47FE3719165B94 | Since: 1207
- * @deprecated Use task.playAnim(ped, animDict, animName, speed, speedMultiplier, duration, flags, playbackRate, ikFlags) instead
+ * @deprecated Use task.playAnim(ped, animDict, animName, speed, speedMultiplier, duration, flags, playbackRate, ikFlags, taskFilter) instead
  */
-export declare function taskPlayAnim(ped: number | Ped, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flags: number, playbackRate: number, ikFlags: number): string;
+export declare function taskPlayAnim(ped: number | Ped, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flags: number, playbackRate: number, ikFlags: number, taskFilter: string): void;
 /**
  * flags: see TASK_PLAY_ANIM
  * ikFlags: see TASK_PLAY_ANIM
@@ -92049,9 +92049,9 @@ export declare function deleteAllTrains(): void;
  * No comment provided
  *
  * Hash: 0x0D3630FB07E8B570 | Since: 1207
- * @deprecated Use vehicle.deleteMissionTrain() instead
+ * @deprecated Use vehicle.deleteMissionTrain(train) instead
  */
-export declare function deleteMissionTrain(): number | Vehicle;
+export declare function deleteMissionTrain(train: number | Vehicle): void;
 /**
  * Deletes a vehicle.
  * The vehicle must be a mission entity to delete, so call this before deleting: SET_ENTITY_AS_MISSION_ENTITY(vehicle, true, true);
@@ -92063,9 +92063,9 @@ export declare function deleteMissionTrain(): number | Vehicle;
  * Deletes the specified vehicle, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0xE20A909D8C4A70F8 | Since: 1207
- * @deprecated Use vehicle.delete_() instead
+ * @deprecated Use vehicle.delete_(vehicle1) instead
  */
-export declare function deleteVehicle(): number | Vehicle;
+export declare function deleteVehicle(vehicle1: number | Vehicle): void;
 /**
  * No comment provided
  *
@@ -92267,7 +92267,7 @@ export declare function getVehiclePetrolTankHealth(vehicle1: number | Vehicle): 
  * Hash: 0xCF867A239EC30741 | Since: 1207
  * @deprecated Use vehicle.getTrailerVehicle(vehicle1) instead
  */
-export declare function getVehicleTrailerVehicle(vehicle1: number | Vehicle): [boolean, number | Vehicle];
+export declare function getVehicleTrailerVehicle(vehicle1: number | Vehicle): [boolean, number];
 /**
  * No comment provided
  *
@@ -92675,7 +92675,7 @@ export declare function setForceVehicleEngineDamageByBullet(vehicle1: number | V
  * Hash: 0xBBE7648349B49BE8 | Since: 1207
  * @deprecated Use vehicle.setMissionTrainAsNoLongerNeeded(flags) instead
  */
-export declare function setMissionTrainAsNoLongerNeeded(flags: number): number | Vehicle;
+export declare function setMissionTrainAsNoLongerNeeded(flags: number): number;
 /**
  * No comment provided
  *
@@ -93324,7 +93324,7 @@ export declare function _0x07E2E21E799080A0(): void;
  * Hash: 0x09034479E6E3E269 | Since: 1207
  * @deprecated Use vehicle.returnTrainInfoFromHandle(train) instead
  */
-export declare function returnTrainInfoFromHandle(train: number | Vehicle): [boolean, number | string, number];
+export declare function returnTrainInfoFromHandle(train: number | Vehicle): [boolean, number, number];
 /**
  * No comment provided
  *
@@ -94327,7 +94327,7 @@ export declare function doesTrainExistOnTrack(trackIndex: number): boolean;
  * Hash: 0x35DC1877312FBA0F | Since: 1207
  * @deprecated Use vehicle.fadeAndDestroy() instead
  */
-export declare function fadeAndDestroyVehicle(): number | Vehicle;
+export declare function fadeAndDestroyVehicle(): number;
 /**
  * No comment provided
  *
@@ -94413,7 +94413,7 @@ export declare function getPedInDraftHarness(vehicle1: number | Vehicle, harness
  * Hash: 0xA6E210FB4283B767 | Since: 1207
  * @deprecated Use vehicle.getRowingOars(vehicle1) instead
  */
-export declare function getRowingOars(vehicle1: number | Vehicle): [number | Entity, number | Entity];
+export declare function getRowingOars(vehicle1: number | Vehicle): [number, number];
 /**
  * Returns Coords of vStation
  * p0 - NET_TRAIN_MANAGER_GET_TRAIN_STATION_DATA
@@ -95720,14 +95720,14 @@ export declare function getBestPedWeapon(ped: number | Ped): number;
  * Hash: 0x1017582BCD3832DC | Since: 1207
  * @deprecated Use weapon.getCurrentPedVehicle(ped) instead
  */
-export declare function getCurrentPedVehicleWeapon(ped: number | Ped): [boolean, number | string];
+export declare function getCurrentPedVehicleWeapon(ped: number | Ped): [boolean, number];
 /**
  * attachPoint: see SET_CURRENT_PED_WEAPON
  *
  * Hash: 0x3A87E44BB9A01D54 | Since: 1207
  * @deprecated Use weapon.getCurrentPed(ped, attachPoint) instead
  */
-export declare function getCurrentPedWeapon(ped: number | Ped, attachPoint: number): [boolean, number | string];
+export declare function getCurrentPedWeapon(ped: number | Ped, attachPoint: number): [boolean, number];
 /**
  * Returns weaponObject, attachPoint: see SET_CURRENT_PED_WEAPON
  *
@@ -96937,7 +96937,7 @@ export declare function giveWeaponComponentToEntity(entity: number | Entity, com
  * Hash: 0x1A47699E8D533E8F | Since: 1207
  * @deprecated Use weapon.giveComponentToWeaponObject(ped, componentHash) instead
  */
-export declare function giveWeaponComponentToWeaponObject(ped: number | Ped, componentHash: number | string): number | Object;
+export declare function giveWeaponComponentToWeaponObject(ped: number | Ped, componentHash: number | string): number;
 /**
  * No comment provided
  *
