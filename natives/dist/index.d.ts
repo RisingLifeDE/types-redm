@@ -2928,7 +2928,7 @@ export declare namespace Cam {
      *
      * Hash: 0xF1F57F9D230F9CD1 | Since: 1207
      */
-    function addCamSplineNode(camera: number, pos: Vector3, xRot: number, yRot: number, zRot: number, length: number): void;
+    function addCamSplineNode(camera: number, pos: Vector3, rot: Vector3, length: number): void;
     /**
      * No comment provided
      *
@@ -3294,7 +3294,7 @@ export declare namespace Cam {
      *
      * Hash: 0xA263DDF694D563F6 | Since: 1207
      */
-    function playCamAnim(cam: number, animName: string, animDictionary: string, pos: Vector3, xRot: number, yRot: number, zRot: number, animFlags: number, rotOrder: number): boolean;
+    function playCamAnim(cam: number, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
     /**
      * No comment provided
      *
@@ -6316,7 +6316,7 @@ export declare namespace Entity {
      *
      * Hash: 0x6B9BBD38AB0796DF | Since: 1207
      */
-    function attachEntityToEntity(entity1: number | Entity, entity2: number | Entity, boneIndex: number, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean): void;
+    function attachEntityToEntity(entity1: number | Entity, entity2: number | Entity, boneIndex: number, pos: Vector3, rot: Vector3, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean): void;
     /**
      * No comment provided
      *
@@ -6683,7 +6683,7 @@ export declare namespace Entity {
      *
      * Hash: 0x6BFBDC46139C45AB | Since: 1207
      */
-    function hasCollisionLoadedAroundPosition(xPos: number, yPos: number, zPos: number): boolean;
+    function hasCollisionLoadedAroundPosition(pos: Vector3): boolean;
     /**
      * No comment provided
      *
@@ -6787,7 +6787,7 @@ export declare namespace Entity {
      *
      * Hash: 0x5E58342602E94718 | Since: 1207
      */
-    function isEntityAtCoord(entity: number | Entity, xPos: number, yPos: number, zPos: number, xSize: number, ySize: number, zSize: number): boolean;
+    function isEntityAtCoord(entity: number | Entity, pos: Vector3, xSize: number, ySize: number, zSize: number): boolean;
     /**
      * Checks if entity1 is within the box defined by x/y/zSize of entity2.
      *
@@ -7046,13 +7046,13 @@ export declare namespace Entity {
      *
      * Hash: 0x06843DA7060A026B | Since: 1207
      */
-    function setEntityCoords(entity: number | Entity, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
+    function setEntityCoords(entity: number | Entity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
     /**
      * Axis - Invert Axis Flags
      *
      * Hash: 0x239A3351AC1DA385 | Since: 1207
      */
-    function setEntityCoordsNoOffset(entity: number | Entity, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+    function setEntityCoordsNoOffset(entity: number | Entity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
     /**
      * No comment provided
      *
@@ -7929,13 +7929,13 @@ export declare namespace Entity {
      *
      * Hash: 0x203BEFFDBE12E96A | Since: 1207
      */
-    function setEntityCoordsAndHeading(entity: number | Entity, xPos: number, yPos: number, zPos: number, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+    function setEntityCoordsAndHeading(entity: number | Entity, pos: Vector3, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0918E3565C20F03C | Since: 1207
      */
-    function setEntityCoordsAndHeadingNoOffset(entity: number | Entity, xPos: number, yPos: number, zPos: number, heading: number): void;
+    function setEntityCoordsAndHeadingNoOffset(entity: number | Entity, pos: Vector3, heading: number): void;
     /**
      * No comment provided
      *
@@ -9656,19 +9656,19 @@ export declare namespace Graphics {
      *
      * Hash: 0x8F90AB32E1944BDE | Since: 1207
      */
-    function startNetworkedParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startNetworkedParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0x9C56621462FFE7A6 | Since: 1207
      */
-    function startNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0xFB97618457994A62 | Since: 1207
      */
-    function startNetworkedParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): boolean;
+    function startNetworkedParticleFxNonLoopedAtCoord(effectName: string, pos: Vector3, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): boolean;
     /**
      * No comment provided
      *
@@ -9680,31 +9680,31 @@ export declare namespace Graphics {
      *
      * Hash: 0xBA32867E86125D3A | Since: 1207
      */
-    function startParticleFxLoopedAtCoord(effectName: string, pos: Vector3, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startParticleFxLoopedAtCoord(effectName: string, pos: Vector3, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0xBD41E1440CE39800 | Since: 1207
      */
-    function startParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0xD3BA6EC7F2FBD5E9 | Since: 1207
      */
-    function startParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0xE689C1B1432BB8AF | Since: 1207
      */
-    function startParticleFxLoopedOnPedBone(effectName: string, ped: number | Ped, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startParticleFxLoopedOnPedBone(effectName: string, ped: number | Ped, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/graphics/ptfx/ptfx_assets_non_looped.lua
      *
      * Hash: 0x2E80BF72EF7C87AC | Since: 1207
      */
-    function startParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, eventType: number, bPeekOnly: boolean, bIsRegistered: boolean): boolean;
+    function startParticleFxNonLoopedAtCoord(effectName: string, pos: Vector3, rot: Vector3, scale: number, eventType: number, bPeekOnly: boolean, bIsRegistered: boolean): boolean;
     /**
      * No comment provided
      *
@@ -20866,7 +20866,7 @@ export declare namespace Object {
      *
      * Hash: 0x163E252DE035A133 | Since: 1207
      */
-    function getOffsetFromCoordAndHeadingInWorldCoords(xPos: number, yPos: number, zPos: number, heading: number, xOffset: number, yOffset: number, zOffset: number): Vector3;
+    function getOffsetFromCoordAndHeadingInWorldCoords(pos: Vector3, heading: number, xOffset: number, yOffset: number, zOffset: number): Vector3;
     /**
      * No comment provided
      *
@@ -22633,13 +22633,13 @@ export declare namespace Ped {
      *
      * Hash: 0xBE22B26DD764C040 | Since: 1207
      */
-    function getAnimInitialOffsetPosition(animDict: string, animName: string, pos: Vector3, xRot: number, yRot: number, zRot: number): Vector3;
+    function getAnimInitialOffsetPosition(animDict: string, animName: string, pos: Vector3, rot: Vector3): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x4B805E6046EE9E47 | Since: 1207
      */
-    function getAnimInitialOffsetRotation(animDict: string, animName: string, pos: Vector3, xRot: number, yRot: number, zRot: number): Vector3;
+    function getAnimInitialOffsetRotation(animDict: string, animName: string, pos: Vector3, rot: Vector3): Vector3;
     /**
      * No comment provided
      *
@@ -25223,7 +25223,7 @@ export declare namespace Ped {
      *
      * Hash: 0x58D32261AE0F0843 | Since: 1207
      */
-    function applyPedDamagePackToBone(ped: number | Ped, boneId: number, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, damagePack: string): void;
+    function applyPedDamagePackToBone(ped: number | Ped, boneId: number, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, damagePack: string): void;
     /**
      * _C*
      *
@@ -26840,7 +26840,7 @@ export declare namespace Ped {
      *
      * Hash: 0x4F5EBE70081E5A20 | Since: 1207
      */
-    function createGravityWell(xPos: number, yPos: number, zPos: number, heading: number, radius: number, stopAtDestination: boolean): number;
+    function createGravityWell(pos: Vector3, heading: number, radius: number, stopAtDestination: boolean): number;
     /**
      * Only used in SP scripts, for example odriscolls1: BOOLS: true, true, true, false, false
      *
@@ -35426,7 +35426,7 @@ export declare namespace Task {
      *
      * Hash: 0xF533D68FF970D190 | Since: 1207
      */
-    function findScenarioOfTypeHash(xPos: number, yPos: number, zPos: number, scenarioType: number | string, distance: number): number;
+    function findScenarioOfTypeHash(pos: Vector3, scenarioType: number | string, distance: number): number;
     /**
      * No comment provided
      *
@@ -36774,7 +36774,7 @@ export declare namespace Task {
      *
      * Hash: 0x7B6A04F98BBAFB2C | Since: 1207
      */
-    function taskMoveNetworkAdvancedByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, taskData: any, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, flag: number): void;
+    function taskMoveNetworkAdvancedByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, taskData: any, pos: Vector3, rot: Vector3, flag: number): void;
     /**
      * No comment provided
      *
@@ -39019,7 +39019,7 @@ export declare namespace Task {
      *
      * Hash: 0x2056AB38DF06825C | Since: 1207
      */
-    function setScenarioPointCoords(scenario: number, xPos: number, yPos: number, zPos: number): void;
+    function setScenarioPointCoords(scenario: number, pos: Vector3): void;
     /**
      * flag: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CScenarioPointFlags__Flags
      *
@@ -49040,7 +49040,7 @@ export declare function wait(ms: number): void;
  *
  * @deprecated Use Cam.addCamSplineNode() instead
  */
-export declare function addCamSplineNode(camera: number, pos: Vector3, xRot: number, yRot: number, zRot: number, length: number): void;
+export declare function addCamSplineNode(camera: number, pos: Vector3, rot: Vector3, length: number): void;
 /**
  * No comment provided
  *
@@ -49526,7 +49526,7 @@ export declare function isSphereVisible(pos: Vector3, radius: number): boolean;
  *
  * @deprecated Use Cam.playCamAnim() instead
  */
-export declare function playCamAnim(cam: number, animName: string, animDictionary: string, pos: Vector3, xRot: number, yRot: number, zRot: number, animFlags: number, rotOrder: number): boolean;
+export declare function playCamAnim(cam: number, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
 /**
  * No comment provided
  *
@@ -53490,7 +53490,7 @@ export declare function applyForceToEntityCenterOfMass(entity: number | Entity, 
  *
  * @deprecated Use Entity.attachEntityToEntity() instead
  */
-export declare function attachEntityToEntity(entity1: number | Entity, entity2: number | Entity, boneIndex: number, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean): void;
+export declare function attachEntityToEntity(entity1: number | Entity, entity2: number | Entity, boneIndex: number, pos: Vector3, rot: Vector3, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean): void;
 /**
  * No comment provided
  *
@@ -53971,7 +53971,7 @@ export declare function hasCollisionLoadedAroundEntity(entity: number | Entity):
  *
  * @deprecated Use Entity.hasCollisionLoadedAroundPosition() instead
  */
-export declare function hasCollisionLoadedAroundPosition(xPos: number, yPos: number, zPos: number): boolean;
+export declare function hasCollisionLoadedAroundPosition(pos: Vector3): boolean;
 /**
  * No comment provided
  *
@@ -54109,7 +54109,7 @@ export declare function isEntityAttachedToEntity(from: number | Entity, to: numb
  *
  * @deprecated Use Entity.isEntityAtCoord() instead
  */
-export declare function isEntityAtCoord(entity: number | Entity, xPos: number, yPos: number, zPos: number, xSize: number, ySize: number, zSize: number): boolean;
+export declare function isEntityAtCoord(entity: number | Entity, pos: Vector3, xSize: number, ySize: number, zSize: number): boolean;
 /**
  * Checks if entity1 is within the box defined by x/y/zSize of entity2.
  *
@@ -54452,7 +54452,7 @@ export declare function setEntityCompletelyDisableCollision(entity: number | Ent
  *
  * @deprecated Use Entity.setEntityCoords() instead
  */
-export declare function setEntityCoords(entity: number | Entity, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
+export declare function setEntityCoords(entity: number | Entity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
 /**
  * Axis - Invert Axis Flags
  *
@@ -54460,7 +54460,7 @@ export declare function setEntityCoords(entity: number | Entity, xPos: number, y
  *
  * @deprecated Use Entity.setEntityCoordsNoOffset() instead
  */
-export declare function setEntityCoordsNoOffset(entity: number | Entity, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+export declare function setEntityCoordsNoOffset(entity: number | Entity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
 /**
  * No comment provided
  *
@@ -55619,7 +55619,7 @@ export declare function setEntityCarryingFlag(entity: number | Entity, flagId: n
  *
  * @deprecated Use Entity.setEntityCoordsAndHeading() instead
  */
-export declare function setEntityCoordsAndHeading(entity: number | Entity, xPos: number, yPos: number, zPos: number, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+export declare function setEntityCoordsAndHeading(entity: number | Entity, pos: Vector3, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
 /**
  * No comment provided
  *
@@ -55627,7 +55627,7 @@ export declare function setEntityCoordsAndHeading(entity: number | Entity, xPos:
  *
  * @deprecated Use Entity.setEntityCoordsAndHeadingNoOffset() instead
  */
-export declare function setEntityCoordsAndHeadingNoOffset(entity: number | Entity, xPos: number, yPos: number, zPos: number, heading: number): void;
+export declare function setEntityCoordsAndHeadingNoOffset(entity: number | Entity, pos: Vector3, heading: number): void;
 /**
  * No comment provided
  *
@@ -57864,7 +57864,7 @@ export declare function setTvVolume(volume: number): void;
  *
  * @deprecated Use Graphics.startNetworkedParticleFxLoopedOnEntity() instead
  */
-export declare function startNetworkedParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+export declare function startNetworkedParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 /**
  * No comment provided
  *
@@ -57872,7 +57872,7 @@ export declare function startNetworkedParticleFxLoopedOnEntity(effectName: strin
  *
  * @deprecated Use Graphics.startNetworkedParticleFxLoopedOnEntityBone() instead
  */
-export declare function startNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+export declare function startNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 /**
  * No comment provided
  *
@@ -57880,7 +57880,7 @@ export declare function startNetworkedParticleFxLoopedOnEntityBone(effectName: s
  *
  * @deprecated Use Graphics.startNetworkedParticleFxNonLoopedAtCoord() instead
  */
-export declare function startNetworkedParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): boolean;
+export declare function startNetworkedParticleFxNonLoopedAtCoord(effectName: string, pos: Vector3, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): boolean;
 /**
  * No comment provided
  *
@@ -57896,7 +57896,7 @@ export declare function startNetworkedParticleFxNonLoopedOnEntity(effectName: st
  *
  * @deprecated Use Graphics.startParticleFxLoopedAtCoord() instead
  */
-export declare function startParticleFxLoopedAtCoord(effectName: string, pos: Vector3, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+export declare function startParticleFxLoopedAtCoord(effectName: string, pos: Vector3, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 /**
  * No comment provided
  *
@@ -57904,7 +57904,7 @@ export declare function startParticleFxLoopedAtCoord(effectName: string, pos: Ve
  *
  * @deprecated Use Graphics.startParticleFxLoopedOnEntity() instead
  */
-export declare function startParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+export declare function startParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 /**
  * No comment provided
  *
@@ -57912,7 +57912,7 @@ export declare function startParticleFxLoopedOnEntity(effectName: string, entity
  *
  * @deprecated Use Graphics.startParticleFxLoopedOnEntityBone() instead
  */
-export declare function startParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+export declare function startParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 /**
  * No comment provided
  *
@@ -57920,7 +57920,7 @@ export declare function startParticleFxLoopedOnEntityBone(effectName: string, en
  *
  * @deprecated Use Graphics.startParticleFxLoopedOnPedBone() instead
  */
-export declare function startParticleFxLoopedOnPedBone(effectName: string, ped: number | Ped, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+export declare function startParticleFxLoopedOnPedBone(effectName: string, ped: number | Ped, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 /**
  * https://github.com/femga/rdr3_discoveries/blob/master/graphics/ptfx/ptfx_assets_non_looped.lua
  *
@@ -57928,7 +57928,7 @@ export declare function startParticleFxLoopedOnPedBone(effectName: string, ped: 
  *
  * @deprecated Use Graphics.startParticleFxNonLoopedAtCoord() instead
  */
-export declare function startParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, eventType: number, bPeekOnly: boolean, bIsRegistered: boolean): boolean;
+export declare function startParticleFxNonLoopedAtCoord(effectName: string, pos: Vector3, rot: Vector3, scale: number, eventType: number, bPeekOnly: boolean, bIsRegistered: boolean): boolean;
 /**
  * No comment provided
  *
@@ -72580,7 +72580,7 @@ export declare function getObjectFragmentDamageHealth(): number;
  *
  * @deprecated Use Object.getOffsetFromCoordAndHeadingInWorldCoords() instead
  */
-export declare function getOffsetFromCoordAndHeadingInWorldCoords(xPos: number, yPos: number, zPos: number, heading: number, xOffset: number, yOffset: number, zOffset: number): Vector3;
+export declare function getOffsetFromCoordAndHeadingInWorldCoords(pos: Vector3, heading: number, xOffset: number, yOffset: number, zOffset: number): Vector3;
 /**
  * No comment provided
  *
@@ -74907,7 +74907,7 @@ export declare function forcePedMotionState(ped: number | Ped, motionStateHash: 
  *
  * @deprecated Use Ped.getAnimInitialOffsetPosition() instead
  */
-export declare function getAnimInitialOffsetPosition(animDict: string, animName: string, pos: Vector3, xRot: number, yRot: number, zRot: number): Vector3;
+export declare function getAnimInitialOffsetPosition(animDict: string, animName: string, pos: Vector3, rot: Vector3): Vector3;
 /**
  * No comment provided
  *
@@ -74915,7 +74915,7 @@ export declare function getAnimInitialOffsetPosition(animDict: string, animName:
  *
  * @deprecated Use Ped.getAnimInitialOffsetRotation() instead
  */
-export declare function getAnimInitialOffsetRotation(animDict: string, animName: string, pos: Vector3, xRot: number, yRot: number, zRot: number): Vector3;
+export declare function getAnimInitialOffsetRotation(animDict: string, animName: string, pos: Vector3, rot: Vector3): Vector3;
 /**
  * No comment provided
  *
@@ -78309,7 +78309,7 @@ export declare function _0x57F35552E771BE9D(ped: number | Ped): void;
  *
  * @deprecated Use Ped.applyPedDamagePackToBone() instead
  */
-export declare function applyPedDamagePackToBone(ped: number | Ped, boneId: number, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, damagePack: string): void;
+export declare function applyPedDamagePackToBone(ped: number | Ped, boneId: number, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, damagePack: string): void;
 /**
  * _C*
  *
@@ -80448,7 +80448,7 @@ export declare function computeSatchelItemForPedCarcass(outInventoryItemArray: a
  *
  * @deprecated Use Ped.createGravityWell() instead
  */
-export declare function createGravityWell(xPos: number, yPos: number, zPos: number, heading: number, radius: number, stopAtDestination: boolean): number;
+export declare function createGravityWell(pos: Vector3, heading: number, radius: number, stopAtDestination: boolean): number;
 /**
  * Only used in SP scripts, for example odriscolls1: BOOLS: true, true, true, false, false
  *
@@ -91674,7 +91674,7 @@ export declare function endDuel(ped: number | Ped): void;
  *
  * @deprecated Use Task.findScenarioOfTypeHash() instead
  */
-export declare function findScenarioOfTypeHash(xPos: number, yPos: number, zPos: number, scenarioType: number | string, distance: number): number;
+export declare function findScenarioOfTypeHash(pos: Vector3, scenarioType: number | string, distance: number): number;
 /**
  * No comment provided
  *
@@ -93452,7 +93452,7 @@ export declare function taskMoveInTrafficToDestination(ped: number | Ped): void;
  *
  * @deprecated Use Task.taskMoveNetworkAdvancedByNameWithInitParams() instead
  */
-export declare function taskMoveNetworkAdvancedByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, taskData: any, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, flag: number): void;
+export declare function taskMoveNetworkAdvancedByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, taskData: any, pos: Vector3, rot: Vector3, flag: number): void;
 /**
  * No comment provided
  *
@@ -96415,7 +96415,7 @@ export declare function setScenarioPointActive(scenario: number, active: boolean
  *
  * @deprecated Use Task.setScenarioPointCoords() instead
  */
-export declare function setScenarioPointCoords(scenario: number, xPos: number, yPos: number, zPos: number): void;
+export declare function setScenarioPointCoords(scenario: number, pos: Vector3): void;
 /**
  * flag: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CScenarioPointFlags__Flags
  *
@@ -104531,4 +104531,3 @@ export declare function getWaterMapZoneAtCoords(pos: Vector3): number;
  * @deprecated Use Namespace4.reportPlayerBadSportBehavior() instead
  */
 export declare function reportPlayerBadSportBehavior(gamerHandle: any, badSportBehaviorType: number): void;
-export * from "@risinglife/redm-shared";
