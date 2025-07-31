@@ -1,10 +1,10 @@
-import { Vector3, Entity, Ped, Player, Vehicle, Object } from '@risinglife/redm-shared';
+import { Vector3, Vector2, Entity, Ped, Player, Vehicle, Object } from '@risinglife/redm-shared';
 /**
  * Creates an audio submix with the specified name, or gets the existing audio submix by that name.
  *
  * Hash: 0x658D2BC8 | Since: client
  */
-export declare function createAudioSubmix(name: string): number;
+export declare function createAudioSubmix(): [number, string];
 /**
  * Removes vehicle xenon lights custom RGB color.
  *
@@ -28,7 +28,7 @@ export declare function destroyDui(duiObject: number): void;
  *
  * Hash: 0x32CA01C3 | Since: client
  */
-export declare function addTextEntry(entryKey: string, entryText: string): void;
+export declare function addTextEntry(): [string, string];
 /**
  * Adds the given model name hash to the list of valid models for the player ped's parachute pack.
  *
@@ -55,7 +55,7 @@ export declare function commitRuntimeTexture(tex: number): void;
  *
  * Hash: 0xAB7F7241 | Since: shared
  */
-export declare function addConvarChangeListener(conVarFilter: string, handler: Function): number;
+export declare function addConvarChangeListener(handler: Function): [number, string];
 /**
  * Activates built-in timecycle editing tool.
  *
@@ -67,13 +67,13 @@ export declare function activateTimecycleEditor(): void;
  *
  * Hash: 0xED0935B5 | Since: client
  */
-export declare function addMinimapOverlayWithDepth(name: string, depth: number): number;
+export declare function addMinimapOverlayWithDepth(depth: number): [number, string];
 /**
  * No comment provided
  *
  * Hash: 0x1E86F206 | Since: shared
  */
-export declare function deleteFunctionReference(referenceIdentity: string): void;
+export declare function deleteFunctionReference(): string;
 /**
  * Resets the screen's draw-origin which was changed by the function [`SET_DRAW_ORIGIN`](#\_0xE10198D5) back to `x=0, y=0`. See [`SET_DRAW_ORIGIN`](#\_0xE10198D5) for further information.
  *
@@ -85,25 +85,25 @@ export declare function clearDrawOrigin(): void;
  *
  * Hash: 0xFEC3766D | Since: client
  */
-export declare function createRuntimeTexture(txd: number, txn: string, width: number, height: number): number;
+export declare function createRuntimeTexture(txd: number, width: number, height: number): [number, string];
 /**
  * Creates a runtime texture from a DUI handle.
  *
  * Hash: 0xB135472B | Since: client
  */
-export declare function createRuntimeTextureFromDuiHandle(txd: number, txn: string, duiHandle: string): number;
+export declare function createRuntimeTextureFromDuiHandle(txd: number): [number, string, string];
 /**
  * Creates a runtime texture from the specified file in the current resource or a base64 data URL.
  *
  * Hash: 0x786D8BC3 | Since: client
  */
-export declare function createRuntimeTextureFromImage(txd: number, txn: string, fileName: string): number;
+export declare function createRuntimeTextureFromImage(txd: number): [number, string, string];
 /**
  * No comment provided
  *
  * Hash: 0x289DA860 | Since: client
  */
-export declare function addTextEntryByHash(entryKey: number | string, entryText: string): void;
+export declare function addTextEntryByHash(entryKey: number | string): string;
 /**
  * Adds the given model name hash to the list of valid models for the player ped's parachute.
  *
@@ -117,7 +117,7 @@ export declare function addAuthorizedParachuteModel(modelNameHash: number): void
  *
  * Hash: 0x4AFD2499 | Since: client
  */
-export declare function addMinimapOverlay(name: string): number;
+export declare function addMinimapOverlay(): [number, string];
 /**
  * Adds an output for the specified audio submix.
  *
@@ -129,19 +129,19 @@ export declare function addAudioSubmixOutput(submixId: number, outputSubmixId: n
  *
  * Hash: 0x70FA2AFA | Since: client
  */
-export declare function createTimecycleModifier(modifierName: string): number;
+export declare function createTimecycleModifier(): [number, string];
 /**
  * No comment provided
  *
  * Hash: 0x54D636B3 | Since: client
  */
-export declare function cloneTimecycleModifier(sourceModifierName: string, clonedModifierName: string): number;
+export declare function cloneTimecycleModifier(): [number, string, string];
 /**
  * Experimental natives, please do not use in a live environment.
  *
  * Hash: 0xA66F8F75 | Since: client
  */
-export declare function addReplaceTexture(origTxd: string, origTxn: string, newTxd: string, newTxn: string): void;
+export declare function addReplaceTexture(): [string, string, string, string];
 /**
  * No comment provided
  *
@@ -153,7 +153,7 @@ export declare function applyWeatherCycles(numEntries: number, msPerCycle: numbe
  *
  * Hash: 0x4C89C0ED | Since: client
  */
-export declare function callMinimapScaleformFunction(miniMap: number, fnName: string): boolean;
+export declare function callMinimapScaleformFunction(miniMap: number): [boolean, string];
 /**
  * Adds a handler for changes to a state bag.
  *
@@ -177,7 +177,7 @@ export declare function callMinimapScaleformFunction(miniMap: number, fnName: st
  *
  * Hash: 0x5BA35AAF | Since: shared
  */
-export declare function addStateBagChangeHandler(keyFilter: string, bagFilter: string, handler: Function): number;
+export declare function addStateBagChangeHandler(handler: Function): [number, string, string];
 /**
  * Creates a runtime texture dictionary with the specified name.
  * Example:
@@ -188,13 +188,13 @@ export declare function addStateBagChangeHandler(keyFilter: string, bagFilter: s
  *
  * Hash: 0x1F3AC778 | Since: client
  */
-export declare function createRuntimeTxd(name: string): number;
+export declare function createRuntimeTxd(): [number, string];
 /**
  * Creates a DUI browser. This can be used to draw on a runtime texture using CREATE_RUNTIME_TEXTURE_FROM_DUI_HANDLE.
  *
  * Hash: 0x23EAF899 | Since: client
  */
-export declare function createDui(url: string, width: number, height: number): number;
+export declare function createDui(width: number, height: number): [number, string];
 /**
  * Break off vehicle wheel by index. The `leaveDebrisTrail` flag requires `putOnFire` to be true.
  *
@@ -271,7 +271,7 @@ export declare function disableRawKeyThisFrame(rawKeyIndex: number): boolean;
  *
  * Hash: 0x561C060B | Since: shared
  */
-export declare function executeCommand(commandString: string): void;
+export declare function executeCommand(): string;
 /**
  * No comment provided
  *
@@ -320,7 +320,7 @@ export declare function disableVehiclePassengerIdleCamera(state: boolean): void;
  *
  * Hash: 0xF4E2079D | Since: shared
  */
-export declare function duplicateFunctionReference(referenceIdentity: string): string;
+export declare function duplicateFunctionReference(): [string, string];
 /**
  * Disables the game's afk camera that starts panning around after 30 seconds of inactivity.
  *
@@ -358,19 +358,19 @@ export declare function drawBox(x1: number, y1: number, z1: number, x2: number, 
  *
  * Hash: 0x4E129DBF | Since: client
  */
-export declare function findNextObject(findHandle: number, outEntity: number | Entity): boolean;
+export declare function findNextObject(findHandle: number): [boolean, number | Entity];
 /**
  * No comment provided
  *
  * Hash: 0xC53BB6D3 | Since: client
  */
-export declare function doesTimecycleModifierHasVar(modifierName: string, varName: string): boolean;
+export declare function doesTimecycleModifierHasVar(): [boolean, string, string];
 /**
  * Returns the world matrix of the specified camera. To turn this into a view matrix, calculate the inverse.
  *
  * Hash: 0x8F57A89D | Since: client
  */
-export declare function getCamMatrix(camera: number, rightVector: Vector3, forwardVector: Vector3, upVector: Vector3, position: Vector3): void;
+export declare function getCamMatrix(camera: number): [Vector3, Vector3, Vector3, Vector3];
 /**
  * DRAW_RECT, but with a rotation. Seems to be broken.
  *
@@ -396,7 +396,7 @@ export declare function getAllVehicleModels(): number;
  *
  * Hash: 0xFF60E63 | Since: client
  */
-export declare function getCalmingQuadBounds(waterQuad: number, minX: number, minY: number, maxX: number, maxY: number): boolean;
+export declare function getCalmingQuadBounds(waterQuad: number): [boolean, number, number, number, number];
 /**
  * Returns all rope handles. The data returned adheres to the following layout:
  *
@@ -412,7 +412,7 @@ export declare function getAllRopes(): number;
  *
  * Hash: 0x15E55694 | Since: client
  */
-export declare function findFirstVehicle(outEntity: number | Entity): number;
+export declare function findFirstVehicle(): [number, number | Entity];
 /**
  * This native returns the index of a calming quad if the given point is inside its bounds.
  *
@@ -424,7 +424,7 @@ export declare function getCalmingQuadAtCoords(x: number, y: number): number;
  *
  * Hash: 0x8839120D | Since: client
  */
-export declare function findNextVehicle(findHandle: number, outEntity: number | Entity): boolean;
+export declare function findNextVehicle(findHandle: number): [boolean, number | Entity];
 /**
  * This native is not implemented.
  *
@@ -454,13 +454,13 @@ export declare function experimentalSaveCloneSync(entity: number | Entity): stri
  *
  * Hash: 0xFB012961 | Since: client
  */
-export declare function findFirstPed(outEntity: number | Entity): number;
+export declare function findFirstPed(): [number, number | Entity];
 /**
  * This native is not implemented.
  *
  * Hash: 0x6BC189AC | Since: client
  */
-export declare function experimentalLoadCloneSync(entity: number | Entity, data: string): void;
+export declare function experimentalLoadCloneSync(entity: number | Entity): string;
 /**
  * Returns all player indices for 'active' physical players known to the client.
  * The data returned adheres to the following layout:
@@ -471,7 +471,7 @@ export declare function experimentalLoadCloneSync(entity: number | Entity, data:
  *
  * Hash: 0xCF143FB9 | Since: client
  */
-export declare function getActivePlayers(): number;
+export declare function getActivePlayers(): number[];
 /**
  * No comment provided
  *
@@ -500,25 +500,25 @@ export declare function formatStackTrace(traceData: number | Object): string;
  *
  * Hash: 0xB0E3A058 | Since: client
  */
-export declare function getCalmingQuadDampening(waterQuad: number, calmingQuadDampening: number): boolean;
+export declare function getCalmingQuadDampening(waterQuad: number): [boolean, number];
 /**
  * This native is not implemented.
  *
  * Hash: 0xD2CB95A3 | Since: client
  */
-export declare function experimentalLoadCloneCreate(data: string, objectId: number, tree: string): number;
+export declare function experimentalLoadCloneCreate(objectId: number): [number, string, string];
 /**
  * No comment provided
  *
  * Hash: 0xFAA6CB5D | Since: client
  */
-export declare function findFirstObject(outEntity: number | Entity): number;
+export declare function findFirstObject(): [number, number | Entity];
 /**
  * No comment provided
  *
  * Hash: 0x3FF9D340 | Since: client
  */
-export declare function findFirstPickup(outEntity: number | Entity): number;
+export declare function findFirstPickup(): [number, number | Entity];
 /**
  * Returns all track junctions on the client
  * The data returned adheres to the following structure:
@@ -541,7 +541,7 @@ export declare function forceSnowPass(enabled: boolean): void;
  *
  * Hash: 0x4107EF0F | Since: client
  */
-export declare function findNextPickup(findHandle: number, outEntity: number | Entity): boolean;
+export declare function findNextPickup(findHandle: number): [boolean, number | Entity];
 /**
  * A getter for [SET_AMBIENT_PED_RANGE_MULTIPLIER_THIS_FRAME](#\_0x0B919E1FB47CC4E0).
  *
@@ -553,7 +553,7 @@ export declare function getAmbientPedRangeMultiplier(): number;
  *
  * Hash: 0xAB09B548 | Since: client
  */
-export declare function findNextPed(findHandle: number, outEntity: number | Entity): boolean;
+export declare function findNextPed(findHandle: number): [boolean, number | Entity];
 /**
  * Returns the peer address of the remote game server that the user is currently connected to.
  *
@@ -583,7 +583,7 @@ export declare function getHudComponentSize(id: number): Vector3;
  *
  * Hash: 0x9E666D | Since: shared
  */
-export declare function getConvarFloat(varName: string, defaultValue: number): number;
+export declare function getConvarFloat(defaultValue: number): [number, string];
 /**
  * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
  *
@@ -611,19 +611,19 @@ export declare function getCurrentGameName(): string;
  *
  * Hash: 0x935C0AB2 | Since: shared
  */
-export declare function getConvarInt(varName: string, default_: number): number;
+export declare function getConvarInt(default_: number): [number, string];
 /**
  * Can be used to get a console variable casted back to `bool`.
  *
  * Hash: 0x7E8EBFE5 | Since: shared
  */
-export declare function getConvarBool(varName: string, defaultValue: boolean): boolean;
+export declare function getConvarBool(defaultValue: boolean): [boolean, string];
 /**
  * Can be used to get a console variable of type `char*`, for example a string.
  *
  * Hash: 0x6CCD2564 | Since: shared
  */
-export declare function getConvar(varName: string, default_: string): string;
+export declare function getConvar(): [string, string, string];
 /**
  * Gets the current screen resolution.
  *
@@ -635,7 +635,7 @@ export declare function getConvar(varName: string, default_: string): string;
  *
  * Hash: 0x337F0116 | Since: client
  */
-export declare function getCurrentScreenResolution(width: number, height: number): void;
+export declare function getCurrentScreenResolution(): [number, number];
 /**
  * A getter for [SET_GLOBAL_PASSENGER_MASS_MULTIPLIER](#\_0x3422291C).
  *
@@ -659,7 +659,7 @@ export declare function getDuiHandle(duiObject: number): string;
  *
  * Hash: 0x4BDF1867 | Since: shared
  */
-export declare function getEntityFromStateBagName(bagName: string): number;
+export declare function getEntityFromStateBagName(): [number, string];
 /**
  * ### Supported types
  *
@@ -710,13 +710,13 @@ export declare function getInteriorPortalEntityArchetype(interiorId: number, por
  *
  * Hash: 0xCD949E20 | Since: client
  */
-export declare function getHudComponentAlign(id: number, horizontalAlign: number, verticalAlign: number): void;
+export declare function getHudComponentAlign(id: number): [number, number];
 /**
  * No comment provided
  *
  * Hash: 0xF772BB2C | Since: client
  */
-export declare function getInteriorPortalCornerPosition(interiorId: number, portalIndex: number, cornerIndex: number, posX: number, posY: number, posZ: number): void;
+export declare function getInteriorPortalCornerPosition(interiorId: number, portalIndex: number, cornerIndex: number): [number, number, number];
 /**
  * No comment provided
  *
@@ -734,7 +734,7 @@ export declare function getInstanceId(): number;
  *
  * Hash: 0xF9E795DD | Since: client
  */
-export declare function getInteriorRoomExtents(interiorId: number, roomIndex: number, bbMinX: number, bbMinY: number, bbMinZ: number, bbMaxX: number, bbMaxY: number, bbMaxZ: number): void;
+export declare function getInteriorRoomExtents(interiorId: number, roomIndex: number): [number, number, number, number, number, number];
 /**
  * Returns the current game being executed.
  *
@@ -768,7 +768,7 @@ export declare function getGameName(): string;
  *
  * Hash: 0x2B9D4F50 | Since: shared
  */
-export declare function getGamePool(poolName: string): number;
+export declare function getGamePool(pool: string): number[];
 /**
  * No comment provided
  *
@@ -819,13 +819,13 @@ export declare function getGameBuildNumber(): number;
  *
  * Hash: 0x322B1192 | Since: client
  */
-export declare function getInteriorEntitiesExtents(interiorId: number, bbMinX: number, bbMinY: number, bbMinZ: number, bbMaxX: number, bbMaxY: number, bbMaxZ: number): void;
+export declare function getInteriorEntitiesExtents(interiorId: number): [number, number, number, number, number, number];
 /**
  * An alternative to [GET_NUMBER_OF_PED_TEXTURE_VARIATIONS](#\_0x8F7156A3142A6BAD) that uses local collection indexing instead of the global one.
  *
  * Hash: 0xD2C15D7 | Since: client
  */
-export declare function getNumberOfPedCollectionTextureVariations(ped: number | Ped, componentId: number, collection: string, drawableId: number): number;
+export declare function getNumberOfPedCollectionTextureVariations(ped: number | Ped, componentId: number, drawableId: number): [number, string];
 /**
  * No comment provided
  *
@@ -851,7 +851,7 @@ export declare function getInteriorRoomFlag(interiorId: number, roomIndex: numbe
  *
  * Hash: 0xC46EE605 | Since: client
  */
-export declare function getPedHeadOverlayData(ped: number | Ped, index: number, overlayValue: number, colourType: number, firstColour: number, secondColour: number, overlayOpacity: number): boolean;
+export declare function getPedHeadOverlayData(ped: number | Ped, index: number): [boolean, number, number, number, number, number];
 /**
  * No comment provided
  *
@@ -863,7 +863,7 @@ export declare function getNetworkWalkMode(): boolean;
  *
  * Hash: 0x9F9CEB63 | Since: client
  */
-export declare function getInteriorPortalEntityRotation(interiorId: number, portalIndex: number, entityIndex: number, rotX: number, rotY: number, rotZ: number, rotW: number): void;
+export declare function getInteriorPortalEntityRotation(interiorId: number, portalIndex: number, entityIndex: number): [number, number, number, number];
 /**
  * No comment provided
  *
@@ -875,7 +875,7 @@ export declare function getInteriorPortalRoomFrom(interiorId: number, portalInde
  *
  * Hash: 0xBDBA226F | Since: client
  */
-export declare function getNuiCursorPosition(x: number, y: number): void;
+export declare function getNuiCursorPosition(): [number, number];
 /**
  * No comment provided
  *
@@ -893,13 +893,13 @@ export declare function getInteriorPortalRoomTo(interiorId: number, portalIndex:
  *
  * Hash: 0x77A435B0 | Since: client
  */
-export declare function getInteriorPosition(interiorId: number, posX: number, posY: number, posZ: number): void;
+export declare function getInteriorPosition(interiorId: number): [number, number, number];
 /**
  * No comment provided
  *
  * Hash: 0x9B7AB83C | Since: client
  */
-export declare function getInteriorPortalEntityPosition(interiorId: number, portalIndex: number, entityIndex: number, posX: number, posY: number, posZ: number): void;
+export declare function getInteriorPortalEntityPosition(interiorId: number, portalIndex: number, entityIndex: number): [number, number, number];
 /**
  * No comment provided
  *
@@ -911,7 +911,7 @@ export declare function getInteriorPortalEntityFlag(interiorId: number, portalIn
  *
  * Hash: 0x5A039998 | Since: client
  */
-export declare function getInteriorRotation(interiorId: number, rotx: number, rotY: number, rotZ: number, rotW: number): void;
+export declare function getInteriorRotation(interiorId: number): [number, number, number, number];
 /**
  * No comment provided
  *
@@ -929,7 +929,7 @@ export declare function getInteriorRoomName(interiorId: number, roomIndex: numbe
  *
  * Hash: 0x310D0271 | Since: client
  */
-export declare function getNumberOfPedCollectionDrawableVariations(ped: number | Ped, componentId: number, collection: string): number;
+export declare function getNumberOfPedCollectionDrawableVariations(ped: number | Ped, componentId: number): [number, string];
 /**
  * Get the minimap type:
  *
@@ -948,13 +948,13 @@ export declare function getMinimapType(): number;
  *
  * Hash: 0x3B6A13E1 | Since: client
  */
-export declare function getNumberOfPedCollectionPropDrawableVariations(ped: number | Ped, anchorPoint: number, collection: string): number;
+export declare function getNumberOfPedCollectionPropDrawableVariations(ped: number | Ped, anchorPoint: number): [number, string];
 /**
  * An alternative to [GET_NUMBER_OF_PED_PROP_TEXTURE_VARIATIONS](#\_0xA6E7F1CEB523E171) that uses local collection indexing instead of the global one.
  *
  * Hash: 0x75CAF9CC | Since: client
  */
-export declare function getNumberOfPedCollectionPropTextureVariations(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number): number;
+export declare function getNumberOfPedCollectionPropTextureVariations(ped: number | Ped, anchorPoint: number, propIndex: number): [number, string];
 /**
  * No comment provided
  *
@@ -978,7 +978,7 @@ export declare function getPedCollectionLocalIndexFromDrawable(ped: number | Ped
  *
  * Hash: 0x1363A998 | Since: client
  */
-export declare function getMapZoomDataLevel(index: number, zoomScale: number, zoomSpeed: number, scrollSpeed: number, tilesX: number, tilesY: number): boolean;
+export declare function getMapZoomDataLevel(index: number): [boolean, number, number, number, number, number];
 /**
  * A getter for [SET_PLAYER_MELEE_WEAPON_DEFENSE_MODIFIER](#\_0xAE540335B4ABC4E2).
  *
@@ -1031,7 +1031,7 @@ export declare function getPlayerServerId(player: number | string | Player): num
  *
  * Hash: 0x776E864 | Since: shared
  */
-export declare function getNumResourceMetadata(resourceName: string, metadataKey: string): number;
+export declare function getNumResourceMetadata(): [number, string, string];
 /**
  * A getter for [\_SET_PED_EYE_COLOR](#\_0x50B56988B170AFDF). Returns -1 if fails to get.
  *
@@ -1086,7 +1086,7 @@ export declare function getPedModelPersonality(modelHash: number | string): numb
  *
  * Hash: 0x964BAB1D | Since: shared
  */
-export declare function getResourceMetadata(resourceName: string, metadataKey: string, index: number): string;
+export declare function getResourceMetadata(index: number): [string, string, string];
 /**
  * An analogue to [GET_PED_DRAWABLE_VARIATION](#\_0x67F3780DD425D4FC) that returns collection local drawable index (inside [GET_PED_DRAWABLE_VARIATION_COLLECTION_NAME](#\_0xBCE0AB63) collection) instead of the global drawable index.
  *
@@ -1120,7 +1120,7 @@ export declare function getRuntimeTextureWidth(tex: number): number;
  *
  * Hash: 0x280F1FC3 | Since: client
  */
-export declare function getPedDrawableGlobalIndexFromCollection(ped: number | Ped, componentId: number, collection: string, drawableId: number): number;
+export declare function getPedDrawableGlobalIndexFromCollection(ped: number | Ped, componentId: number, drawableId: number): [number, string];
 /**
  * Returns global prop index based on the local one. Is it a reverse to [GET_PED_COLLECTION_NAME_FROM_PROP](#\_0x8ED0C17) and [GET_PED_COLLECTION_LOCAL_INDEX_FROM_PROP](#\_0xFBDB885F) natives.
  *
@@ -1130,7 +1130,7 @@ export declare function getPedDrawableGlobalIndexFromCollection(ped: number | Pe
  *
  * Hash: 0x2CB45CDC | Since: client
  */
-export declare function getPedPropGlobalIndexFromCollection(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number): number;
+export declare function getPedPropGlobalIndexFromCollection(ped: number | Ped, anchorPoint: number, propIndex: number): [number, string];
 /**
  * A getter for [\_SET_PED_HAIR_COLOR](#\_0x4CFFC65454C93A49). Returns -1 if fails to get.
  *
@@ -1168,7 +1168,7 @@ export declare function getPedPropCollectionName(ped: number | Ped, anchorPoint:
  *
  * Hash: 0x9C5E7C9C | Since: client
  */
-export declare function getPedBoneMatrix(ped: number | Ped, boneId: number, forwardVector: Vector3, rightVector: Vector3, upVector: Vector3, position: Vector3): void;
+export declare function getPedBoneMatrix(ped: number | Ped, boneId: number): [Vector3, Vector3, Vector3, Vector3];
 /**
  * Gets collection name for the given global prop index. Together with [GET_PED_COLLECTION_LOCAL_INDEX_FROM_PROP](#\_0xFBDB885F) is used to get collection and local index (inside the given collection) of the prop. The collection name and index are used in functions like [SET_PED_COLLECTION_PROP_INDEX](#\_0x75240BCB).
  *
@@ -1198,7 +1198,7 @@ export declare function getVehicleAlarmTimeLeft(vehicle: number | Vehicle): numb
  *
  * Hash: 0xA56135E0 | Since: shared
  */
-export declare function getPlayerFromStateBagName(bagName: string): number;
+export declare function getPlayerFromStateBagName(): [number, string];
 /**
  * A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#\_0xCE07B9F7817AADA3).
  *
@@ -1232,7 +1232,7 @@ export declare function getPlayerFromServerId(serverId: number): number | string
  *
  * Hash: 0x637F4C75 | Since: shared
  */
-export declare function getStateBagValue(bagName: string, key: string): number;
+export declare function getStateBagValue(): [number, string, string];
 /**
  * A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#\_0x2D83BC011CA14A3C).
  *
@@ -1268,7 +1268,7 @@ export declare function getPlayerStamina(playerId: number | string | Player): nu
  *
  * Hash: 0x4039B485 | Since: shared
  */
-export declare function getResourceState(resourceName: string): string;
+export declare function getResourceState(): [string, string];
 /**
  * Gets the height of the specified runtime texture.
  *
@@ -1318,7 +1318,7 @@ export declare function getVehicleDashboardSpeed(vehicle: number | Vehicle): num
  *
  * Hash: 0x78D864C7 | Since: shared
  */
-export declare function getStateBagKeys(bagName: string): number;
+export declare function getStateBagKeys(): [number, string];
 /**
  * A getter for [SET_RANDOM_VEHICLE_DENSITY_MULTIPLIER_THIS_FRAME](#\_0xB3B3359379FE77D3).
  * Same as vehicle density multiplier.
@@ -1347,13 +1347,13 @@ export declare function getRandomVehicleDensityMultiplier(): number;
  *
  * Hash: 0x97628584 | Since: shared
  */
-export declare function getResourceCommands(resource: string): number;
+export declare function getResourceCommands(): [number, string];
 /**
  * No comment provided
  *
  * Hash: 0x5F4CD0E2 | Since: client
  */
-export declare function getTimecycleModifierIndexByName(modifierName: string): number;
+export declare function getTimecycleModifierIndexByName(): [number, string];
 /**
  * Returns the amount of variables available to be applied on timecycle modifiers.
  *
@@ -1405,7 +1405,7 @@ export declare function getVehicleCurrentGear(vehicle: number | Vehicle): number
  *
  * Hash: 0x60FB60FE | Since: client
  */
-export declare function getTimecycleModifierVarCount(modifierName: string): number;
+export declare function getTimecycleModifierVarCount(): [number, string];
 /**
  * No comment provided
  *
@@ -1435,7 +1435,7 @@ export declare function getTimecycleModifierNameByIndex(modifierIndex: number): 
  *
  * Hash: 0xE874AB1D | Since: client
  */
-export declare function getTimecycleModifierVarNameByIndex(modifierName: string, modifierVarIndex: number): string;
+export declare function getTimecycleModifierVarNameByIndex(modifierVarIndex: number): [string, string];
 /**
  * A getter for [SET_TIMECYCLE_MODIFIER_STRENGTH](#\_0x82E7FFCD5B2326B3).
  *
@@ -1493,13 +1493,13 @@ export declare function getTrainCurrentTrackNode(train: number | Vehicle): numbe
  *
  * Hash: 0x4301E10C | Since: client
  */
-export declare function getShapeTestResultIncludingMaterial(shapeTestHandle: number, hit: boolean, endCoords: Vector3, surfaceNormal: Vector3, materialHash: number | string, entityHit: number | Entity): number;
+export declare function getShapeTestResultIncludingMaterial(shapeTestHandle: number): [number, boolean, Vector3, Vector3, number | string, number | Entity];
 /**
  * No comment provided
  *
  * Hash: 0xA7109E12 | Since: client
  */
-export declare function getTimecycleModifierVar(modifierName: string, varName: string, value1: number, value2: number): boolean;
+export declare function getTimecycleModifierVar(): [boolean, string, string, number, number];
 /**
  * No comment provided
  *
@@ -1511,7 +1511,7 @@ export declare function getTrackMaxSpeed(track: number): number;
  *
  * Hash: 0x1628548E | Since: client
  */
-export declare function getTrackNodeCoords(trackIndex: number, trackNode: number, coords: Vector3): boolean;
+export declare function getTrackNodeCoords(trackIndex: number, trackNode: number): [boolean, Vector3];
 /**
  * No comment provided
  *
@@ -1668,7 +1668,7 @@ export declare function getVehicleDashboardCurrentGear(): number;
  *
  * Hash: 0x27396C75 | Since: client
  */
-export declare function getVehicleHandlingInt(vehicle: number | Vehicle, class_: string, fieldName: string): number;
+export declare function getVehicleHandlingInt(vehicle: number | Vehicle): [number, string, string];
 /**
  * Gets brake pressure of a wheel.
  * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
@@ -1750,13 +1750,13 @@ export declare function getVehicleGearRatio(vehicle: number | Vehicle, gear: num
  *
  * Hash: 0xFB341304 | Since: client
  */
-export declare function getVehicleHandlingVector(vehicle: number | Vehicle, class_: string, fieldName: string): Vector3;
+export declare function getVehicleHandlingVector(vehicle: number | Vehicle): [Vector3, string, string];
 /**
  * No comment provided
  *
  * Hash: 0x22EA3BD8 | Since: client
  */
-export declare function getWaterQuadHasLimitedDepth(waterQuad: number, hasLimitedDepth: number): boolean;
+export declare function getWaterQuadHasLimitedDepth(waterQuad: number): [boolean, number];
 /**
  * A getter for [MODIFY_VEHICLE_TOP_SPEED](#\_0x93A3996368C94158). Returns -1.0 if a modifier is not set.
  *
@@ -1794,7 +1794,7 @@ export declare function getVehicleOilLevel(vehicle: number | Vehicle): number;
  *
  * Hash: 0x642FC12F | Since: client
  */
-export declare function getVehicleHandlingFloat(vehicle: number | Vehicle, class_: string, fieldName: string): number;
+export declare function getVehicleHandlingFloat(vehicle: number | Vehicle): [number, string, string];
 /**
  * No comment provided
  *
@@ -1846,7 +1846,7 @@ export declare function getVehicleNumberOfWheels(vehicle: number | Vehicle): num
  *
  * Hash: 0x1DEDBD77 | Since: client
  */
-export declare function getWaterQuadIsInvisible(waterQuad: number, isInvisible: number): boolean;
+export declare function getWaterQuadIsInvisible(waterQuad: number): [boolean, number];
 /**
  * Gets the current suspension compression of a wheel.
  * Returns a positive value. 0 means the suspension is fully extended, the wheel is off the ground.
@@ -1897,7 +1897,7 @@ export declare function getVehicleXmasSnowFactor(): number;
  *
  * Hash: 0xC715F730 | Since: client
  */
-export declare function getVehicleXenonLightsCustomColor(vehicle: number | Vehicle, red: number, green: number, blue: number): boolean;
+export declare function getVehicleXenonLightsCustomColor(vehicle: number | Vehicle): [boolean, number, number, number];
 /**
  * No comment provided
  *
@@ -1921,7 +1921,7 @@ export declare function getVehicleWheelTireColliderSize(vehicle: number | Vehicl
  *
  * Hash: 0x6523816B | Since: client
  */
-export declare function getWaterQuadLevel(waterQuad: number, waterQuadLevel: number): boolean;
+export declare function getWaterQuadLevel(waterQuad: number): [boolean, number];
 /**
  * A getter for `ReticuleHash` in a weapon scope component.
  *
@@ -1945,7 +1945,7 @@ export declare function getWeaponComponentCameraHash(componentHash: number | str
  *
  * Hash: 0x14088095 | Since: client
  */
-export declare function getWaterQuadAlpha(waterQuad: number, a0: number, a1: number, a2: number, a3: number): boolean;
+export declare function getWaterQuadAlpha(waterQuad: number): [boolean, number, number, number, number];
 /**
  * No comment provided
  *
@@ -1964,7 +1964,7 @@ export declare function getVehicleWheelSpeed(vehicle: number | Vehicle, wheelInd
  *
  * Hash: 0xCCE49A1C | Since: client
  */
-export declare function getWaveQuadDirection(waveQuad: number, directionX: number, directionY: number): boolean;
+export declare function getWaveQuadDirection(waveQuad: number): [boolean, number, number];
 /**
  * Returns the type of the passed vehicle.
  *
@@ -1997,7 +1997,7 @@ export declare function getWaterQuadAtCoords(x: number, y: number): number;
  *
  * Hash: 0x42E9A06A | Since: client
  */
-export declare function getWaterQuadBounds(waterQuad: number, minX: number, minY: number, maxX: number, maxY: number): boolean;
+export declare function getWaterQuadBounds(waterQuad: number): [boolean, number, number, number, number];
 /**
  * Gets the flags of a wheel.
  * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
@@ -2010,7 +2010,7 @@ export declare function getVehicleWheelFlags(vehicle: number | Vehicle, wheelInd
  *
  * Hash: 0x6F4ACBA | Since: client
  */
-export declare function getWaterQuadNoStencil(waterQuad: number, noStencil: number): boolean;
+export declare function getWaterQuadNoStencil(waterQuad: number): [boolean, number];
 /**
  * A getter for [\_SET_WEAPON_DAMAGE_MODIFIER](#\_0x4757F00BC6323CFE).
  *
@@ -2028,7 +2028,7 @@ export declare function getVehicleWheelXOffset(vehicle: number | Vehicle, wheelI
  *
  * Hash: 0x15346B4D | Since: client
  */
-export declare function getVisualSettingFloat(name: string): number;
+export declare function getVisualSettingFloat(): [number, string];
 /**
  * Returns true if the minimap is currently expanded. False if it's the normal minimap state.
  * Use [`IsBigmapFull`](#\_0x66EE14B2) to check if the full map is currently revealed on the minimap.
@@ -2063,7 +2063,7 @@ export declare function getWaterQuadCount(): number;
  *
  * Hash: 0xCA63A52A | Since: client
  */
-export declare function isPedCollectionComponentVariationValid(ped: number | Ped, componentId: number, collection: string, drawableId: number, textureId: number): boolean;
+export declare function isPedCollectionComponentVariationValid(ped: number | Ped, componentId: number, drawableId: number, textureId: number): [boolean, string];
 /**
  * A getter for the accuracy spread of a weapon.
  *
@@ -2075,7 +2075,7 @@ export declare function getWeaponAccuracySpread(weaponHash: number | string): nu
  *
  * Hash: 0xF86136DB | Since: client
  */
-export declare function getWaveQuadBounds(waveQuad: number, minX: number, minY: number, maxX: number, maxY: number): boolean;
+export declare function getWaveQuadBounds(waveQuad: number): [boolean, number, number, number, number];
 /**
  * A getter for `CWeaponFallOffModifier` damage modifier value in a weapon component.
  *
@@ -2099,7 +2099,7 @@ export declare function isNuiFocused(): boolean;
  *
  * Hash: 0xE2501B8B | Since: client
  */
-export declare function getWaterQuadType(waterQuad: number, waterType: number): boolean;
+export declare function getWaterQuadType(waterQuad: number): [boolean, number];
 /**
  * Returns whether or not a browser is created for a specified DUI browser object.
  *
@@ -2138,7 +2138,7 @@ export declare function getVehicleWheelWidth(vehicle: number | Vehicle): number;
  *
  * Hash: 0x865139A3 | Since: client
  */
-export declare function getWaveQuadAmplitude(waveQuad: number, waveQuadAmplitude: number): boolean;
+export declare function getWaveQuadAmplitude(waveQuad: number): [boolean, number];
 /**
  * Gets whether or not this is the CitizenFX server.
  *
@@ -2174,7 +2174,7 @@ export declare function getWeaponComponentClipSize(componentHash: number | strin
  *
  * Hash: 0xC81D0659 | Since: client
  */
-export declare function getWorldCoordFromScreenCoord(screenX: number, screenY: number, worldVector: Vector3, normalVector: Vector3): void;
+export declare function getWorldCoordFromScreenCoord(screenSize: Vector2): [Vector3, Vector3];
 /**
  * Gets if the specified `rawKeyIndex` is up, even if the key is disabled with [DISABLE_RAW_KEY_THIS_FRAME](#\_0x8BCF0014).
  *
@@ -2192,13 +2192,13 @@ export declare function isDisabledRawKeyUp(rawKeyIndex: number): boolean;
  *
  * Hash: 0x33B2AFA2 | Since: client
  */
-export declare function isPedCollectionComponentVariationGen9Exclusive(ped: number | Ped, componentId: number, collection: string, drawableId: number): boolean;
+export declare function isPedCollectionComponentVariationGen9Exclusive(ped: number | Ped, componentId: number, drawableId: number): [boolean, string];
 /**
  * No comment provided
  *
  * Hash: 0x37CF52CE | Since: shared
  */
-export declare function isPrincipalAceAllowed(principal: string, object: string): boolean;
+export declare function isPrincipalAceAllowed(): [boolean, string, string];
 /**
  * No comment provided
  *
@@ -2216,7 +2216,7 @@ export declare function isVehicleWanted(vehicle: number | Vehicle): boolean;
  *
  * Hash: 0x7EBB9929 | Since: shared
  */
-export declare function isAceAllowed(object: string): boolean;
+export declare function isAceAllowed(): [boolean, string];
 /**
  * Gets if the specified `rawKeyIndex` is pressed on the keyboard.
  *
@@ -2310,7 +2310,7 @@ export declare function isVehicleNeedsToBeHotwired(vehicle: number | Vehicle): b
  *
  * Hash: 0xA194934D | Since: client
  */
-export declare function isStreamingFileReady(registerAs: string): boolean;
+export declare function isStreamingFileReady(): [boolean, string];
 /**
  * Getter for [SWITCH_TRAIN_TRACK](#\_0xFD813BB7DB977F20). Determines if ambient trains are able to spawn on this track.
  *
@@ -2399,7 +2399,7 @@ export declare function isRawKeyUp(rawKeyIndex: number): boolean;
  *
  * Hash: 0x76A9EE1F | Since: shared
  */
-export declare function loadResourceFile(resourceName: string, fileName: string): string;
+export declare function loadResourceFile(resource: string, path: string): string;
 /**
  * No comment provided
  *
@@ -2427,7 +2427,7 @@ export declare function mumbleSetVolumeOverride(player: number | string | Player
  *
  * Hash: 0xE6EB2CD8 | Since: client
  */
-export declare function mumbleSetServerAddress(address: string, port: number): void;
+export declare function mumbleSetServerAddress(port: number): string;
 /**
  * No comment provided
  *
@@ -2529,7 +2529,7 @@ export declare function profilerExitScope(): void;
  *
  * Hash: 0xACF6D8EE | Since: client
  */
-export declare function registerFontId(fontName: string): number;
+export declare function registerFontId(): [number, string];
 /**
  * No comment provided
  *
@@ -2541,7 +2541,7 @@ export declare function mumbleSetActive(state: boolean): void;
  *
  * Hash: 0xF5102568 | Since: client
  */
-export declare function loadWaterFromPath(resourceName: string, fileName: string): boolean;
+export declare function loadWaterFromPath(): [boolean, string, string];
 /**
  * Registers a key mapping for the current resource.
  *
@@ -2551,7 +2551,7 @@ export declare function loadWaterFromPath(resourceName: string, fileName: string
  *
  * Hash: 0xD7664FD1 | Since: client
  */
-export declare function registerKeyMapping(commandString: string, description: string, defaultMapper: string, defaultParameter: string): void;
+export declare function registerKeyMapping(): [string, string, string, string];
 /**
  * Overrides whether or not peds can stand on top of the specified vehicle.
  *
@@ -2581,13 +2581,13 @@ export declare function mumbleRemoveVoiceTargetPlayerByServerId(targetId: number
  *
  * Hash: 0x1493DCC1 | Since: client
  */
-export declare function registerStreamingFileFromKvs(kvsKey: string): void;
+export declare function registerStreamingFileFromKvs(): string;
 /**
  * No comment provided
  *
  * Hash: 0xC59B980C | Since: client
  */
-export declare function registerNuiCallback(callbackType: string, callback: Function): void;
+export declare function registerNuiCallback(key: string, callback: Function): string;
 /**
  * Removes a dry volume from the game session.
  * See CREATE_DRY_VOLUME for more info
@@ -2600,13 +2600,13 @@ export declare function removeDryVolume(handle: number): void;
  *
  * Hash: 0xD3BC438F | Since: client
  */
-export declare function overridePopGroups(path: string): void;
+export declare function overridePopGroups(): string;
 /**
  * An internal function which allows the current resource's HLL script runtimes to receive state for the specified event.
  *
  * Hash: 0xD233A168 | Since: shared
  */
-export declare function registerResourceAsEventHandler(eventName: string): void;
+export declare function registerResourceAsEventHandler(): string;
 /**
  * This native will return true if the user succesfully connected to the voice server.
  * If the user disabled the voice-chat setting it will return false.
@@ -2619,7 +2619,7 @@ export declare function mumbleIsConnected(): boolean;
  *
  * Hash: 0xA8AE9C2F | Since: client
  */
-export declare function registerRawNuiCallback(callbackType: string, callback: Function): void;
+export declare function registerRawNuiCallback(callback: Function): string;
 /**
  * Removes the specified texture and remove it from the ped.
  * Unlike `0x6BEFAA907B076859` which only marks the texture as "can be reused" (and keeps it until will be reused), this function deletes it right away. Can fix some sync issues. `DOES_TEXTURE_EXIST` can be use to wait until fully unloaded by game
@@ -2689,7 +2689,7 @@ export declare function overrideReactionToVehicleSiren(state: boolean, reaction:
  *
  * Hash: 0xF44BFB95 | Since: client
  */
-export declare function registerStreamingFileFromUrl(registerAs: string, url: string): void;
+export declare function registerStreamingFileFromUrl(): [string, string];
 /**
  * Registers a custom rope data with the game. For guidance on what these values should be use common:/data/ropedata.xml as a reference.
  * Returns a rope type which can be passed into [ADD_ROPE](#\_0xE832D760399EB220) to use a custom rope design.
@@ -2697,7 +2697,7 @@ export declare function registerStreamingFileFromUrl(registerAs: string, url: st
  *
  * Hash: 0xF213AE8D | Since: client
  */
-export declare function registerRopeData(numSections: number, radius: number, diffuseTextureName: string, normalMapName: string, distanceMappingScale: number, uvScaleX: number, uvScaleY: number, specularFresnel: number, specularFalloff: number, specularIntensity: number, bumpiness: number, color: number): number;
+export declare function registerRopeData(numSections: number, radius: number, distanceMappingScale: number, uvScaleX: number, uvScaleY: number, specularFresnel: number, specularFalloff: number, specularIntensity: number, bumpiness: number, color: number): [number, string, string];
 /**
  * Toggles a check that prevents attaching (networked) entities to remotely owned peds. This is disabled by default.
  *
@@ -2711,7 +2711,7 @@ export declare function onesyncEnableRemoteAttachmentSanitization(enable: boolea
  *
  * Hash: 0x6E38C1B9 | Since: client
  */
-export declare function remapRawKeymap(keymapName: string, newRawKeyIndex: number): void;
+export declare function remapRawKeymap(newRawKeyIndex: number): string;
 /**
  * Requests a resource file set with the specified name to be downloaded and mounted on top of the current resource.
  *
@@ -2728,19 +2728,19 @@ export declare function remapRawKeymap(keymapName: string, newRawKeyIndex: numbe
  *
  * Hash: 0xE7490533 | Since: client
  */
-export declare function requestResourceFileSet(setName: string): boolean;
+export declare function requestResourceFileSet(): [boolean, string];
 /**
  * Scope entry for profiler.
  *
  * Hash: 0xC795A4A9 | Since: shared
  */
-export declare function profilerEnterScope(scopeName: string): void;
+export declare function profilerEnterScope(): string;
 /**
  * Experimental natives, please do not use in a live environment.
  *
  * Hash: 0xA896B20A | Since: client
  */
-export declare function removeReplaceTexture(origTxd: string, origTxn: string): void;
+export declare function removeReplaceTexture(): [string, string];
 /**
  * Removes the specified track junction.
  *
@@ -2758,7 +2758,7 @@ export declare function registerTrackJunction(trackIndex: number, trackNode: num
  *
  * Hash: 0x78608ACB | Since: client
  */
-export declare function sendNuiMessage(jsonString: string): boolean;
+export declare function sendNuiMessage(message: string): boolean;
 /**
  * Returns true if the profiler is active.
  *
@@ -2778,7 +2778,7 @@ export declare function resetVehiclePedsCanStandOnTopFlag(vehicle: number | Vehi
  *
  * Hash: 0x5A5E0D05 | Since: client
  */
-export declare function removeTimecycleModifierVar(modifierName: string, varName: string): void;
+export declare function removeTimecycleModifierVar(): [string, string];
 /**
  * Sets the volumes for the sound channels in a submix effect.
  * Values can be between 0.0 and 1.0.
@@ -2795,19 +2795,19 @@ export declare function setAudioSubmixOutputVolumes(submixId: number, outputSlot
  *
  * Hash: 0xCEAD2D4B | Since: client
  */
-export declare function registerStreamingFileFromCache(resourceName: string, fileName: string, cacheString: string): void;
+export declare function registerStreamingFileFromCache(): [string, string, string];
 /**
  * Injects a 'mouse down' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
  *
  * Hash: 0x5D01F191 | Since: client
  */
-export declare function sendDuiMouseDown(duiObject: number, button: string): void;
+export declare function sendDuiMouseDown(duiObject: number): string;
 /**
  * Injects a 'mouse up' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
  *
  * Hash: 0x1D735B93 | Since: client
  */
-export declare function sendDuiMouseUp(duiObject: number, button: string): void;
+export declare function sendDuiMouseUp(duiObject: number): string;
 /**
  * Resets parameters which is used by the game for checking is ped needs to fly through windscreen after a crash to default values.
  *
@@ -2846,7 +2846,7 @@ export declare function setBackfaceculling(toggle: boolean): void;
  *
  * Hash: 0x1B3A363 | Since: client
  */
-export declare function registerFontFile(fileName: string): void;
+export declare function registerFontFile(): string;
 /**
  * Adds a cooldown between instances of moving and then aiming.
  * Can be optionally used to hinder 'speedboosting'
@@ -2866,7 +2866,7 @@ export declare function setAimCooldown(value: number): void;
  *
  * Hash: 0x49C1F6DC | Since: client
  */
-export declare function registerRawKeymap(keymapName: string, onKeyDown: Function, onKeyUp: Function, rawKeyIndex: number, canBeDisabled: boolean): void;
+export declare function registerRawKeymap(onKeyDown: Function, onKeyUp: Function, rawKeyIndex: number, canBeDisabled: boolean): string;
 /**
  * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
  *
@@ -2880,13 +2880,13 @@ export declare function removeStateBagChangeHandler(cookie: number): void;
  *
  * Hash: 0xCD03CDA9 | Since: client
  */
-export declare function registerNuiCallbackType(callbackType: string): void;
+export declare function registerNuiCallbackType(): string;
 /**
  * This native sets the small image asset for the discord rich presence implementation.
  *
  * Hash: 0xF61D04C4 | Since: client
  */
-export declare function setDiscordRichPresenceAssetSmall(assetName: string): void;
+export declare function setDiscordRichPresenceAssetSmall(): string;
 /**
  * Registered commands can be executed by entering them in the client console (this works for client side and server side registered commands). Or by entering them in the server console/through an RCON client (only works for server side registered commands). Or if you use a supported chat resource, like the default one provided in the cfx-server-data repository, then you can enter the command in chat by prefixing it with a `/`.
  *
@@ -2900,7 +2900,7 @@ export declare function setDiscordRichPresenceAssetSmall(assetName: string): voi
  *
  * Hash: 0x5FA79B0F | Since: shared
  */
-export declare function registerCommand(commandName: string, handler: Function, restricted: boolean): void;
+export declare function registerCommand(name: string, handler: Function, restricted: boolean): void;
 /**
  * Resets values from the zoom level data by index to defaults from mapzoomdata.meta.
  *
@@ -2936,7 +2936,7 @@ export declare function setIgnoreVehicleOwnershipForStowing(ignore: boolean): vo
  *
  * Hash: 0x6A02254D | Since: client
  */
-export declare function setDiscordAppId(appId: string): void;
+export declare function setDiscordAppId(): string;
 /**
  * Injects a 'mouse wheel' event for a DUI object.
  *
@@ -2948,7 +2948,7 @@ export declare function sendDuiMouseWheel(duiObject: number, deltaY: number, del
  *
  * Hash: 0xCBBC3FAC | Since: client
  */
-export declare function setDiscordRichPresenceAction(index: number, label: string, url: string): void;
+export declare function setDiscordRichPresenceAction(index: number): [string, string];
 /**
  * Sets some in-game parameters which is used for checks is ped needs to fly through windscreen after a crash.
  *
@@ -2966,7 +2966,7 @@ export declare function setFlashLightKeepOnWhileMoving(state: boolean): void;
  *
  * Hash: 0x36DF8612 | Since: client
  */
-export declare function removeTimecycleModifier(modifierName: string): void;
+export declare function removeTimecycleModifier(): string;
 /**
  * No comment provided
  *
@@ -3009,26 +3009,26 @@ export declare function setManualShutdownLoadingScreenNui(manualShutdown: boolea
  *
  * Hash: 0x79780FD2 | Since: client
  */
-export declare function setDefaultVehicleNumberPlateTextPattern(plateIndex: number, pattern: string): void;
+export declare function setDefaultVehicleNumberPlateTextPattern(plateIndex: number): string;
 /**
  * This native sets the hover text of the small image asset for the discord rich presence implementation.
  *
  * Hash: 0x35E62B6A | Since: client
  */
-export declare function setDiscordRichPresenceAssetSmallText(text: string): void;
+export declare function setDiscordRichPresenceAssetSmallText(): string;
 /**
  * This native sets the image asset for the discord rich presence implementation.
  *
  * Hash: 0x53DFD530 | Since: client
  */
-export declare function setDiscordRichPresenceAsset(assetName: string): void;
+export declare function setDiscordRichPresenceAsset(): string;
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
  *
  * Hash: 0xFE8064E3 | Since: client
  */
-export declare function setHandlingField(vehicle: string, class_: string, fieldName: string, value: any): void;
+export declare function setHandlingField(value: any): [string, string, string];
 /**
  * No comment provided
  *
@@ -3066,32 +3066,32 @@ export declare function setAudioSubmixEffectRadioFx(submixId: number, effectSlot
  *
  * Hash: 0xCD380DA9 | Since: client
  */
-export declare function sendDuiMessage(duiObject: number, jsonString: string): void;
+export declare function sendDuiMessage(duiObject: number): string;
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
  *
  * Hash: 0x90DD01C | Since: client
  */
-export declare function setHandlingFloat(vehicle: string, class_: string, fieldName: string, value: number): void;
+export declare function setHandlingFloat(value: number): [string, string, string];
 /**
  * This native sets the hover text of the image asset for the discord rich presence implementation.
  *
  * Hash: 0xB029D2FA | Since: client
  */
-export declare function setDiscordRichPresenceAssetText(text: string): void;
+export declare function setDiscordRichPresenceAssetText(): string;
 /**
  * Sends a message to the `loadingScreen` NUI frame, which contains the HTML page referenced in `loadscreen` resources.
  *
  * Hash: 0x8BBE6CC0 | Since: client
  */
-export declare function sendLoadingScreenMessage(jsonString: string): boolean;
+export declare function sendLoadingScreenMessage(): [boolean, string];
 /**
  * Navigates the specified DUI browser to a different URL.
  *
  * Hash: 0xF761D9F3 | Since: client
  */
-export declare function setDuiUrl(duiObject: number, url: string): void;
+export declare function setDuiUrl(duiObject: number): string;
 /**
  * Sets values to the zoom level data by index.
  *
@@ -3137,7 +3137,7 @@ export declare function setCalmingQuadDampening(calmingQuad: number, dampening: 
  *
  * Hash: 0x8AB3F46C | Since: client
  */
-export declare function setHandlingInt(vehicle: string, class_: string, fieldName: string, value: number): void;
+export declare function setHandlingInt(value: number): [string, string, string];
 /**
  * No comment provided
  *
@@ -3203,7 +3203,7 @@ export declare function setKeyMappingHideResources(hide: boolean): void;
  *
  * Hash: 0x28FC4ECB | Since: client
  */
-export declare function setRuntimeTextureImage(tex: number, fileName: string): boolean;
+export declare function setRuntimeTextureImage(tex: number): [boolean, string];
 /**
  * No comment provided
  *
@@ -3219,7 +3219,7 @@ export declare function setInteriorPortalRoomTo(interiorId: number, portalIndex:
  *
  * Hash: 0x75240BCB | Since: client
  */
-export declare function setPedCollectionPropIndex(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number, textureId: number, attach: boolean): void;
+export declare function setPedCollectionPropIndex(ped: number | Ped, anchorPoint: number, propIndex: number, textureId: number, attach: boolean): string;
 /**
  * No comment provided
  *
@@ -3243,7 +3243,7 @@ export declare function setGlobalPassengerMassMultiplier(massMul: number): void;
  *
  * Hash: 0x3E882B23 | Since: client
  */
-export declare function setMinimapComponentPosition(name: string, alignX: string, alignY: string, posX: number, posY: number, sizeX: number, sizeY: number): void;
+export declare function setMinimapComponentPosition(posX: number, posY: number, sizeX: number, sizeY: number): [string, string, string];
 /**
  * Sets the display info for a minimap overlay.
  *
@@ -3286,7 +3286,7 @@ export declare function setMpGamerTagsUseVehicleBehavior(enabled: boolean): void
  *
  * Hash: 0x7F9D543 | Since: client
  */
-export declare function setHandlingVector(vehicle: string, class_: string, fieldName: string, value: Vector3): void;
+export declare function setHandlingVector(value: Vector3): [string, string, string];
 /**
  * An alternative to [SET_PED_COMPONENT_VARIATION](#\_0x262B14F48D29DE80) that uses local collection indexing instead of the global one.
  *
@@ -3296,7 +3296,7 @@ export declare function setHandlingVector(vehicle: string, class_: string, field
  *
  * Hash: 0x88711BBA | Since: client
  */
-export declare function setPedCollectionComponentVariation(ped: number | Ped, componentId: number, collection: string, drawableId: number, textureId: number, paletteId: number): void;
+export declare function setPedCollectionComponentVariation(ped: number | Ped, componentId: number, drawableId: number, textureId: number, paletteId: number): string;
 /**
  * <strong>This native is deprecated and does nothing!</strong>
  *
@@ -3312,7 +3312,7 @@ export declare function setModelHeadlightConfiguration(modelHash: number | strin
  *
  * Hash: 0x3EC75558 | Since: client
  */
-export declare function setPedCollectionPreloadVariationData(ped: number | Ped, componentId: number, collection: string, drawableId: number, textureId: number): void;
+export declare function setPedCollectionPreloadVariationData(ped: number | Ped, componentId: number, drawableId: number, textureId: number): string;
 /**
  * No comment provided
  *
@@ -3350,7 +3350,7 @@ export declare function setNuiFocusKeepInput(keepInput: boolean): void;
  *
  * Hash: 0xA7DD3209 | Since: client
  */
-export declare function setSnakeoilForEntry(name: string, path: string, data: string): void;
+export declare function setSnakeoilForEntry(): [string, string, string];
 /**
  * No comment provided
  *
@@ -3392,7 +3392,7 @@ export declare function setTextJustification(justifyType: number): void;
  *
  * Hash: 0x7BDCBD45 | Since: client
  */
-export declare function setRichPresence(presenceState: string): void;
+export declare function setRichPresence(): string;
 /**
  * Sets a pixel in the specified runtime texture. This will have to be committed using `COMMIT_RUNTIME_TEXTURE` to have any effect.
  *
@@ -3410,7 +3410,7 @@ export declare function setVehicleAlarmTimeLeft(vehicle: number | Vehicle, time:
  *
  * Hash: 0x3963D527 | Since: client
  */
-export declare function setRuntimeTextureArgbData(tex: number, buffer: string, length: number): boolean;
+export declare function setRuntimeTextureArgbData(tex: number, length: number): [boolean, string];
 /**
  * This completely disables pedestrian vehicles from reacting to sirens. They will not try to do any maneuver to evade.
  *
@@ -3428,7 +3428,7 @@ export declare function setTextChatEnabled(enabled: boolean): boolean;
  *
  * Hash: 0x6E0A422B | Since: client
  */
-export declare function setTimecycleModifierVar(modifierName: string, varName: string, value1: number, value2: number): void;
+export declare function setTimecycleModifierVar(value1: number, value2: number): [string, string];
 /**
  * No comment provided
  *
@@ -3440,7 +3440,7 @@ export declare function setVehicleGravityAmount(vehicle: number | Vehicle, gravi
  *
  * Hash: 0xC37F4CF9 | Since: client
  */
-export declare function setVehicleHandlingInt(vehicle: number | Vehicle, class_: string, fieldName: string, value: number): void;
+export declare function setVehicleHandlingInt(vehicle: number | Vehicle, value: number): [string, string];
 /**
  * Sets the text font for the current text drawing command.
  *
@@ -3485,7 +3485,7 @@ export declare function setTrackJunctionActive(junctionIndex: number, state: boo
  *
  * Hash: 0x12497890 | Since: client
  */
-export declare function setVehicleHandlingVector(vehicle: number | Vehicle, class_: string, fieldName: string, value: Vector3): void;
+export declare function setVehicleHandlingVector(vehicle: number | Vehicle, value: Vector3): [string, string];
 /**
  * No comment provided
  *
@@ -3497,7 +3497,7 @@ export declare function setTrainState(train: number | Vehicle, state: number): v
  *
  * Hash: 0x8D50E33A | Since: shared
  */
-export declare function setStateBagValue(bagName: string, keyName: string, valueData: string, valueLength: number, replicated: boolean): void;
+export declare function setStateBagValue(valueLength: number, replicated: boolean): [string, string, string];
 /**
  * An alternative to [SET_PED_PRELOAD_PROP_DATA](#\_0x2B16A3BFF1FBCE49) that uses local collection indexing instead of the global one.
  *
@@ -3507,14 +3507,14 @@ export declare function setStateBagValue(bagName: string, keyName: string, value
  *
  * Hash: 0x14B5BBE0 | Since: client
  */
-export declare function setPedCollectionPreloadPropData(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number, textureId: number): void;
+export declare function setPedCollectionPreloadPropData(ped: number | Ped, anchorPoint: number, propIndex: number, textureId: number): string;
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
  * Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
  *
  * Hash: 0x488C86D2 | Since: client
  */
-export declare function setVehicleHandlingFloat(vehicle: number | Vehicle, class_: string, fieldName: string, value: number): void;
+export declare function setVehicleHandlingFloat(vehicle: number | Vehicle, value: number): [string, string];
 /**
  * Example script: https://pastebin.com/J6XGbkCW
  *
@@ -3645,7 +3645,7 @@ export declare function setVehicleRollBias(vehicle: number | Vehicle, value: num
  *
  * Hash: 0x2BA40795 | Since: client
  */
-export declare function setVehicleHandlingField(vehicle: number | Vehicle, class_: string, fieldName: string, value: any): void;
+export declare function setVehicleHandlingField(vehicle: number | Vehicle, value: any): [string, string];
 /**
  * No comment provided
  *
@@ -3818,7 +3818,7 @@ export declare function setWaveQuadBounds(waveQuad: number, minX: number, minY: 
  *
  * Hash: 0xD1D31681 | Since: client
  */
-export declare function setVisualSettingFloat(name: string, value: number): void;
+export declare function setVisualSettingFloat(value: number): string;
 /**
  * Sets vehicle's wheels' width (width is the same for all the wheels, cannot get/set specific wheel of vehicle).
  * Only works on non-default wheels.
@@ -3921,7 +3921,7 @@ export declare function setVehicleWheelYRotation(vehicle: number | Vehicle, whee
  *
  * Hash: 0x7FB46432 | Since: client
  */
-export declare function unregisterRawNuiCallback(callbackType: string): void;
+export declare function unregisterRawNuiCallback(): string;
 /**
  * No comment provided
  *
@@ -3958,7 +3958,7 @@ export declare function setWeaponsNoAutoreload(state: boolean): void;
  *
  * Hash: 0x12A330 | Since: shared
  */
-export declare function stateBagHasKey(bagName: string, key: string): boolean;
+export declare function stateBagHasKey(): [boolean, string, string];
 /**
  * No comment provided
  *
@@ -3976,7 +3976,7 @@ export declare function wasEventCanceled(): boolean;
  *
  * Hash: 0x7FDD1128 | Since: client
  */
-export declare function triggerServerEventInternal(eventName: string, eventPayload: string, payloadLength: number): void;
+export declare function triggerServerEventInternal(payloadLength: number): [string, string];
 /**
  * Disables weapons aim blocking due to environment for local player.
  * For non-player peds [SET_PED_ENABLE_WEAPON_BLOCKING](#\_0x97A790315D3831FD) can be used.
@@ -4069,7 +4069,7 @@ export declare function getMapdataEntityMatrix(mapDataHash: number, entityIntern
  *
  * Hash: 0x68DFF2DD | Since: client
  */
-export declare function setEntityDrawOutlineRenderTechnique(techniqueGroup: string): void;
+export declare function setEntityDrawOutlineRenderTechnique(): string;
 /**
  * Returns the transient entity index for a specified mapdata/entity pair.
  * This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -4082,14 +4082,14 @@ export declare function getEntityIndexFromMapdata(mapdata: number, entity: numbe
  *
  * Hash: 0xD264D4E1 | Since: client
  */
-export declare function setWeatherCycleEntry(index: number, typeName: string, timeMult: number): boolean;
+export declare function setWeatherCycleEntry(index: number, timeMult: number): [boolean, string];
 /**
  * Retrieves the map data entity handle.
  * This function supports SDK infrastructure and is not intended to be used directly from your code.
  *
  * Hash: 0x30AA6911 | Since: client
  */
-export declare function getMapdataEntityHandle(mapDataHash: number, entityInternalIdx: number, entityHandle: number): boolean;
+export declare function getMapdataEntityHandle(mapDataHash: number, entityInternalIdx: number): [boolean, number];
 /**
  * Sets an entity's matrix. Arguments are in the same order as with GET_ENTITY_MATRIX.
  *
@@ -4126,7 +4126,7 @@ export declare function setEntityDrawOutlineShader(shader: number): void;
  *
  * Hash: 0x91310870 | Since: shared
  */
-export declare function triggerEventInternal(eventName: string, eventPayload: string, payloadLength: number): void;
+export declare function triggerEventInternal(payloadLength: number): [string, string];
 /**
  * Draws a gizmo. This function supports SDK infrastructure and is not intended to be used directly from your code.
  *
@@ -4142,7 +4142,7 @@ export declare function triggerEventInternal(eventName: string, eventPayload: st
  *
  * Hash: 0xEB2EDCA2 | Since: client
  */
-export declare function drawGizmo(matrixPtr: number, id: string): boolean;
+export declare function drawGizmo(matrixPtr: number): [boolean, string];
 /**
  * Gets the selected entity at the specified mouse cursor position, and changes the current selection depth. This function supports SDK infrastructure and is not intended to be used directly from your code.
  *
@@ -4155,7 +4155,7 @@ export declare function selectEntityAtPos(fracX: number, fracY: number, hitFlags
  *
  * Hash: 0xF6B815C5 | Since: client
  */
-export declare function getEntityMapdataOwner(entity: number | Entity, mapdataHandle: number, entityHandle: number): boolean;
+export declare function getEntityMapdataOwner(entity: number | Entity): [boolean, number, number];
 /**
  * No comment provided
  *
@@ -4167,7 +4167,7 @@ export declare function endFindKvp(handle: number): void;
  *
  * Hash: 0x128737EA | Since: client
  */
-export declare function triggerLatentServerEventInternal(eventName: string, eventPayload: string, payloadLength: number, bps: number): void;
+export declare function triggerLatentServerEventInternal(payloadLength: number, bps: number): [string, string];
 /**
  * Returns the transient map data index for a specified hash.
  * This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -4199,13 +4199,13 @@ export declare function disableEditorRuntime(): void;
  *
  * Hash: 0x9ADD2938 | Since: shared
  */
-export declare function setResourceKvpFloat(key: string, value: number): void;
+export declare function setResourceKvpFloat(value: number): string;
 /**
  * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938).
  *
  * Hash: 0x35BDCEEA | Since: shared
  */
-export declare function getResourceKvpFloat(key: string): number;
+export declare function getResourceKvpFloat(): [number, string];
 /**
  * Enters cursor mode, suppressing mouse movement to the game and displaying a mouse cursor instead. This function supports
  * SDK infrastructure and is not intended to be used directly from your code.
@@ -4218,19 +4218,19 @@ export declare function enterCursorMode(): void;
  *
  * Hash: 0x8F2EECC3 | Since: client
  */
-export declare function startFindExternalKvp(resourceName: string, prefix: string): number;
+export declare function startFindExternalKvp(): [number, string, string];
 /**
  * No comment provided
  *
  * Hash: 0x7389B5DF | Since: shared
  */
-export declare function deleteResourceKvp(key: string): void;
+export declare function deleteResourceKvp(): string;
 /**
  * Nonsynchronous [DELETE_RESOURCE_KVP](#\_0x7389B5DF) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x4152C90 | Since: shared
  */
-export declare function deleteResourceKvpNoSync(key: string): void;
+export declare function deleteResourceKvpNoSync(): string;
 /**
  * Transiently updates the entity with the specified mapdata index and entity index.
  * This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -4249,65 +4249,65 @@ export declare function setEntityDrawOutlineColor(red: number, green: number, bl
  *
  * Hash: 0x557B586A | Since: shared
  */
-export declare function getResourceKvpInt(key: string): number;
+export declare function getResourceKvpInt(): [number, string];
 /**
  * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938), but for a specified resource.
  *
  * Hash: 0x3CC98B25 | Since: client
  */
-export declare function getExternalKvpFloat(resource: string, key: string): number;
+export declare function getExternalKvpFloat(): [number, string, string];
 /**
  * Nonsynchronous [SET_RESOURCE_KVP](#\_0x21C7A35B) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0xCF9A2FF | Since: shared
  */
-export declare function setResourceKvpNoSync(key: string, value: string): void;
+export declare function setResourceKvpNoSync(): [string, string];
 /**
  * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B).
  *
  * Hash: 0x5240DA5A | Since: shared
  */
-export declare function getResourceKvpString(key: string): string;
+export declare function getResourceKvpString(): [string, string];
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x3517BFBE | Since: shared
  */
-export declare function setResourceKvpFloatNoSync(key: string, value: number): void;
+export declare function setResourceKvpFloatNoSync(value: number): string;
 /**
  * A getter for [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8), but for a specified resource.
  *
  * Hash: 0x12B8D689 | Since: client
  */
-export declare function getExternalKvpInt(resource: string, key: string): number;
+export declare function getExternalKvpInt(): [number, string, string];
 /**
  * No comment provided
  *
  * Hash: 0xDD379006 | Since: shared
  */
-export declare function startFindKvp(prefix: string): number;
+export declare function startFindKvp(): [number, string];
 /**
  * A setter for [GET_RESOURCE_KVP_STRING](#\_0x5240DA5A).
  *
  * Hash: 0x21C7A35B | Since: shared
  */
-export declare function setResourceKvp(key: string, value: string): void;
+export declare function setResourceKvp(): [string, string];
 /**
  * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B), but for a specified resource.
  *
  * Hash: 0x9080363A | Since: client
  */
-export declare function getExternalKvpString(resource: string, key: string): string;
+export declare function getExternalKvpString(): [string, string, string];
 /**
  * A setter for [GET_RESOURCE_KVP_INT](#\_0x557B586A).
  *
  * Hash: 0x6A2B1E8 | Since: shared
  */
-export declare function setResourceKvpInt(key: string, value: number): void;
+export declare function setResourceKvpInt(value: number): string;
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x26AEB707 | Since: shared
  */
-export declare function setResourceKvpIntNoSync(key: string, value: number): void;
+export declare function setResourceKvpIntNoSync(value: number): string;
 export * from "@risinglife/redm-shared";

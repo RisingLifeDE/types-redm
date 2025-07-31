@@ -1,11 +1,11 @@
-import { Vector3, Entity, Ped, Player, Vehicle } from '@risinglife/redm-shared';
+import { Vector3, Entity, Ped, Player, Vehicle, Object } from '@risinglife/redm-shared';
 /**
  * Creates an audio submix with the specified name, or gets the existing audio submix by that name.
  *
  * Hash: 0x658D2BC8 | Since: client
  */
-export function createAudioSubmix(name) {
-    return CreateAudioSubmix(name);
+export function createAudioSubmix() {
+    return CreateAudioSubmix();
 }
 /**
  * Removes vehicle xenon lights custom RGB color.
@@ -37,8 +37,8 @@ export function destroyDui(duiObject) {
  *
  * Hash: 0x32CA01C3 | Since: client
  */
-export function addTextEntry(entryKey, entryText) {
-    AddTextEntry(entryKey, entryText);
+export function addTextEntry() {
+    return AddTextEntry();
 }
 /**
  * Adds the given model name hash to the list of valid models for the player ped's parachute pack.
@@ -70,8 +70,8 @@ export function commitRuntimeTexture(tex) {
  *
  * Hash: 0xAB7F7241 | Since: shared
  */
-export function addConvarChangeListener(conVarFilter, handler) {
-    return AddConvarChangeListener(conVarFilter, handler);
+export function addConvarChangeListener(handler) {
+    return AddConvarChangeListener(handler);
 }
 /**
  * Activates built-in timecycle editing tool.
@@ -86,16 +86,16 @@ export function activateTimecycleEditor() {
  *
  * Hash: 0xED0935B5 | Since: client
  */
-export function addMinimapOverlayWithDepth(name, depth) {
-    return AddMinimapOverlayWithDepth(name, depth);
+export function addMinimapOverlayWithDepth(depth) {
+    return AddMinimapOverlayWithDepth(depth);
 }
 /**
  * No comment provided
  *
  * Hash: 0x1E86F206 | Since: shared
  */
-export function deleteFunctionReference(referenceIdentity) {
-    DeleteFunctionReference(referenceIdentity);
+export function deleteFunctionReference() {
+    return DeleteFunctionReference();
 }
 /**
  * Resets the screen's draw-origin which was changed by the function [`SET_DRAW_ORIGIN`](#\_0xE10198D5) back to `x=0, y=0`. See [`SET_DRAW_ORIGIN`](#\_0xE10198D5) for further information.
@@ -110,34 +110,34 @@ export function clearDrawOrigin() {
  *
  * Hash: 0xFEC3766D | Since: client
  */
-export function createRuntimeTexture(txd, txn, width, height) {
-    return CreateRuntimeTexture(txd, txn, width, height);
+export function createRuntimeTexture(txd, width, height) {
+    return CreateRuntimeTexture(txd, width, height);
 }
 /**
  * Creates a runtime texture from a DUI handle.
  *
  * Hash: 0xB135472B | Since: client
  */
-export function createRuntimeTextureFromDuiHandle(txd, txn, duiHandle) {
-    return CreateRuntimeTextureFromDuiHandle(txd, txn, duiHandle);
+export function createRuntimeTextureFromDuiHandle(txd) {
+    return CreateRuntimeTextureFromDuiHandle(txd);
 }
 /**
  * Creates a runtime texture from the specified file in the current resource or a base64 data URL.
  *
  * Hash: 0x786D8BC3 | Since: client
  */
-export function createRuntimeTextureFromImage(txd, txn, fileName) {
-    return CreateRuntimeTextureFromImage(txd, txn, fileName);
+export function createRuntimeTextureFromImage(txd) {
+    return CreateRuntimeTextureFromImage(txd);
 }
 /**
  * No comment provided
  *
  * Hash: 0x289DA860 | Since: client
  */
-export function addTextEntryByHash(entryKey, entryText) {
+export function addTextEntryByHash(entryKey) {
     if (typeof entryKey === 'string')
         entryKey = game.getHashKey(entryKey);
-    AddTextEntryByHash(entryKey, entryText);
+    return AddTextEntryByHash(entryKey);
 }
 /**
  * Adds the given model name hash to the list of valid models for the player ped's parachute.
@@ -154,8 +154,8 @@ export function addAuthorizedParachuteModel(modelNameHash) {
  *
  * Hash: 0x4AFD2499 | Since: client
  */
-export function addMinimapOverlay(name) {
-    return AddMinimapOverlay(name);
+export function addMinimapOverlay() {
+    return AddMinimapOverlay();
 }
 /**
  * Adds an output for the specified audio submix.
@@ -170,24 +170,24 @@ export function addAudioSubmixOutput(submixId, outputSubmixId) {
  *
  * Hash: 0x70FA2AFA | Since: client
  */
-export function createTimecycleModifier(modifierName) {
-    return CreateTimecycleModifier(modifierName);
+export function createTimecycleModifier() {
+    return CreateTimecycleModifier();
 }
 /**
  * No comment provided
  *
  * Hash: 0x54D636B3 | Since: client
  */
-export function cloneTimecycleModifier(sourceModifierName, clonedModifierName) {
-    return CloneTimecycleModifier(sourceModifierName, clonedModifierName);
+export function cloneTimecycleModifier() {
+    return CloneTimecycleModifier();
 }
 /**
  * Experimental natives, please do not use in a live environment.
  *
  * Hash: 0xA66F8F75 | Since: client
  */
-export function addReplaceTexture(origTxd, origTxn, newTxd, newTxn) {
-    AddReplaceTexture(origTxd, origTxn, newTxd, newTxn);
+export function addReplaceTexture() {
+    return AddReplaceTexture();
 }
 /**
  * No comment provided
@@ -202,8 +202,8 @@ export function applyWeatherCycles(numEntries, msPerCycle) {
  *
  * Hash: 0x4C89C0ED | Since: client
  */
-export function callMinimapScaleformFunction(miniMap, fnName) {
-    return CallMinimapScaleformFunction(miniMap, fnName);
+export function callMinimapScaleformFunction(miniMap) {
+    return CallMinimapScaleformFunction(miniMap);
 }
 /**
  * Adds a handler for changes to a state bag.
@@ -228,8 +228,8 @@ export function callMinimapScaleformFunction(miniMap, fnName) {
  *
  * Hash: 0x5BA35AAF | Since: shared
  */
-export function addStateBagChangeHandler(keyFilter, bagFilter, handler) {
-    return AddStateBagChangeHandler(keyFilter, bagFilter, handler);
+export function addStateBagChangeHandler(handler) {
+    return AddStateBagChangeHandler(handler);
 }
 /**
  * Creates a runtime texture dictionary with the specified name.
@@ -241,16 +241,16 @@ export function addStateBagChangeHandler(keyFilter, bagFilter, handler) {
  *
  * Hash: 0x1F3AC778 | Since: client
  */
-export function createRuntimeTxd(name) {
-    return CreateRuntimeTxd(name);
+export function createRuntimeTxd() {
+    return CreateRuntimeTxd();
 }
 /**
  * Creates a DUI browser. This can be used to draw on a runtime texture using CREATE_RUNTIME_TEXTURE_FROM_DUI_HANDLE.
  *
  * Hash: 0x23EAF899 | Since: client
  */
-export function createDui(url, width, height) {
-    return CreateDui(url, width, height);
+export function createDui(width, height) {
+    return CreateDui(width, height);
 }
 /**
  * Break off vehicle wheel by index. The `leaveDebrisTrail` flag requires `putOnFire` to be true.
@@ -351,8 +351,8 @@ export function disableRawKeyThisFrame(rawKeyIndex) {
  *
  * Hash: 0x561C060B | Since: shared
  */
-export function executeCommand(commandString) {
-    ExecuteCommand(commandString);
+export function executeCommand() {
+    return ExecuteCommand();
 }
 /**
  * No comment provided
@@ -416,8 +416,8 @@ export function disableVehiclePassengerIdleCamera(state) {
  *
  * Hash: 0xF4E2079D | Since: shared
  */
-export function duplicateFunctionReference(referenceIdentity) {
-    return DuplicateFunctionReference(referenceIdentity);
+export function duplicateFunctionReference() {
+    return DuplicateFunctionReference();
 }
 /**
  * Disables the game's afk camera that starts panning around after 30 seconds of inactivity.
@@ -467,25 +467,24 @@ export function drawBox(x1, y1, z1, x2, y2, z2, red, green, blue, alpha) {
  *
  * Hash: 0x4E129DBF | Since: client
  */
-export function findNextObject(findHandle, outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindNextObject(findHandle, _outEntity);
+export function findNextObject(findHandle) {
+    return FindNextObject(findHandle);
 }
 /**
  * No comment provided
  *
  * Hash: 0xC53BB6D3 | Since: client
  */
-export function doesTimecycleModifierHasVar(modifierName, varName) {
-    return DoesTimecycleModifierHasVar(modifierName, varName);
+export function doesTimecycleModifierHasVar() {
+    return DoesTimecycleModifierHasVar();
 }
 /**
  * Returns the world matrix of the specified camera. To turn this into a view matrix, calculate the inverse.
  *
  * Hash: 0x8F57A89D | Since: client
  */
-export function getCamMatrix(camera, rightVector, forwardVector, upVector, position) {
-    GetCamMatrix(camera, rightVector, forwardVector, upVector, position);
+export function getCamMatrix(camera) {
+    return GetCamMatrix(camera);
 }
 /**
  * DRAW_RECT, but with a rotation. Seems to be broken.
@@ -516,8 +515,8 @@ export function getAllVehicleModels() {
  *
  * Hash: 0xFF60E63 | Since: client
  */
-export function getCalmingQuadBounds(waterQuad, minX, minY, maxX, maxY) {
-    return GetCalmingQuadBounds(waterQuad, minX, minY, maxX, maxY);
+export function getCalmingQuadBounds(waterQuad) {
+    return GetCalmingQuadBounds(waterQuad);
 }
 /**
  * Returns all rope handles. The data returned adheres to the following layout:
@@ -536,9 +535,8 @@ export function getAllRopes() {
  *
  * Hash: 0x15E55694 | Since: client
  */
-export function findFirstVehicle(outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindFirstVehicle(_outEntity);
+export function findFirstVehicle() {
+    return FindFirstVehicle();
 }
 /**
  * This native returns the index of a calming quad if the given point is inside its bounds.
@@ -553,9 +551,8 @@ export function getCalmingQuadAtCoords(x, y) {
  *
  * Hash: 0x8839120D | Since: client
  */
-export function findNextVehicle(findHandle, outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindNextVehicle(findHandle, _outEntity);
+export function findNextVehicle(findHandle) {
+    return FindNextVehicle(findHandle);
 }
 /**
  * This native is not implemented.
@@ -596,18 +593,17 @@ export function experimentalSaveCloneSync(entity) {
  *
  * Hash: 0xFB012961 | Since: client
  */
-export function findFirstPed(outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindFirstPed(_outEntity);
+export function findFirstPed() {
+    return FindFirstPed();
 }
 /**
  * This native is not implemented.
  *
  * Hash: 0x6BC189AC | Since: client
  */
-export function experimentalLoadCloneSync(entity, data) {
+export function experimentalLoadCloneSync(entity) {
     const _entity = entity instanceof Entity ? entity.handle() : entity;
-    ExperimentalLoadCloneSync(_entity, data);
+    return ExperimentalLoadCloneSync(_entity);
 }
 /**
  * Returns all player indices for 'active' physical players known to the client.
@@ -649,41 +645,40 @@ export function getAspectRatio() {
  * Hash: 0xD70C3BCA | Since: shared
  */
 export function formatStackTrace(traceData) {
-    return FormatStackTrace(traceData);
+    const _traceData = traceData instanceof Object ? traceData.handle() : traceData;
+    return FormatStackTrace(_traceData);
 }
 /**
  * No comment provided
  *
  * Hash: 0xB0E3A058 | Since: client
  */
-export function getCalmingQuadDampening(waterQuad, calmingQuadDampening) {
-    return GetCalmingQuadDampening(waterQuad, calmingQuadDampening);
+export function getCalmingQuadDampening(waterQuad) {
+    return GetCalmingQuadDampening(waterQuad);
 }
 /**
  * This native is not implemented.
  *
  * Hash: 0xD2CB95A3 | Since: client
  */
-export function experimentalLoadCloneCreate(data, objectId, tree) {
-    return ExperimentalLoadCloneCreate(data, objectId, tree);
+export function experimentalLoadCloneCreate(objectId) {
+    return ExperimentalLoadCloneCreate(objectId);
 }
 /**
  * No comment provided
  *
  * Hash: 0xFAA6CB5D | Since: client
  */
-export function findFirstObject(outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindFirstObject(_outEntity);
+export function findFirstObject() {
+    return FindFirstObject();
 }
 /**
  * No comment provided
  *
  * Hash: 0x3FF9D340 | Since: client
  */
-export function findFirstPickup(outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindFirstPickup(_outEntity);
+export function findFirstPickup() {
+    return FindFirstPickup();
 }
 /**
  * Returns all track junctions on the client
@@ -711,9 +706,8 @@ export function forceSnowPass(enabled) {
  *
  * Hash: 0x4107EF0F | Since: client
  */
-export function findNextPickup(findHandle, outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindNextPickup(findHandle, _outEntity);
+export function findNextPickup(findHandle) {
+    return FindNextPickup(findHandle);
 }
 /**
  * A getter for [SET_AMBIENT_PED_RANGE_MULTIPLIER_THIS_FRAME](#\_0x0B919E1FB47CC4E0).
@@ -728,9 +722,8 @@ export function getAmbientPedRangeMultiplier() {
  *
  * Hash: 0xAB09B548 | Since: client
  */
-export function findNextPed(findHandle, outEntity) {
-    const _outEntity = outEntity instanceof Entity ? outEntity.handle() : outEntity;
-    return FindNextPed(findHandle, _outEntity);
+export function findNextPed(findHandle) {
+    return FindNextPed(findHandle);
 }
 /**
  * Returns the peer address of the remote game server that the user is currently connected to.
@@ -769,8 +762,8 @@ export function getHudComponentSize(id) {
  *
  * Hash: 0x9E666D | Since: shared
  */
-export function getConvarFloat(varName, defaultValue) {
-    return GetConvarFloat(varName, defaultValue);
+export function getConvarFloat(defaultValue) {
+    return GetConvarFloat(defaultValue);
 }
 /**
  * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
@@ -806,24 +799,24 @@ export function getCurrentGameName() {
  *
  * Hash: 0x935C0AB2 | Since: shared
  */
-export function getConvarInt(varName, default_) {
-    return GetConvarInt(varName, default_);
+export function getConvarInt(default_) {
+    return GetConvarInt(default_);
 }
 /**
  * Can be used to get a console variable casted back to `bool`.
  *
  * Hash: 0x7E8EBFE5 | Since: shared
  */
-export function getConvarBool(varName, defaultValue) {
-    return GetConvarBool(varName, defaultValue);
+export function getConvarBool(defaultValue) {
+    return GetConvarBool(defaultValue);
 }
 /**
  * Can be used to get a console variable of type `char*`, for example a string.
  *
  * Hash: 0x6CCD2564 | Since: shared
  */
-export function getConvar(varName, default_) {
-    return GetConvar(varName, default_);
+export function getConvar() {
+    return GetConvar();
 }
 /**
  * Gets the current screen resolution.
@@ -836,8 +829,8 @@ export function getConvar(varName, default_) {
  *
  * Hash: 0x337F0116 | Since: client
  */
-export function getCurrentScreenResolution(width, height) {
-    GetCurrentScreenResolution(width, height);
+export function getCurrentScreenResolution() {
+    return GetCurrentScreenResolution();
 }
 /**
  * A getter for [SET_GLOBAL_PASSENGER_MASS_MULTIPLIER](#\_0x3422291C).
@@ -868,8 +861,8 @@ export function getDuiHandle(duiObject) {
  *
  * Hash: 0x4BDF1867 | Since: shared
  */
-export function getEntityFromStateBagName(bagName) {
-    return GetEntityFromStateBagName(bagName);
+export function getEntityFromStateBagName() {
+    return GetEntityFromStateBagName();
 }
 /**
  * ### Supported types
@@ -904,7 +897,8 @@ export function getEntityFromStateBagName(bagName) {
  * Hash: 0xDFFBA12F | Since: shared
  */
 export function getEntitiesInRadius(pos, radius, entityType, sortByDistance, models) {
-    return GetEntitiesInRadius(pos.x, pos.y, pos.z, radius, entityType, sortByDistance, models);
+    const _models = models instanceof Object ? models.handle() : models;
+    return GetEntitiesInRadius(pos.x, pos.y, pos.z, radius, entityType, sortByDistance, _models);
 }
 /**
  * Returns entity's archetype name, if available.
@@ -928,16 +922,16 @@ export function getInteriorPortalEntityArchetype(interiorId, portalIndex, entity
  *
  * Hash: 0xCD949E20 | Since: client
  */
-export function getHudComponentAlign(id, horizontalAlign, verticalAlign) {
-    GetHudComponentAlign(id, horizontalAlign, verticalAlign);
+export function getHudComponentAlign(id) {
+    return GetHudComponentAlign(id);
 }
 /**
  * No comment provided
  *
  * Hash: 0xF772BB2C | Since: client
  */
-export function getInteriorPortalCornerPosition(interiorId, portalIndex, cornerIndex, posX, posY, posZ) {
-    GetInteriorPortalCornerPosition(interiorId, portalIndex, cornerIndex, posX, posY, posZ);
+export function getInteriorPortalCornerPosition(interiorId, portalIndex, cornerIndex) {
+    return GetInteriorPortalCornerPosition(interiorId, portalIndex, cornerIndex);
 }
 /**
  * No comment provided
@@ -960,8 +954,8 @@ export function getInstanceId() {
  *
  * Hash: 0xF9E795DD | Since: client
  */
-export function getInteriorRoomExtents(interiorId, roomIndex, bbMinX, bbMinY, bbMinZ, bbMaxX, bbMaxY, bbMaxZ) {
-    GetInteriorRoomExtents(interiorId, roomIndex, bbMinX, bbMinY, bbMinZ, bbMaxX, bbMaxY, bbMaxZ);
+export function getInteriorRoomExtents(interiorId, roomIndex) {
+    return GetInteriorRoomExtents(interiorId, roomIndex);
 }
 /**
  * Returns the current game being executed.
@@ -998,8 +992,8 @@ export function getGameName() {
  *
  * Hash: 0x2B9D4F50 | Since: shared
  */
-export function getGamePool(poolName) {
-    return GetGamePool(poolName);
+export function getGamePool(pool) {
+    return GetGamePool(pool);
 }
 /**
  * No comment provided
@@ -1057,17 +1051,17 @@ export function getGameBuildNumber() {
  *
  * Hash: 0x322B1192 | Since: client
  */
-export function getInteriorEntitiesExtents(interiorId, bbMinX, bbMinY, bbMinZ, bbMaxX, bbMaxY, bbMaxZ) {
-    GetInteriorEntitiesExtents(interiorId, bbMinX, bbMinY, bbMinZ, bbMaxX, bbMaxY, bbMaxZ);
+export function getInteriorEntitiesExtents(interiorId) {
+    return GetInteriorEntitiesExtents(interiorId);
 }
 /**
  * An alternative to [GET_NUMBER_OF_PED_TEXTURE_VARIATIONS](#\_0x8F7156A3142A6BAD) that uses local collection indexing instead of the global one.
  *
  * Hash: 0xD2C15D7 | Since: client
  */
-export function getNumberOfPedCollectionTextureVariations(ped, componentId, collection, drawableId) {
+export function getNumberOfPedCollectionTextureVariations(ped, componentId, drawableId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return GetNumberOfPedCollectionTextureVariations(_ped, componentId, collection, drawableId);
+    return GetNumberOfPedCollectionTextureVariations(_ped, componentId, drawableId);
 }
 /**
  * No comment provided
@@ -1101,9 +1095,9 @@ export function getInteriorRoomFlag(interiorId, roomIndex) {
  *
  * Hash: 0xC46EE605 | Since: client
  */
-export function getPedHeadOverlayData(ped, index, overlayValue, colourType, firstColour, secondColour, overlayOpacity) {
+export function getPedHeadOverlayData(ped, index) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return GetPedHeadOverlayData(_ped, index, overlayValue, colourType, firstColour, secondColour, overlayOpacity);
+    return GetPedHeadOverlayData(_ped, index);
 }
 /**
  * No comment provided
@@ -1118,8 +1112,8 @@ export function getNetworkWalkMode() {
  *
  * Hash: 0x9F9CEB63 | Since: client
  */
-export function getInteriorPortalEntityRotation(interiorId, portalIndex, entityIndex, rotX, rotY, rotZ, rotW) {
-    GetInteriorPortalEntityRotation(interiorId, portalIndex, entityIndex, rotX, rotY, rotZ, rotW);
+export function getInteriorPortalEntityRotation(interiorId, portalIndex, entityIndex) {
+    return GetInteriorPortalEntityRotation(interiorId, portalIndex, entityIndex);
 }
 /**
  * No comment provided
@@ -1134,8 +1128,8 @@ export function getInteriorPortalRoomFrom(interiorId, portalIndex) {
  *
  * Hash: 0xBDBA226F | Since: client
  */
-export function getNuiCursorPosition(x, y) {
-    GetNuiCursorPosition(x, y);
+export function getNuiCursorPosition() {
+    return GetNuiCursorPosition();
 }
 /**
  * No comment provided
@@ -1158,16 +1152,16 @@ export function getInteriorPortalRoomTo(interiorId, portalIndex) {
  *
  * Hash: 0x77A435B0 | Since: client
  */
-export function getInteriorPosition(interiorId, posX, posY, posZ) {
-    GetInteriorPosition(interiorId, posX, posY, posZ);
+export function getInteriorPosition(interiorId) {
+    return GetInteriorPosition(interiorId);
 }
 /**
  * No comment provided
  *
  * Hash: 0x9B7AB83C | Since: client
  */
-export function getInteriorPortalEntityPosition(interiorId, portalIndex, entityIndex, posX, posY, posZ) {
-    GetInteriorPortalEntityPosition(interiorId, portalIndex, entityIndex, posX, posY, posZ);
+export function getInteriorPortalEntityPosition(interiorId, portalIndex, entityIndex) {
+    return GetInteriorPortalEntityPosition(interiorId, portalIndex, entityIndex);
 }
 /**
  * No comment provided
@@ -1182,8 +1176,8 @@ export function getInteriorPortalEntityFlag(interiorId, portalIndex, entityIndex
  *
  * Hash: 0x5A039998 | Since: client
  */
-export function getInteriorRotation(interiorId, rotx, rotY, rotZ, rotW) {
-    GetInteriorRotation(interiorId, rotx, rotY, rotZ, rotW);
+export function getInteriorRotation(interiorId) {
+    return GetInteriorRotation(interiorId);
 }
 /**
  * No comment provided
@@ -1206,9 +1200,9 @@ export function getInteriorRoomName(interiorId, roomIndex) {
  *
  * Hash: 0x310D0271 | Since: client
  */
-export function getNumberOfPedCollectionDrawableVariations(ped, componentId, collection) {
+export function getNumberOfPedCollectionDrawableVariations(ped, componentId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return GetNumberOfPedCollectionDrawableVariations(_ped, componentId, collection);
+    return GetNumberOfPedCollectionDrawableVariations(_ped, componentId);
 }
 /**
  * Get the minimap type:
@@ -1230,18 +1224,18 @@ export function getMinimapType() {
  *
  * Hash: 0x3B6A13E1 | Since: client
  */
-export function getNumberOfPedCollectionPropDrawableVariations(ped, anchorPoint, collection) {
+export function getNumberOfPedCollectionPropDrawableVariations(ped, anchorPoint) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return GetNumberOfPedCollectionPropDrawableVariations(_ped, anchorPoint, collection);
+    return GetNumberOfPedCollectionPropDrawableVariations(_ped, anchorPoint);
 }
 /**
  * An alternative to [GET_NUMBER_OF_PED_PROP_TEXTURE_VARIATIONS](#\_0xA6E7F1CEB523E171) that uses local collection indexing instead of the global one.
  *
  * Hash: 0x75CAF9CC | Since: client
  */
-export function getNumberOfPedCollectionPropTextureVariations(ped, anchorPoint, collection, propIndex) {
+export function getNumberOfPedCollectionPropTextureVariations(ped, anchorPoint, propIndex) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return GetNumberOfPedCollectionPropTextureVariations(_ped, anchorPoint, collection, propIndex);
+    return GetNumberOfPedCollectionPropTextureVariations(_ped, anchorPoint, propIndex);
 }
 /**
  * No comment provided
@@ -1273,8 +1267,8 @@ export function getPedCollectionLocalIndexFromDrawable(ped, componentId, drawabl
  *
  * Hash: 0x1363A998 | Since: client
  */
-export function getMapZoomDataLevel(index, zoomScale, zoomSpeed, scrollSpeed, tilesX, tilesY) {
-    return GetMapZoomDataLevel(index, zoomScale, zoomSpeed, scrollSpeed, tilesX, tilesY);
+export function getMapZoomDataLevel(index) {
+    return GetMapZoomDataLevel(index);
 }
 /**
  * A getter for [SET_PLAYER_MELEE_WEAPON_DEFENSE_MODIFIER](#\_0xAE540335B4ABC4E2).
@@ -1347,8 +1341,8 @@ export function getPlayerServerId(player) {
  *
  * Hash: 0x776E864 | Since: shared
  */
-export function getNumResourceMetadata(resourceName, metadataKey) {
-    return GetNumResourceMetadata(resourceName, metadataKey);
+export function getNumResourceMetadata() {
+    return GetNumResourceMetadata();
 }
 /**
  * A getter for [\_SET_PED_EYE_COLOR](#\_0x50B56988B170AFDF). Returns -1 if fails to get.
@@ -1422,8 +1416,8 @@ export function getPedModelPersonality(modelHash) {
  *
  * Hash: 0x964BAB1D | Since: shared
  */
-export function getResourceMetadata(resourceName, metadataKey, index) {
-    return GetResourceMetadata(resourceName, metadataKey, index);
+export function getResourceMetadata(index) {
+    return GetResourceMetadata(index);
 }
 /**
  * An analogue to [GET_PED_DRAWABLE_VARIATION](#\_0x67F3780DD425D4FC) that returns collection local drawable index (inside [GET_PED_DRAWABLE_VARIATION_COLLECTION_NAME](#\_0xBCE0AB63) collection) instead of the global drawable index.
@@ -1469,9 +1463,9 @@ export function getRuntimeTextureWidth(tex) {
  *
  * Hash: 0x280F1FC3 | Since: client
  */
-export function getPedDrawableGlobalIndexFromCollection(ped, componentId, collection, drawableId) {
+export function getPedDrawableGlobalIndexFromCollection(ped, componentId, drawableId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return GetPedDrawableGlobalIndexFromCollection(_ped, componentId, collection, drawableId);
+    return GetPedDrawableGlobalIndexFromCollection(_ped, componentId, drawableId);
 }
 /**
  * Returns global prop index based on the local one. Is it a reverse to [GET_PED_COLLECTION_NAME_FROM_PROP](#\_0x8ED0C17) and [GET_PED_COLLECTION_LOCAL_INDEX_FROM_PROP](#\_0xFBDB885F) natives.
@@ -1482,9 +1476,9 @@ export function getPedDrawableGlobalIndexFromCollection(ped, componentId, collec
  *
  * Hash: 0x2CB45CDC | Since: client
  */
-export function getPedPropGlobalIndexFromCollection(ped, anchorPoint, collection, propIndex) {
+export function getPedPropGlobalIndexFromCollection(ped, anchorPoint, propIndex) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return GetPedPropGlobalIndexFromCollection(_ped, anchorPoint, collection, propIndex);
+    return GetPedPropGlobalIndexFromCollection(_ped, anchorPoint, propIndex);
 }
 /**
  * A getter for [\_SET_PED_HAIR_COLOR](#\_0x4CFFC65454C93A49). Returns -1 if fails to get.
@@ -1538,9 +1532,9 @@ export function getPedPropCollectionName(ped, anchorPoint) {
  *
  * Hash: 0x9C5E7C9C | Since: client
  */
-export function getPedBoneMatrix(ped, boneId, forwardVector, rightVector, upVector, position) {
+export function getPedBoneMatrix(ped, boneId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    GetPedBoneMatrix(_ped, boneId, forwardVector, rightVector, upVector, position);
+    return GetPedBoneMatrix(_ped, boneId);
 }
 /**
  * Gets collection name for the given global prop index. Together with [GET_PED_COLLECTION_LOCAL_INDEX_FROM_PROP](#\_0xFBDB885F) is used to get collection and local index (inside the given collection) of the prop. The collection name and index are used in functions like [SET_PED_COLLECTION_PROP_INDEX](#\_0x75240BCB).
@@ -1583,8 +1577,8 @@ export function getVehicleAlarmTimeLeft(vehicle) {
  *
  * Hash: 0xA56135E0 | Since: shared
  */
-export function getPlayerFromStateBagName(bagName) {
-    return GetPlayerFromStateBagName(bagName);
+export function getPlayerFromStateBagName() {
+    return GetPlayerFromStateBagName();
 }
 /**
  * A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#\_0xCE07B9F7817AADA3).
@@ -1629,8 +1623,8 @@ export function getPlayerFromServerId(serverId) {
  *
  * Hash: 0x637F4C75 | Since: shared
  */
-export function getStateBagValue(bagName, key) {
-    return GetStateBagValue(bagName, key);
+export function getStateBagValue() {
+    return GetStateBagValue();
 }
 /**
  * A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#\_0x2D83BC011CA14A3C).
@@ -1682,8 +1676,8 @@ export function getPlayerStamina(playerId) {
  *
  * Hash: 0x4039B485 | Since: shared
  */
-export function getResourceState(resourceName) {
-    return GetResourceState(resourceName);
+export function getResourceState() {
+    return GetResourceState();
 }
 /**
  * Gets the height of the specified runtime texture.
@@ -1748,8 +1742,8 @@ export function getVehicleDashboardSpeed(vehicle) {
  *
  * Hash: 0x78D864C7 | Since: shared
  */
-export function getStateBagKeys(bagName) {
-    return GetStateBagKeys(bagName);
+export function getStateBagKeys() {
+    return GetStateBagKeys();
 }
 /**
  * A getter for [SET_RANDOM_VEHICLE_DENSITY_MULTIPLIER_THIS_FRAME](#\_0xB3B3359379FE77D3).
@@ -1781,16 +1775,16 @@ export function getRandomVehicleDensityMultiplier() {
  *
  * Hash: 0x97628584 | Since: shared
  */
-export function getResourceCommands(resource) {
-    return GetResourceCommands(resource);
+export function getResourceCommands() {
+    return GetResourceCommands();
 }
 /**
  * No comment provided
  *
  * Hash: 0x5F4CD0E2 | Since: client
  */
-export function getTimecycleModifierIndexByName(modifierName) {
-    return GetTimecycleModifierIndexByName(modifierName);
+export function getTimecycleModifierIndexByName() {
+    return GetTimecycleModifierIndexByName();
 }
 /**
  * Returns the amount of variables available to be applied on timecycle modifiers.
@@ -1855,8 +1849,8 @@ export function getVehicleCurrentGear(vehicle) {
  *
  * Hash: 0x60FB60FE | Since: client
  */
-export function getTimecycleModifierVarCount(modifierName) {
-    return GetTimecycleModifierVarCount(modifierName);
+export function getTimecycleModifierVarCount() {
+    return GetTimecycleModifierVarCount();
 }
 /**
  * No comment provided
@@ -1896,8 +1890,8 @@ export function getTimecycleModifierNameByIndex(modifierIndex) {
  *
  * Hash: 0xE874AB1D | Since: client
  */
-export function getTimecycleModifierVarNameByIndex(modifierName, modifierVarIndex) {
-    return GetTimecycleModifierVarNameByIndex(modifierName, modifierVarIndex);
+export function getTimecycleModifierVarNameByIndex(modifierVarIndex) {
+    return GetTimecycleModifierVarNameByIndex(modifierVarIndex);
 }
 /**
  * A getter for [SET_TIMECYCLE_MODIFIER_STRENGTH](#\_0x82E7FFCD5B2326B3).
@@ -1977,17 +1971,16 @@ export function getTrainCurrentTrackNode(train) {
  *
  * Hash: 0x4301E10C | Since: client
  */
-export function getShapeTestResultIncludingMaterial(shapeTestHandle, hit, endCoords, surfaceNormal, materialHash, entityHit) {
-    const _entityHit = entityHit instanceof Entity ? entityHit.handle() : entityHit;
-    return GetShapeTestResultIncludingMaterial(shapeTestHandle, hit, endCoords, surfaceNormal, materialHash, _entityHit);
+export function getShapeTestResultIncludingMaterial(shapeTestHandle) {
+    return GetShapeTestResultIncludingMaterial(shapeTestHandle);
 }
 /**
  * No comment provided
  *
  * Hash: 0xA7109E12 | Since: client
  */
-export function getTimecycleModifierVar(modifierName, varName, value1, value2) {
-    return GetTimecycleModifierVar(modifierName, varName, value1, value2);
+export function getTimecycleModifierVar() {
+    return GetTimecycleModifierVar();
 }
 /**
  * No comment provided
@@ -2002,8 +1995,8 @@ export function getTrackMaxSpeed(track) {
  *
  * Hash: 0x1628548E | Since: client
  */
-export function getTrackNodeCoords(trackIndex, trackNode, coords) {
-    return GetTrackNodeCoords(trackIndex, trackNode, coords);
+export function getTrackNodeCoords(trackIndex, trackNode) {
+    return GetTrackNodeCoords(trackIndex, trackNode);
 }
 /**
  * No comment provided
@@ -2216,9 +2209,9 @@ export function getVehicleDashboardCurrentGear() {
  *
  * Hash: 0x27396C75 | Since: client
  */
-export function getVehicleHandlingInt(vehicle, class_, fieldName) {
+export function getVehicleHandlingInt(vehicle) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    return GetVehicleHandlingInt(_vehicle, class_, fieldName);
+    return GetVehicleHandlingInt(_vehicle);
 }
 /**
  * Gets brake pressure of a wheel.
@@ -2323,17 +2316,17 @@ export function getVehicleGearRatio(vehicle, gear) {
  *
  * Hash: 0xFB341304 | Since: client
  */
-export function getVehicleHandlingVector(vehicle, class_, fieldName) {
+export function getVehicleHandlingVector(vehicle) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    return new Vector3(GetVehicleHandlingVector(_vehicle, class_, fieldName));
+    return new Vector3(GetVehicleHandlingVector(_vehicle));
 }
 /**
  * No comment provided
  *
  * Hash: 0x22EA3BD8 | Since: client
  */
-export function getWaterQuadHasLimitedDepth(waterQuad, hasLimitedDepth) {
-    return GetWaterQuadHasLimitedDepth(waterQuad, hasLimitedDepth);
+export function getWaterQuadHasLimitedDepth(waterQuad) {
+    return GetWaterQuadHasLimitedDepth(waterQuad);
 }
 /**
  * A getter for [MODIFY_VEHICLE_TOP_SPEED](#\_0x93A3996368C94158). Returns -1.0 if a modifier is not set.
@@ -2387,9 +2380,9 @@ export function getVehicleOilLevel(vehicle) {
  *
  * Hash: 0x642FC12F | Since: client
  */
-export function getVehicleHandlingFloat(vehicle, class_, fieldName) {
+export function getVehicleHandlingFloat(vehicle) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    return GetVehicleHandlingFloat(_vehicle, class_, fieldName);
+    return GetVehicleHandlingFloat(_vehicle);
 }
 /**
  * No comment provided
@@ -2462,8 +2455,8 @@ export function getVehicleNumberOfWheels(vehicle) {
  *
  * Hash: 0x1DEDBD77 | Since: client
  */
-export function getWaterQuadIsInvisible(waterQuad, isInvisible) {
-    return GetWaterQuadIsInvisible(waterQuad, isInvisible);
+export function getWaterQuadIsInvisible(waterQuad) {
+    return GetWaterQuadIsInvisible(waterQuad);
 }
 /**
  * Gets the current suspension compression of a wheel.
@@ -2536,9 +2529,9 @@ export function getVehicleXmasSnowFactor() {
  *
  * Hash: 0xC715F730 | Since: client
  */
-export function getVehicleXenonLightsCustomColor(vehicle, red, green, blue) {
+export function getVehicleXenonLightsCustomColor(vehicle) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    return GetVehicleXenonLightsCustomColor(_vehicle, red, green, blue);
+    return GetVehicleXenonLightsCustomColor(_vehicle);
 }
 /**
  * No comment provided
@@ -2571,8 +2564,8 @@ export function getVehicleWheelTireColliderSize(vehicle, wheelIndex) {
  *
  * Hash: 0x6523816B | Since: client
  */
-export function getWaterQuadLevel(waterQuad, waterQuadLevel) {
-    return GetWaterQuadLevel(waterQuad, waterQuadLevel);
+export function getWaterQuadLevel(waterQuad) {
+    return GetWaterQuadLevel(waterQuad);
 }
 /**
  * A getter for `ReticuleHash` in a weapon scope component.
@@ -2608,8 +2601,8 @@ export function getWeaponComponentCameraHash(componentHash) {
  *
  * Hash: 0x14088095 | Since: client
  */
-export function getWaterQuadAlpha(waterQuad, a0, a1, a2, a3) {
-    return GetWaterQuadAlpha(waterQuad, a0, a1, a2, a3);
+export function getWaterQuadAlpha(waterQuad) {
+    return GetWaterQuadAlpha(waterQuad);
 }
 /**
  * No comment provided
@@ -2635,8 +2628,8 @@ export function getVehicleWheelSpeed(vehicle, wheelIndex) {
  *
  * Hash: 0xCCE49A1C | Since: client
  */
-export function getWaveQuadDirection(waveQuad, directionX, directionY) {
-    return GetWaveQuadDirection(waveQuad, directionX, directionY);
+export function getWaveQuadDirection(waveQuad) {
+    return GetWaveQuadDirection(waveQuad);
 }
 /**
  * Returns the type of the passed vehicle.
@@ -2675,8 +2668,8 @@ export function getWaterQuadAtCoords(x, y) {
  *
  * Hash: 0x42E9A06A | Since: client
  */
-export function getWaterQuadBounds(waterQuad, minX, minY, maxX, maxY) {
-    return GetWaterQuadBounds(waterQuad, minX, minY, maxX, maxY);
+export function getWaterQuadBounds(waterQuad) {
+    return GetWaterQuadBounds(waterQuad);
 }
 /**
  * Gets the flags of a wheel.
@@ -2693,8 +2686,8 @@ export function getVehicleWheelFlags(vehicle, wheelIndex) {
  *
  * Hash: 0x6F4ACBA | Since: client
  */
-export function getWaterQuadNoStencil(waterQuad, noStencil) {
-    return GetWaterQuadNoStencil(waterQuad, noStencil);
+export function getWaterQuadNoStencil(waterQuad) {
+    return GetWaterQuadNoStencil(waterQuad);
 }
 /**
  * A getter for [\_SET_WEAPON_DAMAGE_MODIFIER](#\_0x4757F00BC6323CFE).
@@ -2720,8 +2713,8 @@ export function getVehicleWheelXOffset(vehicle, wheelIndex) {
  *
  * Hash: 0x15346B4D | Since: client
  */
-export function getVisualSettingFloat(name) {
-    return GetVisualSettingFloat(name);
+export function getVisualSettingFloat() {
+    return GetVisualSettingFloat();
 }
 /**
  * Returns true if the minimap is currently expanded. False if it's the normal minimap state.
@@ -2767,9 +2760,9 @@ export function getWaterQuadCount() {
  *
  * Hash: 0xCA63A52A | Since: client
  */
-export function isPedCollectionComponentVariationValid(ped, componentId, collection, drawableId, textureId) {
+export function isPedCollectionComponentVariationValid(ped, componentId, drawableId, textureId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return IsPedCollectionComponentVariationValid(_ped, componentId, collection, drawableId, textureId);
+    return IsPedCollectionComponentVariationValid(_ped, componentId, drawableId, textureId);
 }
 /**
  * A getter for the accuracy spread of a weapon.
@@ -2786,8 +2779,8 @@ export function getWeaponAccuracySpread(weaponHash) {
  *
  * Hash: 0xF86136DB | Since: client
  */
-export function getWaveQuadBounds(waveQuad, minX, minY, maxX, maxY) {
-    return GetWaveQuadBounds(waveQuad, minX, minY, maxX, maxY);
+export function getWaveQuadBounds(waveQuad) {
+    return GetWaveQuadBounds(waveQuad);
 }
 /**
  * A getter for `CWeaponFallOffModifier` damage modifier value in a weapon component.
@@ -2818,8 +2811,8 @@ export function isNuiFocused() {
  *
  * Hash: 0xE2501B8B | Since: client
  */
-export function getWaterQuadType(waterQuad, waterType) {
-    return GetWaterQuadType(waterQuad, waterType);
+export function getWaterQuadType(waterQuad) {
+    return GetWaterQuadType(waterQuad);
 }
 /**
  * Returns whether or not a browser is created for a specified DUI browser object.
@@ -2871,8 +2864,8 @@ export function getVehicleWheelWidth(vehicle) {
  *
  * Hash: 0x865139A3 | Since: client
  */
-export function getWaveQuadAmplitude(waveQuad, waveQuadAmplitude) {
-    return GetWaveQuadAmplitude(waveQuad, waveQuadAmplitude);
+export function getWaveQuadAmplitude(waveQuad) {
+    return GetWaveQuadAmplitude(waveQuad);
 }
 /**
  * Gets whether or not this is the CitizenFX server.
@@ -2924,8 +2917,8 @@ export function getWeaponComponentClipSize(componentHash) {
  *
  * Hash: 0xC81D0659 | Since: client
  */
-export function getWorldCoordFromScreenCoord(screenX, screenY, worldVector, normalVector) {
-    GetWorldCoordFromScreenCoord(screenX, screenY, worldVector, normalVector);
+export function getWorldCoordFromScreenCoord(screenSize) {
+    return GetWorldCoordFromScreenCoord(screenSize.x, screenSize.y);
 }
 /**
  * Gets if the specified `rawKeyIndex` is up, even if the key is disabled with [DISABLE_RAW_KEY_THIS_FRAME](#\_0x8BCF0014).
@@ -2946,17 +2939,17 @@ export function isDisabledRawKeyUp(rawKeyIndex) {
  *
  * Hash: 0x33B2AFA2 | Since: client
  */
-export function isPedCollectionComponentVariationGen9Exclusive(ped, componentId, collection, drawableId) {
+export function isPedCollectionComponentVariationGen9Exclusive(ped, componentId, drawableId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    return IsPedCollectionComponentVariationGen9Exclusive(_ped, componentId, collection, drawableId);
+    return IsPedCollectionComponentVariationGen9Exclusive(_ped, componentId, drawableId);
 }
 /**
  * No comment provided
  *
  * Hash: 0x37CF52CE | Since: shared
  */
-export function isPrincipalAceAllowed(principal, object) {
-    return IsPrincipalAceAllowed(principal, object);
+export function isPrincipalAceAllowed() {
+    return IsPrincipalAceAllowed();
 }
 /**
  * No comment provided
@@ -2981,8 +2974,8 @@ export function isVehicleWanted(vehicle) {
  *
  * Hash: 0x7EBB9929 | Since: shared
  */
-export function isAceAllowed(object) {
-    return IsAceAllowed(object);
+export function isAceAllowed() {
+    return IsAceAllowed();
 }
 /**
  * Gets if the specified `rawKeyIndex` is pressed on the keyboard.
@@ -3106,8 +3099,8 @@ export function isVehicleNeedsToBeHotwired(vehicle) {
  *
  * Hash: 0xA194934D | Since: client
  */
-export function isStreamingFileReady(registerAs) {
-    return IsStreamingFileReady(registerAs);
+export function isStreamingFileReady() {
+    return IsStreamingFileReady();
 }
 /**
  * Getter for [SWITCH_TRAIN_TRACK](#\_0xFD813BB7DB977F20). Determines if ambient trains are able to spawn on this track.
@@ -3223,8 +3216,8 @@ export function isRawKeyUp(rawKeyIndex) {
  *
  * Hash: 0x76A9EE1F | Since: shared
  */
-export function loadResourceFile(resourceName, fileName) {
-    return LoadResourceFile(resourceName, fileName);
+export function loadResourceFile(resource, path) {
+    return LoadResourceFile(resource, path);
 }
 /**
  * No comment provided
@@ -3261,8 +3254,8 @@ export function mumbleSetVolumeOverride(player, volume) {
  *
  * Hash: 0xE6EB2CD8 | Since: client
  */
-export function mumbleSetServerAddress(address, port) {
-    MumbleSetServerAddress(address, port);
+export function mumbleSetServerAddress(port) {
+    return MumbleSetServerAddress(port);
 }
 /**
  * No comment provided
@@ -3398,8 +3391,8 @@ export function profilerExitScope() {
  *
  * Hash: 0xACF6D8EE | Since: client
  */
-export function registerFontId(fontName) {
-    return RegisterFontId(fontName);
+export function registerFontId() {
+    return RegisterFontId();
 }
 /**
  * No comment provided
@@ -3414,8 +3407,8 @@ export function mumbleSetActive(state) {
  *
  * Hash: 0xF5102568 | Since: client
  */
-export function loadWaterFromPath(resourceName, fileName) {
-    return LoadWaterFromPath(resourceName, fileName);
+export function loadWaterFromPath() {
+    return LoadWaterFromPath();
 }
 /**
  * Registers a key mapping for the current resource.
@@ -3426,8 +3419,8 @@ export function loadWaterFromPath(resourceName, fileName) {
  *
  * Hash: 0xD7664FD1 | Since: client
  */
-export function registerKeyMapping(commandString, description, defaultMapper, defaultParameter) {
-    RegisterKeyMapping(commandString, description, defaultMapper, defaultParameter);
+export function registerKeyMapping() {
+    return RegisterKeyMapping();
 }
 /**
  * Overrides whether or not peds can stand on top of the specified vehicle.
@@ -3465,16 +3458,16 @@ export function mumbleRemoveVoiceTargetPlayerByServerId(targetId, serverId) {
  *
  * Hash: 0x1493DCC1 | Since: client
  */
-export function registerStreamingFileFromKvs(kvsKey) {
-    RegisterStreamingFileFromKvs(kvsKey);
+export function registerStreamingFileFromKvs() {
+    return RegisterStreamingFileFromKvs();
 }
 /**
  * No comment provided
  *
  * Hash: 0xC59B980C | Since: client
  */
-export function registerNuiCallback(callbackType, callback) {
-    RegisterNuiCallback(callbackType, callback);
+export function registerNuiCallback(key, callback) {
+    RegisterNuiCallback(key, callback);
 }
 /**
  * Removes a dry volume from the game session.
@@ -3490,16 +3483,16 @@ export function removeDryVolume(handle) {
  *
  * Hash: 0xD3BC438F | Since: client
  */
-export function overridePopGroups(path) {
-    OverridePopGroups(path);
+export function overridePopGroups() {
+    return OverridePopGroups();
 }
 /**
  * An internal function which allows the current resource's HLL script runtimes to receive state for the specified event.
  *
  * Hash: 0xD233A168 | Since: shared
  */
-export function registerResourceAsEventHandler(eventName) {
-    RegisterResourceAsEventHandler(eventName);
+export function registerResourceAsEventHandler() {
+    return RegisterResourceAsEventHandler();
 }
 /**
  * This native will return true if the user succesfully connected to the voice server.
@@ -3515,8 +3508,8 @@ export function mumbleIsConnected() {
  *
  * Hash: 0xA8AE9C2F | Since: client
  */
-export function registerRawNuiCallback(callbackType, callback) {
-    RegisterRawNuiCallback(callbackType, callback);
+export function registerRawNuiCallback(callback) {
+    return RegisterRawNuiCallback(callback);
 }
 /**
  * Removes the specified texture and remove it from the ped.
@@ -3601,8 +3594,8 @@ export function overrideReactionToVehicleSiren(state, reaction) {
  *
  * Hash: 0xF44BFB95 | Since: client
  */
-export function registerStreamingFileFromUrl(registerAs, url) {
-    RegisterStreamingFileFromUrl(registerAs, url);
+export function registerStreamingFileFromUrl() {
+    return RegisterStreamingFileFromUrl();
 }
 /**
  * Registers a custom rope data with the game. For guidance on what these values should be use common:/data/ropedata.xml as a reference.
@@ -3611,8 +3604,8 @@ export function registerStreamingFileFromUrl(registerAs, url) {
  *
  * Hash: 0xF213AE8D | Since: client
  */
-export function registerRopeData(numSections, radius, diffuseTextureName, normalMapName, distanceMappingScale, uvScaleX, uvScaleY, specularFresnel, specularFalloff, specularIntensity, bumpiness, color) {
-    return RegisterRopeData(numSections, radius, diffuseTextureName, normalMapName, distanceMappingScale, uvScaleX, uvScaleY, specularFresnel, specularFalloff, specularIntensity, bumpiness, color);
+export function registerRopeData(numSections, radius, distanceMappingScale, uvScaleX, uvScaleY, specularFresnel, specularFalloff, specularIntensity, bumpiness, color) {
+    return RegisterRopeData(numSections, radius, distanceMappingScale, uvScaleX, uvScaleY, specularFresnel, specularFalloff, specularIntensity, bumpiness, color);
 }
 /**
  * Toggles a check that prevents attaching (networked) entities to remotely owned peds. This is disabled by default.
@@ -3629,8 +3622,8 @@ export function onesyncEnableRemoteAttachmentSanitization(enable) {
  *
  * Hash: 0x6E38C1B9 | Since: client
  */
-export function remapRawKeymap(keymapName, newRawKeyIndex) {
-    RemapRawKeymap(keymapName, newRawKeyIndex);
+export function remapRawKeymap(newRawKeyIndex) {
+    return RemapRawKeymap(newRawKeyIndex);
 }
 /**
  * Requests a resource file set with the specified name to be downloaded and mounted on top of the current resource.
@@ -3648,24 +3641,24 @@ export function remapRawKeymap(keymapName, newRawKeyIndex) {
  *
  * Hash: 0xE7490533 | Since: client
  */
-export function requestResourceFileSet(setName) {
-    return RequestResourceFileSet(setName);
+export function requestResourceFileSet() {
+    return RequestResourceFileSet();
 }
 /**
  * Scope entry for profiler.
  *
  * Hash: 0xC795A4A9 | Since: shared
  */
-export function profilerEnterScope(scopeName) {
-    ProfilerEnterScope(scopeName);
+export function profilerEnterScope() {
+    return ProfilerEnterScope();
 }
 /**
  * Experimental natives, please do not use in a live environment.
  *
  * Hash: 0xA896B20A | Since: client
  */
-export function removeReplaceTexture(origTxd, origTxn) {
-    RemoveReplaceTexture(origTxd, origTxn);
+export function removeReplaceTexture() {
+    return RemoveReplaceTexture();
 }
 /**
  * Removes the specified track junction.
@@ -3688,8 +3681,8 @@ export function registerTrackJunction(trackIndex, trackNode, newIndex, newNode, 
  *
  * Hash: 0x78608ACB | Since: client
  */
-export function sendNuiMessage(jsonString) {
-    return SendNuiMessage(jsonString);
+export function sendNuiMessage(message) {
+    return SendNuiMessage(message);
 }
 /**
  * Returns true if the profiler is active.
@@ -3715,8 +3708,8 @@ export function resetVehiclePedsCanStandOnTopFlag(vehicle) {
  *
  * Hash: 0x5A5E0D05 | Since: client
  */
-export function removeTimecycleModifierVar(modifierName, varName) {
-    RemoveTimecycleModifierVar(modifierName, varName);
+export function removeTimecycleModifierVar() {
+    return RemoveTimecycleModifierVar();
 }
 /**
  * Sets the volumes for the sound channels in a submix effect.
@@ -3736,24 +3729,24 @@ export function setAudioSubmixOutputVolumes(submixId, outputSlot, frontLeftVolum
  *
  * Hash: 0xCEAD2D4B | Since: client
  */
-export function registerStreamingFileFromCache(resourceName, fileName, cacheString) {
-    RegisterStreamingFileFromCache(resourceName, fileName, cacheString);
+export function registerStreamingFileFromCache() {
+    return RegisterStreamingFileFromCache();
 }
 /**
  * Injects a 'mouse down' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
  *
  * Hash: 0x5D01F191 | Since: client
  */
-export function sendDuiMouseDown(duiObject, button) {
-    SendDuiMouseDown(duiObject, button);
+export function sendDuiMouseDown(duiObject) {
+    return SendDuiMouseDown(duiObject);
 }
 /**
  * Injects a 'mouse up' event for a DUI object. Coordinates are expected to be set using SEND_DUI_MOUSE_MOVE.
  *
  * Hash: 0x1D735B93 | Since: client
  */
-export function sendDuiMouseUp(duiObject, button) {
-    SendDuiMouseUp(duiObject, button);
+export function sendDuiMouseUp(duiObject) {
+    return SendDuiMouseUp(duiObject);
 }
 /**
  * Resets parameters which is used by the game for checking is ped needs to fly through windscreen after a crash to default values.
@@ -3803,8 +3796,8 @@ export function setBackfaceculling(toggle) {
  *
  * Hash: 0x1B3A363 | Since: client
  */
-export function registerFontFile(fileName) {
-    RegisterFontFile(fileName);
+export function registerFontFile() {
+    return RegisterFontFile();
 }
 /**
  * Adds a cooldown between instances of moving and then aiming.
@@ -3827,8 +3820,8 @@ export function setAimCooldown(value) {
  *
  * Hash: 0x49C1F6DC | Since: client
  */
-export function registerRawKeymap(keymapName, onKeyDown, onKeyUp, rawKeyIndex, canBeDisabled) {
-    RegisterRawKeymap(keymapName, onKeyDown, onKeyUp, rawKeyIndex, canBeDisabled);
+export function registerRawKeymap(onKeyDown, onKeyUp, rawKeyIndex, canBeDisabled) {
+    return RegisterRawKeymap(onKeyDown, onKeyUp, rawKeyIndex, canBeDisabled);
 }
 /**
  * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
@@ -3845,16 +3838,16 @@ export function removeStateBagChangeHandler(cookie) {
  *
  * Hash: 0xCD03CDA9 | Since: client
  */
-export function registerNuiCallbackType(callbackType) {
-    RegisterNuiCallbackType(callbackType);
+export function registerNuiCallbackType() {
+    return RegisterNuiCallbackType();
 }
 /**
  * This native sets the small image asset for the discord rich presence implementation.
  *
  * Hash: 0xF61D04C4 | Since: client
  */
-export function setDiscordRichPresenceAssetSmall(assetName) {
-    SetDiscordRichPresenceAssetSmall(assetName);
+export function setDiscordRichPresenceAssetSmall() {
+    return SetDiscordRichPresenceAssetSmall();
 }
 /**
  * Registered commands can be executed by entering them in the client console (this works for client side and server side registered commands). Or by entering them in the server console/through an RCON client (only works for server side registered commands). Or if you use a supported chat resource, like the default one provided in the cfx-server-data repository, then you can enter the command in chat by prefixing it with a `/`.
@@ -3869,8 +3862,8 @@ export function setDiscordRichPresenceAssetSmall(assetName) {
  *
  * Hash: 0x5FA79B0F | Since: shared
  */
-export function registerCommand(commandName, handler, restricted) {
-    RegisterCommand(commandName, handler, restricted);
+export function registerCommand(name, handler, restricted) {
+    RegisterCommand(name, handler, restricted);
 }
 /**
  * Resets values from the zoom level data by index to defaults from mapzoomdata.meta.
@@ -3919,8 +3912,8 @@ export function setIgnoreVehicleOwnershipForStowing(ignore) {
  *
  * Hash: 0x6A02254D | Since: client
  */
-export function setDiscordAppId(appId) {
-    SetDiscordAppId(appId);
+export function setDiscordAppId() {
+    return SetDiscordAppId();
 }
 /**
  * Injects a 'mouse wheel' event for a DUI object.
@@ -3935,8 +3928,8 @@ export function sendDuiMouseWheel(duiObject, deltaY, deltaX) {
  *
  * Hash: 0xCBBC3FAC | Since: client
  */
-export function setDiscordRichPresenceAction(index, label, url) {
-    SetDiscordRichPresenceAction(index, label, url);
+export function setDiscordRichPresenceAction(index) {
+    return SetDiscordRichPresenceAction(index);
 }
 /**
  * Sets some in-game parameters which is used for checks is ped needs to fly through windscreen after a crash.
@@ -3959,8 +3952,8 @@ export function setFlashLightKeepOnWhileMoving(state) {
  *
  * Hash: 0x36DF8612 | Since: client
  */
-export function removeTimecycleModifier(modifierName) {
-    RemoveTimecycleModifier(modifierName);
+export function removeTimecycleModifier() {
+    return RemoveTimecycleModifier();
 }
 /**
  * No comment provided
@@ -4010,24 +4003,24 @@ export function setManualShutdownLoadingScreenNui(manualShutdown) {
  *
  * Hash: 0x79780FD2 | Since: client
  */
-export function setDefaultVehicleNumberPlateTextPattern(plateIndex, pattern) {
-    SetDefaultVehicleNumberPlateTextPattern(plateIndex, pattern);
+export function setDefaultVehicleNumberPlateTextPattern(plateIndex) {
+    return SetDefaultVehicleNumberPlateTextPattern(plateIndex);
 }
 /**
  * This native sets the hover text of the small image asset for the discord rich presence implementation.
  *
  * Hash: 0x35E62B6A | Since: client
  */
-export function setDiscordRichPresenceAssetSmallText(text) {
-    SetDiscordRichPresenceAssetSmallText(text);
+export function setDiscordRichPresenceAssetSmallText() {
+    return SetDiscordRichPresenceAssetSmallText();
 }
 /**
  * This native sets the image asset for the discord rich presence implementation.
  *
  * Hash: 0x53DFD530 | Since: client
  */
-export function setDiscordRichPresenceAsset(assetName) {
-    SetDiscordRichPresenceAsset(assetName);
+export function setDiscordRichPresenceAsset() {
+    return SetDiscordRichPresenceAsset();
 }
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
@@ -4035,8 +4028,8 @@ export function setDiscordRichPresenceAsset(assetName) {
  *
  * Hash: 0xFE8064E3 | Since: client
  */
-export function setHandlingField(vehicle, class_, fieldName, value) {
-    SetHandlingField(vehicle, class_, fieldName, value);
+export function setHandlingField(value) {
+    return SetHandlingField(value);
 }
 /**
  * No comment provided
@@ -4081,8 +4074,8 @@ export function setAudioSubmixEffectRadioFx(submixId, effectSlot) {
  *
  * Hash: 0xCD380DA9 | Since: client
  */
-export function sendDuiMessage(duiObject, jsonString) {
-    SendDuiMessage(duiObject, jsonString);
+export function sendDuiMessage(duiObject) {
+    return SendDuiMessage(duiObject);
 }
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
@@ -4090,32 +4083,32 @@ export function sendDuiMessage(duiObject, jsonString) {
  *
  * Hash: 0x90DD01C | Since: client
  */
-export function setHandlingFloat(vehicle, class_, fieldName, value) {
-    SetHandlingFloat(vehicle, class_, fieldName, value);
+export function setHandlingFloat(value) {
+    return SetHandlingFloat(value);
 }
 /**
  * This native sets the hover text of the image asset for the discord rich presence implementation.
  *
  * Hash: 0xB029D2FA | Since: client
  */
-export function setDiscordRichPresenceAssetText(text) {
-    SetDiscordRichPresenceAssetText(text);
+export function setDiscordRichPresenceAssetText() {
+    return SetDiscordRichPresenceAssetText();
 }
 /**
  * Sends a message to the `loadingScreen` NUI frame, which contains the HTML page referenced in `loadscreen` resources.
  *
  * Hash: 0x8BBE6CC0 | Since: client
  */
-export function sendLoadingScreenMessage(jsonString) {
-    return SendLoadingScreenMessage(jsonString);
+export function sendLoadingScreenMessage() {
+    return SendLoadingScreenMessage();
 }
 /**
  * Navigates the specified DUI browser to a different URL.
  *
  * Hash: 0xF761D9F3 | Since: client
  */
-export function setDuiUrl(duiObject, url) {
-    SetDuiUrl(duiObject, url);
+export function setDuiUrl(duiObject) {
+    return SetDuiUrl(duiObject);
 }
 /**
  * Sets values to the zoom level data by index.
@@ -4172,8 +4165,8 @@ export function setCalmingQuadDampening(calmingQuad, dampening) {
  *
  * Hash: 0x8AB3F46C | Since: client
  */
-export function setHandlingInt(vehicle, class_, fieldName, value) {
-    SetHandlingInt(vehicle, class_, fieldName, value);
+export function setHandlingInt(value) {
+    return SetHandlingInt(value);
 }
 /**
  * No comment provided
@@ -4256,8 +4249,8 @@ export function setKeyMappingHideResources(hide) {
  *
  * Hash: 0x28FC4ECB | Since: client
  */
-export function setRuntimeTextureImage(tex, fileName) {
-    return SetRuntimeTextureImage(tex, fileName);
+export function setRuntimeTextureImage(tex) {
+    return SetRuntimeTextureImage(tex);
 }
 /**
  * No comment provided
@@ -4276,9 +4269,9 @@ export function setInteriorPortalRoomTo(interiorId, portalIndex, roomTo) {
  *
  * Hash: 0x75240BCB | Since: client
  */
-export function setPedCollectionPropIndex(ped, anchorPoint, collection, propIndex, textureId, attach) {
+export function setPedCollectionPropIndex(ped, anchorPoint, propIndex, textureId, attach) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    SetPedCollectionPropIndex(_ped, anchorPoint, collection, propIndex, textureId, attach);
+    return SetPedCollectionPropIndex(_ped, anchorPoint, propIndex, textureId, attach);
 }
 /**
  * No comment provided
@@ -4309,8 +4302,8 @@ export function setGlobalPassengerMassMultiplier(massMul) {
  *
  * Hash: 0x3E882B23 | Since: client
  */
-export function setMinimapComponentPosition(name, alignX, alignY, posX, posY, sizeX, sizeY) {
-    SetMinimapComponentPosition(name, alignX, alignY, posX, posY, sizeX, sizeY);
+export function setMinimapComponentPosition(posX, posY, sizeX, sizeY) {
+    return SetMinimapComponentPosition(posX, posY, sizeX, sizeY);
 }
 /**
  * Sets the display info for a minimap overlay.
@@ -4371,8 +4364,8 @@ export function setMpGamerTagsUseVehicleBehavior(enabled) {
  *
  * Hash: 0x7F9D543 | Since: client
  */
-export function setHandlingVector(vehicle, class_, fieldName, value) {
-    SetHandlingVector(vehicle, class_, fieldName, value);
+export function setHandlingVector(value) {
+    return SetHandlingVector(value);
 }
 /**
  * An alternative to [SET_PED_COMPONENT_VARIATION](#\_0x262B14F48D29DE80) that uses local collection indexing instead of the global one.
@@ -4383,9 +4376,9 @@ export function setHandlingVector(vehicle, class_, fieldName, value) {
  *
  * Hash: 0x88711BBA | Since: client
  */
-export function setPedCollectionComponentVariation(ped, componentId, collection, drawableId, textureId, paletteId) {
+export function setPedCollectionComponentVariation(ped, componentId, drawableId, textureId, paletteId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    SetPedCollectionComponentVariation(_ped, componentId, collection, drawableId, textureId, paletteId);
+    return SetPedCollectionComponentVariation(_ped, componentId, drawableId, textureId, paletteId);
 }
 /**
  * <strong>This native is deprecated and does nothing!</strong>
@@ -4406,9 +4399,9 @@ export function setModelHeadlightConfiguration(modelHash, ratePerSecond, headlig
  *
  * Hash: 0x3EC75558 | Since: client
  */
-export function setPedCollectionPreloadVariationData(ped, componentId, collection, drawableId, textureId) {
+export function setPedCollectionPreloadVariationData(ped, componentId, drawableId, textureId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    SetPedCollectionPreloadVariationData(_ped, componentId, collection, drawableId, textureId);
+    return SetPedCollectionPreloadVariationData(_ped, componentId, drawableId, textureId);
 }
 /**
  * No comment provided
@@ -4458,8 +4451,8 @@ export function setNuiFocusKeepInput(keepInput) {
  *
  * Hash: 0xA7DD3209 | Since: client
  */
-export function setSnakeoilForEntry(name, path, data) {
-    SetSnakeoilForEntry(name, path, data);
+export function setSnakeoilForEntry() {
+    return SetSnakeoilForEntry();
 }
 /**
  * No comment provided
@@ -4515,8 +4508,8 @@ export function setTextJustification(justifyType) {
  *
  * Hash: 0x7BDCBD45 | Since: client
  */
-export function setRichPresence(presenceState) {
-    SetRichPresence(presenceState);
+export function setRichPresence() {
+    return SetRichPresence();
 }
 /**
  * Sets a pixel in the specified runtime texture. This will have to be committed using `COMMIT_RUNTIME_TEXTURE` to have any effect.
@@ -4540,8 +4533,8 @@ export function setVehicleAlarmTimeLeft(vehicle, time) {
  *
  * Hash: 0x3963D527 | Since: client
  */
-export function setRuntimeTextureArgbData(tex, buffer, length) {
-    return SetRuntimeTextureArgbData(tex, buffer, length);
+export function setRuntimeTextureArgbData(tex, length) {
+    return SetRuntimeTextureArgbData(tex, length);
 }
 /**
  * This completely disables pedestrian vehicles from reacting to sirens. They will not try to do any maneuver to evade.
@@ -4564,8 +4557,8 @@ export function setTextChatEnabled(enabled) {
  *
  * Hash: 0x6E0A422B | Since: client
  */
-export function setTimecycleModifierVar(modifierName, varName, value1, value2) {
-    SetTimecycleModifierVar(modifierName, varName, value1, value2);
+export function setTimecycleModifierVar(value1, value2) {
+    return SetTimecycleModifierVar(value1, value2);
 }
 /**
  * No comment provided
@@ -4581,9 +4574,9 @@ export function setVehicleGravityAmount(vehicle, gravity) {
  *
  * Hash: 0xC37F4CF9 | Since: client
  */
-export function setVehicleHandlingInt(vehicle, class_, fieldName, value) {
+export function setVehicleHandlingInt(vehicle, value) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    SetVehicleHandlingInt(_vehicle, class_, fieldName, value);
+    return SetVehicleHandlingInt(_vehicle, value);
 }
 /**
  * Sets the text font for the current text drawing command.
@@ -4643,9 +4636,9 @@ export function setTrackJunctionActive(junctionIndex, state) {
  *
  * Hash: 0x12497890 | Since: client
  */
-export function setVehicleHandlingVector(vehicle, class_, fieldName, value) {
+export function setVehicleHandlingVector(vehicle, value) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    SetVehicleHandlingVector(_vehicle, class_, fieldName, value);
+    return SetVehicleHandlingVector(_vehicle, value);
 }
 /**
  * No comment provided
@@ -4661,8 +4654,8 @@ export function setTrainState(train, state) {
  *
  * Hash: 0x8D50E33A | Since: shared
  */
-export function setStateBagValue(bagName, keyName, valueData, valueLength, replicated) {
-    SetStateBagValue(bagName, keyName, valueData, valueLength, replicated);
+export function setStateBagValue(valueLength, replicated) {
+    return SetStateBagValue(valueLength, replicated);
 }
 /**
  * An alternative to [SET_PED_PRELOAD_PROP_DATA](#\_0x2B16A3BFF1FBCE49) that uses local collection indexing instead of the global one.
@@ -4673,9 +4666,9 @@ export function setStateBagValue(bagName, keyName, valueData, valueLength, repli
  *
  * Hash: 0x14B5BBE0 | Since: client
  */
-export function setPedCollectionPreloadPropData(ped, anchorPoint, collection, propIndex, textureId) {
+export function setPedCollectionPreloadPropData(ped, anchorPoint, propIndex, textureId) {
     const _ped = ped instanceof Ped ? ped.handle() : ped;
-    SetPedCollectionPreloadPropData(_ped, anchorPoint, collection, propIndex, textureId);
+    return SetPedCollectionPreloadPropData(_ped, anchorPoint, propIndex, textureId);
 }
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
@@ -4683,9 +4676,9 @@ export function setPedCollectionPreloadPropData(ped, anchorPoint, collection, pr
  *
  * Hash: 0x488C86D2 | Since: client
  */
-export function setVehicleHandlingFloat(vehicle, class_, fieldName, value) {
+export function setVehicleHandlingFloat(vehicle, value) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    SetVehicleHandlingFloat(_vehicle, class_, fieldName, value);
+    return SetVehicleHandlingFloat(_vehicle, value);
 }
 /**
  * Example script: https://pastebin.com/J6XGbkCW
@@ -4858,9 +4851,9 @@ export function setVehicleRollBias(vehicle, value) {
  *
  * Hash: 0x2BA40795 | Since: client
  */
-export function setVehicleHandlingField(vehicle, class_, fieldName, value) {
+export function setVehicleHandlingField(vehicle, value) {
     const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-    SetVehicleHandlingField(_vehicle, class_, fieldName, value);
+    return SetVehicleHandlingField(_vehicle, value);
 }
 /**
  * No comment provided
@@ -5102,8 +5095,8 @@ export function setWaveQuadBounds(waveQuad, minX, minY, maxX, maxY) {
  *
  * Hash: 0xD1D31681 | Since: client
  */
-export function setVisualSettingFloat(name, value) {
-    SetVisualSettingFloat(name, value);
+export function setVisualSettingFloat(value) {
+    return SetVisualSettingFloat(value);
 }
 /**
  * Sets vehicle's wheels' width (width is the same for all the wheels, cannot get/set specific wheel of vehicle).
@@ -5238,8 +5231,8 @@ export function setVehicleWheelYRotation(vehicle, wheelIndex, value) {
  *
  * Hash: 0x7FB46432 | Since: client
  */
-export function unregisterRawNuiCallback(callbackType) {
-    UnregisterRawNuiCallback(callbackType);
+export function unregisterRawNuiCallback() {
+    return UnregisterRawNuiCallback();
 }
 /**
  * No comment provided
@@ -5288,8 +5281,8 @@ export function setWeaponsNoAutoreload(state) {
  *
  * Hash: 0x12A330 | Since: shared
  */
-export function stateBagHasKey(bagName, key) {
-    return StateBagHasKey(bagName, key);
+export function stateBagHasKey() {
+    return StateBagHasKey();
 }
 /**
  * No comment provided
@@ -5312,8 +5305,8 @@ export function wasEventCanceled() {
  *
  * Hash: 0x7FDD1128 | Since: client
  */
-export function triggerServerEventInternal(eventName, eventPayload, payloadLength) {
-    TriggerServerEventInternal(eventName, eventPayload, payloadLength);
+export function triggerServerEventInternal(payloadLength) {
+    return TriggerServerEventInternal(payloadLength);
 }
 /**
  * Disables weapons aim blocking due to environment for local player.
@@ -5415,8 +5408,8 @@ export function getMapdataEntityMatrix(mapDataHash, entityInternalIdx, matrixPtr
  *
  * Hash: 0x68DFF2DD | Since: client
  */
-export function setEntityDrawOutlineRenderTechnique(techniqueGroup) {
-    SetEntityDrawOutlineRenderTechnique(techniqueGroup);
+export function setEntityDrawOutlineRenderTechnique() {
+    return SetEntityDrawOutlineRenderTechnique();
 }
 /**
  * Returns the transient entity index for a specified mapdata/entity pair.
@@ -5432,8 +5425,8 @@ export function getEntityIndexFromMapdata(mapdata, entity) {
  *
  * Hash: 0xD264D4E1 | Since: client
  */
-export function setWeatherCycleEntry(index, typeName, timeMult) {
-    return SetWeatherCycleEntry(index, typeName, timeMult);
+export function setWeatherCycleEntry(index, timeMult) {
+    return SetWeatherCycleEntry(index, timeMult);
 }
 /**
  * Retrieves the map data entity handle.
@@ -5441,8 +5434,8 @@ export function setWeatherCycleEntry(index, typeName, timeMult) {
  *
  * Hash: 0x30AA6911 | Since: client
  */
-export function getMapdataEntityHandle(mapDataHash, entityInternalIdx, entityHandle) {
-    return GetMapdataEntityHandle(mapDataHash, entityInternalIdx, entityHandle);
+export function getMapdataEntityHandle(mapDataHash, entityInternalIdx) {
+    return GetMapdataEntityHandle(mapDataHash, entityInternalIdx);
 }
 /**
  * Sets an entity's matrix. Arguments are in the same order as with GET_ENTITY_MATRIX.
@@ -5490,8 +5483,8 @@ export function setEntityDrawOutlineShader(shader) {
  *
  * Hash: 0x91310870 | Since: shared
  */
-export function triggerEventInternal(eventName, eventPayload, payloadLength) {
-    TriggerEventInternal(eventName, eventPayload, payloadLength);
+export function triggerEventInternal(payloadLength) {
+    return TriggerEventInternal(payloadLength);
 }
 /**
  * Draws a gizmo. This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -5508,8 +5501,8 @@ export function triggerEventInternal(eventName, eventPayload, payloadLength) {
  *
  * Hash: 0xEB2EDCA2 | Since: client
  */
-export function drawGizmo(matrixPtr, id) {
-    return DrawGizmo(matrixPtr, id);
+export function drawGizmo(matrixPtr) {
+    return DrawGizmo(matrixPtr);
 }
 /**
  * Gets the selected entity at the specified mouse cursor position, and changes the current selection depth. This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -5525,9 +5518,9 @@ export function selectEntityAtPos(fracX, fracY, hitFlags, precise) {
  *
  * Hash: 0xF6B815C5 | Since: client
  */
-export function getEntityMapdataOwner(entity, mapdataHandle, entityHandle) {
+export function getEntityMapdataOwner(entity) {
     const _entity = entity instanceof Entity ? entity.handle() : entity;
-    return GetEntityMapdataOwner(_entity, mapdataHandle, entityHandle);
+    return GetEntityMapdataOwner(_entity);
 }
 /**
  * No comment provided
@@ -5542,8 +5535,8 @@ export function endFindKvp(handle) {
  *
  * Hash: 0x128737EA | Since: client
  */
-export function triggerLatentServerEventInternal(eventName, eventPayload, payloadLength, bps) {
-    TriggerLatentServerEventInternal(eventName, eventPayload, payloadLength, bps);
+export function triggerLatentServerEventInternal(payloadLength, bps) {
+    return TriggerLatentServerEventInternal(payloadLength, bps);
 }
 /**
  * Returns the transient map data index for a specified hash.
@@ -5586,16 +5579,16 @@ export function disableEditorRuntime() {
  *
  * Hash: 0x9ADD2938 | Since: shared
  */
-export function setResourceKvpFloat(key, value) {
-    SetResourceKvpFloat(key, value);
+export function setResourceKvpFloat(value) {
+    return SetResourceKvpFloat(value);
 }
 /**
  * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938).
  *
  * Hash: 0x35BDCEEA | Since: shared
  */
-export function getResourceKvpFloat(key) {
-    return GetResourceKvpFloat(key);
+export function getResourceKvpFloat() {
+    return GetResourceKvpFloat();
 }
 /**
  * Enters cursor mode, suppressing mouse movement to the game and displaying a mouse cursor instead. This function supports
@@ -5611,24 +5604,24 @@ export function enterCursorMode() {
  *
  * Hash: 0x8F2EECC3 | Since: client
  */
-export function startFindExternalKvp(resourceName, prefix) {
-    return StartFindExternalKvp(resourceName, prefix);
+export function startFindExternalKvp() {
+    return StartFindExternalKvp();
 }
 /**
  * No comment provided
  *
  * Hash: 0x7389B5DF | Since: shared
  */
-export function deleteResourceKvp(key) {
-    DeleteResourceKvp(key);
+export function deleteResourceKvp() {
+    return DeleteResourceKvp();
 }
 /**
  * Nonsynchronous [DELETE_RESOURCE_KVP](#\_0x7389B5DF) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x4152C90 | Since: shared
  */
-export function deleteResourceKvpNoSync(key) {
-    DeleteResourceKvpNoSync(key);
+export function deleteResourceKvpNoSync() {
+    return DeleteResourceKvpNoSync();
 }
 /**
  * Transiently updates the entity with the specified mapdata index and entity index.
@@ -5637,7 +5630,8 @@ export function deleteResourceKvpNoSync(key) {
  * Hash: 0xFC52CB91 | Since: client
  */
 export function updateMapdataEntity(mapdata, entity, entityDef) {
-    UpdateMapdataEntity(mapdata, entity, entityDef);
+    const _entityDef = entityDef instanceof Object ? entityDef.handle() : entityDef;
+    UpdateMapdataEntity(mapdata, entity, _entityDef);
 }
 /**
  * Sets color for entity outline. `255, 0, 255, 255` by default.
@@ -5652,87 +5646,87 @@ export function setEntityDrawOutlineColor(red, green, blue, alpha) {
  *
  * Hash: 0x557B586A | Since: shared
  */
-export function getResourceKvpInt(key) {
-    return GetResourceKvpInt(key);
+export function getResourceKvpInt() {
+    return GetResourceKvpInt();
 }
 /**
  * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938), but for a specified resource.
  *
  * Hash: 0x3CC98B25 | Since: client
  */
-export function getExternalKvpFloat(resource, key) {
-    return GetExternalKvpFloat(resource, key);
+export function getExternalKvpFloat() {
+    return GetExternalKvpFloat();
 }
 /**
  * Nonsynchronous [SET_RESOURCE_KVP](#\_0x21C7A35B) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0xCF9A2FF | Since: shared
  */
-export function setResourceKvpNoSync(key, value) {
-    SetResourceKvpNoSync(key, value);
+export function setResourceKvpNoSync() {
+    return SetResourceKvpNoSync();
 }
 /**
  * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B).
  *
  * Hash: 0x5240DA5A | Since: shared
  */
-export function getResourceKvpString(key) {
-    return GetResourceKvpString(key);
+export function getResourceKvpString() {
+    return GetResourceKvpString();
 }
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x3517BFBE | Since: shared
  */
-export function setResourceKvpFloatNoSync(key, value) {
-    SetResourceKvpFloatNoSync(key, value);
+export function setResourceKvpFloatNoSync(value) {
+    return SetResourceKvpFloatNoSync(value);
 }
 /**
  * A getter for [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8), but for a specified resource.
  *
  * Hash: 0x12B8D689 | Since: client
  */
-export function getExternalKvpInt(resource, key) {
-    return GetExternalKvpInt(resource, key);
+export function getExternalKvpInt() {
+    return GetExternalKvpInt();
 }
 /**
  * No comment provided
  *
  * Hash: 0xDD379006 | Since: shared
  */
-export function startFindKvp(prefix) {
-    return StartFindKvp(prefix);
+export function startFindKvp() {
+    return StartFindKvp();
 }
 /**
  * A setter for [GET_RESOURCE_KVP_STRING](#\_0x5240DA5A).
  *
  * Hash: 0x21C7A35B | Since: shared
  */
-export function setResourceKvp(key, value) {
-    SetResourceKvp(key, value);
+export function setResourceKvp() {
+    return SetResourceKvp();
 }
 /**
  * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B), but for a specified resource.
  *
  * Hash: 0x9080363A | Since: client
  */
-export function getExternalKvpString(resource, key) {
-    return GetExternalKvpString(resource, key);
+export function getExternalKvpString() {
+    return GetExternalKvpString();
 }
 /**
  * A setter for [GET_RESOURCE_KVP_INT](#\_0x557B586A).
  *
  * Hash: 0x6A2B1E8 | Since: shared
  */
-export function setResourceKvpInt(key, value) {
-    SetResourceKvpInt(key, value);
+export function setResourceKvpInt(value) {
+    return SetResourceKvpInt(value);
 }
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x26AEB707 | Since: shared
  */
-export function setResourceKvpIntNoSync(key, value) {
-    SetResourceKvpIntNoSync(key, value);
+export function setResourceKvpIntNoSync(value) {
+    return SetResourceKvpIntNoSync(value);
 }
 export * from "@risinglife/redm-shared";
