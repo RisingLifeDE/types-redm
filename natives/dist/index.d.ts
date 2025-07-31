@@ -7010,7 +7010,7 @@ export declare namespace entity {
      *
      * Hash: 0x4971D2F8162B9674 | Since: 1207
      */
-    function setAsNoLongerNeeded(): number;
+    function setAsNoLongerNeeded(entity: number | Entity): void;
     /**
      * No comment provided
      *
@@ -7191,19 +7191,19 @@ export declare namespace entity {
      *
      * Hash: 0x3AE22DEB5BA5A3E6 | Since: 1207
      */
-    function setObjectAsNoLongerNeeded(): number;
+    function setObjectAsNoLongerNeeded(object: number | Object): void;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
      * Hash: 0x2595DD4236549CE3 | Since: 1207
      */
-    function setPedAsNoLongerNeeded(): number;
+    function setPedAsNoLongerNeeded(ped: number | Ped): void;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
      * Hash: 0x629BFA74418D6239 | Since: 1207
      */
-    function setVehicleAsNoLongerNeeded(): number;
+    function setVehicleAsNoLongerNeeded(vehicle: number | Vehicle): void;
     /**
      * No comment provided
      *
@@ -39766,7 +39766,7 @@ export declare namespace txd {
      *
      * Hash: 0x4ACA10A91F66F1E2 | Since: 1207
      */
-    function setStreamedTextureDictAsNoLongerNeeded(): string;
+    function setStreamedTextureDictAsNoLongerNeeded(textureDict: string): void;
     /**
      * No comment provided
      *
@@ -41129,7 +41129,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xBBE7648349B49BE8 | Since: 1207
      */
-    function setMissionTrainAsNoLongerNeeded(flags: number): number;
+    function setMissionTrainAsNoLongerNeeded(train: number | Vehicle, flags: number): void;
     /**
      * No comment provided
      *
@@ -53294,9 +53294,9 @@ export declare function setEntityAsMissionEntity(entity1: number | Entity): void
  * Entities marked as no longer needed, will be deleted as the engine sees fit.
  *
  * Hash: 0x4971D2F8162B9674 | Since: 1207
- * @deprecated Use entity.setAsNoLongerNeeded() instead
+ * @deprecated Use entity.setAsNoLongerNeeded(entity1) instead
  */
-export declare function setEntityAsNoLongerNeeded(): number;
+export declare function setEntityAsNoLongerNeeded(entity1: number | Entity): void;
 /**
  * No comment provided
  *
@@ -53505,23 +53505,23 @@ export declare function setEntityVisible(entity1: number | Entity, toggle: boole
  * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
  *
  * Hash: 0x3AE22DEB5BA5A3E6 | Since: 1207
- * @deprecated Use entity.setObjectAsNoLongerNeeded() instead
+ * @deprecated Use entity.setObjectAsNoLongerNeeded(object) instead
  */
-export declare function setObjectAsNoLongerNeeded(): number;
+export declare function setObjectAsNoLongerNeeded(object: number | Object): void;
 /**
  * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
  *
  * Hash: 0x2595DD4236549CE3 | Since: 1207
- * @deprecated Use entity.setPedAsNoLongerNeeded() instead
+ * @deprecated Use entity.setPedAsNoLongerNeeded(ped) instead
  */
-export declare function setPedAsNoLongerNeeded(): number;
+export declare function setPedAsNoLongerNeeded(ped: number | Ped): void;
 /**
  * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
  *
  * Hash: 0x629BFA74418D6239 | Since: 1207
- * @deprecated Use entity.setVehicleAsNoLongerNeeded() instead
+ * @deprecated Use entity.setVehicleAsNoLongerNeeded(vehicle) instead
  */
-export declare function setVehicleAsNoLongerNeeded(): number;
+export declare function setVehicleAsNoLongerNeeded(vehicle: number | Vehicle): void;
 /**
  * No comment provided
  *
@@ -91122,9 +91122,9 @@ export declare function requestStreamedTxd(txdHash: number | string): void;
  * No comment provided
  *
  * Hash: 0x4ACA10A91F66F1E2 | Since: 1207
- * @deprecated Use txd.setStreamedTextureDictAsNoLongerNeeded() instead
+ * @deprecated Use txd.setStreamedTextureDictAsNoLongerNeeded(textureDict) instead
  */
-export declare function setStreamedTextureDictAsNoLongerNeeded(): string;
+export declare function setStreamedTextureDictAsNoLongerNeeded(textureDict: string): void;
 /**
  * No comment provided
  *
@@ -92673,9 +92673,9 @@ export declare function setForceVehicleEngineDamageByBullet(vehicle1: number | V
  * flags = 0: DEFAULT; 1: KEEP_OLD_SPEED
  *
  * Hash: 0xBBE7648349B49BE8 | Since: 1207
- * @deprecated Use vehicle.setMissionTrainAsNoLongerNeeded(flags) instead
+ * @deprecated Use vehicle.setMissionTrainAsNoLongerNeeded(train, flags) instead
  */
-export declare function setMissionTrainAsNoLongerNeeded(flags: number): number;
+export declare function setMissionTrainAsNoLongerNeeded(train: number | Vehicle, flags: number): void;
 /**
  * No comment provided
  *
