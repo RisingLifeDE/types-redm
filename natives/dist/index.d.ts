@@ -36118,7 +36118,7 @@ export declare namespace task {
      *
      * Hash: 0xEB47EC4E34FB7EE1 | Since: 1207
      */
-    function setScenarioTypeEnabled(toggle: boolean): string;
+    function setScenarioTypeEnabled(scenarioType: string, toggle: boolean): void;
     /**
      * repeatMode: 0 = REPEAT_NOT; 1 = REPEAT_FOREVER
      *
@@ -87026,9 +87026,9 @@ export declare function setScenarioGroupEnabled(toggle: boolean): string;
  * No comment provided
  *
  * Hash: 0xEB47EC4E34FB7EE1 | Since: 1207
- * @deprecated Use task.setScenarioTypeEnabled(toggle) instead
+ * @deprecated Use task.setScenarioTypeEnabled(scenarioType, toggle) instead
  */
-export declare function setScenarioTypeEnabled(toggle: boolean): string;
+export declare function setScenarioTypeEnabled(scenarioType: string, toggle: boolean): void;
 /**
  * repeatMode: 0 = REPEAT_NOT; 1 = REPEAT_FOREVER
  *
