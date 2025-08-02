@@ -1,4 +1,4 @@
-import { Vector3, Vector2, Entity, Ped, Player, Vehicle, Object } from '@risinglife/redm-shared';
+import { Vector3, Vector2, Entity, Ped, Player, Vehicle, Object, Blip, Camera } from '@risinglife/redm-shared';
 export declare namespace aicoverpoint {
     /**
      * No comment provided
@@ -2944,25 +2944,25 @@ export declare namespace camera {
      *
      * Hash: 0xF1F57F9D230F9CD1 | Since: 1207
      */
-    function addCamSplineNode(camera: number, pos: Vector3, rot: Vector3, length: number): void;
+    function addCamSplineNode(camera: number | Camera, pos: Vector3, rot: Vector3, length: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x42ED56B02E05D109 | Since: 1207
      */
-    function allowMotionBlurDecay(cam: number): void;
+    function allowMotionBlurDecay(cam: number | Camera): void;
     /**
      * Last param determines if its relative to the Entity
      *
      * Hash: 0xFDC0DF7F6FB0A592 | Since: 1207
      */
-    function attachCamToEntity(cam: number, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean): void;
+    function attachCamToEntity(cam: number | Camera, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean): void;
     /**
      * boneIndex: https://github.com/femga/rdr3_discoveries/tree/master/boneNames
      *
      * Hash: 0xDFC1E4A44C0324CA | Since: 1207
      */
-    function attachCamToPedBone(cam: number, ped: number | Ped, boneIndex: number, pos: Vector3, heading: boolean): void;
+    function attachCamToPedBone(cam: number | Camera, ped: number | Ped, boneIndex: number, pos: Vector3, heading: boolean): void;
     /**
      * Only used in R* Script fm_mission_controller
      *
@@ -3016,13 +3016,13 @@ export declare namespace camera {
      *
      * Hash: 0x4E67E0B6D7FD5145 | Since: 1207
      */
-    function destroyCam(cam: number): void;
+    function destroyCam(cam: number | Camera): void;
     /**
      * No comment provided
      *
      * Hash: 0x05B41DDBEB559556 | Since: 1207
      */
-    function detachCam(cam: number): void;
+    function detachCam(cam: number | Camera): void;
     /**
      * No comment provided
      *
@@ -3052,7 +3052,7 @@ export declare namespace camera {
      *
      * Hash: 0x153AD457764FD704 | Since: 1207
      */
-    function doesCamExist(cam: number): boolean;
+    function doesCamExist(cam: number | Camera): boolean;
     /**
      * Fades the screen in.
      *
@@ -3080,19 +3080,19 @@ export declare namespace camera {
      *
      * Hash: 0x6B12F11C2A9F0344 | Since: 1207
      */
-    function getCamCoord(cam: number): Vector3;
+    function getCamCoord(cam: number | Camera): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x8101D32A0A6B0F60 | Since: 1207
      */
-    function getCamFov(cam: number): number;
+    function getCamFov(cam: number | Camera): number;
     /**
      * rotationOrder: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eEulerRotationOrder
      *
      * Hash: 0x9BF96B57254E7889 | Since: 1207
      */
-    function getCamRot(cam: number, rotationOrder: number): Vector3;
+    function getCamRot(cam: number | Camera, rotationOrder: number): Vector3;
     /**
      * Can use this with SET_CAM_SPLINE_PHASE to set the float it this native returns.
      *
@@ -3100,7 +3100,7 @@ export declare namespace camera {
      *
      * Hash: 0x095EDCD24D90033A | Since: 1207
      */
-    function getCamSplinePhase(cam: number): number;
+    function getCamSplinePhase(cam: number | Camera): number;
     /**
      * No comment provided
      *
@@ -3190,25 +3190,25 @@ export declare namespace camera {
      *
      * Hash: 0x63EFCC7E1810B8E6 | Since: 1207
      */
-    function isCamActive(cam: number): boolean;
+    function isCamActive(cam: number | Camera): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x578F8F1CAA17BD2B | Since: 1207
      */
-    function isCamInterpolating(cam: number): boolean;
+    function isCamInterpolating(cam: number | Camera): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4415F8A6C536D39F | Since: 1207
      */
-    function isCamRendering(cam: number): boolean;
+    function isCamRendering(cam: number | Camera): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2EEB402BD7320159 | Since: 1207
      */
-    function isCamShaking(cam: number): boolean;
+    function isCamShaking(cam: number | Camera): boolean;
     /**
      * No comment provided
      *
@@ -3310,19 +3310,19 @@ export declare namespace camera {
      *
      * Hash: 0xA263DDF694D563F6 | Since: 1207
      */
-    function playCamAnim(cam: number, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
+    function playCamAnim(cam: number | Camera, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x948B39341C3A40C2 | Since: 1207
      */
-    function pointCamAtCoord(cam: number, pos: Vector3): void;
+    function pointCamAtCoord(cam: number | Camera, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0xFC2867E6074D3A61 | Since: 1207
      */
-    function pointCamAtEntity(cam: number, entity: number | Entity): void;
+    function pointCamAtEntity(cam: number | Camera, entity: number | Entity): void;
     /**
      * ease - smooth transition between the camera's positions
      * easeTime - Time in milliseconds for the transition to happen
@@ -3339,37 +3339,37 @@ export declare namespace camera {
      *
      * Hash: 0x87295BCA613800C8 | Since: 1207
      */
-    function setCamActive(cam: number, active: boolean): void;
+    function setCamActive(cam: number | Camera, active: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x8B15AE2987C1AC8F | Since: 1207
      */
-    function setCamActiveWithInterp(camTo: number, camFrom: number, duration: number, easeLocation: number, easeRotation: number): void;
+    function setCamActiveWithInterp(camTo: number | Camera, camFrom: number | Camera, duration: number, easeLocation: number, easeRotation: number): void;
     /**
      * Allows you to aim and shoot at the direction the camera is facing.
      *
      * Hash: 0x3CB9E8BDE5E76F33 | Since: 1207
      */
-    function setCamAffectsAiming(cam: number, toggle: boolean): void;
+    function setCamAffectsAiming(cam: number | Camera, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x1B8F3CE5A6001298 | Since: 1207
      */
-    function setCamControlsMiniMapHeading(cam: number): void;
+    function setCamControlsMiniMapHeading(cam: number | Camera): void;
     /**
      * Sets the position of the cam.
      *
      * Hash: 0xF9EE7D419EE49DE6 | Since: 1207
      */
-    function setCamCoord(cam: number, pos: Vector3): void;
+    function setCamCoord(cam: number | Camera, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x5E32817BF6302111 | Since: 1207
      */
-    function setCamFarClip(cam: number, farClip: number): void;
+    function setCamFarClip(cam: number | Camera, farClip: number): void;
     /**
      * Sets the field of view of the cam.
      *
@@ -3378,49 +3378,49 @@ export declare namespace camera {
      *
      * Hash: 0x27666E5988D9D429 | Since: 1207
      */
-    function setCamFov(cam: number, fieldOfView: number): void;
+    function setCamFov(cam: number | Camera, fieldOfView: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x45FD891364181F9E | Since: 1207
      */
-    function setCamMotionBlurStrength(cam: number, strength: number): void;
+    function setCamMotionBlurStrength(cam: number | Camera, strength: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA924028272A61364 | Since: 1207
      */
-    function setCamNearClip(cam: number, nearClip: number): void;
+    function setCamNearClip(cam: number | Camera, nearClip: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA47BBFFFB83D4D0A | Since: 1207
      */
-    function setCamParams(cam: number, pos: Vector3, rot: Vector3, fieldOfView: number): void;
+    function setCamParams(cam: number | Camera, pos: Vector3, rot: Vector3, fieldOfView: number): void;
     /**
      * Sets the rotation of the cam.
      *
      * Hash: 0x63DFA6810AD78719 | Since: 1207
      */
-    function setCamRot(cam: number, rot: Vector3, rotationOrder: number): void;
+    function setCamRot(cam: number | Camera, rot: Vector3, rotationOrder: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xFF6311652CA91015 | Since: 1207
      */
-    function setCamSplineDuration(cam: number, timeDuration: number): void;
+    function setCamSplineDuration(cam: number | Camera, timeDuration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xF1898A68E7C15636 | Since: 1207
      */
-    function setCamSplinePhase(cam: number): void;
+    function setCamSplinePhase(cam: number | Camera): void;
     /**
      * No comment provided
      *
      * Hash: 0x84B3645618E726B0 | Since: 1207
      */
-    function setCamSplineSmoothingStyle(cam: number, smoothingStyle: number): void;
+    function setCamSplineSmoothingStyle(cam: number | Camera, smoothingStyle: number): void;
     /**
      * No comment provided
      *
@@ -3602,7 +3602,7 @@ export declare namespace camera {
      *
      * Hash: 0xF9A7BCF5D050D4E7 | Since: 1207
      */
-    function shakeCam(cam: number, type: string, amplitude: number): void;
+    function shakeCam(cam: number | Camera, _type: string, amplitude: number): void;
     /**
      * No comment provided
      *
@@ -3614,13 +3614,13 @@ export declare namespace camera {
      *
      * Hash: 0xCA1B30A3357C71F1 | Since: 1207
      */
-    function stopCamPointing(cam: number): void;
+    function stopCamPointing(cam: number | Camera): void;
     /**
      * No comment provided
      *
      * Hash: 0xB78CC4B4706614B0 | Since: 1207
      */
-    function stopCamShaking(cam: number): void;
+    function stopCamShaking(cam: number | Camera): void;
     /**
      * No comment provided
      *
@@ -4085,7 +4085,7 @@ export declare namespace camera {
      *
      * Hash: 0xE4B7945EF4F1BFB2 | Since: 1207
      */
-    function _0xE4B7945EF4F1BFB2(cam: number): any;
+    function _0xE4B7945EF4F1BFB2(cam: number | Camera): any;
     /**
      * No comment provided
      *
@@ -4308,7 +4308,7 @@ export declare namespace camera {
      *
      * Hash: 0x9F97E85EC142255E | Since: 1207
      */
-    function pauseFocus(cam: number, pause: boolean): void;
+    function pauseFocus(cam: number | Camera, pause: boolean): void;
     /**
      * Used to enable headshot kill replay when you headshot set ped.
      * Params: p1 seems to be 0 or 1 in R* Scripts
@@ -4334,7 +4334,7 @@ export declare namespace camera {
      *
      * Hash: 0x11F32BB61B756732 | Since: 1207
      */
-    function setCamFocusDistance(cam: number, distance: number): void;
+    function setCamFocusDistance(cam: number | Camera, distance: number): void;
     /**
      * No comment provided
      *
@@ -6215,13 +6215,13 @@ export declare namespace decorator {
      *
      * Hash: 0x72355278C069F272 | Since: 1207
      */
-    function decorIsRegisteredAsType(propertyName: string, type: number): boolean;
+    function decorIsRegisteredAsType(propertyName: string, _type: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0B253D644E3C36B3 | Since: 1207
      */
-    function decorRegister(propertyName: string, type: number): void;
+    function decorRegister(propertyName: string, _type: number): void;
     /**
      * No comment provided
      *
@@ -6270,7 +6270,7 @@ export declare namespace decorator {
      *
      * Hash: 0x4587374F88B7F6C2 | Since: 1207
      */
-    function decorRegister2(propertyName: string, type: number): void;
+    function decorRegister2(propertyName: string, _type: number): void;
     /**
      * No comment provided
      *
@@ -6795,7 +6795,7 @@ export declare namespace entity {
      *
      * Hash: 0x154A3C529497053E | Since: 1207
      */
-    function isAttachedToEntity(from: number | Entity, to: number | Entity): boolean;
+    function isAttachedToEntity(_from: number | Entity, to: number | Entity): boolean;
     /**
      * Checks if entity is within x/y/zSize distance of x/y/z.
      *
@@ -7207,7 +7207,7 @@ export declare namespace entity {
      *
      * Hash: 0x3AE22DEB5BA5A3E6 | Since: 1207
      */
-    function setObjectAsNoLongerNeeded(object: number | Object): void;
+    function setObjectAsNoLongerNeeded(_object: number | Object): void;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
@@ -7915,7 +7915,7 @@ export declare namespace entity {
      *
      * Hash: 0x399657ED871B3A6C | Since: 1207
      */
-    function setCarcassType(entity: number | Entity, type: number | string): void;
+    function setCarcassType(entity: number | Entity, _type: number | string): void;
     /**
      * flagId: https://github.com/femga/rdr3_discoveries/tree/master/AI/CARRYING_FLAGS
      * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CCarryingFlags__Flags
@@ -8074,13 +8074,13 @@ export declare namespace event {
      *
      * Hash: 0x26054EB81AC0893B | Since: 1207
      */
-    function _0x26054EB81AC0893B(object: number | Object): boolean;
+    function _0x26054EB81AC0893B(_object: number | Object): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2DD42FAD06E6F19E | Since: 1207
      */
-    function _0x2DD42FAD06E6F19E(object: number | Object): any;
+    function _0x2DD42FAD06E6F19E(_object: number | Object): any;
     /**
      * _ADD* (_ADD_SHOCKING_EVENT_* ?)
      *
@@ -8132,7 +8132,7 @@ export declare namespace event {
      *
      * Hash: 0xA86B0EE9B39D15D6 | Since: 1207
      */
-    function _0xA86B0EE9B39D15D6(object: number | Object): void;
+    function _0xA86B0EE9B39D15D6(_object: number | Object): void;
     /**
      * Might return time since some (?) event.
      *
@@ -9138,7 +9138,7 @@ export declare namespace graphics {
      *
      * Hash: 0xCE4774E0F9AD48D1 | Since: 1207
      */
-    function cascadeShadowsSetShadowSampleType(type: string): void;
+    function cascadeShadowsSetShadowSampleType(_type: string): void;
     /**
      * No comment provided
      *
@@ -9600,7 +9600,7 @@ export declare namespace graphics {
      *
      * Hash: 0x7DFB49BCDB73089A | Since: 1207
      */
-    function setPickupLight(object: number | Object, toggle: boolean): void;
+    function setPickupLight(_object: number | Object, toggle: boolean): void;
     /**
      * Sets a flag defining whether or not script draw commands should continue being drawn behind the pause menu. This is usually used for draw commands that are used with a world render target.
      *
@@ -10422,7 +10422,7 @@ export declare namespace graphics {
      *
      * Hash: 0x2A32FAA57B937173 | Since: 1207
      */
-    function drawMarker(type: number | string, pos: Vector3, dirX: number, dirY: number, dirZ: number, rot: Vector3, scale: Vector3, red: number, green: number, blue: number, alpha: number, bobUpAndDown: boolean, faceCamera: boolean, rotate: boolean, textureDict: string, textureName: string, drawOnEnts: boolean): void;
+    function drawMarker(_type: number | string, pos: Vector3, dirX: number, dirY: number, dirZ: number, rot: Vector3, scale: Vector3, red: number, green: number, blue: number, alpha: number, bobUpAndDown: boolean, faceCamera: boolean, rotate: boolean, textureDict: string, textureName: string, drawOnEnts: boolean): void;
     /**
      * No comment provided
      *
@@ -10620,7 +10620,7 @@ export declare namespace graphics {
      *
      * Hash: 0xAB72C67163DC4DB4 | Since: 1207
      */
-    function setLightsTypeForEntity(entity: number | Entity, type: number): void;
+    function setLightsTypeForEntity(entity: number | Entity, _type: number): void;
     /**
      * _SET_PARTICLE_FX_LOOPED_FA* - _SET_PARTICLE_FX_LOOPED_OF*
      *
@@ -10638,7 +10638,7 @@ export declare namespace graphics {
      *
      * Hash: 0x72E30372E7CC4415 | Since: 1207
      */
-    function setPearlescentFxEnabled(object: number | Object, toggle: boolean): void;
+    function setPearlescentFxEnabled(_object: number | Object, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -10704,7 +10704,7 @@ export declare namespace graphics {
      *
      * Hash: 0xF02A9C330BBFC5C7 | Since: 1207
      */
-    function setSnowCoverageType(type: number): void;
+    function setSnowCoverageType(_type: number): void;
     /**
      * No comment provided
      *
@@ -10793,13 +10793,13 @@ export declare namespace hud {
      *
      * Hash: 0x481FBF588B0B76DB | Since: 1207
      */
-    function getLengthOfLiteralString(string: string): number;
+    function getLengthOfLiteralString(_string: string): number;
     /**
      * No comment provided
      *
      * Hash: 0xDC5AD6B7AB8184F5 | Since: 1207
      */
-    function getLengthOfLiteralStringInBytes(string: string): number;
+    function getLengthOfLiteralStringInBytes(_string: string): number;
     /**
      * No comment provided
      *
@@ -10927,13 +10927,13 @@ export declare namespace hud {
      *
      * Hash: 0xA0D7CE5F83259663 | Since: 1207
      */
-    function setMpGamerTagBigText(gamerTagId: number, string: string): void;
+    function setMpGamerTagBigText(gamerTagId: number, _string: string): void;
     /**
      * No comment provided
      *
      * Hash: 0xEA6F4B8D4B4B5B3E | Since: 1207
      */
-    function setMpGamerTagName(gamerTagId: number, string: string): void;
+    function setMpGamerTagName(gamerTagId: number, _string: string): void;
     /**
      * No comment provided
      *
@@ -11336,7 +11336,7 @@ export declare namespace hud {
      *
      * Hash: 0x25B9C78A25105C35 | Since: 1207
      */
-    function setMpGamerTagType(gamerTagId: number, type: number | string): void;
+    function setMpGamerTagType(gamerTagId: number, _type: number | string): void;
     /**
      * nullsub, doesn't do anything
      *
@@ -11893,7 +11893,7 @@ export declare namespace hud {
      *
      * Hash: 0xF4A5C4509BF923B1 | Since: 1207
      */
-    function uiPromptSetType(prompt: any, type: number): void;
+    function uiPromptSetType(prompt: any, _type: number): void;
     /**
      * No comment provided
      *
@@ -14262,13 +14262,13 @@ export declare namespace map {
      *
      * Hash: 0x662D364ABF16DE2F | Since: 1207
      */
-    function blipAddModifier(blip: number, modifierHash: number | string): boolean;
+    function blipAddModifier(blip: number | Blip, modifierHash: number | string): boolean;
     /**
      * If modifierHash is 0, ALL modifiers will be removed.
      *
      * Hash: 0xB059D7BD3D78C16F | Since: 1207
      */
-    function blipRemoveModifier(blip: number, modifierHash: number | string): boolean;
+    function blipRemoveModifier(blip: number | Blip, modifierHash: number | string): boolean;
     /**
      * No comment provided
      *
@@ -14304,7 +14304,7 @@ export declare namespace map {
      *
      * Hash: 0xCD82FA174080B3B1 | Since: 1207
      */
-    function doesBlipExist(blip: number): boolean;
+    function doesBlipExist(blip: number | Blip): boolean;
     /**
      * Doesn't actually return anything.
      *
@@ -14316,7 +14316,7 @@ export declare namespace map {
      *
      * Hash: 0x201C319797BDA603 | Since: 1207
      */
-    function getBlipCoords(blip: number): Vector3;
+    function getBlipCoords(blip: number | Blip): Vector3;
     /**
      * Returns the Blip handle of given Entity.
      *
@@ -14334,7 +14334,7 @@ export declare namespace map {
      *
      * Hash: 0x46534526B9CD2D17 | Since: 1207
      */
-    function isBlipOnMini(blip: number): boolean;
+    function isBlipOnMini(blip: number | Blip): boolean;
     /**
      * No comment provided
      *
@@ -14354,7 +14354,7 @@ export declare namespace map {
      *
      * Hash: 0xF2C3C9DA47AAA54A | Since: 1207
      */
-    function removeBlip(blip: number): void;
+    function removeBlip(blip: number | Blip): void;
     /**
      * No comment provided
      *
@@ -14366,49 +14366,49 @@ export declare namespace map {
      *
      * Hash: 0x4FF674F5E23D49CE | Since: 1207
      */
-    function setBlipCoords(blip: number, pos: Vector3): void;
+    function setBlipCoords(blip: number | Blip, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x0DF2B55F717DDB10 | Since: 1207
      */
-    function setBlipFlashes(blip: number): [boolean, number, number];
+    function setBlipFlashes(blip: number | Blip): [boolean, number, number];
     /**
      * No comment provided
      *
      * Hash: 0x02FF4CF43B7209D1 | Since: 1207
      */
-    function setBlipFlashTimer(blip: number, blipType: number, blipHash: number | string): void;
+    function setBlipFlashTimer(blip: number | Blip, blipType: number, blipHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x0A062D6D7C0B2C2C | Since: 1207
      */
-    function setBlipNameFromTextFile(blip: number): string;
+    function setBlipNameFromTextFile(blip: number | Blip): string;
     /**
      * No comment provided
      *
      * Hash: 0x093DD5A31BC2B459 | Since: 1207
      */
-    function setBlipNameToPlayerName(blip: number, player: number | string | Player): void;
+    function setBlipNameToPlayerName(blip: number | Blip, player: number | string | Player): void;
     /**
      * No comment provided
      *
      * Hash: 0x6049966A94FBE706 | Since: 1207
      */
-    function setBlipRotation(blip: number, rotation: number): void;
+    function setBlipRotation(blip: number | Blip, rotation: number): void;
     /**
      * only works for BLIP_ADD_FOR_RADIUS AND BLIP_ADD_FOR_AREA, this native works as a radius not really a scale
      *
      * Hash: 0xD38744167B2FA257 | Since: 1207
      */
-    function setBlipScale(blip: number, scale: number): void;
+    function setBlipScale(blip: number | Blip, scale: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x74F74D3207ED525C | Since: 1207
      */
-    function setBlipSprite(blip: number, hash: number | string): void;
+    function setBlipSprite(blip: number | Blip, hash: number | string): void;
     /**
      * No comment provided
      *
@@ -14486,7 +14486,7 @@ export declare namespace map {
      *
      * Hash: 0x01B928CA2E198B01 | Since: 1207
      */
-    function clearBlip(blipid: number): any;
+    function clearBlip(blipid: number | Blip): any;
     /**
      * It adds blip a icon to active prompts like from scenarios or pickups without the need to use lockon
      *
@@ -14499,7 +14499,7 @@ export declare namespace map {
      *
      * Hash: 0x250C75EB1728CC0D | Since: 1207
      */
-    function blipDetachFromEntity(blip: number): void;
+    function blipDetachFromEntity(blip: number | Blip): void;
     /**
      * checks if the entity lockon prompt contains an icon
      *
@@ -14561,7 +14561,7 @@ export declare namespace map {
      *
      * Hash: 0xDEEDE7C41742E011 | Since: 1207
      */
-    function abandonBlip(blip: number): void;
+    function abandonBlip(blip: number | Blip): void;
     /**
      * list of minimap props: https://github.com/femga/rdr3_discoveries/tree/master/graphics/minimap/minimapObjects
      * variations parameter are the interior locations you see on the map like these bellow
@@ -14596,14 +14596,14 @@ export declare namespace map {
      *
      * Hash: 0xBD62D98799A3DAF0 | Since: 1207
      */
-    function blipAddStyle(blip: number, styleHash: number | string): boolean;
+    function blipAddStyle(blip: number | Blip, styleHash: number | string): boolean;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/useful_info_from_rpfs/blip_styles
      * Removes any existing modifiers and sets the style.
      *
      * Hash: 0xEDD964B7984AC291 | Since: 1207
      */
-    function blipSetStyle(blip: number, styleHash: number | string): boolean;
+    function blipSetStyle(blip: number | Blip, styleHash: number | string): boolean;
     /**
      * No comment provided
      *
@@ -14633,7 +14633,7 @@ export declare namespace map {
      *
      * Hash: 0xE9F676788F8D5E1E | Since: 1207
      */
-    function isBlipAttachedToAnyEntity(blip: number): boolean;
+    function isBlipAttachedToAnyEntity(blip: number | Blip): boolean;
     /**
      * No comment provided
      *
@@ -14687,7 +14687,7 @@ export declare namespace map {
      *
      * Hash: 0x9CB1A1623062F402 | Since: 1207
      */
-    function setBlipName(blip: number, name: string): void;
+    function setBlipName(blip: number | Blip, name: string): void;
     /**
      * Used for GUARMA MODE; Enabled: toggle = false, 0; Disabled: toggle = true, 0
      * Hash p1 seems to be unused, always 0
@@ -15373,7 +15373,7 @@ export declare namespace misc {
      *
      * Hash: 0xFD340785ADF8CFB7 | Since: 1207
      */
-    function getHashKey(string: string): number;
+    function getHashKey(_string: string): number;
     /**
      * dx = x1 - x2
      * dy = y1 - y2
@@ -15626,19 +15626,19 @@ export declare namespace misc {
      *
      * Hash: 0x602102324604D96B | Since: 1207
      */
-    function isStringNull(string: string): boolean;
+    function isStringNull(_string: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2CF12F9ACF18F048 | Since: 1207
      */
-    function isStringNullOrEmpty(string: string): boolean;
+    function isStringNullOrEmpty(_string: string): boolean;
     /**
      * Returns true if the entire string consists only of space characters.
      *
      * Hash: 0x375F5870A7B8BEC1 | Since: 1207
      */
-    function isStringNullOrEmptyOrSpaces(string: string): boolean;
+    function isStringNullOrEmptyOrSpaces(_string: string): boolean;
     /**
      * No comment provided
      *
@@ -15940,7 +15940,7 @@ export declare namespace misc {
      *
      * Hash: 0xF2DD2298B3AF23E2 | Since: 1207
      */
-    function stringToInt(string: string): [boolean, number];
+    function stringToInt(_string: string): [boolean, number];
     /**
      * No comment provided
      *
@@ -17225,7 +17225,7 @@ export declare namespace netshopping {
      *
      * Hash: 0xF039EC27F4490E96 | Since: 1207
      */
-    function cashinventoryTransactionStart(type: number | string, actionHash: number | string): [boolean, number];
+    function cashinventoryTransactionStart(_type: number | string, actionHash: number | string): [boolean, number];
     /**
      * No comment provided
      *
@@ -18751,7 +18751,7 @@ export declare namespace network {
      *
      * Hash: 0x99BFDC94A603E541 | Since: 1207
      */
-    function objToNet(object: number | Object): number;
+    function objToNet(_object: number | Object): number;
     /**
      * Return the local Participant ID
      *
@@ -19314,7 +19314,7 @@ export declare namespace network {
      *
      * Hash: 0x51951DE06C0D1C40 | Since: 1207
      */
-    function _0x51951DE06C0D1C40(player: number | string | Player, type: number): void;
+    function _0x51951DE06C0D1C40(player: number | string | Player, _type: number): void;
     /**
      * No comment provided
      *
@@ -20785,13 +20785,13 @@ export declare namespace object {
      *
      * Hash: 0x8462BE2341A55B6F | Since: 1207
      */
-    function breakAllFragmentBones(object: number | Object): void;
+    function breakAllFragmentBones(_object: number | Object): void;
     /**
      * No comment provided
      *
      * Hash: 0xE7E4C198B0185900 | Since: 1207
      */
-    function breakFragmentChild(object: number | Object): void;
+    function breakFragmentChild(_object: number | Object): void;
     /**
      * Old name: _GET_PICKUP_HASH
      *
@@ -20821,7 +20821,7 @@ export declare namespace object {
      *
      * Hash: 0xB6CBD40F8EA69E8A | Since: 1207
      */
-    function createSkeleton(object: number | Object): boolean;
+    function createSkeleton(_object: number | Object): boolean;
     /**
      * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/Placement%20Flags
      * https://github.com/femga/rdr3_discoveries/blob/master/objects/pickup_list.lua
@@ -20846,7 +20846,7 @@ export declare namespace object {
      *
      * Hash: 0x931914268722C263 | Since: 1207
      */
-    function deleteObject(object: number | Object): void;
+    function deleteObject(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -20882,7 +20882,7 @@ export declare namespace object {
      *
      * Hash: 0x52AF537A0C5B8AAD | Since: 1207
      */
-    function doesRayfireMapExist(object: number | Object): boolean;
+    function doesRayfireMapExist(_object: number | Object): boolean;
     /**
      * No comment provided
      *
@@ -20934,7 +20934,7 @@ export declare namespace object {
      *
      * Hash: 0xF9C1681347C8BD15 | Since: 1207
      */
-    function fixFragment(object: number | Object): void;
+    function fixFragment(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -20982,7 +20982,7 @@ export declare namespace object {
      *
      * Hash: 0x260EE4FDBDF4DB01 | Since: 1207
      */
-    function getRayfireMapAnimPhase(object: number | Object): number;
+    function getRayfireMapAnimPhase(_object: number | Object): number;
     /**
      * No comment provided
      *
@@ -20994,7 +20994,7 @@ export declare namespace object {
      *
      * Hash: 0x899BA936634A322E | Since: 1207
      */
-    function getStateOfRayfireMap(object: number | Object): number;
+    function getStateOfRayfireMap(_object: number | Object): number;
     /**
      * No comment provided
      *
@@ -21036,13 +21036,13 @@ export declare namespace object {
      *
      * Hash: 0x0378C08504160D0D | Since: 1207
      */
-    function isAPortablePickup(object: number | Object): boolean;
+    function isAPortablePickup(_object: number | Object): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8B32ACE6326A7546 | Since: 1207
      */
-    function isVisible(object: number | Object): boolean;
+    function isVisible(_object: number | Object): boolean;
     /**
      * No comment provided
      *
@@ -21054,19 +21054,19 @@ export declare namespace object {
      *
      * Hash: 0xADBE4809F19F927A | Since: 1207
      */
-    function onlyCleanUpWhenOutOfRange(object: number | Object): void;
+    function onlyCleanUpWhenOutOfRange(_object: number | Object): void;
     /**
      * No comment provided
      *
      * Hash: 0x58A850EAEE20FAA3 | Since: 1207
      */
-    function placeOnGroundProperly(object: number | Object): boolean;
+    function placeOnGroundProperly(_object: number | Object): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x92AEFB5F6E294023 | Since: 1207
      */
-    function preventCollectionOfPortablePickup(object: number | Object): void;
+    function preventCollectionOfPortablePickup(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -21090,13 +21090,13 @@ export declare namespace object {
      *
      * Hash: 0x406137F8EF90EAF5 | Since: 1207
      */
-    function setActivatePhysicsAsSoonAsItIsUnfrozen(object: number | Object, toggle: boolean): void;
+    function setActivatePhysicsAsSoonAsItIsUnfrozen(_object: number | Object, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE124889AE0521FCF | Since: 1207
      */
-    function setCustomTexturesOn(object: number | Object, txdHash: number | string): void;
+    function setCustomTexturesOn(_object: number | Object, txdHash: number | string): void;
     /**
      * No comment provided
      *
@@ -21128,7 +21128,7 @@ export declare namespace object {
      *
      * Hash: 0x4D89D607CB3DD1D2 | Since: 1207
      */
-    function setAllowLowLodBuoyancy(object: number | Object, toggle: boolean): void;
+    function setAllowLowLodBuoyancy(_object: number | Object, toggle: boolean): void;
     /**
      * Adjust the physics parameters of a prop, or otherwise known as "object". This is useful for simulated gravity.
      *
@@ -21141,19 +21141,19 @@ export declare namespace object {
      *
      * Hash: 0xF6DF6E90DE7DF90F | Since: 1207
      */
-    function setPhysicsParams(object: number | Object, weight: number, gravity: number, buoyancy: number): void;
+    function setPhysicsParams(_object: number | Object, weight: number, gravity: number, buoyancy: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xEB6F1A9B5510A5D2 | Since: 1207
      */
-    function setTakesDamageFromCollidingWithBuildings(object: number | Object, enabled: boolean): void;
+    function setTakesDamageFromCollidingWithBuildings(_object: number | Object, enabled: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x8A7391690F5AFD81 | Since: 1207
      */
-    function setTargettable(object: number | Object, targettable: boolean): void;
+    function setTargettable(_object: number | Object, targettable: boolean): void;
     /**
      * Alt name: _SET_OBJECT_TINT
      *
@@ -21161,7 +21161,7 @@ export declare namespace object {
      *
      * Hash: 0x971DA0055324D033 | Since: 1207
      */
-    function setTintIndex(object: number | Object, textureVariation: number): void;
+    function setTintIndex(_object: number | Object, textureVariation: number): void;
     /**
      * No comment provided
      *
@@ -21215,19 +21215,19 @@ export declare namespace object {
      *
      * Hash: 0x5C29F698D404C5E1 | Since: 1207
      */
-    function setStateOfRayfireMap(object: number | Object, state: number): void;
+    function setStateOfRayfireMap(_object: number | Object, state: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x53E0DF1A2A3CF0CA | Since: 1207
      */
-    function setTeamPickup(object: number | Object): void;
+    function setTeamPickup(_object: number | Object): void;
     /**
      * No comment provided
      *
      * Hash: 0x2FDFF4107B8C1147 | Since: 1207
      */
-    function slide(object: number | Object, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
+    function slide(_object: number | Object, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
     /**
      * No comment provided
      *
@@ -21239,7 +21239,7 @@ export declare namespace object {
      *
      * Hash: 0xB252BC036B525623 | Since: 1207
      */
-    function trackVisibility(object: number | Object): void;
+    function trackVisibility(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -21251,7 +21251,7 @@ export declare namespace object {
      *
      * Hash: 0x0943113E02322164 | Since: 1207
      */
-    function _0x0943113E02322164(object: number | Object): any;
+    function _0x0943113E02322164(_object: number | Object): any;
     /**
      * something to do with doors lockdown when navmesh is swapping?UPDATE_WORLD_STATE  seems to be for unlocking something
      *
@@ -21305,7 +21305,7 @@ export declare namespace object {
      *
      * Hash: 0x3DF1A0A58498E209 | Since: 1436
      */
-    function _0x3DF1A0A58498E209(object: number | Object): void;
+    function _0x3DF1A0A58498E209(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -21425,7 +21425,7 @@ export declare namespace object {
      *
      * Hash: 0xAEE6C800E124CFE1 | Since: 1207
      */
-    function setPromptName(object: number | Object, name: string): void;
+    function setPromptName(_object: number | Object, name: string): void;
     /**
      * No comment provided
      *
@@ -21443,7 +21443,7 @@ export declare namespace object {
      *
      * Hash: 0xCAAF2BCCFEF37F77 | Since: 1207
      */
-    function _0xCAAF2BCCFEF37F77(object: number | Object): void;
+    function _0xCAAF2BCCFEF37F77(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -21461,7 +21461,7 @@ export declare namespace object {
      *
      * Hash: 0xD503D6F0986D58BC | Since: 1207
      */
-    function setPromptNameFromGxtEntry(object: number | Object, gxtEntryHash: number | string): void;
+    function setPromptNameFromGxtEntry(_object: number | Object, gxtEntryHash: number | string): void;
     /**
      * No comment provided
      *
@@ -21521,7 +21521,7 @@ export declare namespace object {
      *
      * Hash: 0xE4EFB315BCD2A838 | Since: 1207
      */
-    function damageBoneOnProp(object: number | Object, bone: number): void;
+    function damageBoneOnProp(_object: number | Object, bone: number): void;
     /**
      * No comment provided
      *
@@ -21563,13 +21563,13 @@ export declare namespace object {
      *
      * Hash: 0xFA3B61EC249B4674 | Since: 1207
      */
-    function getLightIntensityFrom(object: number | Object): number;
+    function getLightIntensityFrom(_object: number | Object): number;
     /**
      * Returns float value to be used with _SET_LIGHT_INTENSITY_FOR_OBJECT
      *
      * Hash: 0x3397CD4E0353DFBA | Since: 1207
      */
-    function getLightIntensity(object: number | Object): number;
+    function getLightIntensity(_object: number | Object): number;
     /**
      * No comment provided
      *
@@ -21599,13 +21599,13 @@ export declare namespace object {
      *
      * Hash: 0x1461DF6DB886BE3F | Since: 1207
      */
-    function makeItemCarriable(object: number | Object): void;
+    function makeItemCarriable(_object: number | Object): void;
     /**
      * No comment provided
      *
      * Hash: 0xF40AB58D83C35027 | Since: 1207
      */
-    function resetVelocity(object: number | Object): void;
+    function resetVelocity(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -21617,25 +21617,25 @@ export declare namespace object {
      *
      * Hash: 0x98D2D9C053A1F449 | Since: 1207
      */
-    function setAutoJumpableByHorse(object: number | Object): void;
+    function setAutoJumpableByHorse(_object: number | Object): void;
     /**
      * No comment provided
      *
      * Hash: 0xF49574E2332A8F06 | Since: 1207
      */
-    function setLightIntensityFor(object: number | Object, lightIntensity: number): void;
+    function setLightIntensityFor(_object: number | Object, lightIntensity: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x04D1D4E411CE52D0 | Since: 1207
      */
-    function setLightScatteringDisabledFor(object: number | Object, disable: boolean): void;
+    function setLightScatteringDisabledFor(_object: number | Object, disable: boolean): void;
     /**
      * Params: value = 0.0 - 586.67 (?)
      *
      * Hash: 0x63E39F09310F481F | Since: 1207
      */
-    function setLightTranslucencyFor(object: number | Object, value: number): void;
+    function setLightTranslucencyFor(_object: number | Object, value: number): void;
     /**
      * Params: p2 controls whether to make pickups usable/collectable or not in networked games
      *
@@ -21647,61 +21647,61 @@ export declare namespace object {
      *
      * Hash: 0xE1C708BA4885796B | Since: 1207
      */
-    function setNotJumpableByHorse(object: number | Object): void;
+    function setNotJumpableByHorse(_object: number | Object): void;
     /**
      * No comment provided
      *
      * Hash: 0xFFB99FFD17F65889 | Since: 1207
      */
-    function setBreakScale(object: number | Object, scale: number): void;
+    function setBreakScale(_object: number | Object, scale: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC8E21C1677DC5E6F | Since: 1207
      */
-    function setBurnIntensity(object: number | Object, intensity: number): void;
+    function setBurnIntensity(_object: number | Object, intensity: number): void;
     /**
      * Seems to mostly have effect on wood-made objects https://imgur.com/a/32oQvOn
      *
      * Hash: 0x2797C633DCDBBAC5 | Since: 1207
      */
-    function setBurnLevel(object: number | Object, burnLevel: number, affectAsh: boolean): void;
+    function setBurnLevel(_object: number | Object, burnLevel: number, affectAsh: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x7D7285EFEAB5AF15 | Since: 1207
      */
-    function setBurnOpacity(object: number | Object, opacity: number): void;
+    function setBurnOpacity(_object: number | Object, opacity: number): void;
     /**
      * p2 is usually the same as speed parameter
      *
      * Hash: 0x646564A3B7DF68F8 | Since: 1207
      */
-    function setBurnSpeed(object: number | Object, speed: number): void;
+    function setBurnSpeed(_object: number | Object, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xB7017DA4D498269F | Since: 1207
      */
-    function setKickable(object: number | Object, kickable: boolean): void;
+    function setKickable(_object: number | Object, kickable: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x581EDBE56E8D62C9 | Since: 1207
      */
-    function setTargettable2(object: number | Object, targettable: boolean): void;
+    function setTargettable2(_object: number | Object, targettable: boolean): void;
     /**
      * focus on objects like focus on peds, p1 is to enable/disable p2 is to enable/disable focus when you have a weapon out
      *
      * Hash: 0xA22712E8471AA08E | Since: 1207
      */
-    function setTargettableFocus(object: number | Object, toggle: boolean, weaponLock: boolean): void;
+    function setTargettableFocus(_object: number | Object, toggle: boolean, weaponLock: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x00EE08603EADEE92 | Since: 1207
      */
-    function setPickupCollectableOnMount(object: number | Object): void;
+    function setPickupCollectableOnMount(_object: number | Object): void;
 }
 export declare namespace pad {
     /**
@@ -22146,7 +22146,7 @@ export declare namespace pathfind {
      *
      * Hash: 0x34F060F4BF92E018 | Since: 1207
      */
-    function setPedPathsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unknown: boolean): void;
+    function setPedPathsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, _unknown: boolean): void;
     /**
      * No comment provided
      *
@@ -23109,7 +23109,7 @@ export declare namespace ped {
      *
      * Hash: 0x2B02DB082258625F | Since: 1207
      */
-    function giveHashScenarioProp(ped: number | Ped, object: number | Object, scenarioType: number | string, p4: number | string): [boolean, string];
+    function giveHashScenarioProp(ped: number | Ped, _object: number | Object, scenarioType: number | string, p4: number | string): [boolean, string];
     /**
      * No comment provided
      *
@@ -26379,7 +26379,7 @@ export declare namespace ped {
      *
      * Hash: 0xCE7A6C1D5CDE1F9D | Since: 1207
      */
-    function _0xCE7A6C1D5CDE1F9D(ped: number | Ped, object: number | Object, propName: string, animName: string): void;
+    function _0xCE7A6C1D5CDE1F9D(ped: number | Ped, _object: number | Object, propName: string, animName: string): void;
     /**
      * _SET_PED_COMBAT_*
      *
@@ -27638,13 +27638,13 @@ export declare namespace ped {
      *
      * Hash: 0x3BBDD6143FF16F98 | Since: 1207
      */
-    function giveScenarioProp(ped: number | Ped, object: number | Object, conditionalAnim: string): boolean;
+    function giveScenarioProp(ped: number | Ped, _object: number | Object, conditionalAnim: string): boolean;
     /**
      * Only used in SP R* Script rcm_jack2
      *
      * Hash: 0xA0774E388CE4A679 | Since: 1207
      */
-    function giveScenarioPropDynamic(ped: number | Ped, object: number | Object): boolean;
+    function giveScenarioPropDynamic(ped: number | Ped, _object: number | Object): boolean;
     /**
      * No comment provided
      *
@@ -28115,7 +28115,7 @@ export declare namespace ped {
      *
      * Hash: 0xBDED916A9F9B0604 | Since: 1207
      */
-    function requestForScenarioType(ped: number | Ped, object: number | Object, scenarioType: number | string): any;
+    function requestForScenarioType(ped: number | Ped, _object: number | Object, scenarioType: number | string): any;
     /**
      * Known get up animation types: REAR, FRONT
      *
@@ -28127,7 +28127,7 @@ export declare namespace ped {
      *
      * Hash: 0xBEC65C6049B3219D | Since: 1207
      */
-    function requestPropScenario(ped: number | Ped, object: number | Object): [any, string, string, string];
+    function requestPropScenario(ped: number | Ped, _object: number | Object): [any, string, string, string];
     /**
      * Creates a texture override data for ped and returns it's index.
      * So you can replace any texture of any ped's component.
@@ -29559,13 +29559,13 @@ export declare namespace physics {
      *
      * Hash: 0x5CEC1A84620E7D5B | Since: 1207
      */
-    function setDisableBreaking(object: number | Object, toggle: boolean): void;
+    function setDisableBreaking(_object: number | Object, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x01BA3AED21C16CFB | Since: 1207
      */
-    function setDisableFragDamage(object: number | Object, toggle: boolean): void;
+    function setDisableFragDamage(_object: number | Object, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -32122,7 +32122,7 @@ export declare namespace player {
      *
      * Hash: 0x93F499CAE53FCD05 | Since: 1207
      */
-    function setDefenseTypeModifier(player: number | string | Player, type: number, defenseModifier: number): void;
+    function setDefenseTypeModifier(player: number | string | Player, _type: number, defenseModifier: number): void;
     /**
      * No comment provided
      *
@@ -32325,7 +32325,7 @@ export declare namespace player {
      *
      * Hash: 0x00BA333DA05ADC23 | Since: 1207
      */
-    function setSpecialAbilityType(player: number | string | Player, type: number): void;
+    function setSpecialAbilityType(player: number | string | Player, _type: number): void;
     /**
      * No comment provided
      *
@@ -34089,7 +34089,7 @@ export declare namespace socialclubfeed {
      *
      * Hash: 0xEFB64240F6B17817 | Since: 1207
      */
-    function scFeedSubmitPresetMessage(type: number, subType: number): number;
+    function scFeedSubmitPresetMessage(_type: number, subType: number): number;
 }
 export declare namespace spactionproxy {
     /**
@@ -35903,7 +35903,7 @@ export declare namespace task {
      *
      * Hash: 0x67BFCED22909834D | Since: 1207
      */
-    function makeObjectNotCarriable(object: number | Object): void;
+    function makeObjectNotCarriable(_object: number | Object): void;
     /**
      * Note: patrolRoute must be prefixed with 'miss_' for it to be valid
      *
@@ -38410,7 +38410,7 @@ export declare namespace task {
      *
      * Hash: 0x9ADDBB9242179D56 | Since: 1207
      */
-    function _0x9ADDBB9242179D56(object: number | Object, ped: number | Ped): void;
+    function _0x9ADDBB9242179D56(_object: number | Object, ped: number | Ped): void;
     /**
      * No comment provided
      *
@@ -39062,7 +39062,7 @@ export declare namespace task {
      *
      * Hash: 0x78B4567E18B54480 | Since: 1207
      */
-    function makeObjectCarriable(object: number | Object): void;
+    function makeObjectCarriable(_object: number | Object): void;
     /**
      * No comment provided
      *
@@ -39074,7 +39074,7 @@ export declare namespace task {
      *
      * Hash: 0xCE71C2F9BAA3F975 | Since: 1207
      */
-    function pedFishingrodHookObject(ped: number | Ped, object: number | Object): void;
+    function pedFishingrodHookObject(ped: number | Ped, _object: number | Object): void;
     /**
      * No comment provided
      *
@@ -39385,7 +39385,7 @@ export declare namespace task {
      *
      * Hash: 0x55CD5FDDD4335C1E | Since: 1207
      */
-    function vehicleFleeOnCleanup(vehicle: number | Vehicle, speed: number, type: number | string): void;
+    function vehicleFleeOnCleanup(vehicle: number | Vehicle, speed: number, _type: number | string): void;
     /**
      * No comment provided
      *
@@ -39429,7 +39429,7 @@ export declare namespace telemetry {
      *
      * Hash: 0x6F5BC5C4EAB42B15 | Since: 1491
      */
-    function _0x6F5BC5C4EAB42B15(linkID: number, type: number, contentId: string): void;
+    function _0x6F5BC5C4EAB42B15(linkID: number, _type: number, contentId: string): void;
     /**
      * No comment provided
      *
@@ -39453,7 +39453,7 @@ export declare namespace telemetry {
      *
      * Hash: 0x7581972ADF5D699A | Since: 1207
      */
-    function animalSkinned(type: number | string): any;
+    function animalSkinned(_type: number | string): any;
     /**
      * No comment provided
      *
@@ -40686,7 +40686,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x260BE8F09E326A20 | Since: 1207
      */
-    function bringToHalt(vehicle: number | Vehicle, distance: number, duration: number, unknown: boolean): void;
+    function bringToHalt(vehicle: number | Vehicle, distance: number, duration: number, _unknown: boolean): void;
     /**
      * No comment provided
      *
@@ -45348,7 +45348,7 @@ export declare namespace zone {
      *
      * Hash: 0x43AD8FC02B429D33 | Since: 1207
      */
-    function getMapAtCoords(pos: Vector3, type: number): number;
+    function getMapAtCoords(pos: Vector3, _type: number): number;
     /**
      * Returns the zone's name hash if its type matches one of the following:
      * - LAKE
@@ -48738,28 +48738,28 @@ export declare function wait(ms: number): void;
  * Hash: 0xF1F57F9D230F9CD1 | Since: 1207
  * @deprecated Use camera.addCamSplineNode(camera1, pos, rot, length) instead
  */
-export declare function addCamSplineNode(camera1: number, pos: Vector3, rot: Vector3, length: number): void;
+export declare function addCamSplineNode(camera1: number | Camera, pos: Vector3, rot: Vector3, length: number): void;
 /**
  * No comment provided
  *
  * Hash: 0x42ED56B02E05D109 | Since: 1207
  * @deprecated Use camera.allowMotionBlurDecay(cam) instead
  */
-export declare function allowMotionBlurDecay(cam: number): void;
+export declare function allowMotionBlurDecay(cam: number | Camera): void;
 /**
  * Last param determines if its relative to the Entity
  *
  * Hash: 0xFDC0DF7F6FB0A592 | Since: 1207
  * @deprecated Use camera.attachCamToEntity(cam, entity, xOffset, yOffset, zOffset, isRelative) instead
  */
-export declare function attachCamToEntity(cam: number, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean): void;
+export declare function attachCamToEntity(cam: number | Camera, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean): void;
 /**
  * boneIndex: https://github.com/femga/rdr3_discoveries/tree/master/boneNames
  *
  * Hash: 0xDFC1E4A44C0324CA | Since: 1207
  * @deprecated Use camera.attachCamToPedBone(cam, ped, boneIndex, pos, heading) instead
  */
-export declare function attachCamToPedBone(cam: number, ped: number | Ped, boneIndex: number, pos: Vector3, heading: boolean): void;
+export declare function attachCamToPedBone(cam: number | Camera, ped: number | Ped, boneIndex: number, pos: Vector3, heading: boolean): void;
 /**
  * Only used in R* Script fm_mission_controller
  *
@@ -48822,14 +48822,14 @@ export declare function destroyAllCams(): void;
  * Hash: 0x4E67E0B6D7FD5145 | Since: 1207
  * @deprecated Use camera.destroyCam(cam) instead
  */
-export declare function destroyCam(cam: number): void;
+export declare function destroyCam(cam: number | Camera): void;
 /**
  * No comment provided
  *
  * Hash: 0x05B41DDBEB559556 | Since: 1207
  * @deprecated Use camera.detachCam(cam) instead
  */
-export declare function detachCam(cam: number): void;
+export declare function detachCam(cam: number | Camera): void;
 /**
  * No comment provided
  *
@@ -48864,7 +48864,7 @@ export declare function disableOnFootFirstPersonViewThisUpdate(): void;
  * Hash: 0x153AD457764FD704 | Since: 1207
  * @deprecated Use camera.doesCamExist(cam) instead
  */
-export declare function doesCamExist(cam: number): boolean;
+export declare function doesCamExist(cam: number | Camera): boolean;
 /**
  * Fades the screen in.
  *
@@ -48896,21 +48896,21 @@ export declare function forceCinematicRenderingThisUpdate(): void;
  * Hash: 0x6B12F11C2A9F0344 | Since: 1207
  * @deprecated Use camera.getCamCoord(cam) instead
  */
-export declare function getCamCoord(cam: number): Vector3;
+export declare function getCamCoord(cam: number | Camera): Vector3;
 /**
  * No comment provided
  *
  * Hash: 0x8101D32A0A6B0F60 | Since: 1207
  * @deprecated Use camera.getCamFov(cam) instead
  */
-export declare function getCamFov(cam: number): number;
+export declare function getCamFov(cam: number | Camera): number;
 /**
  * rotationOrder: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eEulerRotationOrder
  *
  * Hash: 0x9BF96B57254E7889 | Since: 1207
  * @deprecated Use camera.getCamRot(cam, rotationOrder) instead
  */
-export declare function getCamRot(cam: number, rotationOrder: number): Vector3;
+export declare function getCamRot(cam: number | Camera, rotationOrder: number): Vector3;
 /**
  * Can use this with SET_CAM_SPLINE_PHASE to set the float it this native returns.
  *
@@ -48919,7 +48919,7 @@ export declare function getCamRot(cam: number, rotationOrder: number): Vector3;
  * Hash: 0x095EDCD24D90033A | Since: 1207
  * @deprecated Use camera.getCamSplinePhase(cam) instead
  */
-export declare function getCamSplinePhase(cam: number): number;
+export declare function getCamSplinePhase(cam: number | Camera): number;
 /**
  * No comment provided
  *
@@ -49024,28 +49024,28 @@ export declare function isAimCamActive(): boolean;
  * Hash: 0x63EFCC7E1810B8E6 | Since: 1207
  * @deprecated Use camera.isCamActive(cam) instead
  */
-export declare function isCamActive(cam: number): boolean;
+export declare function isCamActive(cam: number | Camera): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x578F8F1CAA17BD2B | Since: 1207
  * @deprecated Use camera.isCamInterpolating(cam) instead
  */
-export declare function isCamInterpolating(cam: number): boolean;
+export declare function isCamInterpolating(cam: number | Camera): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x4415F8A6C536D39F | Since: 1207
  * @deprecated Use camera.isCamRendering(cam) instead
  */
-export declare function isCamRendering(cam: number): boolean;
+export declare function isCamRendering(cam: number | Camera): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x2EEB402BD7320159 | Since: 1207
  * @deprecated Use camera.isCamShaking(cam) instead
  */
-export declare function isCamShaking(cam: number): boolean;
+export declare function isCamShaking(cam: number | Camera): boolean;
 /**
  * No comment provided
  *
@@ -49164,21 +49164,21 @@ export declare function isSphereVisible(pos: Vector3, radius: number): boolean;
  * Hash: 0xA263DDF694D563F6 | Since: 1207
  * @deprecated Use camera.playCamAnim(cam, animName, animDictionary, pos, rot, animFlags, rotOrder) instead
  */
-export declare function playCamAnim(cam: number, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
+export declare function playCamAnim(cam: number | Camera, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x948B39341C3A40C2 | Since: 1207
  * @deprecated Use camera.pointCamAtCoord(cam, pos) instead
  */
-export declare function pointCamAtCoord(cam: number, pos: Vector3): void;
+export declare function pointCamAtCoord(cam: number | Camera, pos: Vector3): void;
 /**
  * No comment provided
  *
  * Hash: 0xFC2867E6074D3A61 | Since: 1207
  * @deprecated Use camera.pointCamAtEntity(cam, entity) instead
  */
-export declare function pointCamAtEntity(cam: number, entity: number | Entity): void;
+export declare function pointCamAtEntity(cam: number | Camera, entity: number | Entity): void;
 /**
  * ease - smooth transition between the camera's positions
  * easeTime - Time in milliseconds for the transition to happen
@@ -49197,42 +49197,42 @@ export declare function renderScriptCams(render: boolean, ease: boolean, easeTim
  * Hash: 0x87295BCA613800C8 | Since: 1207
  * @deprecated Use camera.setCamActive(cam, active) instead
  */
-export declare function setCamActive(cam: number, active: boolean): void;
+export declare function setCamActive(cam: number | Camera, active: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0x8B15AE2987C1AC8F | Since: 1207
  * @deprecated Use camera.setCamActiveWithInterp(camTo, camFrom, duration, easeLocation, easeRotation) instead
  */
-export declare function setCamActiveWithInterp(camTo: number, camFrom: number, duration: number, easeLocation: number, easeRotation: number): void;
+export declare function setCamActiveWithInterp(camTo: number | Camera, camFrom: number | Camera, duration: number, easeLocation: number, easeRotation: number): void;
 /**
  * Allows you to aim and shoot at the direction the camera is facing.
  *
  * Hash: 0x3CB9E8BDE5E76F33 | Since: 1207
  * @deprecated Use camera.setCamAffectsAiming(cam, toggle) instead
  */
-export declare function setCamAffectsAiming(cam: number, toggle: boolean): void;
+export declare function setCamAffectsAiming(cam: number | Camera, toggle: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0x1B8F3CE5A6001298 | Since: 1207
  * @deprecated Use camera.setCamControlsMiniMapHeading(cam) instead
  */
-export declare function setCamControlsMiniMapHeading(cam: number): void;
+export declare function setCamControlsMiniMapHeading(cam: number | Camera): void;
 /**
  * Sets the position of the cam.
  *
  * Hash: 0xF9EE7D419EE49DE6 | Since: 1207
  * @deprecated Use camera.setCamCoord(cam, pos) instead
  */
-export declare function setCamCoord(cam: number, pos: Vector3): void;
+export declare function setCamCoord(cam: number | Camera, pos: Vector3): void;
 /**
  * No comment provided
  *
  * Hash: 0x5E32817BF6302111 | Since: 1207
  * @deprecated Use camera.setCamFarClip(cam, farClip) instead
  */
-export declare function setCamFarClip(cam: number, farClip: number): void;
+export declare function setCamFarClip(cam: number | Camera, farClip: number): void;
 /**
  * Sets the field of view of the cam.
  *
@@ -49242,56 +49242,56 @@ export declare function setCamFarClip(cam: number, farClip: number): void;
  * Hash: 0x27666E5988D9D429 | Since: 1207
  * @deprecated Use camera.setCamFov(cam, fieldOfView) instead
  */
-export declare function setCamFov(cam: number, fieldOfView: number): void;
+export declare function setCamFov(cam: number | Camera, fieldOfView: number): void;
 /**
  * No comment provided
  *
  * Hash: 0x45FD891364181F9E | Since: 1207
  * @deprecated Use camera.setCamMotionBlurStrength(cam, strength) instead
  */
-export declare function setCamMotionBlurStrength(cam: number, strength: number): void;
+export declare function setCamMotionBlurStrength(cam: number | Camera, strength: number): void;
 /**
  * No comment provided
  *
  * Hash: 0xA924028272A61364 | Since: 1207
  * @deprecated Use camera.setCamNearClip(cam, nearClip) instead
  */
-export declare function setCamNearClip(cam: number, nearClip: number): void;
+export declare function setCamNearClip(cam: number | Camera, nearClip: number): void;
 /**
  * No comment provided
  *
  * Hash: 0xA47BBFFFB83D4D0A | Since: 1207
  * @deprecated Use camera.setCamParams(cam, pos, rot, fieldOfView) instead
  */
-export declare function setCamParams(cam: number, pos: Vector3, rot: Vector3, fieldOfView: number): void;
+export declare function setCamParams(cam: number | Camera, pos: Vector3, rot: Vector3, fieldOfView: number): void;
 /**
  * Sets the rotation of the cam.
  *
  * Hash: 0x63DFA6810AD78719 | Since: 1207
  * @deprecated Use camera.setCamRot(cam, rot, rotationOrder) instead
  */
-export declare function setCamRot(cam: number, rot: Vector3, rotationOrder: number): void;
+export declare function setCamRot(cam: number | Camera, rot: Vector3, rotationOrder: number): void;
 /**
  * No comment provided
  *
  * Hash: 0xFF6311652CA91015 | Since: 1207
  * @deprecated Use camera.setCamSplineDuration(cam, timeDuration) instead
  */
-export declare function setCamSplineDuration(cam: number, timeDuration: number): void;
+export declare function setCamSplineDuration(cam: number | Camera, timeDuration: number): void;
 /**
  * No comment provided
  *
  * Hash: 0xF1898A68E7C15636 | Since: 1207
  * @deprecated Use camera.setCamSplinePhase(cam) instead
  */
-export declare function setCamSplinePhase(cam: number): void;
+export declare function setCamSplinePhase(cam: number | Camera): void;
 /**
  * No comment provided
  *
  * Hash: 0x84B3645618E726B0 | Since: 1207
  * @deprecated Use camera.setCamSplineSmoothingStyle(cam, smoothingStyle) instead
  */
-export declare function setCamSplineSmoothingStyle(cam: number, smoothingStyle: number): void;
+export declare function setCamSplineSmoothingStyle(cam: number | Camera, smoothingStyle: number): void;
 /**
  * No comment provided
  *
@@ -49498,9 +49498,9 @@ export declare function setWidescreenBorders(): void;
  * No comment provided
  *
  * Hash: 0xF9A7BCF5D050D4E7 | Since: 1207
- * @deprecated Use camera.shakeCam(cam, type, amplitude) instead
+ * @deprecated Use camera.shakeCam(cam, _type, amplitude) instead
  */
-export declare function shakeCam(cam: number, type: string, amplitude: number): void;
+export declare function shakeCam(cam: number | Camera, _type: string, amplitude: number): void;
 /**
  * No comment provided
  *
@@ -49514,14 +49514,14 @@ export declare function shakeGameplayCam(shakeName: string, intensity: number): 
  * Hash: 0xCA1B30A3357C71F1 | Since: 1207
  * @deprecated Use camera.stopCamPointing(cam) instead
  */
-export declare function stopCamPointing(cam: number): void;
+export declare function stopCamPointing(cam: number | Camera): void;
 /**
  * No comment provided
  *
  * Hash: 0xB78CC4B4706614B0 | Since: 1207
  * @deprecated Use camera.stopCamShaking(cam) instead
  */
-export declare function stopCamShaking(cam: number): void;
+export declare function stopCamShaking(cam: number | Camera): void;
 /**
  * No comment provided
  *
@@ -50061,7 +50061,7 @@ export declare function _0xE2BB2D6A9FE2ECDE(): void;
  * Hash: 0xE4B7945EF4F1BFB2 | Since: 1207
  * @deprecated Use camera._0xE4B7945EF4F1BFB2(cam) instead
  */
-export declare function _0xE4B7945EF4F1BFB2(cam: number): any;
+export declare function _0xE4B7945EF4F1BFB2(cam: number | Camera): any;
 /**
  * No comment provided
  *
@@ -50321,7 +50321,7 @@ export declare function loadCinematicCamLocation(locationDictName: string): void
  * Hash: 0x9F97E85EC142255E | Since: 1207
  * @deprecated Use camera.pauseFocus(cam, pause) instead
  */
-export declare function pauseCameraFocus(cam: number, pause: boolean): void;
+export declare function pauseCameraFocus(cam: number | Camera, pause: boolean): void;
 /**
  * Used to enable headshot kill replay when you headshot set ped.
  * Params: p1 seems to be 0 or 1 in R* Scripts
@@ -50351,7 +50351,7 @@ export declare function requestLetterBoxOvertime(): void;
  * Hash: 0x11F32BB61B756732 | Since: 1207
  * @deprecated Use camera.setCamFocusDistance(cam, distance) instead
  */
-export declare function setCamFocusDistance(cam: number, distance: number): void;
+export declare function setCamFocusDistance(cam: number | Camera, distance: number): void;
 /**
  * No comment provided
  *
@@ -52512,16 +52512,16 @@ export declare function decorGetInt(entity: number | Entity, propertyName: strin
  * type: see DECOR_REGISTER
  *
  * Hash: 0x72355278C069F272 | Since: 1207
- * @deprecated Use decorator.decorIsRegisteredAsType(propertyName, type) instead
+ * @deprecated Use decorator.decorIsRegisteredAsType(propertyName, _type) instead
  */
-export declare function decorIsRegisteredAsType(propertyName: string, type: number): boolean;
+export declare function decorIsRegisteredAsType(propertyName: string, _type: number): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x0B253D644E3C36B3 | Since: 1207
- * @deprecated Use decorator.decorRegister(propertyName, type) instead
+ * @deprecated Use decorator.decorRegister(propertyName, _type) instead
  */
-export declare function decorRegister(propertyName: string, type: number): void;
+export declare function decorRegister(propertyName: string, _type: number): void;
 /**
  * No comment provided
  *
@@ -52576,9 +52576,9 @@ export declare function decorGetUint8(entity: number | Entity, propertyName: str
  * No comment provided
  *
  * Hash: 0x4587374F88B7F6C2 | Since: 1207
- * @deprecated Use decorator.decorRegister2(propertyName, type) instead
+ * @deprecated Use decorator.decorRegister2(propertyName, _type) instead
  */
-export declare function decorRegister2(propertyName: string, type: number): void;
+export declare function decorRegister2(propertyName: string, _type: number): void;
 /**
  * No comment provided
  *
@@ -53178,9 +53178,9 @@ export declare function isEntityAttachedToAnyVehicle(entity1: number | Entity): 
  * No comment provided
  *
  * Hash: 0x154A3C529497053E | Since: 1207
- * @deprecated Use entity.isAttachedToEntity(from, to) instead
+ * @deprecated Use entity.isAttachedToEntity(_from, to) instead
  */
-export declare function isEntityAttachedToEntity(from: number | Entity, to: number | Entity): boolean;
+export declare function isEntityAttachedToEntity(_from: number | Entity, to: number | Entity): boolean;
 /**
  * Checks if entity is within x/y/zSize distance of x/y/z.
  *
@@ -53657,9 +53657,9 @@ export declare function setEntityVisible(entity1: number | Entity, toggle: boole
  * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
  *
  * Hash: 0x3AE22DEB5BA5A3E6 | Since: 1207
- * @deprecated Use entity.setObjectAsNoLongerNeeded(object) instead
+ * @deprecated Use entity.setObjectAsNoLongerNeeded(_object) instead
  */
-export declare function setObjectAsNoLongerNeeded(object: number | Object): void;
+export declare function setObjectAsNoLongerNeeded(_object: number | Object): void;
 /**
  * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
  *
@@ -54481,9 +54481,9 @@ export declare function setEntityAnimSpeed(entity1: number | Entity, animDict: s
  * type hashes: https://pastebin.com/C1WvQjCy
  *
  * Hash: 0x399657ED871B3A6C | Since: 1207
- * @deprecated Use entity.setCarcassType(entity1, type) instead
+ * @deprecated Use entity.setCarcassType(entity1, _type) instead
  */
-export declare function setEntityCarcassType(entity1: number | Entity, type: number | string): void;
+export declare function setEntityCarcassType(entity1: number | Entity, _type: number | string): void;
 /**
  * flagId: https://github.com/femga/rdr3_discoveries/tree/master/AI/CARRYING_FLAGS
  * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CCarryingFlags__Flags
@@ -54661,16 +54661,16 @@ export declare function _0x1D1B448D719415AB(ped: number | Ped): any;
  * No comment provided
  *
  * Hash: 0x26054EB81AC0893B | Since: 1207
- * @deprecated Use event._0x26054EB81AC0893B(object) instead
+ * @deprecated Use event._0x26054EB81AC0893B(_object) instead
  */
-export declare function _0x26054EB81AC0893B(object: number | Object): boolean;
+export declare function _0x26054EB81AC0893B(_object: number | Object): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x2DD42FAD06E6F19E | Since: 1207
- * @deprecated Use event._0x2DD42FAD06E6F19E(object) instead
+ * @deprecated Use event._0x2DD42FAD06E6F19E(_object) instead
  */
-export declare function _0x2DD42FAD06E6F19E(object: number | Object): any;
+export declare function _0x2DD42FAD06E6F19E(_object: number | Object): any;
 /**
  * _ADD* (_ADD_SHOCKING_EVENT_* ?)
  *
@@ -54728,9 +54728,9 @@ export declare function _0x9520175B35E2268D(ped: number | Ped): void;
  * No comment provided
  *
  * Hash: 0xA86B0EE9B39D15D6 | Since: 1207
- * @deprecated Use event._0xA86B0EE9B39D15D6(object) instead
+ * @deprecated Use event._0xA86B0EE9B39D15D6(_object) instead
  */
-export declare function _0xA86B0EE9B39D15D6(object: number | Object): void;
+export declare function _0xA86B0EE9B39D15D6(_object: number | Object): void;
 /**
  * Might return time since some (?) event.
  *
@@ -55877,9 +55877,9 @@ export declare function cascadeShadowsSetCascadeBounds(): void;
  * "CSM_ST_ESM"
  *
  * Hash: 0xCE4774E0F9AD48D1 | Since: 1207
- * @deprecated Use graphics.cascadeShadowsSetShadowSampleType(type) instead
+ * @deprecated Use graphics.cascadeShadowsSetShadowSampleType(_type) instead
  */
-export declare function cascadeShadowsSetShadowSampleType(type: string): void;
+export declare function cascadeShadowsSetShadowSampleType(_type: string): void;
 /**
  * No comment provided
  *
@@ -56409,9 +56409,9 @@ export declare function setParticleFxOverride(oldAsset: string, newAsset: string
  * Old name: _SET_PICKUP_OBJECT_GLOW_ENABLED
  *
  * Hash: 0x7DFB49BCDB73089A | Since: 1207
- * @deprecated Use graphics.setPickupLight(object, toggle) instead
+ * @deprecated Use graphics.setPickupLight(_object, toggle) instead
  */
-export declare function setPickupLight(object: number | Object, toggle: boolean): void;
+export declare function setPickupLight(_object: number | Object, toggle: boolean): void;
 /**
  * Sets a flag defining whether or not script draw commands should continue being drawn behind the pause menu. This is usually used for draw commands that are used with a world render target.
  *
@@ -57364,9 +57364,9 @@ export declare function doesCheckpointHaveFx(checkpoint: number): boolean;
  * Old name: _DRAW_MARKER
  *
  * Hash: 0x2A32FAA57B937173 | Since: 1207
- * @deprecated Use graphics.drawMarker(type, pos, dirX, dirY, dirZ, rot, scale, red, green, blue, alpha, bobUpAndDown, faceCamera, rotate, textureDict, textureName, drawOnEnts) instead
+ * @deprecated Use graphics.drawMarker(_type, pos, dirX, dirY, dirZ, rot, scale, red, green, blue, alpha, bobUpAndDown, faceCamera, rotate, textureDict, textureName, drawOnEnts) instead
  */
-export declare function drawMarker(type: number | string, pos: Vector3, dirX: number, dirY: number, dirZ: number, rot: Vector3, scale: Vector3, red: number, green: number, blue: number, alpha: number, bobUpAndDown: boolean, faceCamera: boolean, rotate: boolean, textureDict: string, textureName: string, drawOnEnts: boolean): void;
+export declare function drawMarker(_type: number | string, pos: Vector3, dirX: number, dirY: number, dirZ: number, rot: Vector3, scale: Vector3, red: number, green: number, blue: number, alpha: number, bobUpAndDown: boolean, faceCamera: boolean, rotate: boolean, textureDict: string, textureName: string, drawOnEnts: boolean): void;
 /**
  * No comment provided
  *
@@ -57594,9 +57594,9 @@ export declare function setLightsIntensityForEntity(entity: number | Entity, int
  * type must be less than or equal to 20
  *
  * Hash: 0xAB72C67163DC4DB4 | Since: 1207
- * @deprecated Use graphics.setLightsTypeForEntity(entity, type) instead
+ * @deprecated Use graphics.setLightsTypeForEntity(entity, _type) instead
  */
-export declare function setLightsTypeForEntity(entity: number | Entity, type: number): void;
+export declare function setLightsTypeForEntity(entity: number | Entity, _type: number): void;
 /**
  * _SET_PARTICLE_FX_LOOPED_FA* - _SET_PARTICLE_FX_LOOPED_OF*
  *
@@ -57615,9 +57615,9 @@ export declare function setParticleFxNonLoopedEmitterScale(): void;
  * Enables/disables a kind of 'shiny' effect on metals.
  *
  * Hash: 0x72E30372E7CC4415 | Since: 1207
- * @deprecated Use graphics.setPearlescentFxEnabled(object, toggle) instead
+ * @deprecated Use graphics.setPearlescentFxEnabled(_object, toggle) instead
  */
-export declare function setPearlescentFxEnabled(object: number | Object, toggle: boolean): void;
+export declare function setPearlescentFxEnabled(_object: number | Object, toggle: boolean): void;
 /**
  * No comment provided
  *
@@ -57691,9 +57691,9 @@ export declare function setSniperGlintsEnabled(enabled: boolean): void;
  * };
  *
  * Hash: 0xF02A9C330BBFC5C7 | Since: 1207
- * @deprecated Use graphics.setSnowCoverageType(type) instead
+ * @deprecated Use graphics.setSnowCoverageType(_type) instead
  */
-export declare function setSnowCoverageType(type: number): void;
+export declare function setSnowCoverageType(_type: number): void;
 /**
  * No comment provided
  *
@@ -57792,16 +57792,16 @@ export declare function getHudScreenPositionFromWorldPosition(worldPos: Vector3)
  * Returns the length of the string passed (much like strlen).
  *
  * Hash: 0x481FBF588B0B76DB | Since: 1207
- * @deprecated Use hud.getLengthOfLiteralString(string) instead
+ * @deprecated Use hud.getLengthOfLiteralString(_string) instead
  */
-export declare function getLengthOfLiteralString(string: string): number;
+export declare function getLengthOfLiteralString(_string: string): number;
 /**
  * No comment provided
  *
  * Hash: 0xDC5AD6B7AB8184F5 | Since: 1207
- * @deprecated Use hud.getLengthOfLiteralStringInBytes(string) instead
+ * @deprecated Use hud.getLengthOfLiteralStringInBytes(_string) instead
  */
-export declare function getLengthOfLiteralStringInBytes(string: string): number;
+export declare function getLengthOfLiteralStringInBytes(_string: string): number;
 /**
  * No comment provided
  *
@@ -57948,16 +57948,16 @@ export declare function setMissionNameForUgcMission(name: string): void;
  * No comment provided
  *
  * Hash: 0xA0D7CE5F83259663 | Since: 1207
- * @deprecated Use hud.setMpGamerTagBigText(gamerTagId, string) instead
+ * @deprecated Use hud.setMpGamerTagBigText(gamerTagId, _string) instead
  */
-export declare function setMpGamerTagBigText(gamerTagId: number, string: string): void;
+export declare function setMpGamerTagBigText(gamerTagId: number, _string: string): void;
 /**
  * No comment provided
  *
  * Hash: 0xEA6F4B8D4B4B5B3E | Since: 1207
- * @deprecated Use hud.setMpGamerTagName(gamerTagId, string) instead
+ * @deprecated Use hud.setMpGamerTagName(gamerTagId, _string) instead
  */
-export declare function setMpGamerTagName(gamerTagId: number, string: string): void;
+export declare function setMpGamerTagName(gamerTagId: number, _string: string): void;
 /**
  * No comment provided
  *
@@ -58424,9 +58424,9 @@ export declare function setMpGamerTagTopIcon(gamerTagId: number, icon: number | 
  * Found types: GENERIC_PLAYER, DEADDROP, HOTPROPERTY, MINIGAMES
  *
  * Hash: 0x25B9C78A25105C35 | Since: 1207
- * @deprecated Use hud.setMpGamerTagType(gamerTagId, type) instead
+ * @deprecated Use hud.setMpGamerTagType(gamerTagId, _type) instead
  */
-export declare function setMpGamerTagType(gamerTagId: number, type: number | string): void;
+export declare function setMpGamerTagType(gamerTagId: number, _type: number | string): void;
 /**
  * nullsub, doesn't do anything
  *
@@ -59071,9 +59071,9 @@ export declare function uiPromptSetTransportMode(prompt: any, mode: number): voi
  * Params: type = mostly 0, 6 (net_mission_intro_story_gvo), 7 (fm_mission_controller), 14 (net_ugc_end_flow_transition_online), 15 (net_main_[tlg_]offline)
  *
  * Hash: 0xF4A5C4509BF923B1 | Since: 1207
- * @deprecated Use hud.uiPromptSetType(prompt, type) instead
+ * @deprecated Use hud.uiPromptSetType(prompt, _type) instead
  */
-export declare function uiPromptSetType(prompt: any, type: number): void;
+export declare function uiPromptSetType(prompt: any, _type: number): void;
 /**
  * No comment provided
  *
@@ -61782,14 +61782,14 @@ export declare function blipAddForRadius(blipHash: number | string, pos: Vector3
  * Hash: 0x662D364ABF16DE2F | Since: 1207
  * @deprecated Use map.blipAddModifier(blip, modifierHash) instead
  */
-export declare function blipAddModifier(blip: number, modifierHash: number | string): boolean;
+export declare function blipAddModifier(blip: number | Blip, modifierHash: number | string): boolean;
 /**
  * If modifierHash is 0, ALL modifiers will be removed.
  *
  * Hash: 0xB059D7BD3D78C16F | Since: 1207
  * @deprecated Use map.blipRemoveModifier(blip, modifierHash) instead
  */
-export declare function blipRemoveModifier(blip: number, modifierHash: number | string): boolean;
+export declare function blipRemoveModifier(blip: number | Blip, modifierHash: number | string): boolean;
 /**
  * No comment provided
  *
@@ -61831,7 +61831,7 @@ export declare function displayRadar(toggle: boolean): void;
  * Hash: 0xCD82FA174080B3B1 | Since: 1207
  * @deprecated Use map.doesBlipExist(blip) instead
  */
-export declare function doesBlipExist(blip: number): boolean;
+export declare function doesBlipExist(blip: number | Blip): boolean;
 /**
  * Doesn't actually return anything.
  *
@@ -61845,7 +61845,7 @@ export declare function forceSonarBlipsThisFrame(): any;
  * Hash: 0x201C319797BDA603 | Since: 1207
  * @deprecated Use map.getBlipCoords(blip) instead
  */
-export declare function getBlipCoords(blip: number): Vector3;
+export declare function getBlipCoords(blip: number | Blip): Vector3;
 /**
  * Returns the Blip handle of given Entity.
  *
@@ -61866,7 +61866,7 @@ export declare function getMainPlayerBlipId(): number;
  * Hash: 0x46534526B9CD2D17 | Since: 1207
  * @deprecated Use map.isBlipOnMini(blip) instead
  */
-export declare function isBlipOnMinimap(blip: number): boolean;
+export declare function isBlipOnMinimap(blip: number | Blip): boolean;
 /**
  * No comment provided
  *
@@ -61889,7 +61889,7 @@ export declare function lockMinimapAngle(angle: number): void;
  * Hash: 0xF2C3C9DA47AAA54A | Since: 1207
  * @deprecated Use map.removeBlip(blip) instead
  */
-export declare function removeBlip(blip: number): void;
+export declare function removeBlip(blip: number | Blip): void;
 /**
  * No comment provided
  *
@@ -61903,56 +61903,56 @@ export declare function resetMinimapFow(hash: number | string): void;
  * Hash: 0x4FF674F5E23D49CE | Since: 1207
  * @deprecated Use map.setBlipCoords(blip, pos) instead
  */
-export declare function setBlipCoords(blip: number, pos: Vector3): void;
+export declare function setBlipCoords(blip: number | Blip, pos: Vector3): void;
 /**
  * No comment provided
  *
  * Hash: 0x0DF2B55F717DDB10 | Since: 1207
  * @deprecated Use map.setBlipFlashes(blip) instead
  */
-export declare function setBlipFlashes(blip: number): [boolean, number, number];
+export declare function setBlipFlashes(blip: number | Blip): [boolean, number, number];
 /**
  * No comment provided
  *
  * Hash: 0x02FF4CF43B7209D1 | Since: 1207
  * @deprecated Use map.setBlipFlashTimer(blip, blipType, blipHash) instead
  */
-export declare function setBlipFlashTimer(blip: number, blipType: number, blipHash: number | string): void;
+export declare function setBlipFlashTimer(blip: number | Blip, blipType: number, blipHash: number | string): void;
 /**
  * No comment provided
  *
  * Hash: 0x0A062D6D7C0B2C2C | Since: 1207
  * @deprecated Use map.setBlipNameFromTextFile(blip) instead
  */
-export declare function setBlipNameFromTextFile(blip: number): string;
+export declare function setBlipNameFromTextFile(blip: number | Blip): string;
 /**
  * No comment provided
  *
  * Hash: 0x093DD5A31BC2B459 | Since: 1207
  * @deprecated Use map.setBlipNameToPlayerName(blip, player) instead
  */
-export declare function setBlipNameToPlayerName(blip: number, player: number | string | Player): void;
+export declare function setBlipNameToPlayerName(blip: number | Blip, player: number | string | Player): void;
 /**
  * No comment provided
  *
  * Hash: 0x6049966A94FBE706 | Since: 1207
  * @deprecated Use map.setBlipRotation(blip, rotation) instead
  */
-export declare function setBlipRotation(blip: number, rotation: number): void;
+export declare function setBlipRotation(blip: number | Blip, rotation: number): void;
 /**
  * only works for BLIP_ADD_FOR_RADIUS AND BLIP_ADD_FOR_AREA, this native works as a radius not really a scale
  *
  * Hash: 0xD38744167B2FA257 | Since: 1207
  * @deprecated Use map.setBlipScale(blip, scale) instead
  */
-export declare function setBlipScale(blip: number, scale: number): void;
+export declare function setBlipScale(blip: number | Blip, scale: number): void;
 /**
  * No comment provided
  *
  * Hash: 0x74F74D3207ED525C | Since: 1207
  * @deprecated Use map.setBlipSprite(blip, hash) instead
  */
-export declare function setBlipSprite(blip: number, hash: number | string): void;
+export declare function setBlipSprite(blip: number | Blip, hash: number | string): void;
 /**
  * No comment provided
  *
@@ -62043,7 +62043,7 @@ export declare function unlockMinimapAngle(): void;
  * Hash: 0x01B928CA2E198B01 | Since: 1207
  * @deprecated Use map.clearBlip(blipid) instead
  */
-export declare function clearBlip(blipid: number): any;
+export declare function clearBlip(blipid: number | Blip): any;
 /**
  * It adds blip a icon to active prompts like from scenarios or pickups without the need to use lockon
  *
@@ -62058,7 +62058,7 @@ export declare function setBlipIconOnEntityActivePrompt(entity: number | Entity,
  * Hash: 0x250C75EB1728CC0D | Since: 1207
  * @deprecated Use map.blipDetachFromEntity(blip) instead
  */
-export declare function blipDetachFromEntity(blip: number): void;
+export declare function blipDetachFromEntity(blip: number | Blip): void;
 /**
  * checks if the entity lockon prompt contains an icon
  *
@@ -62130,7 +62130,7 @@ export declare function isGpsRouteOnRoad(): boolean;
  * Hash: 0xDEEDE7C41742E011 | Since: 1207
  * @deprecated Use map.abandonBlip(blip) instead
  */
-export declare function abandonBlip(blip: number): void;
+export declare function abandonBlip(blip: number | Blip): void;
 /**
  * list of minimap props: https://github.com/femga/rdr3_discoveries/tree/master/graphics/minimap/minimapObjects
  * variations parameter are the interior locations you see on the map like these bellow
@@ -62170,7 +62170,7 @@ export declare function blipAddForVolume(blipHash: number | string, volume: numb
  * Hash: 0xBD62D98799A3DAF0 | Since: 1207
  * @deprecated Use map.blipAddStyle(blip, styleHash) instead
  */
-export declare function blipAddStyle(blip: number, styleHash: number | string): boolean;
+export declare function blipAddStyle(blip: number | Blip, styleHash: number | string): boolean;
 /**
  * https://github.com/femga/rdr3_discoveries/tree/master/useful_info_from_rpfs/blip_styles
  * Removes any existing modifiers and sets the style.
@@ -62178,7 +62178,7 @@ export declare function blipAddStyle(blip: number, styleHash: number | string): 
  * Hash: 0xEDD964B7984AC291 | Since: 1207
  * @deprecated Use map.blipSetStyle(blip, styleHash) instead
  */
-export declare function blipSetStyle(blip: number, styleHash: number | string): boolean;
+export declare function blipSetStyle(blip: number | Blip, styleHash: number | string): boolean;
 /**
  * No comment provided
  *
@@ -62213,7 +62213,7 @@ export declare function hideActivePointsOfInterest(): void;
  * Hash: 0xE9F676788F8D5E1E | Since: 1207
  * @deprecated Use map.isBlipAttachedToAnyEntity(blip) instead
  */
-export declare function isBlipAttachedToAnyEntity(blip: number): boolean;
+export declare function isBlipAttachedToAnyEntity(blip: number | Blip): boolean;
 /**
  * No comment provided
  *
@@ -62276,7 +62276,7 @@ export declare function revealMinimapFow(hash: number | string): void;
  * Hash: 0x9CB1A1623062F402 | Since: 1207
  * @deprecated Use map.setBlipName(blip, name) instead
  */
-export declare function setBlipName(blip: number, name: string): void;
+export declare function setBlipName(blip: number | Blip, name: string): void;
 /**
  * Used for GUARMA MODE; Enabled: toggle = false, 0; Disabled: toggle = true, 0
  * Hash p1 seems to be unused, always 0
@@ -63062,9 +63062,9 @@ export declare function getGroundZFor3dCoord(pos: Vector3): [boolean, number];
  * Note: this implementation is case-insensitive.
  *
  * Hash: 0xFD340785ADF8CFB7 | Since: 1207
- * @deprecated Use misc.getHashKey(string) instead
+ * @deprecated Use misc.getHashKey(_string) instead
  */
-export declare function getHashKey(string: string): number;
+export declare function getHashKey(_string: string): number;
 /**
  * dx = x1 - x2
  * dy = y1 - y2
@@ -63356,23 +63356,23 @@ export declare function isStadiaVersion(): boolean;
  * No comment provided
  *
  * Hash: 0x602102324604D96B | Since: 1207
- * @deprecated Use misc.isStringNull(string) instead
+ * @deprecated Use misc.isStringNull(_string) instead
  */
-export declare function isStringNull(string: string): boolean;
+export declare function isStringNull(_string: string): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x2CF12F9ACF18F048 | Since: 1207
- * @deprecated Use misc.isStringNullOrEmpty(string) instead
+ * @deprecated Use misc.isStringNullOrEmpty(_string) instead
  */
-export declare function isStringNullOrEmpty(string: string): boolean;
+export declare function isStringNullOrEmpty(_string: string): boolean;
 /**
  * Returns true if the entire string consists only of space characters.
  *
  * Hash: 0x375F5870A7B8BEC1 | Since: 1207
- * @deprecated Use misc.isStringNullOrEmptyOrSpaces(string) instead
+ * @deprecated Use misc.isStringNullOrEmptyOrSpaces(_string) instead
  */
-export declare function isStringNullOrEmptyOrSpaces(string: string): boolean;
+export declare function isStringNullOrEmptyOrSpaces(_string: string): boolean;
 /**
  * No comment provided
  *
@@ -63717,9 +63717,9 @@ export declare function stopEndUserBenchmark(): void;
  * Returns false if it's a null or empty string or if the string is too long. outInteger will be set to -999 in that case.
  *
  * Hash: 0xF2DD2298B3AF23E2 | Since: 1207
- * @deprecated Use misc.stringToInt(string) instead
+ * @deprecated Use misc.stringToInt(_string) instead
  */
-export declare function stringToInt(string: string): [boolean, number];
+export declare function stringToInt(_string: string): [boolean, number];
 /**
  * No comment provided
  *
@@ -65198,9 +65198,9 @@ export declare function cashinventoryTransactionResponseGetItemInfo(id: number, 
  * No comment provided
  *
  * Hash: 0xF039EC27F4490E96 | Since: 1207
- * @deprecated Use netshopping.cashinventoryTransactionStart(type, actionHash) instead
+ * @deprecated Use netshopping.cashinventoryTransactionStart(_type, actionHash) instead
  */
-export declare function cashinventoryTransactionStart(type: number | string, actionHash: number | string): [boolean, number];
+export declare function cashinventoryTransactionStart(_type: number | string, actionHash: number | string): [boolean, number];
 /**
  * No comment provided
  *
@@ -66963,9 +66963,9 @@ export declare function netToVeh(netHandle: number): number;
  * Returns the network ID of the given object.
  *
  * Hash: 0x99BFDC94A603E541 | Since: 1207
- * @deprecated Use network.objToNet(object) instead
+ * @deprecated Use network.objToNet(_object) instead
  */
-export declare function objToNet(object: number | Object): number;
+export declare function objToNet(_object: number | Object): number;
 /**
  * Return the local Participant ID
  *
@@ -67619,9 +67619,9 @@ export declare function _0x5133CF81924F1129(): number;
  * No comment provided
  *
  * Hash: 0x51951DE06C0D1C40 | Since: 1207
- * @deprecated Use network._0x51951DE06C0D1C40(player, type) instead
+ * @deprecated Use network._0x51951DE06C0D1C40(player, _type) instead
  */
-export declare function _0x51951DE06C0D1C40(player: number | string | Player, type: number): void;
+export declare function _0x51951DE06C0D1C40(player: number | string | Player, _type: number): void;
 /**
  * No comment provided
  *
@@ -69327,16 +69327,16 @@ export declare function blockPickupFromPlayerCollection(): void;
  * No comment provided
  *
  * Hash: 0x8462BE2341A55B6F | Since: 1207
- * @deprecated Use object.breakAllFragmentBones(object1) instead
+ * @deprecated Use object.breakAllFragmentBones(_object) instead
  */
-export declare function breakAllObjectFragmentBones(object1: number | Object): void;
+export declare function breakAllObjectFragmentBones(_object: number | Object): void;
 /**
  * No comment provided
  *
  * Hash: 0xE7E4C198B0185900 | Since: 1207
- * @deprecated Use object.breakFragmentChild(object1) instead
+ * @deprecated Use object.breakFragmentChild(_object) instead
  */
-export declare function breakObjectFragmentChild(object1: number | Object): void;
+export declare function breakObjectFragmentChild(_object: number | Object): void;
 /**
  * Old name: _GET_PICKUP_HASH
  *
@@ -69369,9 +69369,9 @@ export declare function createObjectNoOffset(modelHash: number | string, pos: Ve
  * No comment provided
  *
  * Hash: 0xB6CBD40F8EA69E8A | Since: 1207
- * @deprecated Use object.createSkeleton(object1) instead
+ * @deprecated Use object.createSkeleton(_object) instead
  */
-export declare function createObjectSkeleton(object1: number | Object): boolean;
+export declare function createObjectSkeleton(_object: number | Object): boolean;
 /**
  * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/Placement%20Flags
  * https://github.com/femga/rdr3_discoveries/blob/master/objects/pickup_list.lua
@@ -69398,9 +69398,9 @@ export declare function createPortablePickup(pickupHash: number | string, pos: V
  * Deletes the specified object, then sets the handle pointed to by the pointer to NULL.
  *
  * Hash: 0x931914268722C263 | Since: 1207
- * @deprecated Use object.deleteObject(object1) instead
+ * @deprecated Use object.deleteObject(_object) instead
  */
-export declare function deleteObject(object1: number | Object): void;
+export declare function deleteObject(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -69440,9 +69440,9 @@ export declare function doesPickupOfTypeExistInArea(pickupHash: number | string,
  * No comment provided
  *
  * Hash: 0x52AF537A0C5B8AAD | Since: 1207
- * @deprecated Use object.doesRayfireMapExist(object1) instead
+ * @deprecated Use object.doesRayfireMapExist(_object) instead
  */
-export declare function doesRayfireMapObjectExist(object1: number | Object): boolean;
+export declare function doesRayfireMapObjectExist(_object: number | Object): boolean;
 /**
  * No comment provided
  *
@@ -69499,9 +69499,9 @@ export declare function doorSystemSetOpenRatio(doorHash: number | string, ajar: 
  * No comment provided
  *
  * Hash: 0xF9C1681347C8BD15 | Since: 1207
- * @deprecated Use object.fixFragment(object1) instead
+ * @deprecated Use object.fixFragment(_object) instead
  */
-export declare function fixObjectFragment(object1: number | Object): void;
+export declare function fixObjectFragment(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -69555,9 +69555,9 @@ export declare function getRayfireMapObject(pos: Vector3, radius: number, name: 
  * No comment provided
  *
  * Hash: 0x260EE4FDBDF4DB01 | Since: 1207
- * @deprecated Use object.getRayfireMapAnimPhase(object1) instead
+ * @deprecated Use object.getRayfireMapAnimPhase(_object) instead
  */
-export declare function getRayfireMapObjectAnimPhase(object1: number | Object): number;
+export declare function getRayfireMapObjectAnimPhase(_object: number | Object): number;
 /**
  * No comment provided
  *
@@ -69569,9 +69569,9 @@ export declare function getSafePickupCoords(): Vector3;
  * No comment provided
  *
  * Hash: 0x899BA936634A322E | Since: 1207
- * @deprecated Use object.getStateOfRayfireMap(object1) instead
+ * @deprecated Use object.getStateOfRayfireMap(_object) instead
  */
-export declare function getStateOfRayfireMapObject(object1: number | Object): number;
+export declare function getStateOfRayfireMapObject(_object: number | Object): number;
 /**
  * No comment provided
  *
@@ -69618,16 +69618,16 @@ export declare function isDoorRegisteredWithSystem(doorHash: number | string): b
  * No comment provided
  *
  * Hash: 0x0378C08504160D0D | Since: 1207
- * @deprecated Use object.isAPortablePickup(object1) instead
+ * @deprecated Use object.isAPortablePickup(_object) instead
  */
-export declare function isObjectAPortablePickup(object1: number | Object): boolean;
+export declare function isObjectAPortablePickup(_object: number | Object): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x8B32ACE6326A7546 | Since: 1207
- * @deprecated Use object.isVisible(object1) instead
+ * @deprecated Use object.isVisible(_object) instead
  */
-export declare function isObjectVisible(object1: number | Object): boolean;
+export declare function isObjectVisible(_object: number | Object): boolean;
 /**
  * No comment provided
  *
@@ -69639,23 +69639,23 @@ export declare function isPointInAngledArea(): boolean;
  * Old name: _MARK_OBJECT_FOR_DELETION
  *
  * Hash: 0xADBE4809F19F927A | Since: 1207
- * @deprecated Use object.onlyCleanUpWhenOutOfRange(object1) instead
+ * @deprecated Use object.onlyCleanUpWhenOutOfRange(_object) instead
  */
-export declare function onlyCleanUpObjectWhenOutOfRange(object1: number | Object): void;
+export declare function onlyCleanUpObjectWhenOutOfRange(_object: number | Object): void;
 /**
  * No comment provided
  *
  * Hash: 0x58A850EAEE20FAA3 | Since: 1207
- * @deprecated Use object.placeOnGroundProperly(object1) instead
+ * @deprecated Use object.placeOnGroundProperly(_object) instead
  */
-export declare function placeObjectOnGroundProperly(object1: number | Object): boolean;
+export declare function placeObjectOnGroundProperly(_object: number | Object): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x92AEFB5F6E294023 | Since: 1207
- * @deprecated Use object.preventCollectionOfPortablePickup(object1) instead
+ * @deprecated Use object.preventCollectionOfPortablePickup(_object) instead
  */
-export declare function preventCollectionOfPortablePickup(object1: number | Object): void;
+export declare function preventCollectionOfPortablePickup(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -69681,16 +69681,16 @@ export declare function removePickup(pickup: any): void;
  * No comment provided
  *
  * Hash: 0x406137F8EF90EAF5 | Since: 1207
- * @deprecated Use object.setActivatePhysicsAsSoonAsItIsUnfrozen(object1, toggle) instead
+ * @deprecated Use object.setActivatePhysicsAsSoonAsItIsUnfrozen(_object, toggle) instead
  */
-export declare function setActivateObjectPhysicsAsSoonAsItIsUnfrozen(object1: number | Object, toggle: boolean): void;
+export declare function setActivateObjectPhysicsAsSoonAsItIsUnfrozen(_object: number | Object, toggle: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0xE124889AE0521FCF | Since: 1207
- * @deprecated Use object.setCustomTexturesOn(object1, txdHash) instead
+ * @deprecated Use object.setCustomTexturesOn(_object, txdHash) instead
  */
-export declare function setCustomTexturesOnObject(object1: number | Object, txdHash: number | string): void;
+export declare function setCustomTexturesOnObject(_object: number | Object, txdHash: number | string): void;
 /**
  * No comment provided
  *
@@ -69725,9 +69725,9 @@ export declare function setMaxNumPortablePickupsCarriedByPlayer(modelHash: numbe
  * No comment provided
  *
  * Hash: 0x4D89D607CB3DD1D2 | Since: 1207
- * @deprecated Use object.setAllowLowLodBuoyancy(object1, toggle) instead
+ * @deprecated Use object.setAllowLowLodBuoyancy(_object, toggle) instead
  */
-export declare function setObjectAllowLowLodBuoyancy(object1: number | Object, toggle: boolean): void;
+export declare function setObjectAllowLowLodBuoyancy(_object: number | Object, toggle: boolean): void;
 /**
  * Adjust the physics parameters of a prop, or otherwise known as "object". This is useful for simulated gravity.
  *
@@ -69739,32 +69739,32 @@ export declare function setObjectAllowLowLodBuoyancy(object1: number | Object, t
  * p5: similar to p4
  *
  * Hash: 0xF6DF6E90DE7DF90F | Since: 1207
- * @deprecated Use object.setPhysicsParams(object1, weight, gravity, buoyancy) instead
+ * @deprecated Use object.setPhysicsParams(_object, weight, gravity, buoyancy) instead
  */
-export declare function setObjectPhysicsParams(object1: number | Object, weight: number, gravity: number, buoyancy: number): void;
+export declare function setObjectPhysicsParams(_object: number | Object, weight: number, gravity: number, buoyancy: number): void;
 /**
  * No comment provided
  *
  * Hash: 0xEB6F1A9B5510A5D2 | Since: 1207
- * @deprecated Use object.setTakesDamageFromCollidingWithBuildings(object1, enabled) instead
+ * @deprecated Use object.setTakesDamageFromCollidingWithBuildings(_object, enabled) instead
  */
-export declare function setObjectTakesDamageFromCollidingWithBuildings(object1: number | Object, enabled: boolean): void;
+export declare function setObjectTakesDamageFromCollidingWithBuildings(_object: number | Object, enabled: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0x8A7391690F5AFD81 | Since: 1207
- * @deprecated Use object.setTargettable(object1, targettable) instead
+ * @deprecated Use object.setTargettable(_object, targettable) instead
  */
-export declare function setObjectTargettable(object1: number | Object, targettable: boolean): void;
+export declare function setObjectTargettable(_object: number | Object, targettable: boolean): void;
 /**
  * Alt name: _SET_OBJECT_TINT
  *
  * Old name: _SET_OBJECT_TEXTURE_VARIATION
  *
  * Hash: 0x971DA0055324D033 | Since: 1207
- * @deprecated Use object.setTintIndex(object1, textureVariation) instead
+ * @deprecated Use object.setTintIndex(_object, textureVariation) instead
  */
-export declare function setObjectTintIndex(object1: number | Object, textureVariation: number): void;
+export declare function setObjectTintIndex(_object: number | Object, textureVariation: number): void;
 /**
  * No comment provided
  *
@@ -69825,23 +69825,23 @@ export declare function setPickupUncollectable(): void;
  * No comment provided
  *
  * Hash: 0x5C29F698D404C5E1 | Since: 1207
- * @deprecated Use object.setStateOfRayfireMap(object1, state) instead
+ * @deprecated Use object.setStateOfRayfireMap(_object, state) instead
  */
-export declare function setStateOfRayfireMapObject(object1: number | Object, state: number): void;
+export declare function setStateOfRayfireMapObject(_object: number | Object, state: number): void;
 /**
  * No comment provided
  *
  * Hash: 0x53E0DF1A2A3CF0CA | Since: 1207
- * @deprecated Use object.setTeamPickup(object1) instead
+ * @deprecated Use object.setTeamPickup(_object) instead
  */
-export declare function setTeamPickupObject(object1: number | Object): void;
+export declare function setTeamPickupObject(_object: number | Object): void;
 /**
  * No comment provided
  *
  * Hash: 0x2FDFF4107B8C1147 | Since: 1207
- * @deprecated Use object.slide(object1, toX, toY, toZ, speedX, speedY, speedZ, collision) instead
+ * @deprecated Use object.slide(_object, toX, toY, toZ, speedX, speedY, speedZ, collision) instead
  */
-export declare function slideObject(object1: number | Object, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
+export declare function slideObject(_object: number | Object, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
 /**
  * No comment provided
  *
@@ -69853,9 +69853,9 @@ export declare function suppressPickupRewardType(rewardType: number, suppress: b
  * No comment provided
  *
  * Hash: 0xB252BC036B525623 | Since: 1207
- * @deprecated Use object.trackVisibility(object1) instead
+ * @deprecated Use object.trackVisibility(_object) instead
  */
-export declare function trackObjectVisibility(object1: number | Object): void;
+export declare function trackObjectVisibility(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -69867,9 +69867,9 @@ export declare function _0x08C5825A2932EA7B(): any;
  * Params: p1 = 23 in R* Scripts
  *
  * Hash: 0x0943113E02322164 | Since: 1207
- * @deprecated Use object._0x0943113E02322164(object1) instead
+ * @deprecated Use object._0x0943113E02322164(_object) instead
  */
-export declare function _0x0943113E02322164(object1: number | Object): any;
+export declare function _0x0943113E02322164(_object: number | Object): any;
 /**
  * something to do with doors lockdown when navmesh is swapping?UPDATE_WORLD_STATE  seems to be for unlocking something
  *
@@ -69930,9 +69930,9 @@ export declare function _0x3A77DAE8B4FD7586(): void;
  * No comment provided
  *
  * Hash: 0x3DF1A0A58498E209 | Since: 1436
- * @deprecated Use object._0x3DF1A0A58498E209(object1) instead
+ * @deprecated Use object._0x3DF1A0A58498E209(_object) instead
  */
-export declare function _0x3DF1A0A58498E209(object1: number | Object): void;
+export declare function _0x3DF1A0A58498E209(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -70070,9 +70070,9 @@ export declare function _0xACD4F9831DFAD7F5(): any;
  * Not official native name
  *
  * Hash: 0xAEE6C800E124CFE1 | Since: 1207
- * @deprecated Use object.setPromptName(object1, name) instead
+ * @deprecated Use object.setPromptName(_object, name) instead
  */
-export declare function setObjectPromptName(object1: number | Object, name: string): void;
+export declare function setObjectPromptName(_object: number | Object, name: string): void;
 /**
  * No comment provided
  *
@@ -70091,9 +70091,9 @@ export declare function _0xC07B91B996C1DE89(): void;
  * _SET_OBJECT_*
  *
  * Hash: 0xCAAF2BCCFEF37F77 | Since: 1207
- * @deprecated Use object._0xCAAF2BCCFEF37F77(object1) instead
+ * @deprecated Use object._0xCAAF2BCCFEF37F77(_object) instead
  */
-export declare function _0xCAAF2BCCFEF37F77(object1: number | Object): void;
+export declare function _0xCAAF2BCCFEF37F77(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -70112,9 +70112,9 @@ export declare function _0xCEAB54F4632C6EF6(): void;
  * Not official native name
  *
  * Hash: 0xD503D6F0986D58BC | Since: 1207
- * @deprecated Use object.setPromptNameFromGxtEntry(object1, gxtEntryHash) instead
+ * @deprecated Use object.setPromptNameFromGxtEntry(_object, gxtEntryHash) instead
  */
-export declare function setObjectPromptNameFromGxtEntry(object1: number | Object, gxtEntryHash: number | string): void;
+export declare function setObjectPromptNameFromGxtEntry(_object: number | Object, gxtEntryHash: number | string): void;
 /**
  * No comment provided
  *
@@ -70182,9 +70182,9 @@ export declare function addDoorToSystemNew(doorHash: number | string, threadId: 
  * No comment provided
  *
  * Hash: 0xE4EFB315BCD2A838 | Since: 1207
- * @deprecated Use object.damageBoneOnProp(object1, bone) instead
+ * @deprecated Use object.damageBoneOnProp(_object, bone) instead
  */
-export declare function damageBoneOnProp(object1: number | Object, bone: number): void;
+export declare function damageBoneOnProp(_object: number | Object, bone: number): void;
 /**
  * No comment provided
  *
@@ -70231,16 +70231,16 @@ export declare function getAmmoTypeFromPickupType(pickupHash: number | string): 
  * No comment provided
  *
  * Hash: 0xFA3B61EC249B4674 | Since: 1207
- * @deprecated Use object.getLightIntensityFrom(object1) instead
+ * @deprecated Use object.getLightIntensityFrom(_object) instead
  */
-export declare function getLightIntensityFromObject(object1: number | Object): number;
+export declare function getLightIntensityFromObject(_object: number | Object): number;
 /**
  * Returns float value to be used with _SET_LIGHT_INTENSITY_FOR_OBJECT
  *
  * Hash: 0x3397CD4E0353DFBA | Since: 1207
- * @deprecated Use object.getLightIntensity(object1) instead
+ * @deprecated Use object.getLightIntensity(_object) instead
  */
-export declare function getObjectLightIntensity(object1: number | Object): number;
+export declare function getObjectLightIntensity(_object: number | Object): number;
 /**
  * No comment provided
  *
@@ -70273,16 +70273,16 @@ export declare function isPickupTypeValid(pickupHash: number | string): boolean;
  * _PRE* or _Q* or _RE*
  *
  * Hash: 0x1461DF6DB886BE3F | Since: 1207
- * @deprecated Use object.makeItemCarriable(object1) instead
+ * @deprecated Use object.makeItemCarriable(_object) instead
  */
-export declare function makeItemCarriable(object1: number | Object): void;
+export declare function makeItemCarriable(_object: number | Object): void;
 /**
  * No comment provided
  *
  * Hash: 0xF40AB58D83C35027 | Since: 1207
- * @deprecated Use object.resetVelocity(object1) instead
+ * @deprecated Use object.resetVelocity(_object) instead
  */
-export declare function resetObjectVelocity(object1: number | Object): void;
+export declare function resetObjectVelocity(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -70294,30 +70294,30 @@ export declare function setAmbientPickupLifetime(lifetime: number): void;
  * Sets object as auto-jumpable by horse.
  *
  * Hash: 0x98D2D9C053A1F449 | Since: 1207
- * @deprecated Use object.setAutoJumpableByHorse(object1) instead
+ * @deprecated Use object.setAutoJumpableByHorse(_object) instead
  */
-export declare function setAutoJumpableByHorse(object1: number | Object): void;
+export declare function setAutoJumpableByHorse(_object: number | Object): void;
 /**
  * No comment provided
  *
  * Hash: 0xF49574E2332A8F06 | Since: 1207
- * @deprecated Use object.setLightIntensityFor(object1, lightIntensity) instead
+ * @deprecated Use object.setLightIntensityFor(_object, lightIntensity) instead
  */
-export declare function setLightIntensityForObject(object1: number | Object, lightIntensity: number): void;
+export declare function setLightIntensityForObject(_object: number | Object, lightIntensity: number): void;
 /**
  * No comment provided
  *
  * Hash: 0x04D1D4E411CE52D0 | Since: 1207
- * @deprecated Use object.setLightScatteringDisabledFor(object1, disable) instead
+ * @deprecated Use object.setLightScatteringDisabledFor(_object, disable) instead
  */
-export declare function setLightScatteringDisabledForObject(object1: number | Object, disable: boolean): void;
+export declare function setLightScatteringDisabledForObject(_object: number | Object, disable: boolean): void;
 /**
  * Params: value = 0.0 - 586.67 (?)
  *
  * Hash: 0x63E39F09310F481F | Since: 1207
- * @deprecated Use object.setLightTranslucencyFor(object1, value) instead
+ * @deprecated Use object.setLightTranslucencyFor(_object, value) instead
  */
-export declare function setLightTranslucencyForObject(object1: number | Object, value: number): void;
+export declare function setLightTranslucencyForObject(_object: number | Object, value: number): void;
 /**
  * Params: p2 controls whether to make pickups usable/collectable or not in networked games
  *
@@ -70329,72 +70329,72 @@ export declare function setNetworkPickupUsableForPlayer(player: number | string 
  * Sets object as not jumpable by horse.
  *
  * Hash: 0xE1C708BA4885796B | Since: 1207
- * @deprecated Use object.setNotJumpableByHorse(object1) instead
+ * @deprecated Use object.setNotJumpableByHorse(_object) instead
  */
-export declare function setNotJumpableByHorse(object1: number | Object): void;
+export declare function setNotJumpableByHorse(_object: number | Object): void;
 /**
  * No comment provided
  *
  * Hash: 0xFFB99FFD17F65889 | Since: 1207
- * @deprecated Use object.setBreakScale(object1, scale) instead
+ * @deprecated Use object.setBreakScale(_object, scale) instead
  */
-export declare function setObjectBreakScale(object1: number | Object, scale: number): void;
+export declare function setObjectBreakScale(_object: number | Object, scale: number): void;
 /**
  * No comment provided
  *
  * Hash: 0xC8E21C1677DC5E6F | Since: 1207
- * @deprecated Use object.setBurnIntensity(object1, intensity) instead
+ * @deprecated Use object.setBurnIntensity(_object, intensity) instead
  */
-export declare function setObjectBurnIntensity(object1: number | Object, intensity: number): void;
+export declare function setObjectBurnIntensity(_object: number | Object, intensity: number): void;
 /**
  * Seems to mostly have effect on wood-made objects https://imgur.com/a/32oQvOn
  *
  * Hash: 0x2797C633DCDBBAC5 | Since: 1207
- * @deprecated Use object.setBurnLevel(object1, burnLevel, affectAsh) instead
+ * @deprecated Use object.setBurnLevel(_object, burnLevel, affectAsh) instead
  */
-export declare function setObjectBurnLevel(object1: number | Object, burnLevel: number, affectAsh: boolean): void;
+export declare function setObjectBurnLevel(_object: number | Object, burnLevel: number, affectAsh: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0x7D7285EFEAB5AF15 | Since: 1207
- * @deprecated Use object.setBurnOpacity(object1, opacity) instead
+ * @deprecated Use object.setBurnOpacity(_object, opacity) instead
  */
-export declare function setObjectBurnOpacity(object1: number | Object, opacity: number): void;
+export declare function setObjectBurnOpacity(_object: number | Object, opacity: number): void;
 /**
  * p2 is usually the same as speed parameter
  *
  * Hash: 0x646564A3B7DF68F8 | Since: 1207
- * @deprecated Use object.setBurnSpeed(object1, speed) instead
+ * @deprecated Use object.setBurnSpeed(_object, speed) instead
  */
-export declare function setObjectBurnSpeed(object1: number | Object, speed: number): void;
+export declare function setObjectBurnSpeed(_object: number | Object, speed: number): void;
 /**
  * No comment provided
  *
  * Hash: 0xB7017DA4D498269F | Since: 1207
- * @deprecated Use object.setKickable(object1, kickable) instead
+ * @deprecated Use object.setKickable(_object, kickable) instead
  */
-export declare function setObjectKickable(object1: number | Object, kickable: boolean): void;
+export declare function setObjectKickable(_object: number | Object, kickable: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0x581EDBE56E8D62C9 | Since: 1207
- * @deprecated Use object.setTargettable2(object1, targettable) instead
+ * @deprecated Use object.setTargettable2(_object, targettable) instead
  */
-export declare function setObjectTargettable2(object1: number | Object, targettable: boolean): void;
+export declare function setObjectTargettable2(_object: number | Object, targettable: boolean): void;
 /**
  * focus on objects like focus on peds, p1 is to enable/disable p2 is to enable/disable focus when you have a weapon out
  *
  * Hash: 0xA22712E8471AA08E | Since: 1207
- * @deprecated Use object.setTargettableFocus(object1, toggle, weaponLock) instead
+ * @deprecated Use object.setTargettableFocus(_object, toggle, weaponLock) instead
  */
-export declare function setObjectTargettableFocus(object1: number | Object, toggle: boolean, weaponLock: boolean): void;
+export declare function setObjectTargettableFocus(_object: number | Object, toggle: boolean, weaponLock: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0x00EE08603EADEE92 | Since: 1207
- * @deprecated Use object.setPickupCollectableOnMount(object1) instead
+ * @deprecated Use object.setPickupCollectableOnMount(_object) instead
  */
-export declare function setPickupCollectableOnMount(object1: number | Object): void;
+export declare function setPickupCollectableOnMount(_object: number | Object): void;
 /**
  * nullsub, doesn't do anything
  *
@@ -70904,9 +70904,9 @@ export declare function setPedPathsBackToOriginal(): void;
  * No comment provided
  *
  * Hash: 0x34F060F4BF92E018 | Since: 1207
- * @deprecated Use pathfind.setPedPathsInArea(x1, y1, z1, x2, y2, z2, unknown) instead
+ * @deprecated Use pathfind.setPedPathsInArea(x1, y1, z1, x2, y2, z2, _unknown) instead
  */
-export declare function setPedPathsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unknown: boolean): void;
+export declare function setPedPathsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, _unknown: boolean): void;
 /**
  * No comment provided
  *
@@ -72016,9 +72016,9 @@ export declare function getVehiclePedIsUsing(ped1: number | Ped): number;
  * No comment provided
  *
  * Hash: 0x2B02DB082258625F | Since: 1207
- * @deprecated Use ped.giveHashScenarioProp(ped1, object, scenarioType, p4) instead
+ * @deprecated Use ped.giveHashScenarioProp(ped1, _object, scenarioType, p4) instead
  */
-export declare function givePedHashScenarioProp(ped1: number | Ped, object: number | Object, scenarioType: number | string, p4: number | string): [boolean, string];
+export declare function givePedHashScenarioProp(ped1: number | Ped, _object: number | Object, scenarioType: number | string, p4: number | string): [boolean, string];
 /**
  * No comment provided
  *
@@ -75804,9 +75804,9 @@ export declare function _0xCDFB8C04D4C95D9B(): void;
  * No comment provided
  *
  * Hash: 0xCE7A6C1D5CDE1F9D | Since: 1207
- * @deprecated Use ped._0xCE7A6C1D5CDE1F9D(ped1, object, propName, animName) instead
+ * @deprecated Use ped._0xCE7A6C1D5CDE1F9D(ped1, _object, propName, animName) instead
  */
-export declare function _0xCE7A6C1D5CDE1F9D(ped1: number | Ped, object: number | Object, propName: string, animName: string): void;
+export declare function _0xCE7A6C1D5CDE1F9D(ped1: number | Ped, _object: number | Object, propName: string, animName: string): void;
 /**
  * _SET_PED_COMBAT_*
  *
@@ -77251,16 +77251,16 @@ export declare function givePedHashCommand(ped1: number | Ped, commandHash: numb
  * No comment provided
  *
  * Hash: 0x3BBDD6143FF16F98 | Since: 1207
- * @deprecated Use ped.giveScenarioProp(ped1, object, conditionalAnim) instead
+ * @deprecated Use ped.giveScenarioProp(ped1, _object, conditionalAnim) instead
  */
-export declare function givePedScenarioProp(ped1: number | Ped, object: number | Object, conditionalAnim: string): boolean;
+export declare function givePedScenarioProp(ped1: number | Ped, _object: number | Object, conditionalAnim: string): boolean;
 /**
  * Only used in SP R* Script rcm_jack2
  *
  * Hash: 0xA0774E388CE4A679 | Since: 1207
- * @deprecated Use ped.giveScenarioPropDynamic(ped1, object) instead
+ * @deprecated Use ped.giveScenarioPropDynamic(ped1, _object) instead
  */
-export declare function givePedScenarioPropDynamic(ped1: number | Ped, object: number | Object): boolean;
+export declare function givePedScenarioPropDynamic(ped1: number | Ped, _object: number | Object): boolean;
 /**
  * No comment provided
  *
@@ -77803,9 +77803,9 @@ export declare function requestPedFacialMoodThisFrame(ped1: number | Ped, mood: 
  * No comment provided
  *
  * Hash: 0xBDED916A9F9B0604 | Since: 1207
- * @deprecated Use ped.requestForScenarioType(ped1, object, scenarioType) instead
+ * @deprecated Use ped.requestForScenarioType(ped1, _object, scenarioType) instead
  */
-export declare function requestPedForScenarioType(ped1: number | Ped, object: number | Object, scenarioType: number | string): any;
+export declare function requestPedForScenarioType(ped1: number | Ped, _object: number | Object, scenarioType: number | string): any;
 /**
  * Known get up animation types: REAR, FRONT
  *
@@ -77817,9 +77817,9 @@ export declare function requestPedGetupAnimation(ped1: number | Ped, getUpType: 
  * No comment provided
  *
  * Hash: 0xBEC65C6049B3219D | Since: 1207
- * @deprecated Use ped.requestPropScenario(ped1, object) instead
+ * @deprecated Use ped.requestPropScenario(ped1, _object) instead
  */
-export declare function requestPropScenarioPed(ped1: number | Ped, object: number | Object): [any, string, string, string];
+export declare function requestPropScenarioPed(ped1: number | Ped, _object: number | Object): [any, string, string, string];
 /**
  * Creates a texture override data for ped and returns it's index.
  * So you can replace any texture of any ped's component.
@@ -79455,16 +79455,16 @@ export declare function setDamping(entity: number | Entity, vertex: number, valu
  * No comment provided
  *
  * Hash: 0x5CEC1A84620E7D5B | Since: 1207
- * @deprecated Use physics.setDisableBreaking(object, toggle) instead
+ * @deprecated Use physics.setDisableBreaking(_object, toggle) instead
  */
-export declare function setDisableBreaking(object: number | Object, toggle: boolean): void;
+export declare function setDisableBreaking(_object: number | Object, toggle: boolean): void;
 /**
  * No comment provided
  *
  * Hash: 0x01BA3AED21C16CFB | Since: 1207
- * @deprecated Use physics.setDisableFragDamage(object, toggle) instead
+ * @deprecated Use physics.setDisableFragDamage(_object, toggle) instead
  */
-export declare function setDisableFragDamage(object: number | Object, toggle: boolean): void;
+export declare function setDisableFragDamage(_object: number | Object, toggle: boolean): void;
 /**
  * No comment provided
  *
@@ -82425,9 +82425,9 @@ export declare function setPlayerDefenseModifier(player1: number | string | Play
  * fire damage Defense mod: type = 8, 15
  *
  * Hash: 0x93F499CAE53FCD05 | Since: 1207
- * @deprecated Use player.setDefenseTypeModifier(player1, type, defenseModifier) instead
+ * @deprecated Use player.setDefenseTypeModifier(player1, _type, defenseModifier) instead
  */
-export declare function setPlayerDefenseTypeModifier(player1: number | string | Player, type: number, defenseModifier: number): void;
+export declare function setPlayerDefenseTypeModifier(player1: number | string | Player, _type: number, defenseModifier: number): void;
 /**
  * No comment provided
  *
@@ -82659,9 +82659,9 @@ export declare function setSpecialAbilityMultiplier(player1: number | string | P
  * SPECIAL_ABILITY_REVIVE
  *
  * Hash: 0x00BA333DA05ADC23 | Since: 1207
- * @deprecated Use player.setSpecialAbilityType(player1, type) instead
+ * @deprecated Use player.setSpecialAbilityType(player1, _type) instead
  */
-export declare function setSpecialAbilityType(player1: number | string | Player, type: number): void;
+export declare function setSpecialAbilityType(player1: number | string | Player, _type: number): void;
 /**
  * No comment provided
  *
@@ -84680,9 +84680,9 @@ export declare function scFeedHubHasNewData(): boolean;
  * No comment provided
  *
  * Hash: 0xEFB64240F6B17817 | Since: 1207
- * @deprecated Use socialclubfeed.scFeedSubmitPresetMessage(type, subType) instead
+ * @deprecated Use socialclubfeed.scFeedSubmitPresetMessage(_type, subType) instead
  */
-export declare function scFeedSubmitPresetMessage(type: number, subType: number): number;
+export declare function scFeedSubmitPresetMessage(_type: number, subType: number): number;
 /**
  * No comment provided
  *
@@ -86776,9 +86776,9 @@ export declare function isWaypointPlaybackGoingOnForVehicle(): boolean;
  * No comment provided
  *
  * Hash: 0x67BFCED22909834D | Since: 1207
- * @deprecated Use task.makeObjectNotCarriable(object) instead
+ * @deprecated Use task.makeObjectNotCarriable(_object) instead
  */
-export declare function makeObjectNotCarriable(object: number | Object): void;
+export declare function makeObjectNotCarriable(_object: number | Object): void;
 /**
  * Note: patrolRoute must be prefixed with 'miss_' for it to be valid
  *
@@ -89680,9 +89680,9 @@ export declare function _0x974DA3408DEC4E79(): any;
  * No comment provided
  *
  * Hash: 0x9ADDBB9242179D56 | Since: 1207
- * @deprecated Use task._0x9ADDBB9242179D56(object, ped) instead
+ * @deprecated Use task._0x9ADDBB9242179D56(_object, ped) instead
  */
-export declare function _0x9ADDBB9242179D56(object: number | Object, ped: number | Ped): void;
+export declare function _0x9ADDBB9242179D56(_object: number | Object, ped: number | Ped): void;
 /**
  * No comment provided
  *
@@ -90439,9 +90439,9 @@ export declare function isScenarioPointFlagSet(scenario: number, flag: number): 
  * No comment provided
  *
  * Hash: 0x78B4567E18B54480 | Since: 1207
- * @deprecated Use task.makeObjectCarriable(object) instead
+ * @deprecated Use task.makeObjectCarriable(_object) instead
  */
-export declare function makeObjectCarriable(object: number | Object): void;
+export declare function makeObjectCarriable(_object: number | Object): void;
 /**
  * No comment provided
  *
@@ -90453,9 +90453,9 @@ export declare function pedFishingrodHookEntity(ped: number | Ped, entity: numbe
  * Used with 'P_BODYPARTARMFLOAT02X' model in fishing_core.c
  *
  * Hash: 0xCE71C2F9BAA3F975 | Since: 1207
- * @deprecated Use task.pedFishingrodHookObject(ped, object) instead
+ * @deprecated Use task.pedFishingrodHookObject(ped, _object) instead
  */
-export declare function pedFishingrodHookObject(ped: number | Ped, object: number | Object): void;
+export declare function pedFishingrodHookObject(ped: number | Ped, _object: number | Object): void;
 /**
  * No comment provided
  *
@@ -90815,9 +90815,9 @@ export declare function taskVehicleDriveToPoint2(vehicle: number | Vehicle, pos:
  * Types: 1148979456 (task with flee), 1148979587 (dismissing the vehicle)
  *
  * Hash: 0x55CD5FDDD4335C1E | Since: 1207
- * @deprecated Use task.vehicleFleeOnCleanup(vehicle, speed, type) instead
+ * @deprecated Use task.vehicleFleeOnCleanup(vehicle, speed, _type) instead
  */
-export declare function taskVehicleFleeOnCleanup(vehicle: number | Vehicle, speed: number, type: number | string): void;
+export declare function taskVehicleFleeOnCleanup(vehicle: number | Vehicle, speed: number, _type: number | string): void;
 /**
  * No comment provided
  *
@@ -90864,9 +90864,9 @@ export declare function telemetryPlayerMenuPin(): void;
  * Note: this native was added in build 1491.50
  *
  * Hash: 0x6F5BC5C4EAB42B15 | Since: 1491
- * @deprecated Use telemetry._0x6F5BC5C4EAB42B15(linkID, type, contentId) instead
+ * @deprecated Use telemetry._0x6F5BC5C4EAB42B15(linkID, _type, contentId) instead
  */
-export declare function _0x6F5BC5C4EAB42B15(linkID: number, type: number, contentId: string): void;
+export declare function _0x6F5BC5C4EAB42B15(linkID: number, _type: number, contentId: string): void;
 /**
  * No comment provided
  *
@@ -90892,9 +90892,9 @@ export declare function telemetryAmbientVignette(): void;
  * No comment provided
  *
  * Hash: 0x7581972ADF5D699A | Since: 1207
- * @deprecated Use telemetry.animalSkinned(type) instead
+ * @deprecated Use telemetry.animalSkinned(_type) instead
  */
-export declare function telemetryAnimalSkinned(type: number | string): any;
+export declare function telemetryAnimalSkinned(_type: number | string): any;
 /**
  * No comment provided
  *
@@ -92296,9 +92296,9 @@ export declare function areAnyVehicleSeatsFree(vehicle1: number | Vehicle): bool
  * distance defines how far it will travel until stopping.
  *
  * Hash: 0x260BE8F09E326A20 | Since: 1207
- * @deprecated Use vehicle.bringToHalt(vehicle1, distance, duration, unknown) instead
+ * @deprecated Use vehicle.bringToHalt(vehicle1, distance, duration, _unknown) instead
  */
-export declare function bringVehicleToHalt(vehicle1: number | Vehicle, distance: number, duration: number, unknown: boolean): void;
+export declare function bringVehicleToHalt(vehicle1: number | Vehicle, distance: number, duration: number, _unknown: boolean): void;
 /**
  * No comment provided
  *
@@ -97677,9 +97677,9 @@ export declare function setWeaponSoot(weaponObject: number | Object, level: numb
  * https://github.com/femga/rdr3_discoveries/tree/master/zones & https://alloc8or.re/rdr3/doc/enums/CMapZone__Type.txt
  *
  * Hash: 0x43AD8FC02B429D33 | Since: 1207
- * @deprecated Use zone.getMapAtCoords(pos, type) instead
+ * @deprecated Use zone.getMapAtCoords(pos, _type) instead
  */
-export declare function getMapZoneAtCoords(pos: Vector3, type: number): number;
+export declare function getMapZoneAtCoords(pos: Vector3, _type: number): number;
 /**
  * Returns the zone's name hash if its type matches one of the following:
  * - LAKE

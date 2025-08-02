@@ -14,8 +14,8 @@ Installable packages:
 ### Contribute
 
 As this package content is being generated from a json file, we do not accept direct pull requests.
-If you have issues, please create a [Issue](https://github.com/RisingLifeDE/types-redm/issues/new) or at our [natives repo](https://raw.githubusercontent.com/RisingLifeDE/rdr3-natives/refs/heads/master/rdr3natives.json)
+If you have issues, please create a [Issue](https://github.com/RisingLifeDE/types-redm/issues/new) or at our [Natives Repo](https://github.com/RisingLifeDE/rdr3-natives/issues/new)
 
 ### Credits
 
-Thanks to [VORP Core](https://github.com/VORPCORE/RDR3natives) and [CFX.re](https://cfx.re)
+Thanks to [VORP Core](https://github.com/VORPCORE/RDR3natives) and [cfx.re](https://cfx.re)

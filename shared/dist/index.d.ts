@@ -181,6 +181,10 @@ export declare abstract class Vehicle extends Entity {
 }
 export declare abstract class Object extends Entity {
 }
+export declare abstract class Blip extends Entity {
+}
+export declare abstract class Camera extends Entity {
+}
 declare type Handle = number;
 declare type Hash = number;
 declare type HashOrString = Hash | string;

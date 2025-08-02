@@ -1,0 +1,26 @@
+{
+  "name": "@risinglife/redm-natives",
+  "description": "This package contains the type definitions for the RedM JS module shared types",
+  "version": "0.1.16-rootless",
+  "repository": {
+    "url": "git+https://github.com/RisingLifeDE/types-redm.git"
+  },
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build",
+    "preversion": "npm run test",
+    "release": "npm version patch --no-git-tag-version"
+  },
+  "devDependencies": {
+    "typescript": "^5.x.x"
+  },
+  "dependencies": {
+    "@risinglife/redm-shared": "^0.0.6"
+  }
+}
