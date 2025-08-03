@@ -67716,8 +67716,9 @@ export var vehicle;
      *
      * Hash: 0x35DC1877312FBA0F | Since: 1207
      */
-    function fadeAndDestroy() {
-        return FadeAndDestroyVehicle();
+    function fadeAndDestroy(vehicle) {
+        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        FadeAndDestroyVehicle(_vehicle);
     }
     vehicle_1.fadeAndDestroy = fadeAndDestroy;
     /**

@@ -42792,7 +42792,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x35DC1877312FBA0F | Since: 1207
      */
-    function fadeAndDestroy(): number;
+    function fadeAndDestroy(vehicle: number | Vehicle): void;
     /**
      * No comment provided
      *
