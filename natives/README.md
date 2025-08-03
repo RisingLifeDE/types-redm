@@ -9,15 +9,12 @@ import * as game from '@risinglife/redm-natives';
 game.scripts.shutdownLoadingScreen();
 ```
 
-### Since v0.0.11
-All root methods (e.g. `game.playerId()`) are now deprecated.
+### Since v0.2.0
+All root methods (e.g. `game.playerId()`) were removed.
 The reason for this is clearly that namespaced methods are better and clearer.
 
-To have downward compatibility for the time being, all root methods are still available as wrapped methods.
-So that you can easily migrate, you only have to look at the deprecation message of the respective methods.
-
-With v0.2.0, all root methods are completely removed.
-Alternatively, you can “install” `@risinglife/redm-natives@rootless` to have no root methods at all.
+If you want them, you must downgrade to version [0.1.16](https://www.npmjs.com/package/@risinglife/redm-natives/v/0.1.16)
+Remind: Only the latest version contains the newest natives.
 
 ### Information
 
