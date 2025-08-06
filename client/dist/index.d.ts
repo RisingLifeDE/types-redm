@@ -358,7 +358,7 @@ export declare function drawBox(x1: number, y1: number, z1: number, x2: number, 
  *
  * Hash: 0x4E129DBF | Since: client
  */
-export declare function findNextObject(findHandle: number): [boolean, number | Entity];
+export declare function findNextObject(findHandle: number): [boolean, number];
 /**
  * No comment provided
  *
@@ -370,7 +370,7 @@ export declare function doesTimecycleModifierHasVar(): [boolean, string, string]
  *
  * Hash: 0x8F57A89D | Since: client
  */
-export declare function getCamMatrix(camera: number): [Vector3, Vector3, Vector3, Vector3];
+export declare function getCamMatrix(camera: number | Camera): [Vector3, Vector3, Vector3, Vector3];
 /**
  * DRAW_RECT, but with a rotation. Seems to be broken.
  *
@@ -412,7 +412,7 @@ export declare function getAllRopes(): number;
  *
  * Hash: 0x15E55694 | Since: client
  */
-export declare function findFirstVehicle(): [number, number | Entity];
+export declare function findFirstVehicle(): [number, number];
 /**
  * This native returns the index of a calming quad if the given point is inside its bounds.
  *
@@ -424,7 +424,7 @@ export declare function getCalmingQuadAtCoords(x: number, y: number): number;
  *
  * Hash: 0x8839120D | Since: client
  */
-export declare function findNextVehicle(findHandle: number): [boolean, number | Entity];
+export declare function findNextVehicle(findHandle: number): [boolean, number];
 /**
  * This native is not implemented.
  *
@@ -454,7 +454,7 @@ export declare function experimentalSaveCloneSync(entity: number | Entity): stri
  *
  * Hash: 0xFB012961 | Since: client
  */
-export declare function findFirstPed(): [number, number | Entity];
+export declare function findFirstPed(): [number, number];
 /**
  * This native is not implemented.
  *
@@ -512,13 +512,13 @@ export declare function experimentalLoadCloneCreate(objectId: number): [number, 
  *
  * Hash: 0xFAA6CB5D | Since: client
  */
-export declare function findFirstObject(): [number, number | Entity];
+export declare function findFirstObject(): [number, number];
 /**
  * No comment provided
  *
  * Hash: 0x3FF9D340 | Since: client
  */
-export declare function findFirstPickup(): [number, number | Entity];
+export declare function findFirstPickup(): [number, number];
 /**
  * Returns all track junctions on the client
  * The data returned adheres to the following structure:
@@ -541,7 +541,7 @@ export declare function forceSnowPass(enabled: boolean): void;
  *
  * Hash: 0x4107EF0F | Since: client
  */
-export declare function findNextPickup(findHandle: number): [boolean, number | Entity];
+export declare function findNextPickup(findHandle: number): [boolean, number];
 /**
  * A getter for [SET_AMBIENT_PED_RANGE_MULTIPLIER_THIS_FRAME](#\_0x0B919E1FB47CC4E0).
  *
@@ -553,7 +553,7 @@ export declare function getAmbientPedRangeMultiplier(): number;
  *
  * Hash: 0xAB09B548 | Since: client
  */
-export declare function findNextPed(findHandle: number): [boolean, number | Entity];
+export declare function findNextPed(findHandle: number): [boolean, number];
 /**
  * Returns the peer address of the remote game server that the user is currently connected to.
  *
@@ -768,7 +768,7 @@ export declare function getGameName(): string;
  *
  * Hash: 0x2B9D4F50 | Since: shared
  */
-export declare function getGamePool(pool: string): number[];
+export declare function getGamePool(key: string): number[];
 /**
  * No comment provided
  *
@@ -1493,7 +1493,7 @@ export declare function getTrainCurrentTrackNode(train: number | Vehicle): numbe
  *
  * Hash: 0x4301E10C | Since: client
  */
-export declare function getShapeTestResultIncludingMaterial(shapeTestHandle: number): [number, boolean, Vector3, Vector3, number | string, number | Entity];
+export declare function getShapeTestResultIncludingMaterial(shapeTestHandle: number): [number, boolean, Vector3, Vector3, number, number];
 /**
  * No comment provided
  *
@@ -2551,7 +2551,7 @@ export declare function loadWaterFromPath(): [boolean, string, string];
  *
  * Hash: 0xD7664FD1 | Since: client
  */
-export declare function registerKeyMapping(): [string, string, string, string];
+export declare function registerKeyMapping(commandString: string, description: string, defaultMapper: string, defaultParameter: string): void;
 /**
  * Overrides whether or not peds can stand on top of the specified vehicle.
  *
@@ -2587,7 +2587,7 @@ export declare function registerStreamingFileFromKvs(): string;
  *
  * Hash: 0xC59B980C | Since: client
  */
-export declare function registerNuiCallback(key: string, callback: Function): string;
+export declare function registerNuiCallback(key: string, callback: Function): void;
 /**
  * Removes a dry volume from the game session.
  * See CREATE_DRY_VOLUME for more info
@@ -3162,13 +3162,13 @@ export declare function setHudComponentSize(id: number, x: number, y: number): v
  *
  * Hash: 0x5FB53015 | Since: client
  */
-export declare function setMinimapType(type: number): void;
+export declare function setMinimapType(_type: number): void;
 /**
  * Sets the type for the minimap blip clipping object to be either rectangular or rounded.
  *
  * Hash: 0xB8B4490C | Since: client
  */
-export declare function setMinimapClipType(type: number): void;
+export declare function setMinimapClipType(_type: number): void;
 /**
  * No comment provided
  *
@@ -3855,7 +3855,7 @@ export declare function setWaterAreaClipRect(minX: number, minY: number, maxX: n
  *
  * Hash: 0x50131EB2 | Since: client
  */
-export declare function setWaterQuadType(waterQuad: number, type: number): boolean;
+export declare function setWaterQuadType(waterQuad: number, _type: number): boolean;
 /**
  * Adjusts the offset of the specified wheel relative to the wheel's axle center.
  * Needs to be called every frame in order to function properly, as GTA will reset the offset otherwise.
@@ -4199,13 +4199,13 @@ export declare function disableEditorRuntime(): void;
  *
  * Hash: 0x9ADD2938 | Since: shared
  */
-export declare function setResourceKvpFloat(value: number): string;
+export declare function setResourceKvpFloat(key: string, value: number): void;
 /**
  * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938).
  *
  * Hash: 0x35BDCEEA | Since: shared
  */
-export declare function getResourceKvpFloat(): [number, string];
+export declare function getResourceKvpFloat(key: string): number;
 /**
  * Enters cursor mode, suppressing mouse movement to the game and displaying a mouse cursor instead. This function supports
  * SDK infrastructure and is not intended to be used directly from your code.
@@ -4218,19 +4218,19 @@ export declare function enterCursorMode(): void;
  *
  * Hash: 0x8F2EECC3 | Since: client
  */
-export declare function startFindExternalKvp(): [number, string, string];
+export declare function startFindExternalKvp(resource: string, prefix: string): number;
 /**
  * No comment provided
  *
  * Hash: 0x7389B5DF | Since: shared
  */
-export declare function deleteResourceKvp(): string;
+export declare function deleteResourceKvp(key: string): void;
 /**
  * Nonsynchronous [DELETE_RESOURCE_KVP](#\_0x7389B5DF) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x4152C90 | Since: shared
  */
-export declare function deleteResourceKvpNoSync(): string;
+export declare function deleteResourceKvpNoSync(key: string): void;
 /**
  * Transiently updates the entity with the specified mapdata index and entity index.
  * This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -4249,65 +4249,65 @@ export declare function setEntityDrawOutlineColor(red: number, green: number, bl
  *
  * Hash: 0x557B586A | Since: shared
  */
-export declare function getResourceKvpInt(): [number, string];
+export declare function getResourceKvpInt(key: string): number;
 /**
  * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938), but for a specified resource.
  *
  * Hash: 0x3CC98B25 | Since: client
  */
-export declare function getExternalKvpFloat(): [number, string, string];
+export declare function getExternalKvpFloat(resource: string, key: string): number;
 /**
  * Nonsynchronous [SET_RESOURCE_KVP](#\_0x21C7A35B) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0xCF9A2FF | Since: shared
  */
-export declare function setResourceKvpNoSync(): [string, string];
+export declare function setResourceKvpNoSync(key: string, value: string): void;
 /**
  * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B).
  *
  * Hash: 0x5240DA5A | Since: shared
  */
-export declare function getResourceKvpString(): [string, string];
+export declare function getResourceKvpString(key: string): string;
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x3517BFBE | Since: shared
  */
-export declare function setResourceKvpFloatNoSync(value: number): string;
+export declare function setResourceKvpFloatNoSync(key: string, value: number): void;
 /**
  * A getter for [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8), but for a specified resource.
  *
  * Hash: 0x12B8D689 | Since: client
  */
-export declare function getExternalKvpInt(): [number, string, string];
+export declare function getExternalKvpInt(resource: string, key: string): number;
 /**
  * No comment provided
  *
  * Hash: 0xDD379006 | Since: shared
  */
-export declare function startFindKvp(): [number, string];
+export declare function startFindKvp(prefix: string): number;
 /**
  * A setter for [GET_RESOURCE_KVP_STRING](#\_0x5240DA5A).
  *
  * Hash: 0x21C7A35B | Since: shared
  */
-export declare function setResourceKvp(): [string, string];
+export declare function setResourceKvp(key: string, value: string): void;
 /**
  * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B), but for a specified resource.
  *
  * Hash: 0x9080363A | Since: client
  */
-export declare function getExternalKvpString(): [string, string, string];
+export declare function getExternalKvpString(resource: string, key: string): string;
 /**
  * A setter for [GET_RESOURCE_KVP_INT](#\_0x557B586A).
  *
  * Hash: 0x6A2B1E8 | Since: shared
  */
-export declare function setResourceKvpInt(value: number): string;
+export declare function setResourceKvpInt(key: string, value: number): void;
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x26AEB707 | Since: shared
  */
-export declare function setResourceKvpIntNoSync(value: number): string;
+export declare function setResourceKvpIntNoSync(key: string, value: number): void;
 export * from "@risinglife/redm-shared";
