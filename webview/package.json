@@ -1,0 +1,23 @@
+{
+  "name": "@risinglife/redm-webview",
+  "description": "This package is an easy-to-use solution for RedM NUI listener/sender",
+  "version": "0.0.1",
+  "repository": {
+    "url": "git+https://github.com/RisingLifeDE/types-redm.git"
+  },
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build",
+    "preversion": "npm run test",
+    "release": "npm version patch --no-git-tag-version"
+  },
+  "devDependencies": {
+    "typescript": "^5.x.x"
+  }
+}
