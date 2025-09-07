@@ -1,35 +1,44 @@
-import { Vector3, Entity, Ped, Player, Vehicle, Object, Blip } from '@risinglife/redm-shared';
-export var events;
-(function (events_1) {
+import {Vector3,Vector2,Entity,Ped,Player,Vehicle,Object,Blip,Camera} from '@risinglife/redm-shared'
+
+export namespace events {
+    interface api {
+        onNet: (eventName: string, handler: Function) => void;
+        emitNet: (eventName: string, ...args: any[]) => void;
+        on: (eventName: string, handler: Function) => void;
+        emit: (eventName: string, ...args: any[]) => void;
+    }
     class EventEmitter {
-        listeners = new Map();
-        on(eventName, callback) {
+        private listeners: Map<string, Array<(...args: any[]) => void>> = new Map();
+
+        on(eventName: string, callback: (...args: any[]) => void): void {
             if (!this.listeners.has(eventName)) {
                 this.listeners.set(eventName, []);
             }
-            this.listeners.get(eventName).push(callback);
+            this.listeners.get(eventName)!.push(callback);
         }
-        once(eventName, callback) {
-            const onceWrapper = (...args) => {
+
+        once(eventName: string, callback: (...args: any[]) => void): void {
+            const onceWrapper = (...args: any[]) => {
                 this.off(eventName, onceWrapper);
                 callback(...args);
             };
             this.on(eventName, onceWrapper);
         }
-        emit(eventName, ...args) {
+
+        emit(eventName: string, ...args: any[]): void {
             const callbacks = this.listeners.get(eventName);
             if (callbacks) {
                 callbacks.forEach((callback) => {
                     try {
                         callback(...args);
-                    }
-                    catch (error) {
+                    } catch (error) {
                         EventLogger.logError(eventName, error);
                     }
                 });
             }
         }
-        off(eventName, callback) {
+
+        off(eventName: string, callback: (...args: any[]) => void): void {
             const callbacks = this.listeners.get(eventName);
             if (callbacks) {
                 const index = callbacks.indexOf(callback);
@@ -38,52 +47,57 @@ export var events;
                 }
             }
         }
-        removeAllListeners(eventName) {
+
+        removeAllListeners(eventName?: string): void {
             if (eventName) {
                 this.listeners.delete(eventName);
-            }
-            else {
+            } else {
                 this.listeners.clear();
             }
         }
     }
     class EventParsingUtils {
-        static parseArgument(arg) {
+        private static parseArgument(arg: any): any {
             if (typeof arg === 'string') {
                 try {
                     return JSON.parse(arg);
-                }
-                catch {
+                } catch {
                     return arg;
                 }
             }
+
             if (Array.isArray(arg)) {
                 return arg.map((item) => this.parseArgument(item));
             }
+
             if (arg && typeof arg === 'object') {
-                const result = {};
+                const result: any = {};
                 for (const [key, value] of Object.entries(arg)) {
                     result[key] = this.parseArgument(value);
                 }
                 return result;
             }
+
             return arg;
         }
-        static parseAllArguments(args) {
+
+        static parseAllArguments(args: any[]): any[] {
             return args.map((arg) => this.parseArgument(arg));
         }
     }
     class EventRegistry {
-        static networkEvents = new Set();
-        static localEvents = new Set();
-        static networkEmitter = new EventEmitter();
-        static localEmitter = new EventEmitter();
+        private static networkEvents = new Set<string>();
+        private static localEvents = new Set<string>();
+        private static networkEmitter = new EventEmitter();
+        private static localEmitter = new EventEmitter();
+
         static getNetworkRegistry() {
             return {
                 events: this.networkEvents,
                 emitter: this.networkEmitter
             };
         }
+
         static getLocalRegistry() {
             return {
                 events: this.localEvents,
@@ -92,63 +106,75 @@ export var events;
         }
     }
     class EventLogger {
-        static logErrors = true;
-        static logEvents = false;
-        static logEvent(type, eventName, ...args) {
-            if (this.logEvents)
-                console.log(`[${type}] ${eventName}`, ...args);
+
+        static logErrors: boolean = true;
+        static logEvents: boolean = false;
+
+        static logEvent(type: 'NETWORK' | 'LOCAL', eventName: string, ...args: any[]): void {
+            if (this.logEvents) console.log(`[${type}] ${eventName}`, ...args);
         }
-        static logError(eventName, error) {
-            if (this.logErrors)
-                console.error(`Error in event handler for "${eventName}":`, error);
+
+        static logError(eventName: string, error: any): void {
+            if (this.logErrors) console.error(`Error in event handler for "${eventName}":`, error);
         }
     }
+
     class NetworkEventUtils {
-        static api = {
+        private static api: api = {
             // @ts-ignore
-            onNet: (eventName, handler) => onNet(eventName, handler),
+            onNet: (eventName: string, handler: Function) => onNet(eventName, handler),
             // @ts-ignore
-            emitNet: (eventName, ...args) => emitNet(eventName, ...args),
+            emitNet: (eventName: string, ...args: any[]) => emitNet(eventName, ...args),
             // @ts-ignore
-            on: (eventName, handler) => addEventListener(eventName, handler),
+            on: (eventName: string, handler: Function) => addEventListener(eventName, handler),
             // @ts-ignore
-            emit: (eventName, ...args) => TriggerEvent(eventName, ...args),
+            emit: (eventName: string, ...args: any[]) => TriggerEvent(eventName, ...args),
         };
-        static getNetworkEventName(eventName) {
+
+        private static getNetworkEventName(eventName: string): string {
             return eventName.startsWith('net::') ? eventName : `net::${eventName}`;
         }
-        static setupListener(eventName) {
-            const { events, emitter } = EventRegistry.getNetworkRegistry();
+
+        private static setupListener(eventName: string): void {
+            const {events, emitter} = EventRegistry.getNetworkRegistry();
             const networkEventName = this.getNetworkEventName(eventName);
+
             if (!events.has(eventName)) {
                 events.add(eventName);
-                const handler = (...args) => {
+
+                const handler = (...args: any[]) => {
                     const parsedArgs = EventParsingUtils.parseAllArguments(args);
                     emitter.emit(eventName, ...parsedArgs);
                     EventLogger.logEvent('NETWORK', eventName, ...args);
                 };
+
                 this.api.onNet(networkEventName, handler);
             }
         }
-        static registerEvent(eventName, callback) {
+
+        static registerEvent<T extends any[]>(eventName: string, callback: (...args: T) => void): void {
             this.setupListener(eventName);
-            const { emitter } = EventRegistry.getNetworkRegistry();
+            const {emitter} = EventRegistry.getNetworkRegistry();
             emitter.on(eventName, callback);
         }
-        static registerEventOnce(eventName, callback) {
+
+        static registerEventOnce<T extends any[]>(eventName: string, callback: (...args: T) => void): void {
             this.setupListener(eventName);
-            const { emitter } = EventRegistry.getNetworkRegistry();
+            const {emitter} = EventRegistry.getNetworkRegistry();
             emitter.once(eventName, callback);
         }
-        static removeListener(eventName, callback) {
-            const { emitter } = EventRegistry.getNetworkRegistry();
+
+        static removeListener<T extends any[]>(eventName: string, callback: (...args: T) => void): void {
+            const {emitter} = EventRegistry.getNetworkRegistry();
             emitter.off(eventName, callback);
         }
-        static removeAllListeners(eventName) {
-            const { emitter } = EventRegistry.getNetworkRegistry();
+
+        static removeAllListeners(eventName?: string): void {
+            const {emitter} = EventRegistry.getNetworkRegistry();
             emitter.removeAllListeners(eventName);
         }
-        static send(eventName, ...args) {
+
+        static send(eventName: string, ...args: any[]): void {
             const networkEventName = this.getNetworkEventName(eventName);
             const parsedArgs = args.map((arg) => {
                 if (arg instanceof IEntity) {
@@ -156,154 +182,161 @@ export var events;
                 }
                 return arg;
             });
+
             EventLogger.logEvent('NETWORK', eventName, ...parsedArgs);
             this.api.emitNet(networkEventName, ...parsedArgs);
         }
     }
     class LocalEventUtils {
-        static api = {
+        private static api: api = {
             // @ts-ignore
-            onNet: (eventName, handler) => onNet(eventName, handler),
+            onNet: (eventName: string, handler: Function) => onNet(eventName, handler),
             // @ts-ignore
-            emitNet: (eventName, ...args) => emitNet(eventName, ...args),
+            emitNet: (eventName: string, ...args: any[]) => emitNet(eventName, ...args),
             // @ts-ignore
-            on: (eventName, handler) => addEventListener(eventName, handler),
+            on: (eventName: string, handler: Function) => addEventListener(eventName, handler),
             // @ts-ignore
-            emit: (eventName, ...args) => TriggerEvent(eventName, ...args),
+            emit: (eventName: string, ...args: any[]) => TriggerEvent(eventName, ...args),
         };
-        static setupListener(eventName) {
-            const { events, emitter } = EventRegistry.getLocalRegistry();
+
+        private static setupListener(eventName: string): void {
+            const {events, emitter} = EventRegistry.getLocalRegistry();
+
             if (!events.has(eventName)) {
                 events.add(eventName);
-                const handler = (...args) => {
+
+                const handler = (...args: any[]) => {
                     const parsedArgs = EventParsingUtils.parseAllArguments(args);
                     emitter.emit(eventName, ...parsedArgs);
                     EventLogger.logEvent('LOCAL', eventName, ...args);
                 };
+
                 this.api.on(eventName, handler);
             }
         }
-        static registerEvent(eventName, callback) {
+
+        static registerEvent<T extends any[]>(eventName: string, callback: (...args: T) => void): void {
             this.setupListener(eventName);
-            const { emitter } = EventRegistry.getLocalRegistry();
+            const {emitter} = EventRegistry.getLocalRegistry();
             emitter.on(eventName, callback);
         }
-        static registerEventOnce(eventName, callback) {
+
+        static registerEventOnce<T extends any[]>(eventName: string, callback: (...args: T) => void): void {
             this.setupListener(eventName);
-            const { emitter } = EventRegistry.getLocalRegistry();
+            const {emitter} = EventRegistry.getLocalRegistry();
             emitter.once(eventName, callback);
         }
-        static removeListener(eventName, callback) {
-            const { emitter } = EventRegistry.getLocalRegistry();
+
+        static removeListener<T extends any[]>(eventName: string, callback: (...args: T) => void): void {
+            const {emitter} = EventRegistry.getLocalRegistry();
             emitter.off(eventName, callback);
         }
-        static removeAllListeners(eventName) {
-            const { emitter } = EventRegistry.getLocalRegistry();
+
+        static removeAllListeners(eventName?: string): void {
+            const {emitter} = EventRegistry.getLocalRegistry();
             emitter.removeAllListeners(eventName);
         }
-        static send(eventName, ...args) {
+
+        static send(eventName: string, ...args: any[]): void {
             const parsedArgs = args.map((arg) => {
                 if (arg instanceof IEntity) {
                     return arg.remoteId();
                 }
                 return arg;
             });
+
             EventLogger.logEvent('LOCAL', eventName, ...parsedArgs);
             this.api.emit(eventName, ...parsedArgs);
         }
     }
-    function removeAllListeners(key) {
-        LocalEventUtils.removeAllListeners(key);
-        NetworkEventUtils.removeAllListeners(key);
+
+    export function removeAllListeners(key?: string): void {
+        LocalEventUtils.removeAllListeners(key)
+        NetworkEventUtils.removeAllListeners(key)
     }
-    events_1.removeAllListeners = removeAllListeners;
+
     /**
      * Registers a listener for a local emitted event
      * @param key The event key which should be listened on
      * @param callback The callback which should be executed
      */
-    function on(key, callback) {
+    export function on(key: string, callback: (...args: any[]) => void): void {
         LocalEventUtils.registerEvent(key, callback);
     }
-    events_1.on = on;
     /**
      * Registers a onetime listener for a local emitted event
      * @param key The event key which should be listened on
      * @param callback The callback which should be executed
      */
-    function once(key, callback) {
+    export function once(key: string, callback: (...args: any[]) => void): void {
         LocalEventUtils.registerEventOnce(key, callback);
     }
-    events_1.once = once;
     /**
      * Removes a listener for a local emitted event
      * @param key The event key which should be removed
      * @param callback Must be the callback
      */
-    function off(key, callback) {
+    export function off(key: string, callback: (...args: any[]) => void): void {
         LocalEventUtils.removeListener(key, callback);
     }
-    events_1.off = off;
+
     /**
      * Registers a listener for a client emitted event
      * @param key The event key which should be listened on
      * @param callback The callback which should be executed
      */
-    function onClient(key, callback) {
+    export function onClient(key: string, callback: (...args: any[]) => void): void {
         NetworkEventUtils.registerEvent(key, callback);
     }
-    events_1.onClient = onClient;
     /**
      * Registers a onetime listener for a client emitted event
      * @param key The event key which should be listened on
      * @param callback The callback which should be executed
      */
-    function onceClient(key, callback) {
+    export function onceClient(key: string, callback: (...args: any[]) => void): void {
         NetworkEventUtils.registerEventOnce(key, callback);
     }
-    events_1.onceClient = onceClient;
     /**
      * Removes a listener for a client emitted event
      * @param key The event key which should be removed
      * @param callback Must be the callback
      */
-    function offClient(key, callback) {
+    export function offClient(key: string, callback: (...args: any[]) => void): void {
         NetworkEventUtils.removeListener(key, callback);
     }
-    events_1.offClient = offClient;
+
     /**
      * Sends data local, which can be listened by any resource
      * @param key The event key
      * @param args All parameters
      */
-    function emit(key, ...args) {
-        LocalEventUtils.send(key, ...args);
+    export function emit(key: string, ...args: any[]): void {
+        LocalEventUtils.send(key, ...args)
     }
-    events_1.emit = emit;
     /**
      * Sends data to a client, which can be listened by any resource
      * @param key The event key
      * @param target The target client
      * @param args All parameters
      */
-    function emitClient(key, target, ...args) {
-        NetworkEventUtils.send(key, target, ...args);
+    export function emitClient(key: string, target: number | string, ...args: any[]): void {
+        NetworkEventUtils.send(key, target, ...args)
     }
-    events_1.emitClient = emitClient;
-})(events || (events = {}));
+}
+
 // All below is auto-generated code
-export var entity;
-(function (entity_1) {
+
+export namespace entity {
     /**
      * No comment provided
      *
      * Hash: 0x91B38FB6
      */
-    function getRemoteSyncedScenesAllowed(entity) {
+    export function getRemoteSyncedScenesAllowed(entity: number | Entity): boolean {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityRemoteSyncedScenesAllowed(_entity);
     }
-    entity_1.getRemoteSyncedScenesAllowed = getRemoteSyncedScenesAllowed;
+
     /**
      * Enables or disables the owner check for the specified entity in network-synchronized scenes. When set to `false`, the entity cannot participate in synced scenes initiated by clients that do not own the entity.
      *
@@ -311,21 +344,21 @@ export var entity;
      *
      * Hash: 0xD3FC9D88
      */
-    function setRemoteSyncedScenesAllowed(entity, allow) {
+    export function setRemoteSyncedScenesAllowed(entity: number | Entity, allow: boolean): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityRemoteSyncedScenesAllowed(_entity, allow);
     }
-    entity_1.setRemoteSyncedScenesAllowed = setRemoteSyncedScenesAllowed;
+
     /**
      * A getter for [FREEZE_ENTITY_POSITION](#\_0x428CA6DBD1094446).
      *
      * Hash: 0xEDBE6ADD
      */
-    function isPositionFrozen(entity) {
+    export function isPositionFrozen(entity: number | Entity): boolean {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return IsEntityPositionFrozen(_entity);
     }
-    entity_1.isPositionFrozen = isPositionFrozen;
+
     /**
      * ```cpp
      * enum eApplyForceTypes {
@@ -342,11 +375,11 @@ export var entity;
      *
      * Hash: 0xC1C0855A
      */
-    function applyForceTo(entity, forceType, pos, offX, offY, offZ, nComponent, bLocalForce, bLocalOffset, bScaleByMass, bPlayAudio, bScaleByTimeWarp) {
+    export function applyForceTo(entity: number | Entity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         ApplyForceToEntity(_entity, forceType, pos.x, pos.y, pos.z, offX, offY, offZ, nComponent, bLocalForce, bLocalOffset, bScaleByMass, bPlayAudio, bScaleByTimeWarp);
     }
-    entity_1.applyForceTo = applyForceTo;
+
     /**
      * Deletes the specified entity.
      *
@@ -354,21 +387,21 @@ export var entity;
      *
      * Hash: 0xFAA3D236
      */
-    function deleteEntity(entity) {
+    export function deleteEntity(entity: number | Entity): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         DeleteEntity(_entity);
     }
-    entity_1.deleteEntity = deleteEntity;
+
     /**
      * No comment provided
      *
      * Hash: 0x3AC90869
      */
-    function doesExist(entity) {
+    export function doesExist(entity: number | Object): boolean {
         const _entity = entity instanceof Object ? entity.handle() : entity;
         return DoesEntityExist(_entity);
     }
-    entity_1.doesExist = doesExist;
+
     /**
      * Freezes or unfreezes an entity preventing its coordinates to change by the player if set to `true`. You can still change the entity position using [`SET_ENTITY_COORDS`](#\_0x06843DA7060A026B).
      *
@@ -376,31 +409,31 @@ export var entity;
      *
      * Hash: 0x65C16D57
      */
-    function freezePosition(entity, toggle) {
+    export function freezePosition(entity: number | Entity, toggle: boolean): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         FreezeEntityPosition(_entity, toggle);
     }
-    entity_1.freezePosition = freezePosition;
+
     /**
      * Gets the entity that this entity is attached to.
      *
      * Hash: 0xFE1589F9
      */
-    function getAttachedTo(entity) {
+    export function getAttachedTo(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityAttachedTo(_entity);
     }
-    entity_1.getAttachedTo = getAttachedTo;
+
     /**
      * No comment provided
      *
      * Hash: 0xE8C0C629
      */
-    function getCollisionDisabled(entity) {
+    export function getCollisionDisabled(entity: number | Entity): boolean {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityCollisionDisabled(_entity);
     }
-    entity_1.getCollisionDisabled = getCollisionDisabled;
+
     /**
      * Gets the current coordinates for a specified entity. This native is used server side when using OneSync.
      *
@@ -408,91 +441,91 @@ export var entity;
      *
      * Hash: 0x1647F1CB
      */
-    function getCoords(entity) {
+    export function getCoords(entity: number | Entity): Vector3 {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return new Vector3(GetEntityCoords(_entity));
     }
-    entity_1.getCoords = getCoords;
+
     /**
      * No comment provided
      *
      * Hash: 0x972CC383
      */
-    function getHeading(entity) {
+    export function getHeading(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityHeading(_entity);
     }
-    entity_1.getHeading = getHeading;
+
     /**
      * Only works for vehicle and peds
      *
      * Hash: 0x8E3222B7
      */
-    function getHealth(entity) {
+    export function getHealth(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityHealth(_entity);
     }
-    entity_1.getHealth = getHealth;
+
     /**
      * Currently it only works with peds.
      *
      * Hash: 0xC7AE6AA1
      */
-    function getMaxHealth(entity) {
+    export function getMaxHealth(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityMaxHealth(_entity);
     }
-    entity_1.getMaxHealth = getMaxHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0xDAFCB3EC
      */
-    function getModel(entity) {
+    export function getModel(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityModel(_entity);
     }
-    entity_1.getModel = getModel;
+
     /**
      * No comment provided
      *
      * Hash: 0xD16EA02F
      */
-    function getOrphanMode(entity) {
+    export function getOrphanMode(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityOrphanMode(_entity);
     }
-    entity_1.getOrphanMode = getOrphanMode;
+
     /**
      * This native gets an entity's population type.
      *
      * Hash: 0xFC30DDFF
      */
-    function getPopulationType(entity) {
+    export function getPopulationType(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityPopulationType(_entity);
     }
-    entity_1.getPopulationType = getPopulationType;
+
     /**
      * No comment provided
      *
      * Hash: 0x8FF45B04
      */
-    function getRotation(entity) {
+    export function getRotation(entity: number | Entity): Vector3 {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return new Vector3(GetEntityRotation(_entity));
     }
-    entity_1.getRotation = getRotation;
+
     /**
      * No comment provided
      *
      * Hash: 0x9BF8A73F
      */
-    function getRotationVelocity(entity) {
+    export function getRotationVelocity(entity: number | Entity): Vector3 {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return new Vector3(GetEntityRotationVelocity(_entity));
     }
-    entity_1.getRotationVelocity = getRotationVelocity;
+
     /**
      * Gets the routing bucket for the specified entity.
      *
@@ -500,21 +533,21 @@ export var entity;
      *
      * Hash: 0xED4B0486
      */
-    function getRoutingBucket(entity) {
+    export function getRoutingBucket(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityRoutingBucket(_entity);
     }
-    entity_1.getRoutingBucket = getRoutingBucket;
+
     /**
      * No comment provided
      *
      * Hash: 0xB7F70784
      */
-    function getScript(entity) {
+    export function getScript(entity: number | Entity): string {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityScript(_entity);
     }
-    entity_1.getScript = getScript;
+
     /**
      * Gets the current speed of the entity in meters per second.
      *
@@ -525,11 +558,11 @@ export var entity;
      *
      * Hash: 0x9E1E4798
      */
-    function getSpeed(entity) {
+    export function getSpeed(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntitySpeed(_entity);
     }
-    entity_1.getSpeed = getSpeed;
+
     /**
      * Gets the entity type (as an integer), which can be one of the following defined down below:
      *
@@ -562,21 +595,21 @@ export var entity;
      *
      * Hash: 0xB1BD08D
      */
-    function getType(entity) {
+    export function getType(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetEntityType(_entity);
     }
-    entity_1.getType = getType;
+
     /**
      * No comment provided
      *
      * Hash: 0xC14C9B6B
      */
-    function getVelocity(entity) {
+    export function getVelocity(entity: number | Entity): Vector3 {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return new Vector3(GetEntityVelocity(_entity));
     }
-    entity_1.getVelocity = getVelocity;
+
     /**
      * Gets the specific entity type (as an integer), which can be one of the following defined down below:
      *
@@ -642,31 +675,31 @@ export var entity;
      *
      * Hash: 0x23B2A641
      */
-    function getNetTypeFrom(entity) {
+    export function getNetTypeFrom(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return GetNetTypeFromEntity(_entity);
     }
-    entity_1.getNetTypeFrom = getNetTypeFrom;
+
     /**
      * No comment provided
      *
      * Hash: 0x9C9A3BE0
      */
-    function hasBeenMarkedAsNoLongerNeeded(vehicle) {
+    export function hasBeenMarkedAsNoLongerNeeded(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return HasEntityBeenMarkedAsNoLongerNeeded(_vehicle);
     }
-    entity_1.hasBeenMarkedAsNoLongerNeeded = hasBeenMarkedAsNoLongerNeeded;
+
     /**
      * This native checks if the given entity is visible.
      *
      * Hash: 0x120B4ED5
      */
-    function isVisible(entity) {
+    export function isVisible(entity: number | Entity): boolean {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return IsEntityVisible(_entity);
     }
-    entity_1.isVisible = isVisible;
+
     /**
      * Sets the coordinates (world position) for a specified entity, offset by the radius of the entity on the Z axis.
      *
@@ -674,11 +707,11 @@ export var entity;
      *
      * Hash: 0xDF70B41B
      */
-    function setCoords(entity, pos, alive, deadFlag, ragdollFlag, clearArea) {
+    export function setCoords(entity: number | Entity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityCoords(_entity, pos.x, pos.y, pos.z, alive, deadFlag, ragdollFlag, clearArea);
     }
-    entity_1.setCoords = setCoords;
+
     /**
      * It overrides the default distance culling radius of an entity. Set to `0.0` to reset.
      * If you want to interact with an entity outside of your players' scopes set the radius to a huge number.
@@ -687,11 +720,11 @@ export var entity;
      *
      * Hash: 0xD3A183A3
      */
-    function setDistanceCullingRadius(entity, radius) {
+    export function setDistanceCullingRadius(entity: number | Entity, radius: number): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityDistanceCullingRadius(_entity, radius);
     }
-    entity_1.setDistanceCullingRadius = setDistanceCullingRadius;
+
     /**
      * Set the heading of an entity in degrees also known as "Yaw".
      *
@@ -699,21 +732,21 @@ export var entity;
      *
      * Hash: 0xE0FF064D
      */
-    function setHeading(entity, heading) {
+    export function setHeading(entity: number | Entity, heading: number): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityHeading(_entity, heading);
     }
-    entity_1.setHeading = setHeading;
+
     /**
      * It allows to flag an entity to ignore the request control filter policy.
      *
      * Hash: 0x9F7F8D36
      */
-    function setIgnoreRequestControlFilter(entity, ignore) {
+    export function setIgnoreRequestControlFilter(entity: number | Entity, ignore: boolean): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityIgnoreRequestControlFilter(_entity, ignore);
     }
-    entity_1.setIgnoreRequestControlFilter = setIgnoreRequestControlFilter;
+
     /**
      * ```cpp
      * enum EntityOrphanMode {
@@ -738,11 +771,11 @@ export var entity;
      *
      * Hash: 0x489E9162
      */
-    function setOrphanMode(entity, orphanMode) {
+    export function setOrphanMode(entity: number | Entity, orphanMode: number): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityOrphanMode(_entity, orphanMode);
     }
-    entity_1.setOrphanMode = setOrphanMode;
+
     /**
      * Sets the rotation of a specified entity in the game world.
      *
@@ -754,11 +787,11 @@ export var entity;
      *
      * Hash: 0xA345EFE
      */
-    function setRotation(entity, pitch, roll, yaw, rotationOrder, bDeadCheck) {
+    export function setRotation(entity: number | Entity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityRotation(_entity, pitch, roll, yaw, rotationOrder, bDeadCheck);
     }
-    entity_1.setRotation = setRotation;
+
     /**
      * Sets the routing bucket for the specified entity.
      *
@@ -766,11 +799,11 @@ export var entity;
      *
      * Hash: 0x635E5289
      */
-    function setRoutingBucket(entity, bucket) {
+    export function setRoutingBucket(entity: number | Entity, bucket: number): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityRoutingBucket(_entity, bucket);
     }
-    entity_1.setRoutingBucket = setRoutingBucket;
+
     /**
      * ```
      * Note that the third parameter(denoted as z) is "up and down" with positive numbers encouraging upwards movement.
@@ -780,21 +813,21 @@ export var entity;
      *
      * Hash: 0xFF5A1988
      */
-    function setVelocity(entity, pos) {
+    export function setVelocity(entity: number | Entity, pos: Vector3): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         SetEntityVelocity(_entity, pos.x, pos.y, pos.z);
     }
-    entity_1.setVelocity = setVelocity;
+
     /**
      * Internal function for ensuring an entity has a state bag.
      *
      * Hash: 0x3BB78F05
      */
-    function ensureStateBag(entity) {
+    export function ensureStateBag(entity: number | Entity): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         EnsureEntityStateBag(_entity);
     }
-    entity_1.ensureStateBag = ensureStateBag;
+
     /**
      * ### Supported types
      *
@@ -827,23 +860,24 @@ export var entity;
      *
      * Hash: 0xDFFBA12F
      */
-    function getEntitiesInRadius(pos, radius, entityType, sortByDistance, models) {
+    export function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | Object): number {
         const _models = models instanceof Object ? models.handle() : models;
         return GetEntitiesInRadius(pos.x, pos.y, pos.z, radius, entityType, sortByDistance, _models);
     }
-    entity_1.getEntitiesInRadius = getEntitiesInRadius;
+
     /**
      * Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](#\_0x5BA35AAF).
      *
      * Hash: 0x4BDF1867
      */
-    function getFromStateBagName(bagName) {
+    export function getFromStateBagName(bagName: string): number {
         return GetEntityFromStateBagName(bagName);
     }
-    entity_1.getFromStateBagName = getFromStateBagName;
-})(entity || (entity = {}));
-export var hud;
-(function (hud) {
+
+}
+
+
+export namespace hud {
     /**
      * Creates a blip for the specified coordinates. You can use `SET_BLIP_` natives to change the blip.
      *
@@ -851,10 +885,10 @@ export var hud;
      *
      * Hash: 0xC6F43D0E
      */
-    function addBlipForCoord(pos) {
+    export function addBlipForCoord(pos: Vector3): number {
         return AddBlipForCoord(pos.x, pos.y, pos.z);
     }
-    hud.addBlipForCoord = addBlipForCoord;
+
     /**
      * Create a blip that by default is red (enemy), you can use [SET_BLIP_AS_FRIENDLY](#\_0xC6F43D0E) to make it blue (friend).\
      * Can be used for objects, vehicles and peds.
@@ -867,11 +901,11 @@ export var hud;
      *
      * Hash: 0x30822554
      */
-    function addBlipForEntity(entity) {
+    export function addBlipForEntity(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return AddBlipForEntity(_entity);
     }
-    hud.addBlipForEntity = addBlipForEntity;
+
     /**
      * Create a blip with a radius for the specified coordinates (it doesnt create the blip sprite, so you need to use [AddBlipCoords](#\_0xC6F43D0E))
      * Example image:
@@ -881,10 +915,10 @@ export var hud;
      *
      * Hash: 0x4626756C
      */
-    function addBlipForRadius(pos, radius) {
+    export function addBlipForRadius(pos: Vector3, radius: number): number {
         return AddBlipForRadius(pos.x, pos.y, pos.z, radius);
     }
-    hud.addBlipForRadius = addBlipForRadius;
+
     /**
      * Removes the blip from your map.
      * **Note:** This function only works on the script that created the blip, if you wish to remove blips created by other scripts, see [`SET_THIS_SCRIPT_CAN_REMOVE_BLIPS_CREATED_BY_ANY_SCRIPT`](#\_0x86A652570E5F25DD).
@@ -893,11 +927,11 @@ export var hud;
      *
      * Hash: 0xD8C3C1CD
      */
-    function removeBlip(blip) {
+    export function removeBlip(blip: number | Blip): void {
         const _blip = blip instanceof Blip ? blip.handle() : blip;
         RemoveBlip(_blip);
     }
-    hud.removeBlip = removeBlip;
+
     /**
      * Sets the displayed sprite for a specific blip.
      * There's a [list of sprites](https://docs.fivem.net/game-references/blips/) on the FiveM documentation site.
@@ -906,11 +940,11 @@ export var hud;
      *
      * Hash: 0x8DBBB0B9
      */
-    function setBlipSprite(blip, spriteId) {
+    export function setBlipSprite(blip: number | Blip, spriteId: number): void {
         const _blip = blip instanceof Blip ? blip.handle() : blip;
         SetBlipSprite(_blip, spriteId);
     }
-    hud.setBlipSprite = setBlipSprite;
+
     /**
      * Adds a rectangular blip for the specified coordinates/area.
      * It is recommended to use [SET_BLIP_ROTATION](#\_0xF87683CDF73C3F6E) and [SET_BLIP_COLOUR](#\_0x03D7FB09E75D6B7E) to make the blip not rotate along with the camera.
@@ -924,170 +958,171 @@ export var hud;
      *
      * Hash: 0x6228F159
      */
-    function addBlipForArea(pos, width, height) {
+    export function addBlipForArea(pos: Vector3, width: number, height: number): number {
         return AddBlipForArea(pos.x, pos.y, pos.z, width, height);
     }
-    hud.addBlipForArea = addBlipForArea;
-})(hud || (hud = {}));
-export var misc;
-(function (misc) {
+
+}
+
+
+export namespace misc {
     /**
      * No comment provided
      *
      * Hash: 0xF97B1C93
      */
-    function enableEnhancedHostSupport(enabled) {
+    export function enableEnhancedHostSupport(enabled: boolean): void {
         EnableEnhancedHostSupport(enabled);
     }
-    misc.enableEnhancedHostSupport = enableEnhancedHostSupport;
+
     /**
      * No comment provided
      *
      * Hash: 0x13B6855D
      */
-    function flagServerAsPrivate(private_) {
+    export function flagServerAsPrivate(private_: boolean): void {
         FlagServerAsPrivate(private_);
     }
-    misc.flagServerAsPrivate = flagServerAsPrivate;
+
     /**
      * Returns the current console output buffer.
      *
      * Hash: 0xE57429FA
      */
-    function getConsoleBuffer() {
+    export function getConsoleBuffer(): string {
         return GetConsoleBuffer();
     }
-    misc.getConsoleBuffer = getConsoleBuffer;
+
     /**
      * Gets the current game timer in milliseconds.
      *
      * Hash: 0xA4EA0691
      */
-    function getGameTimer() {
+    export function getGameTimer(): number {
         return GetGameTimer();
     }
-    misc.getGameTimer = getGameTimer;
+
     /**
      * This native converts the passed string to a hash.
      *
      * Hash: 0x98EFF6F1
      */
-    function getHashKey(model) {
+    export function getHashKey(model: string): number {
         return GetHashKey(model);
     }
-    misc.getHashKey = getHashKey;
+
     /**
      * No comment provided
      *
      * Hash: 0xF01E2AAB
      */
-    function getHeliMainRotorHealth(vehicle) {
+    export function getHeliMainRotorHealth(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetHeliMainRotorHealth(_vehicle);
     }
-    misc.getHeliMainRotorHealth = getHeliMainRotorHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0x5F70F5A3
      */
-    function getHostId() {
+    export function getHostId(): string {
         return GetHostId();
     }
-    misc.getHostId = getHostId;
+
     /**
      * No comment provided
      *
      * Hash: 0x23473EA4
      */
-    function getPasswordHash(password) {
+    export function getPasswordHash(password: string): string {
         return GetPasswordHash(password);
     }
-    misc.getPasswordHash = getPasswordHash;
+
     /**
      * No comment provided
      *
      * Hash: 0x76876154
      */
-    function isFlashLightOn(ped) {
+    export function isFlashLightOn(ped: number | Ped): boolean {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return IsFlashLightOn(_ped);
     }
-    misc.isFlashLightOn = isFlashLightOn;
+
     /**
      * No comment provided
      *
      * Hash: 0x8E8CC653
      */
-    function performHttpRequestInternal(requestData, requestDataLength) {
+    export function performHttpRequestInternal(requestData: string, requestDataLength: number): number {
         return PerformHttpRequestInternal(requestData, requestDataLength);
     }
-    misc.performHttpRequestInternal = performHttpRequestInternal;
+
     /**
      * No comment provided
      *
      * Hash: 0x6B171E87
      */
-    function performHttpRequestInternalEx(requestData) {
+    export function performHttpRequestInternalEx(requestData: number | Object): number {
         const _requestData = requestData instanceof Object ? requestData.handle() : requestData;
         return PerformHttpRequestInternalEx(_requestData);
     }
-    misc.performHttpRequestInternalEx = performHttpRequestInternalEx;
+
     /**
      * Prints 'structured trace' data to the server `file descriptor 3` channel. This is not generally useful outside of
      * server monitoring utilities.
      *
      * Hash: 0x90892DED
      */
-    function printStructuredTrace(jsonString) {
+    export function printStructuredTrace(jsonString: string): void {
         PrintStructuredTrace(jsonString);
     }
-    misc.printStructuredTrace = printStructuredTrace;
+
     /**
      * Registers a listener for console output messages.
      *
      * Hash: 0x281B5448
      */
-    function registerConsoleListener(listener) {
+    export function registerConsoleListener(listener: Function): void {
         RegisterConsoleListener(listener);
     }
-    misc.registerConsoleListener = registerConsoleListener;
+
     /**
      * No comment provided
      *
      * Hash: 0x341B16D2
      */
-    function setConvar(varName, value) {
+    export function setConvar(varName: string, value: string): void {
         SetConvar(varName, value);
     }
-    misc.setConvar = setConvar;
+
     /**
      * Used to replicate a server variable onto clients.
      *
      * Hash: 0xF292858C
      */
-    function setConvarReplicated(varName, value) {
+    export function setConvarReplicated(varName: string, value: string): void {
         SetConvarReplicated(varName, value);
     }
-    misc.setConvarReplicated = setConvarReplicated;
+
     /**
      * No comment provided
      *
      * Hash: 0x9338D547
      */
-    function setConvarServerInfo(varName, value) {
+    export function setConvarServerInfo(varName: string, value: string): void {
         SetConvarServerInfo(varName, value);
     }
-    misc.setConvarServerInfo = setConvarServerInfo;
+
     /**
      * No comment provided
      *
      * Hash: 0xF90B7469
      */
-    function setGameType(gametypeName) {
+    export function setGameType(gametypeName: string): void {
         SetGameType(gametypeName);
     }
-    misc.setGameType = setGameType;
+
     /**
      * Sets the handler for HTTP requests made to the executing resource.
      *
@@ -1128,19 +1163,19 @@ export var misc;
      *
      * Hash: 0xF5C6330C
      */
-    function setHttpHandler(handler) {
+    export function setHttpHandler(handler: Function): void {
         SetHttpHandler(handler);
     }
-    misc.setHttpHandler = setHttpHandler;
+
     /**
      * No comment provided
      *
      * Hash: 0xB7BA82DC
      */
-    function setMapName(mapName) {
+    export function setMapName(mapName: string): void {
         SetMapName(mapName);
     }
-    misc.setMapName = setMapName;
+
     /**
      * Sets the entity lockdown mode for a specific routing bucket.
      *
@@ -1154,46 +1189,46 @@ export var misc;
      *
      * Hash: 0xA0F2201F
      */
-    function setRoutingBucketEntityLockdownMode(bucketId, mode) {
+    export function setRoutingBucketEntityLockdownMode(bucketId: number, mode: string): void {
         SetRoutingBucketEntityLockdownMode(bucketId, mode);
     }
-    misc.setRoutingBucketEntityLockdownMode = setRoutingBucketEntityLockdownMode;
+
     /**
      * Sets whether or not the specified routing bucket has automatically-created population enabled.
      *
      * Hash: 0xCE51AC2C
      */
-    function setRoutingBucketPopulationEnabled(bucketId, mode) {
+    export function setRoutingBucketPopulationEnabled(bucketId: number, mode: boolean): void {
         SetRoutingBucketPopulationEnabled(bucketId, mode);
     }
-    misc.setRoutingBucketPopulationEnabled = setRoutingBucketPopulationEnabled;
+
     /**
      * The backing function for TriggerClientEvent.
      *
      * Hash: 0x2F7A49E6
      */
-    function triggerClientEventInternal(eventName, eventTarget, eventPayload, payloadLength) {
+    export function triggerClientEventInternal(eventName: string, eventTarget: string, eventPayload: string, payloadLength: number): void {
         TriggerClientEventInternal(eventName, eventTarget, eventPayload, payloadLength);
     }
-    misc.triggerClientEventInternal = triggerClientEventInternal;
+
     /**
      * The backing function for TriggerLatentClientEvent.
      *
      * Hash: 0x70B35890
      */
-    function triggerLatentClientEventInternal(eventName, eventTarget, eventPayload, payloadLength, bps) {
+    export function triggerLatentClientEventInternal(eventName: string, eventTarget: string, eventPayload: string, payloadLength: number, bps: number): void {
         TriggerLatentClientEventInternal(eventName, eventTarget, eventPayload, payloadLength, bps);
     }
-    misc.triggerLatentClientEventInternal = triggerLatentClientEventInternal;
+
     /**
      * No comment provided
      *
      * Hash: 0x2E310ACD
      */
-    function verifyPasswordHash(password, hash) {
+    export function verifyPasswordHash(password: string, hash: string): boolean {
         return VerifyPasswordHash(password, hash);
     }
-    misc.verifyPasswordHash = verifyPasswordHash;
+
     /**
      * Adds a listener for Console Variable changes.
      *
@@ -1208,10 +1243,10 @@ export var misc;
      *
      * Hash: 0xAB7F7241
      */
-    function addConvarChangeListener(conVarFilter, handler) {
+    export function addConvarChangeListener(conVarFilter: string, handler: Function): number {
         return AddConvarChangeListener(conVarFilter, handler);
     }
-    misc.addConvarChangeListener = addConvarChangeListener;
+
     /**
      * Adds a handler for changes to a state bag.
      *
@@ -1235,92 +1270,92 @@ export var misc;
      *
      * Hash: 0x5BA35AAF
      */
-    function addStateBagChangeHandler(keyFilter, bagFilter, handler) {
+    export function addStateBagChangeHandler(keyFilter: string, bagFilter: string, handler: Function): number {
         return AddStateBagChangeHandler(keyFilter, bagFilter, handler);
     }
-    misc.addStateBagChangeHandler = addStateBagChangeHandler;
+
     /**
      * Cancels the currently executing event.
      *
      * Hash: 0xFA29D35D
      */
-    function cancelEvent() {
+    export function cancelEvent(): void {
         CancelEvent();
     }
-    misc.cancelEvent = cancelEvent;
+
     /**
      * No comment provided
      *
      * Hash: 0x1E86F206
      */
-    function deleteFunctionReference(referenceIdentity) {
+    export function deleteFunctionReference(referenceIdentity: string): void {
         DeleteFunctionReference(referenceIdentity);
     }
-    misc.deleteFunctionReference = deleteFunctionReference;
+
     /**
      * No comment provided
      *
      * Hash: 0xF4E2079D
      */
-    function duplicateFunctionReference(referenceIdentity) {
+    export function duplicateFunctionReference(referenceIdentity: string): string {
         return DuplicateFunctionReference(referenceIdentity);
     }
-    misc.duplicateFunctionReference = duplicateFunctionReference;
+
     /**
      * Depending on your use case you may need to use `add_acl resource.<your_resource_name> command.<command_name> allow` to use this native in your resource.
      *
      * Hash: 0x561C060B
      */
-    function executeCommand(commandString) {
+    export function executeCommand(commandString: string): void {
         ExecuteCommand(commandString);
     }
-    misc.executeCommand = executeCommand;
+
     /**
      * An internal function for converting a stack trace object to a string.
      *
      * Hash: 0xD70C3BCA
      */
-    function formatStackTrace(traceData) {
+    export function formatStackTrace(traceData: number | Object): string {
         const _traceData = traceData instanceof Object ? traceData.handle() : traceData;
         return FormatStackTrace(_traceData);
     }
-    misc.formatStackTrace = formatStackTrace;
+
     /**
      * Can be used to get a console variable of type `char*`, for example a string.
      *
      * Hash: 0x6CCD2564
      */
-    function getConvar(varName, default_) {
+    export function getConvar(varName: string, default_: string): string {
         return GetConvar(varName, default_);
     }
-    misc.getConvar = getConvar;
+
     /**
      * Can be used to get a console variable casted back to `bool`.
      *
      * Hash: 0x7E8EBFE5
      */
-    function getConvarBool(varName, defaultValue) {
+    export function getConvarBool(varName: string, defaultValue: boolean): boolean {
         return GetConvarBool(varName, defaultValue);
     }
-    misc.getConvarBool = getConvarBool;
+
     /**
      * This will have floating point inaccuracy.
      *
      * Hash: 0x9E666D
      */
-    function getConvarFloat(varName, defaultValue) {
+    export function getConvarFloat(varName: string, defaultValue: number): number {
         return GetConvarFloat(varName, defaultValue);
     }
-    misc.getConvarFloat = getConvarFloat;
+
     /**
      * Can be used to get a console variable casted back to `int` (an integer value).
      *
      * Hash: 0x935C0AB2
      */
-    function getConvarInt(varName, default_) {
+    export function getConvarInt(varName: string, default_: number): number {
         return GetConvarInt(varName, default_);
     }
-    misc.getConvarInt = getConvarInt;
+
     /**
      * Returns the internal build number of the current game being executed.
      *
@@ -1353,10 +1388,10 @@ export var misc;
      *
      * Hash: 0x804B9F7B
      */
-    function getGameBuildNumber() {
+    export function getGameBuildNumber(): number {
         return GetGameBuildNumber();
     }
-    misc.getGameBuildNumber = getGameBuildNumber;
+
     /**
      * Returns the current game being executed.
      *
@@ -1371,10 +1406,10 @@ export var misc;
      *
      * Hash: 0xE8EAA18B
      */
-    function getGameName() {
+    export function getGameName(): string {
         return GetGameName();
     }
-    misc.getGameName = getGameName;
+
     /**
      * Returns a list of entity handles (script GUID) for all entities in the specified pool - the data returned is an array as
      * follows:
@@ -1393,19 +1428,19 @@ export var misc;
      *
      * Hash: 0x2B9D4F50
      */
-    function getGamePool(poolName) {
+    export function getGamePool(poolName: string): number {
         return GetGamePool(poolName);
     }
-    misc.getGamePool = getGamePool;
+
     /**
      * No comment provided
      *
      * Hash: 0x9F1C4383
      */
-    function getInstanceId() {
+    export function getInstanceId(): number {
         return GetInstanceId();
     }
-    misc.getInstanceId = getInstanceId;
+
     /**
      * Returns all commands that are registered in the command system.
      * The data returned adheres to the following layout:
@@ -1427,55 +1462,55 @@ export var misc;
      *
      * Hash: 0xD4BEF069
      */
-    function getRegisteredCommands() {
+    export function getRegisteredCommands(): number {
         return GetRegisteredCommands();
     }
-    misc.getRegisteredCommands = getRegisteredCommands;
+
     /**
      * No comment provided
      *
      * Hash: 0x78D864C7
      */
-    function getStateBagKeys(bagName) {
+    export function getStateBagKeys(bagName: string): number {
         return GetStateBagKeys(bagName);
     }
-    misc.getStateBagKeys = getStateBagKeys;
+
     /**
      * Returns the value of a state bag key.
      *
      * Hash: 0x637F4C75
      */
-    function getStateBagValue(bagName, key) {
+    export function getStateBagValue(bagName: string, key: string): number {
         return GetStateBagValue(bagName, key);
     }
-    misc.getStateBagValue = getStateBagValue;
+
     /**
      * No comment provided
      *
      * Hash: 0x7EBB9929
      */
-    function isAceAllowed(_object) {
+    export function isAceAllowed(_object: string): boolean {
         return IsAceAllowed(_object);
     }
-    misc.isAceAllowed = isAceAllowed;
+
     /**
      * Gets whether or not this is the CitizenFX server.
      *
      * Hash: 0xCF24C52E
      */
-    function isDuplicityVersion() {
+    export function isDuplicityVersion(): boolean {
         return IsDuplicityVersion();
     }
-    misc.isDuplicityVersion = isDuplicityVersion;
+
     /**
      * No comment provided
      *
      * Hash: 0x37CF52CE
      */
-    function isPrincipalAceAllowed(principal, _object) {
+    export function isPrincipalAceAllowed(principal: string, _object: string): boolean {
         return IsPrincipalAceAllowed(principal, _object);
     }
-    misc.isPrincipalAceAllowed = isPrincipalAceAllowed;
+
     /**
      * Registered commands can be executed by entering them in the client console (this works for client side and server side registered commands). Or by entering them in the server console/through an RCON client (only works for server side registered commands). Or if you use a supported chat resource, like the default one provided in the cfx-server-data repository, then you can enter the command in chat by prefixing it with a `/`.
      *
@@ -1489,19 +1524,19 @@ export var misc;
      *
      * Hash: 0x5FA79B0F
      */
-    function registerCommand(commandName, handler, restricted) {
+    export function registerCommand(commandName: string, handler: Function, restricted: boolean): void {
         RegisterCommand(commandName, handler, restricted);
     }
-    misc.registerCommand = registerCommand;
+
     /**
      * No comment provided
      *
      * Hash: 0xEAC49841
      */
-    function removeConvarChangeListener(cookie) {
+    export function removeConvarChangeListener(cookie: number): void {
         RemoveConvarChangeListener(cookie);
     }
-    misc.removeConvarChangeListener = removeConvarChangeListener;
+
     /**
      * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
      *
@@ -1509,49 +1544,50 @@ export var misc;
      *
      * Hash: 0xD36BE661
      */
-    function removeStateBagChangeHandler(cookie) {
+    export function removeStateBagChangeHandler(cookie: number): void {
         RemoveStateBagChangeHandler(cookie);
     }
-    misc.removeStateBagChangeHandler = removeStateBagChangeHandler;
+
     /**
      * Internal function for setting a state bag value.
      *
      * Hash: 0x8D50E33A
      */
-    function setStateBagValue(bagName, keyName, valueData, valueLength, replicated) {
+    export function setStateBagValue(bagName: string, keyName: string, valueData: string, valueLength: number, replicated: boolean): void {
         SetStateBagValue(bagName, keyName, valueData, valueLength, replicated);
     }
-    misc.setStateBagValue = setStateBagValue;
+
     /**
      * No comment provided
      *
      * Hash: 0x12A330
      */
-    function stateBagHasKey(bagName, key) {
+    export function stateBagHasKey(bagName: string, key: string): boolean {
         return StateBagHasKey(bagName, key);
     }
-    misc.stateBagHasKey = stateBagHasKey;
+
     /**
      * The backing function for TriggerEvent.
      *
      * Hash: 0x91310870
      */
-    function triggerEventInternal(eventName, eventPayload, payloadLength) {
+    export function triggerEventInternal(eventName: string, eventPayload: string, payloadLength: number): void {
         TriggerEventInternal(eventName, eventPayload, payloadLength);
     }
-    misc.triggerEventInternal = triggerEventInternal;
+
     /**
      * Returns whether or not the currently executing event was canceled.
      *
      * Hash: 0x58382A19
      */
-    function wasEventCanceled() {
+    export function wasEventCanceled(): boolean {
         return WasEventCanceled();
     }
-    misc.wasEventCanceled = wasEventCanceled;
-})(misc || (misc = {}));
-export var ped;
-(function (ped_1) {
+
+}
+
+
+export namespace ped {
     /**
      * ```
      * Applies an Item from a PedDecorationCollection to a ped. These include tattoos and shirt decals.
@@ -1582,15 +1618,13 @@ export var ped;
      *
      * Hash: 0x70559AC7
      */
-    function addDecorationFromHashes(ped, collection, overlay) {
+    export function addDecorationFromHashes(ped: number | Ped, collection: number | string, overlay: number | string): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof collection === 'string')
-            collection = misc.getHashKey(collection);
-        if (typeof overlay === 'string')
-            overlay = misc.getHashKey(overlay);
+        if (typeof collection === 'string') collection = misc.getHashKey(collection)
+        if (typeof overlay === 'string') overlay = misc.getHashKey(overlay)
         AddPedDecorationFromHashes(_ped, collection, overlay);
     }
-    ped_1.addDecorationFromHashes = addDecorationFromHashes;
+
     /**
      * CLEAR_PED_PROP
      *
@@ -1598,11 +1632,11 @@ export var ped;
      *
      * Hash: 0x2D23D743
      */
-    function clearProp(ped, propId) {
+    export function clearProp(ped: number | Ped, propId: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         ClearPedProp(_ped, propId);
     }
-    ped_1.clearProp = clearProp;
+
     /**
      * CLEAR_PED_SECONDARY_TASK
      *
@@ -1610,11 +1644,11 @@ export var ped;
      *
      * Hash: 0xA635F451
      */
-    function clearSecondaryTask(ped) {
+    export function clearSecondaryTask(ped: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         ClearPedSecondaryTask(_ped);
     }
-    ped_1.clearSecondaryTask = clearSecondaryTask;
+
     /**
      * Creates a ped (biped character, pedestrian, actor) with the specified model at the specified position and heading.
      * This ped will initially be owned by the creating script as a mission entity, and the model should be loaded already
@@ -1624,12 +1658,11 @@ export var ped;
      *
      * Hash: 0x389EF71
      */
-    function create(pedType, modelHash, pos, heading, isNetwork, bScriptHostPed) {
-        if (typeof modelHash === 'string')
-            modelHash = misc.getHashKey(modelHash);
+    export function create(pedType: number, modelHash: number | string, pos: Vector3, heading: number, isNetwork: boolean, bScriptHostPed: boolean): number {
+        if (typeof modelHash === 'string') modelHash = misc.getHashKey(modelHash)
         return CreatePed(pedType, modelHash, pos.x, pos.y, pos.z, heading, isNetwork, bScriptHostPed);
     }
-    ped_1.create = create;
+
     /**
      * CREATE_PED_INSIDE_VEHICLE
      *
@@ -1637,13 +1670,12 @@ export var ped;
      *
      * Hash: 0x3000F092
      */
-    function createInsideVehicle(vehicle, pedType, modelHash, seat, isNetwork, bScriptHostPed) {
+    export function createInsideVehicle(vehicle: number | Vehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
-        if (typeof modelHash === 'string')
-            modelHash = misc.getHashKey(modelHash);
+        if (typeof modelHash === 'string') modelHash = misc.getHashKey(modelHash)
         return CreatePedInsideVehicle(_vehicle, pedType, modelHash, seat, isNetwork, bScriptHostPed);
     }
-    ped_1.createInsideVehicle = createInsideVehicle;
+
     /**
      * Returns all peds handles known to the server.
      * The data returned adheres to the following layout:
@@ -1654,151 +1686,151 @@ export var ped;
      *
      * Hash: 0xB8584FEF
      */
-    function getAlls() {
+    export function getAlls(): number {
         return GetAllPeds();
     }
-    ped_1.getAlls = getAlls;
+
     /**
      * Returns the hash of weapon the Ped is currently using.
      *
      * Hash: 0xB0237302
      */
-    function getCurrentWeapon(ped) {
+    export function getCurrentWeapon(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetCurrentPedWeapon(_ped);
     }
-    ped_1.getCurrentWeapon = getCurrentWeapon;
+
     /**
      * No comment provided
      *
      * Hash: 0xF7C6792D
      */
-    function getLastInVehicleSeat(vehicle, seatIndex) {
+    export function getLastInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetLastPedInVehicleSeat(_vehicle, seatIndex);
     }
-    ped_1.getLastInVehicleSeat = getLastInVehicleSeat;
+
     /**
      * No comment provided
      *
      * Hash: 0x2CE311A7
      */
-    function getArmour(ped) {
+    export function getArmour(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedArmour(_ped);
     }
-    ped_1.getArmour = getArmour;
+
     /**
      * No comment provided
      *
      * Hash: 0x63458C27
      */
-    function getCauseOfDeath(ped) {
+    export function getCauseOfDeath(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedCauseOfDeath(_ped);
     }
-    ped_1.getCauseOfDeath = getCauseOfDeath;
+
     /**
      * No comment provided
      *
      * Hash: 0xC182F76E
      */
-    function getDesiredHeading(ped) {
+    export function getDesiredHeading(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedDesiredHeading(_ped);
     }
-    ped_1.getDesiredHeading = getDesiredHeading;
+
     /**
      * No comment provided
      *
      * Hash: 0x388FDE9A
      */
-    function getInVehicleSeat(vehicle, seatIndex) {
+    export function getInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetPedInVehicleSeat(_vehicle, seatIndex);
     }
-    ped_1.getInVehicleSeat = getInVehicleSeat;
+
     /**
      * No comment provided
      *
      * Hash: 0xA45B6C8D
      */
-    function getMaxHealth(ped) {
+    export function getMaxHealth(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedMaxHealth(_ped);
     }
-    ped_1.getMaxHealth = getMaxHealth;
+
     /**
      * Gets the current relationship group hash of a ped.
      *
      * Hash: 0x354F283C
      */
-    function getRelationshipGroupHash(ped) {
+    export function getRelationshipGroupHash(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedRelationshipGroupHash(_ped);
     }
-    ped_1.getRelationshipGroupHash = getRelationshipGroupHash;
+
     /**
      * Gets the script task command currently assigned to the ped.
      *
      * Hash: 0x84FE084
      */
-    function getScriptTaskCommand(ped) {
+    export function getScriptTaskCommand(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedScriptTaskCommand(_ped);
     }
-    ped_1.getScriptTaskCommand = getScriptTaskCommand;
+
     /**
      * Gets the stage of the peds scripted task.
      *
      * Hash: 0x44B0E5E2
      */
-    function getScriptTaskStage(ped) {
+    export function getScriptTaskStage(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedScriptTaskStage(_ped);
     }
-    ped_1.getScriptTaskStage = getScriptTaskStage;
+
     /**
      * Get the last entity that damaged the ped. This native is used server side when using OneSync.
      *
      * Hash: 0x535DB43F
      */
-    function getSourceOfDamage(ped) {
+    export function getSourceOfDamage(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedSourceOfDamage(_ped);
     }
-    ped_1.getSourceOfDamage = getSourceOfDamage;
+
     /**
      * Get the entity that killed the ped. This native is used server side when using OneSync.
      *
      * Hash: 0x84ADF9EB
      */
-    function getSourceOfDeath(ped) {
+    export function getSourceOfDeath(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedSourceOfDeath(_ped);
     }
-    ped_1.getSourceOfDeath = getSourceOfDeath;
+
     /**
      * Gets the type of a ped's specific task given an index of the CPedTaskSpecificDataNode nodes.
      * A ped will typically have a task at index 0, if a ped has multiple tasks at once they will be in the order 0, 1, 2, etc.
      *
      * Hash: 0x7F4563D3
      */
-    function getSpecificTaskType(ped, index) {
+    export function getSpecificTaskType(ped: number | Ped, index: number): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedSpecificTaskType(_ped, index);
     }
-    ped_1.getSpecificTaskType = getSpecificTaskType;
+
     /**
      * No comment provided
      *
      * Hash: 0x40321B83
      */
-    function getStealthMovement(ped) {
+    export function getStealthMovement(ped: number | Ped): boolean {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetPedStealthMovement(_ped);
     }
-    ped_1.getStealthMovement = getStealthMovement;
+
     /**
      * An alias of [GET_CURRENT_PED_WEAPON](#\_0xB0237302).
      *
@@ -1806,51 +1838,51 @@ export var ped;
      *
      * Hash: 0xD240123E
      */
-    function getSelectedWeapon(ped) {
+    export function getSelectedWeapon(ped: number | Ped): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetSelectedPedWeapon(_ped);
     }
-    ped_1.getSelectedWeapon = getSelectedWeapon;
+
     /**
      * No comment provided
      *
      * Hash: 0x25865633
      */
-    function isHandcuffed(ped) {
+    export function isHandcuffed(ped: number | Ped): boolean {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return IsPedHandcuffed(_ped);
     }
-    ped_1.isHandcuffed = isHandcuffed;
+
     /**
      * No comment provided
      *
      * Hash: 0xC833BBE1
      */
-    function isRagdoll(ped) {
+    export function isRagdoll(ped: number | Ped): boolean {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return IsPedRagdoll(_ped);
     }
-    ped_1.isRagdoll = isRagdoll;
+
     /**
      * No comment provided
      *
      * Hash: 0xEFEED13C
      */
-    function isStrafing(ped) {
+    export function isStrafing(ped: number | Ped): boolean {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return IsPedStrafing(_ped);
     }
-    ped_1.isStrafing = isStrafing;
+
     /**
      * No comment provided
      *
      * Hash: 0x5AE7EDA2
      */
-    function isUsingActionMode(ped) {
+    export function isUsingActionMode(ped: number | Ped): boolean {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return IsPedUsingActionMode(_ped);
     }
-    ped_1.isUsingActionMode = isUsingActionMode;
+
     /**
      * SET_CURRENT_PED_WEAPON
      *
@@ -1858,13 +1890,12 @@ export var ped;
      *
      * Hash: 0xB8278882
      */
-    function setCurrentWeapon(ped, weaponHash, bForceInHand) {
+    export function setCurrentWeapon(ped: number | Ped, weaponHash: number | string, bForceInHand: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof weaponHash === 'string')
-            weaponHash = misc.getHashKey(weaponHash);
+        if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         SetCurrentPedWeapon(_ped, weaponHash, bForceInHand);
     }
-    ped_1.setCurrentWeapon = setCurrentWeapon;
+
     /**
      * ```
      * NativeDB Added Parameter 4: BOOL p3
@@ -1874,13 +1905,12 @@ export var ped;
      *
      * Hash: 0xBF90DF1A
      */
-    function setAmmo(ped, weaponHash, ammo) {
+    export function setAmmo(ped: number | Ped, weaponHash: number | string, ammo: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof weaponHash === 'string')
-            weaponHash = misc.getHashKey(weaponHash);
+        if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         SetPedAmmo(_ped, weaponHash, ammo);
     }
-    ped_1.setAmmo = setAmmo;
+
     /**
      * ```
      * Sets the armor of the specified ped.
@@ -1892,11 +1922,11 @@ export var ped;
      *
      * Hash: 0x4E3A0CC4
      */
-    function setArmour(ped, amount) {
+    export function setArmour(ped: number | Ped, amount: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedArmour(_ped, amount);
     }
-    ped_1.setArmour = setArmour;
+
     /**
      * SET_PED_CAN_RAGDOLL
      *
@@ -1904,11 +1934,11 @@ export var ped;
      *
      * Hash: 0xCF1384C4
      */
-    function setCanRagdoll(ped, toggle) {
+    export function setCanRagdoll(ped: number | Ped, toggle: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedCanRagdoll(_ped, toggle);
     }
-    ped_1.setCanRagdoll = setCanRagdoll;
+
     /**
      * This native is used to set component variation on a ped. Components, drawables and textures IDs are related to the ped model.
      *
@@ -1953,11 +1983,11 @@ export var ped;
      *
      * Hash: 0xD4F7B05C
      */
-    function setComponentVariation(ped, componentId, drawableId, textureId, paletteId) {
+    export function setComponentVariation(ped: number | Ped, componentId: number, drawableId: number, textureId: number, paletteId: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedComponentVariation(_ped, componentId, drawableId, textureId, paletteId);
     }
-    ped_1.setComponentVariation = setComponentVariation;
+
     /**
      * ```cpp
      * // Potential names and hash collisions included as comments
@@ -2433,11 +2463,11 @@ export var ped;
      *
      * Hash: 0x9CFBE10D
      */
-    function setConfigFlag(ped, flagId, value) {
+    export function setConfigFlag(ped: number | Ped, flagId: number, value: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedConfigFlag(_ped, flagId, value);
     }
-    ped_1.setConfigFlag = setConfigFlag;
+
     /**
      * ```
      * Sets Ped Default Clothes
@@ -2447,11 +2477,11 @@ export var ped;
      *
      * Hash: 0xC866A984
      */
-    function setDefaultComponentVariation(ped) {
+    export function setDefaultComponentVariation(ped: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedDefaultComponentVariation(_ped);
     }
-    ped_1.setDefaultComponentVariation = setDefaultComponentVariation;
+
     /**
      * Sets the tint index for the hair on the specified ped.
      *
@@ -2463,11 +2493,11 @@ export var ped;
      *
      * Hash: 0xA23FE32C
      */
-    function setHairTint(ped, colorID, highlightColorID) {
+    export function setHairTint(ped: number | Ped, colorID: number, highlightColorID: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedHairTint(_ped, colorID, highlightColorID);
     }
-    ped_1.setHairTint = setHairTint;
+
     /**
      * For more info please refer to [this](https://gtaforums.com/topic/858970-all-gtao-face-ids-pedset-ped-head-blend-data-explained) topic.
      * <strong>Other information:</strong>
@@ -2483,11 +2513,11 @@ export var ped;
      *
      * Hash: 0x60746B88
      */
-    function setHeadBlendData(ped, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent) {
+    export function setHeadBlendData(ped: number | Ped, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedHeadBlendData(_ped, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent);
     }
-    ped_1.setHeadBlendData = setHeadBlendData;
+
     /**
      * ```
      * OverlayID ranges from 0 to 12, index from 0 to _GET_NUM_OVERLAY_VALUES(overlayID)-1, and opacity from 0.0 to 1.0.
@@ -2514,11 +2544,11 @@ export var ped;
      *
      * Hash: 0xD28DBA90
      */
-    function setHeadOverlay(ped, overlayID, index, opacity) {
+    export function setHeadOverlay(ped: number | Ped, overlayID: number, index: number, opacity: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedHeadOverlay(_ped, overlayID, index, opacity);
     }
-    ped_1.setHeadOverlay = setHeadOverlay;
+
     /**
      * SET_PED_INTO_VEHICLE
      *
@@ -2526,12 +2556,12 @@ export var ped;
      *
      * Hash: 0x7500C79
      */
-    function setIntoVehicle(ped, vehicle, seatIndex) {
+    export function setIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetPedIntoVehicle(_ped, _vehicle, seatIndex);
     }
-    ped_1.setIntoVehicle = setIntoVehicle;
+
     /**
      * This native is used to set prop variation on a ped. Components, drawables and textures IDs are related to the ped model.
      *
@@ -2568,11 +2598,11 @@ export var ped;
      *
      * Hash: 0x829F2E2
      */
-    function setPropIndex(ped, componentId, drawableId, textureId, attach) {
+    export function setPropIndex(ped: number | Ped, componentId: number, drawableId: number, textureId: number, attach: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedPropIndex(_ped, componentId, drawableId, textureId, attach);
     }
-    ped_1.setPropIndex = setPropIndex;
+
     /**
      * ```
      * p1 is always 0 in R* scripts; and a quick disassembly seems to indicate that p1 is unused.
@@ -2582,11 +2612,11 @@ export var ped;
      *
      * Hash: 0x4111BA46
      */
-    function setRandomComponentVariation(ped) {
+    export function setRandomComponentVariation(ped: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedRandomComponentVariation(_ped, 0);
     }
-    ped_1.setRandomComponentVariation = setRandomComponentVariation;
+
     /**
      * SET_PED_RANDOM_PROPS
      *
@@ -2594,11 +2624,11 @@ export var ped;
      *
      * Hash: 0xE3318E0E
      */
-    function setRandomProps(ped) {
+    export function setRandomProps(ped: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedRandomProps(_ped);
     }
-    ped_1.setRandomProps = setRandomProps;
+
     /**
      * `PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 240, 1);`
      * Known values:
@@ -2607,11 +2637,11 @@ export var ped;
      *
      * Hash: 0xCFF6FF66
      */
-    function setResetFlag(ped, flagId, doReset) {
+    export function setResetFlag(ped: number | Ped, flagId: number, doReset: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedResetFlag(_ped, flagId, doReset);
     }
-    ped_1.setResetFlag = setResetFlag;
+
     /**
      * p4/p5: Unusued in TU27
      *
@@ -2625,11 +2655,11 @@ export var ped;
      *
      * Hash: 0x83CB5052
      */
-    function setToRagdoll(ped, minTime, maxTime, ragdollType, bAbortIfInjured, bAbortIfDead, bForceScriptControl) {
+    export function setToRagdoll(ped: number | Ped, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedToRagdoll(_ped, minTime, maxTime, ragdollType, bAbortIfInjured, bAbortIfDead, bForceScriptControl);
     }
-    ped_1.setToRagdoll = setToRagdoll;
+
     /**
      * ```cpp
      * enum eNMFallType {
@@ -2657,11 +2687,11 @@ export var ped;
      *
      * Hash: 0xFA12E286
      */
-    function setToRagdollWithFall(ped, minTime, maxTime, nFallType, dirX, dirY, dirZ, fGroundHeight, grab1X, grab1Y, grab1Z, grab2X, grab2Y, grab2Z) {
+    export function setToRagdollWithFall(ped: number | Ped, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedToRagdollWithFall(_ped, minTime, maxTime, nFallType, dirX, dirY, dirZ, fGroundHeight, grab1X, grab1Y, grab1Z, grab2X, grab2Y, grab2Z);
     }
-    ped_1.setToRagdollWithFall = setToRagdollWithFall;
+
     /**
      * Used for freemode (online) characters.
      * Indices:
@@ -2701,11 +2731,11 @@ export var ped;
      *
      * Hash: 0xEC09DB1B
      */
-    function setEyeColor(ped, index) {
+    export function setEyeColor(ped: number | Ped, index: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedEyeColor(_ped, index);
     }
-    ped_1.setEyeColor = setEyeColor;
+
     /**
      * Sets the various freemode face features, e.g. nose length, chin shape.
      * <strong>Indexes (From 0 to 19):</strong>
@@ -2738,11 +2768,11 @@ export var ped;
      *
      * Hash: 0x6C8D4458
      */
-    function setFaceFeature(ped, index, scale) {
+    export function setFaceFeature(ped: number | Ped, index: number, scale: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedFaceFeature(_ped, index, scale);
     }
-    ped_1.setFaceFeature = setFaceFeature;
+
     /**
      * ```
      * Used for freemode (online) characters.
@@ -2756,63 +2786,64 @@ export var ped;
      *
      * Hash: 0x78935A27
      */
-    function setHeadOverlayColor(ped, overlayID, colorType, colorID, secondColorID) {
+    export function setHeadOverlayColor(ped: number | Ped, overlayID: number, colorType: number, colorID: number, secondColorID: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         SetPedHeadOverlayColor(_ped, overlayID, colorType, colorID, secondColorID);
     }
-    ped_1.setHeadOverlayColor = setHeadOverlayColor;
-})(ped || (ped = {}));
-export var player;
-(function (player_1) {
+
+}
+
+
+export namespace player {
     /**
      * A getter for [SET_PLAYER_MELEE_WEAPON_DAMAGE_MODIFIER](#\_0x4A3DC7ECCC321032).
      *
      * Hash: 0x8689A825
      */
-    function getMeleeWeaponDamageModifier(playerId) {
+    export function getMeleeWeaponDamageModifier(playerId: number | string | Player): number {
         const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
         return GetPlayerMeleeWeaponDamageModifier(_playerId);
     }
-    player_1.getMeleeWeaponDamageModifier = getMeleeWeaponDamageModifier;
+
     /**
      * A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#\_0xCE07B9F7817AADA3).
      *
      * Hash: 0x2A3D7CDA
      */
-    function getWeaponDamageModifier(playerId) {
+    export function getWeaponDamageModifier(playerId: number | string | Player): number {
         const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
         return GetPlayerWeaponDamageModifier(_playerId);
     }
-    player_1.getWeaponDamageModifier = getWeaponDamageModifier;
+
     /**
      * A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#\_0x2D83BC011CA14A3C).
      *
      * Hash: 0xF1543251
      */
-    function getWeaponDefenseModifier(playerId) {
+    export function getWeaponDefenseModifier(playerId: number | string | Player): number {
         const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
         return GetPlayerWeaponDefenseModifier(_playerId);
     }
-    player_1.getWeaponDefenseModifier = getWeaponDefenseModifier;
+
     /**
      * A getter for [\_SET_PLAYER_WEAPON_DEFENSE_MODIFIER\_2](#\_0xBCFDE9EDE4CF27DC).
      *
      * Hash: 0x986B65FF
      */
-    function getWeaponDefenseModifier2(playerId) {
+    export function getWeaponDefenseModifier2(playerId: number | string | Player): number {
         const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
         return GetPlayerWeaponDefenseModifier2(_playerId);
     }
-    player_1.getWeaponDefenseModifier2 = getWeaponDefenseModifier2;
+
     /**
      * Returns whether or not the specified player has enough information to start a commerce session for.
      *
      * Hash: 0x429461C3
      */
-    function canStartCommerceSession(playerSrc) {
+    export function canStartCommerceSession(playerSrc: string): boolean {
         return CanPlayerStartCommerceSession(playerSrc);
     }
-    player_1.canStartCommerceSession = canStartCommerceSession;
+
     /**
      * ```
      * `This executes at the same as speed as PLAYER::SET_PLAYER_WANTED_LEVEL(player, 0, false);`
@@ -2823,137 +2854,137 @@ export var player;
      *
      * Hash: 0x54EA5BCC
      */
-    function clearWantedLevel(player) {
+    export function clearWantedLevel(player: number | string | Player): void {
         const _player = player instanceof Player ? player.localId() : player;
         ClearPlayerWantedLevel(_player);
     }
-    player_1.clearWantedLevel = clearWantedLevel;
+
     /**
      * Returns whether or not the player exists
      *
      * Hash: 0x12038599
      */
-    function doesExist(playerSrc) {
+    export function doesExist(playerSrc: string): boolean {
         return DoesPlayerExist(playerSrc);
     }
-    player_1.doesExist = doesExist;
+
     /**
      * Requests whether or not the player owns the specified SKU.
      *
      * Hash: 0x167ABA27
      */
-    function doesOwnSku(playerSrc, skuId) {
+    export function doesOwnSku(playerSrc: string, skuId: number): boolean {
         return DoesPlayerOwnSku(playerSrc, skuId);
     }
-    player_1.doesOwnSku = doesOwnSku;
+
     /**
      * Requests whether or not the player owns the specified package.
      *
      * Hash: 0xDEF0480B
      */
-    function doesOwnSkuExt(playerSrc, skuId) {
+    export function doesOwnSkuExt(playerSrc: string, skuId: number): boolean {
         return DoesPlayerOwnSkuExt(playerSrc, skuId);
     }
-    player_1.doesOwnSkuExt = doesOwnSkuExt;
+
     /**
      * No comment provided
      *
      * Hash: 0xBA0613E1
      */
-    function drop(playerSrc, reason) {
+    export function drop(playerSrc: string, reason: string): void {
         DropPlayer(playerSrc, reason);
     }
-    player_1.drop = drop;
+
     /**
      * No comment provided
      *
      * Hash: 0x62FC38D0
      */
-    function getAirDragMultiplierForsVehicle(playerSrc) {
+    export function getAirDragMultiplierForsVehicle(playerSrc: string): number {
         return GetAirDragMultiplierForPlayersVehicle(playerSrc);
     }
-    player_1.getAirDragMultiplierForsVehicle = getAirDragMultiplierForsVehicle;
+
     /**
      * No comment provided
      *
      * Hash: 0xFF7F66AB
      */
-    function getNumIdentifiers(playerSrc) {
+    export function getNumIdentifiers(playerSrc: string): number {
         return GetNumPlayerIdentifiers(playerSrc);
     }
-    player_1.getNumIdentifiers = getNumIdentifiers;
+
     /**
      * No comment provided
      *
      * Hash: 0x63D13184
      */
-    function getNumIndices() {
+    export function getNumIndices(): number {
         return GetNumPlayerIndices();
     }
-    player_1.getNumIndices = getNumIndices;
+
     /**
      * No comment provided
      *
      * Hash: 0x619E4A3D
      */
-    function getNumTokens(playerSrc) {
+    export function getNumTokens(playerSrc: string): number {
         return GetNumPlayerTokens(playerSrc);
     }
-    player_1.getNumTokens = getNumTokens;
+
     /**
      * Gets the current camera rotation for a specified player. This native is used server side when using OneSync.
      *
      * Hash: 0x433C765D
      */
-    function getCameraRotation(playerSrc) {
+    export function getCameraRotation(playerSrc: string): Vector3 {
         return new Vector3(GetPlayerCameraRotation(playerSrc));
     }
-    player_1.getCameraRotation = getCameraRotation;
+
     /**
      * No comment provided
      *
      * Hash: 0xFEE404F9
      */
-    function getEndpoint(playerSrc) {
+    export function getEndpoint(playerSrc: string): string {
         return GetPlayerEndpoint(playerSrc);
     }
-    player_1.getEndpoint = getEndpoint;
+
     /**
      * Gets the current fake wanted level for a specified player. This native is used server side when using OneSync.
      *
      * Hash: 0x98D244
      */
-    function getFakeWantedLevel(playerSrc) {
+    export function getFakeWantedLevel(playerSrc: string): number {
         return GetPlayerFakeWantedLevel(playerSrc);
     }
-    player_1.getFakeWantedLevel = getFakeWantedLevel;
+
     /**
      * Gets the focus position (i.e. the position of the active camera in the game world) of a player.
      *
      * Hash: 0x586F80FF
      */
-    function getFocusPos(playerSrc) {
+    export function getFocusPos(playerSrc: string): Vector3 {
         return new Vector3(GetPlayerFocusPos(playerSrc));
     }
-    player_1.getFocusPos = getFocusPos;
+
     /**
      * No comment provided
      *
      * Hash: 0xC8A9CE08
      */
-    function getFromIndex(index) {
+    export function getFromIndex(index: number): string {
         return GetPlayerFromIndex(index);
     }
-    player_1.getFromIndex = getFromIndex;
+
     /**
      * No comment provided
      *
      * Hash: 0xE52D9680
      */
-    function getGuid(playerSrc) {
+    export function getGuid(playerSrc: string): string {
         return GetPlayerGuid(playerSrc);
     }
-    player_1.getGuid = getGuid;
+
     /**
      * To get the number of identifiers, use [GET_NUM_PLAYER_IDENTIFIERS](#\_0xFF7F66AB)
      *
@@ -2961,74 +2992,74 @@ export var player;
      *
      * Hash: 0x7302DBCF
      */
-    function getIdentifier(playerSrc, identiferIndex) {
+    export function getIdentifier(playerSrc: string, identiferIndex: number): string {
         return GetPlayerIdentifier(playerSrc, identiferIndex);
     }
-    player_1.getIdentifier = getIdentifier;
+
     /**
      * Get an identifier from a player by the type of the identifier.
      * Known [Identifiers](https://docs.fivem.net/docs/scripting-reference/runtimes/lua/functions/GetPlayerIdentifiers/#identifier-types)
      *
      * Hash: 0xA61C8FC6
      */
-    function getIdentifierByType(playerSrc, identifierType) {
+    export function getIdentifierByType(playerSrc: string, identifierType: string): string {
         return GetPlayerIdentifierByType(playerSrc, identifierType);
     }
-    player_1.getIdentifierByType = getIdentifierByType;
+
     /**
      * No comment provided
      *
      * Hash: 0x680C90EE
      */
-    function getInvincible(playerSrc) {
+    export function getInvincible(playerSrc: string): boolean {
         return GetPlayerInvincible(playerSrc);
     }
-    player_1.getInvincible = getInvincible;
+
     /**
      * No comment provided
      *
      * Hash: 0x427E8E6A
      */
-    function getLastMsg(playerSrc) {
+    export function getLastMsg(playerSrc: string): number {
         return GetPlayerLastMsg(playerSrc);
     }
-    player_1.getLastMsg = getLastMsg;
+
     /**
      * No comment provided
      *
      * Hash: 0x2A50657
      */
-    function getMaxArmour(playerSrc) {
+    export function getMaxArmour(playerSrc: string): number {
         return GetPlayerMaxArmour(playerSrc);
     }
-    player_1.getMaxArmour = getMaxArmour;
+
     /**
      * No comment provided
      *
      * Hash: 0x8154E470
      */
-    function getMaxHealth(playerSrc) {
+    export function getMaxHealth(playerSrc: string): number {
         return GetPlayerMaxHealth(playerSrc);
     }
-    player_1.getMaxHealth = getMaxHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0x406B4B20
      */
-    function getName(playerSrc) {
+    export function getName(playerSrc: string): string {
         return GetPlayerName(playerSrc);
     }
-    player_1.getName = getName;
+
     /**
      * Used to get the player's Ped Entity ID when a valid `playerSrc` is passed.
      *
      * Hash: 0x6E31E993
      */
-    function getPed(playerSrc) {
+    export function getPed(playerSrc: string): number {
         return GetPlayerPed(playerSrc);
     }
-    player_1.getPed = getPed;
+
     /**
      * ```cpp
      * const int ENET_PACKET_LOSS_SCALE = 65536;
@@ -3062,19 +3093,19 @@ export var player;
      *
      * Hash: 0x9A928294
      */
-    function getPeerStatistics(playerSrc, peerStatistic) {
+    export function getPeerStatistics(playerSrc: string, peerStatistic: number): number {
         return GetPlayerPeerStatistics(playerSrc, peerStatistic);
     }
-    player_1.getPeerStatistics = getPeerStatistics;
+
     /**
      * See [GET_PLAYER_PEER_STATISTICS](#\_0x9A928294) if you want more detailed information, like packet loss, and packet/rtt variance
      *
      * Hash: 0xFF1290D4
      */
-    function getPing(playerSrc) {
+    export function getPing(playerSrc: string): number {
         return GetPlayerPing(playerSrc);
     }
-    player_1.getPing = getPing;
+
     /**
      * Gets the routing bucket for the specified player.
      *
@@ -3082,19 +3113,19 @@ export var player;
      *
      * Hash: 0x52441C34
      */
-    function getRoutingBucket(playerSrc) {
+    export function getRoutingBucket(playerSrc: string): number {
         return GetPlayerRoutingBucket(playerSrc);
     }
-    player_1.getRoutingBucket = getRoutingBucket;
+
     /**
      * No comment provided
      *
      * Hash: 0x9873E404
      */
-    function getTeam(playerSrc) {
+    export function getTeam(playerSrc: string): number {
         return GetPlayerTeam(playerSrc);
     }
-    player_1.getTeam = getTeam;
+
     /**
      * ```
      * Gets the amount of time player has spent evading the cops.
@@ -3104,37 +3135,37 @@ export var player;
      *
      * Hash: 0x7ADE63E1
      */
-    function getTimeInPursuit(playerSrc, lastPursuit) {
+    export function getTimeInPursuit(playerSrc: string, lastPursuit: boolean): number {
         return GetPlayerTimeInPursuit(playerSrc, lastPursuit);
     }
-    player_1.getTimeInPursuit = getTimeInPursuit;
+
     /**
      * Gets the current time online for a specified player.
      *
      * Hash: 0x67D2E605
      */
-    function getTimeOnline(playerSrc) {
+    export function getTimeOnline(playerSrc: string): number {
         return GetPlayerTimeOnline(playerSrc);
     }
-    player_1.getTimeOnline = getTimeOnline;
+
     /**
      * Gets a player's token. Tokens can be used to enhance banning logic, however are specific to a server.
      *
      * Hash: 0x54C06897
      */
-    function getToken(playerSrc, index) {
+    export function getToken(playerSrc: string, index: number): string {
         return GetPlayerToken(playerSrc, index);
     }
-    player_1.getToken = getToken;
+
     /**
      * Gets the current known coordinates for the specified player from cops perspective. This native is used server side when using OneSync.
      *
      * Hash: 0x821F2D2C
      */
-    function getWantedCentrePosition(playerSrc) {
+    export function getWantedCentrePosition(playerSrc: string): Vector3 {
         return new Vector3(GetPlayerWantedCentrePosition(playerSrc));
     }
-    player_1.getWantedCentrePosition = getWantedCentrePosition;
+
     /**
      * ```
      * Returns given players wanted level server-side.
@@ -3142,47 +3173,47 @@ export var player;
      *
      * Hash: 0xBDCDD163
      */
-    function getWantedLevel(playerSrc) {
+    export function getWantedLevel(playerSrc: string): number {
         return GetPlayerWantedLevel(playerSrc);
     }
-    player_1.getWantedLevel = getWantedLevel;
+
     /**
      * This native checks if the given ped is a player.
      *
      * Hash: 0x404794CA
      */
-    function isPedA(ped) {
+    export function isPedA(ped: number | Ped): boolean {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return IsPedAPlayer(_ped);
     }
-    player_1.isPedA = isPedA;
+
     /**
      * No comment provided
      *
      * Hash: 0xDEDAE23D
      */
-    function isAceAllowed(playerSrc, _object) {
+    export function isAceAllowed(playerSrc: string, _object: string): boolean {
         return IsPlayerAceAllowed(playerSrc, _object);
     }
-    player_1.isAceAllowed = isAceAllowed;
+
     /**
      * Requests whether or not the commerce data for the specified player has loaded.
      *
      * Hash: 0xBEFE93F4
      */
-    function isCommerceInfoLoaded(playerSrc) {
+    export function isCommerceInfoLoaded(playerSrc: string): boolean {
         return IsPlayerCommerceInfoLoaded(playerSrc);
     }
-    player_1.isCommerceInfoLoaded = isCommerceInfoLoaded;
+
     /**
      * Requests whether or not the commerce data for the specified player has loaded from Tebex.
      *
      * Hash: 0x1D14F4FE
      */
-    function isCommerceInfoLoadedExt(playerSrc) {
+    export function isCommerceInfoLoadedExt(playerSrc: string): boolean {
         return IsPlayerCommerceInfoLoadedExt(playerSrc);
     }
-    player_1.isCommerceInfoLoadedExt = isCommerceInfoLoadedExt;
+
     /**
      * ```
      * This will return true if the player is evading wanted level, meaning that the wanted level stars are blink.
@@ -3193,37 +3224,37 @@ export var player;
      *
      * Hash: 0x89A3881A
      */
-    function isEvadingWantedLevel(playerSrc) {
+    export function isEvadingWantedLevel(playerSrc: string): boolean {
         return IsPlayerEvadingWantedLevel(playerSrc);
     }
-    player_1.isEvadingWantedLevel = isEvadingWantedLevel;
+
     /**
      * No comment provided
      *
      * Hash: 0x1F14F2AC
      */
-    function isInFreeCamMode(playerSrc) {
+    export function isInFreeCamMode(playerSrc: string): boolean {
         return IsPlayerInFreeCamMode(playerSrc);
     }
-    player_1.isInFreeCamMode = isInFreeCamMode;
+
     /**
      * No comment provided
      *
      * Hash: 0xC7D2C20C
      */
-    function isUsingSuperJump(playerSrc) {
+    export function isUsingSuperJump(playerSrc: string): boolean {
         return IsPlayerUsingSuperJump(playerSrc);
     }
-    player_1.isUsingSuperJump = isUsingSuperJump;
+
     /**
      * Requests the commerce data for the specified player, including the owned SKUs. Use `IS_PLAYER_COMMERCE_INFO_LOADED` to check if it has loaded.
      *
      * Hash: 0xA8F63EAB
      */
-    function loadCommerceData(playerSrc) {
+    export function loadCommerceData(playerSrc: string): void {
         LoadPlayerCommerceData(playerSrc);
     }
-    player_1.loadCommerceData = loadCommerceData;
+
     /**
      * Requests the commerce data from Tebex for the specified player, including the owned SKUs.
      *
@@ -3235,20 +3266,20 @@ export var player;
      *
      * Hash: 0x7995539E
      */
-    function loadCommerceDataExt(playerSrc) {
+    export function loadCommerceDataExt(playerSrc: string): void {
         LoadPlayerCommerceDataExt(playerSrc);
     }
-    player_1.loadCommerceDataExt = loadCommerceDataExt;
+
     /**
      * Requests the specified player to buy the passed SKU. This'll pop up a prompt on the client, which upon acceptance
      * will open the browser prompting further purchase details.
      *
      * Hash: 0x96F93CCE
      */
-    function requestCommerceSession(playerSrc, skuId) {
+    export function requestCommerceSession(playerSrc: string, skuId: number): void {
         RequestPlayerCommerceSession(playerSrc, skuId);
     }
-    player_1.requestCommerceSession = requestCommerceSession;
+
     /**
      * ```
      * Flags:
@@ -3271,11 +3302,11 @@ export var player;
      *
      * Hash: 0xD17AFCD8
      */
-    function setControl(player, bHasControl, flags) {
+    export function setControl(player: number | string | Player, bHasControl: boolean, flags: number): void {
         const _player = player instanceof Player ? player.localId() : player;
         SetPlayerControl(_player, bHasControl, flags);
     }
-    player_1.setControl = setControl;
+
     /**
      * Sets the culling radius for the specified player.
      * Set to `0.0` to reset.
@@ -3284,10 +3315,10 @@ export var player;
      *
      * Hash: 0x8A2FBAD4
      */
-    function setCullingRadius(playerSrc, radius) {
+    export function setCullingRadius(playerSrc: string, radius: number): void {
         SetPlayerCullingRadius(playerSrc, radius);
     }
-    player_1.setCullingRadius = setCullingRadius;
+
     /**
      * Make the player impervious to all forms of damage.
      *
@@ -3295,11 +3326,11 @@ export var player;
      *
      * Hash: 0xDFB9A2A2
      */
-    function setInvincible(player, bInvincible) {
+    export function setInvincible(player: number | string | Player, bInvincible: boolean): void {
         const _player = player instanceof Player ? player.localId() : player;
         SetPlayerInvincible(_player, bInvincible);
     }
-    player_1.setInvincible = setInvincible;
+
     /**
      * Set the model for a specific Player. Note that this will destroy the current Ped for the Player and create a new one, any reference to the old ped will be invalid after calling this.
      * As per usual, make sure to request the model first and wait until it has loaded.
@@ -3308,13 +3339,12 @@ export var player;
      *
      * Hash: 0x774A4C54
      */
-    function setModel(player, model) {
+    export function setModel(player: number | string | Player, model: number | string): void {
         const _player = player instanceof Player ? player.localId() : player;
-        if (typeof model === 'string')
-            model = misc.getHashKey(model);
+        if (typeof model === 'string') model = misc.getHashKey(model)
         SetPlayerModel(_player, model);
     }
-    player_1.setModel = setModel;
+
     /**
      * Sets the routing bucket for the specified player.
      *
@@ -3322,10 +3352,10 @@ export var player;
      *
      * Hash: 0x6504EB38
      */
-    function setRoutingBucket(playerSrc, bucket) {
+    export function setRoutingBucket(playerSrc: string, bucket: number): void {
         SetPlayerRoutingBucket(playerSrc, bucket);
     }
-    player_1.setRoutingBucket = setRoutingBucket;
+
     /**
      * SET_PLAYER_WANTED_LEVEL
      *
@@ -3333,212 +3363,213 @@ export var player;
      *
      * Hash: 0xB7A0914B
      */
-    function setWantedLevel(player, wantedLevel, delayedResponse) {
+    export function setWantedLevel(player: number | string | Player, wantedLevel: number, delayedResponse: boolean): void {
         const _player = player instanceof Player ? player.localId() : player;
         SetPlayerWantedLevel(_player, wantedLevel, delayedResponse);
     }
-    player_1.setWantedLevel = setWantedLevel;
+
     /**
      * No comment provided
      *
      * Hash: 0x1E35DBBA
      */
-    function tempBan(playerSrc, reason) {
+    export function tempBan(playerSrc: string, reason: string): void {
         TempBanPlayer(playerSrc, reason);
     }
-    player_1.tempBan = tempBan;
+
     /**
      * On the server this will return the players source, on the client it will return the player handle.
      *
      * Hash: 0xA56135E0
      */
-    function getFromStateBagName(bagName) {
+    export function getFromStateBagName(bagName: string): number {
         return GetPlayerFromStateBagName(bagName);
     }
-    player_1.getFromStateBagName = getFromStateBagName;
-})(player || (player = {}));
-export var vehicle;
-(function (vehicle_1) {
+
+}
+
+
+export namespace vehicle {
     /**
      * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
      *
      * Hash: 0xA886495D
      */
-    function getHeliBodyHealth(heli) {
+    export function getHeliBodyHealth(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliBodyHealth(_heli);
     }
-    vehicle_1.getHeliBodyHealth = getHeliBodyHealth;
+
     /**
      * This is a getter for [SET_DISABLE_HELI_EXPLODE_FROM_BODY_DAMAGE](#\_0xEDBC8405B3895CC9)
      *
      * Hash: 0x82AFC0A3
      */
-    function getHeliDisableExplodeFromBodyDamage(heli) {
+    export function getHeliDisableExplodeFromBodyDamage(heli: number | Vehicle): boolean {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliDisableExplodeFromBodyDamage(_heli);
     }
-    vehicle_1.getHeliDisableExplodeFromBodyDamage = getHeliDisableExplodeFromBodyDamage;
+
     /**
      * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
      *
      * Hash: 0xA0FA0354
      */
-    function getHeliEngineHealth(heli) {
+    export function getHeliEngineHealth(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliEngineHealth(_heli);
     }
-    vehicle_1.getHeliEngineHealth = getHeliEngineHealth;
+
     /**
      * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
      *
      * Hash: 0xD4EC7858
      */
-    function getHeliGasTankHealth(heli) {
+    export function getHeliGasTankHealth(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliGasTankHealth(_heli);
     }
-    vehicle_1.getHeliGasTankHealth = getHeliGasTankHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0xC37D668
      */
-    function getHeliMainRotorDamageScale(heli) {
+    export function getHeliMainRotorDamageScale(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliMainRotorDamageScale(_heli);
     }
-    vehicle_1.getHeliMainRotorDamageScale = getHeliMainRotorDamageScale;
+
     /**
      * No comment provided
      *
      * Hash: 0x1944AC95
      */
-    function getHeliPitchControl(heli) {
+    export function getHeliPitchControl(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliPitchControl(_heli);
     }
-    vehicle_1.getHeliPitchControl = getHeliPitchControl;
+
     /**
      * No comment provided
      *
      * Hash: 0xC40161E2
      */
-    function getHeliRearRotorDamageScale(heli) {
+    export function getHeliRearRotorDamageScale(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliRearRotorDamageScale(_heli);
     }
-    vehicle_1.getHeliRearRotorDamageScale = getHeliRearRotorDamageScale;
+
     /**
      * This native is a getter for [SET_HELI_TAIL_ROTOR_HEALTH](#\_0xFE205F38AAA58E5B)
      *
      * Hash: 0x33EE6E2B
      */
-    function getHeliRearRotorHealth(vehicle) {
+    export function getHeliRearRotorHealth(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetHeliRearRotorHealth(_vehicle);
     }
-    vehicle_1.getHeliRearRotorHealth = getHeliRearRotorHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0x12948DE9
      */
-    function getHeliRollControl(heli) {
+    export function getHeliRollControl(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliRollControl(_heli);
     }
-    vehicle_1.getHeliRollControl = getHeliRollControl;
+
     /**
      * No comment provided
      *
      * Hash: 0x22239130
      */
-    function getHeliTailRotorDamageScale(heli) {
+    export function getHeliTailRotorDamageScale(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliTailRotorDamageScale(_heli);
     }
-    vehicle_1.getHeliTailRotorDamageScale = getHeliTailRotorDamageScale;
+
     /**
      * **Note**: This native is deprecated, please use [`GET_HELI_REAR_ROTOR_HEALTH`](#\_0x33EE6E2B) instead.
      *
      * Hash: 0xA41BC13D
      */
-    function getHeliTailRotorHealth(vehicle) {
+    export function getHeliTailRotorHealth(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetHeliTailRotorHealth(_vehicle);
     }
-    vehicle_1.getHeliTailRotorHealth = getHeliTailRotorHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0x8E86238D
      */
-    function getHeliThrottleControl(heli) {
+    export function getHeliThrottleControl(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliThrottleControl(_heli);
     }
-    vehicle_1.getHeliThrottleControl = getHeliThrottleControl;
+
     /**
      * No comment provided
      *
      * Hash: 0x8FDC0768
      */
-    function getHeliYawControl(heli) {
+    export function getHeliYawControl(heli: number | Vehicle): number {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetHeliYawControl(_heli);
     }
-    vehicle_1.getHeliYawControl = getHeliYawControl;
+
     /**
      * No comment provided
      *
      * Hash: 0x3EFE38D1
      */
-    function getIsHeliEngineRunning(heli) {
+    export function getIsHeliEngineRunning(heli: number | Vehicle): boolean {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return GetIsHeliEngineRunning(_heli);
     }
-    vehicle_1.getIsHeliEngineRunning = getIsHeliEngineRunning;
+
     /**
      * No comment provided
      *
      * Hash: 0x1C939E87
      */
-    function getThrusterSideRcsThrottle(jetpack) {
+    export function getThrusterSideRcsThrottle(jetpack: number | Vehicle): number {
         const _jetpack = jetpack instanceof Vehicle ? jetpack.localId() : jetpack;
         return GetThrusterSideRcsThrottle(_jetpack);
     }
-    vehicle_1.getThrusterSideRcsThrottle = getThrusterSideRcsThrottle;
+
     /**
      * No comment provided
      *
      * Hash: 0x94E24C96
      */
-    function getThrusterThrottle(jetpack) {
+    export function getThrusterThrottle(jetpack: number | Vehicle): number {
         const _jetpack = jetpack instanceof Vehicle ? jetpack.localId() : jetpack;
         return GetThrusterThrottle(_jetpack);
     }
-    vehicle_1.getThrusterThrottle = getThrusterThrottle;
+
     /**
      * No comment provided
      *
      * Hash: 0x456E34A
      */
-    function getTrainBackwardCarriage(train) {
+    export function getTrainBackwardCarriage(train: number | Vehicle): number {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainBackwardCarriage(_train);
     }
-    vehicle_1.getTrainBackwardCarriage = getTrainBackwardCarriage;
+
     /**
      * No comment provided
      *
      * Hash: 0x24DC88D9
      */
-    function getTrainForwardCarriage(train) {
+    export function getTrainForwardCarriage(train: number | Vehicle): number {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainForwardCarriage(_train);
     }
-    vehicle_1.getTrainForwardCarriage = getTrainForwardCarriage;
+
     /**
      * This is a getter for the client-side native [`START_VEHICLE_HORN`](#\_0x9C8C6504B5B63D2C), which allows you to return the horn type of the vehicle.
      *
@@ -3555,121 +3586,121 @@ export var vehicle;
      *
      * Hash: 0xDEA49773
      */
-    function getHornType(vehicle) {
+    export function getHornType(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleHornType(_vehicle);
     }
-    vehicle_1.getHornType = getHornType;
+
     /**
      * This is a getter for [SET_HELI_TAIL_EXPLODE_THROW_DASHBOARD](#\_0x3EC8BF18AA453FE9)
      *
      * Hash: 0x23E46BD7
      */
-    function isHeliTailBoomBreakable(heli) {
+    export function isHeliTailBoomBreakable(heli: number | Vehicle): boolean {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return IsHeliTailBoomBreakable(_heli);
     }
-    vehicle_1.isHeliTailBoomBreakable = isHeliTailBoomBreakable;
+
     /**
      * No comment provided
      *
      * Hash: 0x2C59F987
      */
-    function isHeliTailBoomBroken(heli) {
+    export function isHeliTailBoomBroken(heli: number | Vehicle): boolean {
         const _heli = heli instanceof Vehicle ? heli.localId() : heli;
         return IsHeliTailBoomBroken(_heli);
     }
-    vehicle_1.isHeliTailBoomBroken = isHeliTailBoomBroken;
+
     /**
      * No comment provided
      *
      * Hash: 0xFA9336E5
      */
-    function isTrainCaboose(train) {
+    export function isTrainCaboose(train: number | Vehicle): boolean {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return IsTrainCaboose(_train);
     }
-    vehicle_1.isTrainCaboose = isTrainCaboose;
+
     /**
      * No comment provided
      *
      * Hash: 0x77CC80DC
      */
-    function doesTrainStopAtStations(train) {
+    export function doesTrainStopAtStations(train: number | Vehicle): boolean {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return DoesTrainStopAtStations(_train);
     }
-    vehicle_1.doesTrainStopAtStations = doesTrainStopAtStations;
+
     /**
      * Gets the trains desired speed.
      *
      * Hash: 0xA4921EF5
      */
-    function getTrainCruiseSpeed(train) {
+    export function getTrainCruiseSpeed(train: number | Vehicle): number {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainCruiseSpeed(_train);
     }
-    vehicle_1.getTrainCruiseSpeed = getTrainCruiseSpeed;
+
     /**
      * Gets the direction the train is facing
      *
      * Hash: 0x8DAF79B6
      */
-    function getTrainDirection(train) {
+    export function getTrainDirection(train: number | Vehicle): boolean {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainDirection(_train);
     }
-    vehicle_1.getTrainDirection = getTrainDirection;
+
     /**
      * No comment provided
      *
      * Hash: 0x81B50033
      */
-    function getTrainState(train) {
+    export function getTrainState(train: number | Vehicle): number {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainState(_train);
     }
-    vehicle_1.getTrainState = getTrainState;
+
     /**
      * No comment provided
      *
      * Hash: 0x9AA339D
      */
-    function getTrainTrackIndex(train) {
+    export function getTrainTrackIndex(train: number | Vehicle): number {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainTrackIndex(_train);
     }
-    vehicle_1.getTrainTrackIndex = getTrainTrackIndex;
+
     /**
      * No comment provided
      *
      * Hash: 0x483B013C
      */
-    function getHandbrake(vehicle) {
+    export function getHandbrake(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleHandbrake(_vehicle);
     }
-    vehicle_1.getHandbrake = getHandbrake;
+
     /**
      * No comment provided
      *
      * Hash: 0x1382FCEA
      */
-    function getSteeringAngle(vehicle) {
+    export function getSteeringAngle(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleSteeringAngle(_vehicle);
     }
-    vehicle_1.getSteeringAngle = getSteeringAngle;
+
     /**
      * No comment provided
      *
      * Hash: 0xBB340D04
      */
-    function isEngineStarting(vehicle) {
+    export function isEngineStarting(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return IsVehicleEngineStarting(_vehicle);
     }
-    vehicle_1.isEngineStarting = isEngineStarting;
+
     /**
      * Creates a vehicle with the specified model at the specified position. This vehicle will initially be owned by the creating
      * script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -3682,12 +3713,11 @@ export var vehicle;
      *
      * Hash: 0xDD75460A
      */
-    function create(modelHash, pos, heading, isNetwork, netMissionEntity) {
-        if (typeof modelHash === 'string')
-            modelHash = misc.getHashKey(modelHash);
+    export function create(modelHash: number | string, pos: Vector3, heading: number, isNetwork: boolean, netMissionEntity: boolean): number {
+        if (typeof modelHash === 'string') modelHash = misc.getHashKey(modelHash)
         return CreateVehicle(modelHash, pos.x, pos.y, pos.z, heading, isNetwork, netMissionEntity);
     }
-    vehicle_1.create = create;
+
     /**
      * Equivalent to CREATE_VEHICLE, but it uses 'server setter' logic (like the former CREATE_AUTOMOBILE) as a workaround for
      * reliability concerns regarding entity creation RPC.
@@ -3696,32 +3726,31 @@ export var vehicle;
      *
      * Hash: 0x6AE51D4B
      */
-    function createServerSetter(modelHash, _type, pos, heading) {
-        if (typeof modelHash === 'string')
-            modelHash = misc.getHashKey(modelHash);
+    export function createServerSetter(modelHash: number | string, _type: string, pos: Vector3, heading: number): number {
+        if (typeof modelHash === 'string') modelHash = misc.getHashKey(modelHash)
         return CreateVehicleServerSetter(modelHash, _type, pos.x, pos.y, pos.z, heading);
     }
-    vehicle_1.createServerSetter = createServerSetter;
+
     /**
      * Deletes the specified `entity` and any carriage its attached to, or that is attached to it.
      *
      * Hash: 0x523BA3DA
      */
-    function deleteTrain(entity) {
+    export function deleteTrain(entity: number | Entity): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         DeleteTrain(_entity);
     }
-    vehicle_1.deleteTrain = deleteTrain;
+
     /**
      * No comment provided
      *
      * Hash: 0x43F15989
      */
-    function doesBoatSinkWhenWrecked(vehicle) {
+    export function doesBoatSinkWhenWrecked(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return DoesBoatSinkWhenWrecked(_vehicle);
     }
-    vehicle_1.doesBoatSinkWhenWrecked = doesBoatSinkWhenWrecked;
+
     /**
      * Returns all vehicle handles known to the server.
      * The data returned adheres to the following layout:
@@ -3732,140 +3761,140 @@ export var vehicle;
      *
      * Hash: 0x332169F5
      */
-    function getAlls() {
+    export function getAlls(): number {
         return GetAllVehicles();
     }
-    vehicle_1.getAlls = getAlls;
+
     /**
      * No comment provided
      *
      * Hash: 0x7DC6D022
      */
-    function getIsEngineRunning(vehicle) {
+    export function getIsEngineRunning(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetIsVehicleEngineRunning(_vehicle);
     }
-    vehicle_1.getIsEngineRunning = getIsEngineRunning;
+
     /**
      * No comment provided
      *
      * Hash: 0xD7EC8760
      */
-    function getIsPrimaryColourCustom(vehicle) {
+    export function getIsPrimaryColourCustom(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetIsVehiclePrimaryColourCustom(_vehicle);
     }
-    vehicle_1.getIsPrimaryColourCustom = getIsPrimaryColourCustom;
+
     /**
      * No comment provided
      *
      * Hash: 0x288AD228
      */
-    function getIsSecondaryColourCustom(vehicle) {
+    export function getIsSecondaryColourCustom(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetIsVehicleSecondaryColourCustom(_vehicle);
     }
-    vehicle_1.getIsSecondaryColourCustom = getIsSecondaryColourCustom;
+
     /**
      * See the client-side [GET_LANDING_GEAR_STATE](#\_0x9B0F3DCA3DB0F4CD) native for a description of landing gear states.
      *
      * Hash: 0xA6F02670
      */
-    function getLandingGearState(vehicle) {
+    export function getLandingGearState(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetLandingGearState(_vehicle);
     }
-    vehicle_1.getLandingGearState = getLandingGearState;
+
     /**
      * No comment provided
      *
      * Hash: 0x95070FA
      */
-    function getTrainCarriageEngine(train) {
+    export function getTrainCarriageEngine(train: number | Vehicle): number {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainCarriageEngine(_train);
     }
-    vehicle_1.getTrainCarriageEngine = getTrainCarriageEngine;
+
     /**
      * No comment provided
      *
      * Hash: 0x4B8285CF
      */
-    function getTrainCarriageIndex(train) {
+    export function getTrainCarriageIndex(train: number | Vehicle): number {
         const _train = train instanceof Vehicle ? train.localId() : train;
         return GetTrainCarriageIndex(_train);
     }
-    vehicle_1.getTrainCarriageIndex = getTrainCarriageIndex;
+
     /**
      * No comment provided
      *
      * Hash: 0x2B2FCC28
      */
-    function getBodyHealth(vehicle) {
+    export function getBodyHealth(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleBodyHealth(_vehicle);
     }
-    vehicle_1.getBodyHealth = getBodyHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0x40D82D88
      */
-    function getColours(vehicle) {
+    export function getColours(vehicle: number | Vehicle): [number, number] {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleColours(_vehicle);
     }
-    vehicle_1.getColours = getColours;
+
     /**
      * No comment provided
      *
      * Hash: 0x1C2B9FEF
      */
-    function getCustomPrimaryColour(vehicle) {
+    export function getCustomPrimaryColour(vehicle: number | Vehicle): [number, number, number] {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleCustomPrimaryColour(_vehicle);
     }
-    vehicle_1.getCustomPrimaryColour = getCustomPrimaryColour;
+
     /**
      * No comment provided
      *
      * Hash: 0x3FF247A2
      */
-    function getCustomSecondaryColour(vehicle) {
+    export function getCustomSecondaryColour(vehicle: number | Vehicle): [number, number, number] {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleCustomSecondaryColour(_vehicle);
     }
-    vehicle_1.getCustomSecondaryColour = getCustomSecondaryColour;
+
     /**
      * No comment provided
      *
      * Hash: 0xA0DBD08D
      */
-    function getDashboardColour(vehicle) {
+    export function getDashboardColour(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleDashboardColour(_vehicle);
     }
-    vehicle_1.getDashboardColour = getDashboardColour;
+
     /**
      * No comment provided
      *
      * Hash: 0xFD15C065
      */
-    function getDirtLevel(vehicle) {
+    export function getDirtLevel(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleDirtLevel(_vehicle);
     }
-    vehicle_1.getDirtLevel = getDirtLevel;
+
     /**
      * Currently it only works when set to "all players".
      *
      * Hash: 0x1DC50247
      */
-    function getDoorsLockedForPlayer(vehicle) {
+    export function getDoorsLockedForPlayer(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleDoorsLockedForPlayer(_vehicle);
     }
-    vehicle_1.getDoorsLockedForPlayer = getDoorsLockedForPlayer;
+
     /**
      * ```lua
      * enum_VehicleLockStatus = {
@@ -3885,121 +3914,121 @@ export var vehicle;
      *
      * Hash: 0xD72CEF2
      */
-    function getDoorLockStatus(vehicle) {
+    export function getDoorLockStatus(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleDoorLockStatus(_vehicle);
     }
-    vehicle_1.getDoorLockStatus = getDoorLockStatus;
+
     /**
      * Returns the open position of the specified door on the target vehicle.
      *
      * Hash: 0x6E35C49C
      */
-    function getDoorStatus(vehicle, doorIndex) {
+    export function getDoorStatus(vehicle: number | Vehicle, doorIndex: number): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleDoorStatus(_vehicle, doorIndex);
     }
-    vehicle_1.getDoorStatus = getDoorStatus;
+
     /**
      * No comment provided
      *
      * Hash: 0x8880038A
      */
-    function getEngineHealth(vehicle) {
+    export function getEngineHealth(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleEngineHealth(_vehicle);
     }
-    vehicle_1.getEngineHealth = getEngineHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0x80E4659B
      */
-    function getExtraColours(vehicle) {
+    export function getExtraColours(vehicle: number | Vehicle): [number, number] {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleExtraColours(_vehicle);
     }
-    vehicle_1.getExtraColours = getExtraColours;
+
     /**
      * Gets the flight nozzel position for the specified vehicle. See the client-side [\_GET_VEHICLE_FLIGHT_NOZZLE_POSITION](#\_0xDA62027C8BDB326E) native for usage examples.
      *
      * Hash: 0xAD40AD55
      */
-    function getFlightNozzlePosition(vehicle) {
+    export function getFlightNozzlePosition(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleFlightNozzlePosition(_vehicle);
     }
-    vehicle_1.getFlightNozzlePosition = getFlightNozzlePosition;
+
     /**
      * No comment provided
      *
      * Hash: 0xD7147656
      */
-    function getHeadlightsColour(vehicle) {
+    export function getHeadlightsColour(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleHeadlightsColour(_vehicle);
     }
-    vehicle_1.getHeadlightsColour = getHeadlightsColour;
+
     /**
      * Gets the lock on state for the specified vehicle. See the client-side [GET_VEHICLE_HOMING_LOCKON_STATE](#\_0xE6B0E8CFC3633BF0) native for a description of lock on states.
      *
      * Hash: 0xFBDE9FD8
      */
-    function getHomingLockonState(vehicle) {
+    export function getHomingLockonState(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleHomingLockonState(_vehicle);
     }
-    vehicle_1.getHomingLockonState = getHomingLockonState;
+
     /**
      * No comment provided
      *
      * Hash: 0xCCFF3B6E
      */
-    function getInteriorColour(vehicle) {
+    export function getInteriorColour(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleInteriorColour(_vehicle);
     }
-    vehicle_1.getInteriorColour = getInteriorColour;
+
     /**
      * No comment provided
      *
      * Hash: 0x7C278621
      */
-    function getLightsState(vehicle) {
+    export function getLightsState(vehicle: number | Vehicle): [boolean, boolean, boolean] {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleLightsState(_vehicle);
     }
-    vehicle_1.getLightsState = getLightsState;
+
     /**
      * No comment provided
      *
      * Hash: 0xEC82A51D
      */
-    function getLivery(vehicle) {
+    export function getLivery(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleLivery(_vehicle);
     }
-    vehicle_1.getLivery = getLivery;
+
     /**
      * Gets the vehicle that is locked on to for the specified vehicle.
      *
      * Hash: 0x4A557117
      */
-    function getLockOnTarget(vehicle) {
+    export function getLockOnTarget(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleLockOnTarget(_vehicle);
     }
-    vehicle_1.getLockOnTarget = getLockOnTarget;
+
     /**
      * Getter to check the neon colour of a vehicle. This native is the server side getter of [GET_VEHICLE_NEON_LIGHTS_COLOUR](#\_0x7619EEE8C886757F).
      *
      * Hash: 0xD9319DCB
      */
-    function getNeonColour(vehicle) {
+    export function getNeonColour(vehicle: number | Vehicle): [number, number, number] {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleNeonColour(_vehicle);
     }
-    vehicle_1.getNeonColour = getNeonColour;
+
     /**
      * Getter to check if one of the neon lights of a vehicle is enabled. This native is the server side getter of [IS_VEHICLE_NEON_LIGHT_ENABLED](#\_0x8C4B92553E4766A5).
      *
@@ -4015,191 +4044,191 @@ export var vehicle;
      *
      * Hash: 0x684BDBF2
      */
-    function getNeonEnabled(vehicle, neonIndex) {
+    export function getNeonEnabled(vehicle: number | Vehicle, neonIndex: number): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleNeonEnabled(_vehicle, neonIndex);
     }
-    vehicle_1.getNeonEnabled = getNeonEnabled;
+
     /**
      * No comment provided
      *
      * Hash: 0xE8522D58
      */
-    function getNumberPlateText(vehicle) {
+    export function getNumberPlateText(vehicle: number | Vehicle): string {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleNumberPlateText(_vehicle);
     }
-    vehicle_1.getNumberPlateText = getNumberPlateText;
+
     /**
      * No comment provided
      *
      * Hash: 0x499747B6
      */
-    function getNumberPlateTextIndex(vehicle) {
+    export function getNumberPlateTextIndex(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleNumberPlateTextIndex(_vehicle);
     }
-    vehicle_1.getNumberPlateTextIndex = getNumberPlateTextIndex;
+
     /**
      * Gets the vehicle the specified Ped is/was in depending on bool value. This native is used server side when using OneSync.
      *
      * Hash: 0xAFE92319
      */
-    function getPedIsIn(ped, lastVehicle) {
+    export function getPedIsIn(ped: number | Ped, lastVehicle: boolean): number {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         return GetVehiclePedIsIn(_ped, lastVehicle);
     }
-    vehicle_1.getPedIsIn = getPedIsIn;
+
     /**
      * No comment provided
      *
      * Hash: 0xE41595CE
      */
-    function getPetrolTankHealth(vehicle) {
+    export function getPetrolTankHealth(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehiclePetrolTankHealth(_vehicle);
     }
-    vehicle_1.getPetrolTankHealth = getPetrolTankHealth;
+
     /**
      * No comment provided
      *
      * Hash: 0x57037960
      */
-    function getRadioStationIndex(vehicle) {
+    export function getRadioStationIndex(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleRadioStationIndex(_vehicle);
     }
-    vehicle_1.getRadioStationIndex = getRadioStationIndex;
+
     /**
      * No comment provided
      *
      * Hash: 0x872CF42
      */
-    function getRoofLivery(vehicle) {
+    export function getRoofLivery(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleRoofLivery(_vehicle);
     }
-    vehicle_1.getRoofLivery = getRoofLivery;
+
     /**
      * No comment provided
      *
      * Hash: 0x9963D5F9
      */
-    function getTotalRepairs(vehicle) {
+    export function getTotalRepairs(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleTotalRepairs(_vehicle);
     }
-    vehicle_1.getTotalRepairs = getTotalRepairs;
+
     /**
      * No comment provided
      *
      * Hash: 0x75280015
      */
-    function getTyreSmokeColor(vehicle) {
+    export function getTyreSmokeColor(vehicle: number | Vehicle): [number, number, number] {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleTyreSmokeColor(_vehicle);
     }
-    vehicle_1.getTyreSmokeColor = getTyreSmokeColor;
+
     /**
      * No comment provided
      *
      * Hash: 0xDA58D7AE
      */
-    function getWheelType(vehicle) {
+    export function getWheelType(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelType(_vehicle);
     }
-    vehicle_1.getWheelType = getWheelType;
+
     /**
      * No comment provided
      *
      * Hash: 0x13D53892
      */
-    function getWindowTint(vehicle) {
+    export function getWindowTint(vehicle: number | Vehicle): number {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleWindowTint(_vehicle);
     }
-    vehicle_1.getWindowTint = getWindowTint;
+
     /**
      * No comment provided
      *
      * Hash: 0xB8AF3137
      */
-    function hasBeenDamagedByBullets(vehicle) {
+    export function hasBeenDamagedByBullets(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return HasVehicleBeenDamagedByBullets(_vehicle);
     }
-    vehicle_1.hasBeenDamagedByBullets = hasBeenDamagedByBullets;
+
     /**
      * No comment provided
      *
      * Hash: 0xE4E83A5B
      */
-    function hasBeenOwnedByPlayer(vehicle) {
+    export function hasBeenOwnedByPlayer(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return HasVehicleBeenOwnedByPlayer(_vehicle);
     }
-    vehicle_1.hasBeenOwnedByPlayer = hasBeenOwnedByPlayer;
+
     /**
      * No comment provided
      *
      * Hash: 0xD5C39EE6
      */
-    function isBoatAnchoredAndFrozen(vehicle) {
+    export function isBoatAnchoredAndFrozen(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return IsBoatAnchoredAndFrozen(_vehicle);
     }
-    vehicle_1.isBoatAnchoredAndFrozen = isBoatAnchoredAndFrozen;
+
     /**
      * No comment provided
      *
      * Hash: 0x9049DB44
      */
-    function isBoatWrecked(vehicle) {
+    export function isBoatWrecked(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return IsBoatWrecked(_vehicle);
     }
-    vehicle_1.isBoatWrecked = isBoatWrecked;
+
     /**
      * No comment provided
      *
      * Hash: 0x42098B5
      */
-    function isExtraTurnedOn(vehicle, extraId) {
+    export function isExtraTurnedOn(vehicle: number | Vehicle, extraId: number): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return IsVehicleExtraTurnedOn(_vehicle, extraId);
     }
-    vehicle_1.isExtraTurnedOn = isExtraTurnedOn;
+
     /**
      * No comment provided
      *
      * Hash: 0x25EB5873
      */
-    function isSirenOn(vehicle) {
+    export function isSirenOn(vehicle: number | Vehicle): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return IsVehicleSirenOn(_vehicle);
     }
-    vehicle_1.isSirenOn = isSirenOn;
+
     /**
      * No comment provided
      *
      * Hash: 0x48C80210
      */
-    function isTyreBurst(vehicle, wheelID, completely) {
+    export function isTyreBurst(vehicle: number | Vehicle, wheelID: number, completely: boolean): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return IsVehicleTyreBurst(_vehicle, wheelID, completely);
     }
-    vehicle_1.isTyreBurst = isTyreBurst;
+
     /**
      * See the client-side [IS_VEHICLE_WINDOW_INTACT](#\_0x46E571A0E20D01F1) for a window indexes list.
      *
      * Hash: 0xAC4EF23D
      */
-    function isWindowIntact(vehicle, windowIndex) {
+    export function isWindowIntact(vehicle: number | Vehicle, windowIndex: number): boolean {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return IsVehicleWindowIntact(_vehicle, windowIndex);
     }
-    vehicle_1.isWindowIntact = isWindowIntact;
+
     /**
      * SET_VEHICLE_ALARM
      *
@@ -4207,11 +4236,11 @@ export var vehicle;
      *
      * Hash: 0x24877D84
      */
-    function setAlarm(vehicle, state) {
+    export function setAlarm(vehicle: number | Vehicle, state: boolean): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleAlarm(_vehicle, state);
     }
-    vehicle_1.setAlarm = setAlarm;
+
     /**
      * ```
      * p2 often set to 1000.0 in the decompiled scripts.
@@ -4221,11 +4250,11 @@ export var vehicle;
      *
      * Hash: 0x920C2517
      */
-    function setBodyHealth(vehicle, value) {
+    export function setBodyHealth(vehicle: number | Vehicle, value: number): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleBodyHealth(_vehicle, value);
     }
-    vehicle_1.setBodyHealth = setBodyHealth;
+
     /**
      * colorPrimary & colorSecondary are the paint indexes for the vehicle.
      * For a list of valid paint indexes, view: pastebin.com/pwHci0xK
@@ -4234,11 +4263,11 @@ export var vehicle;
      *
      * Hash: 0x57F24253
      */
-    function setColours(vehicle, colorPrimary, colorSecondary) {
+    export function setColours(vehicle: number | Vehicle, colorPrimary: number, colorSecondary: number): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleColours(_vehicle, colorPrimary, colorSecondary);
     }
-    vehicle_1.setColours = setColours;
+
     /**
      * Sets the selected vehicle's colors to their default value (specific variant specified using the colorCombination parameter).
      * Range of possible values for colorCombination is currently unknown, I couldn't find where these values are stored either (Disquse's guess was vehicles.meta but I haven't seen it in there.)
@@ -4247,11 +4276,11 @@ export var vehicle;
      *
      * Hash: 0xA557AEAD
      */
-    function setColourCombination(vehicle, colorCombination) {
+    export function setColourCombination(vehicle: number | Vehicle, colorCombination: number): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleColourCombination(_vehicle, colorCombination);
     }
-    vehicle_1.setColourCombination = setColourCombination;
+
     /**
      * ```
      * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -4261,11 +4290,11 @@ export var vehicle;
      *
      * Hash: 0x8DF9F9BC
      */
-    function setCustomPrimaryColour(vehicle, r, g, b) {
+    export function setCustomPrimaryColour(vehicle: number | Vehicle, r: number, g: number, b: number): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleCustomPrimaryColour(_vehicle, r, g, b);
     }
-    vehicle_1.setCustomPrimaryColour = setCustomPrimaryColour;
+
     /**
      * ```
      * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -4275,11 +4304,11 @@ export var vehicle;
      *
      * Hash: 0x9D77259E
      */
-    function setCustomSecondaryColour(vehicle, r, g, b) {
+    export function setCustomSecondaryColour(vehicle: number | Vehicle, r: number, g: number, b: number): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleCustomSecondaryColour(_vehicle, r, g, b);
     }
-    vehicle_1.setCustomSecondaryColour = setCustomSecondaryColour;
+
     /**
      * Sets the dirt level of the passed vehicle.
      *
@@ -4287,11 +4316,11 @@ export var vehicle;
      *
      * Hash: 0x2B39128B
      */
-    function setDirtLevel(vehicle, dirtLevel) {
+    export function setDirtLevel(vehicle: number | Vehicle, dirtLevel: number): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleDirtLevel(_vehicle, dirtLevel);
     }
-    vehicle_1.setDirtLevel = setDirtLevel;
+
     /**
      * Locks the doors of a specified vehicle to a defined lock state, affecting how players and NPCs can interact with the vehicle.
      *
@@ -4330,11 +4359,11 @@ export var vehicle;
      *
      * Hash: 0x4CDD35D0
      */
-    function setDoorsLocked(vehicle, doorLockStatus) {
+    export function setDoorsLocked(vehicle: number | Vehicle, doorLockStatus: number): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleDoorsLocked(_vehicle, doorLockStatus);
     }
-    vehicle_1.setDoorsLocked = setDoorsLocked;
+
     /**
      * See eDoorId declared in [`SET_VEHICLE_DOOR_SHUT`](#\_0x93D9BD300D7789E5)
      *
@@ -4342,11 +4371,11 @@ export var vehicle;
      *
      * Hash: 0x8147FEA7
      */
-    function setDoorBroken(vehicle, doorIndex, deleteDoor) {
+    export function setDoorBroken(vehicle: number | Vehicle, doorIndex: number, deleteDoor: boolean): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleDoorBroken(_vehicle, doorIndex, deleteDoor);
     }
-    vehicle_1.setDoorBroken = setDoorBroken;
+
     /**
      * SET_VEHICLE_NUMBER_PLATE_TEXT
      *
@@ -4354,11 +4383,11 @@ export var vehicle;
      *
      * Hash: 0x400F9556
      */
-    function setNumberPlateText(vehicle, plateText) {
+    export function setNumberPlateText(vehicle: number | Vehicle, plateText: string): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         SetVehicleNumberPlateText(_vehicle, plateText);
     }
-    vehicle_1.setNumberPlateText = setNumberPlateText;
+
     /**
      * Returns the type of the passed vehicle.
      *
@@ -4377,14 +4406,15 @@ export var vehicle;
      *
      * Hash: 0xA273060E
      */
-    function getType(vehicle) {
+    export function getType(vehicle: number | Vehicle): string {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         return GetVehicleType(_vehicle);
     }
-    vehicle_1.getType = getType;
-})(vehicle || (vehicle = {}));
-export var weapon;
-(function (weapon) {
+
+}
+
+
+export namespace weapon {
     /**
      * GIVE_WEAPON_COMPONENT_TO_PED
      *
@@ -4392,15 +4422,13 @@ export var weapon;
      *
      * Hash: 0x3E1E286D
      */
-    function giveComponentToPed(ped, weaponHash, componentHash) {
+    export function giveComponentToPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof weaponHash === 'string')
-            weaponHash = misc.getHashKey(weaponHash);
-        if (typeof componentHash === 'string')
-            componentHash = misc.getHashKey(componentHash);
+        if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
+        if (typeof componentHash === 'string') componentHash = misc.getHashKey(componentHash)
         GiveWeaponComponentToPed(_ped, weaponHash, componentHash);
     }
-    weapon.giveComponentToPed = giveComponentToPed;
+
     /**
      * GIVE_WEAPON_TO_PED
      *
@@ -4408,13 +4436,12 @@ export var weapon;
      *
      * Hash: 0xC4D88A85
      */
-    function giveToPed(ped, weaponHash, ammoCount, isHidden, bForceInHand) {
+    export function giveToPed(ped: number | Ped, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof weaponHash === 'string')
-            weaponHash = misc.getHashKey(weaponHash);
+        if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         GiveWeaponToPed(_ped, weaponHash, ammoCount, isHidden, bForceInHand);
     }
-    weapon.giveToPed = giveToPed;
+
     /**
      * Parameter `p1` does not seem to be used or referenced in game binaries.\
      * **Note:** When called for networked entities, a `CRemoveAllWeaponsEvent` will be created per request.
@@ -4423,11 +4450,11 @@ export var weapon;
      *
      * Hash: 0xA44CE817
      */
-    function removeAllPeds(ped) {
+    export function removeAllPeds(ped: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         RemoveAllPedWeapons(_ped, false);
     }
-    weapon.removeAllPeds = removeAllPeds;
+
     /**
      * REMOVE_WEAPON_COMPONENT_FROM_PED
      *
@@ -4435,15 +4462,13 @@ export var weapon;
      *
      * Hash: 0x412AA00D
      */
-    function removeComponentFromPed(ped, weaponHash, componentHash) {
+    export function removeComponentFromPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof weaponHash === 'string')
-            weaponHash = misc.getHashKey(weaponHash);
-        if (typeof componentHash === 'string')
-            componentHash = misc.getHashKey(componentHash);
+        if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
+        if (typeof componentHash === 'string') componentHash = misc.getHashKey(componentHash)
         RemoveWeaponComponentFromPed(_ped, weaponHash, componentHash);
     }
-    weapon.removeComponentFromPed = removeComponentFromPed;
+
     /**
      * ```
      * This native removes a specified weapon from your selected ped.
@@ -4460,127 +4485,130 @@ export var weapon;
      *
      * Hash: 0x9C37F220
      */
-    function removeFromPed(ped, weaponHash) {
+    export function removeFromPed(ped: number | Ped, weaponHash: number | string): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof weaponHash === 'string')
-            weaponHash = misc.getHashKey(weaponHash);
+        if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         RemoveWeaponFromPed(_ped, weaponHash);
     }
-    weapon.removeFromPed = removeFromPed;
-})(weapon || (weapon = {}));
-export var network;
-(function (network) {
+
+}
+
+
+export namespace network {
     /**
      * No comment provided
      *
      * Hash: 0x5B912C3F
      */
-    function getEntityFromNetworkId(netId) {
+    export function getEntityFromNetworkId(netId: number): number {
         return NetworkGetEntityFromNetworkId(netId);
     }
-    network.getEntityFromNetworkId = getEntityFromNetworkId;
+
     /**
      * Returns the first owner ID of the specified entity.
      *
      * Hash: 0x1E546224
      */
-    function getFirstEntityOwner(entity) {
+    export function getFirstEntityOwner(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return NetworkGetFirstEntityOwner(_entity);
     }
-    network.getFirstEntityOwner = getFirstEntityOwner;
+
     /**
      * No comment provided
      *
      * Hash: 0x9E35DAB6
      */
-    function getNetworkIdFromEntity(entity) {
+    export function getNetworkIdFromEntity(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return NetworkGetNetworkIdFromEntity(_entity);
     }
-    network.getNetworkIdFromEntity = getNetworkIdFromEntity;
+
     /**
      * No comment provided
      *
      * Hash: 0xFFEEF513
      */
-    function getVoiceProximityOverrideForPlayer(playerSrc) {
+    export function getVoiceProximityOverrideForPlayer(playerSrc: string): Vector3 {
         return new Vector3(NetworkGetVoiceProximityOverrideForPlayer(playerSrc));
     }
-    network.getVoiceProximityOverrideForPlayer = getVoiceProximityOverrideForPlayer;
+
     /**
      * Returns the owner ID of the specified entity.
      *
      * Hash: 0x526FEE31
      */
-    function getEntityOwner(entity) {
+    export function getEntityOwner(entity: number | Entity): number {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         return NetworkGetEntityOwner(_entity);
     }
-    network.getEntityOwner = getEntityOwner;
-})(network || (network = {}));
-export var kvp;
-(function (kvp) {
+
+}
+
+
+export namespace kvp {
     /**
      * No comment provided
      *
      * Hash: 0xB3210203
      */
-    function endFind(handle) {
+    export function endFind(handle: number): void {
         EndFindKvp(handle);
     }
-    kvp.endFind = endFind;
+
     /**
      * No comment provided
      *
      * Hash: 0xBD7BEBC5
      */
-    function find(handle) {
+    export function find(handle: number): string {
         return FindKvp(handle);
     }
-    kvp.find = find;
+
     /**
      * No comment provided
      *
      * Hash: 0xDD379006
      */
-    function startFind(prefix) {
+    export function startFind(prefix: string): number {
         return StartFindKvp(prefix);
     }
-    kvp.startFind = startFind;
-})(kvp || (kvp = {}));
-export var mumble;
-(function (mumble) {
+
+}
+
+
+export namespace mumble {
     /**
      * Create a permanent voice channel.
      *
      * Hash: 0x262663C5
      */
-    function createChannel(id) {
+    export function createChannel(id: number): void {
         MumbleCreateChannel(id);
     }
-    mumble.createChannel = createChannel;
+
     /**
      * Checks if the player is currently muted
      *
      * Hash: 0x1D5D50C2
      */
-    function isPlayerMuted(playerSrc) {
+    export function isPlayerMuted(playerSrc: number): boolean {
         return MumbleIsPlayerMuted(playerSrc);
     }
-    mumble.isPlayerMuted = isPlayerMuted;
+
     /**
      * Mutes or unmutes the specified player
      *
      * Hash: 0xCC6C2EB1
      */
-    function setPlayerMuted(playerSrc, toggle) {
+    export function setPlayerMuted(playerSrc: number, toggle: boolean): void {
         MumbleSetPlayerMuted(playerSrc, toggle);
     }
-    mumble.setPlayerMuted = setPlayerMuted;
-})(mumble || (mumble = {}));
-export var object;
-(function (object) {
+
+}
+
+
+export namespace object {
     /**
      * Creates an object (prop) with the specified model at the specified position, offset on the Z axis by the radius of the object's model.
      * This object will initially be owned by the creating script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -4589,12 +4617,11 @@ export var object;
      *
      * Hash: 0x2F7AA05C
      */
-    function create(modelHash, pos, isNetwork, netMissionEntity, doorFlag) {
-        if (typeof modelHash === 'string')
-            modelHash = misc.getHashKey(modelHash);
+    export function create(modelHash: number | string, pos: Vector3, isNetwork: boolean, netMissionEntity: boolean, doorFlag: boolean): number {
+        if (typeof modelHash === 'string') modelHash = misc.getHashKey(modelHash)
         return CreateObject(modelHash, pos.x, pos.y, pos.z, isNetwork, netMissionEntity, doorFlag);
     }
-    object.create = create;
+
     /**
      * Creates an object (prop) with the specified model centered at the specified position.
      * This object will initially be owned by the creating script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -4603,12 +4630,11 @@ export var object;
      *
      * Hash: 0x58040420
      */
-    function createNoOffset(modelHash, pos, isNetwork, netMissionEntity, doorFlag) {
-        if (typeof modelHash === 'string')
-            modelHash = misc.getHashKey(modelHash);
+    export function createNoOffset(modelHash: number | string, pos: Vector3, isNetwork: boolean, netMissionEntity: boolean, doorFlag: boolean): number {
+        if (typeof modelHash === 'string') modelHash = misc.getHashKey(modelHash)
         return CreateObjectNoOffset(modelHash, pos.x, pos.y, pos.z, isNetwork, netMissionEntity, doorFlag);
     }
-    object.createNoOffset = createNoOffset;
+
     /**
      * Returns all object handles known to the server.
      * The data returned adheres to the following layout:
@@ -4619,13 +4645,14 @@ export var object;
      *
      * Hash: 0x6886C3FE
      */
-    function getAlls() {
+    export function getAlls(): number {
         return GetAllObjects();
     }
-    object.getAlls = getAlls;
-})(object || (object = {}));
-export var resource;
-(function (resource_1) {
+
+}
+
+
+export namespace resource {
     /**
      * Nonsynchronous operations will not wait for a disk/filesystem flush before returning from a write or delete call. They will be much faster than their synchronous counterparts (e.g., bulk operations), however, a system crash may lose the data to some recent operations.
      *
@@ -4633,19 +4660,19 @@ export var resource;
      *
      * Hash: 0xE27C97A0
      */
-    function flushKvp() {
+    export function flushKvp(): void {
         FlushResourceKvp();
     }
-    resource_1.flushKvp = flushKvp;
+
     /**
      * Returns the physical on-disk path of the specified resource.
      *
      * Hash: 0x61DCF017
      */
-    function getPath(resourceName) {
+    export function getPath(resourceName: string): string {
         return GetResourcePath(resourceName);
     }
-    resource_1.getPath = getPath;
+
     /**
      * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
      *
@@ -4653,10 +4680,10 @@ export var resource;
      *
      * Hash: 0x9862B266
      */
-    function registerAsset(resourceName, fileName) {
+    export function registerAsset(resourceName: string, fileName: string): string {
         return RegisterResourceAsset(resourceName, fileName);
     }
-    resource_1.registerAsset = registerAsset;
+
     /**
      * Registers a build task factory for resources.
      * The function should return an object (msgpack map) with the following fields:
@@ -4674,121 +4701,121 @@ export var resource;
      *
      * Hash: 0x285B43CA
      */
-    function registerBuildTaskFactory(factoryId, factoryFn) {
+    export function registerBuildTaskFactory(factoryId: string, factoryFn: Function): void {
         RegisterResourceBuildTaskFactory(factoryId, factoryFn);
     }
-    resource_1.registerBuildTaskFactory = registerBuildTaskFactory;
+
     /**
      * Writes the specified data to a file in the specified resource.
      * Using a length of `-1` will automatically detect the length assuming the data is a C string.
      *
      * Hash: 0xA09E7E7B
      */
-    function saveFile(resourceName, fileName, data, dataLength) {
+    export function saveFile(resourceName: string, fileName: string, data: string, dataLength: number): boolean {
         return SaveResourceFile(resourceName, fileName, data, dataLength);
     }
-    resource_1.saveFile = saveFile;
+
     /**
      * Scans the resources in the specified resource root. This function is only available in the 'monitor mode' process and is
      * not available for user resources.
      *
      * Hash: 0x636F097F
      */
-    function scanRoot(rootPath, callback) {
+    export function scanRoot(rootPath: string, callback: Function): void {
         ScanResourceRoot(rootPath, callback);
     }
-    resource_1.scanRoot = scanRoot;
+
     /**
      * Schedules the specified resource to run a tick as soon as possible, bypassing the server's fixed tick rate.
      *
      * Hash: 0xB88A73AD
      */
-    function scheduleTick(resourceName) {
+    export function scheduleTick(resourceName: string): void {
         ScheduleResourceTick(resourceName);
     }
-    resource_1.scheduleTick = scheduleTick;
+
     /**
      * No comment provided
      *
      * Hash: 0x29B440DC
      */
-    function start(resourceName) {
+    export function start(resourceName: string): boolean {
         return StartResource(resourceName);
     }
-    resource_1.start = start;
+
     /**
      * No comment provided
      *
      * Hash: 0x21783161
      */
-    function stop(resourceName) {
+    export function stop(resourceName: string): boolean {
         return StopResource(resourceName);
     }
-    resource_1.stop = stop;
+
     /**
      * No comment provided
      *
      * Hash: 0x7389B5DF
      */
-    function deleteKvp(key) {
+    export function deleteKvp(key: string): void {
         DeleteResourceKvp(key);
     }
-    resource_1.deleteKvp = deleteKvp;
+
     /**
      * Nonsynchronous [DELETE_RESOURCE_KVP](#\_0x7389B5DF) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
      *
      * Hash: 0x4152C90
      */
-    function deleteKvpNoSync(key) {
+    export function deleteKvpNoSync(key: string): void {
         DeleteResourceKvpNoSync(key);
     }
-    resource_1.deleteKvpNoSync = deleteKvpNoSync;
+
     /**
      * Returns the name of the currently executing resource.
      *
      * Hash: 0xE5E9EBBB
      */
-    function getCurrentName() {
+    export function getCurrentName(): string {
         return GetCurrentResourceName();
     }
-    resource_1.getCurrentName = getCurrentName;
+
     /**
      * No comment provided
      *
      * Hash: 0x4D52FE5B
      */
-    function getInvoking() {
+    export function getInvoking(): string {
         return GetInvokingResource();
     }
-    resource_1.getInvoking = getInvoking;
+
     /**
      * No comment provided
      *
      * Hash: 0x863F27B
      */
-    function getNums() {
+    export function getNums(): number {
         return GetNumResources();
     }
-    resource_1.getNums = getNums;
+
     /**
      * Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
      * See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
      *
      * Hash: 0x776E864
      */
-    function getNumMetadata(resourceName, metadataKey) {
+    export function getNumMetadata(resourceName: string, metadataKey: string): number {
         return GetNumResourceMetadata(resourceName, metadataKey);
     }
-    resource_1.getNumMetadata = getNumMetadata;
+
     /**
      * No comment provided
      *
      * Hash: 0x387246B7
      */
-    function getByFindIndex(findIndex) {
+    export function getByFindIndex(findIndex: number): string {
         return GetResourceByFindIndex(findIndex);
     }
-    resource_1.getByFindIndex = getByFindIndex;
+
     /**
      * Returns all commands registered by the specified resource.
      * The data returned adheres to the following layout:
@@ -4810,56 +4837,56 @@ export var resource;
      *
      * Hash: 0x97628584
      */
-    function getCommands(resource) {
+    export function getCommands(resource: string): number {
         return GetResourceCommands(resource);
     }
-    resource_1.getCommands = getCommands;
+
     /**
      * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938).
      *
      * Hash: 0x35BDCEEA
      */
-    function getKvpFloat(key) {
+    export function getKvpFloat(key: string): number {
         return GetResourceKvpFloat(key);
     }
-    resource_1.getKvpFloat = getKvpFloat;
+
     /**
      * A getter for [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8).
      *
      * Hash: 0x557B586A
      */
-    function getKvpInt(key) {
+    export function getKvpInt(key: string): number {
         return GetResourceKvpInt(key);
     }
-    resource_1.getKvpInt = getKvpInt;
+
     /**
      * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B).
      *
      * Hash: 0x5240DA5A
      */
-    function getKvpString(key) {
+    export function getKvpString(key: string): string {
         return GetResourceKvpString(key);
     }
-    resource_1.getKvpString = getKvpString;
+
     /**
      * Gets the metadata value at a specified key/index from a resource's manifest.
      * See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
      *
      * Hash: 0x964BAB1D
      */
-    function getMetadata(resourceName, metadataKey, index) {
+    export function getMetadata(resourceName: string, metadataKey: string, index: number): string {
         return GetResourceMetadata(resourceName, metadataKey, index);
     }
-    resource_1.getMetadata = getMetadata;
+
     /**
      * Returns the current state of the specified resource.
      *
      * Hash: 0x4039B485
      */
-    function getState(resourceName) {
+    export function getState(resourceName: string): string {
         return GetResourceState(resourceName);
     }
-    resource_1.getState = getState;
+
     /**
      * Reads the contents of a text file in a specified resource.
      * If executed on the client, this file has to be included in `files` in the resource manifest.
@@ -4867,76 +4894,77 @@ export var resource;
      *
      * Hash: 0x76A9EE1F
      */
-    function loadFile(resourceName, fileName) {
+    export function loadFile(resourceName: string, fileName: string): string {
         return LoadResourceFile(resourceName, fileName);
     }
-    resource_1.loadFile = loadFile;
+
     /**
      * An internal function which allows the current resource's HLL script runtimes to receive state for the specified event.
      *
      * Hash: 0xD233A168
      */
-    function registerAsEventHandler(eventName) {
+    export function registerAsEventHandler(eventName: string): void {
         RegisterResourceAsEventHandler(eventName);
     }
-    resource_1.registerAsEventHandler = registerAsEventHandler;
+
     /**
      * A setter for [GET_RESOURCE_KVP_STRING](#\_0x5240DA5A).
      *
      * Hash: 0x21C7A35B
      */
-    function setKvp(key, value) {
+    export function setKvp(key: string, value: string): void {
         SetResourceKvp(key, value);
     }
-    resource_1.setKvp = setKvp;
+
     /**
      * A setter for [GET_RESOURCE_KVP_FLOAT](#\_0x35BDCEEA).
      *
      * Hash: 0x9ADD2938
      */
-    function setKvpFloat(key, value) {
+    export function setKvpFloat(key: string, value: number): void {
         SetResourceKvpFloat(key, value);
     }
-    resource_1.setKvpFloat = setKvpFloat;
+
     /**
      * Nonsynchronous [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
      *
      * Hash: 0x3517BFBE
      */
-    function setKvpFloatNoSync(key, value) {
+    export function setKvpFloatNoSync(key: string, value: number): void {
         SetResourceKvpFloatNoSync(key, value);
     }
-    resource_1.setKvpFloatNoSync = setKvpFloatNoSync;
+
     /**
      * A setter for [GET_RESOURCE_KVP_INT](#\_0x557B586A).
      *
      * Hash: 0x6A2B1E8
      */
-    function setKvpInt(key, value) {
+    export function setKvpInt(key: string, value: number): void {
         SetResourceKvpInt(key, value);
     }
-    resource_1.setKvpInt = setKvpInt;
+
     /**
      * Nonsynchronous [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
      *
      * Hash: 0x26AEB707
      */
-    function setKvpIntNoSync(key, value) {
+    export function setKvpIntNoSync(key: string, value: number): void {
         SetResourceKvpIntNoSync(key, value);
     }
-    resource_1.setKvpIntNoSync = setKvpIntNoSync;
+
     /**
      * Nonsynchronous [SET_RESOURCE_KVP](#\_0x21C7A35B) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
      *
      * Hash: 0xCF9A2FF
      */
-    function setKvpNoSync(key, value) {
+    export function setKvpNoSync(key: string, value: string): void {
         SetResourceKvpNoSync(key, value);
     }
-    resource_1.setKvpNoSync = setKvpNoSync;
-})(resource || (resource = {}));
-export var task;
-(function (task) {
+
+}
+
+
+export namespace task {
     /**
      * Clear a ped's tasks. Stop animations and other tasks created by scripts.
      *
@@ -4944,11 +4972,11 @@ export var task;
      *
      * Hash: 0xDE3316AB
      */
-    function clearPeds(ped) {
+    export function clearPeds(ped: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         ClearPedTasks(_ped);
     }
-    task.clearPeds = clearPeds;
+
     /**
      * Immediately stops the pedestrian from whatever it's doing. The difference between this and [CLEAR_PED_TASKS](#\_0xE1EF3C1216AFF2CD) is that this one teleports the ped but does not change the position of the ped.
      *
@@ -4956,11 +4984,11 @@ export var task;
      *
      * Hash: 0xBC045625
      */
-    function clearPedsImmediately(ped) {
+    export function clearPedsImmediately(ped: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         ClearPedTasksImmediately(_ped);
     }
-    task.clearPedsImmediately = clearPedsImmediately;
+
     /**
      * ```
      * Makes the specified ped attack the target ped.
@@ -4972,12 +5000,12 @@ export var task;
      *
      * Hash: 0xCB0D8932
      */
-    function combatPed(ped, targetPed) {
+    export function combatPed(ped: number | Ped, targetPed: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _targetPed = targetPed instanceof Ped ? targetPed.handle() : targetPed;
         TaskCombatPed(_ped, _targetPed, 0, 0);
     }
-    task.combatPed = combatPed;
+
     /**
      * ```
      * Example:
@@ -4992,15 +5020,14 @@ export var task;
      *
      * Hash: 0x2B84D1C4
      */
-    function driveBy(driverPed, targetPed, targetVehicle, targetX, targetY, targetZ, distanceToShoot, pedAccuracy, firingPattern) {
+    export function driveBy(driverPed: number | Ped, targetPed: number | Ped, targetVehicle: number | Vehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void {
         const _driverPed = driverPed instanceof Ped ? driverPed.handle() : driverPed;
         const _targetPed = targetPed instanceof Ped ? targetPed.handle() : targetPed;
         const _targetVehicle = targetVehicle instanceof Vehicle ? targetVehicle.localId() : targetVehicle;
-        if (typeof firingPattern === 'string')
-            firingPattern = misc.getHashKey(firingPattern);
+        if (typeof firingPattern === 'string') firingPattern = misc.getHashKey(firingPattern)
         TaskDriveBy(_driverPed, _targetPed, _targetVehicle, targetX, targetY, targetZ, distanceToShoot, pedAccuracy, false, firingPattern);
     }
-    task.driveBy = driveBy;
+
     /**
      * ```
      * speed 1.0 = walk, 2.0 = run
@@ -5012,12 +5039,12 @@ export var task;
      *
      * Hash: 0xB8689B4E
      */
-    function enterVehicle(ped, vehicle, timeout, seatIndex, speed, flag) {
+    export function enterVehicle(ped: number | Ped, vehicle: number | Vehicle, timeout: number, seatIndex: number, speed: number, flag: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         TaskEnterVehicle(_ped, _vehicle, timeout, seatIndex, speed, flag, undefined);
     }
-    task.enterVehicle = enterVehicle;
+
     /**
      * TASK_EVERYONE_LEAVE_VEHICLE
      *
@@ -5025,11 +5052,11 @@ export var task;
      *
      * Hash: 0xC1971F30
      */
-    function everyoneLeaveVehicle(vehicle) {
+    export function everyoneLeaveVehicle(vehicle: number | Vehicle): void {
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         TaskEveryoneLeaveVehicle(_vehicle);
     }
-    task.everyoneLeaveVehicle = everyoneLeaveVehicle;
+
     /**
      * TASK_GO_STRAIGHT_TO_COORD
      *
@@ -5037,11 +5064,11 @@ export var task;
      *
      * Hash: 0x80A9E7A7
      */
-    function goStraightToCoord(ped, pos, speed, timeout, targetHeading, distanceToSlide) {
+    export function goStraightToCoord(ped: number | Ped, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         TaskGoStraightToCoord(_ped, pos.x, pos.y, pos.z, speed, timeout, targetHeading, distanceToSlide);
     }
-    task.goStraightToCoord = goStraightToCoord;
+
     /**
      * Tells a ped to go to a coord by any means.
      *
@@ -5099,12 +5126,12 @@ export var task;
      *
      * Hash: 0xF91DF93B
      */
-    function goToCoordAnyMeans(ped, pos, fMoveBlendRatio, vehicle, bUseLongRangeVehiclePathing, drivingFlags, fMaxRangeToShootTargets) {
+    export function goToCoordAnyMeans(ped: number | Ped, pos: Vector3, fMoveBlendRatio: number, vehicle: number | Vehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         TaskGoToCoordAnyMeans(_ped, pos.x, pos.y, pos.z, fMoveBlendRatio, _vehicle, bUseLongRangeVehiclePathing, drivingFlags, fMaxRangeToShootTargets);
     }
-    task.goToCoordAnyMeans = goToCoordAnyMeans;
+
     /**
      * ```
      * The entity will move towards the target until time is over (duration) or get in target's range (distance). p5 and p6 are unknown, but you could leave p5 = 1073741824 or 100 or even 0 (didn't see any difference but on the decompiled scripts, they use 1073741824 mostly) and p6 = 0
@@ -5117,12 +5144,12 @@ export var task;
      *
      * Hash: 0x374827C2
      */
-    function goToEntity(entity, target, duration, distance, speed) {
+    export function goToEntity(entity: number | Entity, target: number | Entity, duration: number, distance: number, speed: number): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         const _target = target instanceof Entity ? target.handle() : target;
         TaskGoToEntity(_entity, _target, duration, distance, speed, 0, 0);
     }
-    task.goToEntity = goToEntity;
+
     /**
      * ```
      * In the scripts, p3 was always -1.
@@ -5134,12 +5161,12 @@ export var task;
      *
      * Hash: 0x8DCC19C5
      */
-    function handsUp(ped, duration, facingPed) {
+    export function handsUp(ped: number | Ped, duration: number, facingPed: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _facingPed = facingPed instanceof Ped ? facingPed.handle() : facingPed;
         TaskHandsUp(_ped, duration, _facingPed, 0, false);
     }
-    task.handsUp = handsUp;
+
     /**
      * Flags are the same flags used in [`TASK_LEAVE_VEHICLE`](#\_0xD3DBCE61A490BE02)
      *
@@ -5147,11 +5174,11 @@ export var task;
      *
      * Hash: 0xDBDD79FA
      */
-    function leaveAnyVehicle(ped, flags) {
+    export function leaveAnyVehicle(ped: number | Ped, flags: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         TaskLeaveAnyVehicle(_ped, 0, flags);
     }
-    task.leaveAnyVehicle = leaveAnyVehicle;
+
     /**
      * ```
      * Flags from decompiled scripts:
@@ -5169,12 +5196,12 @@ export var task;
      *
      * Hash: 0x7B1141C6
      */
-    function leaveVehicle(ped, vehicle, flags) {
+    export function leaveVehicle(ped: number | Ped, vehicle: number | Vehicle, flags: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         TaskLeaveVehicle(_ped, _vehicle, flags);
     }
-    task.leaveVehicle = leaveVehicle;
+
     /**
      * [Animations list](https://alexguirre.github.io/animations-list/)
      *
@@ -5219,11 +5246,11 @@ export var task;
      *
      * Hash: 0x5AB552C6
      */
-    function playAnim(ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ) {
+    export function playAnim(ped: number | Ped, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         TaskPlayAnim(_ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ);
     }
-    task.playAnim = playAnim;
+
     /**
      * Similar in functionality to [`TASK_PLAY_ANIM`](#\_0xEA47FE3719165B94), except the position and rotation parameters let you specify the initial position and rotation of the task. The ped is teleported to the position specified.
      * [Animations list](https://alexguirre.github.io/animations-list/)
@@ -5232,11 +5259,11 @@ export var task;
      *
      * Hash: 0x3DDEB0E6
      */
-    function playAnimAdvanced(ped, animDictionary, animationName, pos, rot, blendInSpeed, blendOutSpeed, duration, flag, animTime) {
+    export function playAnimAdvanced(ped: number | Ped, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         TaskPlayAnimAdvanced(_ped, animDictionary, animationName, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, blendInSpeed, blendOutSpeed, duration, flag, animTime, undefined, undefined);
     }
-    task.playAnimAdvanced = playAnimAdvanced;
+
     /**
      * TASK_REACT_AND_FLEE_PED
      *
@@ -5244,12 +5271,12 @@ export var task;
      *
      * Hash: 0x8A632BD8
      */
-    function reactAndFleePed(ped, fleeTarget) {
+    export function reactAndFleePed(ped: number | Ped, fleeTarget: number | Ped): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _fleeTarget = fleeTarget instanceof Ped ? fleeTarget.handle() : fleeTarget;
         TaskReactAndFleePed(_ped, _fleeTarget);
     }
-    task.reactAndFleePed = reactAndFleePed;
+
     /**
      * ```
      * Firing Pattern Hash Information: https://pastebin.com/Px036isB
@@ -5259,13 +5286,12 @@ export var task;
      *
      * Hash: 0x601C22E3
      */
-    function shootAtCoord(ped, pos, duration, firingPattern) {
+    export function shootAtCoord(ped: number | Ped, pos: Vector3, duration: number, firingPattern: number | string): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
-        if (typeof firingPattern === 'string')
-            firingPattern = misc.getHashKey(firingPattern);
+        if (typeof firingPattern === 'string') firingPattern = misc.getHashKey(firingPattern)
         TaskShootAtCoord(_ped, pos.x, pos.y, pos.z, duration, firingPattern);
     }
-    task.shootAtCoord = shootAtCoord;
+
     /**
      * ```
      * //this part of the code is to determine at which entity the player is aiming, for example if you want to create a mod where you give orders to peds
@@ -5282,14 +5308,13 @@ export var task;
      *
      * Hash: 0xAC0631C9
      */
-    function shootAtEntity(entity, target, duration, firingPattern) {
+    export function shootAtEntity(entity: number | Entity, target: number | Entity, duration: number, firingPattern: number | string): void {
         const _entity = entity instanceof Entity ? entity.handle() : entity;
         const _target = target instanceof Entity ? target.handle() : target;
-        if (typeof firingPattern === 'string')
-            firingPattern = misc.getHashKey(firingPattern);
+        if (typeof firingPattern === 'string') firingPattern = misc.getHashKey(firingPattern)
         TaskShootAtEntity(_entity, _target, duration, firingPattern);
     }
-    task.shootAtEntity = shootAtEntity;
+
     /**
      * ```
      * NativeDB Introduced: v323
@@ -5302,43 +5327,46 @@ export var task;
      *
      * Hash: 0x65D4A35D
      */
-    function warpPedIntoVehicle(ped, vehicle, seatIndex) {
+    export function warpPedIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void {
         const _ped = ped instanceof Ped ? ped.handle() : ped;
         const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
         TaskWarpPedIntoVehicle(_ped, _vehicle, seatIndex);
     }
-    task.warpPedIntoVehicle = warpPedIntoVehicle;
-})(task || (task = {}));
-export var profiler;
-(function (profiler) {
+
+}
+
+
+export namespace profiler {
     /**
      * Scope entry for profiler.
      *
      * Hash: 0xC795A4A9
      */
-    function enterScope(scopeName) {
+    export function enterScope(scopeName: string): void {
         ProfilerEnterScope(scopeName);
     }
-    profiler.enterScope = enterScope;
+
     /**
      * Scope exit for profiler.
      *
      * Hash: 0xB39CA35C
      */
-    function exitScope() {
+    export function exitScope(): void {
         ProfilerExitScope();
     }
-    profiler.exitScope = exitScope;
+
     /**
      * Returns true if the profiler is active.
      *
      * Hash: 0xF8B7D7BB
      */
-    function isRecording() {
+    export function isRecording(): boolean {
         return ProfilerIsRecording();
     }
-    profiler.isRecording = isRecording;
-})(profiler || (profiler = {}));
+
+}
+
+
 // Deprecated root-level access - use namespaced functions instead
 /**
  * No comment provided
@@ -5346,9 +5374,10 @@ export var profiler;
  * Hash: 0x91B38FB6
  * @deprecated Use entity.getRemoteSyncedScenesAllowed(entity1) instead
  */
-export function getEntityRemoteSyncedScenesAllowed(entity1) {
+export function getEntityRemoteSyncedScenesAllowed(entity1: number | Entity): boolean {
     return entity.getRemoteSyncedScenesAllowed(entity1);
 }
+
 /**
  * Enables or disables the owner check for the specified entity in network-synchronized scenes. When set to `false`, the entity cannot participate in synced scenes initiated by clients that do not own the entity.
  *
@@ -5357,18 +5386,20 @@ export function getEntityRemoteSyncedScenesAllowed(entity1) {
  * Hash: 0xD3FC9D88
  * @deprecated Use entity.setRemoteSyncedScenesAllowed(entity1, allow) instead
  */
-export function setEntityRemoteSyncedScenesAllowed(entity1, allow) {
+export function setEntityRemoteSyncedScenesAllowed(entity1: number | Entity, allow: boolean): void {
     return entity.setRemoteSyncedScenesAllowed(entity1, allow);
 }
+
 /**
  * A getter for [FREEZE_ENTITY_POSITION](#\_0x428CA6DBD1094446).
  *
  * Hash: 0xEDBE6ADD
  * @deprecated Use entity.isPositionFrozen(entity1) instead
  */
-export function isEntityPositionFrozen(entity1) {
+export function isEntityPositionFrozen(entity1: number | Entity): boolean {
     return entity.isPositionFrozen(entity1);
 }
+
 /**
  * ```cpp
  * enum eApplyForceTypes {
@@ -5386,9 +5417,10 @@ export function isEntityPositionFrozen(entity1) {
  * Hash: 0xC1C0855A
  * @deprecated Use entity.applyForceTo(entity1, forceType, pos, offX, offY, offZ, nComponent, bLocalForce, bLocalOffset, bScaleByMass, bPlayAudio, bScaleByTimeWarp) instead
  */
-export function applyForceToEntity(entity1, forceType, pos, offX, offY, offZ, nComponent, bLocalForce, bLocalOffset, bScaleByMass, bPlayAudio, bScaleByTimeWarp) {
+export function applyForceToEntity(entity1: number | Entity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void {
     return entity.applyForceTo(entity1, forceType, pos, offX, offY, offZ, nComponent, bLocalForce, bLocalOffset, bScaleByMass, bPlayAudio, bScaleByTimeWarp);
 }
+
 /**
  * Deletes the specified entity.
  *
@@ -5397,18 +5429,20 @@ export function applyForceToEntity(entity1, forceType, pos, offX, offY, offZ, nC
  * Hash: 0xFAA3D236
  * @deprecated Use entity.deleteEntity(entity1) instead
  */
-export function deleteEntity(entity1) {
+export function deleteEntity(entity1: number | Entity): void {
     return entity.deleteEntity(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x3AC90869
  * @deprecated Use entity.doesExist(entity1) instead
  */
-export function doesEntityExist(entity1) {
+export function doesEntityExist(entity1: number | Object): boolean {
     return entity.doesExist(entity1);
 }
+
 /**
  * Freezes or unfreezes an entity preventing its coordinates to change by the player if set to `true`. You can still change the entity position using [`SET_ENTITY_COORDS`](#\_0x06843DA7060A026B).
  *
@@ -5417,27 +5451,30 @@ export function doesEntityExist(entity1) {
  * Hash: 0x65C16D57
  * @deprecated Use entity.freezePosition(entity1, toggle) instead
  */
-export function freezeEntityPosition(entity1, toggle) {
+export function freezeEntityPosition(entity1: number | Entity, toggle: boolean): void {
     return entity.freezePosition(entity1, toggle);
 }
+
 /**
  * Gets the entity that this entity is attached to.
  *
  * Hash: 0xFE1589F9
  * @deprecated Use entity.getAttachedTo(entity1) instead
  */
-export function getEntityAttachedTo(entity1) {
+export function getEntityAttachedTo(entity1: number | Entity): number {
     return entity.getAttachedTo(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xE8C0C629
  * @deprecated Use entity.getCollisionDisabled(entity1) instead
  */
-export function getEntityCollisionDisabled(entity1) {
+export function getEntityCollisionDisabled(entity1: number | Entity): boolean {
     return entity.getCollisionDisabled(entity1);
 }
+
 /**
  * Gets the current coordinates for a specified entity. This native is used server side when using OneSync.
  *
@@ -5446,81 +5483,90 @@ export function getEntityCollisionDisabled(entity1) {
  * Hash: 0x1647F1CB
  * @deprecated Use entity.getCoords(entity1) instead
  */
-export function getEntityCoords(entity1) {
+export function getEntityCoords(entity1: number | Entity): Vector3 {
     return entity.getCoords(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x972CC383
  * @deprecated Use entity.getHeading(entity1) instead
  */
-export function getEntityHeading(entity1) {
+export function getEntityHeading(entity1: number | Entity): number {
     return entity.getHeading(entity1);
 }
+
 /**
  * Only works for vehicle and peds
  *
  * Hash: 0x8E3222B7
  * @deprecated Use entity.getHealth(entity1) instead
  */
-export function getEntityHealth(entity1) {
+export function getEntityHealth(entity1: number | Entity): number {
     return entity.getHealth(entity1);
 }
+
 /**
  * Currently it only works with peds.
  *
  * Hash: 0xC7AE6AA1
  * @deprecated Use entity.getMaxHealth(entity1) instead
  */
-export function getEntityMaxHealth(entity1) {
+export function getEntityMaxHealth(entity1: number | Entity): number {
     return entity.getMaxHealth(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xDAFCB3EC
  * @deprecated Use entity.getModel(entity1) instead
  */
-export function getEntityModel(entity1) {
+export function getEntityModel(entity1: number | Entity): number {
     return entity.getModel(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xD16EA02F
  * @deprecated Use entity.getOrphanMode(entity1) instead
  */
-export function getEntityOrphanMode(entity1) {
+export function getEntityOrphanMode(entity1: number | Entity): number {
     return entity.getOrphanMode(entity1);
 }
+
 /**
  * This native gets an entity's population type.
  *
  * Hash: 0xFC30DDFF
  * @deprecated Use entity.getPopulationType(entity1) instead
  */
-export function getEntityPopulationType(entity1) {
+export function getEntityPopulationType(entity1: number | Entity): number {
     return entity.getPopulationType(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x8FF45B04
  * @deprecated Use entity.getRotation(entity1) instead
  */
-export function getEntityRotation(entity1) {
+export function getEntityRotation(entity1: number | Entity): Vector3 {
     return entity.getRotation(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9BF8A73F
  * @deprecated Use entity.getRotationVelocity(entity1) instead
  */
-export function getEntityRotationVelocity(entity1) {
+export function getEntityRotationVelocity(entity1: number | Entity): Vector3 {
     return entity.getRotationVelocity(entity1);
 }
+
 /**
  * Gets the routing bucket for the specified entity.
  *
@@ -5529,18 +5575,20 @@ export function getEntityRotationVelocity(entity1) {
  * Hash: 0xED4B0486
  * @deprecated Use entity.getRoutingBucket(entity1) instead
  */
-export function getEntityRoutingBucket(entity1) {
+export function getEntityRoutingBucket(entity1: number | Entity): number {
     return entity.getRoutingBucket(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xB7F70784
  * @deprecated Use entity.getScript(entity1) instead
  */
-export function getEntityScript(entity1) {
+export function getEntityScript(entity1: number | Entity): string {
     return entity.getScript(entity1);
 }
+
 /**
  * Gets the current speed of the entity in meters per second.
  *
@@ -5552,9 +5600,10 @@ export function getEntityScript(entity1) {
  * Hash: 0x9E1E4798
  * @deprecated Use entity.getSpeed(entity1) instead
  */
-export function getEntitySpeed(entity1) {
+export function getEntitySpeed(entity1: number | Entity): number {
     return entity.getSpeed(entity1);
 }
+
 /**
  * Gets the entity type (as an integer), which can be one of the following defined down below:
  *
@@ -5588,18 +5637,20 @@ export function getEntitySpeed(entity1) {
  * Hash: 0xB1BD08D
  * @deprecated Use entity.getType(entity1) instead
  */
-export function getEntityType(entity1) {
+export function getEntityType(entity1: number | Entity): number {
     return entity.getType(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xC14C9B6B
  * @deprecated Use entity.getVelocity(entity1) instead
  */
-export function getEntityVelocity(entity1) {
+export function getEntityVelocity(entity1: number | Entity): Vector3 {
     return entity.getVelocity(entity1);
 }
+
 /**
  * Gets the specific entity type (as an integer), which can be one of the following defined down below:
  *
@@ -5666,27 +5717,30 @@ export function getEntityVelocity(entity1) {
  * Hash: 0x23B2A641
  * @deprecated Use entity.getNetTypeFrom(entity1) instead
  */
-export function getNetTypeFromEntity(entity1) {
+export function getNetTypeFromEntity(entity1: number | Entity): number {
     return entity.getNetTypeFrom(entity1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9C9A3BE0
  * @deprecated Use entity.hasBeenMarkedAsNoLongerNeeded(vehicle) instead
  */
-export function hasEntityBeenMarkedAsNoLongerNeeded(vehicle) {
+export function hasEntityBeenMarkedAsNoLongerNeeded(vehicle: number | Vehicle): boolean {
     return entity.hasBeenMarkedAsNoLongerNeeded(vehicle);
 }
+
 /**
  * This native checks if the given entity is visible.
  *
  * Hash: 0x120B4ED5
  * @deprecated Use entity.isVisible(entity1) instead
  */
-export function isEntityVisible(entity1) {
+export function isEntityVisible(entity1: number | Entity): boolean {
     return entity.isVisible(entity1);
 }
+
 /**
  * Sets the coordinates (world position) for a specified entity, offset by the radius of the entity on the Z axis.
  *
@@ -5695,9 +5749,10 @@ export function isEntityVisible(entity1) {
  * Hash: 0xDF70B41B
  * @deprecated Use entity.setCoords(entity1, pos, alive, deadFlag, ragdollFlag, clearArea) instead
  */
-export function setEntityCoords(entity1, pos, alive, deadFlag, ragdollFlag, clearArea) {
+export function setEntityCoords(entity1: number | Entity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void {
     return entity.setCoords(entity1, pos, alive, deadFlag, ragdollFlag, clearArea);
 }
+
 /**
  * It overrides the default distance culling radius of an entity. Set to `0.0` to reset.
  * If you want to interact with an entity outside of your players' scopes set the radius to a huge number.
@@ -5707,9 +5762,10 @@ export function setEntityCoords(entity1, pos, alive, deadFlag, ragdollFlag, clea
  * Hash: 0xD3A183A3
  * @deprecated Use entity.setDistanceCullingRadius(entity1, radius) instead
  */
-export function setEntityDistanceCullingRadius(entity1, radius) {
+export function setEntityDistanceCullingRadius(entity1: number | Entity, radius: number): void {
     return entity.setDistanceCullingRadius(entity1, radius);
 }
+
 /**
  * Set the heading of an entity in degrees also known as "Yaw".
  *
@@ -5718,18 +5774,20 @@ export function setEntityDistanceCullingRadius(entity1, radius) {
  * Hash: 0xE0FF064D
  * @deprecated Use entity.setHeading(entity1, heading) instead
  */
-export function setEntityHeading(entity1, heading) {
+export function setEntityHeading(entity1: number | Entity, heading: number): void {
     return entity.setHeading(entity1, heading);
 }
+
 /**
  * It allows to flag an entity to ignore the request control filter policy.
  *
  * Hash: 0x9F7F8D36
  * @deprecated Use entity.setIgnoreRequestControlFilter(entity1, ignore) instead
  */
-export function setEntityIgnoreRequestControlFilter(entity1, ignore) {
+export function setEntityIgnoreRequestControlFilter(entity1: number | Entity, ignore: boolean): void {
     return entity.setIgnoreRequestControlFilter(entity1, ignore);
 }
+
 /**
  * ```cpp
  * enum EntityOrphanMode {
@@ -5755,9 +5813,10 @@ export function setEntityIgnoreRequestControlFilter(entity1, ignore) {
  * Hash: 0x489E9162
  * @deprecated Use entity.setOrphanMode(entity1, orphanMode) instead
  */
-export function setEntityOrphanMode(entity1, orphanMode) {
+export function setEntityOrphanMode(entity1: number | Entity, orphanMode: number): void {
     return entity.setOrphanMode(entity1, orphanMode);
 }
+
 /**
  * Sets the rotation of a specified entity in the game world.
  *
@@ -5770,9 +5829,10 @@ export function setEntityOrphanMode(entity1, orphanMode) {
  * Hash: 0xA345EFE
  * @deprecated Use entity.setRotation(entity1, pitch, roll, yaw, rotationOrder, bDeadCheck) instead
  */
-export function setEntityRotation(entity1, pitch, roll, yaw, rotationOrder, bDeadCheck) {
+export function setEntityRotation(entity1: number | Entity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void {
     return entity.setRotation(entity1, pitch, roll, yaw, rotationOrder, bDeadCheck);
 }
+
 /**
  * Sets the routing bucket for the specified entity.
  *
@@ -5781,9 +5841,10 @@ export function setEntityRotation(entity1, pitch, roll, yaw, rotationOrder, bDea
  * Hash: 0x635E5289
  * @deprecated Use entity.setRoutingBucket(entity1, bucket) instead
  */
-export function setEntityRoutingBucket(entity1, bucket) {
+export function setEntityRoutingBucket(entity1: number | Entity, bucket: number): void {
     return entity.setRoutingBucket(entity1, bucket);
 }
+
 /**
  * ```
  * Note that the third parameter(denoted as z) is "up and down" with positive numbers encouraging upwards movement.
@@ -5794,18 +5855,20 @@ export function setEntityRoutingBucket(entity1, bucket) {
  * Hash: 0xFF5A1988
  * @deprecated Use entity.setVelocity(entity1, pos) instead
  */
-export function setEntityVelocity(entity1, pos) {
+export function setEntityVelocity(entity1: number | Entity, pos: Vector3): void {
     return entity.setVelocity(entity1, pos);
 }
+
 /**
  * Internal function for ensuring an entity has a state bag.
  *
  * Hash: 0x3BB78F05
  * @deprecated Use entity.ensureStateBag(entity1) instead
  */
-export function ensureEntityStateBag(entity1) {
+export function ensureEntityStateBag(entity1: number | Entity): void {
     return entity.ensureStateBag(entity1);
 }
+
 /**
  * ### Supported types
  *
@@ -5839,18 +5902,20 @@ export function ensureEntityStateBag(entity1) {
  * Hash: 0xDFFBA12F
  * @deprecated Use entity.getEntitiesInRadius(pos, radius, entityType, sortByDistance, models) instead
  */
-export function getEntitiesInRadius(pos, radius, entityType, sortByDistance, models) {
+export function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | Object): number {
     return entity.getEntitiesInRadius(pos, radius, entityType, sortByDistance, models);
 }
+
 /**
  * Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](#\_0x5BA35AAF).
  *
  * Hash: 0x4BDF1867
  * @deprecated Use entity.getFromStateBagName(bagName) instead
  */
-export function getEntityFromStateBagName(bagName) {
+export function getEntityFromStateBagName(bagName: string): number {
     return entity.getFromStateBagName(bagName);
 }
+
 /**
  * Creates a blip for the specified coordinates. You can use `SET_BLIP_` natives to change the blip.
  *
@@ -5859,9 +5924,10 @@ export function getEntityFromStateBagName(bagName) {
  * Hash: 0xC6F43D0E
  * @deprecated Use hud.addBlipForCoord(pos) instead
  */
-export function addBlipForCoord(pos) {
+export function addBlipForCoord(pos: Vector3): number {
     return hud.addBlipForCoord(pos);
 }
+
 /**
  * Create a blip that by default is red (enemy), you can use [SET_BLIP_AS_FRIENDLY](#\_0xC6F43D0E) to make it blue (friend).\
  * Can be used for objects, vehicles and peds.
@@ -5875,9 +5941,10 @@ export function addBlipForCoord(pos) {
  * Hash: 0x30822554
  * @deprecated Use hud.addBlipForEntity(entity) instead
  */
-export function addBlipForEntity(entity) {
+export function addBlipForEntity(entity: number | Entity): number {
     return hud.addBlipForEntity(entity);
 }
+
 /**
  * Create a blip with a radius for the specified coordinates (it doesnt create the blip sprite, so you need to use [AddBlipCoords](#\_0xC6F43D0E))
  * Example image:
@@ -5888,9 +5955,10 @@ export function addBlipForEntity(entity) {
  * Hash: 0x4626756C
  * @deprecated Use hud.addBlipForRadius(pos, radius) instead
  */
-export function addBlipForRadius(pos, radius) {
+export function addBlipForRadius(pos: Vector3, radius: number): number {
     return hud.addBlipForRadius(pos, radius);
 }
+
 /**
  * Removes the blip from your map.
  * **Note:** This function only works on the script that created the blip, if you wish to remove blips created by other scripts, see [`SET_THIS_SCRIPT_CAN_REMOVE_BLIPS_CREATED_BY_ANY_SCRIPT`](#\_0x86A652570E5F25DD).
@@ -5900,9 +5968,10 @@ export function addBlipForRadius(pos, radius) {
  * Hash: 0xD8C3C1CD
  * @deprecated Use hud.removeBlip(blip) instead
  */
-export function removeBlip(blip) {
+export function removeBlip(blip: number | Blip): void {
     return hud.removeBlip(blip);
 }
+
 /**
  * Sets the displayed sprite for a specific blip.
  * There's a [list of sprites](https://docs.fivem.net/game-references/blips/) on the FiveM documentation site.
@@ -5912,9 +5981,10 @@ export function removeBlip(blip) {
  * Hash: 0x8DBBB0B9
  * @deprecated Use hud.setBlipSprite(blip, spriteId) instead
  */
-export function setBlipSprite(blip, spriteId) {
+export function setBlipSprite(blip: number | Blip, spriteId: number): void {
     return hud.setBlipSprite(blip, spriteId);
 }
+
 /**
  * Adds a rectangular blip for the specified coordinates/area.
  * It is recommended to use [SET_BLIP_ROTATION](#\_0xF87683CDF73C3F6E) and [SET_BLIP_COLOUR](#\_0x03D7FB09E75D6B7E) to make the blip not rotate along with the camera.
@@ -5929,108 +5999,120 @@ export function setBlipSprite(blip, spriteId) {
  * Hash: 0x6228F159
  * @deprecated Use hud.addBlipForArea(pos, width, height) instead
  */
-export function addBlipForArea(pos, width, height) {
+export function addBlipForArea(pos: Vector3, width: number, height: number): number {
     return hud.addBlipForArea(pos, width, height);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xF97B1C93
  * @deprecated Use misc.enableEnhancedHostSupport(enabled) instead
  */
-export function enableEnhancedHostSupport(enabled) {
+export function enableEnhancedHostSupport(enabled: boolean): void {
     return misc.enableEnhancedHostSupport(enabled);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x13B6855D
  * @deprecated Use misc.flagServerAsPrivate(private_) instead
  */
-export function flagServerAsPrivate(private_) {
+export function flagServerAsPrivate(private_: boolean): void {
     return misc.flagServerAsPrivate(private_);
 }
+
 /**
  * Returns the current console output buffer.
  *
  * Hash: 0xE57429FA
  * @deprecated Use misc.getConsoleBuffer() instead
  */
-export function getConsoleBuffer() {
+export function getConsoleBuffer(): string {
     return misc.getConsoleBuffer();
 }
+
 /**
  * Gets the current game timer in milliseconds.
  *
  * Hash: 0xA4EA0691
  * @deprecated Use misc.getGameTimer() instead
  */
-export function getGameTimer() {
+export function getGameTimer(): number {
     return misc.getGameTimer();
 }
+
 /**
  * This native converts the passed string to a hash.
  *
  * Hash: 0x98EFF6F1
  * @deprecated Use misc.getHashKey(model) instead
  */
-export function getHashKey(model) {
+export function getHashKey(model: string): number {
     return misc.getHashKey(model);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xF01E2AAB
  * @deprecated Use misc.getHeliMainRotorHealth(vehicle) instead
  */
-export function getHeliMainRotorHealth(vehicle) {
+export function getHeliMainRotorHealth(vehicle: number | Vehicle): number {
     return misc.getHeliMainRotorHealth(vehicle);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x5F70F5A3
  * @deprecated Use misc.getHostId() instead
  */
-export function getHostId() {
+export function getHostId(): string {
     return misc.getHostId();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x23473EA4
  * @deprecated Use misc.getPasswordHash(password) instead
  */
-export function getPasswordHash(password) {
+export function getPasswordHash(password: string): string {
     return misc.getPasswordHash(password);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x76876154
  * @deprecated Use misc.isFlashLightOn(ped) instead
  */
-export function isFlashLightOn(ped) {
+export function isFlashLightOn(ped: number | Ped): boolean {
     return misc.isFlashLightOn(ped);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x8E8CC653
  * @deprecated Use misc.performHttpRequestInternal(requestData, requestDataLength) instead
  */
-export function performHttpRequestInternal(requestData, requestDataLength) {
+export function performHttpRequestInternal(requestData: string, requestDataLength: number): number {
     return misc.performHttpRequestInternal(requestData, requestDataLength);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x6B171E87
  * @deprecated Use misc.performHttpRequestInternalEx(requestData) instead
  */
-export function performHttpRequestInternalEx(requestData) {
+export function performHttpRequestInternalEx(requestData: number | Object): number {
     return misc.performHttpRequestInternalEx(requestData);
 }
+
 /**
  * Prints 'structured trace' data to the server `file descriptor 3` channel. This is not generally useful outside of
  * server monitoring utilities.
@@ -6038,54 +6120,60 @@ export function performHttpRequestInternalEx(requestData) {
  * Hash: 0x90892DED
  * @deprecated Use misc.printStructuredTrace(jsonString) instead
  */
-export function printStructuredTrace(jsonString) {
+export function printStructuredTrace(jsonString: string): void {
     return misc.printStructuredTrace(jsonString);
 }
+
 /**
  * Registers a listener for console output messages.
  *
  * Hash: 0x281B5448
  * @deprecated Use misc.registerConsoleListener(listener) instead
  */
-export function registerConsoleListener(listener) {
+export function registerConsoleListener(listener: Function): void {
     return misc.registerConsoleListener(listener);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x341B16D2
  * @deprecated Use misc.setConvar(varName, value) instead
  */
-export function setConvar(varName, value) {
+export function setConvar(varName: string, value: string): void {
     return misc.setConvar(varName, value);
 }
+
 /**
  * Used to replicate a server variable onto clients.
  *
  * Hash: 0xF292858C
  * @deprecated Use misc.setConvarReplicated(varName, value) instead
  */
-export function setConvarReplicated(varName, value) {
+export function setConvarReplicated(varName: string, value: string): void {
     return misc.setConvarReplicated(varName, value);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9338D547
  * @deprecated Use misc.setConvarServerInfo(varName, value) instead
  */
-export function setConvarServerInfo(varName, value) {
+export function setConvarServerInfo(varName: string, value: string): void {
     return misc.setConvarServerInfo(varName, value);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xF90B7469
  * @deprecated Use misc.setGameType(gametypeName) instead
  */
-export function setGameType(gametypeName) {
+export function setGameType(gametypeName: string): void {
     return misc.setGameType(gametypeName);
 }
+
 /**
  * Sets the handler for HTTP requests made to the executing resource.
  *
@@ -6127,18 +6215,20 @@ export function setGameType(gametypeName) {
  * Hash: 0xF5C6330C
  * @deprecated Use misc.setHttpHandler(handler) instead
  */
-export function setHttpHandler(handler) {
+export function setHttpHandler(handler: Function): void {
     return misc.setHttpHandler(handler);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xB7BA82DC
  * @deprecated Use misc.setMapName(mapName) instead
  */
-export function setMapName(mapName) {
+export function setMapName(mapName: string): void {
     return misc.setMapName(mapName);
 }
+
 /**
  * Sets the entity lockdown mode for a specific routing bucket.
  *
@@ -6153,45 +6243,50 @@ export function setMapName(mapName) {
  * Hash: 0xA0F2201F
  * @deprecated Use misc.setRoutingBucketEntityLockdownMode(bucketId, mode) instead
  */
-export function setRoutingBucketEntityLockdownMode(bucketId, mode) {
+export function setRoutingBucketEntityLockdownMode(bucketId: number, mode: string): void {
     return misc.setRoutingBucketEntityLockdownMode(bucketId, mode);
 }
+
 /**
  * Sets whether or not the specified routing bucket has automatically-created population enabled.
  *
  * Hash: 0xCE51AC2C
  * @deprecated Use misc.setRoutingBucketPopulationEnabled(bucketId, mode) instead
  */
-export function setRoutingBucketPopulationEnabled(bucketId, mode) {
+export function setRoutingBucketPopulationEnabled(bucketId: number, mode: boolean): void {
     return misc.setRoutingBucketPopulationEnabled(bucketId, mode);
 }
+
 /**
  * The backing function for TriggerClientEvent.
  *
  * Hash: 0x2F7A49E6
  * @deprecated Use misc.triggerClientEventInternal(eventName, eventTarget, eventPayload, payloadLength) instead
  */
-export function triggerClientEventInternal(eventName, eventTarget, eventPayload, payloadLength) {
+export function triggerClientEventInternal(eventName: string, eventTarget: string, eventPayload: string, payloadLength: number): void {
     return misc.triggerClientEventInternal(eventName, eventTarget, eventPayload, payloadLength);
 }
+
 /**
  * The backing function for TriggerLatentClientEvent.
  *
  * Hash: 0x70B35890
  * @deprecated Use misc.triggerLatentClientEventInternal(eventName, eventTarget, eventPayload, payloadLength, bps) instead
  */
-export function triggerLatentClientEventInternal(eventName, eventTarget, eventPayload, payloadLength, bps) {
+export function triggerLatentClientEventInternal(eventName: string, eventTarget: string, eventPayload: string, payloadLength: number, bps: number): void {
     return misc.triggerLatentClientEventInternal(eventName, eventTarget, eventPayload, payloadLength, bps);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x2E310ACD
  * @deprecated Use misc.verifyPasswordHash(password, hash) instead
  */
-export function verifyPasswordHash(password, hash) {
+export function verifyPasswordHash(password: string, hash: string): boolean {
     return misc.verifyPasswordHash(password, hash);
 }
+
 /**
  * Adds a listener for Console Variable changes.
  *
@@ -6207,9 +6302,10 @@ export function verifyPasswordHash(password, hash) {
  * Hash: 0xAB7F7241
  * @deprecated Use misc.addConvarChangeListener(conVarFilter, handler) instead
  */
-export function addConvarChangeListener(conVarFilter, handler) {
+export function addConvarChangeListener(conVarFilter: string, handler: Function): number {
     return misc.addConvarChangeListener(conVarFilter, handler);
 }
+
 /**
  * Adds a handler for changes to a state bag.
  *
@@ -6234,90 +6330,100 @@ export function addConvarChangeListener(conVarFilter, handler) {
  * Hash: 0x5BA35AAF
  * @deprecated Use misc.addStateBagChangeHandler(keyFilter, bagFilter, handler) instead
  */
-export function addStateBagChangeHandler(keyFilter, bagFilter, handler) {
+export function addStateBagChangeHandler(keyFilter: string, bagFilter: string, handler: Function): number {
     return misc.addStateBagChangeHandler(keyFilter, bagFilter, handler);
 }
+
 /**
  * Cancels the currently executing event.
  *
  * Hash: 0xFA29D35D
  * @deprecated Use misc.cancelEvent() instead
  */
-export function cancelEvent() {
+export function cancelEvent(): void {
     return misc.cancelEvent();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x1E86F206
  * @deprecated Use misc.deleteFunctionReference(referenceIdentity) instead
  */
-export function deleteFunctionReference(referenceIdentity) {
+export function deleteFunctionReference(referenceIdentity: string): void {
     return misc.deleteFunctionReference(referenceIdentity);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xF4E2079D
  * @deprecated Use misc.duplicateFunctionReference(referenceIdentity) instead
  */
-export function duplicateFunctionReference(referenceIdentity) {
+export function duplicateFunctionReference(referenceIdentity: string): string {
     return misc.duplicateFunctionReference(referenceIdentity);
 }
+
 /**
  * Depending on your use case you may need to use `add_acl resource.<your_resource_name> command.<command_name> allow` to use this native in your resource.
  *
  * Hash: 0x561C060B
  * @deprecated Use misc.executeCommand(commandString) instead
  */
-export function executeCommand(commandString) {
+export function executeCommand(commandString: string): void {
     return misc.executeCommand(commandString);
 }
+
 /**
  * An internal function for converting a stack trace object to a string.
  *
  * Hash: 0xD70C3BCA
  * @deprecated Use misc.formatStackTrace(traceData) instead
  */
-export function formatStackTrace(traceData) {
+export function formatStackTrace(traceData: number | Object): string {
     return misc.formatStackTrace(traceData);
 }
+
 /**
  * Can be used to get a console variable of type `char*`, for example a string.
  *
  * Hash: 0x6CCD2564
  * @deprecated Use misc.getConvar(varName, default_) instead
  */
-export function getConvar(varName, default_) {
+export function getConvar(varName: string, default_: string): string {
     return misc.getConvar(varName, default_);
 }
+
 /**
  * Can be used to get a console variable casted back to `bool`.
  *
  * Hash: 0x7E8EBFE5
  * @deprecated Use misc.getConvarBool(varName, defaultValue) instead
  */
-export function getConvarBool(varName, defaultValue) {
+export function getConvarBool(varName: string, defaultValue: boolean): boolean {
     return misc.getConvarBool(varName, defaultValue);
 }
+
 /**
  * This will have floating point inaccuracy.
  *
  * Hash: 0x9E666D
  * @deprecated Use misc.getConvarFloat(varName, defaultValue) instead
  */
-export function getConvarFloat(varName, defaultValue) {
+export function getConvarFloat(varName: string, defaultValue: number): number {
     return misc.getConvarFloat(varName, defaultValue);
 }
+
 /**
  * Can be used to get a console variable casted back to `int` (an integer value).
  *
  * Hash: 0x935C0AB2
  * @deprecated Use misc.getConvarInt(varName, default_) instead
  */
-export function getConvarInt(varName, default_) {
+export function getConvarInt(varName: string, default_: number): number {
     return misc.getConvarInt(varName, default_);
 }
+
 /**
  * Returns the internal build number of the current game being executed.
  *
@@ -6351,9 +6457,10 @@ export function getConvarInt(varName, default_) {
  * Hash: 0x804B9F7B
  * @deprecated Use misc.getGameBuildNumber() instead
  */
-export function getGameBuildNumber() {
+export function getGameBuildNumber(): number {
     return misc.getGameBuildNumber();
 }
+
 /**
  * Returns the current game being executed.
  *
@@ -6369,9 +6476,10 @@ export function getGameBuildNumber() {
  * Hash: 0xE8EAA18B
  * @deprecated Use misc.getGameName() instead
  */
-export function getGameName() {
+export function getGameName(): string {
     return misc.getGameName();
 }
+
 /**
  * Returns a list of entity handles (script GUID) for all entities in the specified pool - the data returned is an array as
  * follows:
@@ -6391,18 +6499,20 @@ export function getGameName() {
  * Hash: 0x2B9D4F50
  * @deprecated Use misc.getGamePool(poolName) instead
  */
-export function getGamePool(poolName) {
+export function getGamePool(poolName: string): number {
     return misc.getGamePool(poolName);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9F1C4383
  * @deprecated Use misc.getInstanceId() instead
  */
-export function getInstanceId() {
+export function getInstanceId(): number {
     return misc.getInstanceId();
 }
+
 /**
  * Returns all commands that are registered in the command system.
  * The data returned adheres to the following layout:
@@ -6425,54 +6535,60 @@ export function getInstanceId() {
  * Hash: 0xD4BEF069
  * @deprecated Use misc.getRegisteredCommands() instead
  */
-export function getRegisteredCommands() {
+export function getRegisteredCommands(): number {
     return misc.getRegisteredCommands();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x78D864C7
  * @deprecated Use misc.getStateBagKeys(bagName) instead
  */
-export function getStateBagKeys(bagName) {
+export function getStateBagKeys(bagName: string): number {
     return misc.getStateBagKeys(bagName);
 }
+
 /**
  * Returns the value of a state bag key.
  *
  * Hash: 0x637F4C75
  * @deprecated Use misc.getStateBagValue(bagName, key) instead
  */
-export function getStateBagValue(bagName, key) {
+export function getStateBagValue(bagName: string, key: string): number {
     return misc.getStateBagValue(bagName, key);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x7EBB9929
  * @deprecated Use misc.isAceAllowed(_object) instead
  */
-export function isAceAllowed(_object) {
+export function isAceAllowed(_object: string): boolean {
     return misc.isAceAllowed(_object);
 }
+
 /**
  * Gets whether or not this is the CitizenFX server.
  *
  * Hash: 0xCF24C52E
  * @deprecated Use misc.isDuplicityVersion() instead
  */
-export function isDuplicityVersion() {
+export function isDuplicityVersion(): boolean {
     return misc.isDuplicityVersion();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x37CF52CE
  * @deprecated Use misc.isPrincipalAceAllowed(principal, _object) instead
  */
-export function isPrincipalAceAllowed(principal, _object) {
+export function isPrincipalAceAllowed(principal: string, _object: string): boolean {
     return misc.isPrincipalAceAllowed(principal, _object);
 }
+
 /**
  * Registered commands can be executed by entering them in the client console (this works for client side and server side registered commands). Or by entering them in the server console/through an RCON client (only works for server side registered commands). Or if you use a supported chat resource, like the default one provided in the cfx-server-data repository, then you can enter the command in chat by prefixing it with a `/`.
  *
@@ -6487,18 +6603,20 @@ export function isPrincipalAceAllowed(principal, _object) {
  * Hash: 0x5FA79B0F
  * @deprecated Use misc.registerCommand(commandName, handler, restricted) instead
  */
-export function registerCommand(commandName, handler, restricted) {
+export function registerCommand(commandName: string, handler: Function, restricted: boolean): void {
     return misc.registerCommand(commandName, handler, restricted);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xEAC49841
  * @deprecated Use misc.removeConvarChangeListener(cookie) instead
  */
-export function removeConvarChangeListener(cookie) {
+export function removeConvarChangeListener(cookie: number): void {
     return misc.removeConvarChangeListener(cookie);
 }
+
 /**
  * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
  *
@@ -6507,45 +6625,50 @@ export function removeConvarChangeListener(cookie) {
  * Hash: 0xD36BE661
  * @deprecated Use misc.removeStateBagChangeHandler(cookie) instead
  */
-export function removeStateBagChangeHandler(cookie) {
+export function removeStateBagChangeHandler(cookie: number): void {
     return misc.removeStateBagChangeHandler(cookie);
 }
+
 /**
  * Internal function for setting a state bag value.
  *
  * Hash: 0x8D50E33A
  * @deprecated Use misc.setStateBagValue(bagName, keyName, valueData, valueLength, replicated) instead
  */
-export function setStateBagValue(bagName, keyName, valueData, valueLength, replicated) {
+export function setStateBagValue(bagName: string, keyName: string, valueData: string, valueLength: number, replicated: boolean): void {
     return misc.setStateBagValue(bagName, keyName, valueData, valueLength, replicated);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x12A330
  * @deprecated Use misc.stateBagHasKey(bagName, key) instead
  */
-export function stateBagHasKey(bagName, key) {
+export function stateBagHasKey(bagName: string, key: string): boolean {
     return misc.stateBagHasKey(bagName, key);
 }
+
 /**
  * The backing function for TriggerEvent.
  *
  * Hash: 0x91310870
  * @deprecated Use misc.triggerEventInternal(eventName, eventPayload, payloadLength) instead
  */
-export function triggerEventInternal(eventName, eventPayload, payloadLength) {
+export function triggerEventInternal(eventName: string, eventPayload: string, payloadLength: number): void {
     return misc.triggerEventInternal(eventName, eventPayload, payloadLength);
 }
+
 /**
  * Returns whether or not the currently executing event was canceled.
  *
  * Hash: 0x58382A19
  * @deprecated Use misc.wasEventCanceled() instead
  */
-export function wasEventCanceled() {
+export function wasEventCanceled(): boolean {
     return misc.wasEventCanceled();
 }
+
 /**
  * ```
  * Applies an Item from a PedDecorationCollection to a ped. These include tattoos and shirt decals.
@@ -6577,9 +6700,10 @@ export function wasEventCanceled() {
  * Hash: 0x70559AC7
  * @deprecated Use ped.addDecorationFromHashes(ped1, collection, overlay) instead
  */
-export function addPedDecorationFromHashes(ped1, collection, overlay) {
+export function addPedDecorationFromHashes(ped1: number | Ped, collection: number | string, overlay: number | string): void {
     return ped.addDecorationFromHashes(ped1, collection, overlay);
 }
+
 /**
  * CLEAR_PED_PROP
  *
@@ -6588,9 +6712,10 @@ export function addPedDecorationFromHashes(ped1, collection, overlay) {
  * Hash: 0x2D23D743
  * @deprecated Use ped.clearProp(ped1, propId) instead
  */
-export function clearPedProp(ped1, propId) {
+export function clearPedProp(ped1: number | Ped, propId: number): void {
     return ped.clearProp(ped1, propId);
 }
+
 /**
  * CLEAR_PED_SECONDARY_TASK
  *
@@ -6599,9 +6724,10 @@ export function clearPedProp(ped1, propId) {
  * Hash: 0xA635F451
  * @deprecated Use ped.clearSecondaryTask(ped1) instead
  */
-export function clearPedSecondaryTask(ped1) {
+export function clearPedSecondaryTask(ped1: number | Ped): void {
     return ped.clearSecondaryTask(ped1);
 }
+
 /**
  * Creates a ped (biped character, pedestrian, actor) with the specified model at the specified position and heading.
  * This ped will initially be owned by the creating script as a mission entity, and the model should be loaded already
@@ -6612,9 +6738,10 @@ export function clearPedSecondaryTask(ped1) {
  * Hash: 0x389EF71
  * @deprecated Use ped.create(pedType, modelHash, pos, heading, isNetwork, bScriptHostPed) instead
  */
-export function createPed(pedType, modelHash, pos, heading, isNetwork, bScriptHostPed) {
+export function createPed(pedType: number, modelHash: number | string, pos: Vector3, heading: number, isNetwork: boolean, bScriptHostPed: boolean): number {
     return ped.create(pedType, modelHash, pos, heading, isNetwork, bScriptHostPed);
 }
+
 /**
  * CREATE_PED_INSIDE_VEHICLE
  *
@@ -6623,9 +6750,10 @@ export function createPed(pedType, modelHash, pos, heading, isNetwork, bScriptHo
  * Hash: 0x3000F092
  * @deprecated Use ped.createInsideVehicle(vehicle, pedType, modelHash, seat, isNetwork, bScriptHostPed) instead
  */
-export function createPedInsideVehicle(vehicle, pedType, modelHash, seat, isNetwork, bScriptHostPed) {
+export function createPedInsideVehicle(vehicle: number | Vehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number {
     return ped.createInsideVehicle(vehicle, pedType, modelHash, seat, isNetwork, bScriptHostPed);
 }
+
 /**
  * Returns all peds handles known to the server.
  * The data returned adheres to the following layout:
@@ -6637,117 +6765,130 @@ export function createPedInsideVehicle(vehicle, pedType, modelHash, seat, isNetw
  * Hash: 0xB8584FEF
  * @deprecated Use ped.getAlls() instead
  */
-export function getAllPeds() {
+export function getAllPeds(): number {
     return ped.getAlls();
 }
+
 /**
  * Returns the hash of weapon the Ped is currently using.
  *
  * Hash: 0xB0237302
  * @deprecated Use ped.getCurrentWeapon(ped1) instead
  */
-export function getCurrentPedWeapon(ped1) {
+export function getCurrentPedWeapon(ped1: number | Ped): number {
     return ped.getCurrentWeapon(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xF7C6792D
  * @deprecated Use ped.getLastInVehicleSeat(vehicle, seatIndex) instead
  */
-export function getLastPedInVehicleSeat(vehicle, seatIndex) {
+export function getLastPedInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number {
     return ped.getLastInVehicleSeat(vehicle, seatIndex);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x2CE311A7
  * @deprecated Use ped.getArmour(ped1) instead
  */
-export function getPedArmour(ped1) {
+export function getPedArmour(ped1: number | Ped): number {
     return ped.getArmour(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x63458C27
  * @deprecated Use ped.getCauseOfDeath(ped1) instead
  */
-export function getPedCauseOfDeath(ped1) {
+export function getPedCauseOfDeath(ped1: number | Ped): number {
     return ped.getCauseOfDeath(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xC182F76E
  * @deprecated Use ped.getDesiredHeading(ped1) instead
  */
-export function getPedDesiredHeading(ped1) {
+export function getPedDesiredHeading(ped1: number | Ped): number {
     return ped.getDesiredHeading(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x388FDE9A
  * @deprecated Use ped.getInVehicleSeat(vehicle, seatIndex) instead
  */
-export function getPedInVehicleSeat(vehicle, seatIndex) {
+export function getPedInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number {
     return ped.getInVehicleSeat(vehicle, seatIndex);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xA45B6C8D
  * @deprecated Use ped.getMaxHealth(ped1) instead
  */
-export function getPedMaxHealth(ped1) {
+export function getPedMaxHealth(ped1: number | Ped): number {
     return ped.getMaxHealth(ped1);
 }
+
 /**
  * Gets the current relationship group hash of a ped.
  *
  * Hash: 0x354F283C
  * @deprecated Use ped.getRelationshipGroupHash(ped1) instead
  */
-export function getPedRelationshipGroupHash(ped1) {
+export function getPedRelationshipGroupHash(ped1: number | Ped): number {
     return ped.getRelationshipGroupHash(ped1);
 }
+
 /**
  * Gets the script task command currently assigned to the ped.
  *
  * Hash: 0x84FE084
  * @deprecated Use ped.getScriptTaskCommand(ped1) instead
  */
-export function getPedScriptTaskCommand(ped1) {
+export function getPedScriptTaskCommand(ped1: number | Ped): number {
     return ped.getScriptTaskCommand(ped1);
 }
+
 /**
  * Gets the stage of the peds scripted task.
  *
  * Hash: 0x44B0E5E2
  * @deprecated Use ped.getScriptTaskStage(ped1) instead
  */
-export function getPedScriptTaskStage(ped1) {
+export function getPedScriptTaskStage(ped1: number | Ped): number {
     return ped.getScriptTaskStage(ped1);
 }
+
 /**
  * Get the last entity that damaged the ped. This native is used server side when using OneSync.
  *
  * Hash: 0x535DB43F
  * @deprecated Use ped.getSourceOfDamage(ped1) instead
  */
-export function getPedSourceOfDamage(ped1) {
+export function getPedSourceOfDamage(ped1: number | Ped): number {
     return ped.getSourceOfDamage(ped1);
 }
+
 /**
  * Get the entity that killed the ped. This native is used server side when using OneSync.
  *
  * Hash: 0x84ADF9EB
  * @deprecated Use ped.getSourceOfDeath(ped1) instead
  */
-export function getPedSourceOfDeath(ped1) {
+export function getPedSourceOfDeath(ped1: number | Ped): number {
     return ped.getSourceOfDeath(ped1);
 }
+
 /**
  * Gets the type of a ped's specific task given an index of the CPedTaskSpecificDataNode nodes.
  * A ped will typically have a task at index 0, if a ped has multiple tasks at once they will be in the order 0, 1, 2, etc.
@@ -6755,18 +6896,20 @@ export function getPedSourceOfDeath(ped1) {
  * Hash: 0x7F4563D3
  * @deprecated Use ped.getSpecificTaskType(ped1, index) instead
  */
-export function getPedSpecificTaskType(ped1, index) {
+export function getPedSpecificTaskType(ped1: number | Ped, index: number): number {
     return ped.getSpecificTaskType(ped1, index);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x40321B83
  * @deprecated Use ped.getStealthMovement(ped1) instead
  */
-export function getPedStealthMovement(ped1) {
+export function getPedStealthMovement(ped1: number | Ped): boolean {
     return ped.getStealthMovement(ped1);
 }
+
 /**
  * An alias of [GET_CURRENT_PED_WEAPON](#\_0xB0237302).
  *
@@ -6775,45 +6918,50 @@ export function getPedStealthMovement(ped1) {
  * Hash: 0xD240123E
  * @deprecated Use ped.getSelectedWeapon(ped1) instead
  */
-export function getSelectedPedWeapon(ped1) {
+export function getSelectedPedWeapon(ped1: number | Ped): number {
     return ped.getSelectedWeapon(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x25865633
  * @deprecated Use ped.isHandcuffed(ped1) instead
  */
-export function isPedHandcuffed(ped1) {
+export function isPedHandcuffed(ped1: number | Ped): boolean {
     return ped.isHandcuffed(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xC833BBE1
  * @deprecated Use ped.isRagdoll(ped1) instead
  */
-export function isPedRagdoll(ped1) {
+export function isPedRagdoll(ped1: number | Ped): boolean {
     return ped.isRagdoll(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xEFEED13C
  * @deprecated Use ped.isStrafing(ped1) instead
  */
-export function isPedStrafing(ped1) {
+export function isPedStrafing(ped1: number | Ped): boolean {
     return ped.isStrafing(ped1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x5AE7EDA2
  * @deprecated Use ped.isUsingActionMode(ped1) instead
  */
-export function isPedUsingActionMode(ped1) {
+export function isPedUsingActionMode(ped1: number | Ped): boolean {
     return ped.isUsingActionMode(ped1);
 }
+
 /**
  * SET_CURRENT_PED_WEAPON
  *
@@ -6822,9 +6970,10 @@ export function isPedUsingActionMode(ped1) {
  * Hash: 0xB8278882
  * @deprecated Use ped.setCurrentWeapon(ped1, weaponHash, bForceInHand) instead
  */
-export function setCurrentPedWeapon(ped1, weaponHash, bForceInHand) {
+export function setCurrentPedWeapon(ped1: number | Ped, weaponHash: number | string, bForceInHand: boolean): void {
     return ped.setCurrentWeapon(ped1, weaponHash, bForceInHand);
 }
+
 /**
  * ```
  * NativeDB Added Parameter 4: BOOL p3
@@ -6835,9 +6984,10 @@ export function setCurrentPedWeapon(ped1, weaponHash, bForceInHand) {
  * Hash: 0xBF90DF1A
  * @deprecated Use ped.setAmmo(ped1, weaponHash, ammo) instead
  */
-export function setPedAmmo(ped1, weaponHash, ammo) {
+export function setPedAmmo(ped1: number | Ped, weaponHash: number | string, ammo: number): void {
     return ped.setAmmo(ped1, weaponHash, ammo);
 }
+
 /**
  * ```
  * Sets the armor of the specified ped.
@@ -6850,9 +7000,10 @@ export function setPedAmmo(ped1, weaponHash, ammo) {
  * Hash: 0x4E3A0CC4
  * @deprecated Use ped.setArmour(ped1, amount) instead
  */
-export function setPedArmour(ped1, amount) {
+export function setPedArmour(ped1: number | Ped, amount: number): void {
     return ped.setArmour(ped1, amount);
 }
+
 /**
  * SET_PED_CAN_RAGDOLL
  *
@@ -6861,9 +7012,10 @@ export function setPedArmour(ped1, amount) {
  * Hash: 0xCF1384C4
  * @deprecated Use ped.setCanRagdoll(ped1, toggle) instead
  */
-export function setPedCanRagdoll(ped1, toggle) {
+export function setPedCanRagdoll(ped1: number | Ped, toggle: boolean): void {
     return ped.setCanRagdoll(ped1, toggle);
 }
+
 /**
  * This native is used to set component variation on a ped. Components, drawables and textures IDs are related to the ped model.
  *
@@ -6909,9 +7061,10 @@ export function setPedCanRagdoll(ped1, toggle) {
  * Hash: 0xD4F7B05C
  * @deprecated Use ped.setComponentVariation(ped1, componentId, drawableId, textureId, paletteId) instead
  */
-export function setPedComponentVariation(ped1, componentId, drawableId, textureId, paletteId) {
+export function setPedComponentVariation(ped1: number | Ped, componentId: number, drawableId: number, textureId: number, paletteId: number): void {
     return ped.setComponentVariation(ped1, componentId, drawableId, textureId, paletteId);
 }
+
 /**
  * ```cpp
  * // Potential names and hash collisions included as comments
@@ -7388,9 +7541,10 @@ export function setPedComponentVariation(ped1, componentId, drawableId, textureI
  * Hash: 0x9CFBE10D
  * @deprecated Use ped.setConfigFlag(ped1, flagId, value) instead
  */
-export function setPedConfigFlag(ped1, flagId, value) {
+export function setPedConfigFlag(ped1: number | Ped, flagId: number, value: boolean): void {
     return ped.setConfigFlag(ped1, flagId, value);
 }
+
 /**
  * ```
  * Sets Ped Default Clothes
@@ -7401,9 +7555,10 @@ export function setPedConfigFlag(ped1, flagId, value) {
  * Hash: 0xC866A984
  * @deprecated Use ped.setDefaultComponentVariation(ped1) instead
  */
-export function setPedDefaultComponentVariation(ped1) {
+export function setPedDefaultComponentVariation(ped1: number | Ped): void {
     return ped.setDefaultComponentVariation(ped1);
 }
+
 /**
  * Sets the tint index for the hair on the specified ped.
  *
@@ -7416,9 +7571,10 @@ export function setPedDefaultComponentVariation(ped1) {
  * Hash: 0xA23FE32C
  * @deprecated Use ped.setHairTint(ped1, colorID, highlightColorID) instead
  */
-export function setPedHairTint(ped1, colorID, highlightColorID) {
+export function setPedHairTint(ped1: number | Ped, colorID: number, highlightColorID: number): void {
     return ped.setHairTint(ped1, colorID, highlightColorID);
 }
+
 /**
  * For more info please refer to [this](https://gtaforums.com/topic/858970-all-gtao-face-ids-pedset-ped-head-blend-data-explained) topic.
  * <strong>Other information:</strong>
@@ -7435,9 +7591,10 @@ export function setPedHairTint(ped1, colorID, highlightColorID) {
  * Hash: 0x60746B88
  * @deprecated Use ped.setHeadBlendData(ped1, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent) instead
  */
-export function setPedHeadBlendData(ped1, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent) {
+export function setPedHeadBlendData(ped1: number | Ped, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void {
     return ped.setHeadBlendData(ped1, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent);
 }
+
 /**
  * ```
  * OverlayID ranges from 0 to 12, index from 0 to _GET_NUM_OVERLAY_VALUES(overlayID)-1, and opacity from 0.0 to 1.0.
@@ -7465,9 +7622,10 @@ export function setPedHeadBlendData(ped1, shapeFirstID, shapeSecondID, shapeThir
  * Hash: 0xD28DBA90
  * @deprecated Use ped.setHeadOverlay(ped1, overlayID, index, opacity) instead
  */
-export function setPedHeadOverlay(ped1, overlayID, index, opacity) {
+export function setPedHeadOverlay(ped1: number | Ped, overlayID: number, index: number, opacity: number): void {
     return ped.setHeadOverlay(ped1, overlayID, index, opacity);
 }
+
 /**
  * SET_PED_INTO_VEHICLE
  *
@@ -7476,9 +7634,10 @@ export function setPedHeadOverlay(ped1, overlayID, index, opacity) {
  * Hash: 0x7500C79
  * @deprecated Use ped.setIntoVehicle(ped1, vehicle, seatIndex) instead
  */
-export function setPedIntoVehicle(ped1, vehicle, seatIndex) {
+export function setPedIntoVehicle(ped1: number | Ped, vehicle: number | Vehicle, seatIndex: number): void {
     return ped.setIntoVehicle(ped1, vehicle, seatIndex);
 }
+
 /**
  * This native is used to set prop variation on a ped. Components, drawables and textures IDs are related to the ped model.
  *
@@ -7516,9 +7675,10 @@ export function setPedIntoVehicle(ped1, vehicle, seatIndex) {
  * Hash: 0x829F2E2
  * @deprecated Use ped.setPropIndex(ped1, componentId, drawableId, textureId, attach) instead
  */
-export function setPedPropIndex(ped1, componentId, drawableId, textureId, attach) {
+export function setPedPropIndex(ped1: number | Ped, componentId: number, drawableId: number, textureId: number, attach: boolean): void {
     return ped.setPropIndex(ped1, componentId, drawableId, textureId, attach);
 }
+
 /**
  * ```
  * p1 is always 0 in R* scripts; and a quick disassembly seems to indicate that p1 is unused.
@@ -7529,9 +7689,10 @@ export function setPedPropIndex(ped1, componentId, drawableId, textureId, attach
  * Hash: 0x4111BA46
  * @deprecated Use ped.setRandomComponentVariation(ped1) instead
  */
-export function setPedRandomComponentVariation(ped1) {
+export function setPedRandomComponentVariation(ped1: number | Ped): void {
     return ped.setRandomComponentVariation(ped1);
 }
+
 /**
  * SET_PED_RANDOM_PROPS
  *
@@ -7540,9 +7701,10 @@ export function setPedRandomComponentVariation(ped1) {
  * Hash: 0xE3318E0E
  * @deprecated Use ped.setRandomProps(ped1) instead
  */
-export function setPedRandomProps(ped1) {
+export function setPedRandomProps(ped1: number | Ped): void {
     return ped.setRandomProps(ped1);
 }
+
 /**
  * `PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 240, 1);`
  * Known values:
@@ -7552,9 +7714,10 @@ export function setPedRandomProps(ped1) {
  * Hash: 0xCFF6FF66
  * @deprecated Use ped.setResetFlag(ped1, flagId, doReset) instead
  */
-export function setPedResetFlag(ped1, flagId, doReset) {
+export function setPedResetFlag(ped1: number | Ped, flagId: number, doReset: boolean): void {
     return ped.setResetFlag(ped1, flagId, doReset);
 }
+
 /**
  * p4/p5: Unusued in TU27
  *
@@ -7569,9 +7732,10 @@ export function setPedResetFlag(ped1, flagId, doReset) {
  * Hash: 0x83CB5052
  * @deprecated Use ped.setToRagdoll(ped1, minTime, maxTime, ragdollType, bAbortIfInjured, bAbortIfDead, bForceScriptControl) instead
  */
-export function setPedToRagdoll(ped1, minTime, maxTime, ragdollType, bAbortIfInjured, bAbortIfDead, bForceScriptControl) {
+export function setPedToRagdoll(ped1: number | Ped, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void {
     return ped.setToRagdoll(ped1, minTime, maxTime, ragdollType, bAbortIfInjured, bAbortIfDead, bForceScriptControl);
 }
+
 /**
  * ```cpp
  * enum eNMFallType {
@@ -7600,9 +7764,10 @@ export function setPedToRagdoll(ped1, minTime, maxTime, ragdollType, bAbortIfInj
  * Hash: 0xFA12E286
  * @deprecated Use ped.setToRagdollWithFall(ped1, minTime, maxTime, nFallType, dirX, dirY, dirZ, fGroundHeight, grab1X, grab1Y, grab1Z, grab2X, grab2Y, grab2Z) instead
  */
-export function setPedToRagdollWithFall(ped1, minTime, maxTime, nFallType, dirX, dirY, dirZ, fGroundHeight, grab1X, grab1Y, grab1Z, grab2X, grab2Y, grab2Z) {
+export function setPedToRagdollWithFall(ped1: number | Ped, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void {
     return ped.setToRagdollWithFall(ped1, minTime, maxTime, nFallType, dirX, dirY, dirZ, fGroundHeight, grab1X, grab1Y, grab1Z, grab2X, grab2Y, grab2Z);
 }
+
 /**
  * Used for freemode (online) characters.
  * Indices:
@@ -7643,9 +7808,10 @@ export function setPedToRagdollWithFall(ped1, minTime, maxTime, nFallType, dirX,
  * Hash: 0xEC09DB1B
  * @deprecated Use ped.setEyeColor(ped1, index) instead
  */
-export function setPedEyeColor(ped1, index) {
+export function setPedEyeColor(ped1: number | Ped, index: number): void {
     return ped.setEyeColor(ped1, index);
 }
+
 /**
  * Sets the various freemode face features, e.g. nose length, chin shape.
  * <strong>Indexes (From 0 to 19):</strong>
@@ -7679,9 +7845,10 @@ export function setPedEyeColor(ped1, index) {
  * Hash: 0x6C8D4458
  * @deprecated Use ped.setFaceFeature(ped1, index, scale) instead
  */
-export function setPedFaceFeature(ped1, index, scale) {
+export function setPedFaceFeature(ped1: number | Ped, index: number, scale: number): void {
     return ped.setFaceFeature(ped1, index, scale);
 }
+
 /**
  * ```
  * Used for freemode (online) characters.
@@ -7696,54 +7863,60 @@ export function setPedFaceFeature(ped1, index, scale) {
  * Hash: 0x78935A27
  * @deprecated Use ped.setHeadOverlayColor(ped1, overlayID, colorType, colorID, secondColorID) instead
  */
-export function setPedHeadOverlayColor(ped1, overlayID, colorType, colorID, secondColorID) {
+export function setPedHeadOverlayColor(ped1: number | Ped, overlayID: number, colorType: number, colorID: number, secondColorID: number): void {
     return ped.setHeadOverlayColor(ped1, overlayID, colorType, colorID, secondColorID);
 }
+
 /**
  * A getter for [SET_PLAYER_MELEE_WEAPON_DAMAGE_MODIFIER](#\_0x4A3DC7ECCC321032).
  *
  * Hash: 0x8689A825
  * @deprecated Use player.getMeleeWeaponDamageModifier(playerId) instead
  */
-export function getPlayerMeleeWeaponDamageModifier(playerId) {
+export function getPlayerMeleeWeaponDamageModifier(playerId: number | string | Player): number {
     return player.getMeleeWeaponDamageModifier(playerId);
 }
+
 /**
  * A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#\_0xCE07B9F7817AADA3).
  *
  * Hash: 0x2A3D7CDA
  * @deprecated Use player.getWeaponDamageModifier(playerId) instead
  */
-export function getPlayerWeaponDamageModifier(playerId) {
+export function getPlayerWeaponDamageModifier(playerId: number | string | Player): number {
     return player.getWeaponDamageModifier(playerId);
 }
+
 /**
  * A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#\_0x2D83BC011CA14A3C).
  *
  * Hash: 0xF1543251
  * @deprecated Use player.getWeaponDefenseModifier(playerId) instead
  */
-export function getPlayerWeaponDefenseModifier(playerId) {
+export function getPlayerWeaponDefenseModifier(playerId: number | string | Player): number {
     return player.getWeaponDefenseModifier(playerId);
 }
+
 /**
  * A getter for [\_SET_PLAYER_WEAPON_DEFENSE_MODIFIER\_2](#\_0xBCFDE9EDE4CF27DC).
  *
  * Hash: 0x986B65FF
  * @deprecated Use player.getWeaponDefenseModifier2(playerId) instead
  */
-export function getPlayerWeaponDefenseModifier2(playerId) {
+export function getPlayerWeaponDefenseModifier2(playerId: number | string | Player): number {
     return player.getWeaponDefenseModifier2(playerId);
 }
+
 /**
  * Returns whether or not the specified player has enough information to start a commerce session for.
  *
  * Hash: 0x429461C3
  * @deprecated Use player.canStartCommerceSession(playerSrc) instead
  */
-export function canPlayerStartCommerceSession(playerSrc) {
+export function canPlayerStartCommerceSession(playerSrc: string): boolean {
     return player.canStartCommerceSession(playerSrc);
 }
+
 /**
  * ```
  * `This executes at the same as speed as PLAYER::SET_PLAYER_WANTED_LEVEL(player, 0, false);`
@@ -7755,135 +7928,150 @@ export function canPlayerStartCommerceSession(playerSrc) {
  * Hash: 0x54EA5BCC
  * @deprecated Use player.clearWantedLevel(player1) instead
  */
-export function clearPlayerWantedLevel(player1) {
+export function clearPlayerWantedLevel(player1: number | string | Player): void {
     return player.clearWantedLevel(player1);
 }
+
 /**
  * Returns whether or not the player exists
  *
  * Hash: 0x12038599
  * @deprecated Use player.doesExist(playerSrc) instead
  */
-export function doesPlayerExist(playerSrc) {
+export function doesPlayerExist(playerSrc: string): boolean {
     return player.doesExist(playerSrc);
 }
+
 /**
  * Requests whether or not the player owns the specified SKU.
  *
  * Hash: 0x167ABA27
  * @deprecated Use player.doesOwnSku(playerSrc, skuId) instead
  */
-export function doesPlayerOwnSku(playerSrc, skuId) {
+export function doesPlayerOwnSku(playerSrc: string, skuId: number): boolean {
     return player.doesOwnSku(playerSrc, skuId);
 }
+
 /**
  * Requests whether or not the player owns the specified package.
  *
  * Hash: 0xDEF0480B
  * @deprecated Use player.doesOwnSkuExt(playerSrc, skuId) instead
  */
-export function doesPlayerOwnSkuExt(playerSrc, skuId) {
+export function doesPlayerOwnSkuExt(playerSrc: string, skuId: number): boolean {
     return player.doesOwnSkuExt(playerSrc, skuId);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xBA0613E1
  * @deprecated Use player.drop(playerSrc, reason) instead
  */
-export function dropPlayer(playerSrc, reason) {
+export function dropPlayer(playerSrc: string, reason: string): void {
     return player.drop(playerSrc, reason);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x62FC38D0
  * @deprecated Use player.getAirDragMultiplierForsVehicle(playerSrc) instead
  */
-export function getAirDragMultiplierForPlayersVehicle(playerSrc) {
+export function getAirDragMultiplierForPlayersVehicle(playerSrc: string): number {
     return player.getAirDragMultiplierForsVehicle(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xFF7F66AB
  * @deprecated Use player.getNumIdentifiers(playerSrc) instead
  */
-export function getNumPlayerIdentifiers(playerSrc) {
+export function getNumPlayerIdentifiers(playerSrc: string): number {
     return player.getNumIdentifiers(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x63D13184
  * @deprecated Use player.getNumIndices() instead
  */
-export function getNumPlayerIndices() {
+export function getNumPlayerIndices(): number {
     return player.getNumIndices();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x619E4A3D
  * @deprecated Use player.getNumTokens(playerSrc) instead
  */
-export function getNumPlayerTokens(playerSrc) {
+export function getNumPlayerTokens(playerSrc: string): number {
     return player.getNumTokens(playerSrc);
 }
+
 /**
  * Gets the current camera rotation for a specified player. This native is used server side when using OneSync.
  *
  * Hash: 0x433C765D
  * @deprecated Use player.getCameraRotation(playerSrc) instead
  */
-export function getPlayerCameraRotation(playerSrc) {
+export function getPlayerCameraRotation(playerSrc: string): Vector3 {
     return player.getCameraRotation(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xFEE404F9
  * @deprecated Use player.getEndpoint(playerSrc) instead
  */
-export function getPlayerEndpoint(playerSrc) {
+export function getPlayerEndpoint(playerSrc: string): string {
     return player.getEndpoint(playerSrc);
 }
+
 /**
  * Gets the current fake wanted level for a specified player. This native is used server side when using OneSync.
  *
  * Hash: 0x98D244
  * @deprecated Use player.getFakeWantedLevel(playerSrc) instead
  */
-export function getPlayerFakeWantedLevel(playerSrc) {
+export function getPlayerFakeWantedLevel(playerSrc: string): number {
     return player.getFakeWantedLevel(playerSrc);
 }
+
 /**
  * Gets the focus position (i.e. the position of the active camera in the game world) of a player.
  *
  * Hash: 0x586F80FF
  * @deprecated Use player.getFocusPos(playerSrc) instead
  */
-export function getPlayerFocusPos(playerSrc) {
+export function getPlayerFocusPos(playerSrc: string): Vector3 {
     return player.getFocusPos(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xC8A9CE08
  * @deprecated Use player.getFromIndex(index) instead
  */
-export function getPlayerFromIndex(index) {
+export function getPlayerFromIndex(index: number): string {
     return player.getFromIndex(index);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xE52D9680
  * @deprecated Use player.getGuid(playerSrc) instead
  */
-export function getPlayerGuid(playerSrc) {
+export function getPlayerGuid(playerSrc: string): string {
     return player.getGuid(playerSrc);
 }
+
 /**
  * To get the number of identifiers, use [GET_NUM_PLAYER_IDENTIFIERS](#\_0xFF7F66AB)
  *
@@ -7892,9 +8080,10 @@ export function getPlayerGuid(playerSrc) {
  * Hash: 0x7302DBCF
  * @deprecated Use player.getIdentifier(playerSrc, identiferIndex) instead
  */
-export function getPlayerIdentifier(playerSrc, identiferIndex) {
+export function getPlayerIdentifier(playerSrc: string, identiferIndex: number): string {
     return player.getIdentifier(playerSrc, identiferIndex);
 }
+
 /**
  * Get an identifier from a player by the type of the identifier.
  * Known [Identifiers](https://docs.fivem.net/docs/scripting-reference/runtimes/lua/functions/GetPlayerIdentifiers/#identifier-types)
@@ -7902,63 +8091,70 @@ export function getPlayerIdentifier(playerSrc, identiferIndex) {
  * Hash: 0xA61C8FC6
  * @deprecated Use player.getIdentifierByType(playerSrc, identifierType) instead
  */
-export function getPlayerIdentifierByType(playerSrc, identifierType) {
+export function getPlayerIdentifierByType(playerSrc: string, identifierType: string): string {
     return player.getIdentifierByType(playerSrc, identifierType);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x680C90EE
  * @deprecated Use player.getInvincible(playerSrc) instead
  */
-export function getPlayerInvincible(playerSrc) {
+export function getPlayerInvincible(playerSrc: string): boolean {
     return player.getInvincible(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x427E8E6A
  * @deprecated Use player.getLastMsg(playerSrc) instead
  */
-export function getPlayerLastMsg(playerSrc) {
+export function getPlayerLastMsg(playerSrc: string): number {
     return player.getLastMsg(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x2A50657
  * @deprecated Use player.getMaxArmour(playerSrc) instead
  */
-export function getPlayerMaxArmour(playerSrc) {
+export function getPlayerMaxArmour(playerSrc: string): number {
     return player.getMaxArmour(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x8154E470
  * @deprecated Use player.getMaxHealth(playerSrc) instead
  */
-export function getPlayerMaxHealth(playerSrc) {
+export function getPlayerMaxHealth(playerSrc: string): number {
     return player.getMaxHealth(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x406B4B20
  * @deprecated Use player.getName(playerSrc) instead
  */
-export function getPlayerName(playerSrc) {
+export function getPlayerName(playerSrc: string): string {
     return player.getName(playerSrc);
 }
+
 /**
  * Used to get the player's Ped Entity ID when a valid `playerSrc` is passed.
  *
  * Hash: 0x6E31E993
  * @deprecated Use player.getPed(playerSrc) instead
  */
-export function getPlayerPed(playerSrc) {
+export function getPlayerPed(playerSrc: string): number {
     return player.getPed(playerSrc);
 }
+
 /**
  * ```cpp
  * const int ENET_PACKET_LOSS_SCALE = 65536;
@@ -7993,18 +8189,20 @@ export function getPlayerPed(playerSrc) {
  * Hash: 0x9A928294
  * @deprecated Use player.getPeerStatistics(playerSrc, peerStatistic) instead
  */
-export function getPlayerPeerStatistics(playerSrc, peerStatistic) {
+export function getPlayerPeerStatistics(playerSrc: string, peerStatistic: number): number {
     return player.getPeerStatistics(playerSrc, peerStatistic);
 }
+
 /**
  * See [GET_PLAYER_PEER_STATISTICS](#\_0x9A928294) if you want more detailed information, like packet loss, and packet/rtt variance
  *
  * Hash: 0xFF1290D4
  * @deprecated Use player.getPing(playerSrc) instead
  */
-export function getPlayerPing(playerSrc) {
+export function getPlayerPing(playerSrc: string): number {
     return player.getPing(playerSrc);
 }
+
 /**
  * Gets the routing bucket for the specified player.
  *
@@ -8013,18 +8211,20 @@ export function getPlayerPing(playerSrc) {
  * Hash: 0x52441C34
  * @deprecated Use player.getRoutingBucket(playerSrc) instead
  */
-export function getPlayerRoutingBucket(playerSrc) {
+export function getPlayerRoutingBucket(playerSrc: string): number {
     return player.getRoutingBucket(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9873E404
  * @deprecated Use player.getTeam(playerSrc) instead
  */
-export function getPlayerTeam(playerSrc) {
+export function getPlayerTeam(playerSrc: string): number {
     return player.getTeam(playerSrc);
 }
+
 /**
  * ```
  * Gets the amount of time player has spent evading the cops.
@@ -8035,36 +8235,40 @@ export function getPlayerTeam(playerSrc) {
  * Hash: 0x7ADE63E1
  * @deprecated Use player.getTimeInPursuit(playerSrc, lastPursuit) instead
  */
-export function getPlayerTimeInPursuit(playerSrc, lastPursuit) {
+export function getPlayerTimeInPursuit(playerSrc: string, lastPursuit: boolean): number {
     return player.getTimeInPursuit(playerSrc, lastPursuit);
 }
+
 /**
  * Gets the current time online for a specified player.
  *
  * Hash: 0x67D2E605
  * @deprecated Use player.getTimeOnline(playerSrc) instead
  */
-export function getPlayerTimeOnline(playerSrc) {
+export function getPlayerTimeOnline(playerSrc: string): number {
     return player.getTimeOnline(playerSrc);
 }
+
 /**
  * Gets a player's token. Tokens can be used to enhance banning logic, however are specific to a server.
  *
  * Hash: 0x54C06897
  * @deprecated Use player.getToken(playerSrc, index) instead
  */
-export function getPlayerToken(playerSrc, index) {
+export function getPlayerToken(playerSrc: string, index: number): string {
     return player.getToken(playerSrc, index);
 }
+
 /**
  * Gets the current known coordinates for the specified player from cops perspective. This native is used server side when using OneSync.
  *
  * Hash: 0x821F2D2C
  * @deprecated Use player.getWantedCentrePosition(playerSrc) instead
  */
-export function getPlayerWantedCentrePosition(playerSrc) {
+export function getPlayerWantedCentrePosition(playerSrc: string): Vector3 {
     return player.getWantedCentrePosition(playerSrc);
 }
+
 /**
  * ```
  * Returns given players wanted level server-side.
@@ -8073,45 +8277,50 @@ export function getPlayerWantedCentrePosition(playerSrc) {
  * Hash: 0xBDCDD163
  * @deprecated Use player.getWantedLevel(playerSrc) instead
  */
-export function getPlayerWantedLevel(playerSrc) {
+export function getPlayerWantedLevel(playerSrc: string): number {
     return player.getWantedLevel(playerSrc);
 }
+
 /**
  * This native checks if the given ped is a player.
  *
  * Hash: 0x404794CA
  * @deprecated Use player.isPedA(ped) instead
  */
-export function isPedAPlayer(ped) {
+export function isPedAPlayer(ped: number | Ped): boolean {
     return player.isPedA(ped);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xDEDAE23D
  * @deprecated Use player.isAceAllowed(playerSrc, _object) instead
  */
-export function isPlayerAceAllowed(playerSrc, _object) {
+export function isPlayerAceAllowed(playerSrc: string, _object: string): boolean {
     return player.isAceAllowed(playerSrc, _object);
 }
+
 /**
  * Requests whether or not the commerce data for the specified player has loaded.
  *
  * Hash: 0xBEFE93F4
  * @deprecated Use player.isCommerceInfoLoaded(playerSrc) instead
  */
-export function isPlayerCommerceInfoLoaded(playerSrc) {
+export function isPlayerCommerceInfoLoaded(playerSrc: string): boolean {
     return player.isCommerceInfoLoaded(playerSrc);
 }
+
 /**
  * Requests whether or not the commerce data for the specified player has loaded from Tebex.
  *
  * Hash: 0x1D14F4FE
  * @deprecated Use player.isCommerceInfoLoadedExt(playerSrc) instead
  */
-export function isPlayerCommerceInfoLoadedExt(playerSrc) {
+export function isPlayerCommerceInfoLoadedExt(playerSrc: string): boolean {
     return player.isCommerceInfoLoadedExt(playerSrc);
 }
+
 /**
  * ```
  * This will return true if the player is evading wanted level, meaning that the wanted level stars are blink.
@@ -8123,36 +8332,40 @@ export function isPlayerCommerceInfoLoadedExt(playerSrc) {
  * Hash: 0x89A3881A
  * @deprecated Use player.isEvadingWantedLevel(playerSrc) instead
  */
-export function isPlayerEvadingWantedLevel(playerSrc) {
+export function isPlayerEvadingWantedLevel(playerSrc: string): boolean {
     return player.isEvadingWantedLevel(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x1F14F2AC
  * @deprecated Use player.isInFreeCamMode(playerSrc) instead
  */
-export function isPlayerInFreeCamMode(playerSrc) {
+export function isPlayerInFreeCamMode(playerSrc: string): boolean {
     return player.isInFreeCamMode(playerSrc);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xC7D2C20C
  * @deprecated Use player.isUsingSuperJump(playerSrc) instead
  */
-export function isPlayerUsingSuperJump(playerSrc) {
+export function isPlayerUsingSuperJump(playerSrc: string): boolean {
     return player.isUsingSuperJump(playerSrc);
 }
+
 /**
  * Requests the commerce data for the specified player, including the owned SKUs. Use `IS_PLAYER_COMMERCE_INFO_LOADED` to check if it has loaded.
  *
  * Hash: 0xA8F63EAB
  * @deprecated Use player.loadCommerceData(playerSrc) instead
  */
-export function loadPlayerCommerceData(playerSrc) {
+export function loadPlayerCommerceData(playerSrc: string): void {
     return player.loadCommerceData(playerSrc);
 }
+
 /**
  * Requests the commerce data from Tebex for the specified player, including the owned SKUs.
  *
@@ -8165,9 +8378,10 @@ export function loadPlayerCommerceData(playerSrc) {
  * Hash: 0x7995539E
  * @deprecated Use player.loadCommerceDataExt(playerSrc) instead
  */
-export function loadPlayerCommerceDataExt(playerSrc) {
+export function loadPlayerCommerceDataExt(playerSrc: string): void {
     return player.loadCommerceDataExt(playerSrc);
 }
+
 /**
  * Requests the specified player to buy the passed SKU. This'll pop up a prompt on the client, which upon acceptance
  * will open the browser prompting further purchase details.
@@ -8175,9 +8389,10 @@ export function loadPlayerCommerceDataExt(playerSrc) {
  * Hash: 0x96F93CCE
  * @deprecated Use player.requestCommerceSession(playerSrc, skuId) instead
  */
-export function requestPlayerCommerceSession(playerSrc, skuId) {
+export function requestPlayerCommerceSession(playerSrc: string, skuId: number): void {
     return player.requestCommerceSession(playerSrc, skuId);
 }
+
 /**
  * ```
  * Flags:
@@ -8201,9 +8416,10 @@ export function requestPlayerCommerceSession(playerSrc, skuId) {
  * Hash: 0xD17AFCD8
  * @deprecated Use player.setControl(player1, bHasControl, flags) instead
  */
-export function setPlayerControl(player1, bHasControl, flags) {
+export function setPlayerControl(player1: number | string | Player, bHasControl: boolean, flags: number): void {
     return player.setControl(player1, bHasControl, flags);
 }
+
 /**
  * Sets the culling radius for the specified player.
  * Set to `0.0` to reset.
@@ -8213,9 +8429,10 @@ export function setPlayerControl(player1, bHasControl, flags) {
  * Hash: 0x8A2FBAD4
  * @deprecated Use player.setCullingRadius(playerSrc, radius) instead
  */
-export function setPlayerCullingRadius(playerSrc, radius) {
+export function setPlayerCullingRadius(playerSrc: string, radius: number): void {
     return player.setCullingRadius(playerSrc, radius);
 }
+
 /**
  * Make the player impervious to all forms of damage.
  *
@@ -8224,9 +8441,10 @@ export function setPlayerCullingRadius(playerSrc, radius) {
  * Hash: 0xDFB9A2A2
  * @deprecated Use player.setInvincible(player1, bInvincible) instead
  */
-export function setPlayerInvincible(player1, bInvincible) {
+export function setPlayerInvincible(player1: number | string | Player, bInvincible: boolean): void {
     return player.setInvincible(player1, bInvincible);
 }
+
 /**
  * Set the model for a specific Player. Note that this will destroy the current Ped for the Player and create a new one, any reference to the old ped will be invalid after calling this.
  * As per usual, make sure to request the model first and wait until it has loaded.
@@ -8236,9 +8454,10 @@ export function setPlayerInvincible(player1, bInvincible) {
  * Hash: 0x774A4C54
  * @deprecated Use player.setModel(player1, model) instead
  */
-export function setPlayerModel(player1, model) {
+export function setPlayerModel(player1: number | string | Player, model: number | string): void {
     return player.setModel(player1, model);
 }
+
 /**
  * Sets the routing bucket for the specified player.
  *
@@ -8247,9 +8466,10 @@ export function setPlayerModel(player1, model) {
  * Hash: 0x6504EB38
  * @deprecated Use player.setRoutingBucket(playerSrc, bucket) instead
  */
-export function setPlayerRoutingBucket(playerSrc, bucket) {
+export function setPlayerRoutingBucket(playerSrc: string, bucket: number): void {
     return player.setRoutingBucket(playerSrc, bucket);
 }
+
 /**
  * SET_PLAYER_WANTED_LEVEL
  *
@@ -8258,189 +8478,210 @@ export function setPlayerRoutingBucket(playerSrc, bucket) {
  * Hash: 0xB7A0914B
  * @deprecated Use player.setWantedLevel(player1, wantedLevel, delayedResponse) instead
  */
-export function setPlayerWantedLevel(player1, wantedLevel, delayedResponse) {
+export function setPlayerWantedLevel(player1: number | string | Player, wantedLevel: number, delayedResponse: boolean): void {
     return player.setWantedLevel(player1, wantedLevel, delayedResponse);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x1E35DBBA
  * @deprecated Use player.tempBan(playerSrc, reason) instead
  */
-export function tempBanPlayer(playerSrc, reason) {
+export function tempBanPlayer(playerSrc: string, reason: string): void {
     return player.tempBan(playerSrc, reason);
 }
+
 /**
  * On the server this will return the players source, on the client it will return the player handle.
  *
  * Hash: 0xA56135E0
  * @deprecated Use player.getFromStateBagName(bagName) instead
  */
-export function getPlayerFromStateBagName(bagName) {
+export function getPlayerFromStateBagName(bagName: string): number {
     return player.getFromStateBagName(bagName);
 }
+
 /**
  * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
  *
  * Hash: 0xA886495D
  * @deprecated Use vehicle.getHeliBodyHealth(heli) instead
  */
-export function getHeliBodyHealth(heli) {
+export function getHeliBodyHealth(heli: number | Vehicle): number {
     return vehicle.getHeliBodyHealth(heli);
 }
+
 /**
  * This is a getter for [SET_DISABLE_HELI_EXPLODE_FROM_BODY_DAMAGE](#\_0xEDBC8405B3895CC9)
  *
  * Hash: 0x82AFC0A3
  * @deprecated Use vehicle.getHeliDisableExplodeFromBodyDamage(heli) instead
  */
-export function getHeliDisableExplodeFromBodyDamage(heli) {
+export function getHeliDisableExplodeFromBodyDamage(heli: number | Vehicle): boolean {
     return vehicle.getHeliDisableExplodeFromBodyDamage(heli);
 }
+
 /**
  * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
  *
  * Hash: 0xA0FA0354
  * @deprecated Use vehicle.getHeliEngineHealth(heli) instead
  */
-export function getHeliEngineHealth(heli) {
+export function getHeliEngineHealth(heli: number | Vehicle): number {
     return vehicle.getHeliEngineHealth(heli);
 }
+
 /**
  * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
  *
  * Hash: 0xD4EC7858
  * @deprecated Use vehicle.getHeliGasTankHealth(heli) instead
  */
-export function getHeliGasTankHealth(heli) {
+export function getHeliGasTankHealth(heli: number | Vehicle): number {
     return vehicle.getHeliGasTankHealth(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xC37D668
  * @deprecated Use vehicle.getHeliMainRotorDamageScale(heli) instead
  */
-export function getHeliMainRotorDamageScale(heli) {
+export function getHeliMainRotorDamageScale(heli: number | Vehicle): number {
     return vehicle.getHeliMainRotorDamageScale(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x1944AC95
  * @deprecated Use vehicle.getHeliPitchControl(heli) instead
  */
-export function getHeliPitchControl(heli) {
+export function getHeliPitchControl(heli: number | Vehicle): number {
     return vehicle.getHeliPitchControl(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xC40161E2
  * @deprecated Use vehicle.getHeliRearRotorDamageScale(heli) instead
  */
-export function getHeliRearRotorDamageScale(heli) {
+export function getHeliRearRotorDamageScale(heli: number | Vehicle): number {
     return vehicle.getHeliRearRotorDamageScale(heli);
 }
+
 /**
  * This native is a getter for [SET_HELI_TAIL_ROTOR_HEALTH](#\_0xFE205F38AAA58E5B)
  *
  * Hash: 0x33EE6E2B
  * @deprecated Use vehicle.getHeliRearRotorHealth(vehicle1) instead
  */
-export function getHeliRearRotorHealth(vehicle1) {
+export function getHeliRearRotorHealth(vehicle1: number | Vehicle): number {
     return vehicle.getHeliRearRotorHealth(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x12948DE9
  * @deprecated Use vehicle.getHeliRollControl(heli) instead
  */
-export function getHeliRollControl(heli) {
+export function getHeliRollControl(heli: number | Vehicle): number {
     return vehicle.getHeliRollControl(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x22239130
  * @deprecated Use vehicle.getHeliTailRotorDamageScale(heli) instead
  */
-export function getHeliTailRotorDamageScale(heli) {
+export function getHeliTailRotorDamageScale(heli: number | Vehicle): number {
     return vehicle.getHeliTailRotorDamageScale(heli);
 }
+
 /**
  * **Note**: This native is deprecated, please use [`GET_HELI_REAR_ROTOR_HEALTH`](#\_0x33EE6E2B) instead.
  *
  * Hash: 0xA41BC13D
  * @deprecated Use vehicle.getHeliTailRotorHealth(vehicle1) instead
  */
-export function getHeliTailRotorHealth(vehicle1) {
+export function getHeliTailRotorHealth(vehicle1: number | Vehicle): number {
     return vehicle.getHeliTailRotorHealth(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x8E86238D
  * @deprecated Use vehicle.getHeliThrottleControl(heli) instead
  */
-export function getHeliThrottleControl(heli) {
+export function getHeliThrottleControl(heli: number | Vehicle): number {
     return vehicle.getHeliThrottleControl(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x8FDC0768
  * @deprecated Use vehicle.getHeliYawControl(heli) instead
  */
-export function getHeliYawControl(heli) {
+export function getHeliYawControl(heli: number | Vehicle): number {
     return vehicle.getHeliYawControl(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x3EFE38D1
  * @deprecated Use vehicle.getIsHeliEngineRunning(heli) instead
  */
-export function getIsHeliEngineRunning(heli) {
+export function getIsHeliEngineRunning(heli: number | Vehicle): boolean {
     return vehicle.getIsHeliEngineRunning(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x1C939E87
  * @deprecated Use vehicle.getThrusterSideRcsThrottle(jetpack) instead
  */
-export function getThrusterSideRcsThrottle(jetpack) {
+export function getThrusterSideRcsThrottle(jetpack: number | Vehicle): number {
     return vehicle.getThrusterSideRcsThrottle(jetpack);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x94E24C96
  * @deprecated Use vehicle.getThrusterThrottle(jetpack) instead
  */
-export function getThrusterThrottle(jetpack) {
+export function getThrusterThrottle(jetpack: number | Vehicle): number {
     return vehicle.getThrusterThrottle(jetpack);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x456E34A
  * @deprecated Use vehicle.getTrainBackwardCarriage(train) instead
  */
-export function getTrainBackwardCarriage(train) {
+export function getTrainBackwardCarriage(train: number | Vehicle): number {
     return vehicle.getTrainBackwardCarriage(train);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x24DC88D9
  * @deprecated Use vehicle.getTrainForwardCarriage(train) instead
  */
-export function getTrainForwardCarriage(train) {
+export function getTrainForwardCarriage(train: number | Vehicle): number {
     return vehicle.getTrainForwardCarriage(train);
 }
+
 /**
  * This is a getter for the client-side native [`START_VEHICLE_HORN`](#\_0x9C8C6504B5B63D2C), which allows you to return the horn type of the vehicle.
  *
@@ -8458,108 +8699,120 @@ export function getTrainForwardCarriage(train) {
  * Hash: 0xDEA49773
  * @deprecated Use vehicle.getHornType(vehicle1) instead
  */
-export function getVehicleHornType(vehicle1) {
+export function getVehicleHornType(vehicle1: number | Vehicle): number {
     return vehicle.getHornType(vehicle1);
 }
+
 /**
  * This is a getter for [SET_HELI_TAIL_EXPLODE_THROW_DASHBOARD](#\_0x3EC8BF18AA453FE9)
  *
  * Hash: 0x23E46BD7
  * @deprecated Use vehicle.isHeliTailBoomBreakable(heli) instead
  */
-export function isHeliTailBoomBreakable(heli) {
+export function isHeliTailBoomBreakable(heli: number | Vehicle): boolean {
     return vehicle.isHeliTailBoomBreakable(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x2C59F987
  * @deprecated Use vehicle.isHeliTailBoomBroken(heli) instead
  */
-export function isHeliTailBoomBroken(heli) {
+export function isHeliTailBoomBroken(heli: number | Vehicle): boolean {
     return vehicle.isHeliTailBoomBroken(heli);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xFA9336E5
  * @deprecated Use vehicle.isTrainCaboose(train) instead
  */
-export function isTrainCaboose(train) {
+export function isTrainCaboose(train: number | Vehicle): boolean {
     return vehicle.isTrainCaboose(train);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x77CC80DC
  * @deprecated Use vehicle.doesTrainStopAtStations(train) instead
  */
-export function doesTrainStopAtStations(train) {
+export function doesTrainStopAtStations(train: number | Vehicle): boolean {
     return vehicle.doesTrainStopAtStations(train);
 }
+
 /**
  * Gets the trains desired speed.
  *
  * Hash: 0xA4921EF5
  * @deprecated Use vehicle.getTrainCruiseSpeed(train) instead
  */
-export function getTrainCruiseSpeed(train) {
+export function getTrainCruiseSpeed(train: number | Vehicle): number {
     return vehicle.getTrainCruiseSpeed(train);
 }
+
 /**
  * Gets the direction the train is facing
  *
  * Hash: 0x8DAF79B6
  * @deprecated Use vehicle.getTrainDirection(train) instead
  */
-export function getTrainDirection(train) {
+export function getTrainDirection(train: number | Vehicle): boolean {
     return vehicle.getTrainDirection(train);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x81B50033
  * @deprecated Use vehicle.getTrainState(train) instead
  */
-export function getTrainState(train) {
+export function getTrainState(train: number | Vehicle): number {
     return vehicle.getTrainState(train);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9AA339D
  * @deprecated Use vehicle.getTrainTrackIndex(train) instead
  */
-export function getTrainTrackIndex(train) {
+export function getTrainTrackIndex(train: number | Vehicle): number {
     return vehicle.getTrainTrackIndex(train);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x483B013C
  * @deprecated Use vehicle.getHandbrake(vehicle1) instead
  */
-export function getVehicleHandbrake(vehicle1) {
+export function getVehicleHandbrake(vehicle1: number | Vehicle): boolean {
     return vehicle.getHandbrake(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x1382FCEA
  * @deprecated Use vehicle.getSteeringAngle(vehicle1) instead
  */
-export function getVehicleSteeringAngle(vehicle1) {
+export function getVehicleSteeringAngle(vehicle1: number | Vehicle): number {
     return vehicle.getSteeringAngle(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xBB340D04
  * @deprecated Use vehicle.isEngineStarting(vehicle1) instead
  */
-export function isVehicleEngineStarting(vehicle1) {
+export function isVehicleEngineStarting(vehicle1: number | Vehicle): boolean {
     return vehicle.isEngineStarting(vehicle1);
 }
+
 /**
  * Creates a vehicle with the specified model at the specified position. This vehicle will initially be owned by the creating
  * script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -8573,9 +8826,10 @@ export function isVehicleEngineStarting(vehicle1) {
  * Hash: 0xDD75460A
  * @deprecated Use vehicle.create(modelHash, pos, heading, isNetwork, netMissionEntity) instead
  */
-export function createVehicle(modelHash, pos, heading, isNetwork, netMissionEntity) {
+export function createVehicle(modelHash: number | string, pos: Vector3, heading: number, isNetwork: boolean, netMissionEntity: boolean): number {
     return vehicle.create(modelHash, pos, heading, isNetwork, netMissionEntity);
 }
+
 /**
  * Equivalent to CREATE_VEHICLE, but it uses 'server setter' logic (like the former CREATE_AUTOMOBILE) as a workaround for
  * reliability concerns regarding entity creation RPC.
@@ -8585,27 +8839,30 @@ export function createVehicle(modelHash, pos, heading, isNetwork, netMissionEnti
  * Hash: 0x6AE51D4B
  * @deprecated Use vehicle.createServerSetter(modelHash, _type, pos, heading) instead
  */
-export function createVehicleServerSetter(modelHash, _type, pos, heading) {
+export function createVehicleServerSetter(modelHash: number | string, _type: string, pos: Vector3, heading: number): number {
     return vehicle.createServerSetter(modelHash, _type, pos, heading);
 }
+
 /**
  * Deletes the specified `entity` and any carriage its attached to, or that is attached to it.
  *
  * Hash: 0x523BA3DA
  * @deprecated Use vehicle.deleteTrain(entity) instead
  */
-export function deleteTrain(entity) {
+export function deleteTrain(entity: number | Entity): void {
     return vehicle.deleteTrain(entity);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x43F15989
  * @deprecated Use vehicle.doesBoatSinkWhenWrecked(vehicle1) instead
  */
-export function doesBoatSinkWhenWrecked(vehicle1) {
+export function doesBoatSinkWhenWrecked(vehicle1: number | Vehicle): boolean {
     return vehicle.doesBoatSinkWhenWrecked(vehicle1);
 }
+
 /**
  * Returns all vehicle handles known to the server.
  * The data returned adheres to the following layout:
@@ -8617,126 +8874,140 @@ export function doesBoatSinkWhenWrecked(vehicle1) {
  * Hash: 0x332169F5
  * @deprecated Use vehicle.getAlls() instead
  */
-export function getAllVehicles() {
+export function getAllVehicles(): number {
     return vehicle.getAlls();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x7DC6D022
  * @deprecated Use vehicle.getIsEngineRunning(vehicle1) instead
  */
-export function getIsVehicleEngineRunning(vehicle1) {
+export function getIsVehicleEngineRunning(vehicle1: number | Vehicle): boolean {
     return vehicle.getIsEngineRunning(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xD7EC8760
  * @deprecated Use vehicle.getIsPrimaryColourCustom(vehicle1) instead
  */
-export function getIsVehiclePrimaryColourCustom(vehicle1) {
+export function getIsVehiclePrimaryColourCustom(vehicle1: number | Vehicle): boolean {
     return vehicle.getIsPrimaryColourCustom(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x288AD228
  * @deprecated Use vehicle.getIsSecondaryColourCustom(vehicle1) instead
  */
-export function getIsVehicleSecondaryColourCustom(vehicle1) {
+export function getIsVehicleSecondaryColourCustom(vehicle1: number | Vehicle): boolean {
     return vehicle.getIsSecondaryColourCustom(vehicle1);
 }
+
 /**
  * See the client-side [GET_LANDING_GEAR_STATE](#\_0x9B0F3DCA3DB0F4CD) native for a description of landing gear states.
  *
  * Hash: 0xA6F02670
  * @deprecated Use vehicle.getLandingGearState(vehicle1) instead
  */
-export function getLandingGearState(vehicle1) {
+export function getLandingGearState(vehicle1: number | Vehicle): number {
     return vehicle.getLandingGearState(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x95070FA
  * @deprecated Use vehicle.getTrainCarriageEngine(train) instead
  */
-export function getTrainCarriageEngine(train) {
+export function getTrainCarriageEngine(train: number | Vehicle): number {
     return vehicle.getTrainCarriageEngine(train);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x4B8285CF
  * @deprecated Use vehicle.getTrainCarriageIndex(train) instead
  */
-export function getTrainCarriageIndex(train) {
+export function getTrainCarriageIndex(train: number | Vehicle): number {
     return vehicle.getTrainCarriageIndex(train);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x2B2FCC28
  * @deprecated Use vehicle.getBodyHealth(vehicle1) instead
  */
-export function getVehicleBodyHealth(vehicle1) {
+export function getVehicleBodyHealth(vehicle1: number | Vehicle): number {
     return vehicle.getBodyHealth(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x40D82D88
  * @deprecated Use vehicle.getColours(vehicle1) instead
  */
-export function getVehicleColours(vehicle1) {
+export function getVehicleColours(vehicle1: number | Vehicle): [number, number] {
     return vehicle.getColours(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x1C2B9FEF
  * @deprecated Use vehicle.getCustomPrimaryColour(vehicle1) instead
  */
-export function getVehicleCustomPrimaryColour(vehicle1) {
+export function getVehicleCustomPrimaryColour(vehicle1: number | Vehicle): [number, number, number] {
     return vehicle.getCustomPrimaryColour(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x3FF247A2
  * @deprecated Use vehicle.getCustomSecondaryColour(vehicle1) instead
  */
-export function getVehicleCustomSecondaryColour(vehicle1) {
+export function getVehicleCustomSecondaryColour(vehicle1: number | Vehicle): [number, number, number] {
     return vehicle.getCustomSecondaryColour(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xA0DBD08D
  * @deprecated Use vehicle.getDashboardColour(vehicle1) instead
  */
-export function getVehicleDashboardColour(vehicle1) {
+export function getVehicleDashboardColour(vehicle1: number | Vehicle): number {
     return vehicle.getDashboardColour(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xFD15C065
  * @deprecated Use vehicle.getDirtLevel(vehicle1) instead
  */
-export function getVehicleDirtLevel(vehicle1) {
+export function getVehicleDirtLevel(vehicle1: number | Vehicle): number {
     return vehicle.getDirtLevel(vehicle1);
 }
+
 /**
  * Currently it only works when set to "all players".
  *
  * Hash: 0x1DC50247
  * @deprecated Use vehicle.getDoorsLockedForPlayer(vehicle1) instead
  */
-export function getVehicleDoorsLockedForPlayer(vehicle1) {
+export function getVehicleDoorsLockedForPlayer(vehicle1: number | Vehicle): number {
     return vehicle.getDoorsLockedForPlayer(vehicle1);
 }
+
 /**
  * ```lua
  * enum_VehicleLockStatus = {
@@ -8757,108 +9028,120 @@ export function getVehicleDoorsLockedForPlayer(vehicle1) {
  * Hash: 0xD72CEF2
  * @deprecated Use vehicle.getDoorLockStatus(vehicle1) instead
  */
-export function getVehicleDoorLockStatus(vehicle1) {
+export function getVehicleDoorLockStatus(vehicle1: number | Vehicle): number {
     return vehicle.getDoorLockStatus(vehicle1);
 }
+
 /**
  * Returns the open position of the specified door on the target vehicle.
  *
  * Hash: 0x6E35C49C
  * @deprecated Use vehicle.getDoorStatus(vehicle1, doorIndex) instead
  */
-export function getVehicleDoorStatus(vehicle1, doorIndex) {
+export function getVehicleDoorStatus(vehicle1: number | Vehicle, doorIndex: number): number {
     return vehicle.getDoorStatus(vehicle1, doorIndex);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x8880038A
  * @deprecated Use vehicle.getEngineHealth(vehicle1) instead
  */
-export function getVehicleEngineHealth(vehicle1) {
+export function getVehicleEngineHealth(vehicle1: number | Vehicle): number {
     return vehicle.getEngineHealth(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x80E4659B
  * @deprecated Use vehicle.getExtraColours(vehicle1) instead
  */
-export function getVehicleExtraColours(vehicle1) {
+export function getVehicleExtraColours(vehicle1: number | Vehicle): [number, number] {
     return vehicle.getExtraColours(vehicle1);
 }
+
 /**
  * Gets the flight nozzel position for the specified vehicle. See the client-side [\_GET_VEHICLE_FLIGHT_NOZZLE_POSITION](#\_0xDA62027C8BDB326E) native for usage examples.
  *
  * Hash: 0xAD40AD55
  * @deprecated Use vehicle.getFlightNozzlePosition(vehicle1) instead
  */
-export function getVehicleFlightNozzlePosition(vehicle1) {
+export function getVehicleFlightNozzlePosition(vehicle1: number | Vehicle): number {
     return vehicle.getFlightNozzlePosition(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xD7147656
  * @deprecated Use vehicle.getHeadlightsColour(vehicle1) instead
  */
-export function getVehicleHeadlightsColour(vehicle1) {
+export function getVehicleHeadlightsColour(vehicle1: number | Vehicle): number {
     return vehicle.getHeadlightsColour(vehicle1);
 }
+
 /**
  * Gets the lock on state for the specified vehicle. See the client-side [GET_VEHICLE_HOMING_LOCKON_STATE](#\_0xE6B0E8CFC3633BF0) native for a description of lock on states.
  *
  * Hash: 0xFBDE9FD8
  * @deprecated Use vehicle.getHomingLockonState(vehicle1) instead
  */
-export function getVehicleHomingLockonState(vehicle1) {
+export function getVehicleHomingLockonState(vehicle1: number | Vehicle): number {
     return vehicle.getHomingLockonState(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xCCFF3B6E
  * @deprecated Use vehicle.getInteriorColour(vehicle1) instead
  */
-export function getVehicleInteriorColour(vehicle1) {
+export function getVehicleInteriorColour(vehicle1: number | Vehicle): number {
     return vehicle.getInteriorColour(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x7C278621
  * @deprecated Use vehicle.getLightsState(vehicle1) instead
  */
-export function getVehicleLightsState(vehicle1) {
+export function getVehicleLightsState(vehicle1: number | Vehicle): [boolean, boolean, boolean] {
     return vehicle.getLightsState(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xEC82A51D
  * @deprecated Use vehicle.getLivery(vehicle1) instead
  */
-export function getVehicleLivery(vehicle1) {
+export function getVehicleLivery(vehicle1: number | Vehicle): number {
     return vehicle.getLivery(vehicle1);
 }
+
 /**
  * Gets the vehicle that is locked on to for the specified vehicle.
  *
  * Hash: 0x4A557117
  * @deprecated Use vehicle.getLockOnTarget(vehicle1) instead
  */
-export function getVehicleLockOnTarget(vehicle1) {
+export function getVehicleLockOnTarget(vehicle1: number | Vehicle): number {
     return vehicle.getLockOnTarget(vehicle1);
 }
+
 /**
  * Getter to check the neon colour of a vehicle. This native is the server side getter of [GET_VEHICLE_NEON_LIGHTS_COLOUR](#\_0x7619EEE8C886757F).
  *
  * Hash: 0xD9319DCB
  * @deprecated Use vehicle.getNeonColour(vehicle1) instead
  */
-export function getVehicleNeonColour(vehicle1) {
+export function getVehicleNeonColour(vehicle1: number | Vehicle): [number, number, number] {
     return vehicle.getNeonColour(vehicle1);
 }
+
 /**
  * Getter to check if one of the neon lights of a vehicle is enabled. This native is the server side getter of [IS_VEHICLE_NEON_LIGHT_ENABLED](#\_0x8C4B92553E4766A5).
  *
@@ -8875,171 +9158,190 @@ export function getVehicleNeonColour(vehicle1) {
  * Hash: 0x684BDBF2
  * @deprecated Use vehicle.getNeonEnabled(vehicle1, neonIndex) instead
  */
-export function getVehicleNeonEnabled(vehicle1, neonIndex) {
+export function getVehicleNeonEnabled(vehicle1: number | Vehicle, neonIndex: number): boolean {
     return vehicle.getNeonEnabled(vehicle1, neonIndex);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xE8522D58
  * @deprecated Use vehicle.getNumberPlateText(vehicle1) instead
  */
-export function getVehicleNumberPlateText(vehicle1) {
+export function getVehicleNumberPlateText(vehicle1: number | Vehicle): string {
     return vehicle.getNumberPlateText(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x499747B6
  * @deprecated Use vehicle.getNumberPlateTextIndex(vehicle1) instead
  */
-export function getVehicleNumberPlateTextIndex(vehicle1) {
+export function getVehicleNumberPlateTextIndex(vehicle1: number | Vehicle): number {
     return vehicle.getNumberPlateTextIndex(vehicle1);
 }
+
 /**
  * Gets the vehicle the specified Ped is/was in depending on bool value. This native is used server side when using OneSync.
  *
  * Hash: 0xAFE92319
  * @deprecated Use vehicle.getPedIsIn(ped, lastVehicle) instead
  */
-export function getVehiclePedIsIn(ped, lastVehicle) {
+export function getVehiclePedIsIn(ped: number | Ped, lastVehicle: boolean): number {
     return vehicle.getPedIsIn(ped, lastVehicle);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xE41595CE
  * @deprecated Use vehicle.getPetrolTankHealth(vehicle1) instead
  */
-export function getVehiclePetrolTankHealth(vehicle1) {
+export function getVehiclePetrolTankHealth(vehicle1: number | Vehicle): number {
     return vehicle.getPetrolTankHealth(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x57037960
  * @deprecated Use vehicle.getRadioStationIndex(vehicle1) instead
  */
-export function getVehicleRadioStationIndex(vehicle1) {
+export function getVehicleRadioStationIndex(vehicle1: number | Vehicle): number {
     return vehicle.getRadioStationIndex(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x872CF42
  * @deprecated Use vehicle.getRoofLivery(vehicle1) instead
  */
-export function getVehicleRoofLivery(vehicle1) {
+export function getVehicleRoofLivery(vehicle1: number | Vehicle): number {
     return vehicle.getRoofLivery(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9963D5F9
  * @deprecated Use vehicle.getTotalRepairs(vehicle1) instead
  */
-export function getVehicleTotalRepairs(vehicle1) {
+export function getVehicleTotalRepairs(vehicle1: number | Vehicle): number {
     return vehicle.getTotalRepairs(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x75280015
  * @deprecated Use vehicle.getTyreSmokeColor(vehicle1) instead
  */
-export function getVehicleTyreSmokeColor(vehicle1) {
+export function getVehicleTyreSmokeColor(vehicle1: number | Vehicle): [number, number, number] {
     return vehicle.getTyreSmokeColor(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xDA58D7AE
  * @deprecated Use vehicle.getWheelType(vehicle1) instead
  */
-export function getVehicleWheelType(vehicle1) {
+export function getVehicleWheelType(vehicle1: number | Vehicle): number {
     return vehicle.getWheelType(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x13D53892
  * @deprecated Use vehicle.getWindowTint(vehicle1) instead
  */
-export function getVehicleWindowTint(vehicle1) {
+export function getVehicleWindowTint(vehicle1: number | Vehicle): number {
     return vehicle.getWindowTint(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xB8AF3137
  * @deprecated Use vehicle.hasBeenDamagedByBullets(vehicle1) instead
  */
-export function hasVehicleBeenDamagedByBullets(vehicle1) {
+export function hasVehicleBeenDamagedByBullets(vehicle1: number | Vehicle): boolean {
     return vehicle.hasBeenDamagedByBullets(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xE4E83A5B
  * @deprecated Use vehicle.hasBeenOwnedByPlayer(vehicle1) instead
  */
-export function hasVehicleBeenOwnedByPlayer(vehicle1) {
+export function hasVehicleBeenOwnedByPlayer(vehicle1: number | Vehicle): boolean {
     return vehicle.hasBeenOwnedByPlayer(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xD5C39EE6
  * @deprecated Use vehicle.isBoatAnchoredAndFrozen(vehicle1) instead
  */
-export function isBoatAnchoredAndFrozen(vehicle1) {
+export function isBoatAnchoredAndFrozen(vehicle1: number | Vehicle): boolean {
     return vehicle.isBoatAnchoredAndFrozen(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9049DB44
  * @deprecated Use vehicle.isBoatWrecked(vehicle1) instead
  */
-export function isBoatWrecked(vehicle1) {
+export function isBoatWrecked(vehicle1: number | Vehicle): boolean {
     return vehicle.isBoatWrecked(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x42098B5
  * @deprecated Use vehicle.isExtraTurnedOn(vehicle1, extraId) instead
  */
-export function isVehicleExtraTurnedOn(vehicle1, extraId) {
+export function isVehicleExtraTurnedOn(vehicle1: number | Vehicle, extraId: number): boolean {
     return vehicle.isExtraTurnedOn(vehicle1, extraId);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x25EB5873
  * @deprecated Use vehicle.isSirenOn(vehicle1) instead
  */
-export function isVehicleSirenOn(vehicle1) {
+export function isVehicleSirenOn(vehicle1: number | Vehicle): boolean {
     return vehicle.isSirenOn(vehicle1);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x48C80210
  * @deprecated Use vehicle.isTyreBurst(vehicle1, wheelID, completely) instead
  */
-export function isVehicleTyreBurst(vehicle1, wheelID, completely) {
+export function isVehicleTyreBurst(vehicle1: number | Vehicle, wheelID: number, completely: boolean): boolean {
     return vehicle.isTyreBurst(vehicle1, wheelID, completely);
 }
+
 /**
  * See the client-side [IS_VEHICLE_WINDOW_INTACT](#\_0x46E571A0E20D01F1) for a window indexes list.
  *
  * Hash: 0xAC4EF23D
  * @deprecated Use vehicle.isWindowIntact(vehicle1, windowIndex) instead
  */
-export function isVehicleWindowIntact(vehicle1, windowIndex) {
+export function isVehicleWindowIntact(vehicle1: number | Vehicle, windowIndex: number): boolean {
     return vehicle.isWindowIntact(vehicle1, windowIndex);
 }
+
 /**
  * SET_VEHICLE_ALARM
  *
@@ -9048,9 +9350,10 @@ export function isVehicleWindowIntact(vehicle1, windowIndex) {
  * Hash: 0x24877D84
  * @deprecated Use vehicle.setAlarm(vehicle1, state) instead
  */
-export function setVehicleAlarm(vehicle1, state) {
+export function setVehicleAlarm(vehicle1: number | Vehicle, state: boolean): void {
     return vehicle.setAlarm(vehicle1, state);
 }
+
 /**
  * ```
  * p2 often set to 1000.0 in the decompiled scripts.
@@ -9061,9 +9364,10 @@ export function setVehicleAlarm(vehicle1, state) {
  * Hash: 0x920C2517
  * @deprecated Use vehicle.setBodyHealth(vehicle1, value) instead
  */
-export function setVehicleBodyHealth(vehicle1, value) {
+export function setVehicleBodyHealth(vehicle1: number | Vehicle, value: number): void {
     return vehicle.setBodyHealth(vehicle1, value);
 }
+
 /**
  * colorPrimary & colorSecondary are the paint indexes for the vehicle.
  * For a list of valid paint indexes, view: pastebin.com/pwHci0xK
@@ -9073,9 +9377,10 @@ export function setVehicleBodyHealth(vehicle1, value) {
  * Hash: 0x57F24253
  * @deprecated Use vehicle.setColours(vehicle1, colorPrimary, colorSecondary) instead
  */
-export function setVehicleColours(vehicle1, colorPrimary, colorSecondary) {
+export function setVehicleColours(vehicle1: number | Vehicle, colorPrimary: number, colorSecondary: number): void {
     return vehicle.setColours(vehicle1, colorPrimary, colorSecondary);
 }
+
 /**
  * Sets the selected vehicle's colors to their default value (specific variant specified using the colorCombination parameter).
  * Range of possible values for colorCombination is currently unknown, I couldn't find where these values are stored either (Disquse's guess was vehicles.meta but I haven't seen it in there.)
@@ -9085,9 +9390,10 @@ export function setVehicleColours(vehicle1, colorPrimary, colorSecondary) {
  * Hash: 0xA557AEAD
  * @deprecated Use vehicle.setColourCombination(vehicle1, colorCombination) instead
  */
-export function setVehicleColourCombination(vehicle1, colorCombination) {
+export function setVehicleColourCombination(vehicle1: number | Vehicle, colorCombination: number): void {
     return vehicle.setColourCombination(vehicle1, colorCombination);
 }
+
 /**
  * ```
  * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -9098,9 +9404,10 @@ export function setVehicleColourCombination(vehicle1, colorCombination) {
  * Hash: 0x8DF9F9BC
  * @deprecated Use vehicle.setCustomPrimaryColour(vehicle1, r, g, b) instead
  */
-export function setVehicleCustomPrimaryColour(vehicle1, r, g, b) {
+export function setVehicleCustomPrimaryColour(vehicle1: number | Vehicle, r: number, g: number, b: number): void {
     return vehicle.setCustomPrimaryColour(vehicle1, r, g, b);
 }
+
 /**
  * ```
  * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -9111,9 +9418,10 @@ export function setVehicleCustomPrimaryColour(vehicle1, r, g, b) {
  * Hash: 0x9D77259E
  * @deprecated Use vehicle.setCustomSecondaryColour(vehicle1, r, g, b) instead
  */
-export function setVehicleCustomSecondaryColour(vehicle1, r, g, b) {
+export function setVehicleCustomSecondaryColour(vehicle1: number | Vehicle, r: number, g: number, b: number): void {
     return vehicle.setCustomSecondaryColour(vehicle1, r, g, b);
 }
+
 /**
  * Sets the dirt level of the passed vehicle.
  *
@@ -9122,9 +9430,10 @@ export function setVehicleCustomSecondaryColour(vehicle1, r, g, b) {
  * Hash: 0x2B39128B
  * @deprecated Use vehicle.setDirtLevel(vehicle1, dirtLevel) instead
  */
-export function setVehicleDirtLevel(vehicle1, dirtLevel) {
+export function setVehicleDirtLevel(vehicle1: number | Vehicle, dirtLevel: number): void {
     return vehicle.setDirtLevel(vehicle1, dirtLevel);
 }
+
 /**
  * Locks the doors of a specified vehicle to a defined lock state, affecting how players and NPCs can interact with the vehicle.
  *
@@ -9164,9 +9473,10 @@ export function setVehicleDirtLevel(vehicle1, dirtLevel) {
  * Hash: 0x4CDD35D0
  * @deprecated Use vehicle.setDoorsLocked(vehicle1, doorLockStatus) instead
  */
-export function setVehicleDoorsLocked(vehicle1, doorLockStatus) {
+export function setVehicleDoorsLocked(vehicle1: number | Vehicle, doorLockStatus: number): void {
     return vehicle.setDoorsLocked(vehicle1, doorLockStatus);
 }
+
 /**
  * See eDoorId declared in [`SET_VEHICLE_DOOR_SHUT`](#\_0x93D9BD300D7789E5)
  *
@@ -9175,9 +9485,10 @@ export function setVehicleDoorsLocked(vehicle1, doorLockStatus) {
  * Hash: 0x8147FEA7
  * @deprecated Use vehicle.setDoorBroken(vehicle1, doorIndex, deleteDoor) instead
  */
-export function setVehicleDoorBroken(vehicle1, doorIndex, deleteDoor) {
+export function setVehicleDoorBroken(vehicle1: number | Vehicle, doorIndex: number, deleteDoor: boolean): void {
     return vehicle.setDoorBroken(vehicle1, doorIndex, deleteDoor);
 }
+
 /**
  * SET_VEHICLE_NUMBER_PLATE_TEXT
  *
@@ -9186,9 +9497,10 @@ export function setVehicleDoorBroken(vehicle1, doorIndex, deleteDoor) {
  * Hash: 0x400F9556
  * @deprecated Use vehicle.setNumberPlateText(vehicle1, plateText) instead
  */
-export function setVehicleNumberPlateText(vehicle1, plateText) {
+export function setVehicleNumberPlateText(vehicle1: number | Vehicle, plateText: string): void {
     return vehicle.setNumberPlateText(vehicle1, plateText);
 }
+
 /**
  * Returns the type of the passed vehicle.
  *
@@ -9208,9 +9520,10 @@ export function setVehicleNumberPlateText(vehicle1, plateText) {
  * Hash: 0xA273060E
  * @deprecated Use vehicle.getType(vehicle1) instead
  */
-export function getVehicleType(vehicle1) {
+export function getVehicleType(vehicle1: number | Vehicle): string {
     return vehicle.getType(vehicle1);
 }
+
 /**
  * GIVE_WEAPON_COMPONENT_TO_PED
  *
@@ -9219,9 +9532,10 @@ export function getVehicleType(vehicle1) {
  * Hash: 0x3E1E286D
  * @deprecated Use weapon.giveComponentToPed(ped, weaponHash, componentHash) instead
  */
-export function giveWeaponComponentToPed(ped, weaponHash, componentHash) {
+export function giveWeaponComponentToPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void {
     return weapon.giveComponentToPed(ped, weaponHash, componentHash);
 }
+
 /**
  * GIVE_WEAPON_TO_PED
  *
@@ -9230,9 +9544,10 @@ export function giveWeaponComponentToPed(ped, weaponHash, componentHash) {
  * Hash: 0xC4D88A85
  * @deprecated Use weapon.giveToPed(ped, weaponHash, ammoCount, isHidden, bForceInHand) instead
  */
-export function giveWeaponToPed(ped, weaponHash, ammoCount, isHidden, bForceInHand) {
+export function giveWeaponToPed(ped: number | Ped, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void {
     return weapon.giveToPed(ped, weaponHash, ammoCount, isHidden, bForceInHand);
 }
+
 /**
  * Parameter `p1` does not seem to be used or referenced in game binaries.\
  * **Note:** When called for networked entities, a `CRemoveAllWeaponsEvent` will be created per request.
@@ -9242,9 +9557,10 @@ export function giveWeaponToPed(ped, weaponHash, ammoCount, isHidden, bForceInHa
  * Hash: 0xA44CE817
  * @deprecated Use weapon.removeAllPeds(ped) instead
  */
-export function removeAllPedWeapons(ped) {
+export function removeAllPedWeapons(ped: number | Ped): void {
     return weapon.removeAllPeds(ped);
 }
+
 /**
  * REMOVE_WEAPON_COMPONENT_FROM_PED
  *
@@ -9253,9 +9569,10 @@ export function removeAllPedWeapons(ped) {
  * Hash: 0x412AA00D
  * @deprecated Use weapon.removeComponentFromPed(ped, weaponHash, componentHash) instead
  */
-export function removeWeaponComponentFromPed(ped, weaponHash, componentHash) {
+export function removeWeaponComponentFromPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void {
     return weapon.removeComponentFromPed(ped, weaponHash, componentHash);
 }
+
 /**
  * ```
  * This native removes a specified weapon from your selected ped.
@@ -9273,108 +9590,120 @@ export function removeWeaponComponentFromPed(ped, weaponHash, componentHash) {
  * Hash: 0x9C37F220
  * @deprecated Use weapon.removeFromPed(ped, weaponHash) instead
  */
-export function removeWeaponFromPed(ped, weaponHash) {
+export function removeWeaponFromPed(ped: number | Ped, weaponHash: number | string): void {
     return weapon.removeFromPed(ped, weaponHash);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x5B912C3F
  * @deprecated Use network.getEntityFromNetworkId(netId) instead
  */
-export function networkGetEntityFromNetworkId(netId) {
+export function networkGetEntityFromNetworkId(netId: number): number {
     return network.getEntityFromNetworkId(netId);
 }
+
 /**
  * Returns the first owner ID of the specified entity.
  *
  * Hash: 0x1E546224
  * @deprecated Use network.getFirstEntityOwner(entity) instead
  */
-export function networkGetFirstEntityOwner(entity) {
+export function networkGetFirstEntityOwner(entity: number | Entity): number {
     return network.getFirstEntityOwner(entity);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x9E35DAB6
  * @deprecated Use network.getNetworkIdFromEntity(entity) instead
  */
-export function networkGetNetworkIdFromEntity(entity) {
+export function networkGetNetworkIdFromEntity(entity: number | Entity): number {
     return network.getNetworkIdFromEntity(entity);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xFFEEF513
  * @deprecated Use network.getVoiceProximityOverrideForPlayer(playerSrc) instead
  */
-export function networkGetVoiceProximityOverrideForPlayer(playerSrc) {
+export function networkGetVoiceProximityOverrideForPlayer(playerSrc: string): Vector3 {
     return network.getVoiceProximityOverrideForPlayer(playerSrc);
 }
+
 /**
  * Returns the owner ID of the specified entity.
  *
  * Hash: 0x526FEE31
  * @deprecated Use network.getEntityOwner(entity) instead
  */
-export function networkGetEntityOwner(entity) {
+export function networkGetEntityOwner(entity: number | Entity): number {
     return network.getEntityOwner(entity);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xB3210203
  * @deprecated Use kvp.endFind(handle) instead
  */
-export function endFindKvp(handle) {
+export function endFindKvp(handle: number): void {
     return kvp.endFind(handle);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xBD7BEBC5
  * @deprecated Use kvp.find(handle) instead
  */
-export function findKvp(handle) {
+export function findKvp(handle: number): string {
     return kvp.find(handle);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0xDD379006
  * @deprecated Use kvp.startFind(prefix) instead
  */
-export function startFindKvp(prefix) {
+export function startFindKvp(prefix: string): number {
     return kvp.startFind(prefix);
 }
+
 /**
  * Create a permanent voice channel.
  *
  * Hash: 0x262663C5
  * @deprecated Use mumble.createChannel(id) instead
  */
-export function mumbleCreateChannel(id) {
+export function mumbleCreateChannel(id: number): void {
     return mumble.createChannel(id);
 }
+
 /**
  * Checks if the player is currently muted
  *
  * Hash: 0x1D5D50C2
  * @deprecated Use mumble.isPlayerMuted(playerSrc) instead
  */
-export function mumbleIsPlayerMuted(playerSrc) {
+export function mumbleIsPlayerMuted(playerSrc: number): boolean {
     return mumble.isPlayerMuted(playerSrc);
 }
+
 /**
  * Mutes or unmutes the specified player
  *
  * Hash: 0xCC6C2EB1
  * @deprecated Use mumble.setPlayerMuted(playerSrc, toggle) instead
  */
-export function mumbleSetPlayerMuted(playerSrc, toggle) {
+export function mumbleSetPlayerMuted(playerSrc: number, toggle: boolean): void {
     return mumble.setPlayerMuted(playerSrc, toggle);
 }
+
 /**
  * Creates an object (prop) with the specified model at the specified position, offset on the Z axis by the radius of the object's model.
  * This object will initially be owned by the creating script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -9384,9 +9713,10 @@ export function mumbleSetPlayerMuted(playerSrc, toggle) {
  * Hash: 0x2F7AA05C
  * @deprecated Use object.create(modelHash, pos, isNetwork, netMissionEntity, doorFlag) instead
  */
-export function createObject(modelHash, pos, isNetwork, netMissionEntity, doorFlag) {
+export function createObject(modelHash: number | string, pos: Vector3, isNetwork: boolean, netMissionEntity: boolean, doorFlag: boolean): number {
     return object.create(modelHash, pos, isNetwork, netMissionEntity, doorFlag);
 }
+
 /**
  * Creates an object (prop) with the specified model centered at the specified position.
  * This object will initially be owned by the creating script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -9396,9 +9726,10 @@ export function createObject(modelHash, pos, isNetwork, netMissionEntity, doorFl
  * Hash: 0x58040420
  * @deprecated Use object.createNoOffset(modelHash, pos, isNetwork, netMissionEntity, doorFlag) instead
  */
-export function createObjectNoOffset(modelHash, pos, isNetwork, netMissionEntity, doorFlag) {
+export function createObjectNoOffset(modelHash: number | string, pos: Vector3, isNetwork: boolean, netMissionEntity: boolean, doorFlag: boolean): number {
     return object.createNoOffset(modelHash, pos, isNetwork, netMissionEntity, doorFlag);
 }
+
 /**
  * Returns all object handles known to the server.
  * The data returned adheres to the following layout:
@@ -9410,9 +9741,10 @@ export function createObjectNoOffset(modelHash, pos, isNetwork, netMissionEntity
  * Hash: 0x6886C3FE
  * @deprecated Use object.getAlls() instead
  */
-export function getAllObjects() {
+export function getAllObjects(): number {
     return object.getAlls();
 }
+
 /**
  * Nonsynchronous operations will not wait for a disk/filesystem flush before returning from a write or delete call. They will be much faster than their synchronous counterparts (e.g., bulk operations), however, a system crash may lose the data to some recent operations.
  *
@@ -9421,18 +9753,20 @@ export function getAllObjects() {
  * Hash: 0xE27C97A0
  * @deprecated Use resource.flushKvp() instead
  */
-export function flushResourceKvp() {
+export function flushResourceKvp(): void {
     return resource.flushKvp();
 }
+
 /**
  * Returns the physical on-disk path of the specified resource.
  *
  * Hash: 0x61DCF017
  * @deprecated Use resource.getPath(resourceName) instead
  */
-export function getResourcePath(resourceName) {
+export function getResourcePath(resourceName: string): string {
     return resource.getPath(resourceName);
 }
+
 /**
  * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
  *
@@ -9441,9 +9775,10 @@ export function getResourcePath(resourceName) {
  * Hash: 0x9862B266
  * @deprecated Use resource.registerAsset(resourceName, fileName) instead
  */
-export function registerResourceAsset(resourceName, fileName) {
+export function registerResourceAsset(resourceName: string, fileName: string): string {
     return resource.registerAsset(resourceName, fileName);
 }
+
 /**
  * Registers a build task factory for resources.
  * The function should return an object (msgpack map) with the following fields:
@@ -9462,9 +9797,10 @@ export function registerResourceAsset(resourceName, fileName) {
  * Hash: 0x285B43CA
  * @deprecated Use resource.registerBuildTaskFactory(factoryId, factoryFn) instead
  */
-export function registerResourceBuildTaskFactory(factoryId, factoryFn) {
+export function registerResourceBuildTaskFactory(factoryId: string, factoryFn: Function): void {
     return resource.registerBuildTaskFactory(factoryId, factoryFn);
 }
+
 /**
  * Writes the specified data to a file in the specified resource.
  * Using a length of `-1` will automatically detect the length assuming the data is a C string.
@@ -9472,9 +9808,10 @@ export function registerResourceBuildTaskFactory(factoryId, factoryFn) {
  * Hash: 0xA09E7E7B
  * @deprecated Use resource.saveFile(resourceName, fileName, data, dataLength) instead
  */
-export function saveResourceFile(resourceName, fileName, data, dataLength) {
+export function saveResourceFile(resourceName: string, fileName: string, data: string, dataLength: number): boolean {
     return resource.saveFile(resourceName, fileName, data, dataLength);
 }
+
 /**
  * Scans the resources in the specified resource root. This function is only available in the 'monitor mode' process and is
  * not available for user resources.
@@ -9482,81 +9819,90 @@ export function saveResourceFile(resourceName, fileName, data, dataLength) {
  * Hash: 0x636F097F
  * @deprecated Use resource.scanRoot(rootPath, callback) instead
  */
-export function scanResourceRoot(rootPath, callback) {
+export function scanResourceRoot(rootPath: string, callback: Function): void {
     return resource.scanRoot(rootPath, callback);
 }
+
 /**
  * Schedules the specified resource to run a tick as soon as possible, bypassing the server's fixed tick rate.
  *
  * Hash: 0xB88A73AD
  * @deprecated Use resource.scheduleTick(resourceName) instead
  */
-export function scheduleResourceTick(resourceName) {
+export function scheduleResourceTick(resourceName: string): void {
     return resource.scheduleTick(resourceName);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x29B440DC
  * @deprecated Use resource.start(resourceName) instead
  */
-export function startResource(resourceName) {
+export function startResource(resourceName: string): boolean {
     return resource.start(resourceName);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x21783161
  * @deprecated Use resource.stop(resourceName) instead
  */
-export function stopResource(resourceName) {
+export function stopResource(resourceName: string): boolean {
     return resource.stop(resourceName);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x7389B5DF
  * @deprecated Use resource.deleteKvp(key) instead
  */
-export function deleteResourceKvp(key) {
+export function deleteResourceKvp(key: string): void {
     return resource.deleteKvp(key);
 }
+
 /**
  * Nonsynchronous [DELETE_RESOURCE_KVP](#\_0x7389B5DF) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x4152C90
  * @deprecated Use resource.deleteKvpNoSync(key) instead
  */
-export function deleteResourceKvpNoSync(key) {
+export function deleteResourceKvpNoSync(key: string): void {
     return resource.deleteKvpNoSync(key);
 }
+
 /**
  * Returns the name of the currently executing resource.
  *
  * Hash: 0xE5E9EBBB
  * @deprecated Use resource.getCurrentName() instead
  */
-export function getCurrentResourceName() {
+export function getCurrentResourceName(): string {
     return resource.getCurrentName();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x4D52FE5B
  * @deprecated Use resource.getInvoking() instead
  */
-export function getInvokingResource() {
+export function getInvokingResource(): string {
     return resource.getInvoking();
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x863F27B
  * @deprecated Use resource.getNums() instead
  */
-export function getNumResources() {
+export function getNumResources(): number {
     return resource.getNums();
 }
+
 /**
  * Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
  * See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
@@ -9564,18 +9910,20 @@ export function getNumResources() {
  * Hash: 0x776E864
  * @deprecated Use resource.getNumMetadata(resourceName, metadataKey) instead
  */
-export function getNumResourceMetadata(resourceName, metadataKey) {
+export function getNumResourceMetadata(resourceName: string, metadataKey: string): number {
     return resource.getNumMetadata(resourceName, metadataKey);
 }
+
 /**
  * No comment provided
  *
  * Hash: 0x387246B7
  * @deprecated Use resource.getByFindIndex(findIndex) instead
  */
-export function getResourceByFindIndex(findIndex) {
+export function getResourceByFindIndex(findIndex: number): string {
     return resource.getByFindIndex(findIndex);
 }
+
 /**
  * Returns all commands registered by the specified resource.
  * The data returned adheres to the following layout:
@@ -9598,36 +9946,40 @@ export function getResourceByFindIndex(findIndex) {
  * Hash: 0x97628584
  * @deprecated Use resource.getCommands(resource1) instead
  */
-export function getResourceCommands(resource1) {
+export function getResourceCommands(resource1: string): number {
     return resource.getCommands(resource1);
 }
+
 /**
  * A getter for [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938).
  *
  * Hash: 0x35BDCEEA
  * @deprecated Use resource.getKvpFloat(key) instead
  */
-export function getResourceKvpFloat(key) {
+export function getResourceKvpFloat(key: string): number {
     return resource.getKvpFloat(key);
 }
+
 /**
  * A getter for [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8).
  *
  * Hash: 0x557B586A
  * @deprecated Use resource.getKvpInt(key) instead
  */
-export function getResourceKvpInt(key) {
+export function getResourceKvpInt(key: string): number {
     return resource.getKvpInt(key);
 }
+
 /**
  * A getter for [SET_RESOURCE_KVP](#\_0x21C7A35B).
  *
  * Hash: 0x5240DA5A
  * @deprecated Use resource.getKvpString(key) instead
  */
-export function getResourceKvpString(key) {
+export function getResourceKvpString(key: string): string {
     return resource.getKvpString(key);
 }
+
 /**
  * Gets the metadata value at a specified key/index from a resource's manifest.
  * See also: [Resource manifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/)
@@ -9635,18 +9987,20 @@ export function getResourceKvpString(key) {
  * Hash: 0x964BAB1D
  * @deprecated Use resource.getMetadata(resourceName, metadataKey, index) instead
  */
-export function getResourceMetadata(resourceName, metadataKey, index) {
+export function getResourceMetadata(resourceName: string, metadataKey: string, index: number): string {
     return resource.getMetadata(resourceName, metadataKey, index);
 }
+
 /**
  * Returns the current state of the specified resource.
  *
  * Hash: 0x4039B485
  * @deprecated Use resource.getState(resourceName) instead
  */
-export function getResourceState(resourceName) {
+export function getResourceState(resourceName: string): string {
     return resource.getState(resourceName);
 }
+
 /**
  * Reads the contents of a text file in a specified resource.
  * If executed on the client, this file has to be included in `files` in the resource manifest.
@@ -9655,72 +10009,80 @@ export function getResourceState(resourceName) {
  * Hash: 0x76A9EE1F
  * @deprecated Use resource.loadFile(resourceName, fileName) instead
  */
-export function loadResourceFile(resourceName, fileName) {
+export function loadResourceFile(resourceName: string, fileName: string): string {
     return resource.loadFile(resourceName, fileName);
 }
+
 /**
  * An internal function which allows the current resource's HLL script runtimes to receive state for the specified event.
  *
  * Hash: 0xD233A168
  * @deprecated Use resource.registerAsEventHandler(eventName) instead
  */
-export function registerResourceAsEventHandler(eventName) {
+export function registerResourceAsEventHandler(eventName: string): void {
     return resource.registerAsEventHandler(eventName);
 }
+
 /**
  * A setter for [GET_RESOURCE_KVP_STRING](#\_0x5240DA5A).
  *
  * Hash: 0x21C7A35B
  * @deprecated Use resource.setKvp(key, value) instead
  */
-export function setResourceKvp(key, value) {
+export function setResourceKvp(key: string, value: string): void {
     return resource.setKvp(key, value);
 }
+
 /**
  * A setter for [GET_RESOURCE_KVP_FLOAT](#\_0x35BDCEEA).
  *
  * Hash: 0x9ADD2938
  * @deprecated Use resource.setKvpFloat(key, value) instead
  */
-export function setResourceKvpFloat(key, value) {
+export function setResourceKvpFloat(key: string, value: number): void {
     return resource.setKvpFloat(key, value);
 }
+
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_FLOAT](#\_0x9ADD2938) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x3517BFBE
  * @deprecated Use resource.setKvpFloatNoSync(key, value) instead
  */
-export function setResourceKvpFloatNoSync(key, value) {
+export function setResourceKvpFloatNoSync(key: string, value: number): void {
     return resource.setKvpFloatNoSync(key, value);
 }
+
 /**
  * A setter for [GET_RESOURCE_KVP_INT](#\_0x557B586A).
  *
  * Hash: 0x6A2B1E8
  * @deprecated Use resource.setKvpInt(key, value) instead
  */
-export function setResourceKvpInt(key, value) {
+export function setResourceKvpInt(key: string, value: number): void {
     return resource.setKvpInt(key, value);
 }
+
 /**
  * Nonsynchronous [SET_RESOURCE_KVP_INT](#\_0x6A2B1E8) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0x26AEB707
  * @deprecated Use resource.setKvpIntNoSync(key, value) instead
  */
-export function setResourceKvpIntNoSync(key, value) {
+export function setResourceKvpIntNoSync(key: string, value: number): void {
     return resource.setKvpIntNoSync(key, value);
 }
+
 /**
  * Nonsynchronous [SET_RESOURCE_KVP](#\_0x21C7A35B) operation; see [FLUSH_RESOURCE_KVP](#\_0x5240DA5A).
  *
  * Hash: 0xCF9A2FF
  * @deprecated Use resource.setKvpNoSync(key, value) instead
  */
-export function setResourceKvpNoSync(key, value) {
+export function setResourceKvpNoSync(key: string, value: string): void {
     return resource.setKvpNoSync(key, value);
 }
+
 /**
  * Clear a ped's tasks. Stop animations and other tasks created by scripts.
  *
@@ -9729,9 +10091,10 @@ export function setResourceKvpNoSync(key, value) {
  * Hash: 0xDE3316AB
  * @deprecated Use task.clearPeds(ped) instead
  */
-export function clearPedTasks(ped) {
+export function clearPedTasks(ped: number | Ped): void {
     return task.clearPeds(ped);
 }
+
 /**
  * Immediately stops the pedestrian from whatever it's doing. The difference between this and [CLEAR_PED_TASKS](#\_0xE1EF3C1216AFF2CD) is that this one teleports the ped but does not change the position of the ped.
  *
@@ -9740,9 +10103,10 @@ export function clearPedTasks(ped) {
  * Hash: 0xBC045625
  * @deprecated Use task.clearPedsImmediately(ped) instead
  */
-export function clearPedTasksImmediately(ped) {
+export function clearPedTasksImmediately(ped: number | Ped): void {
     return task.clearPedsImmediately(ped);
 }
+
 /**
  * ```
  * Makes the specified ped attack the target ped.
@@ -9755,9 +10119,10 @@ export function clearPedTasksImmediately(ped) {
  * Hash: 0xCB0D8932
  * @deprecated Use task.combatPed(ped, targetPed) instead
  */
-export function taskCombatPed(ped, targetPed) {
+export function taskCombatPed(ped: number | Ped, targetPed: number | Ped): void {
     return task.combatPed(ped, targetPed);
 }
+
 /**
  * ```
  * Example:
@@ -9773,9 +10138,10 @@ export function taskCombatPed(ped, targetPed) {
  * Hash: 0x2B84D1C4
  * @deprecated Use task.driveBy(driverPed, targetPed, targetVehicle, targetX, targetY, targetZ, distanceToShoot, pedAccuracy, firingPattern) instead
  */
-export function taskDriveBy(driverPed, targetPed, targetVehicle, targetX, targetY, targetZ, distanceToShoot, pedAccuracy, firingPattern) {
+export function taskDriveBy(driverPed: number | Ped, targetPed: number | Ped, targetVehicle: number | Vehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void {
     return task.driveBy(driverPed, targetPed, targetVehicle, targetX, targetY, targetZ, distanceToShoot, pedAccuracy, firingPattern);
 }
+
 /**
  * ```
  * speed 1.0 = walk, 2.0 = run
@@ -9788,9 +10154,10 @@ export function taskDriveBy(driverPed, targetPed, targetVehicle, targetX, target
  * Hash: 0xB8689B4E
  * @deprecated Use task.enterVehicle(ped, vehicle, timeout, seatIndex, speed, flag) instead
  */
-export function taskEnterVehicle(ped, vehicle, timeout, seatIndex, speed, flag) {
+export function taskEnterVehicle(ped: number | Ped, vehicle: number | Vehicle, timeout: number, seatIndex: number, speed: number, flag: number): void {
     return task.enterVehicle(ped, vehicle, timeout, seatIndex, speed, flag);
 }
+
 /**
  * TASK_EVERYONE_LEAVE_VEHICLE
  *
@@ -9799,9 +10166,10 @@ export function taskEnterVehicle(ped, vehicle, timeout, seatIndex, speed, flag) 
  * Hash: 0xC1971F30
  * @deprecated Use task.everyoneLeaveVehicle(vehicle) instead
  */
-export function taskEveryoneLeaveVehicle(vehicle) {
+export function taskEveryoneLeaveVehicle(vehicle: number | Vehicle): void {
     return task.everyoneLeaveVehicle(vehicle);
 }
+
 /**
  * TASK_GO_STRAIGHT_TO_COORD
  *
@@ -9810,9 +10178,10 @@ export function taskEveryoneLeaveVehicle(vehicle) {
  * Hash: 0x80A9E7A7
  * @deprecated Use task.goStraightToCoord(ped, pos, speed, timeout, targetHeading, distanceToSlide) instead
  */
-export function taskGoStraightToCoord(ped, pos, speed, timeout, targetHeading, distanceToSlide) {
+export function taskGoStraightToCoord(ped: number | Ped, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void {
     return task.goStraightToCoord(ped, pos, speed, timeout, targetHeading, distanceToSlide);
 }
+
 /**
  * Tells a ped to go to a coord by any means.
  *
@@ -9871,9 +10240,10 @@ export function taskGoStraightToCoord(ped, pos, speed, timeout, targetHeading, d
  * Hash: 0xF91DF93B
  * @deprecated Use task.goToCoordAnyMeans(ped, pos, fMoveBlendRatio, vehicle, bUseLongRangeVehiclePathing, drivingFlags, fMaxRangeToShootTargets) instead
  */
-export function taskGoToCoordAnyMeans(ped, pos, fMoveBlendRatio, vehicle, bUseLongRangeVehiclePathing, drivingFlags, fMaxRangeToShootTargets) {
+export function taskGoToCoordAnyMeans(ped: number | Ped, pos: Vector3, fMoveBlendRatio: number, vehicle: number | Vehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void {
     return task.goToCoordAnyMeans(ped, pos, fMoveBlendRatio, vehicle, bUseLongRangeVehiclePathing, drivingFlags, fMaxRangeToShootTargets);
 }
+
 /**
  * ```
  * The entity will move towards the target until time is over (duration) or get in target's range (distance). p5 and p6 are unknown, but you could leave p5 = 1073741824 or 100 or even 0 (didn't see any difference but on the decompiled scripts, they use 1073741824 mostly) and p6 = 0
@@ -9887,9 +10257,10 @@ export function taskGoToCoordAnyMeans(ped, pos, fMoveBlendRatio, vehicle, bUseLo
  * Hash: 0x374827C2
  * @deprecated Use task.goToEntity(entity, target, duration, distance, speed) instead
  */
-export function taskGoToEntity(entity, target, duration, distance, speed) {
+export function taskGoToEntity(entity: number | Entity, target: number | Entity, duration: number, distance: number, speed: number): void {
     return task.goToEntity(entity, target, duration, distance, speed);
 }
+
 /**
  * ```
  * In the scripts, p3 was always -1.
@@ -9902,9 +10273,10 @@ export function taskGoToEntity(entity, target, duration, distance, speed) {
  * Hash: 0x8DCC19C5
  * @deprecated Use task.handsUp(ped, duration, facingPed) instead
  */
-export function taskHandsUp(ped, duration, facingPed) {
+export function taskHandsUp(ped: number | Ped, duration: number, facingPed: number | Ped): void {
     return task.handsUp(ped, duration, facingPed);
 }
+
 /**
  * Flags are the same flags used in [`TASK_LEAVE_VEHICLE`](#\_0xD3DBCE61A490BE02)
  *
@@ -9913,9 +10285,10 @@ export function taskHandsUp(ped, duration, facingPed) {
  * Hash: 0xDBDD79FA
  * @deprecated Use task.leaveAnyVehicle(ped, flags) instead
  */
-export function taskLeaveAnyVehicle(ped, flags) {
+export function taskLeaveAnyVehicle(ped: number | Ped, flags: number): void {
     return task.leaveAnyVehicle(ped, flags);
 }
+
 /**
  * ```
  * Flags from decompiled scripts:
@@ -9934,9 +10307,10 @@ export function taskLeaveAnyVehicle(ped, flags) {
  * Hash: 0x7B1141C6
  * @deprecated Use task.leaveVehicle(ped, vehicle, flags) instead
  */
-export function taskLeaveVehicle(ped, vehicle, flags) {
+export function taskLeaveVehicle(ped: number | Ped, vehicle: number | Vehicle, flags: number): void {
     return task.leaveVehicle(ped, vehicle, flags);
 }
+
 /**
  * [Animations list](https://alexguirre.github.io/animations-list/)
  *
@@ -9982,9 +10356,10 @@ export function taskLeaveVehicle(ped, vehicle, flags) {
  * Hash: 0x5AB552C6
  * @deprecated Use task.playAnim(ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ) instead
  */
-export function taskPlayAnim(ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ) {
+export function taskPlayAnim(ped: number | Ped, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void {
     return task.playAnim(ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ);
 }
+
 /**
  * Similar in functionality to [`TASK_PLAY_ANIM`](#\_0xEA47FE3719165B94), except the position and rotation parameters let you specify the initial position and rotation of the task. The ped is teleported to the position specified.
  * [Animations list](https://alexguirre.github.io/animations-list/)
@@ -9994,9 +10369,10 @@ export function taskPlayAnim(ped, animDictionary, animationName, blendInSpeed, b
  * Hash: 0x3DDEB0E6
  * @deprecated Use task.playAnimAdvanced(ped, animDictionary, animationName, pos, rot, blendInSpeed, blendOutSpeed, duration, flag, animTime) instead
  */
-export function taskPlayAnimAdvanced(ped, animDictionary, animationName, pos, rot, blendInSpeed, blendOutSpeed, duration, flag, animTime) {
+export function taskPlayAnimAdvanced(ped: number | Ped, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void {
     return task.playAnimAdvanced(ped, animDictionary, animationName, pos, rot, blendInSpeed, blendOutSpeed, duration, flag, animTime);
 }
+
 /**
  * TASK_REACT_AND_FLEE_PED
  *
@@ -10005,9 +10381,10 @@ export function taskPlayAnimAdvanced(ped, animDictionary, animationName, pos, ro
  * Hash: 0x8A632BD8
  * @deprecated Use task.reactAndFleePed(ped, fleeTarget) instead
  */
-export function taskReactAndFleePed(ped, fleeTarget) {
+export function taskReactAndFleePed(ped: number | Ped, fleeTarget: number | Ped): void {
     return task.reactAndFleePed(ped, fleeTarget);
 }
+
 /**
  * ```
  * Firing Pattern Hash Information: https://pastebin.com/Px036isB
@@ -10018,9 +10395,10 @@ export function taskReactAndFleePed(ped, fleeTarget) {
  * Hash: 0x601C22E3
  * @deprecated Use task.shootAtCoord(ped, pos, duration, firingPattern) instead
  */
-export function taskShootAtCoord(ped, pos, duration, firingPattern) {
+export function taskShootAtCoord(ped: number | Ped, pos: Vector3, duration: number, firingPattern: number | string): void {
     return task.shootAtCoord(ped, pos, duration, firingPattern);
 }
+
 /**
  * ```
  * //this part of the code is to determine at which entity the player is aiming, for example if you want to create a mod where you give orders to peds
@@ -10038,9 +10416,10 @@ export function taskShootAtCoord(ped, pos, duration, firingPattern) {
  * Hash: 0xAC0631C9
  * @deprecated Use task.shootAtEntity(entity, target, duration, firingPattern) instead
  */
-export function taskShootAtEntity(entity, target, duration, firingPattern) {
+export function taskShootAtEntity(entity: number | Entity, target: number | Entity, duration: number, firingPattern: number | string): void {
     return task.shootAtEntity(entity, target, duration, firingPattern);
 }
+
 /**
  * ```
  * NativeDB Introduced: v323
@@ -10054,34 +10433,39 @@ export function taskShootAtEntity(entity, target, duration, firingPattern) {
  * Hash: 0x65D4A35D
  * @deprecated Use task.warpPedIntoVehicle(ped, vehicle, seatIndex) instead
  */
-export function taskWarpPedIntoVehicle(ped, vehicle, seatIndex) {
+export function taskWarpPedIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void {
     return task.warpPedIntoVehicle(ped, vehicle, seatIndex);
 }
+
 /**
  * Scope entry for profiler.
  *
  * Hash: 0xC795A4A9
  * @deprecated Use profiler.enterScope(scopeName) instead
  */
-export function profilerEnterScope(scopeName) {
+export function profilerEnterScope(scopeName: string): void {
     return profiler.enterScope(scopeName);
 }
+
 /**
  * Scope exit for profiler.
  *
  * Hash: 0xB39CA35C
  * @deprecated Use profiler.exitScope() instead
  */
-export function profilerExitScope() {
+export function profilerExitScope(): void {
     return profiler.exitScope();
 }
+
 /**
  * Returns true if the profiler is active.
  *
  * Hash: 0xF8B7D7BB
  * @deprecated Use profiler.isRecording() instead
  */
-export function profilerIsRecording() {
+export function profilerIsRecording(): boolean {
     return profiler.isRecording();
 }
+
+
 export * from "@risinglife/redm-shared";
