@@ -278,19 +278,19 @@ export class Vector3 extends VectorBase {
         return [0, 0, 0];
     }
 }
-export class Entity {
+export class IEntity {
 }
-export class Ped extends Entity {
+export class IPed extends IEntity {
 }
-export class Player extends Entity {
+export class IPlayer extends IEntity {
 }
-export class Vehicle extends Entity {
+export class IVehicle extends IEntity {
 }
-export class Object extends Entity {
+export class IObject extends IEntity {
 }
-export class Blip extends Entity {
+export class IBlip extends IEntity {
 }
-export class Camera extends Entity {
+export class ICamera extends IEntity {
 }
 export var Enums;
 (function (Enums) {

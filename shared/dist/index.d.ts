@@ -169,21 +169,21 @@ export declare class Vector3 extends VectorBase<Vector3> {
     static fromObject(xyz: IVector3): Vector3;
     private getXYZ;
 }
-export declare abstract class Entity {
+export declare abstract class IEntity {
     abstract handle(): number;
     abstract remoteId(): number;
 }
-export declare abstract class Ped extends Entity {
+export declare abstract class IPed extends IEntity {
 }
-export declare abstract class Player extends Entity {
+export declare abstract class IPlayer extends IEntity {
 }
-export declare abstract class Vehicle extends Entity {
+export declare abstract class IVehicle extends IEntity {
 }
-export declare abstract class Object extends Entity {
+export declare abstract class IObject extends IEntity {
 }
-export declare abstract class Blip extends Entity {
+export declare abstract class IBlip extends IEntity {
 }
-export declare abstract class Camera extends Entity {
+export declare abstract class ICamera extends IEntity {
 }
 declare type Handle = number;
 declare type Hash = number;
