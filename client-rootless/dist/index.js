@@ -1,4 +1,4 @@
-import { Vector3, Entity, Ped, Player, Vehicle, Object, Camera } from '@risinglife/redm-shared';
+import { Vector3, IEntity, IPed, IPlayer, IVehicle, IObject, ICamera } from '@risinglife/redm-shared';
 export var events;
 (function (events_1) {
     class EventEmitter {
@@ -390,7 +390,7 @@ export var entity;
      * Hash: 0x47B870F5
      */
     function getArchetypeName(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityArchetypeName(_entity);
     }
     entity_1.getArchetypeName = getArchetypeName;
@@ -411,7 +411,7 @@ export var entity;
      * Hash: 0xF6B815C5
      */
     function getMapdataOwner(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityMapdataOwner(_entity);
     }
     entity_1.getMapdataOwner = getMapdataOwner;
@@ -449,7 +449,7 @@ export var entity;
      * Hash: 0xFB0639B
      */
     function setMatrix(entity, forwardX, forwardY, forwardZ, rightX, rightY, rightZ, upX, upY, upZ, atX, atY, atZ) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityMatrix(_entity, forwardX, forwardY, forwardZ, rightX, rightY, rightZ, upX, upY, upZ, atX, atY, atZ);
     }
     entity_1.setMatrix = setMatrix;
@@ -459,7 +459,7 @@ export var entity;
      * Hash: 0xEDBE6ADD
      */
     function isPositionFrozen(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return IsEntityPositionFrozen(_entity);
     }
     entity_1.isPositionFrozen = isPositionFrozen;
@@ -473,7 +473,7 @@ export var entity;
      * Hash: 0x9A3144BC
      */
     function getAddress(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityAddress(_entity);
     }
     entity_1.getAddress = getAddress;
@@ -483,7 +483,7 @@ export var entity;
      * Hash: 0x3BB78F05
      */
     function ensureStateBag(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         EnsureEntityStateBag(_entity);
     }
     entity_1.ensureStateBag = ensureStateBag;
@@ -520,7 +520,7 @@ export var entity;
      * Hash: 0xDFFBA12F
      */
     function getEntitiesInRadius(pos, radius, entityType, sortByDistance, models) {
-        const _models = models instanceof Object ? models.handle() : models;
+        const _models = models instanceof IObject ? models.handle() : models;
         return GetEntitiesInRadius(pos.x, pos.y, pos.z, radius, entityType, sortByDistance, _models);
     }
     entity_1.getEntitiesInRadius = getEntitiesInRadius;
@@ -757,7 +757,7 @@ export var graphics;
      * Hash: 0x76180407
      */
     function setEntityDrawOutline(entity, enabled) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityDrawOutline(_entity, enabled);
     }
     graphics.setEntityDrawOutline = setEntityDrawOutline;
@@ -1898,7 +1898,7 @@ export var misc;
      * Hash: 0x6BC189AC
      */
     function experimentalLoadCloneSync(entity, data) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         ExperimentalLoadCloneSync(_entity, data);
     }
     misc.experimentalLoadCloneSync = experimentalLoadCloneSync;
@@ -1908,7 +1908,7 @@ export var misc;
      * Hash: 0x9D65CAD2
      */
     function experimentalSaveCloneCreate(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return ExperimentalSaveCloneCreate(_entity);
     }
     misc.experimentalSaveCloneCreate = experimentalSaveCloneCreate;
@@ -1918,7 +1918,7 @@ export var misc;
      * Hash: 0x38D19210
      */
     function experimentalSaveCloneSync(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return ExperimentalSaveCloneSync(_entity);
     }
     misc.experimentalSaveCloneSync = experimentalSaveCloneSync;
@@ -2319,7 +2319,7 @@ export var misc;
      * Hash: 0xD70C3BCA
      */
     function formatStackTrace(traceData) {
-        const _traceData = traceData instanceof Object ? traceData.handle() : traceData;
+        const _traceData = traceData instanceof IObject ? traceData.handle() : traceData;
         return FormatStackTrace(_traceData);
     }
     misc.formatStackTrace = formatStackTrace;
@@ -2596,7 +2596,7 @@ export var ped;
      * Hash: 0x310D0271
      */
     function getNumberOfCollectionDrawableVariations(ped, componentId, collection) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetNumberOfPedCollectionDrawableVariations(_ped, componentId, collection);
     }
     ped_1.getNumberOfCollectionDrawableVariations = getNumberOfCollectionDrawableVariations;
@@ -2606,7 +2606,7 @@ export var ped;
      * Hash: 0x3B6A13E1
      */
     function getNumberOfCollectionPropDrawableVariations(ped, anchorPoint, collection) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetNumberOfPedCollectionPropDrawableVariations(_ped, anchorPoint, collection);
     }
     ped_1.getNumberOfCollectionPropDrawableVariations = getNumberOfCollectionPropDrawableVariations;
@@ -2616,7 +2616,7 @@ export var ped;
      * Hash: 0x75CAF9CC
      */
     function getNumberOfCollectionPropTextureVariations(ped, anchorPoint, collection, propIndex) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetNumberOfPedCollectionPropTextureVariations(_ped, anchorPoint, collection, propIndex);
     }
     ped_1.getNumberOfCollectionPropTextureVariations = getNumberOfCollectionPropTextureVariations;
@@ -2626,7 +2626,7 @@ export var ped;
      * Hash: 0xD2C15D7
      */
     function getNumberOfCollectionTextureVariations(ped, componentId, collection, drawableId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetNumberOfPedCollectionTextureVariations(_ped, componentId, collection, drawableId);
     }
     ped_1.getNumberOfCollectionTextureVariations = getNumberOfCollectionTextureVariations;
@@ -2640,7 +2640,7 @@ export var ped;
      * Hash: 0x45946359
      */
     function getCollectionsCount(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedCollectionsCount(_ped);
     }
     ped_1.getCollectionsCount = getCollectionsCount;
@@ -2650,7 +2650,7 @@ export var ped;
      * Hash: 0x94EB1FE4
      */
     function getCollectionLocalIndexFromDrawable(ped, componentId, drawableId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedCollectionLocalIndexFromDrawable(_ped, componentId, drawableId);
     }
     ped_1.getCollectionLocalIndexFromDrawable = getCollectionLocalIndexFromDrawable;
@@ -2660,7 +2660,7 @@ export var ped;
      * Hash: 0xFBDB885F
      */
     function getCollectionLocalIndexFromProp(ped, anchorPoint, propIndex) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedCollectionLocalIndexFromProp(_ped, anchorPoint, propIndex);
     }
     ped_1.getCollectionLocalIndexFromProp = getCollectionLocalIndexFromProp;
@@ -2674,7 +2674,7 @@ export var ped;
      * Hash: 0xFED5D83A
      */
     function getCollectionName(ped, index) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedCollectionName(_ped, index);
     }
     ped_1.getCollectionName = getCollectionName;
@@ -2684,7 +2684,7 @@ export var ped;
      * Hash: 0xD6BBA48B
      */
     function getCollectionNameFromDrawable(ped, componentId, drawableId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedCollectionNameFromDrawable(_ped, componentId, drawableId);
     }
     ped_1.getCollectionNameFromDrawable = getCollectionNameFromDrawable;
@@ -2694,7 +2694,7 @@ export var ped;
      * Hash: 0x8ED0C17
      */
     function getCollectionNameFromProp(ped, anchorPoint, propIndex) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedCollectionNameFromProp(_ped, anchorPoint, propIndex);
     }
     ped_1.getCollectionNameFromProp = getCollectionNameFromProp;
@@ -2712,7 +2712,7 @@ export var ped;
      * Hash: 0x7CCE1163
      */
     function getDecorations(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedDecorations(_ped);
     }
     ped_1.getDecorations = getDecorations;
@@ -2735,7 +2735,7 @@ export var ped;
      * Hash: 0x280F1FC3
      */
     function getDrawableGlobalIndexFromCollection(ped, componentId, collection, drawableId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedDrawableGlobalIndexFromCollection(_ped, componentId, collection, drawableId);
     }
     ped_1.getDrawableGlobalIndexFromCollection = getDrawableGlobalIndexFromCollection;
@@ -2745,7 +2745,7 @@ export var ped;
      * Hash: 0x9970386F
      */
     function getDrawableVariationCollectionLocalIndex(ped, componentId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedDrawableVariationCollectionLocalIndex(_ped, componentId);
     }
     ped_1.getDrawableVariationCollectionLocalIndex = getDrawableVariationCollectionLocalIndex;
@@ -2757,7 +2757,7 @@ export var ped;
      * Hash: 0xBCE0AB63
      */
     function getDrawableVariationCollectionName(ped, componentId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedDrawableVariationCollectionName(_ped, componentId);
     }
     ped_1.getDrawableVariationCollectionName = getDrawableVariationCollectionName;
@@ -2767,7 +2767,7 @@ export var ped;
      * Hash: 0xA47B860F
      */
     function getEyeColor(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedEyeColor(_ped);
     }
     ped_1.getEyeColor = getEyeColor;
@@ -2777,7 +2777,7 @@ export var ped;
      * Hash: 0xBA352ADD
      */
     function getFaceFeature(ped, index) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedFaceFeature(_ped, index);
     }
     ped_1.getFaceFeature = getFaceFeature;
@@ -2787,7 +2787,7 @@ export var ped;
      * Hash: 0xA3EA2893
      */
     function getHairColor(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedHairColor(_ped);
     }
     ped_1.getHairColor = getHairColor;
@@ -2797,7 +2797,7 @@ export var ped;
      * Hash: 0x4B087305
      */
     function getHairHighlightColor(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedHairHighlightColor(_ped);
     }
     ped_1.getHairHighlightColor = getHairHighlightColor;
@@ -2807,7 +2807,7 @@ export var ped;
      * Hash: 0xC46EE605
      */
     function getHeadOverlayData(ped, index) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedHeadOverlayData(_ped, index);
     }
     ped_1.getHeadOverlayData = getHeadOverlayData;
@@ -2839,7 +2839,7 @@ export var ped;
      * Hash: 0x69E81E3D
      */
     function getMovementClipset(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedMovementClipset(_ped);
     }
     ped_1.getMovementClipset = getMovementClipset;
@@ -2849,7 +2849,7 @@ export var ped;
      * Hash: 0xCD420AD1
      */
     function getPropCollectionLocalIndex(ped, anchorPoint) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedPropCollectionLocalIndex(_ped, anchorPoint);
     }
     ped_1.getPropCollectionLocalIndex = getPropCollectionLocalIndex;
@@ -2861,7 +2861,7 @@ export var ped;
      * Hash: 0x6B5653E4
      */
     function getPropCollectionName(ped, anchorPoint) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedPropCollectionName(_ped, anchorPoint);
     }
     ped_1.getPropCollectionName = getPropCollectionName;
@@ -2875,7 +2875,7 @@ export var ped;
      * Hash: 0x2CB45CDC
      */
     function getPropGlobalIndexFromCollection(ped, anchorPoint, collection, propIndex) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedPropGlobalIndexFromCollection(_ped, anchorPoint, collection, propIndex);
     }
     ped_1.getPropGlobalIndexFromCollection = getPropGlobalIndexFromCollection;
@@ -2885,7 +2885,7 @@ export var ped;
      * Hash: 0x44B91E94
      */
     function getSweat(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedSweat(_ped);
     }
     ped_1.getSweat = getSweat;
@@ -2899,7 +2899,7 @@ export var ped;
      * Hash: 0x33B2AFA2
      */
     function isCollectionComponentVariationGen9Exclusive(ped, componentId, collection, drawableId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedCollectionComponentVariationGen9Exclusive(_ped, componentId, collection, drawableId);
     }
     ped_1.isCollectionComponentVariationGen9Exclusive = isCollectionComponentVariationGen9Exclusive;
@@ -2913,7 +2913,7 @@ export var ped;
      * Hash: 0xCA63A52A
      */
     function isCollectionComponentVariationValid(ped, componentId, collection, drawableId, textureId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedCollectionComponentVariationValid(_ped, componentId, collection, drawableId, textureId);
     }
     ped_1.isCollectionComponentVariationValid = isCollectionComponentVariationValid;
@@ -2923,7 +2923,7 @@ export var ped;
      * Hash: 0xC767B581
      */
     function isComponentVariationGen9Exclusive(ped, componentId, drawableId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedComponentVariationGen9Exclusive(_ped, componentId, drawableId);
     }
     ped_1.isComponentVariationGen9Exclusive = isComponentVariationGen9Exclusive;
@@ -2970,7 +2970,7 @@ export var ped;
      * Hash: 0x88711BBA
      */
     function setCollectionComponentVariation(ped, componentId, collection, drawableId, textureId, paletteId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedCollectionComponentVariation(_ped, componentId, collection, drawableId, textureId, paletteId);
     }
     ped_1.setCollectionComponentVariation = setCollectionComponentVariation;
@@ -2984,7 +2984,7 @@ export var ped;
      * Hash: 0x14B5BBE0
      */
     function setCollectionPreloadPropData(ped, anchorPoint, collection, propIndex, textureId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedCollectionPreloadPropData(_ped, anchorPoint, collection, propIndex, textureId);
     }
     ped_1.setCollectionPreloadPropData = setCollectionPreloadPropData;
@@ -2998,7 +2998,7 @@ export var ped;
      * Hash: 0x3EC75558
      */
     function setCollectionPreloadVariationData(ped, componentId, collection, drawableId, textureId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedCollectionPreloadVariationData(_ped, componentId, collection, drawableId, textureId);
     }
     ped_1.setCollectionPreloadVariationData = setCollectionPreloadVariationData;
@@ -3012,7 +3012,7 @@ export var ped;
      * Hash: 0x75240BCB
      */
     function setCollectionPropIndex(ped, anchorPoint, collection, propIndex, textureId, attach) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedCollectionPropIndex(_ped, anchorPoint, collection, propIndex, textureId, attach);
     }
     ped_1.setCollectionPropIndex = setCollectionPropIndex;
@@ -3093,7 +3093,7 @@ export var ped;
      * Hash: 0x9C5E7C9C
      */
     function getBoneMatrix(ped, boneId) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedBoneMatrix(_ped, boneId);
     }
     ped_1.getBoneMatrix = getBoneMatrix;
@@ -3213,7 +3213,7 @@ export var player;
      * Hash: 0xF2E3912B
      */
     function getInvincible2(player) {
-        const _player = player instanceof Player ? player.localId() : player;
+        const _player = player instanceof IPlayer ? player.localId() : player;
         return GetPlayerInvincible2(_player);
     }
     player_1.getInvincible2 = getInvincible2;
@@ -3223,7 +3223,7 @@ export var player;
      * Hash: 0xD014AB79
      */
     function getMaxStamina(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerMaxStamina(_playerId);
     }
     player_1.getMaxStamina = getMaxStamina;
@@ -3233,7 +3233,7 @@ export var player;
      * Hash: 0x27E94EF8
      */
     function getMeleeWeaponDefenseModifier(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerMeleeWeaponDefenseModifier(_playerId);
     }
     player_1.getMeleeWeaponDefenseModifier = getMeleeWeaponDefenseModifier;
@@ -3243,7 +3243,7 @@ export var player;
      * Hash: 0xE415EC5C
      */
     function getStamina(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerStamina(_playerId);
     }
     player_1.getStamina = getStamina;
@@ -3253,7 +3253,7 @@ export var player;
      * Hash: 0x78F27B1F
      */
     function getVehicleDamageModifier(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerVehicleDamageModifier(_playerId);
     }
     player_1.getVehicleDamageModifier = getVehicleDamageModifier;
@@ -3263,7 +3263,7 @@ export var player;
      * Hash: 0x8326E7CD
      */
     function getVehicleDefenseModifier(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerVehicleDefenseModifier(_playerId);
     }
     player_1.getVehicleDefenseModifier = getVehicleDefenseModifier;
@@ -3273,7 +3273,7 @@ export var player;
      * Hash: 0x35594F67
      */
     function setMaxStamina(playerId, maxStamina) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return SetPlayerMaxStamina(_playerId, maxStamina);
     }
     player_1.setMaxStamina = setMaxStamina;
@@ -3283,7 +3283,7 @@ export var player;
      * Hash: 0xA9EC16C7
      */
     function setStamina(playerId, stamina) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return SetPlayerStamina(_playerId, stamina);
     }
     player_1.setStamina = setStamina;
@@ -3293,7 +3293,7 @@ export var player;
      * Hash: 0x8689A825
      */
     function getMeleeWeaponDamageModifier(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerMeleeWeaponDamageModifier(_playerId);
     }
     player_1.getMeleeWeaponDamageModifier = getMeleeWeaponDamageModifier;
@@ -3303,7 +3303,7 @@ export var player;
      * Hash: 0x2A3D7CDA
      */
     function getWeaponDamageModifier(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerWeaponDamageModifier(_playerId);
     }
     player_1.getWeaponDamageModifier = getWeaponDamageModifier;
@@ -3313,7 +3313,7 @@ export var player;
      * Hash: 0xF1543251
      */
     function getWeaponDefenseModifier(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerWeaponDefenseModifier(_playerId);
     }
     player_1.getWeaponDefenseModifier = getWeaponDefenseModifier;
@@ -3323,7 +3323,7 @@ export var player;
      * Hash: 0x986B65FF
      */
     function getWeaponDefenseModifier2(playerId) {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerWeaponDefenseModifier2(_playerId);
     }
     player_1.getWeaponDefenseModifier2 = getWeaponDefenseModifier2;
@@ -3360,7 +3360,7 @@ export var player;
      * Hash: 0x4D97BCC7
      */
     function getServerId(player) {
-        const _player = player instanceof Player ? player.localId() : player;
+        const _player = player instanceof IPlayer ? player.localId() : player;
         return GetPlayerServerId(_player);
     }
     player_1.getServerId = getServerId;
@@ -3371,7 +3371,7 @@ export var player;
      * Hash: 0xFC02CAF6
      */
     function setTalkingOverride(player, state) {
-        const _player = player instanceof Player ? player.localId() : player;
+        const _player = player instanceof IPlayer ? player.localId() : player;
         SetPlayerTalkingOverride(_player, state);
     }
     player_1.setTalkingOverride = setTalkingOverride;
@@ -3654,7 +3654,7 @@ export var streaming;
      * Hash: 0xFC52CB91
      */
     function updateMapdataEntity(mapdata, entity, entityDef) {
-        const _entityDef = entityDef instanceof Object ? entityDef.handle() : entityDef;
+        const _entityDef = entityDef instanceof IObject ? entityDef.handle() : entityDef;
         UpdateMapdataEntity(mapdata, entity, _entityDef);
     }
     streaming.updateMapdataEntity = updateMapdataEntity;
@@ -3821,7 +3821,7 @@ export var vehicle;
      * Hash: 0xA274CADB
      */
     function breakOffWheel(vehicle, wheelIndex, leaveDebrisTrail, deleteWheel, unknownFlag, putOnFire) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         BreakOffVehicleWheel(_vehicle, wheelIndex, leaveDebrisTrail, deleteWheel, unknownFlag, putOnFire);
     }
     vehicle_1.breakOffWheel = breakOffWheel;
@@ -3831,7 +3831,7 @@ export var vehicle;
      * Hash: 0x2867ED8C
      */
     function clearXenonLightsCustomColor(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         ClearVehicleXenonLightsCustomColor(_vehicle);
     }
     vehicle_1.clearXenonLightsCustomColor = clearXenonLightsCustomColor;
@@ -3852,7 +3852,7 @@ export var vehicle;
      * Hash: 0xEF30A696
      */
     function doesUseFuel(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return DoesVehicleUseFuel(_vehicle);
     }
     vehicle_1.doesUseFuel = doesUseFuel;
@@ -3888,7 +3888,7 @@ export var vehicle;
      * Hash: 0xE015E854
      */
     function getTrainCurrentTrackNode(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainCurrentTrackNode(_train);
     }
     vehicle_1.getTrainCurrentTrackNode = getTrainCurrentTrackNode;
@@ -3898,7 +3898,7 @@ export var vehicle;
      * Hash: 0x99974721
      */
     function getTrainDoorCount(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainDoorCount(_train);
     }
     vehicle_1.getTrainDoorCount = getTrainDoorCount;
@@ -3908,7 +3908,7 @@ export var vehicle;
      * Hash: 0x40B16551
      */
     function getTrainDoorOpenRatio(train, doorIndex) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainDoorOpenRatio(_train, doorIndex);
     }
     vehicle_1.getTrainDoorOpenRatio = getTrainDoorOpenRatio;
@@ -3918,7 +3918,7 @@ export var vehicle;
      * Hash: 0x428668B7
      */
     function getTrainSpeed(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainSpeed(_train);
     }
     vehicle_1.getTrainSpeed = getTrainSpeed;
@@ -3928,7 +3928,7 @@ export var vehicle;
      * Hash: 0xC62AAC98
      */
     function getAlarmTimeLeft(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleAlarmTimeLeft(_vehicle);
     }
     vehicle_1.getAlarmTimeLeft = getAlarmTimeLeft;
@@ -3938,7 +3938,7 @@ export var vehicle;
      * Hash: 0xC3C93F28
      */
     function getCheatPowerIncrease(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleCheatPowerIncrease(_vehicle);
     }
     vehicle_1.getCheatPowerIncrease = getCheatPowerIncrease;
@@ -3948,7 +3948,7 @@ export var vehicle;
      * Hash: 0x1DAD4583
      */
     function getClutch(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleClutch(_vehicle);
     }
     vehicle_1.getClutch = getClutch;
@@ -3958,7 +3958,7 @@ export var vehicle;
      * Hash: 0xB4F4E566
      */
     function getCurrentGear(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleCurrentGear(_vehicle);
     }
     vehicle_1.getCurrentGear = getCurrentGear;
@@ -3968,7 +3968,7 @@ export var vehicle;
      * Hash: 0xE7B12B54
      */
     function getCurrentRpm(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleCurrentRpm(_vehicle);
     }
     vehicle_1.getCurrentRpm = getCurrentRpm;
@@ -4051,7 +4051,7 @@ export var vehicle;
      * Hash: 0x9AAD420E
      */
     function getDashboardSpeed(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleDashboardSpeed(_vehicle);
     }
     vehicle_1.getDashboardSpeed = getDashboardSpeed;
@@ -4088,7 +4088,7 @@ export var vehicle;
      * Hash: 0x21C1DA8E
      */
     function getDrawnWheelAngleMult(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleDrawnWheelAngleMult(_vehicle);
     }
     vehicle_1.getDrawnWheelAngleMult = getDrawnWheelAngleMult;
@@ -4098,7 +4098,7 @@ export var vehicle;
      * Hash: 0xF4F495CB
      */
     function getEngineTemperature(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleEngineTemperature(_vehicle);
     }
     vehicle_1.getEngineTemperature = getEngineTemperature;
@@ -4108,7 +4108,7 @@ export var vehicle;
      * Hash: 0x5F739BB8
      */
     function getFuelLevel(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleFuelLevel(_vehicle);
     }
     vehicle_1.getFuelLevel = getFuelLevel;
@@ -4118,7 +4118,7 @@ export var vehicle;
      * Hash: 0x82E794B7
      */
     function getGearRatio(vehicle, gear) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleGearRatio(_vehicle, gear);
     }
     vehicle_1.getGearRatio = getGearRatio;
@@ -4128,7 +4128,7 @@ export var vehicle;
      * Hash: 0xB48A1292
      */
     function getGravityAmount(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleGravityAmount(_vehicle);
     }
     vehicle_1.getGravityAmount = getGravityAmount;
@@ -4139,7 +4139,7 @@ export var vehicle;
      * Hash: 0x642FC12F
      */
     function getHandlingFloat(vehicle, class_, fieldName) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHandlingFloat(_vehicle, class_, fieldName);
     }
     vehicle_1.getHandlingFloat = getHandlingFloat;
@@ -4150,7 +4150,7 @@ export var vehicle;
      * Hash: 0x27396C75
      */
     function getHandlingInt(vehicle, class_, fieldName) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHandlingInt(_vehicle, class_, fieldName);
     }
     vehicle_1.getHandlingInt = getHandlingInt;
@@ -4161,7 +4161,7 @@ export var vehicle;
      * Hash: 0xFB341304
      */
     function getHandlingVector(vehicle, class_, fieldName) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return new Vector3(GetVehicleHandlingVector(_vehicle, class_, fieldName));
     }
     vehicle_1.getHandlingVector = getHandlingVector;
@@ -4171,7 +4171,7 @@ export var vehicle;
      * Hash: 0xF1D1D689
      */
     function getHighGear(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHighGear(_vehicle);
     }
     vehicle_1.getHighGear = getHighGear;
@@ -4181,7 +4181,7 @@ export var vehicle;
      * Hash: 0x83070354
      */
     function getIndicatorLights(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleIndicatorLights(_vehicle);
     }
     vehicle_1.getIndicatorLights = getIndicatorLights;
@@ -4191,7 +4191,7 @@ export var vehicle;
      * Hash: 0x7E6E219C
      */
     function getLightMultiplier(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleLightMultiplier(_vehicle);
     }
     vehicle_1.getLightMultiplier = getLightMultiplier;
@@ -4201,7 +4201,7 @@ export var vehicle;
      * Hash: 0xDDB298AE
      */
     function getNextGear(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleNextGear(_vehicle);
     }
     vehicle_1.getNextGear = getNextGear;
@@ -4211,7 +4211,7 @@ export var vehicle;
      * Hash: 0xEDF4B0FC
      */
     function getNumberOfWheels(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleNumberOfWheels(_vehicle);
     }
     vehicle_1.getNumberOfWheels = getNumberOfWheels;
@@ -4221,7 +4221,7 @@ export var vehicle;
      * Hash: 0xFC7F8EF4
      */
     function getOilLevel(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleOilLevel(_vehicle);
     }
     vehicle_1.getOilLevel = getOilLevel;
@@ -4231,7 +4231,7 @@ export var vehicle;
      * Hash: 0x954465DE
      */
     function getSteeringScale(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleSteeringScale(_vehicle);
     }
     vehicle_1.getSteeringScale = getSteeringScale;
@@ -4241,7 +4241,7 @@ export var vehicle;
      * Hash: 0xD1D07351
      */
     function getThrottleOffset(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleThrottleOffset(_vehicle);
     }
     vehicle_1.getThrottleOffset = getThrottleOffset;
@@ -4251,7 +4251,7 @@ export var vehicle;
      * Hash: 0x998B7FEE
      */
     function getTopSpeedModifier(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleTopSpeedModifier(_vehicle);
     }
     vehicle_1.getTopSpeedModifier = getTopSpeedModifier;
@@ -4261,7 +4261,7 @@ export var vehicle;
      * Hash: 0xE02B51D7
      */
     function getTurboPressure(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleTurboPressure(_vehicle);
     }
     vehicle_1.getTurboPressure = getTurboPressure;
@@ -4277,7 +4277,7 @@ export var vehicle;
      * Hash: 0x137260D1
      */
     function getWheelieState(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelieState(_vehicle);
     }
     vehicle_1.getWheelieState = getWheelieState;
@@ -4289,7 +4289,7 @@ export var vehicle;
      * Hash: 0x70FE2EFF
      */
     function getWheelBrakePressure(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelBrakePressure(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelBrakePressure = getWheelBrakePressure;
@@ -4300,7 +4300,7 @@ export var vehicle;
      * Hash: 0xC70FA0C7
      */
     function getWheelFlags(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelFlags(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelFlags = getWheelFlags;
@@ -4310,7 +4310,7 @@ export var vehicle;
      * Hash: 0x54A677F5
      */
     function getWheelHealth(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelHealth(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelHealth = getWheelHealth;
@@ -4322,7 +4322,7 @@ export var vehicle;
      * Hash: 0x3CCF1B49
      */
     function getWheelIsPowered(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelIsPowered(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelIsPowered = getWheelIsPowered;
@@ -4333,7 +4333,7 @@ export var vehicle;
      * Hash: 0xD203287
      */
     function getWheelPower(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelPower(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelPower = getWheelPower;
@@ -4343,7 +4343,7 @@ export var vehicle;
      * Hash: 0xCEE21AB2
      */
     function getWheelRimColliderSize(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelRimColliderSize(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelRimColliderSize = getWheelRimColliderSize;
@@ -4355,7 +4355,7 @@ export var vehicle;
      * Hash: 0xEA1859E5
      */
     function getWheelRotationSpeed(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelRotationSpeed(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelRotationSpeed = getWheelRotationSpeed;
@@ -4366,7 +4366,7 @@ export var vehicle;
      * Hash: 0x4046B66
      */
     function getWheelSize(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelSize(_vehicle);
     }
     vehicle_1.getWheelSize = getWheelSize;
@@ -4377,7 +4377,7 @@ export var vehicle;
      * Hash: 0x149C9DA0
      */
     function getWheelSpeed(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelSpeed(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelSpeed = getWheelSpeed;
@@ -4388,7 +4388,7 @@ export var vehicle;
      * Hash: 0xA0867448
      */
     function getWheelSteeringAngle(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelSteeringAngle(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelSteeringAngle = getWheelSteeringAngle;
@@ -4398,7 +4398,7 @@ export var vehicle;
      * Hash: 0xA7F04022
      */
     function getWheelSurfaceMaterial(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelSurfaceMaterial(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelSurfaceMaterial = getWheelSurfaceMaterial;
@@ -4410,7 +4410,7 @@ export var vehicle;
      * Hash: 0x2B48175B
      */
     function getWheelSuspensionCompression(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelSuspensionCompression(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelSuspensionCompression = getWheelSuspensionCompression;
@@ -4420,7 +4420,7 @@ export var vehicle;
      * Hash: 0xE0BA9FE6
      */
     function getWheelTireColliderSize(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelTireColliderSize(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelTireColliderSize = getWheelTireColliderSize;
@@ -4430,7 +4430,7 @@ export var vehicle;
      * Hash: 0xEF65929C
      */
     function getWheelTireColliderWidth(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelTireColliderWidth(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelTireColliderWidth = getWheelTireColliderWidth;
@@ -4441,7 +4441,7 @@ export var vehicle;
      * Hash: 0x3BCFEE14
      */
     function getWheelTractionVectorLength(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelTractionVectorLength(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelTractionVectorLength = getWheelTractionVectorLength;
@@ -4452,7 +4452,7 @@ export var vehicle;
      * Hash: 0x9C7B59F9
      */
     function getWheelWidth(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelWidth(_vehicle);
     }
     vehicle_1.getWheelWidth = getWheelWidth;
@@ -4462,7 +4462,7 @@ export var vehicle;
      * Hash: 0xCC90CBCA
      */
     function getWheelXOffset(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelXOffset(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelXOffset = getWheelXOffset;
@@ -4472,7 +4472,7 @@ export var vehicle;
      * Hash: 0x2EA4AFFE
      */
     function getWheelYRotation(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelYRotation(_vehicle, wheelIndex);
     }
     vehicle_1.getWheelYRotation = getWheelYRotation;
@@ -4482,7 +4482,7 @@ export var vehicle;
      * Hash: 0xC715F730
      */
     function getXenonLightsCustomColor(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleXenonLightsCustomColor(_vehicle);
     }
     vehicle_1.getXenonLightsCustomColor = getXenonLightsCustomColor;
@@ -4501,7 +4501,7 @@ export var vehicle;
      * Hash: 0xDC921211
      */
     function isAlarmSet(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleAlarmSet(_vehicle);
     }
     vehicle_1.isAlarmSet = isAlarmSet;
@@ -4511,7 +4511,7 @@ export var vehicle;
      * Hash: 0xA411F72C
      */
     function isInteriorLightOn(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleInteriorLightOn(_vehicle);
     }
     vehicle_1.isInteriorLightOn = isInteriorLightOn;
@@ -4521,7 +4521,7 @@ export var vehicle;
      * Hash: 0xF9933BF4
      */
     function isNeedsToBeHotwired(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleNeedsToBeHotwired(_vehicle);
     }
     vehicle_1.isNeedsToBeHotwired = isNeedsToBeHotwired;
@@ -4531,7 +4531,7 @@ export var vehicle;
      * Hash: 0xF849ED67
      */
     function isPreviouslyOwnedByPlayer(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehiclePreviouslyOwnedByPlayer(_vehicle);
     }
     vehicle_1.isPreviouslyOwnedByPlayer = isPreviouslyOwnedByPlayer;
@@ -4541,7 +4541,7 @@ export var vehicle;
      * Hash: 0xA7DAF7C
      */
     function isWanted(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleWanted(_vehicle);
     }
     vehicle_1.isWanted = isWanted;
@@ -4570,7 +4570,7 @@ export var vehicle;
      * Hash: 0x7FA03E76
      */
     function overridePedsCanStandOnTopFlag(vehicle, can) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         OverrideVehiclePedsCanStandOnTopFlag(_vehicle, can);
     }
     vehicle_1.overridePedsCanStandOnTopFlag = overridePedsCanStandOnTopFlag;
@@ -4582,7 +4582,7 @@ export var vehicle;
      * Hash: 0xDF62CFE2
      */
     function resetPedsCanStandOnTopFlag(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         ResetVehiclePedsCanStandOnTopFlag(_vehicle);
     }
     vehicle_1.resetPedsCanStandOnTopFlag = resetPedsCanStandOnTopFlag;
@@ -4672,7 +4672,7 @@ export var vehicle;
      * Hash: 0x2468DBE8
      */
     function setTrainDoorOpenRatio(train, doorIndex, ratio) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         SetTrainDoorOpenRatio(_train, doorIndex, ratio);
     }
     vehicle_1.setTrainDoorOpenRatio = setTrainDoorOpenRatio;
@@ -4682,7 +4682,7 @@ export var vehicle;
      * Hash: 0x61CB74A0
      */
     function setTrainState(train, state) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         SetTrainState(_train, state);
     }
     vehicle_1.setTrainState = setTrainState;
@@ -4692,7 +4692,7 @@ export var vehicle;
      * Hash: 0xECB8B577
      */
     function setTrainStopAtStations(train, state) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         SetTrainStopAtStations(_train, state);
     }
     vehicle_1.setTrainStopAtStations = setTrainStopAtStations;
@@ -4702,7 +4702,7 @@ export var vehicle;
      * Hash: 0xC108EE6F
      */
     function setAlarmTimeLeft(vehicle, time) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleAlarmTimeLeft(_vehicle, time);
     }
     vehicle_1.setAlarmTimeLeft = setAlarmTimeLeft;
@@ -4712,7 +4712,7 @@ export var vehicle;
      * Hash: 0x5F3A3574
      */
     function setAutoRepairDisabled(vehicle, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleAutoRepairDisabled(_vehicle, value);
     }
     vehicle_1.setAutoRepairDisabled = setAutoRepairDisabled;
@@ -4722,7 +4722,7 @@ export var vehicle;
      * Hash: 0x2F70ACED
      */
     function setClutch(vehicle, clutch) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleClutch(_vehicle, clutch);
     }
     vehicle_1.setClutch = setClutch;
@@ -4732,7 +4732,7 @@ export var vehicle;
      * Hash: 0x2A01A8FC
      */
     function setCurrentRpm(vehicle, rpm) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleCurrentRpm(_vehicle, rpm);
     }
     vehicle_1.setCurrentRpm = setCurrentRpm;
@@ -4742,7 +4742,7 @@ export var vehicle;
      * Hash: 0x6C93C4A9
      */
     function setEngineTemperature(vehicle, temperature) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleEngineTemperature(_vehicle, temperature);
     }
     vehicle_1.setEngineTemperature = setEngineTemperature;
@@ -4752,7 +4752,7 @@ export var vehicle;
      * Hash: 0xBA970511
      */
     function setFuelLevel(vehicle, level) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleFuelLevel(_vehicle, level);
     }
     vehicle_1.setFuelLevel = setFuelLevel;
@@ -4762,7 +4762,7 @@ export var vehicle;
      * Hash: 0x496EF2F2
      */
     function setGearRatio(vehicle, gear, ratio) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleGearRatio(_vehicle, gear, ratio);
     }
     vehicle_1.setGearRatio = setGearRatio;
@@ -4772,7 +4772,7 @@ export var vehicle;
      * Hash: 0x1A963E58
      */
     function setGravityAmount(vehicle, gravity) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleGravityAmount(_vehicle, gravity);
     }
     vehicle_1.setGravityAmount = setGravityAmount;
@@ -4783,7 +4783,7 @@ export var vehicle;
      * Hash: 0x2BA40795
      */
     function setVehicleHandlingField(vehicle, class_, fieldName, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleHandlingField(_vehicle, class_, fieldName, value);
     }
     vehicle_1.setVehicleHandlingField = setVehicleHandlingField;
@@ -4794,7 +4794,7 @@ export var vehicle;
      * Hash: 0x488C86D2
      */
     function setVehicleHandlingFloat(vehicle, class_, fieldName, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleHandlingFloat(_vehicle, class_, fieldName, value);
     }
     vehicle_1.setVehicleHandlingFloat = setVehicleHandlingFloat;
@@ -4804,7 +4804,7 @@ export var vehicle;
      * Hash: 0xC37F4CF9
      */
     function setVehicleHandlingInt(vehicle, class_, fieldName, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleHandlingInt(_vehicle, class_, fieldName, value);
     }
     vehicle_1.setVehicleHandlingInt = setVehicleHandlingInt;
@@ -4814,7 +4814,7 @@ export var vehicle;
      * Hash: 0x12497890
      */
     function setVehicleHandlingVector(vehicle, class_, fieldName, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleHandlingVector(_vehicle, class_, fieldName, value);
     }
     vehicle_1.setVehicleHandlingVector = setVehicleHandlingVector;
@@ -4824,7 +4824,7 @@ export var vehicle;
      * Hash: 0x20B1B3E6
      */
     function setHighGear(vehicle, gear) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleHighGear(_vehicle, gear);
     }
     vehicle_1.setHighGear = setHighGear;
@@ -4843,7 +4843,7 @@ export var vehicle;
      * Hash: 0x90D1CAD1
      */
     function setOilLevel(vehicle, level) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleOilLevel(_vehicle, level);
     }
     vehicle_1.setOilLevel = setOilLevel;
@@ -4853,7 +4853,7 @@ export var vehicle;
      * Hash: 0x2A6CC9F2
      */
     function setPitchBias(vehicle, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehiclePitchBias(_vehicle, value);
     }
     vehicle_1.setPitchBias = setPitchBias;
@@ -4863,7 +4863,7 @@ export var vehicle;
      * Hash: 0x264B45DE
      */
     function setRollBias(vehicle, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleRollBias(_vehicle, value);
     }
     vehicle_1.setRollBias = setRollBias;
@@ -4873,7 +4873,7 @@ export var vehicle;
      * Hash: 0xFFCCC2EA
      */
     function setSteeringAngle(vehicle, angle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleSteeringAngle(_vehicle, angle);
     }
     vehicle_1.setSteeringAngle = setSteeringAngle;
@@ -4883,7 +4883,7 @@ export var vehicle;
      * Hash: 0xEB46596F
      */
     function setSteeringScale(vehicle, scale) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleSteeringScale(_vehicle, scale);
     }
     vehicle_1.setSteeringScale = setSteeringScale;
@@ -4897,7 +4897,7 @@ export var vehicle;
      * Hash: 0xB3439A01
      */
     function setSuspensionHeight(vehicle, newHeight) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleSuspensionHeight(_vehicle, newHeight);
     }
     vehicle_1.setSuspensionHeight = setSuspensionHeight;
@@ -4907,7 +4907,7 @@ export var vehicle;
      * Hash: 0x6485615E
      */
     function setTurboPressure(vehicle, pressure) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleTurboPressure(_vehicle, pressure);
     }
     vehicle_1.setTurboPressure = setTurboPressure;
@@ -4925,7 +4925,7 @@ export var vehicle;
      * Hash: 0xEAB8DB65
      */
     function setWheelieState(vehicle, state) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelieState(_vehicle, state);
     }
     vehicle_1.setWheelieState = setWheelieState;
@@ -4937,7 +4937,7 @@ export var vehicle;
      * Hash: 0xE80F4E31
      */
     function setWheelBrakePressure(vehicle, wheelIndex, pressure) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelBrakePressure(_vehicle, wheelIndex, pressure);
     }
     vehicle_1.setWheelBrakePressure = setWheelBrakePressure;
@@ -4948,7 +4948,7 @@ export var vehicle;
      * Hash: 0xD2B9E90D
      */
     function setWheelFlags(vehicle, wheelIndex, flags) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelFlags(_vehicle, wheelIndex, flags);
     }
     vehicle_1.setWheelFlags = setWheelFlags;
@@ -4958,7 +4958,7 @@ export var vehicle;
      * Hash: 0xB22ECEFD
      */
     function setWheelHealth(vehicle, wheelIndex, health) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelHealth(_vehicle, wheelIndex, health);
     }
     vehicle_1.setWheelHealth = setWheelHealth;
@@ -4971,7 +4971,7 @@ export var vehicle;
      * Hash: 0xBD5291A0
      */
     function setWheelIsPowered(vehicle, wheelIndex, powered) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelIsPowered(_vehicle, wheelIndex, powered);
     }
     vehicle_1.setWheelIsPowered = setWheelIsPowered;
@@ -4982,7 +4982,7 @@ export var vehicle;
      * Hash: 0xC6146043
      */
     function setWheelPower(vehicle, wheelIndex, power) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelPower(_vehicle, wheelIndex, power);
     }
     vehicle_1.setWheelPower = setWheelPower;
@@ -4992,7 +4992,7 @@ export var vehicle;
      * Hash: 0xF380E184
      */
     function setWheelRimColliderSize(vehicle, wheelIndex, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelRimColliderSize(_vehicle, wheelIndex, value);
     }
     vehicle_1.setWheelRimColliderSize = setWheelRimColliderSize;
@@ -5003,7 +5003,7 @@ export var vehicle;
      * Hash: 0x35ED100D
      */
     function setWheelRotationSpeed(vehicle, wheelIndex, speed) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelRotationSpeed(_vehicle, wheelIndex, speed);
     }
     vehicle_1.setWheelRotationSpeed = setWheelRotationSpeed;
@@ -5015,7 +5015,7 @@ export var vehicle;
      * Hash: 0x53AB5C35
      */
     function setWheelSize(vehicle, size) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return SetVehicleWheelSize(_vehicle, size);
     }
     vehicle_1.setWheelSize = setWheelSize;
@@ -5025,7 +5025,7 @@ export var vehicle;
      * Hash: 0xB962D05C
      */
     function setWheelTireColliderSize(vehicle, wheelIndex, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelTireColliderSize(_vehicle, wheelIndex, value);
     }
     vehicle_1.setWheelTireColliderSize = setWheelTireColliderSize;
@@ -5035,7 +5035,7 @@ export var vehicle;
      * Hash: 0x47BD0270
      */
     function setWheelTireColliderWidth(vehicle, wheelIndex, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelTireColliderWidth(_vehicle, wheelIndex, value);
     }
     vehicle_1.setWheelTireColliderWidth = setWheelTireColliderWidth;
@@ -5046,7 +5046,7 @@ export var vehicle;
      * Hash: 0x85C85A3A
      */
     function setWheelTractionVectorLength(vehicle, wheelIndex, length) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelTractionVectorLength(_vehicle, wheelIndex, length);
     }
     vehicle_1.setWheelTractionVectorLength = setWheelTractionVectorLength;
@@ -5058,7 +5058,7 @@ export var vehicle;
      * Hash: 0x64C3F1C0
      */
     function setWheelWidth(vehicle, width) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return SetVehicleWheelWidth(_vehicle, width);
     }
     vehicle_1.setWheelWidth = setWheelWidth;
@@ -5077,7 +5077,7 @@ export var vehicle;
      * Hash: 0xBD6357D
      */
     function setWheelXOffset(vehicle, wheelIndex, offset) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelXOffset(_vehicle, wheelIndex, offset);
     }
     vehicle_1.setWheelXOffset = setWheelXOffset;
@@ -5087,7 +5087,7 @@ export var vehicle;
      * Hash: 0xC6C2171F
      */
     function setWheelYRotation(vehicle, wheelIndex, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleWheelYRotation(_vehicle, wheelIndex, value);
     }
     vehicle_1.setWheelYRotation = setWheelYRotation;
@@ -5097,7 +5097,7 @@ export var vehicle;
      * Hash: 0x1683E7F0
      */
     function setXenonLightsCustomColor(vehicle, red, green, blue) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleXenonLightsCustomColor(_vehicle, red, green, blue);
     }
     vehicle_1.setXenonLightsCustomColor = setXenonLightsCustomColor;
@@ -5116,7 +5116,7 @@ export var vehicle;
      * Hash: 0x77CC80DC
      */
     function doesTrainStopAtStations(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return DoesTrainStopAtStations(_train);
     }
     vehicle_1.doesTrainStopAtStations = doesTrainStopAtStations;
@@ -5126,7 +5126,7 @@ export var vehicle;
      * Hash: 0xA4921EF5
      */
     function getTrainCruiseSpeed(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainCruiseSpeed(_train);
     }
     vehicle_1.getTrainCruiseSpeed = getTrainCruiseSpeed;
@@ -5136,7 +5136,7 @@ export var vehicle;
      * Hash: 0x8DAF79B6
      */
     function getTrainDirection(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainDirection(_train);
     }
     vehicle_1.getTrainDirection = getTrainDirection;
@@ -5146,7 +5146,7 @@ export var vehicle;
      * Hash: 0x81B50033
      */
     function getTrainState(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainState(_train);
     }
     vehicle_1.getTrainState = getTrainState;
@@ -5156,7 +5156,7 @@ export var vehicle;
      * Hash: 0x9AA339D
      */
     function getTrainTrackIndex(train) {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainTrackIndex(_train);
     }
     vehicle_1.getTrainTrackIndex = getTrainTrackIndex;
@@ -5166,7 +5166,7 @@ export var vehicle;
      * Hash: 0x483B013C
      */
     function getHandbrake(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHandbrake(_vehicle);
     }
     vehicle_1.getHandbrake = getHandbrake;
@@ -5176,7 +5176,7 @@ export var vehicle;
      * Hash: 0x1382FCEA
      */
     function getSteeringAngle(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleSteeringAngle(_vehicle);
     }
     vehicle_1.getSteeringAngle = getSteeringAngle;
@@ -5186,7 +5186,7 @@ export var vehicle;
      * Hash: 0xBB340D04
      */
     function isEngineStarting(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleEngineStarting(_vehicle);
     }
     vehicle_1.isEngineStarting = isEngineStarting;
@@ -5198,7 +5198,7 @@ export var vehicle;
      * Hash: 0xD85C9F57
      */
     function getHasFlag(vehicle, flagIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHasFlag(_vehicle, flagIndex);
     }
     vehicle_1.getHasFlag = getHasFlag;
@@ -5231,7 +5231,7 @@ export var vehicle;
      * Hash: 0xDE73BC10
      */
     function getTypeRaw(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleTypeRaw(_vehicle);
     }
     vehicle_1.getTypeRaw = getTypeRaw;
@@ -5241,7 +5241,7 @@ export var vehicle;
      * Hash: 0xCF1BC668
      */
     function isWheelBrokenOff(vehicle, wheelIndex) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleWheelBrokenOff(_vehicle, wheelIndex);
     }
     vehicle_1.isWheelBrokenOff = isWheelBrokenOff;
@@ -5251,7 +5251,7 @@ export var vehicle;
      * Hash: 0x8923DD42
      */
     function setCurrentGear(vehicle, gear) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleCurrentGear(_vehicle, gear);
     }
     vehicle_1.setCurrentGear = setCurrentGear;
@@ -5261,7 +5261,7 @@ export var vehicle;
      * Hash: 0x63AE1A34
      */
     function setFlag(vehicle, flagIndex, value) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return SetVehicleFlag(_vehicle, flagIndex, value);
     }
     vehicle_1.setFlag = setFlag;
@@ -5271,7 +5271,7 @@ export var vehicle;
      * Hash: 0x3A4566F4
      */
     function setNextGear(vehicle, nextGear) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleNextGear(_vehicle, nextGear);
     }
     vehicle_1.setNextGear = setNextGear;
@@ -5294,7 +5294,7 @@ export var vehicle;
      * Hash: 0xA273060E
      */
     function getType(vehicle) {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleType(_vehicle);
     }
     vehicle_1.getType = getType;
@@ -5615,7 +5615,7 @@ export var weapon;
      * Hash: 0x63ED2E7
      */
     function getAnimationOverride(ped) {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetWeaponAnimationOverride(_ped);
     }
     weapon.getAnimationOverride = getAnimationOverride;
@@ -5804,7 +5804,7 @@ export var network;
      * Hash: 0x526FEE31
      */
     function getEntityOwner(entity) {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return NetworkGetEntityOwner(_entity);
     }
     network.getEntityOwner = getEntityOwner;
@@ -5833,7 +5833,7 @@ export var camera;
      * Hash: 0x8F57A89D
      */
     function getCamMatrix(camera, rightVector, forwardVector, upVector, position) {
-        const _camera = camera instanceof Camera ? camera.handle() : camera;
+        const _camera = camera instanceof ICamera ? camera.handle() : camera;
         GetCamMatrix(_camera, rightVector, forwardVector, upVector, position);
     }
     camera_1.getCamMatrix = getCamMatrix;
@@ -6080,7 +6080,7 @@ export var mumble;
      * Hash: 0x32C5355A
      */
     function addVoiceTargetPlayer(targetId, player) {
-        const _player = player instanceof Player ? player.localId() : player;
+        const _player = player instanceof IPlayer ? player.localId() : player;
         MumbleAddVoiceTargetPlayer(targetId, _player);
     }
     mumble.addVoiceTargetPlayer = addVoiceTargetPlayer;
@@ -6181,7 +6181,7 @@ export var mumble;
      * Hash: 0x33EEF97F
      */
     function isPlayerTalking(player) {
-        const _player = player instanceof Player ? player.localId() : player;
+        const _player = player instanceof IPlayer ? player.localId() : player;
         return MumbleIsPlayerTalking(_player);
     }
     mumble.isPlayerTalking = isPlayerTalking;
@@ -6213,7 +6213,7 @@ export var mumble;
      * Hash: 0x88CD646F
      */
     function removeVoiceTargetPlayer(targetId, player) {
-        const _player = player instanceof Player ? player.localId() : player;
+        const _player = player instanceof IPlayer ? player.localId() : player;
         MumbleRemoveVoiceTargetPlayer(targetId, _player);
     }
     mumble.removeVoiceTargetPlayer = removeVoiceTargetPlayer;
@@ -6328,7 +6328,7 @@ export var mumble;
      * Hash: 0x61C309E3
      */
     function setVolumeOverride(player, volume) {
-        const _player = player instanceof Player ? player.localId() : player;
+        const _player = player instanceof IPlayer ? player.localId() : player;
         MumbleSetVolumeOverride(_player, volume);
     }
     mumble.setVolumeOverride = setVolumeOverride;

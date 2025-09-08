@@ -1,4 +1,4 @@
-import { Vector3, Vector2, Entity, Ped, Player, Vehicle, Object, Camera } from '@risinglife/redm-shared';
+import { Vector3, Vector2, IEntity, IPed, IPlayer, IVehicle, IObject, ICamera } from '@risinglife/redm-shared';
 export declare namespace events {
     function removeAllListeners(key?: string): void;
     /**
@@ -119,7 +119,7 @@ export declare namespace entity {
      *
      * Hash: 0x47B870F5
      */
-    function getArchetypeName(entity: number | Entity): string;
+    function getArchetypeName(entity: number | IEntity): string;
     /**
      * Returns the transient entity index for a specified mapdata/entity pair.
      * This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -133,7 +133,7 @@ export declare namespace entity {
      *
      * Hash: 0xF6B815C5
      */
-    function getMapdataOwner(entity: number | Entity): [boolean, number, number];
+    function getMapdataOwner(entity: number | IEntity): [boolean, number, number];
     /**
      * Resets mapdata entity transform matrix to its original state.
      * This function supports SDK infrastructure and is not intended to be used directly from your code.
@@ -158,13 +158,13 @@ export declare namespace entity {
      *
      * Hash: 0xFB0639B
      */
-    function setMatrix(entity: number | Entity, forwardX: number, forwardY: number, forwardZ: number, rightX: number, rightY: number, rightZ: number, upX: number, upY: number, upZ: number, atX: number, atY: number, atZ: number): void;
+    function setMatrix(entity: number | IEntity, forwardX: number, forwardY: number, forwardZ: number, rightX: number, rightY: number, rightZ: number, upX: number, upY: number, upZ: number, atX: number, atY: number, atZ: number): void;
     /**
      * A getter for [FREEZE_ENTITY_POSITION](#\_0x428CA6DBD1094446).
      *
      * Hash: 0xEDBE6ADD
      */
-    function isPositionFrozen(entity: number | Entity): boolean;
+    function isPositionFrozen(entity: number | IEntity): boolean;
     /**
      * **Experimental**: This native may be altered or removed in future versions of CitizenFX without warning.
      *
@@ -174,13 +174,13 @@ export declare namespace entity {
      *
      * Hash: 0x9A3144BC
      */
-    function getAddress(entity: number | Entity): any;
+    function getAddress(entity: number | IEntity): any;
     /**
      * Internal function for ensuring an entity has a state bag.
      *
      * Hash: 0x3BB78F05
      */
-    function ensureStateBag(entity: number | Entity): void;
+    function ensureStateBag(entity: number | IEntity): void;
     /**
      * ### Supported types
      *
@@ -213,7 +213,7 @@ export declare namespace entity {
      *
      * Hash: 0xDFFBA12F
      */
-    function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | Object): number;
+    function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | IObject): number;
     /**
      * Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](#\_0x5BA35AAF).
      *
@@ -376,7 +376,7 @@ export declare namespace graphics {
      *
      * Hash: 0x76180407
      */
-    function setEntityDrawOutline(entity: number | Entity, enabled: boolean): void;
+    function setEntityDrawOutline(entity: number | IEntity, enabled: boolean): void;
     /**
      * Sets color for entity outline. `255, 0, 255, 255` by default.
      *
@@ -1183,19 +1183,19 @@ export declare namespace misc {
      *
      * Hash: 0x6BC189AC
      */
-    function experimentalLoadCloneSync(entity: number | Entity, data: string): void;
+    function experimentalLoadCloneSync(entity: number | IEntity, data: string): void;
     /**
      * This native is not implemented.
      *
      * Hash: 0x9D65CAD2
      */
-    function experimentalSaveCloneCreate(entity: number | Entity): string;
+    function experimentalSaveCloneCreate(entity: number | IEntity): string;
     /**
      * This native is not implemented.
      *
      * Hash: 0x38D19210
      */
-    function experimentalSaveCloneSync(entity: number | Entity): string;
+    function experimentalSaveCloneSync(entity: number | IEntity): string;
     /**
      * No comment provided
      *
@@ -1475,7 +1475,7 @@ export declare namespace misc {
      *
      * Hash: 0xD70C3BCA
      */
-    function formatStackTrace(traceData: number | Object): string;
+    function formatStackTrace(traceData: number | IObject): string;
     /**
      * Can be used to get a console variable of type `char*`, for example a string.
      *
@@ -1684,25 +1684,25 @@ export declare namespace ped {
      *
      * Hash: 0x310D0271
      */
-    function getNumberOfCollectionDrawableVariations(ped: number | Ped, componentId: number, collection: string): number;
+    function getNumberOfCollectionDrawableVariations(ped: number | IPed, componentId: number, collection: string): number;
     /**
      * An analogue of [GET_NUMBER_OF_PED_PROP_DRAWABLE_VARIATIONS](#\_0x5FAF9754E789FB47) that returns number of prop variations inside a single collection instead of the total number across all collections.
      *
      * Hash: 0x3B6A13E1
      */
-    function getNumberOfCollectionPropDrawableVariations(ped: number | Ped, anchorPoint: number, collection: string): number;
+    function getNumberOfCollectionPropDrawableVariations(ped: number | IPed, anchorPoint: number, collection: string): number;
     /**
      * An alternative to [GET_NUMBER_OF_PED_PROP_TEXTURE_VARIATIONS](#\_0xA6E7F1CEB523E171) that uses local collection indexing instead of the global one.
      *
      * Hash: 0x75CAF9CC
      */
-    function getNumberOfCollectionPropTextureVariations(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number): number;
+    function getNumberOfCollectionPropTextureVariations(ped: number | IPed, anchorPoint: number, collection: string, propIndex: number): number;
     /**
      * An alternative to [GET_NUMBER_OF_PED_TEXTURE_VARIATIONS](#\_0x8F7156A3142A6BAD) that uses local collection indexing instead of the global one.
      *
      * Hash: 0xD2C15D7
      */
-    function getNumberOfCollectionTextureVariations(ped: number | Ped, componentId: number, collection: string, drawableId: number): number;
+    function getNumberOfCollectionTextureVariations(ped: number | IPed, componentId: number, collection: string, drawableId: number): number;
     /**
      * Returns number of variation collections available for the given Ped.
      *
@@ -1712,19 +1712,19 @@ export declare namespace ped {
      *
      * Hash: 0x45946359
      */
-    function getCollectionsCount(ped: number | Ped): number;
+    function getCollectionsCount(ped: number | IPed): number;
     /**
      * Gets local index inside a collection (which can be obtained using [GET_PED_COLLECTION_NAME_FROM_DRAWABLE](#\_0xD6BBA48B)) for the given global drawable ID. The collection name and index are used in functions like [SET_PED_COLLECTION_COMPONENT_VARIATION](#\_0x88711BBA).
      *
      * Hash: 0x94EB1FE4
      */
-    function getCollectionLocalIndexFromDrawable(ped: number | Ped, componentId: number, drawableId: number): number;
+    function getCollectionLocalIndexFromDrawable(ped: number | IPed, componentId: number, drawableId: number): number;
     /**
      * Gets local index inside a collection (which can be obtained using [GET_PED_COLLECTION_NAME_FROM_PROP](#\_0x8ED0C17)) for the given global prop index. The collection name and index are used in functions like [SET_PED_COLLECTION_PROP_INDEX](#\_0x75240BCB).
      *
      * Hash: 0xFBDB885F
      */
-    function getCollectionLocalIndexFromProp(ped: number | Ped, anchorPoint: number, propIndex: number): number;
+    function getCollectionLocalIndexFromProp(ped: number | IPed, anchorPoint: number, propIndex: number): number;
     /**
      * Returns name of collection under given index for the given Ped.
      *
@@ -1734,19 +1734,19 @@ export declare namespace ped {
      *
      * Hash: 0xFED5D83A
      */
-    function getCollectionName(ped: number | Ped, index: number): string;
+    function getCollectionName(ped: number | IPed, index: number): string;
     /**
      * Gets collection name for the given global drawable ID. Together with [GET_PED_COLLECTION_LOCAL_INDEX_FROM_DRAWABLE](#\_0x94EB1FE4) is used to get collection and local index (inside the given collection) of the drawable. The collection name and index are used in functions like [SET_PED_COLLECTION_COMPONENT_VARIATION](#\_0x88711BBA).
      *
      * Hash: 0xD6BBA48B
      */
-    function getCollectionNameFromDrawable(ped: number | Ped, componentId: number, drawableId: number): string;
+    function getCollectionNameFromDrawable(ped: number | IPed, componentId: number, drawableId: number): string;
     /**
      * Gets collection name for the given global prop index. Together with [GET_PED_COLLECTION_LOCAL_INDEX_FROM_PROP](#\_0xFBDB885F) is used to get collection and local index (inside the given collection) of the prop. The collection name and index are used in functions like [SET_PED_COLLECTION_PROP_INDEX](#\_0x75240BCB).
      *
      * Hash: 0x8ED0C17
      */
-    function getCollectionNameFromProp(ped: number | Ped, anchorPoint: number, propIndex: number): string;
+    function getCollectionNameFromProp(ped: number | IPed, anchorPoint: number, propIndex: number): string;
     /**
      * Returns a list of decorations applied to a ped.
      *
@@ -1760,7 +1760,7 @@ export declare namespace ped {
      *
      * Hash: 0x7CCE1163
      */
-    function getDecorations(ped: number | Ped): number;
+    function getDecorations(ped: number | IPed): number;
     /**
      * A getter for [SET_PED_DENSITY_MULTIPLIER_THIS_FRAME](#\_0x95E3D6257B166CF2).
      *
@@ -1776,13 +1776,13 @@ export declare namespace ped {
      *
      * Hash: 0x280F1FC3
      */
-    function getDrawableGlobalIndexFromCollection(ped: number | Ped, componentId: number, collection: string, drawableId: number): number;
+    function getDrawableGlobalIndexFromCollection(ped: number | IPed, componentId: number, collection: string, drawableId: number): number;
     /**
      * An analogue to [GET_PED_DRAWABLE_VARIATION](#\_0x67F3780DD425D4FC) that returns collection local drawable index (inside [GET_PED_DRAWABLE_VARIATION_COLLECTION_NAME](#\_0xBCE0AB63) collection) instead of the global drawable index.
      *
      * Hash: 0x9970386F
      */
-    function getDrawableVariationCollectionLocalIndex(ped: number | Ped, componentId: number): number;
+    function getDrawableVariationCollectionLocalIndex(ped: number | IPed, componentId: number): number;
     /**
      * An analogue to [GET_PED_DRAWABLE_VARIATION](#\_0x67F3780DD425D4FC) that returns collection name instead of the global drawable index.
      *
@@ -1790,37 +1790,37 @@ export declare namespace ped {
      *
      * Hash: 0xBCE0AB63
      */
-    function getDrawableVariationCollectionName(ped: number | Ped, componentId: number): string;
+    function getDrawableVariationCollectionName(ped: number | IPed, componentId: number): string;
     /**
      * A getter for [\_SET_PED_EYE_COLOR](#\_0x50B56988B170AFDF). Returns -1 if fails to get.
      *
      * Hash: 0xA47B860F
      */
-    function getEyeColor(ped: number | Ped): number;
+    function getEyeColor(ped: number | IPed): number;
     /**
      * A getter for [\_SET_PED_FACE_FEATURE](#\_0x71A5C1DBA060049E). Returns 0.0 if fails to get.
      *
      * Hash: 0xBA352ADD
      */
-    function getFaceFeature(ped: number | Ped, index: number): number;
+    function getFaceFeature(ped: number | IPed, index: number): number;
     /**
      * A getter for [\_SET_PED_HAIR_COLOR](#\_0x4CFFC65454C93A49). Returns -1 if fails to get.
      *
      * Hash: 0xA3EA2893
      */
-    function getHairColor(ped: number | Ped): number;
+    function getHairColor(ped: number | IPed): number;
     /**
      * A getter for [\_SET_PED_HAIR_COLOR](#\_0x4CFFC65454C93A49). Returns -1 if fails to get.
      *
      * Hash: 0x4B087305
      */
-    function getHairHighlightColor(ped: number | Ped): number;
+    function getHairHighlightColor(ped: number | IPed): number;
     /**
      * A getter for [SET_PED_HEAD_OVERLAY](#\_0x48F44967FA05CC1E) and [\_SET_PED_HEAD_OVERLAY_COLOR](#\_0x497BF74A7B9CB952) natives.
      *
      * Hash: 0xC46EE605
      */
-    function getHeadOverlayData(ped: number | Ped, index: number): [boolean, number, number, number, number, number];
+    function getHeadOverlayData(ped: number | IPed, index: number): [boolean, number, number, number, number, number];
     /**
      * Gets a ped model's health config.
      *
@@ -1838,13 +1838,13 @@ export declare namespace ped {
      *
      * Hash: 0x69E81E3D
      */
-    function getMovementClipset(ped: number | Ped): number;
+    function getMovementClipset(ped: number | IPed): number;
     /**
      * An analogue to [GET_PED_PROP_INDEX](#\_0x898CC20EA75BACD8) that returns collection local prop index (inside [GET_PED_PROP_COLLECTION_NAME](#\_0x6B5653E4) collection) instead of the global prop index.
      *
      * Hash: 0xCD420AD1
      */
-    function getPropCollectionLocalIndex(ped: number | Ped, anchorPoint: number): number;
+    function getPropCollectionLocalIndex(ped: number | IPed, anchorPoint: number): number;
     /**
      * An analogue to [GET_PED_PROP_INDEX](#\_0x898CC20EA75BACD8) that returns collection name instead of the global drawable index.
      *
@@ -1852,7 +1852,7 @@ export declare namespace ped {
      *
      * Hash: 0x6B5653E4
      */
-    function getPropCollectionName(ped: number | Ped, anchorPoint: number): string;
+    function getPropCollectionName(ped: number | IPed, anchorPoint: number): string;
     /**
      * Returns global prop index based on the local one. Is it a reverse to [GET_PED_COLLECTION_NAME_FROM_PROP](#\_0x8ED0C17) and [GET_PED_COLLECTION_LOCAL_INDEX_FROM_PROP](#\_0xFBDB885F) natives.
      *
@@ -1862,13 +1862,13 @@ export declare namespace ped {
      *
      * Hash: 0x2CB45CDC
      */
-    function getPropGlobalIndexFromCollection(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number): number;
+    function getPropGlobalIndexFromCollection(ped: number | IPed, anchorPoint: number, collection: string, propIndex: number): number;
     /**
      * A getter for [SET_PED_SWEAT](#\_0x27B0405F59637D1F).
      *
      * Hash: 0x44B91E94
      */
-    function getSweat(ped: number | Ped): number;
+    function getSweat(ped: number | IPed): number;
     /**
      * An alternative to [IS_PED_COMPONENT_VARIATION_GEN9\_EXCLUSIVE](#\_0xC767B581) that uses local collection indexing instead of the global one.
      *
@@ -1878,7 +1878,7 @@ export declare namespace ped {
      *
      * Hash: 0x33B2AFA2
      */
-    function isCollectionComponentVariationGen9Exclusive(ped: number | Ped, componentId: number, collection: string, drawableId: number): boolean;
+    function isCollectionComponentVariationGen9Exclusive(ped: number | IPed, componentId: number, collection: string, drawableId: number): boolean;
     /**
      * An alternative to [IS_PED_COMPONENT_VARIATION_VALID](#\_0xE825F6B6CEA7671D) that uses local collection indexing instead of the global one.
      *
@@ -1888,13 +1888,13 @@ export declare namespace ped {
      *
      * Hash: 0xCA63A52A
      */
-    function isCollectionComponentVariationValid(ped: number | Ped, componentId: number, collection: string, drawableId: number, textureId: number): boolean;
+    function isCollectionComponentVariationValid(ped: number | IPed, componentId: number, collection: string, drawableId: number, textureId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC767B581
      */
-    function isComponentVariationGen9Exclusive(ped: number | Ped, componentId: number, drawableId: number): boolean;
+    function isComponentVariationGen9Exclusive(ped: number | IPed, componentId: number, drawableId: number): boolean;
     /**
      * Sets whether peds can stand on top of *all* vehicles without falling off.
      *
@@ -1926,7 +1926,7 @@ export declare namespace ped {
      *
      * Hash: 0x88711BBA
      */
-    function setCollectionComponentVariation(ped: number | Ped, componentId: number, collection: string, drawableId: number, textureId: number, paletteId: number): void;
+    function setCollectionComponentVariation(ped: number | IPed, componentId: number, collection: string, drawableId: number, textureId: number, paletteId: number): void;
     /**
      * An alternative to [SET_PED_PRELOAD_PROP_DATA](#\_0x2B16A3BFF1FBCE49) that uses local collection indexing instead of the global one.
      *
@@ -1936,7 +1936,7 @@ export declare namespace ped {
      *
      * Hash: 0x14B5BBE0
      */
-    function setCollectionPreloadPropData(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number, textureId: number): void;
+    function setCollectionPreloadPropData(ped: number | IPed, anchorPoint: number, collection: string, propIndex: number, textureId: number): void;
     /**
      * An alternative to [SET_PED_PRELOAD_VARIATION_DATA](#\_0x39D55A620FCB6A3A) that uses local collection indexing instead of the global one.
      *
@@ -1946,7 +1946,7 @@ export declare namespace ped {
      *
      * Hash: 0x3EC75558
      */
-    function setCollectionPreloadVariationData(ped: number | Ped, componentId: number, collection: string, drawableId: number, textureId: number): void;
+    function setCollectionPreloadVariationData(ped: number | IPed, componentId: number, collection: string, drawableId: number, textureId: number): void;
     /**
      * An alternative to [SET_PED_PROP_INDEX](#\_0x93376B65A266EB5F) that uses local collection indexing instead of the global one.
      *
@@ -1956,7 +1956,7 @@ export declare namespace ped {
      *
      * Hash: 0x75240BCB
      */
-    function setCollectionPropIndex(ped: number | Ped, anchorPoint: number, collection: string, propIndex: number, textureId: number, attach: boolean): void;
+    function setCollectionPropIndex(ped: number | IPed, anchorPoint: number, collection: string, propIndex: number, textureId: number, attach: boolean): void;
     /**
      * Override the limits on the number and types of melee combatants. The game is limited to at most ten combatants among the three types: primary, secondary, and observers.
      *
@@ -2015,7 +2015,7 @@ export declare namespace ped {
      *
      * Hash: 0x9C5E7C9C
      */
-    function getBoneMatrix(ped: number | Ped, boneId: number): [Vector3, Vector3, Vector3, Vector3];
+    function getBoneMatrix(ped: number | IPed, boneId: number): [Vector3, Vector3, Vector3, Vector3];
 }
 export declare namespace physics {
     /**
@@ -2099,73 +2099,73 @@ export declare namespace player {
      *
      * Hash: 0xF2E3912B
      */
-    function getInvincible2(player: number | string | Player): boolean;
+    function getInvincible2(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD014AB79
      */
-    function getMaxStamina(playerId: number | string | Player): number;
+    function getMaxStamina(playerId: number | string | IPlayer): number;
     /**
      * A getter for [SET_PLAYER_MELEE_WEAPON_DEFENSE_MODIFIER](#\_0xAE540335B4ABC4E2).
      *
      * Hash: 0x27E94EF8
      */
-    function getMeleeWeaponDefenseModifier(playerId: number | string | Player): number;
+    function getMeleeWeaponDefenseModifier(playerId: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xE415EC5C
      */
-    function getStamina(playerId: number | string | Player): number;
+    function getStamina(playerId: number | string | IPlayer): number;
     /**
      * A getter for [SET_PLAYER_VEHICLE_DAMAGE_MODIFIER](#\_0xA50E117CDDF82F0C).
      *
      * Hash: 0x78F27B1F
      */
-    function getVehicleDamageModifier(playerId: number | string | Player): number;
+    function getVehicleDamageModifier(playerId: number | string | IPlayer): number;
     /**
      * A getter for [SET_PLAYER_VEHICLE_DEFENSE_MODIFIER](#\_0x4C60E6EFDAFF2462).
      *
      * Hash: 0x8326E7CD
      */
-    function getVehicleDefenseModifier(playerId: number | string | Player): number;
+    function getVehicleDefenseModifier(playerId: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x35594F67
      */
-    function setMaxStamina(playerId: number | string | Player, maxStamina: number): boolean;
+    function setMaxStamina(playerId: number | string | IPlayer, maxStamina: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA9EC16C7
      */
-    function setStamina(playerId: number | string | Player, stamina: number): boolean;
+    function setStamina(playerId: number | string | IPlayer, stamina: number): boolean;
     /**
      * A getter for [SET_PLAYER_MELEE_WEAPON_DAMAGE_MODIFIER](#\_0x4A3DC7ECCC321032).
      *
      * Hash: 0x8689A825
      */
-    function getMeleeWeaponDamageModifier(playerId: number | string | Player): number;
+    function getMeleeWeaponDamageModifier(playerId: number | string | IPlayer): number;
     /**
      * A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#\_0xCE07B9F7817AADA3).
      *
      * Hash: 0x2A3D7CDA
      */
-    function getWeaponDamageModifier(playerId: number | string | Player): number;
+    function getWeaponDamageModifier(playerId: number | string | IPlayer): number;
     /**
      * A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#\_0x2D83BC011CA14A3C).
      *
      * Hash: 0xF1543251
      */
-    function getWeaponDefenseModifier(playerId: number | string | Player): number;
+    function getWeaponDefenseModifier(playerId: number | string | IPlayer): number;
     /**
      * A getter for [\_SET_PLAYER_WEAPON_DEFENSE_MODIFIER\_2](#\_0xBCFDE9EDE4CF27DC).
      *
      * Hash: 0x986B65FF
      */
-    function getWeaponDefenseModifier2(playerId: number | string | Player): number;
+    function getWeaponDefenseModifier2(playerId: number | string | IPlayer): number;
     /**
      * Returns all player indices for 'active' physical players known to the client.
      * The data returned adheres to the following layout:
@@ -2192,14 +2192,14 @@ export declare namespace player {
      *
      * Hash: 0x4D97BCC7
      */
-    function getServerId(player: number | string | Player): number;
+    function getServerId(player: number | string | IPlayer): number;
     /**
      * the status of default voip system. It affects on `NETWORK_IS_PLAYER_TALKING` and `mp_facial` animation.
      * This function doesn't need to be called every frame, it works like a switcher.
      *
      * Hash: 0xFC02CAF6
      */
-    function setTalkingOverride(player: number | string | Player, state: boolean): void;
+    function setTalkingOverride(player: number | string | IPlayer, state: boolean): void;
     /**
      * On the server this will return the players source, on the client it will return the player handle.
      *
@@ -2390,7 +2390,7 @@ export declare namespace streaming {
      *
      * Hash: 0xFC52CB91
      */
-    function updateMapdataEntity(mapdata: number, entity: number, entityDef: number | Object): void;
+    function updateMapdataEntity(mapdata: number, entity: number, entityDef: number | IObject): void;
     /**
      * No comment provided
      *
@@ -2501,13 +2501,13 @@ export declare namespace vehicle {
      *
      * Hash: 0xA274CADB
      */
-    function breakOffWheel(vehicle: number | Vehicle, wheelIndex: number, leaveDebrisTrail: boolean, deleteWheel: boolean, unknownFlag: boolean, putOnFire: boolean): void;
+    function breakOffWheel(vehicle: number | IVehicle, wheelIndex: number, leaveDebrisTrail: boolean, deleteWheel: boolean, unknownFlag: boolean, putOnFire: boolean): void;
     /**
      * Removes vehicle xenon lights custom RGB color.
      *
      * Hash: 0x2867ED8C
      */
-    function clearXenonLightsCustomColor(vehicle: number | Vehicle): void;
+    function clearXenonLightsCustomColor(vehicle: number | IVehicle): void;
     /**
      * Disables the game's afk camera that starts panning around after 30 seconds of inactivity(While riding in a car as a passenger)
      *
@@ -2521,7 +2521,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xEF30A696
      */
-    function doesUseFuel(vehicle: number | Vehicle): boolean;
+    function doesUseFuel(vehicle: number | IVehicle): boolean;
     /**
      * Returns all registered vehicle model names, including non-dlc vehicles and custom vehicles in no particular order.
      *
@@ -2547,55 +2547,55 @@ export declare namespace vehicle {
      *
      * Hash: 0xE015E854
      */
-    function getTrainCurrentTrackNode(train: number | Vehicle): number;
+    function getTrainCurrentTrackNode(train: number | IVehicle): number;
     /**
      * Gets the door count for the specified train.
      *
      * Hash: 0x99974721
      */
-    function getTrainDoorCount(train: number | Vehicle): number;
+    function getTrainDoorCount(train: number | IVehicle): number;
     /**
      * Gets the ratio that a door is open for on a train.
      *
      * Hash: 0x40B16551
      */
-    function getTrainDoorOpenRatio(train: number | Vehicle, doorIndex: number): number;
+    function getTrainDoorOpenRatio(train: number | IVehicle, doorIndex: number): number;
     /**
      * Gets the speed the train is currently going.
      *
      * Hash: 0x428668B7
      */
-    function getTrainSpeed(train: number | Vehicle): number;
+    function getTrainSpeed(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xC62AAC98
      */
-    function getAlarmTimeLeft(vehicle: number | Vehicle): number;
+    function getAlarmTimeLeft(vehicle: number | IVehicle): number;
     /**
      * A getter for [SET_VEHICLE_CHEAT_POWER_INCREASE](#\_0xB59E4BD37AE292DB).
      *
      * Hash: 0xC3C93F28
      */
-    function getCheatPowerIncrease(vehicle: number | Vehicle): number;
+    function getCheatPowerIncrease(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x1DAD4583
      */
-    function getClutch(vehicle: number | Vehicle): number;
+    function getClutch(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xB4F4E566
      */
-    function getCurrentGear(vehicle: number | Vehicle): number;
+    function getCurrentGear(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xE7B12B54
      */
-    function getCurrentRpm(vehicle: number | Vehicle): number;
+    function getCurrentRpm(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -2653,7 +2653,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x9AAD420E
      */
-    function getDashboardSpeed(vehicle: number | Vehicle): number;
+    function getDashboardSpeed(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -2677,112 +2677,112 @@ export declare namespace vehicle {
      *
      * Hash: 0x21C1DA8E
      */
-    function getDrawnWheelAngleMult(vehicle: number | Vehicle): number;
+    function getDrawnWheelAngleMult(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xF4F495CB
      */
-    function getEngineTemperature(vehicle: number | Vehicle): number;
+    function getEngineTemperature(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x5F739BB8
      */
-    function getFuelLevel(vehicle: number | Vehicle): number;
+    function getFuelLevel(vehicle: number | IVehicle): number;
     /**
      * Gets vehicles gear ratio on choosen gear.
      *
      * Hash: 0x82E794B7
      */
-    function getGearRatio(vehicle: number | Vehicle, gear: number): number;
+    function getGearRatio(vehicle: number | IVehicle, gear: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xB48A1292
      */
-    function getGravityAmount(vehicle: number | Vehicle): number;
+    function getGravityAmount(vehicle: number | IVehicle): number;
     /**
      * Returns the effective handling data of a vehicle as a floating-point value.
      * Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
      *
      * Hash: 0x642FC12F
      */
-    function getHandlingFloat(vehicle: number | Vehicle, class_: string, fieldName: string): number;
+    function getHandlingFloat(vehicle: number | IVehicle, class_: string, fieldName: string): number;
     /**
      * Returns the effective handling data of a vehicle as an integer value.
      * Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
      *
      * Hash: 0x27396C75
      */
-    function getHandlingInt(vehicle: number | Vehicle, class_: string, fieldName: string): number;
+    function getHandlingInt(vehicle: number | IVehicle, class_: string, fieldName: string): number;
     /**
      * Returns the effective handling data of a vehicle as a vector value.
      * Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
      *
      * Hash: 0xFB341304
      */
-    function getHandlingVector(vehicle: number | Vehicle, class_: string, fieldName: string): Vector3;
+    function getHandlingVector(vehicle: number | IVehicle, class_: string, fieldName: string): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0xF1D1D689
      */
-    function getHighGear(vehicle: number | Vehicle): number;
+    function getHighGear(vehicle: number | IVehicle): number;
     /**
      * Gets the vehicle indicator light state. 0 = off, 1 = left, 2 = right, 3 = both
      *
      * Hash: 0x83070354
      */
-    function getIndicatorLights(vehicle: number | Vehicle): number;
+    function getIndicatorLights(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x7E6E219C
      */
-    function getLightMultiplier(vehicle: number | Vehicle): number;
+    function getLightMultiplier(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xDDB298AE
      */
-    function getNextGear(vehicle: number | Vehicle): number;
+    function getNextGear(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xEDF4B0FC
      */
-    function getNumberOfWheels(vehicle: number | Vehicle): number;
+    function getNumberOfWheels(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xFC7F8EF4
      */
-    function getOilLevel(vehicle: number | Vehicle): number;
+    function getOilLevel(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x954465DE
      */
-    function getSteeringScale(vehicle: number | Vehicle): number;
+    function getSteeringScale(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xD1D07351
      */
-    function getThrottleOffset(vehicle: number | Vehicle): number;
+    function getThrottleOffset(vehicle: number | IVehicle): number;
     /**
      * A getter for [MODIFY_VEHICLE_TOP_SPEED](#\_0x93A3996368C94158). Returns -1.0 if a modifier is not set.
      *
      * Hash: 0x998B7FEE
      */
-    function getTopSpeedModifier(vehicle: number | Vehicle): number;
+    function getTopSpeedModifier(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xE02B51D7
      */
-    function getTurboPressure(vehicle: number | Vehicle): number;
+    function getTurboPressure(vehicle: number | IVehicle): number;
     /**
      * List of known states:
      *
@@ -2794,7 +2794,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x137260D1
      */
-    function getWheelieState(vehicle: number | Vehicle): number;
+    function getWheelieState(vehicle: number | IVehicle): number;
     /**
      * Gets brake pressure of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
@@ -2802,20 +2802,20 @@ export declare namespace vehicle {
      *
      * Hash: 0x70FE2EFF
      */
-    function getWheelBrakePressure(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelBrakePressure(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Gets the flags of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0xC70FA0C7
      */
-    function getWheelFlags(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelFlags(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x54A677F5
      */
-    function getWheelHealth(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelHealth(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Gets whether the wheel is powered.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
@@ -2823,20 +2823,20 @@ export declare namespace vehicle {
      *
      * Hash: 0x3CCF1B49
      */
-    function getWheelIsPowered(vehicle: number | Vehicle, wheelIndex: number): boolean;
+    function getWheelIsPowered(vehicle: number | IVehicle, wheelIndex: number): boolean;
     /**
      * Gets power being sent to a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0xD203287
      */
-    function getWheelPower(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelPower(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xCEE21AB2
      */
-    function getWheelRimColliderSize(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelRimColliderSize(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Gets the rotation speed of a wheel.
      * This is used internally to calcuate GET_VEHICLE_WHEEL_SPEED.
@@ -2844,34 +2844,34 @@ export declare namespace vehicle {
      *
      * Hash: 0xEA1859E5
      */
-    function getWheelRotationSpeed(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelRotationSpeed(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Returns vehicle's wheels' size (size is the same for all the wheels, cannot get/set specific wheel of vehicle).
      * Only works on non-default wheels (returns 0 in case of default wheels).
      *
      * Hash: 0x4046B66
      */
-    function getWheelSize(vehicle: number | Vehicle): number;
+    function getWheelSize(vehicle: number | IVehicle): number;
     /**
      * Gets speed of a wheel at the tyre.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0x149C9DA0
      */
-    function getWheelSpeed(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelSpeed(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Gets steering angle of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0xA0867448
      */
-    function getWheelSteeringAngle(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelSteeringAngle(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xA7F04022
      */
-    function getWheelSurfaceMaterial(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelSurfaceMaterial(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Gets the current suspension compression of a wheel.
      * Returns a positive value. 0 means the suspension is fully extended, the wheel is off the ground.
@@ -2879,51 +2879,51 @@ export declare namespace vehicle {
      *
      * Hash: 0x2B48175B
      */
-    function getWheelSuspensionCompression(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelSuspensionCompression(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xE0BA9FE6
      */
-    function getWheelTireColliderSize(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelTireColliderSize(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xEF65929C
      */
-    function getWheelTireColliderWidth(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelTireColliderWidth(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Gets the traction vector length of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0x3BCFEE14
      */
-    function getWheelTractionVectorLength(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelTractionVectorLength(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Returns vehicle's wheels' width (width is the same for all the wheels, cannot get/set specific wheel of vehicle).
      * Only works on non-default wheels (returns 0 in case of default wheels).
      *
      * Hash: 0x9C7B59F9
      */
-    function getWheelWidth(vehicle: number | Vehicle): number;
+    function getWheelWidth(vehicle: number | IVehicle): number;
     /**
      * Returns the offset of the specified wheel relative to the wheel's axle center.
      *
      * Hash: 0xCC90CBCA
      */
-    function getWheelXOffset(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelXOffset(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x2EA4AFFE
      */
-    function getWheelYRotation(vehicle: number | Vehicle, wheelIndex: number): number;
+    function getWheelYRotation(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Returns vehicle xenon lights custom RGB color values. Do note this native doesn't return non-RGB colors that was set with [\_SET_VEHICLE_XENON_LIGHTS_COLOR](#\_0xE41033B25D003A07).
      *
      * Hash: 0xC715F730
      */
-    function getXenonLightsCustomColor(vehicle: number | Vehicle): [boolean, number, number, number];
+    function getXenonLightsCustomColor(vehicle: number | IVehicle): [boolean, number, number, number];
     /**
      * A getter for [SET_VEHICLE_XMAS_SNOW_FACTOR](#\_0x80CC4C9E).
      *
@@ -2935,31 +2935,31 @@ export declare namespace vehicle {
      *
      * Hash: 0xDC921211
      */
-    function isAlarmSet(vehicle: number | Vehicle): boolean;
+    function isAlarmSet(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA411F72C
      */
-    function isInteriorLightOn(vehicle: number | Vehicle): boolean;
+    function isInteriorLightOn(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF9933BF4
      */
-    function isNeedsToBeHotwired(vehicle: number | Vehicle): boolean;
+    function isNeedsToBeHotwired(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF849ED67
      */
-    function isPreviouslyOwnedByPlayer(vehicle: number | Vehicle): boolean;
+    function isPreviouslyOwnedByPlayer(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA7DAF7C
      */
-    function isWanted(vehicle: number | Vehicle): boolean;
+    function isWanted(vehicle: number | IVehicle): boolean;
     /**
      * Setting the state to true and a value between 0 and 2 will cause pedestrian vehicles to react accordingly to sirens.
      *
@@ -2981,7 +2981,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x7FA03E76
      */
-    function overridePedsCanStandOnTopFlag(vehicle: number | Vehicle, can: boolean): void;
+    function overridePedsCanStandOnTopFlag(vehicle: number | IVehicle, can: boolean): void;
     /**
      * Resets whether or not peds can stand on top of the specified vehicle.
      *
@@ -2989,7 +2989,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xDF62CFE2
      */
-    function resetPedsCanStandOnTopFlag(vehicle: number | Vehicle): void;
+    function resetPedsCanStandOnTopFlag(vehicle: number | IVehicle): void;
     /**
      * Sets the default number plate text pattern for vehicles seen on the local client with the specified plate index as their *default* index (`plateProbabilities` from carvariations).
      *
@@ -3054,99 +3054,99 @@ export declare namespace vehicle {
      *
      * Hash: 0x2468DBE8
      */
-    function setTrainDoorOpenRatio(train: number | Vehicle, doorIndex: number, ratio: number): void;
+    function setTrainDoorOpenRatio(train: number | IVehicle, doorIndex: number, ratio: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x61CB74A0
      */
-    function setTrainState(train: number | Vehicle, state: number): void;
+    function setTrainState(train: number | IVehicle, state: number): void;
     /**
      * Toggles a train's ability to stop at stations
      *
      * Hash: 0xECB8B577
      */
-    function setTrainStopAtStations(train: number | Vehicle, state: boolean): void;
+    function setTrainStopAtStations(train: number | IVehicle, state: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC108EE6F
      */
-    function setAlarmTimeLeft(vehicle: number | Vehicle, time: number): void;
+    function setAlarmTimeLeft(vehicle: number | IVehicle, time: number): void;
     /**
      * Disables the vehicle from being repaired when a vehicle extra is enabled.
      *
      * Hash: 0x5F3A3574
      */
-    function setAutoRepairDisabled(vehicle: number | Vehicle, value: boolean): void;
+    function setAutoRepairDisabled(vehicle: number | IVehicle, value: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x2F70ACED
      */
-    function setClutch(vehicle: number | Vehicle, clutch: number): void;
+    function setClutch(vehicle: number | IVehicle, clutch: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2A01A8FC
      */
-    function setCurrentRpm(vehicle: number | Vehicle, rpm: number): void;
+    function setCurrentRpm(vehicle: number | IVehicle, rpm: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6C93C4A9
      */
-    function setEngineTemperature(vehicle: number | Vehicle, temperature: number): void;
+    function setEngineTemperature(vehicle: number | IVehicle, temperature: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xBA970511
      */
-    function setFuelLevel(vehicle: number | Vehicle, level: number): void;
+    function setFuelLevel(vehicle: number | IVehicle, level: number): void;
     /**
      * Sets the vehicles gear ratio on choosen gear, reverse gear needs to be a negative float and forward moving gear needs to be a positive float. Refer to the examples if confused.
      *
      * Hash: 0x496EF2F2
      */
-    function setGearRatio(vehicle: number | Vehicle, gear: number, ratio: number): void;
+    function setGearRatio(vehicle: number | IVehicle, gear: number, ratio: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x1A963E58
      */
-    function setGravityAmount(vehicle: number | Vehicle, gravity: number): void;
+    function setGravityAmount(vehicle: number | IVehicle, gravity: number): void;
     /**
      * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
      * Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
      *
      * Hash: 0x2BA40795
      */
-    function setVehicleHandlingField(vehicle: number | Vehicle, class_: string, fieldName: string, value: any): void;
+    function setVehicleHandlingField(vehicle: number | IVehicle, class_: string, fieldName: string, value: any): void;
     /**
      * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
      * Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
      *
      * Hash: 0x488C86D2
      */
-    function setVehicleHandlingFloat(vehicle: number | Vehicle, class_: string, fieldName: string, value: number): void;
+    function setVehicleHandlingFloat(vehicle: number | IVehicle, class_: string, fieldName: string, value: number): void;
     /**
      * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
      *
      * Hash: 0xC37F4CF9
      */
-    function setVehicleHandlingInt(vehicle: number | Vehicle, class_: string, fieldName: string, value: number): void;
+    function setVehicleHandlingInt(vehicle: number | IVehicle, class_: string, fieldName: string, value: number): void;
     /**
      * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
      *
      * Hash: 0x12497890
      */
-    function setVehicleHandlingVector(vehicle: number | Vehicle, class_: string, fieldName: string, value: Vector3): void;
+    function setVehicleHandlingVector(vehicle: number | IVehicle, class_: string, fieldName: string, value: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x20B1B3E6
      */
-    function setHighGear(vehicle: number | Vehicle, gear: number): void;
+    function setHighGear(vehicle: number | IVehicle, gear: number): void;
     /**
      * Sets the maximum distance in which [\_SET_VEHICLE_NITRO_ENABLED](#\_0xC8E9B6B71B8E660D) PTFX are rendered. Distance is measured from the camera position.
      *
@@ -3158,31 +3158,31 @@ export declare namespace vehicle {
      *
      * Hash: 0x90D1CAD1
      */
-    function setOilLevel(vehicle: number | Vehicle, level: number): void;
+    function setOilLevel(vehicle: number | IVehicle, level: number): void;
     /**
      * Set the vehicle's pitch bias. Only works on planes.
      *
      * Hash: 0x2A6CC9F2
      */
-    function setPitchBias(vehicle: number | Vehicle, value: number): void;
+    function setPitchBias(vehicle: number | IVehicle, value: number): void;
     /**
      * Set the vehicle's roll bias. Only works on planes.
      *
      * Hash: 0x264B45DE
      */
-    function setRollBias(vehicle: number | Vehicle, value: number): void;
+    function setRollBias(vehicle: number | IVehicle, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xFFCCC2EA
      */
-    function setSteeringAngle(vehicle: number | Vehicle, angle: number): void;
+    function setSteeringAngle(vehicle: number | IVehicle, angle: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xEB46596F
      */
-    function setSteeringScale(vehicle: number | Vehicle, scale: number): void;
+    function setSteeringScale(vehicle: number | IVehicle, scale: number): void;
     /**
      * Sets the height of the vehicle's suspension.
      * This changes the same value set by Suspension in the mod shop.
@@ -3192,13 +3192,13 @@ export declare namespace vehicle {
      *
      * Hash: 0xB3439A01
      */
-    function setSuspensionHeight(vehicle: number | Vehicle, newHeight: number): void;
+    function setSuspensionHeight(vehicle: number | IVehicle, newHeight: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6485615E
      */
-    function setTurboPressure(vehicle: number | Vehicle, pressure: number): void;
+    function setTurboPressure(vehicle: number | IVehicle, pressure: number): void;
     /**
      * Example script: https://pastebin.com/J6XGbkCW
      *
@@ -3212,7 +3212,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xEAB8DB65
      */
-    function setWheelieState(vehicle: number | Vehicle, state: number): void;
+    function setWheelieState(vehicle: number | IVehicle, state: number): void;
     /**
      * Sets brake pressure of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
@@ -3220,20 +3220,20 @@ export declare namespace vehicle {
      *
      * Hash: 0xE80F4E31
      */
-    function setWheelBrakePressure(vehicle: number | Vehicle, wheelIndex: number, pressure: number): void;
+    function setWheelBrakePressure(vehicle: number | IVehicle, wheelIndex: number, pressure: number): void;
     /**
      * Sets the flags of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0xD2B9E90D
      */
-    function setWheelFlags(vehicle: number | Vehicle, wheelIndex: number, flags: number): void;
+    function setWheelFlags(vehicle: number | IVehicle, wheelIndex: number, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xB22ECEFD
      */
-    function setWheelHealth(vehicle: number | Vehicle, wheelIndex: number, health: number): void;
+    function setWheelHealth(vehicle: number | IVehicle, wheelIndex: number, health: number): void;
     /**
      * Sets whether the wheel is powered.
      * On all wheel drive cars this works to change which wheels receive power, but if a car's fDriveBiasFront doesn't send power to that wheel, it won't get power anyway. This can be fixed by changing the fDriveBiasFront with SET_VEHICLE_HANDLING_FLOAT.
@@ -3242,27 +3242,27 @@ export declare namespace vehicle {
      *
      * Hash: 0xBD5291A0
      */
-    function setWheelIsPowered(vehicle: number | Vehicle, wheelIndex: number, powered: boolean): void;
+    function setWheelIsPowered(vehicle: number | IVehicle, wheelIndex: number, powered: boolean): void;
     /**
      * Sets power being sent to a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0xC6146043
      */
-    function setWheelPower(vehicle: number | Vehicle, wheelIndex: number, power: number): void;
+    function setWheelPower(vehicle: number | IVehicle, wheelIndex: number, power: number): void;
     /**
      * Not sure what this changes, probably determines physical rim size in case the tire is blown.
      *
      * Hash: 0xF380E184
      */
-    function setWheelRimColliderSize(vehicle: number | Vehicle, wheelIndex: number, value: number): void;
+    function setWheelRimColliderSize(vehicle: number | IVehicle, wheelIndex: number, value: number): void;
     /**
      * Sets the rotation speed of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0x35ED100D
      */
-    function setWheelRotationSpeed(vehicle: number | Vehicle, wheelIndex: number, speed: number): void;
+    function setWheelRotationSpeed(vehicle: number | IVehicle, wheelIndex: number, speed: number): void;
     /**
      * Sets vehicle's wheels' size (size is the same for all the wheels, cannot get/set specific wheel of vehicle).
      * Only works on non-default wheels.
@@ -3270,26 +3270,26 @@ export declare namespace vehicle {
      *
      * Hash: 0x53AB5C35
      */
-    function setWheelSize(vehicle: number | Vehicle, size: number): boolean;
+    function setWheelSize(vehicle: number | IVehicle, size: number): boolean;
     /**
      * Use along with SetVehicleWheelSize to resize the wheels (this native sets the collider size affecting physics while SetVehicleWheelSize will change visual size).
      *
      * Hash: 0xB962D05C
      */
-    function setWheelTireColliderSize(vehicle: number | Vehicle, wheelIndex: number, value: number): void;
+    function setWheelTireColliderSize(vehicle: number | IVehicle, wheelIndex: number, value: number): void;
     /**
      * Use along with SetVehicleWheelWidth to resize the wheels (this native sets the collider width affecting physics while SetVehicleWheelWidth will change visual width).
      *
      * Hash: 0x47BD0270
      */
-    function setWheelTireColliderWidth(vehicle: number | Vehicle, wheelIndex: number, value: number): void;
+    function setWheelTireColliderWidth(vehicle: number | IVehicle, wheelIndex: number, value: number): void;
     /**
      * Sets the traction vector length of a wheel.
      * Max number of wheels can be retrieved with the native GET_VEHICLE_NUMBER_OF_WHEELS.
      *
      * Hash: 0x85C85A3A
      */
-    function setWheelTractionVectorLength(vehicle: number | Vehicle, wheelIndex: number, length: number): void;
+    function setWheelTractionVectorLength(vehicle: number | IVehicle, wheelIndex: number, length: number): void;
     /**
      * Sets vehicle's wheels' width (width is the same for all the wheels, cannot get/set specific wheel of vehicle).
      * Only works on non-default wheels.
@@ -3297,7 +3297,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x64C3F1C0
      */
-    function setWheelWidth(vehicle: number | Vehicle, width: number): boolean;
+    function setWheelWidth(vehicle: number | IVehicle, width: number): boolean;
     /**
      * Adjusts the offset of the specified wheel relative to the wheel's axle center.
      * Needs to be called every frame in order to function properly, as GTA will reset the offset otherwise.
@@ -3312,19 +3312,19 @@ export declare namespace vehicle {
      *
      * Hash: 0xBD6357D
      */
-    function setWheelXOffset(vehicle: number | Vehicle, wheelIndex: number, offset: number): void;
+    function setWheelXOffset(vehicle: number | IVehicle, wheelIndex: number, offset: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC6C2171F
      */
-    function setWheelYRotation(vehicle: number | Vehicle, wheelIndex: number, value: number): void;
+    function setWheelYRotation(vehicle: number | IVehicle, wheelIndex: number, value: number): void;
     /**
      * Sets custom vehicle xenon lights color, allowing to use RGB palette. The game will ignore lights color set by [\_SET_VEHICLE_XENON_LIGHTS_COLOR](#\_0xE41033B25D003A07) when custom color is active. This native is not synced between players. Requires xenon lights mod to be set on vehicle.
      *
      * Hash: 0x1683E7F0
      */
-    function setXenonLightsCustomColor(vehicle: number | Vehicle, red: number, green: number, blue: number): void;
+    function setXenonLightsCustomColor(vehicle: number | IVehicle, red: number, green: number, blue: number): void;
     /**
      * No comment provided
      *
@@ -3336,49 +3336,49 @@ export declare namespace vehicle {
      *
      * Hash: 0x77CC80DC
      */
-    function doesTrainStopAtStations(train: number | Vehicle): boolean;
+    function doesTrainStopAtStations(train: number | IVehicle): boolean;
     /**
      * Gets the trains desired speed.
      *
      * Hash: 0xA4921EF5
      */
-    function getTrainCruiseSpeed(train: number | Vehicle): number;
+    function getTrainCruiseSpeed(train: number | IVehicle): number;
     /**
      * Gets the direction the train is facing
      *
      * Hash: 0x8DAF79B6
      */
-    function getTrainDirection(train: number | Vehicle): boolean;
+    function getTrainDirection(train: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x81B50033
      */
-    function getTrainState(train: number | Vehicle): number;
+    function getTrainState(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x9AA339D
      */
-    function getTrainTrackIndex(train: number | Vehicle): number;
+    function getTrainTrackIndex(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x483B013C
      */
-    function getHandbrake(vehicle: number | Vehicle): boolean;
+    function getHandbrake(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1382FCEA
      */
-    function getSteeringAngle(vehicle: number | Vehicle): number;
+    function getSteeringAngle(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xBB340D04
      */
-    function isEngineStarting(vehicle: number | Vehicle): boolean;
+    function isEngineStarting(vehicle: number | IVehicle): boolean;
     /**
      * **Note**: Flags are not the same based on your `gamebuild`. Please see [here](https://docs.fivem.net/docs/game-references/vehicle-references/vehicle-flags) to see a complete list of all vehicle flags.
      *
@@ -3386,7 +3386,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xD85C9F57
      */
-    function getHasFlag(vehicle: number | Vehicle, flagIndex: number): boolean;
+    function getHasFlag(vehicle: number | IVehicle, flagIndex: number): boolean;
     /**
      * Returns the model type of the vehicle as defined by:
      *
@@ -3415,31 +3415,31 @@ export declare namespace vehicle {
      *
      * Hash: 0xDE73BC10
      */
-    function getTypeRaw(vehicle: number | Vehicle): number;
+    function getTypeRaw(vehicle: number | IVehicle): number;
     /**
      * Getter for [BREAK_OFF_VEHICLE_WHEEL](?\_0xA274CADB).
      *
      * Hash: 0xCF1BC668
      */
-    function isWheelBrokenOff(vehicle: number | Vehicle, wheelIndex: number): boolean;
+    function isWheelBrokenOff(vehicle: number | IVehicle, wheelIndex: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8923DD42
      */
-    function setCurrentGear(vehicle: number | Vehicle, gear: number): void;
+    function setCurrentGear(vehicle: number | IVehicle, gear: number): void;
     /**
      * This native is a setter for [`GET_VEHICLE_HAS_FLAG`](#\_0xD85C9F57).
      *
      * Hash: 0x63AE1A34
      */
-    function setFlag(vehicle: number | Vehicle, flagIndex: number, value: boolean): boolean;
+    function setFlag(vehicle: number | IVehicle, flagIndex: number, value: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3A4566F4
      */
-    function setNextGear(vehicle: number | Vehicle, nextGear: number): void;
+    function setNextGear(vehicle: number | IVehicle, nextGear: number): void;
     /**
      * Returns the type of the passed vehicle.
      *
@@ -3458,7 +3458,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xA273060E
      */
-    function getType(vehicle: number | Vehicle): string;
+    function getType(vehicle: number | IVehicle): string;
 }
 export declare namespace water {
     /**
@@ -3678,7 +3678,7 @@ export declare namespace weapon {
      *
      * Hash: 0x63ED2E7
      */
-    function getAnimationOverride(ped: number | Ped): number;
+    function getAnimationOverride(ped: number | IPed): number;
     /**
      * A getter for `CWeaponAccuracyModifier` in a weapon component.
      *
@@ -3789,7 +3789,7 @@ export declare namespace network {
      *
      * Hash: 0x526FEE31
      */
-    function getEntityOwner(entity: number | Entity): number;
+    function getEntityOwner(entity: number | IEntity): number;
 }
 export declare namespace shapetest {
     /**
@@ -3809,7 +3809,7 @@ export declare namespace camera {
      *
      * Hash: 0x8F57A89D
      */
-    function getCamMatrix(camera: number | Camera, rightVector: Vector3, forwardVector: Vector3, upVector: Vector3, position: Vector3): void;
+    function getCamMatrix(camera: number | ICamera, rightVector: Vector3, forwardVector: Vector3, upVector: Vector3, position: Vector3): void;
 }
 export declare namespace discord {
     /**
@@ -3973,7 +3973,7 @@ export declare namespace mumble {
      *
      * Hash: 0x32C5355A
      */
-    function addVoiceTargetPlayer(targetId: number, player: number | string | Player): void;
+    function addVoiceTargetPlayer(targetId: number, player: number | string | IPlayer): void;
     /**
      * Adds the specified player to the target list for the specified Mumble voice target ID.
      *
@@ -4040,7 +4040,7 @@ export declare namespace mumble {
      *
      * Hash: 0x33EEF97F
      */
-    function isPlayerTalking(player: number | string | Player): boolean;
+    function isPlayerTalking(player: number | string | IPlayer): boolean;
     /**
      * Stops listening to the specified channel.
      *
@@ -4062,7 +4062,7 @@ export declare namespace mumble {
      *
      * Hash: 0x88CD646F
      */
-    function removeVoiceTargetPlayer(targetId: number, player: number | string | Player): void;
+    function removeVoiceTargetPlayer(targetId: number, player: number | string | IPlayer): void;
     /**
      * Removes the specified player from the user's voice targets.
      *
@@ -4141,7 +4141,7 @@ export declare namespace mumble {
      *
      * Hash: 0x61C309E3
      */
-    function setVolumeOverride(player: number | string | Player, volume: number): void;
+    function setVolumeOverride(player: number | string | IPlayer, volume: number): void;
     /**
      * Overrides the output volume for a particular player with the specified server id and player name on Mumble. This will also bypass 3D audio and distance calculations. -1.0 to reset the override.
      *
