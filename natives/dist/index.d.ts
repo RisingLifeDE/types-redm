@@ -1,29 +1,29 @@
-import { Vector3, Vector2, Entity, Ped, Player, Vehicle, Object, Blip, Camera } from '@risinglife/redm-shared';
+import { Vector3, Vector2, IEntity, IPed, IPlayer, IVehicle, IObject, IBlip, ICamera } from '@risinglife/redm-shared';
 export declare namespace aicoverpoint {
     /**
      * No comment provided
      *
      * Hash: 0x4972A022AE6DAFA1 | Since: 1207
      */
-    function taskEnterCover(ped: number | Ped): void;
+    function taskEnterCover(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x2BC4A6D92D140112 | Since: 1207
      */
-    function taskExitCover(ped: number | Ped): void;
+    function taskExitCover(ped: number | IPed): void;
     /**
      * weaponHash can also be -1
      *
      * Hash: 0x140B3CB1D424A945 | Since: 1207
      */
-    function _0x140B3CB1D424A945(ped: number | Ped, weaponHash: number | string): void;
+    function _0x140B3CB1D424A945(ped: number | IPed, weaponHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x3C7A9C2C953128FE | Since: 1207
      */
-    function _0x3C7A9C2C953128FE(ped: number | Ped): void;
+    function _0x3C7A9C2C953128FE(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -47,7 +47,7 @@ export declare namespace aicoverpoint {
      *
      * Hash: 0x957D7E750216D74B | Since: 1207
      */
-    function _0x957D7E750216D74B(ped: number | Ped): number;
+    function _0x957D7E750216D74B(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -73,7 +73,7 @@ export declare namespace aicoverpoint {
      *
      * Hash: 0x8CBE916CFC64AD5C | Since: 1207
      */
-    function areLoadCoverAnimsLoaded(ped: number | Ped): boolean;
+    function areLoadCoverAnimsLoaded(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -87,20 +87,20 @@ export declare namespace aicoverpoint {
      *
      * Hash: 0x5F5B1B7E8E8F94C6 | Since: 1207
      */
-    function getCoverPointStateFromPed(ped: number | Ped): number;
+    function getCoverPointStateFromPed(ped: number | IPed): number;
     /**
      * Makes ped flinch (if in cover) like they have been shot at
      *
      * Hash: 0x2A31D13C5F021D0D | Since: 1207
      */
-    function requestFlinchCoverAnim(ped: number | Ped): void;
+    function requestFlinchCoverAnim(ped: number | IPed): void;
     /**
      * Stops running cover anims and releases them
      * _STOP_RENDERING_* - _STOP_SCRIPTED*
      *
      * Hash: 0x1A7A802B2301EDC0 | Since: 1207
      */
-    function stopRunningCoverAnims(ped: number | Ped): void;
+    function stopRunningCoverAnims(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -114,37 +114,37 @@ export declare namespace aitransport {
      *
      * Hash: 0xF382C92CCC1CCDBC | Since: 1207
      */
-    function getTransportConfigFlag(transportEntity: number | Entity, flagId: number): boolean;
+    function getTransportConfigFlag(transportEntity: number | IEntity, flagId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x619E63980BFC0096 | Since: 1207
      */
-    function isPedEnteringTransport(ped: number | Ped, transportEntity: number | Entity): boolean;
+    function isPedEnteringTransport(ped: number | IPed, transportEntity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x660639BC60157048 | Since: 1207
      */
-    function isPedExitingTransport(ped: number | Ped, transportEntity: number | Entity): boolean;
+    function isPedExitingTransport(ped: number | IPed, transportEntity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8886D83A430537FD | Since: 1207
      */
-    function setPedOffTransportSeat(ped: number | Ped, flags: number): void;
+    function setPedOffTransportSeat(ped: number | IPed, flags: number): void;
     /**
      * seat: see CREATE_PED_INSIDE_VEHICLE
      *
      * Hash: 0xE588B5A8A005CB5E | Since: 1207
      */
-    function setPedOnTransportSeat(ped: number | Ped, transportEntity: number | Entity, seat: number, flags: number): void;
+    function setPedOnTransportSeat(ped: number | IPed, transportEntity: number | IEntity, seat: number, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xDD0660C997DE94FD | Since: 1207
      */
-    function setTransportAccessibleSeatFlags(transportEntity: number | Entity, flags: number): void;
+    function setTransportAccessibleSeatFlags(transportEntity: number | IEntity, flags: number): void;
     /**
      * flagId:
      * enum eTransportConfigFlags
@@ -174,7 +174,7 @@ export declare namespace aitransport {
      *
      * Hash: 0xBA8818212633500A | Since: 1207
      */
-    function setTransportConfigFlag(transportEntity: number | Entity, flagId: number, value: boolean): void;
+    function setTransportConfigFlag(transportEntity: number | IEntity, flagId: number, value: boolean): void;
     /**
      * No comment provided
      *
@@ -192,7 +192,7 @@ export declare namespace aitransport {
      *
      * Hash: 0x4248AB2EEB3C75AD | Since: 1207
      */
-    function _0x4248AB2EEB3C75AD(transportEntity: number | Entity, ped: number | Ped): void;
+    function _0x4248AB2EEB3C75AD(transportEntity: number | IEntity, ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -204,73 +204,73 @@ export declare namespace aitransport {
      *
      * Hash: 0x5639FBEA922788DA | Since: 1207
      */
-    function _0x5639FBEA922788DA(transportEntity: number | Entity): void;
+    function _0x5639FBEA922788DA(transportEntity: number | IEntity): void;
     /**
      * _SET_TRANSPORT_*
      *
      * Hash: 0x8C8371EDFAF014A0 | Since: 1207
      */
-    function _0x8C8371EDFAF014A0(ped: number | Ped): void;
+    function _0x8C8371EDFAF014A0(ped: number | IPed): void;
     /**
      * _SET_TRANSPORT_*
      *
      * Hash: 0xF8C20282B237E3F7 | Since: 1207
      */
-    function _0xF8C20282B237E3F7(ped: number | Ped): void;
+    function _0xF8C20282B237E3F7(ped: number | IPed): void;
     /**
      * seatIndex: see CREATE_PED_INSIDE_VEHICLE
      *
      * Hash: 0xFFEC4B0A1A3ED515 | Since: 1207
      */
-    function getPedInTransportSeat(transportEntity: number | Entity, seatIndex: number): number;
+    function getPedInTransportSeat(transportEntity: number | IEntity, seatIndex: number): number;
     /**
      * See _SET_TRANSPORT_USAGE_FLAGS
      *
      * Hash: 0xE195C5A82156321D | Since: 1207
      */
-    function getTransportUsageFlags(transportEntity: number | Entity): [any, number];
+    function getTransportUsageFlags(transportEntity: number | IEntity): [any, number];
     /**
      * Checks if ped is placed on target transportEntity
      *
      * Hash: 0x159EF5B6EDCE00E8 | Since: 1207
      */
-    function isPedOnTransportEntity(ped: number | Ped, transportEntity: number | Entity): boolean;
+    function isPedOnTransportEntity(ped: number | IPed, transportEntity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDC44F405A6B98D03 | Since: 1207
      */
-    function isPedOnTransportSeat(ped: number | Ped): boolean;
+    function isPedOnTransportSeat(ped: number | IPed): boolean;
     /**
      * Called together with IS_VEHICLE_SEAT_FREE
      *
      * Hash: 0x43FF27FC1829C202 | Since: 1207
      */
-    function isTransportSeatFree(transportEntity: number | Entity, seatIndex: number): boolean;
+    function isTransportSeatFree(transportEntity: number | IEntity, seatIndex: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2E2E06023D07631E | Since: 1207
      */
-    function isTransportSeatOccupied(transportEntity: number | Entity, seatIndex: number): boolean;
+    function isTransportSeatOccupied(transportEntity: number | IEntity, seatIndex: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x67F7CEAC2391E114 | Since: 1207
      */
-    function setAiCanUseTransport(transportEntity: number | Entity, state: boolean): void;
+    function setAiCanUseTransport(transportEntity: number | IEntity, state: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xB7079F4C72896756 | Since: 1207
      */
-    function setPedUseTransportSeatPreference(ped: number | Ped, transportEntity: number | Entity, preferenceSlot: number, seatIndex: number): void;
+    function setPedUseTransportSeatPreference(ped: number | IPed, transportEntity: number | IEntity, preferenceSlot: number, seatIndex: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x13F138225C202F66 | Since: 1207
      */
-    function setTransportPrioritySeat(transportEntity: number | Entity, seatIndex: number): void;
+    function setTransportPrioritySeat(transportEntity: number | IEntity, seatIndex: number): void;
     /**
      * enum eTransportUsageFlags
      * {
@@ -290,7 +290,7 @@ export declare namespace aitransport {
      *
      * Hash: 0xE2487779957FE897 | Since: 1207
      */
-    function setTransportUsageFlags(transportEntity: number | Entity, flags: number): void;
+    function setTransportUsageFlags(transportEntity: number | IEntity, flags: number): void;
 }
 export declare namespace animscene {
     /**
@@ -304,13 +304,13 @@ export declare namespace animscene {
      *
      * Hash: 0xDC418495DBA327A1 | Since: 1207
      */
-    function attachToEntity(animScene: any, entity: number | Entity): void;
+    function attachToEntity(animScene: any, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x1C0B105C3F30B88D | Since: 1207
      */
-    function attachToEntityPreservingLocation(animScene: any, entity: number | Entity): void;
+    function attachToEntityPreservingLocation(animScene: any, entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -460,7 +460,7 @@ export declare namespace animscene {
      *
      * Hash: 0x3AB6C7B0BB0DF4B1 | Since: 1207
      */
-    function isEntityPlaying(entity: number | Entity, animScene: any): boolean;
+    function isEntityPlaying(entity: number | IEntity, animScene: any): boolean;
     /**
      * No comment provided
      *
@@ -472,7 +472,7 @@ export declare namespace animscene {
      *
      * Hash: 0x2BF96692C67F3E53 | Since: 1207
      */
-    function removeEntity(animScene: any, entityName: string, entity: number | Entity): void;
+    function removeEntity(animScene: any, entityName: string, entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -502,7 +502,7 @@ export declare namespace animscene {
      *
      * Hash: 0x8B720AD451CA2AB3 | Since: 1207
      */
-    function setEntity(animScene: any, entityName: string, entity: number | Entity, flags: number): void;
+    function setEntity(animScene: any, entityName: string, entity: number | IEntity, flags: number): void;
     /**
      * No comment provided
      *
@@ -603,14 +603,14 @@ export declare namespace animscene {
      *
      * Hash: 0x3641FCD53E59B335 | Since: 1207
      */
-    function _0x3641FCD53E59B335(mgmHandle: number, ped: number | Ped, secondaryVoiceString: string): void;
+    function _0x3641FCD53E59B335(mgmHandle: number, ped: number | IPed, secondaryVoiceString: string): void;
     /**
      * Used in SP R* Scripts only
      * _IS_*
      *
      * Hash: 0x3B393716C3FD8237 | Since: 1207
      */
-    function _0x3B393716C3FD8237(ped: number | Ped): boolean;
+    function _0x3B393716C3FD8237(ped: number | IPed): boolean;
     /**
      * Used in Script Function CUTSCENE_MANAGE_SKIP
      * _CHECK_* (?)
@@ -661,20 +661,20 @@ export declare namespace animscene {
      *
      * Hash: 0xAE6DE22DE0ED4554 | Since: 1207
      */
-    function _0xAE6DE22DE0ED4554(mgmHandle: number, ped: number | Ped): void;
+    function _0xAE6DE22DE0ED4554(mgmHandle: number, ped: number | IPed): void;
     /**
      * _PREPARE_* - _REGISTER_*
      *
      * Hash: 0xB1A196BAFE650402 | Since: 1207
      */
-    function _0xB1A196BAFE650402(mgmHandle: number, ped: number | Ped): void;
+    function _0xB1A196BAFE650402(mgmHandle: number, ped: number | IPed): void;
     /**
      * Used in SP R* Scripts only
      * _RESUME_* - _SET_A*
      *
      * Hash: 0xC1193521E3B9FADD | Since: 1207
      */
-    function _0xC1193521E3B9FADD(entity: number | Entity): void;
+    function _0xC1193521E3B9FADD(entity: number | IEntity): void;
     /**
      * Used in SP R* Scripts only
      * _SET_P*
@@ -715,7 +715,7 @@ export declare namespace animscene {
      *
      * Hash: 0xBC781D24AA11F179 | Since: 1207
      */
-    function clearBreakoutArchetype(ped: number | Ped): void;
+    function clearBreakoutArchetype(ped: number | IPed): void;
     /**
      * flags: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eAnimSceneFlag
      *
@@ -908,7 +908,7 @@ export declare namespace animscene {
      *
      * Hash: 0x99B2A2E3655DEAF1 | Since: 1207
      */
-    function setBreakoutArchetype(ped: number | Ped, archetype: string): void;
+    function setBreakoutArchetype(ped: number | IPed, archetype: string): void;
     /**
      * No comment provided
      *
@@ -922,13 +922,13 @@ export declare namespace attribute {
      *
      * Hash: 0x75415EE0CB583760 | Since: 1207
      */
-    function addPoints(ped: number | Ped, attributeIndex: number): void;
+    function addPoints(ped: number | IPed, attributeIndex: number): void;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0xF8DAC3D85636C241 | Since: 1207
      */
-    function disableOverpower(ped: number | Ped, attributeIndex: number): void;
+    function disableOverpower(ped: number | IPed, attributeIndex: number): void;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
@@ -936,31 +936,31 @@ export declare namespace attribute {
      *
      * Hash: 0xF6A7C08DF2E28B28 | Since: 1207
      */
-    function enableOverpower(ped: number | Ped, attributeIndex: number, value: number, makeSound: boolean): void;
+    function enableOverpower(ped: number | IPed, attributeIndex: number, value: number, makeSound: boolean): void;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x147149F2E909323C | Since: 1207
      */
-    function getBaseRank(ped: number | Ped, attributeIndex: number): number;
+    function getBaseRank(ped: number | IPed, attributeIndex: number): number;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x0EFA71F4B4330E04 | Since: 1207
      */
-    function getBonusRank(ped: number | Ped, coreIndex: number): number;
+    function getBonusRank(ped: number | IPed, coreIndex: number): number;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x219DA04BAA9CB065 | Since: 1207
      */
-    function getPoints(ped: number | Ped, attributeIndex: number): number;
+    function getPoints(ped: number | IPed, attributeIndex: number): number;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0xA4C8E23E29040DE0 | Since: 1207
      */
-    function getRank(ped: number | Ped, attributeIndex: number): number;
+    function getRank(ped: number | IPed, attributeIndex: number): number;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
@@ -972,25 +972,25 @@ export declare namespace attribute {
      *
      * Hash: 0x958DD43D41F89A47 | Since: 1207
      */
-    function getDefaultRank(ped: number | Ped, attributeIndex: number): number;
+    function getDefaultRank(ped: number | IPed, attributeIndex: number): number;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x7C059C55AD940CB4 | Since: 1207
      */
-    function getDefaultMaxRank(ped: number | Ped, attributeIndex: number): number;
+    function getDefaultMaxRank(ped: number | IPed, attributeIndex: number): number;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x223BF310F854871C | Since: 1207
      */
-    function getMaxPoints(ped: number | Ped, attributeIndex: number): number;
+    function getMaxPoints(ped: number | IPed, attributeIndex: number): number;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x704674A0535A471D | Since: 1207
      */
-    function getMaxRank(ped: number | Ped, attributeIndex: number): number;
+    function getMaxRank(ped: number | IPed, attributeIndex: number): number;
     /**
      * attributeIndex:
      * enum ePedAttribute
@@ -1022,19 +1022,19 @@ export declare namespace attribute {
      *
      * Hash: 0x5DA12E025D47D4E5 | Since: 1207
      */
-    function setBaseRank(ped: number | Ped, attributeIndex: number, newValue: number): void;
+    function setBaseRank(ped: number | IPed, attributeIndex: number, newValue: number): void;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x920F9488BD115EFB | Since: 1207
      */
-    function setBonusRank(ped: number | Ped, attributeIndex: number, newValue: number): void;
+    function setBonusRank(ped: number | IPed, attributeIndex: number, newValue: number): void;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x09A59688C26D88DF | Since: 1207
      */
-    function setPoints(ped: number | Ped, attributeIndex: number): void;
+    function setPoints(ped: number | IPed, attributeIndex: number): void;
     /**
      * No comment provided
      *
@@ -1048,38 +1048,38 @@ export declare namespace attribute {
      *
      * Hash: 0x4AF5A4C7B9157D14 | Since: 1207
      */
-    function enableCoreOverpower(ped: number | Ped, coreIndex: number, value: number, makeSound: boolean): void;
+    function enableCoreOverpower(ped: number | IPed, coreIndex: number, value: number, makeSound: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xB429F58803D285B1 | Since: 1207
      */
-    function getCoreOverpowerSecondsLeft(ped: number | Ped, coreIndex: number): number;
+    function getCoreOverpowerSecondsLeft(ped: number | IPed, coreIndex: number): number;
     /**
      * Gets the ped's core value on a scale of 0 to 100.
      * coreIndex: see _SET_ATTRIBUTE_CORE_VALUE
      *
      * Hash: 0x36731AC041289BB1 | Since: 1207
      */
-    function getCoreValue(ped: number | Ped, coreIndex: number): number;
+    function getCoreValue(ped: number | IPed, coreIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x4C9F782180712742 | Since: 1207
      */
-    function getOverpowerSecondsLeft(ped: number | Ped, attributeIndex: number): number;
+    function getOverpowerSecondsLeft(ped: number | IPed, attributeIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x200373A8DF081F22 | Since: 1207
      */
-    function isCoreOverpowered(ped: number | Ped, coreIndex: number): boolean;
+    function isCoreOverpowered(ped: number | IPed, coreIndex: number): boolean;
     /**
      * attributeIndex: see SET_ATTRIBUTE_BASE_RANK
      *
      * Hash: 0x103C2F885ABEB00B | Since: 1207
      */
-    function isOverpowered(ped: number | Ped, attributeIndex: number): boolean;
+    function isOverpowered(ped: number | IPed, attributeIndex: number): boolean;
     /**
      * coreIndex:
      * enum eAttributeCore
@@ -1091,7 +1091,7 @@ export declare namespace attribute {
      *
      * Hash: 0xC6258F41D86676E0 | Since: 1207
      */
-    function setCoreValue(ped: number | Ped, coreIndex: number, value: number): void;
+    function setCoreValue(ped: number | IPed, coreIndex: number, value: number): void;
     /**
      * Displays status effects on core icons (includes warnings).
      *
@@ -1145,13 +1145,13 @@ export declare namespace audio {
      *
      * Hash: 0x153973AB99FE8980 | Since: 1207
      */
-    function addEntityToMixGroup(entity: number | Entity, groupName: string): void;
+    function addEntityToMixGroup(entity: number | IEntity, groupName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x95D9F4BC443956E7 | Since: 1207
      */
-    function addPedToConversation(convoRoot: string, ped: number | Ped, characterName: string): void;
+    function addPedToConversation(convoRoot: string, ped: number | IPed, characterName: string): void;
     /**
      * Old name: AUDIO_IS_SCRIPTED_MUSIC_PLAYING
      *
@@ -1199,13 +1199,13 @@ export declare namespace audio {
      *
      * Hash: 0xA9A41C1E940FB0E8 | Since: 1207
      */
-    function disablePedPain(ped: number | Ped, toggle: boolean): void;
+    function disablePedPain(ped: number | IPed, toggle: boolean): void;
     /**
      * Checks if the ped can play the speech or has the speech file, last parameter is usually false.
      *
      * Hash: 0x49B99BF3FDA89A7A | Since: 1207
      */
-    function doesContextExistForThisPed(ped: number | Ped, speechName: string, unk: boolean): boolean;
+    function doesContextExistForThisPed(ped: number | IPed, speechName: string, unk: boolean): boolean;
     /**
      * No comment provided
      *
@@ -1217,7 +1217,7 @@ export declare namespace audio {
      *
      * Hash: 0x4F0C413926060B38 | Since: 1207
      */
-    function forceUseGameObject(vehicle: number | Vehicle, audioName: string): void;
+    function forceUseGameObject(vehicle: number | IVehicle, audioName: string): void;
     /**
      * No comment provided
      *
@@ -1241,25 +1241,25 @@ export declare namespace audio {
      *
      * Hash: 0x932C2D096A2C3FFF | Since: 1207
      */
-    function isAmbientSpeechDisabled(ped: number | Ped): boolean;
+    function isAmbientSpeechDisabled(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9072C8B49907BFAD | Since: 1207
      */
-    function isAmbientSpeechPlaying(ped: number | Ped): boolean;
+    function isAmbientSpeechPlaying(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC265DF9FB44A9FBD | Since: 1207
      */
-    function isAnimalVocalizationPlaying(pedHandle: number | Ped): boolean;
+    function isAnimalVocalizationPlaying(pedHandle: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x729072355FA39EC9 | Since: 1207
      */
-    function isAnySpeechPlaying(ped: number | Ped): boolean;
+    function isAnySpeechPlaying(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -1271,13 +1271,13 @@ export declare namespace audio {
      *
      * Hash: 0x9D6BFC12B05C6121 | Since: 1207
      */
-    function isHornActive(vehicle: number | Vehicle): boolean;
+    function isHornActive(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x049E937F18F4020C | Since: 1207
      */
-    function isPedInCurrentConversation(ped: number | Ped): boolean;
+    function isPedInCurrentConversation(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -1325,7 +1325,7 @@ export declare namespace audio {
      *
      * Hash: 0xEE066C7006C49C0A | Since: 1207
      */
-    function playAnimalVocalization(ped: number | Ped, vocalizationName: string): void;
+    function playAnimalVocalization(ped: number | IPed, vocalizationName: string): void;
     /**
      * No comment provided
      *
@@ -1349,7 +1349,7 @@ export declare namespace audio {
      *
      * Hash: 0xBC9AE166038A5CEC | Since: 1207
      */
-    function playPain(ped: number | Ped, painId: number, isNetwork: boolean): void;
+    function playPain(ped: number | IPed, painId: number, isNetwork: boolean): void;
     /**
      * struct ScriptedSpeechParams
      * {
@@ -1376,7 +1376,7 @@ export declare namespace audio {
      *
      * Hash: 0x8E04FEDD28D42462 | Since: 1207
      */
-    function playPedAmbientSpeechNative(speaker: number | Ped): [boolean, any];
+    function playPedAmbientSpeechNative(speaker: number | IPed): [boolean, any];
     /**
      * No comment provided
      *
@@ -1394,7 +1394,7 @@ export declare namespace audio {
      *
      * Hash: 0x6FB1DA3CA9DA7D90 | Since: 1207
      */
-    function playSoundFromEntity(audioName: string, entity: number | Entity, audioRef: string, isNetwork: boolean): void;
+    function playSoundFromEntity(audioName: string, entity: number | IEntity, audioRef: string, isNetwork: boolean): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/audio/frontend_soundsets
      *
@@ -1406,7 +1406,7 @@ export declare namespace audio {
      *
      * Hash: 0x89049DD63C08B5D1 | Since: 1207
      */
-    function playStreamFromPed(ped: number | Ped, streamId: number): void;
+    function playStreamFromPed(ped: number | IPed, streamId: number): void;
     /**
      * No comment provided
      *
@@ -1448,7 +1448,7 @@ export declare namespace audio {
      *
      * Hash: 0x4AD019591E94C064 | Since: 1207
      */
-    function prepareSoundWithEntity(soundName: string, entity: number | Entity, soundsetName: string, soundId: number): boolean;
+    function prepareSoundWithEntity(soundName: string, entity: number | IEntity, soundsetName: string, soundId: number): boolean;
     /**
      * nullsub, doesn't do anything
      *
@@ -1478,7 +1478,7 @@ export declare namespace audio {
      *
      * Hash: 0x18EB48CFC41F2EA0 | Since: 1207
      */
-    function removeEntityFromMixGroup(entity: number | Entity): void;
+    function removeEntityFromMixGroup(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -1502,7 +1502,7 @@ export declare namespace audio {
      *
      * Hash: 0x6C8065A3B780185B | Since: 1207
      */
-    function setAmbientVoiceName(ped: number | Ped, name: string): void;
+    function setAmbientVoiceName(ped: number | IPed, name: string): void;
     /**
      * No comment provided
      *
@@ -1532,7 +1532,7 @@ export declare namespace audio {
      *
      * Hash: 0xCC97B29285B1DC3B | Since: 1207
      */
-    function setAnimalMood(animal: number | Ped, mood: number): void;
+    function setAnimalMood(animal: number | IPed, mood: number): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/audio/audio_flags
      *
@@ -1556,7 +1556,7 @@ export declare namespace audio {
      *
      * Hash: 0xE5564483E407F914 | Since: 1207
      */
-    function setVehiclePriority(vehicle: number | Vehicle): void;
+    function setVehiclePriority(vehicle: number | IVehicle): void;
     /**
      * nullsub, doesn't do anything
      *
@@ -1568,13 +1568,13 @@ export declare namespace audio {
      *
      * Hash: 0x76D683C108594D0E | Since: 1207
      */
-    function setHornEnabled(vehicle: number | Vehicle, toggle: boolean): void;
+    function setHornEnabled(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xB2DE3AEBE31150E2 | Since: 1207
      */
-    function setIsScriptedSpeechDisabled(ped: number | Ped, disabled: boolean): any;
+    function setIsScriptedSpeechDisabled(ped: number | IPed, disabled: boolean): any;
     /**
      * No comment provided
      *
@@ -1586,7 +1586,7 @@ export declare namespace audio {
      *
      * Hash: 0x95D2D383D5396B8A | Since: 1207
      */
-    function setPedIsDrunk(ped: number | Ped, toggle: boolean): void;
+    function setPedIsDrunk(ped: number | IPed, toggle: boolean): void;
     /**
      * https://en.m.wikipedia.org/wiki/Walla
      *
@@ -1652,19 +1652,19 @@ export declare namespace audio {
      *
      * Hash: 0xB8BEC0CA6F0EDB0F | Since: 1207
      */
-    function stopCurrentPlayingAmbientSpeech(ped: number | Ped): void;
+    function stopCurrentPlayingAmbientSpeech(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x79D2F0E66F81D90D | Since: 1207
      */
-    function stopCurrentPlayingSpeech(ped: number | Ped): void;
+    function stopCurrentPlayingSpeech(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x9D64D7405520E3D3 | Since: 1207
      */
-    function stopPedSpeaking(ped: number | Ped, shaking: boolean): void;
+    function stopPedSpeaking(ped: number | IPed, shaking: boolean): void;
     /**
      * No comment provided
      *
@@ -1707,7 +1707,7 @@ export declare namespace audio {
      *
      * Hash: 0xBF4DC1784BE94DFA | Since: 1207
      */
-    function useFootstepScriptSweeteners(ped: number | Ped, hash: number | string): void;
+    function useFootstepScriptSweeteners(ped: number | IPed, hash: number | string): void;
     /**
      * No comment provided
      *
@@ -1823,7 +1823,7 @@ export declare namespace audio {
      *
      * Hash: 0x2FFF4A78384AFFDF | Since: 1436
      */
-    function _0x2FFF4A78384AFFDF(entity: number | Entity): any;
+    function _0x2FFF4A78384AFFDF(entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -1901,7 +1901,7 @@ export declare namespace audio {
      *
      * Hash: 0x4A98E228A936DBCC | Since: 1207
      */
-    function _0x4A98E228A936DBCC(ped: number | Ped): number;
+    function _0x4A98E228A936DBCC(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -1949,7 +1949,7 @@ export declare namespace audio {
      *
      * Hash: 0x62377977E4F08668 | Since: 1436
      */
-    function _0x62377977E4F08668(entity: number | Entity): any;
+    function _0x62377977E4F08668(entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -1992,7 +1992,7 @@ export declare namespace audio {
      *
      * Hash: 0x72E4D1C4639BC465 | Since: 1207
      */
-    function _0x72E4D1C4639BC465(p0: number | Entity): any;
+    function _0x72E4D1C4639BC465(p0: number | IEntity): any;
     /**
      * _AUDIO_IS_* - _AUDIO_TRIGGER*
      *
@@ -2040,13 +2040,13 @@ export declare namespace audio {
      *
      * Hash: 0x864A842B86993851 | Since: 1207
      */
-    function _0x864A842B86993851(ped: number | Ped): void;
+    function _0x864A842B86993851(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x886657C5B3D8EDE3 | Since: 1232
      */
-    function _0x886657C5B3D8EDE3(entity: number | Entity): any;
+    function _0x886657C5B3D8EDE3(entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -2058,7 +2058,7 @@ export declare namespace audio {
      *
      * Hash: 0x8E901B65206C2D3E | Since: 1207
      */
-    function _0x8E901B65206C2D3E(ped: number | Ped): void;
+    function _0x8E901B65206C2D3E(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -2072,7 +2072,7 @@ export declare namespace audio {
      *
      * Hash: 0x9D6DEC9791A4E501 | Since: 1207
      */
-    function _0x9D6DEC9791A4E501(ped: number | Ped, speechName: string): boolean;
+    function _0x9D6DEC9791A4E501(ped: number | IPed, speechName: string): boolean;
     /**
      * No comment provided
      *
@@ -2084,7 +2084,7 @@ export declare namespace audio {
      *
      * Hash: 0xA2323A2EAE32A290 | Since: 1207
      */
-    function _0xA2323A2EAE32A290(listeningToPed: number | Ped, ped: number | Ped, listenerName: string): void;
+    function _0xA2323A2EAE32A290(listeningToPed: number | IPed, ped: number | IPed, listenerName: string): void;
     /**
      * No comment provided
      *
@@ -2108,7 +2108,7 @@ export declare namespace audio {
      *
      * Hash: 0xABDB4863D3D72021 | Since: 1207
      */
-    function _0xABDB4863D3D72021(entity: number | Entity): void;
+    function _0xABDB4863D3D72021(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -2120,7 +2120,7 @@ export declare namespace audio {
      *
      * Hash: 0xB93A769B8B726950 | Since: 1207
      */
-    function _0xB93A769B8B726950(ped: number | Ped, p1: number | string): void;
+    function _0xB93A769B8B726950(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
@@ -2132,7 +2132,7 @@ export declare namespace audio {
      *
      * Hash: 0xBE28DB99556FF8D9 | Since: 1207
      */
-    function _0xBE28DB99556FF8D9(entity: number | Entity): number;
+    function _0xBE28DB99556FF8D9(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -2144,7 +2144,7 @@ export declare namespace audio {
      *
      * Hash: 0xC4CFCE4C656EF480 | Since: 1207
      */
-    function _0xC4CFCE4C656EF480(ped: number | Ped): void;
+    function _0xC4CFCE4C656EF480(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -2216,7 +2216,7 @@ export declare namespace audio {
      *
      * Hash: 0xDF947FE0D551684E | Since: 1207
      */
-    function _0xDF947FE0D551684E(ped: number | Ped): boolean;
+    function _0xDF947FE0D551684E(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -2240,7 +2240,7 @@ export declare namespace audio {
      *
      * Hash: 0xE9694B2D6CB87B06 | Since: 1232
      */
-    function _0xE9694B2D6CB87B06(entity: number | Entity): void;
+    function _0xE9694B2D6CB87B06(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -2324,13 +2324,13 @@ export declare namespace audio {
      *
      * Hash: 0x8B25A18E390F75BF | Since: 1207
      */
-    function getEntityMixGroup(entity: number | Entity): number;
+    function getEntityMixGroup(entity: number | IEntity): number;
     /**
      * Gets the hash for the last played speech line.
      *
      * Hash: 0x6BFFB7C276866996 | Since: 1207
      */
-    function getLastPlayedSpeechForPed(ped: number | Ped): number;
+    function getLastPlayedSpeechForPed(ped: number | IPed): number;
     /**
      * Creates stream and returns streamId handle to be used with PLAY_STREAM_* natives
      * https://github.com/femga/rdr3_discoveries/tree/master/audio/create_stream
@@ -2343,7 +2343,7 @@ export declare namespace audio {
      *
      * Hash: 0x2DBBF0C5E19383EE | Since: 1232
      */
-    function getPedSongIndexHost(ped: number | Ped): any;
+    function getPedSongIndexHost(ped: number | IPed): any;
     /**
      * No comment provided
      *
@@ -2367,7 +2367,7 @@ export declare namespace audio {
      *
      * Hash: 0x54B187F111D9C6F8 | Since: 1207
      */
-    function isPedInAnyConversation(ped: number | Ped): boolean;
+    function isPedInAnyConversation(ped: number | IPed): boolean;
     /**
      * item: FUSE, value returned from 0x2E1CDC1FF3B8473E
      * soundSet: HUD_SHOP_SOUNDSET, COMPANIONS_ROBBERIES_SOUNDSET
@@ -2392,13 +2392,13 @@ export declare namespace audio {
      *
      * Hash: 0x0E53530D9B2DB01D | Since: 1311
      */
-    function playAnimalVocalizationPheromoneVialResponse(ped: number | Ped, p1: number | string): void;
+    function playAnimalVocalizationPheromoneVialResponse(ped: number | IPed, p1: number | string): void;
     /**
      * Params: p5 seems to be always 0
      *
      * Hash: 0xF1C5310FEAA36B48 | Since: 1207
      */
-    function playSoundFromEntityWithSet(soundId: number, soundName: string, entity: number | Entity, soundsetName: string): void;
+    function playSoundFromEntityWithSet(soundId: number, soundName: string, entity: number | IEntity, soundsetName: string): void;
     /**
      * item: value returned from 0x2E1CDC1FF3B8473E
      * soundSet: HUD_SHOP_SOUNDSET, COMPANIONS_ROBBERIES_SOUNDSET
@@ -2449,7 +2449,7 @@ export declare namespace audio {
      *
      * Hash: 0x2E31ACA7477CF00F | Since: 1207
      */
-    function setSoundRelationshipOnPed(ped: number | Ped): void;
+    function setSoundRelationshipOnPed(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -2461,13 +2461,13 @@ export declare namespace audio {
      *
      * Hash: 0x2703EFB583F0949A | Since: 1207
      */
-    function setVofxPedVoice(ped: number | Ped, voice: number | string): void;
+    function setVofxPedVoice(ped: number | IPed, voice: number | string): void;
     /**
      * whistleConfig: Ped.WhistlePitch (0.0 - 1.0), Ped.WhistleClarity (0.0 - 1.0), Ped.WhistleShape (0.0 - 10.0)
      *
      * Hash: 0x9963681A8BC69BF3 | Since: 1207
      */
-    function setWhistleConfigForPed(ped: number | Ped, whistleConfig: string, value: number): void;
+    function setWhistleConfigForPed(ped: number | IPed, whistleConfig: string, value: number): void;
     /**
      * No comment provided
      *
@@ -2786,19 +2786,19 @@ export declare namespace brain {
      *
      * Hash: 0x38F1E09224EECA09 | Since: 1311
      */
-    function removeScriptEntity(entity: number | Entity): void;
+    function removeScriptEntity(entity: number | IEntity): void;
     /**
      * Returns threadId
      *
      * Hash: 0x4E4507CC5E4DB869 | Since: 1207
      */
-    function startPreloadedScript(entity: number | Entity, scriptName: string, scriptStackSize: number): number;
+    function startPreloadedScript(entity: number | IEntity, scriptName: string, scriptStackSize: number): number;
     /**
      * Returns threadId
      *
      * Hash: 0x6F62FAE266DCFC81 | Since: 1207
      */
-    function startScript(entity: number | Entity, scriptName: string): [number, any];
+    function startScript(entity: number | IEntity, scriptName: string): [number, any];
 }
 export declare namespace builtin {
     /**
@@ -2949,31 +2949,31 @@ export declare namespace camera {
      *
      * Hash: 0xF1F57F9D230F9CD1 | Since: 1207
      */
-    function addCamSplineNode(camera: number | Camera, pos: Vector3, rot: Vector3, length: number): void;
+    function addCamSplineNode(camera: number | ICamera, pos: Vector3, rot: Vector3, length: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x42ED56B02E05D109 | Since: 1207
      */
-    function allowMotionBlurDecay(cam: number | Camera): void;
+    function allowMotionBlurDecay(cam: number | ICamera): void;
     /**
      * Last param determines if its relative to the Entity
      *
      * Hash: 0xFDC0DF7F6FB0A592 | Since: 1207
      */
-    function attachCamToEntity(cam: number | Camera, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean): void;
+    function attachCamToEntity(cam: number | ICamera, entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean): void;
     /**
      * boneIndex: https://github.com/femga/rdr3_discoveries/tree/master/boneNames
      *
      * Hash: 0xDFC1E4A44C0324CA | Since: 1207
      */
-    function attachCamToPedBone(cam: number | Camera, ped: number | Ped, boneIndex: number, pos: Vector3, heading: boolean): void;
+    function attachCamToPedBone(cam: number | ICamera, ped: number | IPed, boneIndex: number, pos: Vector3, heading: boolean): void;
     /**
      * Only used in R* Script fm_mission_controller
      *
      * Hash: 0x0B0F914459731F60 | Since: 1311
      */
-    function cinematicLocationOverrideTargetEntityThisUpdate(name: string, entity: number | Entity): void;
+    function cinematicLocationOverrideTargetEntityThisUpdate(name: string, entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -3021,19 +3021,19 @@ export declare namespace camera {
      *
      * Hash: 0x4E67E0B6D7FD5145 | Since: 1207
      */
-    function destroyCam(cam: number | Camera): void;
+    function destroyCam(cam: number | ICamera): void;
     /**
      * No comment provided
      *
      * Hash: 0x05B41DDBEB559556 | Since: 1207
      */
-    function detachCam(cam: number | Camera): void;
+    function detachCam(cam: number | ICamera): void;
     /**
      * No comment provided
      *
      * Hash: 0x7E3F546ACFE6C8D9 | Since: 1207
      */
-    function disableCamCollisionForObject(entity: number | Entity): void;
+    function disableCamCollisionForObject(entity: number | IEntity): void;
     /**
      * Old name: _DISABLE_VEHICLE_FIRST_PERSON_CAM_THIS_FRAME
      *
@@ -3057,7 +3057,7 @@ export declare namespace camera {
      *
      * Hash: 0x153AD457764FD704 | Since: 1207
      */
-    function doesCamExist(cam: number | Camera): boolean;
+    function doesCamExist(cam: number | ICamera): boolean;
     /**
      * Fades the screen in.
      *
@@ -3085,19 +3085,19 @@ export declare namespace camera {
      *
      * Hash: 0x6B12F11C2A9F0344 | Since: 1207
      */
-    function getCamCoord(cam: number | Camera): Vector3;
+    function getCamCoord(cam: number | ICamera): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x8101D32A0A6B0F60 | Since: 1207
      */
-    function getCamFov(cam: number | Camera): number;
+    function getCamFov(cam: number | ICamera): number;
     /**
      * rotationOrder: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eEulerRotationOrder
      *
      * Hash: 0x9BF96B57254E7889 | Since: 1207
      */
-    function getCamRot(cam: number | Camera, rotationOrder: number): Vector3;
+    function getCamRot(cam: number | ICamera, rotationOrder: number): Vector3;
     /**
      * Can use this with SET_CAM_SPLINE_PHASE to set the float it this native returns.
      *
@@ -3105,7 +3105,7 @@ export declare namespace camera {
      *
      * Hash: 0x095EDCD24D90033A | Since: 1207
      */
-    function getCamSplinePhase(cam: number | Camera): number;
+    function getCamSplinePhase(cam: number | ICamera): number;
     /**
      * No comment provided
      *
@@ -3195,25 +3195,25 @@ export declare namespace camera {
      *
      * Hash: 0x63EFCC7E1810B8E6 | Since: 1207
      */
-    function isCamActive(cam: number | Camera): boolean;
+    function isCamActive(cam: number | ICamera): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x578F8F1CAA17BD2B | Since: 1207
      */
-    function isCamInterpolating(cam: number | Camera): boolean;
+    function isCamInterpolating(cam: number | ICamera): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4415F8A6C536D39F | Since: 1207
      */
-    function isCamRendering(cam: number | Camera): boolean;
+    function isCamRendering(cam: number | ICamera): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2EEB402BD7320159 | Since: 1207
      */
-    function isCamShaking(cam: number | Camera): boolean;
+    function isCamShaking(cam: number | ICamera): boolean;
     /**
      * No comment provided
      *
@@ -3315,19 +3315,19 @@ export declare namespace camera {
      *
      * Hash: 0xA263DDF694D563F6 | Since: 1207
      */
-    function playCamAnim(cam: number | Camera, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
+    function playCamAnim(cam: number | ICamera, animName: string, animDictionary: string, pos: Vector3, rot: Vector3, animFlags: number, rotOrder: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x948B39341C3A40C2 | Since: 1207
      */
-    function pointCamAtCoord(cam: number | Camera, pos: Vector3): void;
+    function pointCamAtCoord(cam: number | ICamera, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0xFC2867E6074D3A61 | Since: 1207
      */
-    function pointCamAtEntity(cam: number | Camera, entity: number | Entity): void;
+    function pointCamAtEntity(cam: number | ICamera, entity: number | IEntity): void;
     /**
      * ease - smooth transition between the camera's positions
      * easeTime - Time in milliseconds for the transition to happen
@@ -3344,37 +3344,37 @@ export declare namespace camera {
      *
      * Hash: 0x87295BCA613800C8 | Since: 1207
      */
-    function setCamActive(cam: number | Camera, active: boolean): void;
+    function setCamActive(cam: number | ICamera, active: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x8B15AE2987C1AC8F | Since: 1207
      */
-    function setCamActiveWithInterp(camTo: number | Camera, camFrom: number | Camera, duration: number, easeLocation: number, easeRotation: number): void;
+    function setCamActiveWithInterp(camTo: number | ICamera, camFrom: number | ICamera, duration: number, easeLocation: number, easeRotation: number): void;
     /**
      * Allows you to aim and shoot at the direction the camera is facing.
      *
      * Hash: 0x3CB9E8BDE5E76F33 | Since: 1207
      */
-    function setCamAffectsAiming(cam: number | Camera, toggle: boolean): void;
+    function setCamAffectsAiming(cam: number | ICamera, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x1B8F3CE5A6001298 | Since: 1207
      */
-    function setCamControlsMiniMapHeading(cam: number | Camera): void;
+    function setCamControlsMiniMapHeading(cam: number | ICamera): void;
     /**
      * Sets the position of the cam.
      *
      * Hash: 0xF9EE7D419EE49DE6 | Since: 1207
      */
-    function setCamCoord(cam: number | Camera, pos: Vector3): void;
+    function setCamCoord(cam: number | ICamera, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x5E32817BF6302111 | Since: 1207
      */
-    function setCamFarClip(cam: number | Camera, farClip: number): void;
+    function setCamFarClip(cam: number | ICamera, farClip: number): void;
     /**
      * Sets the field of view of the cam.
      *
@@ -3383,49 +3383,49 @@ export declare namespace camera {
      *
      * Hash: 0x27666E5988D9D429 | Since: 1207
      */
-    function setCamFov(cam: number | Camera, fieldOfView: number): void;
+    function setCamFov(cam: number | ICamera, fieldOfView: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x45FD891364181F9E | Since: 1207
      */
-    function setCamMotionBlurStrength(cam: number | Camera, strength: number): void;
+    function setCamMotionBlurStrength(cam: number | ICamera, strength: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA924028272A61364 | Since: 1207
      */
-    function setCamNearClip(cam: number | Camera, nearClip: number): void;
+    function setCamNearClip(cam: number | ICamera, nearClip: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA47BBFFFB83D4D0A | Since: 1207
      */
-    function setCamParams(cam: number | Camera, pos: Vector3, rot: Vector3, fieldOfView: number, graphType1: number, graphType2: number, rotationOrder: number): void;
+    function setCamParams(cam: number | ICamera, pos: Vector3, rot: Vector3, fieldOfView: number, graphType1: number, graphType2: number, rotationOrder: number): void;
     /**
      * Sets the rotation of the cam.
      *
      * Hash: 0x63DFA6810AD78719 | Since: 1207
      */
-    function setCamRot(cam: number | Camera, rot: Vector3, rotationOrder: number): void;
+    function setCamRot(cam: number | ICamera, rot: Vector3, rotationOrder: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xFF6311652CA91015 | Since: 1207
      */
-    function setCamSplineDuration(cam: number | Camera, timeDuration: number): void;
+    function setCamSplineDuration(cam: number | ICamera, timeDuration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xF1898A68E7C15636 | Since: 1207
      */
-    function setCamSplinePhase(cam: number | Camera): void;
+    function setCamSplinePhase(cam: number | ICamera): void;
     /**
      * No comment provided
      *
      * Hash: 0x84B3645618E726B0 | Since: 1207
      */
-    function setCamSplineSmoothingStyle(cam: number | Camera, smoothingStyle: number): void;
+    function setCamSplineSmoothingStyle(cam: number | ICamera, smoothingStyle: number): void;
     /**
      * No comment provided
      *
@@ -3455,13 +3455,13 @@ export declare namespace camera {
      *
      * Hash: 0x82E41D6ADE924FCA | Since: 1207
      */
-    function setGameplayCamFollowPedThisUpdate(ped: number | Ped): void;
+    function setGameplayCamFollowPedThisUpdate(ped: number | IPed): void;
     /**
      * Old name: _DISABLE_CAM_COLLISION_FOR_ENTITY
      *
      * Hash: 0xD904F75DBD7AB865 | Since: 1207
      */
-    function setGameplayCamIgnoreEntityCollisionThisUpdate(entity: number | Entity): void;
+    function setGameplayCamIgnoreEntityCollisionThisUpdate(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -3503,7 +3503,7 @@ export declare namespace camera {
      *
      * Hash: 0xD1F7F32640ADFD12 | Since: 1207
      */
-    function setGameplayEntityHint(entity: number | Entity, xOffset: number, yOffset: number, zOffset: number): void;
+    function setGameplayEntityHint(entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number): void;
     /**
      * No comment provided
      *
@@ -3545,7 +3545,7 @@ export declare namespace camera {
      *
      * Hash: 0x90FB951648851733 | Since: 1207
      */
-    function setGameplayPedHint(p0: number | Ped, x1: number, y1: number, z1: number): void;
+    function setGameplayPedHint(p0: number | IPed, x1: number, y1: number, z1: number): void;
     /**
      * No comment provided
      *
@@ -3557,7 +3557,7 @@ export declare namespace camera {
      *
      * Hash: 0xFA1D5E8D1C3CCD67 | Since: 1207
      */
-    function setInVehicleCamStateThisUpdate(vehicle: number | Vehicle): void;
+    function setInVehicleCamStateThisUpdate(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -3607,7 +3607,7 @@ export declare namespace camera {
      *
      * Hash: 0xF9A7BCF5D050D4E7 | Since: 1207
      */
-    function shakeCam(cam: number | Camera, _type: string, amplitude: number): void;
+    function shakeCam(cam: number | ICamera, _type: string, amplitude: number): void;
     /**
      * No comment provided
      *
@@ -3619,13 +3619,13 @@ export declare namespace camera {
      *
      * Hash: 0xCA1B30A3357C71F1 | Since: 1207
      */
-    function stopCamPointing(cam: number | Camera): void;
+    function stopCamPointing(cam: number | ICamera): void;
     /**
      * No comment provided
      *
      * Hash: 0xB78CC4B4706614B0 | Since: 1207
      */
-    function stopCamShaking(cam: number | Camera): void;
+    function stopCamShaking(cam: number | ICamera): void;
     /**
      * No comment provided
      *
@@ -4074,7 +4074,7 @@ export declare namespace camera {
      *
      * Hash: 0xE4B7945EF4F1BFB2 | Since: 1207
      */
-    function _0xE4B7945EF4F1BFB2(cam: number | Camera): any;
+    function _0xE4B7945EF4F1BFB2(cam: number | ICamera): any;
     /**
      * No comment provided
      *
@@ -4164,7 +4164,7 @@ export declare namespace camera {
      *
      * Hash: 0x2F994CC29CAA9D22 | Since: 1207
      */
-    function createKillCam(ped: number | Ped): void;
+    function createKillCam(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -4183,7 +4183,7 @@ export declare namespace camera {
      *
      * Hash: 0xE3639DB78B3B5400 | Since: 1207
      */
-    function forceCinematicDeathCamOnPed(targetPed: number | Ped): void;
+    function forceCinematicDeathCamOnPed(targetPed: number | IPed): void;
     /**
      * Returns true if first person camera is active in saloon1.ysc
      *
@@ -4303,14 +4303,14 @@ export declare namespace camera {
      *
      * Hash: 0x9F97E85EC142255E | Since: 1207
      */
-    function pauseFocus(cam: number | Camera, pause: boolean): void;
+    function pauseFocus(cam: number | ICamera, pause: boolean): void;
     /**
      * Used to enable headshot kill replay when you headshot set ped.
      * Params: p1 seems to be 0 or 1 in R* Scripts
      *
      * Hash: 0x986F7A51EE3E1F92 | Since: 1207
      */
-    function reactivatePedHeadshotExecuteSlowcam(ped: number | Ped): void;
+    function reactivatePedHeadshotExecuteSlowcam(ped: number | IPed): void;
     /**
      * Creates Cinematic Black Bars (at top and bottom)
      * Disable instantly: false/false, Enable instantly: true/true
@@ -4329,7 +4329,7 @@ export declare namespace camera {
      *
      * Hash: 0x11F32BB61B756732 | Since: 1207
      */
-    function setCamFocusDistance(cam: number | Camera, distance: number): void;
+    function setCamFocusDistance(cam: number | ICamera, distance: number): void;
     /**
      * No comment provided
      *
@@ -4732,13 +4732,13 @@ export declare namespace companion {
      *
      * Hash: 0x0DE02DA3C0F66955 | Since: 1207
      */
-    function _0x0DE02DA3C0F66955(ped: number | Ped, p1: number | string): void;
+    function _0x0DE02DA3C0F66955(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x2917E634206B9E17 | Since: 1207
      */
-    function _0x2917E634206B9E17(ped: number | Ped): void;
+    function _0x2917E634206B9E17(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -4804,7 +4804,7 @@ export declare namespace companion {
      *
      * Hash: 0xD428C3F92FC3F6F8 | Since: 1207
      */
-    function _0xD428C3F92FC3F6F8(ped: number | Ped): void;
+    function _0xD428C3F92FC3F6F8(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -4816,7 +4816,7 @@ export declare namespace companion {
      *
      * Hash: 0xD730281E496621FB | Since: 1207
      */
-    function _0xD730281E496621FB(ped: number | Ped, p1: number | string): void;
+    function _0xD730281E496621FB(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
@@ -4840,7 +4840,7 @@ export declare namespace companion {
      *
      * Hash: 0xDEB369F6AD168C58 | Since: 1207
      */
-    function addFlag(ped: number | Ped): void;
+    function addFlag(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -4858,7 +4858,7 @@ export declare namespace companion {
      *
      * Hash: 0x1740E3DEE0AE4D27 | Since: 1207
      */
-    function removeFlag(ped: number | Ped): void;
+    function removeFlag(ped: number | IPed): void;
     /**
      * enum _0x18F77396
      *
@@ -4934,7 +4934,7 @@ export declare namespace compendium {
      *
      * Hash: 0x725D52F21A5E9E00 | Since: 1207
      */
-    function fishCaught(ped: number | Ped, category: number | string): void;
+    function fishCaught(ped: number | IPed, category: number | string): void;
     /**
      * No comment provided
      *
@@ -4988,7 +4988,7 @@ export declare namespace compendium {
      *
      * Hash: 0x1CFA0219D8E1CF25 | Since: 1311
      */
-    function getEntryByPedIndex(category: number | string, ped: number | Ped): number;
+    function getEntryByPedIndex(category: number | string, ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -5012,19 +5012,19 @@ export declare namespace compendium {
      *
      * Hash: 0x6C5E5D48E48B4C65 | Since: 1207
      */
-    function getShortDescriptionFromPed(ped: number | Ped): number;
+    function getShortDescriptionFromPed(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x9F678782720349E4 | Since: 1311
      */
-    function getStudyAwardId(ped: number | Ped): any;
+    function getStudyAwardId(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x9B657550DF55EC96 | Since: 1311
      */
-    function getSubcategoryPedIsIn(category: number | string, ped: number | Ped): number;
+    function getSubcategoryPedIsIn(category: number | string, ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -5061,25 +5061,25 @@ export declare namespace compendium {
      *
      * Hash: 0x725D52F21A5E9E50 | Since: 1207
      */
-    function horseBonding(ped: number | Ped, bondingLevel: number): void;
+    function horseBonding(ped: number | IPed, bondingLevel: number): void;
     /**
      * Only gets called if bSetObserved is true and animalType is matching
      *
      * Hash: 0x725D58F2125E5E50 | Since: 1207
      */
-    function horseObserved(ped: number | Ped, disableCompendiumToast: boolean): void;
+    function horseObserved(ped: number | IPed, disableCompendiumToast: boolean): void;
     /**
      * NET_PLAYER_HORSE_PROCESS_EVENT_HORSE_BREAKING
      *
      * Hash: 0x725852D21A2E9E50 | Since: 1207
      */
-    function horseWildBroken(ped: number | Ped): void;
+    function horseWildBroken(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x23B5E9C5160BC04F | Since: 1311
      */
-    function wasAnimalObserved(ped: number | Ped): boolean;
+    function wasAnimalObserved(ped: number | IPed): boolean;
     /**
      * Only used in R* SP Scripts, category = GANGS
      * _COMPENDIUM_GET_*
@@ -6196,25 +6196,25 @@ export declare namespace decorator {
      *
      * Hash: 0xD9D1CDBF3464DCDF | Since: 1207
      */
-    function decorExistOn(entity: number | Entity, propertyName: string): boolean;
+    function decorExistOn(entity: number | IEntity, propertyName: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDEF3F1B071ABB197 | Since: 1207
      */
-    function decorGetBool(entity: number | Entity, propertyName: string): boolean;
+    function decorGetBool(entity: number | IEntity, propertyName: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xE5FF70CD842CA9D4 | Since: 1207
      */
-    function decorGetFloat(entity: number | Entity, propertyName: string): number;
+    function decorGetFloat(entity: number | IEntity, propertyName: string): number;
     /**
      * No comment provided
      *
      * Hash: 0x44DB62727762FD9B | Since: 1207
      */
-    function decorGetInt(entity: number | Entity, propertyName: string): number;
+    function decorGetInt(entity: number | IEntity, propertyName: string): number;
     /**
      * type: see DECOR_REGISTER
      *
@@ -6232,43 +6232,43 @@ export declare namespace decorator {
      *
      * Hash: 0x2BA7F5877A088A1D | Since: 1207
      */
-    function decorRemove(entity: number | Entity, propertyName: string): boolean;
+    function decorRemove(entity: number | IEntity, propertyName: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x88942780E0ADEA42 | Since: 1207
      */
-    function decorRemoveAll(entity: number | Entity): boolean;
+    function decorRemoveAll(entity: number | IEntity): boolean;
     /**
      * This function sets metadata of type bool to specified entity.
      *
      * Hash: 0xFE26E4609B1C3772 | Since: 1207
      */
-    function decorSetBool(entity: number | Entity, propertyName: string, value: boolean): boolean;
+    function decorSetBool(entity: number | IEntity, propertyName: string, value: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x238F8B0C1C7FE834 | Since: 1207
      */
-    function decorSetFloat(entity: number | Entity, propertyName: string, value: number): boolean;
+    function decorSetFloat(entity: number | IEntity, propertyName: string, value: number): boolean;
     /**
      * Sets property to int.
      *
      * Hash: 0xE88F4D7F52A6090F | Since: 1207
      */
-    function decorSetInt(entity: number | Entity, propertyName: string, value: number): boolean;
+    function decorSetInt(entity: number | IEntity, propertyName: string, value: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0671C1A3FF7AFDFC | Since: 1207
      */
-    function decorSetString(entity: number | Entity, propertyName: string, value: string): boolean;
+    function decorSetString(entity: number | IEntity, propertyName: string, value: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB1682B2443F0540B | Since: 1207
      */
-    function decorGetUint8(entity: number | Entity, propertyName: string): number;
+    function decorGetUint8(entity: number | IEntity, propertyName: string): number;
     /**
      * No comment provided
      *
@@ -6280,7 +6280,7 @@ export declare namespace decorator {
      *
      * Hash: 0x4BDC83150D43772D | Since: 1207
      */
-    function decorSetUint8(entity: number | Entity, propertyName: string, value: number): boolean;
+    function decorSetUint8(entity: number | IEntity, propertyName: string, value: number): boolean;
 }
 export declare namespace dlc {
     /**
@@ -6314,14 +6314,14 @@ export declare namespace entity {
      *
      * Hash: 0xF15E8F5D333F09C4 | Since: 1207
      */
-    function applyForceTo(entity: number | Entity, forceFlags: number, pos: Vector3, offX: number, offY: number, offZ: number, boneIndex: number, isDirectionRel: boolean, ignoreUpVec: boolean, isForceRel: boolean): void;
+    function applyForceTo(entity: number | IEntity, forceFlags: number, pos: Vector3, offX: number, offY: number, offZ: number, boneIndex: number, isDirectionRel: boolean, ignoreUpVec: boolean, isForceRel: boolean): void;
     /**
      * p6/relative - makes the xyz force not relative to world coords, but to something else
      * p7/highForce - setting false will make the force really low
      *
      * Hash: 0x31DA7CEC5334DB37 | Since: 1207
      */
-    function applyForceToCenterOfMass(entity: number | Entity, forceType: number, pos: Vector3, component: number, isDirectionRel: boolean, isForceRel: boolean): void;
+    function applyForceToCenterOfMass(entity: number | IEntity, forceType: number, pos: Vector3, component: number, isDirectionRel: boolean, isForceRel: boolean): void;
     /**
      * Attaches entity1 to bone (boneIndex) of entity2.
      *
@@ -6336,19 +6336,19 @@ export declare namespace entity {
      *
      * Hash: 0x6B9BBD38AB0796DF | Since: 1207
      */
-    function attachToEntity(entity1: number | Entity, entity2: number | Entity, boneIndex: number, pos: Vector3, rot: Vector3, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean): void;
+    function attachToEntity(entity1: number | IEntity, entity2: number | IEntity, boneIndex: number, pos: Vector3, rot: Vector3, useSoftPinning: boolean, collision: boolean, isPed: boolean, vertexIndex: number, fixedRot: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xB629A43CA1643481 | Since: 1207
      */
-    function attachToEntityPhysically(entity1: number | Entity, entity2: number | Entity, boneIndex: number, offsetX: number, offsetY: number, offsetZ: number): void;
+    function attachToEntityPhysically(entity1: number | IEntity, entity2: number | IEntity, boneIndex: number, offsetX: number, offsetY: number, offsetZ: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xBB19AC7D4DCEFD0F | Since: 1207
      */
-    function clearLastDamageEntity(entity: number | Entity): void;
+    function clearLastDamageEntity(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -6378,37 +6378,37 @@ export declare namespace entity {
      *
      * Hash: 0x4CD38C78BD19A497 | Since: 1207
      */
-    function deleteEntity(entity: number | Entity): void;
+    function deleteEntity(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x64CDE9D6BF8ECAD3 | Since: 1207
      */
-    function detach(entity: number | Entity, collision: boolean): void;
+    function detach(entity: number | IEntity, collision: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x622B1980CBE13332 | Since: 1207
      */
-    function doesBelongToThisScript(entity: number | Entity): boolean;
+    function doesBelongToThisScript(entity: number | IEntity): boolean;
     /**
      * Checks if the Entity exists
      *
      * Hash: 0xD42BD6EB2E0F1677 | Since: 1207
      */
-    function doesExist(entity: number | Entity): boolean;
+    function doesExist(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x20487F0DA9AF164A | Since: 1207
      */
-    function doesHaveDrawable(entity: number | Entity): boolean;
+    function doesHaveDrawable(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA512B3F1B2A0B51C | Since: 1207
      */
-    function doesHavePhysics(entity: number | Entity): boolean;
+    function doesHavePhysics(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -6420,13 +6420,13 @@ export declare namespace entity {
      *
      * Hash: 0x4C9E96473D4F1A88 | Since: 1207
      */
-    function forceAiAndAnimationUpdate(entity: number | Entity): void;
+    function forceAiAndAnimationUpdate(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x7D9EFB7AD6B19754 | Since: 1207
      */
-    function freezePosition(entity: number | Entity, toggle: boolean): void;
+    function freezePosition(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -6453,37 +6453,37 @@ export declare namespace entity {
      *
      * Hash: 0x61914209C36EFDDB | Since: 1207
      */
-    function getCarriableState(entity: number | Entity): number;
+    function getCarriableState(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x1BB501624FAF2BEA | Since: 1207
      */
-    function getAlpha(entity: number | Entity): number;
+    function getAlpha(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x56D713888A566481 | Since: 1207
      */
-    function getAttachedTo(entity: number | Entity): number;
+    function getAttachedTo(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xBACA8FE9C76C124E | Since: 1207
      */
-    function getBoneIndexByName(entity: number | Entity, boneName: string): number;
+    function getBoneIndexByName(entity: number | IEntity, boneName: string): number;
     /**
      * Old name: _GET_ENTITY_CAN_BE_DAMAGED
      *
      * Hash: 0x75DF9E73F2F005FD | Since: 1207
      */
-    function getCanBeDamaged(entity: number | Entity): boolean;
+    function getCanBeDamaged(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xAA2FADD30F45A9DA | Since: 1207
      */
-    function getCollisionDisabled(entity: number | Entity): boolean;
+    function getCollisionDisabled(entity: number | IEntity): boolean;
     /**
      * Gets the current coordinates for a specified entity.
      * `entity` = The entity to get the coordinates from.
@@ -6493,147 +6493,147 @@ export declare namespace entity {
      *
      * Hash: 0xA86D5F069399F44D | Since: 1207
      */
-    function getCoords(entity: number | Entity, alive: boolean, realCoords: boolean): Vector3;
+    function getCoords(entity: number | IEntity, alive: boolean, realCoords: boolean): Vector3;
     /**
      * Gets the entity's forward vector in XY(Z) eulers.
      *
      * Hash: 0x2412D9C05BB09B97 | Since: 1207
      */
-    function getForwardVector(entity: number | Entity): Vector3;
+    function getForwardVector(entity: number | IEntity): Vector3;
     /**
      * Gets the X-component of the entity's forward vector.
      *
      * Hash: 0xDB0954E9960F6457 | Since: 1207
      */
-    function getForwardX(entity: number | Entity): number;
+    function getForwardX(entity: number | IEntity): number;
     /**
      * Gets the Y-component of the entity's forward vector.
      *
      * Hash: 0x9A5C073ECBDA7EE7 | Since: 1207
      */
-    function getForwardY(entity: number | Entity): number;
+    function getForwardY(entity: number | IEntity): number;
     /**
      * Returns the heading of the entity in degrees. Also know as the "Yaw" of an entity.
      *
      * Hash: 0xC230DD956E2F5507 | Since: 1207
      */
-    function getHeading(entity: number | Entity): number;
+    function getHeading(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x82368787EA73C0F7 | Since: 1207
      */
-    function getHealth(entity: number | Entity): number;
+    function getHealth(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x296DEBC84474B375 | Since: 1207
      */
-    function getHeight(entity: number | Entity, pos: Vector3, atTop: boolean, inWorldCoords: boolean): number;
+    function getHeight(entity: number | IEntity, pos: Vector3, atTop: boolean, inWorldCoords: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0x0D3B5BAEA08F63E9 | Since: 1207
      */
-    function getHeightAboveGround(entity: number | Entity): number;
+    function getHeightAboveGround(entity: number | IEntity): number;
     /**
      * Returns the LOD distance of an entity.
      *
      * Hash: 0xDF240D0C2A948683 | Since: 1207
      */
-    function getLodDist(entity: number | Entity): number;
+    function getLodDist(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x3A9B1120AF13FBF2 | Since: 1207
      */
-    function getMatrix(entity: number | Entity): [Vector3, Vector3, Vector3, Vector3];
+    function getMatrix(entity: number | IEntity): [Vector3, Vector3, Vector3, Vector3];
     /**
      * No comment provided
      *
      * Hash: 0x15D757606D170C3C | Since: 1207
      */
-    function getMaxHealth(entity: number | Entity): number;
+    function getMaxHealth(entity: number | IEntity): number;
     /**
      * Returns the model hash from the entity
      *
      * Hash: 0xDA76A9F39210D365 | Since: 1207
      */
-    function getModel(entity: number | Entity): number;
+    function getModel(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xEF355ABEFF7F5005 | Since: 1207
      */
-    function getPitch(entity: number | Entity): number;
+    function getPitch(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xADE28862B6D7B85B | Since: 1207
      */
-    function getPopulationType(entity: number | Entity): number;
+    function getPopulationType(entity: number | IEntity): number;
     /**
      * Note: this native was removed in 1232 but added back in 1311
      * Old name: _GET_ENTITY_PROOFS
      *
      * Hash: 0x6CF0DAD7FA1088EA | Since: 1207
      */
-    function getProofs(entity: number | Entity): number;
+    function getProofs(entity: number | IEntity): number;
     /**
      * Displays the current ROLL axis of the entity [-180.0000/180.0000+]
      * (Sideways Roll) such as a vehicle tipped on its side
      *
      * Hash: 0xBF966536FA8B6879 | Since: 1207
      */
-    function getRoll(entity: number | Entity): number;
+    function getRoll(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xE09CAF86C32CB48F | Since: 1207
      */
-    function getRotation(entity: number | Entity, rotationOrder: number): Vector3;
+    function getRotation(entity: number | IEntity, rotationOrder: number): Vector3;
     /**
      * Result is in meters per second (m/s)
      *
      * Hash: 0xFB6BA510A533DF81 | Since: 1207
      */
-    function getSpeed(entity: number | Entity): number;
+    function getSpeed(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xF2DB09816A419DC5 | Since: 1207
      */
-    function getSpeedVector(entity: number | Entity, relative: boolean): Vector3;
+    function getSpeedVector(entity: number | IEntity, relative: boolean): Vector3;
     /**
      * Get how much of the entity is submerged.  1.0f is whole entity.
      *
      * Hash: 0x4A77C3F73FD9E831 | Since: 1207
      */
-    function getSubmergedLevel(entity: number | Entity): number;
+    function getSubmergedLevel(entity: number | IEntity): number;
     /**
      * Returns entityType: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eEntityType
      *
      * Hash: 0x97F696ACA466B4E0 | Since: 1207
      */
-    function getType(entity: number | Entity): number;
+    function getType(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x56398BE65160C3BE | Since: 1207
      */
-    function getUprightValue(entity: number | Entity): number;
+    function getUprightValue(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x4805D2B1D8CF94A9 | Since: 1207
      */
-    function getVelocity(entity: number | Entity): Vector3;
+    function getVelocity(entity: number | IEntity): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x9A100F1CF4546629 | Since: 1207
      */
-    function getIsAnimal(entity: number | Entity): boolean;
+    function getIsAnimal(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -6645,31 +6645,31 @@ export declare namespace entity {
      *
      * Hash: 0x6888A43C35A5F630 | Since: 1207
      */
-    function getNearestParticipantTo(entity: number | Entity): number | string;
+    function getNearestParticipantTo(entity: number | IEntity): number | string;
     /**
      * No comment provided
      *
      * Hash: 0x990E294FC387FB88 | Since: 1207
      */
-    function getNearestPlayerTo(entity: number | Entity, playerPedToIgnore: number | Ped, flags: number): number | string;
+    function getNearestPlayerTo(entity: number | IEntity, playerPedToIgnore: number | IPed, flags: number): number | string;
     /**
      * No comment provided
      *
      * Hash: 0xB2C30C3B4AFF718C | Since: 1207
      */
-    function getNearestPlayerToOnTeam(entity: number | Entity, team: number, playerPedToIgnore: number | Ped, flags: number): number | string;
+    function getNearestPlayerToOnTeam(entity: number | IEntity, team: number, playerPedToIgnore: number | IPed, flags: number): number | string;
     /**
      * Simply returns whatever is passed to it (Regardless of whether the handle is valid or not).
      *
      * Hash: 0x280BBE5601EAA983 | Since: 1207
      */
-    function getObjectIndexFromIndex(entity: number | Entity): number;
+    function getObjectIndexFromIndex(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x497C6B1A2C9AE69C | Since: 1207
      */
-    function getOffsetFromGivenWorldCoords(entity: number | Entity, pos: Vector3): Vector3;
+    function getOffsetFromGivenWorldCoords(entity: number | IEntity, pos: Vector3): Vector3;
     /**
      * Offset values are relative to the entity.
      *
@@ -6679,38 +6679,38 @@ export declare namespace entity {
      *
      * Hash: 0x1899F328B0E12848 | Since: 1207
      */
-    function getOffsetFromInWorldCoords(entity: number | Entity, offsetX: number, offsetY: number, offsetZ: number): Vector3;
+    function getOffsetFromInWorldCoords(entity: number | IEntity, offsetX: number, offsetY: number, offsetZ: number): Vector3;
     /**
      * Simply returns whatever is passed to it (Regardless of whether the handle is valid or not).
      *
      * Hash: 0x0F16D042BD640EA3 | Since: 1207
      */
-    function getPedIndexFromIndex(entity: number | Entity): number;
+    function getPedIndexFromIndex(entity: number | IEntity): number;
     /**
      * Simply returns whatever is passed to it (Regardless of whether the handle is valid or not).
      *
      * Hash: 0xDF1E5AAC561AFC59 | Since: 1207
      */
-    function getVehicleIndexFromIndex(entity: number | Entity): number;
+    function getVehicleIndexFromIndex(entity: number | IEntity): number;
     /**
      * Returns the coordinates of an entity-bone.
      * https://github.com/femga/rdr3_discoveries/tree/master/boneNames
      *
      * Hash: 0x82CFA50E34681CA5 | Since: 1207
      */
-    function getWorldPositionOfBone(entity: number | Entity, boneIndex: number): Vector3;
+    function getWorldPositionOfBone(entity: number | IEntity, boneIndex: number): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x5851CC48405F4A07 | Since: 1207
      */
-    function hasAnimEventFired(entity: number | Entity, actionHash: number | string): boolean;
+    function hasAnimEventFired(entity: number | IEntity, actionHash: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xBEB1600952B9CF5C | Since: 1207
      */
-    function hasCollisionLoadedAround(entity: number | Entity): boolean;
+    function hasCollisionLoadedAround(entity: number | IEntity): boolean;
     /**
      * Old name: _HAS_COLLISION_LOADED_AT_COORDS
      *
@@ -6722,55 +6722,55 @@ export declare namespace entity {
      *
      * Hash: 0xAEB40615337EF1E3 | Since: 1207
      */
-    function hasAnimFinished(entity: number | Entity, animDict: string, animName: string): boolean;
+    function hasAnimFinished(entity: number | IEntity, animDict: string, animName: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x73BB763880CD23A6 | Since: 1207
      */
-    function hasBeenDamagedByAnyObject(entity: number | Entity): boolean;
+    function hasBeenDamagedByAnyObject(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9934E9C42D52D87E | Since: 1207
      */
-    function hasBeenDamagedByAnyPed(entity: number | Entity): boolean;
+    function hasBeenDamagedByAnyPed(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x695D7C26DE65C423 | Since: 1207
      */
-    function hasBeenDamagedByAnyVehicle(entity: number | Entity): boolean;
+    function hasBeenDamagedByAnyVehicle(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7B6E7BEC1143AC86 | Since: 1207
      */
-    function hasBeenDamagedByEntity(entity1: number | Entity, entity2: number | Entity): boolean;
+    function hasBeenDamagedByEntity(entity1: number | IEntity, entity2: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0C9DBF48C6BA6E4C | Since: 1207
      */
-    function hasClearLosToCoord(entity: number | Entity, pos: Vector3, flags: number): boolean;
+    function hasClearLosToCoord(entity: number | IEntity, pos: Vector3, flags: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xFCDFF7B72D23A1AC | Since: 1207
      */
-    function hasClearLosToEntity(entity1: number | Entity, entity2: number | Entity, traceType: number): boolean;
+    function hasClearLosToEntity(entity1: number | IEntity, entity2: number | IEntity, traceType: number): boolean;
     /**
      * Has the entity1 got a clear line of sight to the other entity2 from the direction entity1 is facing.
      *
      * Hash: 0xE88F19660651D566 | Since: 1207
      */
-    function hasClearLosToEntityInFront(entity1: number | Entity, entity2: number | Entity, traceType: number): boolean;
+    function hasClearLosToEntityInFront(entity1: number | IEntity, entity2: number | IEntity, traceType: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDF18751EC74F90FF | Since: 1207
      */
-    function hasCollidedWithAnything(entity: number | Entity): boolean;
+    function hasCollidedWithAnything(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -6782,37 +6782,37 @@ export declare namespace entity {
      *
      * Hash: 0x0A27A546A375FDEF | Since: 1207
      */
-    function isAnObject(entity: number | Entity): boolean;
+    function isAnObject(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEE6AD63ABF59C0B7 | Since: 1207
      */
-    function isAttached(entity: number | Entity): boolean;
+    function isAttached(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x306C1F6178F01AB3 | Since: 1207
      */
-    function isAttachedToAnyObject(entity: number | Entity): boolean;
+    function isAttachedToAnyObject(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC841153DED2CA89A | Since: 1207
      */
-    function isAttachedToAnyPed(entity: number | Entity): boolean;
+    function isAttachedToAnyPed(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x12DF6E0D2E736749 | Since: 1207
      */
-    function isAttachedToAnyVehicle(entity: number | Entity): boolean;
+    function isAttachedToAnyVehicle(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x154A3C529497053E | Since: 1207
      */
-    function isAttachedToEntity(_from: number | Entity, to: number | Entity): boolean;
+    function isAttachedToEntity(_from: number | IEntity, to: number | IEntity): boolean;
     /**
      * Checks if entity is within x/y/zSize distance of x/y/z.
      *
@@ -6820,7 +6820,7 @@ export declare namespace entity {
      *
      * Hash: 0x5E58342602E94718 | Since: 1207
      */
-    function isAtCoord(entity: number | Entity, pos: Vector3, xSize: number, ySize: number, zSize: number): boolean;
+    function isAtCoord(entity: number | IEntity, pos: Vector3, xSize: number, ySize: number, zSize: number): boolean;
     /**
      * Checks if entity1 is within the box defined by x/y/zSize of entity2.
      *
@@ -6828,37 +6828,37 @@ export declare namespace entity {
      *
      * Hash: 0xC057F02B837A27F6 | Since: 1207
      */
-    function isAtEntity(entity1: number | Entity, entity2: number | Entity, xSize: number, ySize: number, zSize: number): boolean;
+    function isAtEntity(entity1: number | IEntity, entity2: number | IEntity, xSize: number, ySize: number, zSize: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x138190F64DB4BBD1 | Since: 1207
      */
-    function isAMissionEntity(entity: number | Entity): boolean;
+    function isAMissionEntity(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xCF8176912DDA4EA5 | Since: 1207
      */
-    function isAPed(entity: number | Entity): boolean;
+    function isAPed(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC3D96AF45FCCEC4C | Since: 1207
      */
-    function isAVehicle(entity: number | Entity): boolean;
+    function isAVehicle(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7D5B1F88E7504BBA | Since: 1207
      */
-    function isDead(entity: number | Entity): boolean;
+    function isDead(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x886E37EC497200B6 | Since: 1207
      */
-    function isInAir(entity: number | Entity): boolean;
+    function isInAir(entity: number | IEntity): boolean;
     /**
      * Creates a spherical cone at origin that extends to surface with the angle specified. Then returns true if the entity is inside the spherical cone
      *
@@ -6866,91 +6866,91 @@ export declare namespace entity {
      *
      * Hash: 0xD3151E53134595E5 | Since: 1207
      */
-    function isInAngledArea(entity: number | Entity, originX: number, originY: number, originZ: number, edgeX: number, edgeY: number, edgeZ: number, angle: number): boolean;
+    function isInAngledArea(entity: number | IEntity, originX: number, originY: number, originZ: number, edgeX: number, edgeY: number, edgeZ: number, angle: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0C2634C40A16193E | Since: 1207
      */
-    function isInArea(entity: number | Entity, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): boolean;
+    function isInArea(entity: number | IEntity, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5A5526BC09C06623 | Since: 1207
      */
-    function isInVolume(entity: number | Entity, volume: number): boolean;
+    function isInVolume(entity: number | IEntity, volume: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDDE5C125AC446723 | Since: 1207
      */
-    function isInWater(entity: number | Entity): boolean;
+    function isInWater(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x140188E884645624 | Since: 1207
      */
-    function isOccluded(entity: number | Entity): boolean;
+    function isOccluded(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x613C15D5D8DB781F | Since: 1207
      */
-    function isOnScreen(entity: number | Entity): boolean;
+    function isOnScreen(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDEE49D5CA6C49148 | Since: 1207
      */
-    function isPlayingAnim(entity: number | Entity, animDict: string, animName: string, animType: number): boolean;
+    function isPlayingAnim(entity: number | IEntity, animDict: string, animName: string, animType: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x86468ADFA0F6B861 | Since: 1207
      */
-    function isStatic(entity: number | Entity): boolean;
+    function isStatic(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9A2304A64C3C8423 | Since: 1207
      */
-    function isTouchingEntity(entity: number | Entity, targetEntity: number | Entity): boolean;
+    function isTouchingEntity(entity: number | IEntity, targetEntity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2AE3EBC8DEB9768B | Since: 1207
      */
-    function isTouchingModel(entity: number | Entity, modelHash: number | string): boolean;
+    function isTouchingModel(entity: number | IEntity, modelHash: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF6F6AFD8D4FB2658 | Since: 1207
      */
-    function isUpright(entity: number | Entity, angle: number): boolean;
+    function isUpright(entity: number | IEntity, angle: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x109DE3DA41AAD94A | Since: 1207
      */
-    function isUpsidedown(entity: number | Entity): boolean;
+    function isUpsidedown(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xFFC96ECB7FA404CA | Since: 1207
      */
-    function isVisible(entity: number | Entity): boolean;
+    function isVisible(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF213C724E77F321A | Since: 1207
      */
-    function isVisibleToScript(entity: number | Entity): boolean;
+    function isVisibleToScript(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5E1CC2E8DC3111DD | Since: 1207
      */
-    function isWaitingForWorldCollision(entity: number | Entity): boolean;
+    function isWaitingForWorldCollision(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -6968,13 +6968,13 @@ export declare namespace entity {
      *
      * Hash: 0x9587913B9E772D29 | Since: 1207
      */
-    function placeOnGroundProperly(entity: number | Entity): boolean;
+    function placeOnGroundProperly(entity: number | IEntity): boolean;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/animations
      *
      * Hash: 0xDC6D22FAB76D4874 | Since: 1207
      */
-    function playAnim(entity: number | Entity, animName: string, animDict: string, loop: boolean, stayInAnim: boolean, delta: number, bitset: any): boolean;
+    function playAnim(entity: number | IEntity, animName: string, animDict: string, loop: boolean, stayInAnim: boolean, delta: number, bitset: any): boolean;
     /**
      * No comment provided
      *
@@ -6998,257 +6998,257 @@ export declare namespace entity {
      *
      * Hash: 0x744B9EF44779D9AB | Since: 1207
      */
-    function resetAlpha(entity: number | Entity): void;
+    function resetAlpha(entity: number | IEntity): void;
     /**
      * Sets the loot table an entity will carry. Returns true if loot table has been successfully set. Returns false if entity is not a ped or object.
      * https://github.com/femga/rdr3_discoveries/blob/master/AI/EVENTS/loot_rewards.lua
      *
      * Hash: 0x8C03CD6B5E0E85E8 | Since: 1207
      */
-    function scriptOverrideLootTablePermanent(entity: number | Entity, lootTable: number | string): boolean;
+    function scriptOverrideLootTablePermanent(entity: number | IEntity, lootTable: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x80646744FA88F9D7 | Since: 1207
      */
-    function setCanAutoVaultOn(entity: number | Entity, toggle: boolean): void;
+    function setCanAutoVaultOn(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x24AED2A608F93C4C | Since: 1207
      */
-    function setCanClimbOn(entity: number | Entity, toggle: boolean): void;
+    function setCanClimbOn(entity: number | IEntity, toggle: boolean): void;
     /**
      * skin - everything alpha except skin
      * Set entity alpha level. Ranging from 0 to 255 but changes occur after every 20 percent (after every 51).
      *
      * Hash: 0x0DF7692B1D9E7BA7 | Since: 1207
      */
-    function setAlpha(entity: number | Entity, alphaLevel: number, skin: boolean): void;
+    function setAlpha(entity: number | IEntity, alphaLevel: number, skin: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xACAD101E1FB66689 | Since: 1207
      */
-    function setAlwaysPrerender(entity: number | Entity, toggle: boolean): void;
+    function setAlwaysPrerender(entity: number | IEntity, toggle: boolean): void;
     /**
      * Makes the specified entity (ped, vehicle or object) persistent. Persistent entities will not automatically be removed by the engine.
      *
      * Hash: 0xDC19C288082E586E | Since: 1207
      */
-    function setAsMissionEntity(entity: number | Entity, scriptHostObject: boolean, grabFromOtherScript: boolean): void;
+    function setAsMissionEntity(entity: number | IEntity, scriptHostObject: boolean, grabFromOtherScript: boolean): void;
     /**
      * Marks the specified entity (ped, vehicle or object) as no longer needed.
      * Entities marked as no longer needed, will be deleted as the engine sees fit.
      *
      * Hash: 0x4971D2F8162B9674 | Since: 1207
      */
-    function setAsNoLongerNeeded(entity: number | Entity): void;
+    function setAsNoLongerNeeded(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x0D06D522B90E861F | Since: 1207
      */
-    function setCanBeDamaged(entity: number | Entity, toggle: boolean): void;
+    function setCanBeDamaged(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0EF1AFB18649E015 | Since: 1207
      */
-    function setCanBeDamagedByRelationshipGroup(entity: number | Entity, bCanBeDamaged: boolean, relGroup: number | string): void;
+    function setCanBeDamagedByRelationshipGroup(entity: number | IEntity, bCanBeDamaged: boolean, relGroup: number | string): void;
     /**
      * Sets whether the entity can be targeted without being in line-of-sight.
      *
      * Hash: 0x6D09F32E284D0FB7 | Since: 1207
      */
-    function setCanBeTargetedWithoutLos(entity: number | Entity, toggle: boolean): void;
+    function setCanBeTargetedWithoutLos(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xFF83AF534156B399 | Since: 1207
      */
-    function setCanOnlyBeDamagedByScriptParticipants(EntityIndex: number | Entity, bOnlyDamagedWhenRunningScript: boolean): void;
+    function setCanOnlyBeDamagedByScriptParticipants(EntityIndex: number | IEntity, bOnlyDamagedWhenRunningScript: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xF66F820909453B8C | Since: 1207
      */
-    function setCollision(entity: number | Entity, toggle: boolean, keepPhysics: boolean): void;
+    function setCollision(entity: number | IEntity, toggle: boolean, keepPhysics: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE0580EC84813875A | Since: 1207
      */
-    function setCompletelyDisableCollision(entity: number | Entity, toggle: boolean, keepPhysics: boolean): void;
+    function setCompletelyDisableCollision(entity: number | IEntity, toggle: boolean, keepPhysics: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x06843DA7060A026B | Since: 1207
      */
-    function setCoords(entity: number | Entity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
+    function setCoords(entity: number | IEntity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
     /**
      * Axis - Invert Axis Flags
      *
      * Hash: 0x239A3351AC1DA385 | Since: 1207
      */
-    function setCoordsNoOffset(entity: number | Entity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+    function setCoordsNoOffset(entity: number | IEntity, pos: Vector3, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xFBFC4473F66CE344 | Since: 1207
      */
-    function setDynamic(entity: number | Entity, toggle: boolean): void;
+    function setDynamic(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0CEDB728A1083FA7 | Since: 1207
      */
-    function setHasGravity(entity: number | Entity, toggle: boolean): void;
+    function setHasGravity(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xCF2B9C0645C4651B | Since: 1207
      */
-    function setHeading(entity: number | Entity, heading: number): void;
+    function setHeading(entity: number | IEntity, heading: number): void;
     /**
      * Sets the entity's health. healthAmount sets the health value to that, and sets the maximum health core value. Setting healthAmount to 0 will kill the entity. entityKilledBy parameter can also be 0
      *
      * Hash: 0xAC2767ED8BDFAB15 | Since: 1207
      */
-    function setHealth(entity: number | Entity, healthAmount: number, entityKilledBy: number | Entity): void;
+    function setHealth(entity: number | IEntity, healthAmount: number, entityKilledBy: number | IEntity): void;
     /**
      * Sets a ped or an object totally invincible. It doesn't take any kind of damage. Peds will not ragdoll on explosions.
      *
      * Hash: 0xA5C38736C426FCB8 | Since: 1207
      */
-    function setInvincible(entity: number | Entity, toggle: boolean): void;
+    function setInvincible(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0A5D170C44CB2189 | Since: 1207
      */
-    function setIsTargetPriority(entity: number | Entity): void;
+    function setIsTargetPriority(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x9B9EE31AED48072E | Since: 1207
      */
-    function setLoadCollisionFlag(entity: number | Entity, toggle: boolean): void;
+    function setLoadCollisionFlag(entity: number | IEntity, toggle: boolean): void;
     /**
      * LOD distance can be 0 to 0xFFFF (higher values will result in 0xFFFF) as it is actually stored as a 16-bit value (aka uint16_t).
      *
      * Hash: 0x5FB407F0A7C877BF | Since: 1207
      */
-    function setLodDist(entity: number | Entity, value: number): void;
+    function setLodDist(entity: number | IEntity, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x166E7CF68597D8B5 | Since: 1207
      */
-    function setMaxHealth(entity: number | Entity, value: number): void;
+    function setMaxHealth(entity: number | IEntity, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x516C6ABD18322B63 | Since: 1207
      */
-    function setMotionBlur(entity: number | Entity, toggle: boolean): void;
+    function setMotionBlur(entity: number | IEntity, toggle: boolean): void;
     /**
      * Old name: _SET_ENTITY_DECALS_DISABLED
      *
      * Hash: 0xC64E597783BE9A1D | Since: 1207
      */
-    function setNoweapondecals(entity: number | Entity, toggle: boolean): void;
+    function setNoweapondecals(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE037BF068223C38D | Since: 1207
      */
-    function setNoCollisionEntity(entity1: number | Entity, entity2: number | Entity, thisFrameOnly: boolean): void;
+    function setNoCollisionEntity(entity1: number | IEntity, entity2: number | IEntity, thisFrameOnly: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x473598683095D430 | Since: 1207
      */
-    function setOnlyDamagedByPlayer(entity: number | Entity, toggle: boolean): void;
+    function setOnlyDamagedByPlayer(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x6C1F6AA2F0ADD104 | Since: 1207
      */
-    function setOnlyDamagedByRelationshipGroup(entity: number | Entity, relationshipGroup: number | string): void;
+    function setOnlyDamagedByRelationshipGroup(entity: number | IEntity, relationshipGroup: number | string): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/ENTITY_PROOFS
      * BOOL p2: handles an additional special proofs flag, so it simply indicates whether it should be enabled or disabled, not sure what exactly it proofs the entity from though
      *
      * Hash: 0xFAEE099C6F890BB8 | Since: 1207
      */
-    function setProofs(entity: number | Entity, proofsBitset: number, specialFlag: boolean): void;
+    function setProofs(entity: number | IEntity, proofsBitset: number, specialFlag: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x100E7007D13E3687 | Since: 1207
      */
-    function setQuaternion(entity: number | Entity, pos: Vector3, w: number): void;
+    function setQuaternion(entity: number | IEntity, pos: Vector3, w: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x85B8A7534E44BC23 | Since: 1207
      */
-    function setRenderScorched(entity: number | Entity, toggle: boolean): void;
+    function setRenderScorched(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x850C940EE3E7B8B5 | Since: 1207
      */
-    function setRequiresMoreExpensiveRiverCheck(entity: number | Entity, toggle: boolean): void;
+    function setRequiresMoreExpensiveRiverCheck(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x9CC8314DFEDE441E | Since: 1207
      */
-    function setRotation(entity: number | Entity, pitch: number, roll: number, yaw: number, rotationOrder: number): void;
+    function setRotation(entity: number | IEntity, pitch: number, roll: number, yaw: number, rotationOrder: number): void;
     /**
      * Old name: _SET_ENTITY_CLEANUP_BY_ENGINE
      *
      * Hash: 0x740CB4F3F602C9F4 | Since: 1207
      */
-    function setShouldFreezeWaitingOnCollision(entity: number | Entity, toggle: boolean): void;
+    function setShouldFreezeWaitingOnCollision(entity: number | IEntity, toggle: boolean): void;
     /**
      * Note that the third parameter(denoted as z) is "up and down" with positive numbers encouraging upwards movement.
      *
      * Hash: 0x1C99BB7B6E96D16F | Since: 1207
      */
-    function setVelocity(entity: number | Entity, pos: Vector3): void;
+    function setVelocity(entity: number | IEntity, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x1794B4FCC84D812F | Since: 1207
      */
-    function setVisible(entity: number | Entity, toggle: boolean): void;
+    function setVisible(entity: number | IEntity, toggle: boolean): void;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
      * Hash: 0x3AE22DEB5BA5A3E6 | Since: 1207
      */
-    function setObjectAsNoLongerNeeded(_object: number | Object): void;
+    function setObjectAsNoLongerNeeded(_object: number | IObject): void;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
      * Hash: 0x2595DD4236549CE3 | Since: 1207
      */
-    function setPedAsNoLongerNeeded(ped: number | Ped): void;
+    function setPedAsNoLongerNeeded(ped: number | IPed): void;
     /**
      * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
      *
      * Hash: 0x629BFA74418D6239 | Since: 1207
      */
-    function setVehicleAsNoLongerNeeded(vehicle: number | Vehicle): void;
+    function setVehicleAsNoLongerNeeded(vehicle: number | IVehicle): void;
     /**
      * Doesn't actually return anything.
      *
      * Hash: 0x786591D986DE9159 | Since: 1207
      */
-    function stopAnim(entity: number | Entity, animation: string, animGroup: string): boolean;
+    function stopAnim(entity: number | IEntity, animation: string, animGroup: string): boolean;
     /**
      * No comment provided
      *
@@ -7344,14 +7344,14 @@ export declare namespace entity {
      *
      * Hash: 0x371D179701D9C082 | Since: 1436
      */
-    function _0x371D179701D9C082(entity: number | Entity): void;
+    function _0x371D179701D9C082(entity: number | IEntity): void;
     /**
      * Seems to return true if entity is burned / scorched
      * _GET_ENTITY_*
      *
      * Hash: 0x37B01666BAE8F7EF | Since: 1207
      */
-    function _0x37B01666BAE8F7EF(entity: number | Entity): any;
+    function _0x37B01666BAE8F7EF(entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -7363,7 +7363,7 @@ export declare namespace entity {
      *
      * Hash: 0x383F64263F946E45 | Since: 1207
      */
-    function _0x383F64263F946E45(entity: number | Entity, ped: number | Ped): [boolean, number];
+    function _0x383F64263F946E45(entity: number | IEntity, ped: number | IPed): [boolean, number];
     /**
      * No comment provided
      *
@@ -7375,7 +7375,7 @@ export declare namespace entity {
      *
      * Hash: 0x3EC28DA1FFAC9DDD | Since: 1207
      */
-    function _0x3EC28DA1FFAC9DDD(entity1: number | Entity, entity2: number | Entity): boolean;
+    function _0x3EC28DA1FFAC9DDD(entity1: number | IEntity, entity2: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -7399,7 +7399,7 @@ export declare namespace entity {
      *
      * Hash: 0x5826EFD6D73C4DE5 | Since: 1207
      */
-    function _0x5826EFD6D73C4DE5(entity: number | Entity): void;
+    function _0x5826EFD6D73C4DE5(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -7412,7 +7412,7 @@ export declare namespace entity {
      *
      * Hash: 0x5E214112806591EA | Since: 1207
      */
-    function _0x5E214112806591EA(entity: number | Entity, boneIndex: number): Vector3;
+    function _0x5E214112806591EA(entity: number | IEntity, boneIndex: number): Vector3;
     /**
      * No comment provided
      *
@@ -7424,7 +7424,7 @@ export declare namespace entity {
      *
      * Hash: 0x6D58167F62238284 | Since: 1207
      */
-    function _0x6D58167F62238284(vehicle: number | Vehicle): number;
+    function _0x6D58167F62238284(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -7442,13 +7442,13 @@ export declare namespace entity {
      *
      * Hash: 0x80FDEB3A9E9AA578 | Since: 1207
      */
-    function _0x80FDEB3A9E9AA578(entity: number | Entity): void;
+    function _0x80FDEB3A9E9AA578(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x898586729DB5221D | Since: 1207
      */
-    function _0x898586729DB5221D(ped: number | Ped): void;
+    function _0x898586729DB5221D(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -7461,7 +7461,7 @@ export declare namespace entity {
      *
      * Hash: 0x8E46E18AA828334F | Since: 1207
      */
-    function _0x8E46E18AA828334F(entity: number | Entity, animDict: string, animClip: string): number;
+    function _0x8E46E18AA828334F(entity: number | IEntity, animDict: string, animClip: string): number;
     /**
      * No comment provided
      *
@@ -7473,13 +7473,13 @@ export declare namespace entity {
      *
      * Hash: 0x9C6906EF8CB20C5F | Since: 1436
      */
-    function _0x9C6906EF8CB20C5F(entity: number | Entity): void;
+    function _0x9C6906EF8CB20C5F(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0xA48E4801DEBDF7E4 | Since: 1207
      */
-    function _0xA48E4801DEBDF7E4(entity: number | Entity): void;
+    function _0xA48E4801DEBDF7E4(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -7497,13 +7497,13 @@ export declare namespace entity {
      *
      * Hash: 0xAF72EC7E1B54539B | Since: 1311
      */
-    function _0xAF72EC7E1B54539B(entity: number | Entity): number;
+    function _0xAF72EC7E1B54539B(entity: number | IEntity): number;
     /**
      * SET_ENTITY_LO*
      *
      * Hash: 0xAF7F3099B9FEB535 | Since: 1207
      */
-    function _0xAF7F3099B9FEB535(entity: number | Entity): void;
+    function _0xAF7F3099B9FEB535(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -7533,7 +7533,7 @@ export declare namespace entity {
      *
      * Hash: 0xC0EDEF16D90661EE | Since: 1207
      */
-    function _0xC0EDEF16D90661EE(entity: number | Entity): void;
+    function _0xC0EDEF16D90661EE(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -7545,7 +7545,7 @@ export declare namespace entity {
      *
      * Hash: 0xC3ABCFBC7D74AFA5 | Since: 1207
      */
-    function _0xC3ABCFBC7D74AFA5(ped: number | Ped): void;
+    function _0xC3ABCFBC7D74AFA5(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -7563,7 +7563,7 @@ export declare namespace entity {
      *
      * Hash: 0xCDB682BB47C02F0A | Since: 1207
      */
-    function _0xCDB682BB47C02F0A(entity: number | Entity, p1: number | string): void;
+    function _0xCDB682BB47C02F0A(entity: number | IEntity, p1: number | string): void;
     /**
      * No comment provided
      *
@@ -7641,7 +7641,7 @@ export declare namespace entity {
      *
      * Hash: 0xEF259AA1E097E0AD | Since: 1207
      */
-    function _0xEF259AA1E097E0AD(entity: number | Entity): void;
+    function _0xEF259AA1E097E0AD(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -7659,26 +7659,26 @@ export declare namespace entity {
      *
      * Hash: 0xFF9965C47FA404DA | Since: 1207
      */
-    function _0xFF9965C47FA404DA(entity: number | Entity, toggle: boolean): void;
+    function _0xFF9965C47FA404DA(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x1AD922AB5038DEF3 | Since: 1207
      */
-    function addTrackingTrails(entity: number | Entity): void;
+    function addTrackingTrails(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x445D7D8EA66E373E | Since: 1207
      */
-    function attachToCoordsPhysically(entity: number | Entity, pos: Vector3, offsetX: number, offsetY: number, offsetZ: number, timer: number): void;
+    function attachToCoordsPhysically(entity: number | IEntity, pos: Vector3, offsetX: number, offsetY: number, offsetZ: number, timer: number): void;
     /**
      * Alters entity's health by 'amount'. Can be negative (to drain health).
      * In the scripts entity2 and weaponHash are unused (zero).
      *
      * Hash: 0x835F131E7DC8F97A | Since: 1207
      */
-    function changeHealth(entity: number | Entity, amount: number, entity2: number | Entity, weaponHash: number | string): boolean;
+    function changeHealth(entity: number | IEntity, amount: number, entity2: number | IEntity, weaponHash: number | string): boolean;
     /**
      * No comment provided
      *
@@ -7690,25 +7690,25 @@ export declare namespace entity {
      *
      * Hash: 0x0D0DB2B6AF19A987 | Since: 1207
      */
-    function deleteCarriable(entity: number | Entity): void;
+    function deleteCarriable(entity: number | IEntity): void;
     /**
      * Must be called from a background script, otherwise it will do nothing.
      *
      * Hash: 0x5E94EA09E7207C16 | Since: 1207
      */
-    function delete2(entity: number | Entity): void;
+    function delete2(entity: number | IEntity): void;
     /**
      * Returns true if calling script owns specified entity
      *
      * Hash: 0x88AD6CC10D8D35B2 | Since: 1207
      */
-    function doesThreadOwnThis(entity: number | Entity): boolean;
+    function doesThreadOwnThis(entity: number | IEntity): boolean;
     /**
      * Returns a hash of an entity's name. (Alternative Name: _GET_ENTITY_PROMPT_NAME_HASH)
      *
      * Hash: 0x31FEF6A20F00B963 | Since: 1207
      */
-    function getCarriableFrom(entity: number | Entity): number;
+    function getCarriableFrom(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -7726,7 +7726,7 @@ export declare namespace entity {
      *
      * Hash: 0x627520389E288A73 | Since: 1207
      */
-    function getAnimCurrentTime(entity: number | Entity, animDict: string, animName: string): number;
+    function getAnimCurrentTime(entity: number | IEntity, animDict: string, animName: string): number;
     /**
      * Params: p1 = 0 in R* Scripts (GET_DOOR_ENTITY_FROM_ID)
      * https://github.com/femga/rdr3_discoveries/blob/master/doorHashes/doorhashes.lua
@@ -7739,67 +7739,67 @@ export declare namespace entity {
      *
      * Hash: 0x808077647856DE62 | Since: 1207
      */
-    function getCarryingFlag(entity: number | Entity, flagId: number): boolean;
+    function getCarryingFlag(entity: number | IEntity, flagId: number): boolean;
     /**
      * Returns zero if the entity is not a carriable
      *
      * Hash: 0x0FD25587BB306C86 | Since: 1207
      */
-    function getCarryConfig(entity: number | Entity): number;
+    function getCarryConfig(entity: number | IEntity): number;
     /**
      * Gets the entity's forward vector in YX(Z) eulers. Similar to GET_ENTITY_FORWARD_VECTOR
      *
      * Hash: 0x935A30AA88FB1014 | Since: 1207
      */
-    function getForwardVectorYx(entity: number | Entity): Vector3;
+    function getForwardVectorYx(entity: number | IEntity): Vector3;
     /**
      * Returns (CUR_HEALTH / MAX_HEALTH)
      *
      * Hash: 0x96C638784DB4C815 | Since: 1207
      */
-    function getHealthFloat(entity: number | Entity): number;
+    function getHealthFloat(entity: number | IEntity): number;
     /**
      * Returns the entity that is looting a ped but only while the looting is active
      *
      * Hash: 0xEF2D9ED7CE684F08 | Since: 1207
      */
-    function getLootingPed(entity: number | Entity): number;
+    function getLootingPed(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x2A08A32B6D49906F | Since: 1207
      */
-    function getScript(entity: number | Entity): [number, any];
+    function getScript(entity: number | IEntity): [number, any];
     /**
      * No comment provided
      *
      * Hash: 0xE12F56CB25D9CE23 | Since: 1207
      */
-    function getThreatTier(entity: number | Entity): number;
+    function getThreatTier(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xF3FDA9A617A15145 | Since: 1207
      */
-    function getWorldPositionOfDimensions(entity: number | Entity): [Vector3, Vector3];
+    function getWorldPositionOfDimensions(entity: number | IEntity): [Vector3, Vector3];
     /**
      * No comment provided
      *
      * Hash: 0xC346A546612C49A9 | Since: 1207
      */
-    function getIsBird(entity: number | Entity): boolean;
+    function getIsBird(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x255B6DB4E3AD3C3E | Since: 1207
      */
-    function getIsCarriablePelt(entity: number | Entity): boolean;
+    function getIsCarriablePelt(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5594AFE9DE0C01B7 | Since: 1207
      */
-    function getIsPredator(entity: number | Entity): boolean;
+    function getIsPredator(entity: number | IEntity): boolean;
     /**
      * Valid indices: 0 - 3
      * Index 1 always returns a `hogtied` config, doesn't matter the entity.
@@ -7807,14 +7807,14 @@ export declare namespace entity {
      *
      * Hash: 0x34F008A7E48C496B | Since: 1207
      */
-    function getOptimalCarryConfig(entity: number | Entity, index: number): number;
+    function getOptimalCarryConfig(entity: number | IEntity, index: number): number;
     /**
      * Returns the ped's animal type hash: https://alloc8or.re/rdr3/doc/enums/eAnimalType.txt
      * Combine this with GET_STRING_FROM_HASH_KEY to display localized entity names
      *
      * Hash: 0x964000D355219FC0 | Since: 1207
      */
-    function getPedAnimalType(ped: number | Ped): number;
+    function getPedAnimalType(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -7826,7 +7826,7 @@ export declare namespace entity {
      *
      * Hash: 0x1E804EA9B12030A4 | Since: 1207
      */
-    function getScriptOverrideLootTablePermanent(entity: number | Entity): [boolean, number];
+    function getScriptOverrideLootTablePermanent(entity: number | IEntity): [boolean, number];
     /**
      * No comment provided
      *
@@ -7838,55 +7838,55 @@ export declare namespace entity {
      *
      * Hash: 0x083D497D57B7400F | Since: 1207
      */
-    function isFrozen(entity: number | Entity): boolean;
+    function isFrozen(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8DE41E9902E85756 | Since: 1207
      */
-    function isFullyLooted(entity: number | Entity): boolean;
+    function isFullyLooted(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x857ACB0AB4BD0D55 | Since: 1207
      */
-    function isOnTrainTrack(entity: number | Entity): boolean;
+    function isOnTrainTrack(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA7E51B53309EAC97 | Since: 1207
      */
-    function isOwnedByPersistenceSystem(entity: number | Entity): boolean;
+    function isOwnedByPersistenceSystem(entity: number | IEntity): boolean;
     /**
      * Params: p1 (probably animType) = 1, 0
      *
      * Hash: 0x0B7CB1300CBFE19C | Since: 1207
      */
-    function isPlayingAnyAnim(entity: number | Entity): boolean;
+    function isPlayingAnyAnim(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD4E5C1E93C466127 | Since: 1207
      */
-    function isUnderwater(entity: number | Entity): boolean;
+    function isUnderwater(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC8CCDB712FBCBA92 | Since: 1207
      */
-    function isTrackedVisible(entity: number | Entity): boolean;
+    function isTrackedVisible(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x36EB4D34D4A092C5 | Since: 1207
      */
-    function pauseTracking(entity: number | Entity, pause: boolean): void;
+    function pauseTracking(entity: number | IEntity, pause: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xA88E215CEB0435C0 | Since: 1207
      */
-    function requestLootList(mount: number | Ped, visiblelootslotrequestType: number | string, flag: number): [boolean, any];
+    function requestLootList(mount: number | IPed, visiblelootslotrequestType: number | string, flag: number): [boolean, any];
     /**
      * Alternative Name: _GET_ENTITY_FROM_MAP_OBJECT; You can get existing objects and manipulate them using this native.
      *
@@ -7898,20 +7898,20 @@ export declare namespace entity {
      *
      * Hash: 0x11CDABDC7783B2BC | Since: 1207
      */
-    function setAnimCurrentTime(entity: number | Entity, animDict: string, animName: string, time: number): void;
+    function setAnimCurrentTime(entity: number | IEntity, animDict: string, animName: string, time: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xEAA885BA3CEA4E4A | Since: 1207
      */
-    function setAnimSpeed(entity: number | Entity, animDict: string, animName: string, speedMultiplier: number): void;
+    function setAnimSpeed(entity: number | IEntity, animDict: string, animName: string, speedMultiplier: number): void;
     /**
      * Changes type and quality of skins
      * type hashes: https://pastebin.com/C1WvQjCy
      *
      * Hash: 0x399657ED871B3A6C | Since: 1207
      */
-    function setCarcassType(entity: number | Entity, _type: number | string): void;
+    function setCarcassType(entity: number | IEntity, _type: number | string): void;
     /**
      * flagId: https://github.com/femga/rdr3_discoveries/tree/master/AI/CARRYING_FLAGS
      * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CCarryingFlags__Flags
@@ -7935,49 +7935,49 @@ export declare namespace entity {
      *
      * Hash: 0x18FF3110CF47115D | Since: 1207
      */
-    function setCarryingFlag(entity: number | Entity, flagId: number, value: boolean): void;
+    function setCarryingFlag(entity: number | IEntity, flagId: number, value: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x203BEFFDBE12E96A | Since: 1207
      */
-    function setCoordsAndHeading(entity: number | Entity, pos: Vector3, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
+    function setCoordsAndHeading(entity: number | IEntity, pos: Vector3, heading: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0918E3565C20F03C | Since: 1207
      */
-    function setCoordsAndHeadingNoOffset(entity: number | Entity, pos: Vector3, heading: number): void;
+    function setCoordsAndHeadingNoOffset(entity: number | IEntity, pos: Vector3, heading: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x482D17E45665DA44 | Since: 1207
      */
-    function setCustomPickupRadius(entity: number | Entity, radius: number): void;
+    function setCustomPickupRadius(entity: number | IEntity, radius: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA91E6CF94404E8C9 | Since: 1207
      */
-    function setFadeIn(entity: number | Entity): void;
+    function setFadeIn(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x6BCF5F3D8FFE988D | Since: 1207
      */
-    function setFullyLooted(entity: number | Entity, looted: boolean): void;
+    function setFullyLooted(entity: number | IEntity, looted: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xEBDC12861D079ABA | Since: 1207
      */
-    function setLightsEnabled(entity: number | Entity, enabled: boolean): void;
+    function setLightsEnabled(entity: number | IEntity, enabled: boolean): void;
     /**
      * tier: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eEntityThreatTier
      *
      * Hash: 0x4B436BAC8CBE9B07 | Since: 1207
      */
-    function setThreatTier(entity: number | Entity, tier: number): void;
+    function setThreatTier(entity: number | IEntity, tier: number): void;
     /**
      * sets the fill in state for some objects like for the stew, coffee mug ,poker chips, jugs ? P1 is either 0 or 2 p2 seems to be a label/name p3 is the fill in state, max seems to be for some 3.0 (most is 1.0) - 0.0
      * heres some of the labels/names found
@@ -7985,13 +7985,13 @@ export declare namespace entity {
      *
      * Hash: 0x669655FFB29EF1A9 | Since: 1207
      */
-    function setFillInStateFor(entity: number | Entity, fill: number): void;
+    function setFillInStateFor(entity: number | IEntity, fill: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xD2B9C78537ED5759 | Since: 1207
      */
-    function unpinMap(entity: number | Entity): void;
+    function unpinMap(entity: number | IEntity): void;
 }
 export declare namespace event {
     /**
@@ -8006,7 +8006,7 @@ export declare namespace event {
      *
      * Hash: 0x7FD8F3BE76F89422 | Since: 1207
      */
-    function addShockingForEntity(eventType: number | string, entity: number | Entity): number;
+    function addShockingForEntity(eventType: number | string, entity: number | IEntity): number;
     /**
      * eventType: https://alloc8or.re/rdr3/doc/enums/eEventType.txt
      *
@@ -8042,13 +8042,13 @@ export declare namespace event {
      *
      * Hash: 0x8AE2F981CDDB8FA4 | Since: 1207
      */
-    function setDecisionMaker(ped: number | Ped, name: number | string): void;
+    function setDecisionMaker(ped: number | IPed, name: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x6B9C5C38838FB6E6 | Since: 1207
      */
-    function setDecisionMakerToDefault(ped: number | Ped): void;
+    function setDecisionMakerToDefault(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -8066,31 +8066,31 @@ export declare namespace event {
      *
      * Hash: 0x1A5C5D350068A673 | Since: 1207
      */
-    function _0x1A5C5D350068A673(ped: number | Ped): void;
+    function _0x1A5C5D350068A673(ped: number | IPed): void;
     /**
      * _GET*
      *
      * Hash: 0x1D1B448D719415AB | Since: 1207
      */
-    function _0x1D1B448D719415AB(ped: number | Ped): any;
+    function _0x1D1B448D719415AB(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x26054EB81AC0893B | Since: 1207
      */
-    function _0x26054EB81AC0893B(_object: number | Object): boolean;
+    function _0x26054EB81AC0893B(_object: number | IObject): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2DD42FAD06E6F19E | Since: 1207
      */
-    function _0x2DD42FAD06E6F19E(_object: number | Object): any;
+    function _0x2DD42FAD06E6F19E(_object: number | IObject): any;
     /**
      * _ADD* (_ADD_SHOCKING_EVENT_* ?)
      *
      * Hash: 0x36D0F2BA2C0D9BDE | Since: 1207
      */
-    function _0x36D0F2BA2C0D9BDE(entity: number | Entity): any;
+    function _0x36D0F2BA2C0D9BDE(entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -8118,31 +8118,31 @@ export declare namespace event {
      *
      * Hash: 0x7C511E91738A0828 | Since: 1207
      */
-    function _0x7C511E91738A0828(ped1: number | Ped, ped2: number | Ped, p3: number | string): void;
+    function _0x7C511E91738A0828(ped1: number | IPed, ped2: number | IPed, p3: number | string): void;
     /**
      * _GET*
      *
      * Hash: 0x83D43F0FD5276E4D | Since: 1207
      */
-    function _0x83D43F0FD5276E4D(entity: number | Entity): any;
+    function _0x83D43F0FD5276E4D(entity: number | IEntity): any;
     /**
      * _SET_P*
      *
      * Hash: 0x9520175B35E2268D | Since: 1207
      */
-    function _0x9520175B35E2268D(ped: number | Ped): void;
+    function _0x9520175B35E2268D(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xA86B0EE9B39D15D6 | Since: 1207
      */
-    function _0xA86B0EE9B39D15D6(_object: number | Object): void;
+    function _0xA86B0EE9B39D15D6(_object: number | IObject): void;
     /**
      * Might return time since some (?) event.
      *
      * Hash: 0xAD17A18215DD23D6 | Since: 1207
      */
-    function _0xAD17A18215DD23D6(entity: number | Entity): number;
+    function _0xAD17A18215DD23D6(entity: number | IEntity): number;
     /**
      * _S* (_SUPPRESS_EVENTS_NEXT_FRAME?)
      *
@@ -8154,7 +8154,7 @@ export declare namespace event {
      *
      * Hash: 0xE28D7FC9FD32ABEB | Since: 1311
      */
-    function _0xE28D7FC9FD32ABEB(entity: number | Entity, eventType: number | string): void;
+    function _0xE28D7FC9FD32ABEB(entity: number | IEntity, eventType: number | string): void;
     /**
      * No comment provided
      *
@@ -8178,31 +8178,31 @@ export declare namespace event {
      *
      * Hash: 0xAD8F2424C6E1E3A8 | Since: 1207
      */
-    function flushAllEventTrackers(ped: number | Ped): void;
+    function flushAllEventTrackers(ped: number | IPed): void;
     /**
      * Returns eventType
      *
      * Hash: 0x796EECFF0C6D39BE | Since: 1207
      */
-    function getRecentEvent(entity: number | Entity): number;
+    function getRecentEvent(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x822A001BCEA5BD81 | Since: 1207
      */
-    function getSourceEntityFromEvent(entity: number | Entity, eventType: number | string): number;
+    function getSourceEntityFromEvent(entity: number | IEntity, eventType: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0x38497F139981C5C9 | Since: 1207
      */
-    function getTargetEntityFromEvent(entity: number | Entity, eventType: number | string): number;
+    function getTargetEntityFromEvent(entity: number | IEntity, eventType: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0xC6A7DC546E94FED5 | Since: 1207
      */
-    function getTimeSinceEvent(entity: number | Entity, eventType: number | string): number;
+    function getTimeSinceEvent(entity: number | IEntity, eventType: number | string): number;
     /**
      * No comment provided
      *
@@ -8226,7 +8226,7 @@ export declare namespace event {
      *
      * Hash: 0xBB1E41DD3D3C6250 | Since: 1207
      */
-    function setTrackerForPed(ped: number | Ped, eventName: string): void;
+    function setTrackerForPed(ped: number | IPed, eventName: string): void;
 }
 export declare namespace fire {
     /**
@@ -8290,7 +8290,7 @@ export declare namespace fire {
      *
      * Hash: 0xD84A917A64D4D016 | Since: 1207
      */
-    function addOwnedExplosion(ped: number | Ped, pos: Vector3, explosionType: number, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
+    function addOwnedExplosion(ped: number | IPed, pos: Vector3, explosionType: number, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
     /**
      * No comment provided
      *
@@ -8314,7 +8314,7 @@ export declare namespace fire {
      *
      * Hash: 0x1BD7C371CE257C3E | Since: 1207
      */
-    function isEntityOn(entity: number | Entity): boolean;
+    function isEntityOn(entity: number | IEntity): boolean;
     /**
      * explosionType: see ADD_EXPLOSION
      *
@@ -8404,7 +8404,7 @@ export declare namespace fire {
      *
      * Hash: 0xB7DF150605EEDC9B | Since: 1207
      */
-    function addExplosionWithDamageCauser(entity: number | Entity, pos: Vector3, explosionType: number, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
+    function addExplosionWithDamageCauser(entity: number | IEntity, pos: Vector3, explosionType: number, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
     /**
      * Adds an explosion with vfx and entity as damage causer.
      * explosionFx: see ADD_EXPLOSION_WITH_USER_VFX
@@ -8412,7 +8412,7 @@ export declare namespace fire {
      *
      * Hash: 0x34AE85C7CA4857AA | Since: 1207
      */
-    function addExplosionWithUserVfxAndDamageCauser(entity: number | Entity, pos: Vector3, explosionType: number, explosionFx: number | string, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
+    function addExplosionWithUserVfxAndDamageCauser(entity: number | IEntity, pos: Vector3, explosionType: number, explosionFx: number | string, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
     /**
      * No comment provided
      *
@@ -8424,13 +8424,13 @@ export declare namespace fire {
      *
      * Hash: 0xA4454592DCF7C992 | Since: 1207
      */
-    function isEntityBeingDamagedBy(entity: number | Entity): boolean;
+    function isEntityBeingDamagedBy(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xCDC25355C0D65963 | Since: 1207
      */
-    function isEntityConsumedBy(entity: number | Entity): boolean;
+    function isEntityConsumedBy(entity: number | IEntity): boolean;
     /**
      * explosionType: see ADD_EXPLOSION
      *
@@ -8442,7 +8442,7 @@ export declare namespace fire {
      *
      * Hash: 0xAB7993BA61A4674F | Since: 1232
      */
-    function isPedShockingEventActive(ped: number | Ped): boolean;
+    function isPedShockingEventActive(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -8457,14 +8457,14 @@ export declare namespace flock {
      *
      * Hash: 0x1C1993824A396603 | Since: 1207
      */
-    function getAnimalTuningBoolParam(animal: number | Ped, index: number): boolean;
+    function getAnimalTuningBoolParam(animal: number | IPed, index: number): boolean;
     /**
      * index: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eAnimalTuningFloats
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/ANIMAL_TUNING_FLOAT_PARAMS
      *
      * Hash: 0x4BC3ECFDA0297E27 | Since: 1207
      */
-    function getAnimalTuningFloatParam(animal: number | Ped, index: number): number;
+    function getAnimalTuningFloatParam(animal: number | IPed, index: number): number;
     /**
      * No comment provided
      *
@@ -8476,25 +8476,25 @@ export declare namespace flock {
      *
      * Hash: 0x96AA1304D30E6BC3 | Since: 1355
      */
-    function resetAnimalTuningBoolParam(animal: number | Ped, index: number): void;
+    function resetAnimalTuningBoolParam(animal: number | IPed, index: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xE776A195488FC520 | Since: 1355
      */
-    function resetAnimalTuningFloatParam(animal: number | Ped, index: number): void;
+    function resetAnimalTuningFloatParam(animal: number | IPed, index: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9FF1E042FA597187 | Since: 1207
      */
-    function setAnimalTuningBoolParam(animal: number | Ped, index: number, value: boolean): void;
+    function setAnimalTuningBoolParam(animal: number | IPed, index: number, value: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xCBDA22C87977244F | Since: 1207
      */
-    function setAnimalTuningFloatParam(animal: number | Ped, index: number, value: number): void;
+    function setAnimalTuningFloatParam(animal: number | IPed, index: number, value: number): void;
     /**
      * No comment provided
      *
@@ -8668,13 +8668,13 @@ export declare namespace flock {
      *
      * Hash: 0x933E5D31A7D13069 | Since: 1207
      */
-    function addPedTo(ped: number | Ped): void;
+    function addPedTo(ped: number | IPed): void;
     /**
      * Clear the herd.
      *
      * Hash: 0x67A43EA3F6FE0076 | Since: 1207
      */
-    function clearHerd(herd: number | Entity): void;
+    function clearHerd(herd: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -8686,14 +8686,14 @@ export declare namespace flock {
      *
      * Hash: 0xE0961AED72642B80 | Since: 1207
      */
-    function deleteHerd(herd: number | Entity): void;
+    function deleteHerd(herd: number | IEntity): void;
     /**
      * Ped (horse) will run away from players and mounting will trigger them to buck until disabled.
      * Used for: REL_DOMESTICATED_ANIMAL
      *
      * Hash: 0x3B005FF0538ED2A9 | Since: 1207
      */
-    function getAnimalIsWild(ped: number | Ped): boolean;
+    function getAnimalIsWild(ped: number | IPed): boolean;
     /**
      * enum eAnimalRarityLevel
      * {
@@ -8705,7 +8705,7 @@ export declare namespace flock {
      *
      * Hash: 0xF8B48A361DC388AE | Since: 1207
      */
-    function getAnimalRarity(ped: number | Ped): number;
+    function getAnimalRarity(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -8717,25 +8717,25 @@ export declare namespace flock {
      *
      * Hash: 0x9E13ACC38BA8F9C3 | Since: 1207
      */
-    function isPedInHerd(herd: number | Entity, ped: number | Ped): boolean;
+    function isPedInHerd(herd: number | IEntity, ped: number | IPed): boolean;
     /**
      * Remove the ped from a herd.
      *
      * Hash: 0x408D1149C5E39C1E | Since: 1207
      */
-    function removeHerdPed(herd: number | Entity, ped: number | Ped): void;
+    function removeHerdPed(herd: number | IEntity, ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xAEB97D84CDF3C00B | Since: 1207
      */
-    function setAnimalIsWild(ped: number | Ped, toggle: boolean): void;
+    function setAnimalIsWild(ped: number | IPed, toggle: boolean): void;
     /**
      * rarityLevel: see _GET_ANIMAL_RARITY
      *
      * Hash: 0x8B6F0F59B1B99801 | Since: 1207
      */
-    function setAnimalRarity(ped: number | Ped, rarityLevel: number): void;
+    function setAnimalRarity(ped: number | IPed, rarityLevel: number): void;
 }
 export declare namespace gang {
     /**
@@ -8743,7 +8743,7 @@ export declare namespace gang {
      *
      * Hash: 0x901E0DC25080C8B9 | Since: 1207
      */
-    function networkGetId(player: number | string | Player): any;
+    function networkGetId(player: number | string | IPlayer): any;
     /**
      * No comment provided
      *
@@ -8779,13 +8779,13 @@ export declare namespace gang {
      *
      * Hash: 0x424B17A7DC5C90BC | Since: 1207
      */
-    function networkIsLeader(player: number | string | Player): boolean;
+    function networkIsLeader(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3F59FE6F37869576 | Since: 1207
      */
-    function networkIsInSame(player1: number | string | Player, player2: number | string | Player): boolean;
+    function networkIsInSame(player1: number | string | IPlayer, player2: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -8833,7 +8833,7 @@ export declare namespace gang {
      *
      * Hash: 0x6102830F764B3DE1 | Since: 1207
      */
-    function _0x6102830F764B3DE1(player: number | string | Player): boolean;
+    function _0x6102830F764B3DE1(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -8845,7 +8845,7 @@ export declare namespace gang {
      *
      * Hash: 0x7933754F260B428A | Since: 1207
      */
-    function _0x7933754F260B428A(player: number | string | Player): any;
+    function _0x7933754F260B428A(player: number | string | IPlayer): any;
     /**
      * No comment provided
      *
@@ -8893,7 +8893,7 @@ export declare namespace gang {
      *
      * Hash: 0xDA801F7F6A5278D3 | Since: 1207
      */
-    function _0xDA801F7F6A5278D3(player: number | string | Player): boolean;
+    function _0xDA801F7F6A5278D3(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -8941,7 +8941,7 @@ export declare namespace gang {
      *
      * Hash: 0x9BE7DCB22D32CCBE | Since: 1207
      */
-    function networkIsMember(gangId: any, player: number | string | Player): boolean;
+    function networkIsMember(gangId: any, player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -8953,13 +8953,13 @@ export declare namespace gang {
      *
      * Hash: 0x81FB74C83C2ED69F | Since: 1207
      */
-    function networkIsInMy(player: number | string | Player): boolean;
+    function networkIsInMy(player: number | string | IPlayer): boolean;
     /**
      * banTimeSeconds is 120 in R* Scripts
      *
      * Hash: 0xCD9E2D9BC52FD80F | Since: 1207
      */
-    function networkKickMember(player: number | string | Player, banTimeSeconds: number): void;
+    function networkKickMember(player: number | string | IPlayer, banTimeSeconds: number): void;
     /**
      * No comment provided
      *
@@ -9044,7 +9044,7 @@ export declare namespace graphics {
      *
      * Hash: 0x7C348310A6E2FB91 | Since: 1207
      */
-    function allowPickupLightSync(pickupObject: number | Object, allow: boolean): void;
+    function allowPickupLightSync(pickupObject: number | IObject, allow: boolean): void;
     /**
      * No comment provided
      *
@@ -9086,7 +9086,7 @@ export declare namespace graphics {
      *
      * Hash: 0x40866A418EB8EFDE | Since: 1207
      */
-    function attachTvAudioToEntity(entity: number | Entity): void;
+    function attachTvAudioToEntity(entity: number | IEntity): void;
     /**
      * Called together with FREE_MEMORY_FOR_LOW_QUALITY_PHOTO
      *
@@ -9427,7 +9427,7 @@ export declare namespace graphics {
      *
      * Hash: 0xFB8972BAE0013140 | Since: 1207
      */
-    function removeDecalsFromObject(obj: number | Object): void;
+    function removeDecalsFromObject(obj: number | IObject): void;
     /**
      * Removes all decals in range from a position, it includes the bullet holes, blood pools, petrol...
      *
@@ -9451,7 +9451,7 @@ export declare namespace graphics {
      *
      * Hash: 0x92884B4A49D81325 | Since: 1207
      */
-    function removeParticleFxFromEntity(entity: number | Entity): void;
+    function removeParticleFxFromEntity(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -9533,7 +9533,7 @@ export declare namespace graphics {
      *
      * Hash: 0x3C61B52B00848C26 | Since: 1207
      */
-    function setParticleFxAmbientColour(entity: number | Entity, r: number, g: number, b: number): void;
+    function setParticleFxAmbientColour(entity: number | IEntity, r: number, g: number, b: number): void;
     /**
      * No comment provided
      *
@@ -9613,7 +9613,7 @@ export declare namespace graphics {
      *
      * Hash: 0x7DFB49BCDB73089A | Since: 1207
      */
-    function setPickupLight(_object: number | Object, toggle: boolean): void;
+    function setPickupLight(_object: number | IObject, toggle: boolean): void;
     /**
      * Sets a flag defining whether or not script draw commands should continue being drawn behind the pause menu. This is usually used for draw commands that are used with a world render target.
      *
@@ -9685,13 +9685,13 @@ export declare namespace graphics {
      *
      * Hash: 0x8F90AB32E1944BDE | Since: 1207
      */
-    function startNetworkedParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startNetworkedParticleFxLoopedOnEntity(effectName: string, entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0x9C56621462FFE7A6 | Since: 1207
      */
-    function startNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
@@ -9703,7 +9703,7 @@ export declare namespace graphics {
      *
      * Hash: 0xE6CFE43937061143 | Since: 1207
      */
-    function startNetworkedParticleFxNonLoopedOnEntity(effectName: string, entity: number | Entity, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
+    function startNetworkedParticleFxNonLoopedOnEntity(effectName: string, entity: number | IEntity, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/graphics/ptfx/ptfx_assets_looped.lua
      *
@@ -9715,19 +9715,19 @@ export declare namespace graphics {
      *
      * Hash: 0xBD41E1440CE39800 | Since: 1207
      */
-    function startParticleFxLoopedOnEntity(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startParticleFxLoopedOnEntity(effectName: string, entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0xD3BA6EC7F2FBD5E9 | Since: 1207
      */
-    function startParticleFxLoopedOnEntityBone(effectName: string, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startParticleFxLoopedOnEntityBone(effectName: string, entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0xE689C1B1432BB8AF | Since: 1207
      */
-    function startParticleFxLoopedOnPedBone(effectName: string, ped: number | Ped, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+    function startParticleFxLoopedOnPedBone(effectName: string, ped: number | IPed, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/graphics/ptfx/ptfx_assets_non_looped.lua
      *
@@ -9739,13 +9739,13 @@ export declare namespace graphics {
      *
      * Hash: 0xFF4C64C513388C12 | Since: 1207
      */
-    function startParticleFxNonLoopedOnEntity(effectName: string, entity: number | Entity, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
+    function startParticleFxNonLoopedOnEntity(effectName: string, entity: number | IEntity, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3FAA72BD940C3AC0 | Since: 1207
      */
-    function startParticleFxNonLoopedOnPedBone(effectName: string, ped: number | Ped, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
+    function startParticleFxNonLoopedOnPedBone(effectName: string, ped: number | IPed, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
     /**
      * No comment provided
      *
@@ -9769,7 +9769,7 @@ export declare namespace graphics {
      *
      * Hash: 0xBDBACB52A03CC760 | Since: 1207
      */
-    function updateLightsOnEntity(entity: number | Entity): void;
+    function updateLightsOnEntity(entity: number | IEntity): void;
     /**
      * fxName: see data_0/data/effects/ptfx/fxlists/
      *
@@ -9908,7 +9908,7 @@ export declare namespace graphics {
      *
      * Hash: 0x4FB67D172C4476F3 | Since: 1207
      */
-    function _0x4FB67D172C4476F3(entity: number | Entity): void;
+    function _0x4FB67D172C4476F3(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -10071,7 +10071,7 @@ export declare namespace graphics {
      *
      * Hash: 0xC06F2F45A73EABCD | Since: 1311
      */
-    function _0xC06F2F45A73EABCD(entity: number | Entity): void;
+    function _0xC06F2F45A73EABCD(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -10220,13 +10220,13 @@ export declare namespace graphics {
      *
      * Hash: 0xDFCE8CE9F3EBE93F | Since: 1207
      */
-    function addBloodPoolsForPed(ped: number | Ped): void;
+    function addBloodPoolsForPed(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xC349EE1E6EFA494B | Since: 1207
      */
-    function addBloodPoolsForPedWithParams(ped: number | Ped, size: number): void;
+    function addBloodPoolsForPedWithParams(ped: number | IPed, size: number): void;
     /**
      * https://i.imgur.com/rPITUCV.jpg
      * More customizable and more like quadrants
@@ -10251,13 +10251,13 @@ export declare namespace graphics {
      *
      * Hash: 0xC6F81FCD15350323 | Since: 1207
      */
-    function addEntityToEntityMask(entity: number | Entity, mask: number): void;
+    function addEntityToEntityMask(entity: number | IEntity, mask: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x958DEBD9353C0935 | Since: 1207
      */
-    function addEntityToEntityMaskWithIntensity(entity: number | Entity, mask: number, intensity: number): void;
+    function addEntityToEntityMaskWithIntensity(entity: number | IEntity, mask: number, intensity: number): void;
     /**
      * Adds Vegetation Blocking Zone, Added Snow Flattening veg mod Zone
      * Returns veg modifier handle
@@ -10367,7 +10367,7 @@ export declare namespace graphics {
      *
      * Hash: 0x50C14328119E1DD1 | Since: 1207
      */
-    function blockPickupObjectLight(pickupObject: number | Object, toggle: boolean): void;
+    function blockPickupObjectLight(pickupObject: number | IObject, toggle: boolean): void;
     /**
      * p1: 0.3f in R* Scripts
      *
@@ -10449,7 +10449,7 @@ export declare namespace graphics {
      *
      * Hash: 0xE8A8378BF651079C | Since: 1207
      */
-    function getEntityMaskLayers(entity: number | Entity): [boolean, number, number, number, number];
+    function getEntityMaskLayers(entity: number | IEntity): [boolean, number, number, number, number];
     /**
      * Always returns 200.
      *
@@ -10515,7 +10515,7 @@ export declare namespace graphics {
      *
      * Hash: 0xD9C24F53631F2372 | Since: 1207
      */
-    function pedshotGeneratePersonaPhoto(texture: string, ped: number | Ped, playerSlot: number): boolean;
+    function pedshotGeneratePersonaPhoto(texture: string, ped: number | IPed, playerSlot: number): boolean;
     /**
      * No comment provided
      *
@@ -10539,7 +10539,7 @@ export declare namespace graphics {
      *
      * Hash: 0x56A786E87FF53478 | Since: 1207
      */
-    function removeEntityFromEntityMask(entity: number | Entity): void;
+    function removeEntityFromEntityMask(entity: number | IEntity): void;
     /**
      * Used for script function RPG_GLOBAL_STATS__PRIVATE__DEACTIVATE_STAT_FLAG - Inspiration Aura unequip
      *
@@ -10589,32 +10589,32 @@ export declare namespace graphics {
      *
      * Hash: 0xE92012611461A42A | Since: 1207
      */
-    function setEntityMaskLayers(entity: number | Entity): [number, number, number, number];
+    function setEntityMaskLayers(entity: number | IEntity): [number, number, number, number];
     /**
      * Only used in guama1 R* SP Script while spawning the ship
      * _SET_ENTITY_QUATERNION_* - SET_ENTITY_RENDER_*
      *
      * Hash: 0xC38B4952B728397A | Since: 1207
      */
-    function setEntityRenderGuarmaShip(vehicle: number | Vehicle, toggle: boolean): void;
+    function setEntityRenderGuarmaShip(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * https://gfycat.com/meagerfaireyra
      *
      * Hash: 0x6EC2A67962296F49 | Since: 1207
      */
-    function setLightsColorForEntity(entity: number | Entity, red: number, green: number, blue: number): void;
+    function setLightsColorForEntity(entity: number | IEntity, red: number, green: number, blue: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x07C0F87AAC57F2E4 | Since: 1207
      */
-    function setLightsIntensityForEntity(entity: number | Entity, intensity: number): void;
+    function setLightsIntensityForEntity(entity: number | IEntity, intensity: number): void;
     /**
      * type must be less than or equal to 20
      *
      * Hash: 0xAB72C67163DC4DB4 | Since: 1207
      */
-    function setLightsTypeForEntity(entity: number | Entity, _type: number): void;
+    function setLightsTypeForEntity(entity: number | IEntity, _type: number): void;
     /**
      * _SET_PARTICLE_FX_LOOPED_FA* - _SET_PARTICLE_FX_LOOPED_OF*
      *
@@ -10632,7 +10632,7 @@ export declare namespace graphics {
      *
      * Hash: 0x72E30372E7CC4415 | Since: 1207
      */
-    function setPearlescentFxEnabled(_object: number | Object, toggle: boolean): void;
+    function setPearlescentFxEnabled(_object: number | IObject, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -10668,7 +10668,7 @@ export declare namespace graphics {
      *
      * Hash: 0x75D568607909333E | Since: 1232
      */
-    function setPlayerAppearInPhoto(player: number | string | Player): void;
+    function setPlayerAppearInPhoto(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -10716,7 +10716,7 @@ export declare namespace graphics {
      *
      * Hash: 0xC695870B8A149B96 | Since: 1207
      */
-    function startParticleFxNonLoopedOnPedBone2(effectName: string, ped: number | Ped, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
+    function startParticleFxNonLoopedOnPedBone2(effectName: string, ped: number | IPed, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
     /**
      * Resets the exposure to the value when exposure lock was enabled
      *
@@ -10754,7 +10754,7 @@ export declare namespace hud {
      *
      * Hash: 0x53CB4B502E1C57EA | Since: 1207
      */
-    function createFakeMpGamerTag(ped: number | Ped, username: string, pointedClanTag: boolean, isRockstarClan: boolean, clanTag: string, clanFlag: number): number;
+    function createFakeMpGamerTag(ped: number | IPed, username: string, pointedClanTag: boolean, isRockstarClan: boolean, clanTag: string, clanFlag: number): number;
     /**
      * No comment provided
      *
@@ -11125,13 +11125,13 @@ export declare namespace hud {
      *
      * Hash: 0xD877AF112AD2B41B | Since: 1207
      */
-    function createMpGamerTag(player: number | string | Player, username: string, pointedClanTag: boolean, isRockstarClan: boolean, clanTag: string, clanFlag: number): number;
+    function createMpGamerTag(player: number | string | IPlayer, username: string, pointedClanTag: boolean, isRockstarClan: boolean, clanTag: string, clanFlag: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xE961BF23EAB76B12 | Since: 1207
      */
-    function createMpGamerTagOnEntity(entity: number | Entity, text: string): number;
+    function createMpGamerTagOnEntity(entity: number | IEntity, text: string): number;
     /**
      * Old name: _DISPLAY_HUD_COMPONENT
      *
@@ -11237,7 +11237,7 @@ export declare namespace hud {
      *
      * Hash: 0x502E1591A504F843 | Since: 1207
      */
-    function isMpGamerTagActiveOnEntity(gamerTagId: number, entity: number | Entity): boolean;
+    function isMpGamerTagActiveOnEntity(gamerTagId: number, entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -11496,7 +11496,7 @@ export declare namespace hud {
      *
      * Hash: 0xB796970BD125FCE8 | Since: 1207
      */
-    function uiPromptGetGroupIdForTargetEntity(entity: number | Entity): number;
+    function uiPromptGetGroupIdForTargetEntity(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -11667,7 +11667,7 @@ export declare namespace hud {
      *
      * Hash: 0x315C81D760609108 | Since: 1207
      */
-    function uiPromptSetAmbientGroupThisFrame(entity: number | Entity, p4: number | string, name: string): any;
+    function uiPromptSetAmbientGroupThisFrame(entity: number | IEntity, p4: number | string, name: string): any;
     /**
      * attribute: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eUIPromptAttribute
      *
@@ -11823,7 +11823,7 @@ export declare namespace hud {
      *
      * Hash: 0x530A428705BE5DEF | Since: 1207
      */
-    function uiPromptSetPromptPriorityPreference(ped: number | Ped): void;
+    function uiPromptSetPromptPriorityPreference(ped: number | IPed): void;
     /**
      * This returns an id that can be used with 0x6095358C4142932A.
      *
@@ -11929,31 +11929,31 @@ export declare namespace ik {
      *
      * Hash: 0x0B9F7A01EC50448D | Since: 1207
      */
-    function _0x0B9F7A01EC50448D(ped: number | Ped): any;
+    function _0x0B9F7A01EC50448D(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x6098139150DCC745 | Since: 1207
      */
-    function _0x6098139150DCC745(ped: number | Ped): boolean;
+    function _0x6098139150DCC745(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x873C792E07A32C8B | Since: 1207
      */
-    function _0x873C792E07A32C8B(ped1: number | Ped, ped2: number | Ped): void;
+    function _0x873C792E07A32C8B(ped1: number | IPed, ped2: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x66F9EB44342BB4C5 | Since: 1207
      */
-    function inverseKinematicsRequestLookAt(ped: number | Ped): any;
+    function inverseKinematicsRequestLookAt(ped: number | IPed): any;
     /**
      * Seems to disable IK on ped
      *
      * Hash: 0x0EABF182FBB63D72 | Since: 1207
      */
-    function inverseKinematicsSetDisabledForPed(ped: number | Ped): void;
+    function inverseKinematicsSetDisabledForPed(ped: number | IPed): void;
 }
 export declare namespace interaction {
     /**
@@ -12016,7 +12016,7 @@ export declare namespace interior {
      *
      * Hash: 0xA1762D5BBFCA13A8 | Since: 1207
      */
-    function clearRoomForEntity(entity: number | Entity): void;
+    function clearRoomForEntity(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -12040,7 +12040,7 @@ export declare namespace interior {
      *
      * Hash: 0xBC29A9894C976945 | Since: 1207
      */
-    function forceRoomForEntity(entity: number | Entity, interior: number, roomHashKey: number | string): void;
+    function forceRoomForEntity(entity: number | IEntity, interior: number, roomHashKey: number | string): void;
     /**
      * No comment provided
      *
@@ -12076,7 +12076,7 @@ export declare namespace interior {
      *
      * Hash: 0xB417689857646F61 | Since: 1207
      */
-    function getFromEntity(entity: number | Entity): number;
+    function getFromEntity(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -12094,13 +12094,13 @@ export declare namespace interior {
      *
      * Hash: 0x27D7B6F79E1F4603 | Since: 1207
      */
-    function getKeyForEntityInRoom(entity: number | Entity): number;
+    function getKeyForEntityInRoom(entity: number | IEntity): number;
     /**
      * Gets the room hash key from the room that the specified entity is in. Each room in every interior has a unique key. Returns 0 if the entity is outside.
      *
      * Hash: 0x076E46E0EB52AFC6 | Since: 1207
      */
-    function getRoomKeyFromEntity(entity: number | Entity): number;
+    function getRoomKeyFromEntity(entity: number | IEntity): number;
     /**
      * Returns true if the collision at the specified coords is marked as being outside (false if there's an interior)
      *
@@ -12142,7 +12142,7 @@ export declare namespace interior {
      *
      * Hash: 0x5BD616735F16BF5C | Since: 1207
      */
-    function retainEntityIn(entity: number | Entity, interior: number): void;
+    function retainEntityIn(entity: number | IEntity, interior: number): void;
     /**
      * Actually returns void in IDA but the script header defines a BOOL return type
      *
@@ -12237,7 +12237,7 @@ export declare namespace inventory {
      *
      * Hash: 0x46DB71883EE9D5AF | Since: 1207
      */
-    function _0x46DB71883EE9D5AF(data: any, stats: string, ped: number | Ped): [number, any];
+    function _0x46DB71883EE9D5AF(data: any, stats: string, ped: number | IPed): [number, any];
     /**
      * Only used in R* SP Scripts
      *
@@ -12268,7 +12268,7 @@ export declare namespace inventory {
      *
      * Hash: 0x951847CEF3D829FF | Since: 1207
      */
-    function _0x951847CEF3D829FF(ped: number | Ped): any;
+    function _0x951847CEF3D829FF(ped: number | IPed): any;
     /**
      * p1 (out) and p2 (in) are both script arrays?
      * item: can be a component item, see SHOP_CATALOG_BUILD_LIST_OF_WEAPON_COMPONENTS
@@ -12288,7 +12288,7 @@ export declare namespace inventory {
      *
      * Hash: 0x9E58207B194488AC | Since: 1207
      */
-    function _0x9E58207B194488AC(ped: number | Ped): void;
+    function _0x9E58207B194488AC(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -12340,7 +12340,7 @@ export declare namespace inventory {
      *
      * Hash: 0x75CFAC49301E134E | Since: 1207
      */
-    function applyWeaponStatsToEntry(entryId: number | string, weapon: number | string, ped: number | Ped): void;
+    function applyWeaponStatsToEntry(entryId: number | string, weapon: number | string, ped: number | IPed): void;
     /**
      * inventoryId: see _INVENTORY_GET_PED_INVENTORY_ID
      *
@@ -12446,7 +12446,7 @@ export declare namespace inventory {
      *
      * Hash: 0x9D21B185ABC2DBC5 | Since: 1207
      */
-    function getCatalogItemInspectionStatsEntry(entryId: number, name: string, unk1: number, playerid: number | string | Player): number;
+    function getCatalogItemInspectionStatsEntry(entryId: number, name: string, unk1: number, playerid: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -12484,7 +12484,7 @@ export declare namespace inventory {
      *
      * Hash: 0x13D234A2A3F66E63 | Since: 1207
      */
-    function getInventoryIdFromPed(ped: number | Ped): number;
+    function getInventoryIdFromPed(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -13250,7 +13250,7 @@ export declare namespace itemset {
      *
      * Hash: 0xABE74510883C7950 | Since: 1207
      */
-    function addTo(entity: number | Entity, itemset: any): boolean;
+    function addTo(entity: number | IEntity, itemset: any): boolean;
     /**
      * No comment provided
      *
@@ -13292,7 +13292,7 @@ export declare namespace itemset {
      *
      * Hash: 0xD1503C2EE2FE688C | Since: 1207
      */
-    function isIn(entity: number | Entity, itemset: any): boolean;
+    function isIn(entity: number | IEntity, itemset: any): boolean;
     /**
      * No comment provided
      *
@@ -13304,7 +13304,7 @@ export declare namespace itemset {
      *
      * Hash: 0xC5BAA432B429DC24 | Since: 1207
      */
-    function removeFrom(entity: number | Entity, itemset: any): void;
+    function removeFrom(entity: number | IEntity, itemset: any): void;
     /**
      * No comment provided
      *
@@ -13318,134 +13318,134 @@ export declare namespace law {
      *
      * Hash: 0x0E3BDEED21BEB945 | Since: 1207
      */
-    function addBounty(player: number | string | Player, itemValueAmount: number): void;
+    function addBounty(player: number | string | IPlayer, itemValueAmount: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x69E181772886F48B | Since: 1207
      */
-    function areWitnessesActive(player: number | string | Player): boolean;
+    function areWitnessesActive(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC76F252371150D9A | Since: 1207
      */
-    function clearBounty(player: number | string | Player): void;
+    function clearBounty(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xBCC6DC59E32A2BDC | Since: 1207
      */
-    function clearPlayerPastCrimes(player: number | string | Player): void;
+    function clearPlayerPastCrimes(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x062B4A4A3396351D | Since: 1207
      */
-    function clearWantedScore(player: number | string | Player): void;
+    function clearWantedScore(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x54310AAB97B92816 | Since: 1207
      */
-    function getBounty(player: number | string | Player): number;
+    function getBounty(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x532C5FDDB986EE5C | Since: 1207
      */
-    function getPlayerRegisteredCrime(player: number | string | Player): [boolean, number];
+    function getPlayerRegisteredCrime(player: number | string | IPlayer): [boolean, number];
     /**
      * No comment provided
      *
      * Hash: 0xDD5FD601481F648B | Since: 1207
      */
-    function getWantedScore(player: number | string | Player): number;
+    function getWantedScore(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xAD401C63158ACBAA | Since: 1207
      */
-    function isIncidentActive(player: number | string | Player): boolean;
+    function isIncidentActive(player: number | string | IPlayer): boolean;
     /**
      * Returns amount of suppressed crimes to be used later in the function MPINTRO_CRIME_MONITOR_MAINTAIN
      *
      * Hash: 0xC08E804C91F47C80 | Since: 1207
      */
-    function numCrimesSuppressed(player: number | string | Player, crimeType: number | string): number;
+    function numCrimesSuppressed(player: number | string | IPlayer, crimeType: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0x2728C77FBC4B9796 | Since: 1207
      */
-    function resetWantedForNewIncident(player: number | string | Player): void;
+    function resetWantedForNewIncident(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x093A9D1F72DF0D19 | Since: 1207
      */
-    function setBounty(player: number | string | Player, amount: number): void;
+    function setBounty(player: number | string | IPlayer, amount: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xDE5FAA741A781F73 | Since: 1207
      */
-    function setDisableDisturbanceCrimes(player: number | string | Player): void;
+    function setDisableDisturbanceCrimes(player: number | string | IPlayer): void;
     /**
      * Default range is 1.0f
      *
      * Hash: 0xFEC85339AACA2A35 | Since: 1207
      */
-    function setSenseRangeModifier(player: number | string | Player, range: number): void;
+    function setSenseRangeModifier(player: number | string | IPlayer, range: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xE0FA74AA3CCE650B | Since: 1207
      */
-    function setPlayerArrestedInRegion(player: number | string | Player, lawRegionHash: number | string): void;
+    function setPlayerArrestedInRegion(player: number | string | IPlayer, lawRegionHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x73BAD7B2F2DB50DE | Since: 1207
      */
-    function setPlayerTurnedInBountyInRegion(player: number | string | Player, lawRegionHash: number | string): void;
+    function setPlayerTurnedInBountyInRegion(player: number | string | IPlayer, lawRegionHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x362086B911657B1A | Since: 1207
      */
-    function setPostponeDisturbanceCrimesDuringCombat(player: number | string | Player): void;
+    function setPostponeDisturbanceCrimesDuringCombat(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xA80FF73F772ACF6A | Since: 1207
      */
-    function setWantedScore(player: number | string | Player, intensity: number): void;
+    function setWantedScore(player: number | string | IPlayer, intensity: number): void;
     /**
      * crimeType: see _REPORT_CRIME
      *
      * Hash: 0x785177E4D57D7389 | Since: 1207
      */
-    function suppressCrimeThisFrame(player: number | string | Player, crimeType: number | string): void;
+    function suppressCrimeThisFrame(player: number | string | IPlayer, crimeType: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x00DB0BC05E3FAA4E | Since: 1207
      */
-    function _0x00DB0BC05E3FAA4E(ped: number | Ped, bitset: number): void;
+    function _0x00DB0BC05E3FAA4E(ped: number | IPed, bitset: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x018F30D762E62DF8 | Since: 1207
      */
-    function _0x018F30D762E62DF8(ped: number | Ped): [any, any];
+    function _0x018F30D762E62DF8(ped: number | IPed): [any, any];
     /**
      * Used in SP only, called together with 0x55F37F5F3F2475E1 & CLEAR_WANTED_SCORE
      * _REPORT_*
      *
      * Hash: 0x07E8B8B20570271C | Since: 1207
      */
-    function _0x07E8B8B20570271C(player: number | string | Player): void;
+    function _0x07E8B8B20570271C(player: number | string | IPlayer): void;
     /**
      * Only used in net_fetch R* Script
      *
@@ -13470,19 +13470,19 @@ export declare namespace law {
      *
      * Hash: 0x0EAF918F751F27BA | Since: 1207
      */
-    function _0x0EAF918F751F27BA(ped: number | Ped): boolean;
+    function _0x0EAF918F751F27BA(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0F230DE0DDBE3649 | Since: 1207
      */
-    function _0x0F230DE0DDBE3649(player: number | string | Player): boolean;
+    function _0x0F230DE0DDBE3649(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x148E7AC8141C9E64 | Since: 1207
      */
-    function _0x148E7AC8141C9E64(player: number | string | Player): number;
+    function _0x148E7AC8141C9E64(player: number | string | IPlayer): number;
     /**
      * Params: p0 either 0, 1 or -1 in R* Scripts
      * Set to 0 called together with _SUPPRESS_CRIME
@@ -13501,20 +13501,20 @@ export declare namespace law {
      *
      * Hash: 0x21213B833EF4DAE7 | Since: 1207
      */
-    function _0x21213B833EF4DAE7(player: number | string | Player, ped: number | Ped): Vector3;
+    function _0x21213B833EF4DAE7(player: number | string | IPlayer, ped: number | IPed): Vector3;
     /**
      * Used in SP only
      * _REPORT_*
      *
      * Hash: 0x22741652985C84D0 | Since: 1207
      */
-    function _0x22741652985C84D0(player: number | string | Player, lawRegionHash: number | string): void;
+    function _0x22741652985C84D0(player: number | string | IPlayer, lawRegionHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x26934083D3F2579C | Since: 1207
      */
-    function _0x26934083D3F2579C(player: number | string | Player): boolean;
+    function _0x26934083D3F2579C(player: number | string | IPlayer): boolean;
     /**
      * Only used in R* Script fm_mission_controller
      * _CLEAR_WANTED_*
@@ -13533,7 +13533,7 @@ export declare namespace law {
      *
      * Hash: 0x318F0F9A4426CFA2 | Since: 1207
      */
-    function _0x318F0F9A4426CFA2(ped: number | Ped): [any, any];
+    function _0x318F0F9A4426CFA2(ped: number | IPed): [any, any];
     /**
      * No comment provided
      *
@@ -13545,7 +13545,7 @@ export declare namespace law {
      *
      * Hash: 0x3738B784DDD35CC6 | Since: 1207
      */
-    function _0x3738B784DDD35CC6(player: number | string | Player): boolean;
+    function _0x3738B784DDD35CC6(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -13557,7 +13557,7 @@ export declare namespace law {
      *
      * Hash: 0x390710D2DAFA6BFF | Since: 1207
      */
-    function _0x390710D2DAFA6BFF(player: number | string | Player): void;
+    function _0x390710D2DAFA6BFF(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -13569,37 +13569,37 @@ export declare namespace law {
      *
      * Hash: 0x40851BCC33ACD9AB | Since: 1207
      */
-    function _0x40851BCC33ACD9AB(ped: number | Ped): boolean;
+    function _0x40851BCC33ACD9AB(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x522F74636DF10201 | Since: 1207
      */
-    function _0x522F74636DF10201(player: number | string | Player, itemSet: any): void;
+    function _0x522F74636DF10201(player: number | string | IPlayer, itemSet: any): void;
     /**
      * Only used in R* SP Scripts
      *
      * Hash: 0x5E6F375CA101C108 | Since: 1207
      */
-    function _0x5E6F375CA101C108(player: number | string | Player): void;
+    function _0x5E6F375CA101C108(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x61B98367D93F012F | Since: 1207
      */
-    function _0x61B98367D93F012F(player: number | string | Player): void;
+    function _0x61B98367D93F012F(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x6ABC50979655BEE7 | Since: 1207
      */
-    function _0x6ABC50979655BEE7(player: number | string | Player): number;
+    function _0x6ABC50979655BEE7(player: number | string | IPlayer): number;
     /**
      * Only used in shoprobberies
      *
      * Hash: 0x7351DA734F989F4E | Since: 1207
      */
-    function _0x7351DA734F989F4E(entity: number | Entity): boolean;
+    function _0x7351DA734F989F4E(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -13618,7 +13618,7 @@ export declare namespace law {
      *
      * Hash: 0x7FC667F6DDFBCDCC | Since: 1207
      */
-    function _0x7FC667F6DDFBCDCC(player: number | string | Player): number;
+    function _0x7FC667F6DDFBCDCC(player: number | string | IPlayer): number;
     /**
      * Only used in rcm_gunslinger1_1 R* Script: p0 = 0
      *
@@ -13630,25 +13630,25 @@ export declare namespace law {
      *
      * Hash: 0x856CE8FDE2416602 | Since: 1207
      */
-    function _0x856CE8FDE2416602(ped: number | Ped): boolean;
+    function _0x856CE8FDE2416602(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x89E005B1662F6E48 | Since: 1207
      */
-    function _0x89E005B1662F6E48(player: number | string | Player): boolean;
+    function _0x89E005B1662F6E48(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x95878B13E272EF1F | Since: 1207
      */
-    function _0x95878B13E272EF1F(entity: number | Entity, ped: number | Ped, pos: Vector3, crimeType: number | string): any;
+    function _0x95878B13E272EF1F(entity: number | IEntity, ped: number | IPed, pos: Vector3, crimeType: number | string): any;
     /**
      * Only used in loanshark_miner1 R* Script: name = ANNESBURG_MINES
      *
      * Hash: 0x9772395CC73E8D1F | Since: 1207
      */
-    function _0x9772395CC73E8D1F(ped: number | Ped, name: string): void;
+    function _0x9772395CC73E8D1F(ped: number | IPed, name: string): void;
     /**
      * No comment provided
      *
@@ -13660,7 +13660,7 @@ export declare namespace law {
      *
      * Hash: 0x9945A3E2528A02E8 | Since: 1207
      */
-    function _0x9945A3E2528A02E8(player: number | string | Player): boolean;
+    function _0x9945A3E2528A02E8(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -13678,13 +13678,13 @@ export declare namespace law {
      *
      * Hash: 0x9C8A2BF37E966464 | Since: 1207
      */
-    function _0x9C8A2BF37E966464(player: number | string | Player, itemSet: any): void;
+    function _0x9C8A2BF37E966464(player: number | string | IPlayer, itemSet: any): void;
     /**
      * No comment provided
      *
      * Hash: 0x9D5C9A5A3321B128 | Since: 1207
      */
-    function _0x9D5C9A5A3321B128(player: number | string | Player): boolean;
+    function _0x9D5C9A5A3321B128(player: number | string | IPlayer): boolean;
     /**
      * Only used in shoprobberies R* Scripts
      *
@@ -13696,7 +13696,7 @@ export declare namespace law {
      *
      * Hash: 0xB527099D1E1EED49 | Since: 1207
      */
-    function _0xB527099D1E1EED49(player: number | string | Player): [boolean, number];
+    function _0xB527099D1E1EED49(player: number | string | IPlayer): [boolean, number];
     /**
      * Called together with REPORT_POLICE_SPOTTED_PLAYER
      *
@@ -13708,7 +13708,7 @@ export declare namespace law {
      *
      * Hash: 0xC0DF161950FB101E | Since: 1207
      */
-    function _0xC0DF161950FB101E(ped: number | Ped): boolean;
+    function _0xC0DF161950FB101E(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -13738,20 +13738,20 @@ export declare namespace law {
      *
      * Hash: 0xCBFB4951F2E3934C | Since: 1207
      */
-    function _0xCBFB4951F2E3934C(player: number | string | Player): any;
+    function _0xCBFB4951F2E3934C(player: number | string | IPlayer): any;
     /**
      * No comment provided
      *
      * Hash: 0xD6C0A8C7C0B2F82C | Since: 1207
      */
-    function _0xD6C0A8C7C0B2F82C(player: number | string | Player): void;
+    function _0xD6C0A8C7C0B2F82C(player: number | string | IPlayer): void;
     /**
      * Only used in R* SP Scripts
      * Params: p2 either 1 or 2
      *
      * Hash: 0xD7494DED50C6EF52 | Since: 1207
      */
-    function _0xD7494DED50C6EF52(player: number | string | Player, crimeType: number | string): void;
+    function _0xD7494DED50C6EF52(player: number | string | IPlayer, crimeType: number | string): void;
     /**
      * Only used in R* SP Scripts
      * Params: p1 = true, p2 = false
@@ -13782,13 +13782,13 @@ export declare namespace law {
      *
      * Hash: 0xE083BEDA81709891 | Since: 1207
      */
-    function _0xE083BEDA81709891(player: number | string | Player): number;
+    function _0xE083BEDA81709891(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xE4D6E45F491A66CB | Since: 1207
      */
-    function _0xE4D6E45F491A66CB(player: number | string | Player): any;
+    function _0xE4D6E45F491A66CB(player: number | string | IPlayer): any;
     /**
      * Seems to disable lawmen guarding behaviors (like during a region lockdown). Must be called every frame.
      * Only used in R* SP Scripts, mostly used in train_fast_travel_core
@@ -13808,13 +13808,13 @@ export declare namespace law {
      *
      * Hash: 0xE9EB79CBF9C0F58A | Since: 1207
      */
-    function _0xE9EB79CBF9C0F58A(player: number | string | Player): number;
+    function _0xE9EB79CBF9C0F58A(player: number | string | IPlayer): number;
     /**
      * _SET_C* - _SET_D*
      *
      * Hash: 0xEDFC6C1FD1C964F5 | Since: 1207
      */
-    function _0xEDFC6C1FD1C964F5(player: number | string | Player, crimeType: number | string, bounty: number): void;
+    function _0xEDFC6C1FD1C964F5(player: number | string | IPlayer, crimeType: number | string, bounty: number): void;
     /**
      * No comment provided
      *
@@ -13832,13 +13832,13 @@ export declare namespace law {
      *
      * Hash: 0xFFEBE5AA96BC2E4E | Since: 1207
      */
-    function _0xFFEBE5AA96BC2E4E(ped: number | Ped, crimeType: number | string): any;
+    function _0xFFEBE5AA96BC2E4E(ped: number | IPed, crimeType: number | string): any;
     /**
      * No comment provided
      *
      * Hash: 0x10827B5A0AAC56A7 | Since: 1207
      */
-    function addWitnessResponse(player: number | string | Player, crimeType: number | string, pedGroup: number | Ped): void;
+    function addWitnessResponse(player: number | string | IPlayer, crimeType: number | string, pedGroup: number | IPed): void;
     /**
      * Only used in rcm_homerob00 R* Script
      *
@@ -13850,7 +13850,7 @@ export declare namespace law {
      *
      * Hash: 0xF0FBFB9AB15F7734 | Since: 1207
      */
-    function areInvestigatorsActive(player: number | string | Player, areInvestigatorsActive: boolean): boolean;
+    function areInvestigatorsActive(player: number | string | IPlayer, areInvestigatorsActive: boolean): boolean;
     /**
      * Only used in trainrobbery_ambient R* Script
      *
@@ -13862,7 +13862,7 @@ export declare namespace law {
      *
      * Hash: 0x0BB6DE7D23C60626 | Since: 1207
      */
-    function areWitnessesPending(player: number | string | Player): boolean;
+    function areWitnessesPending(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -13874,7 +13874,7 @@ export declare namespace law {
      *
      * Hash: 0x0D4B77E862475ED3 | Since: 1311
      */
-    function createGuardZoneForEntity(guardZoneName: string, entity: number | Entity, pos: Vector3): boolean;
+    function createGuardZoneForEntity(guardZoneName: string, entity: number | IEntity, pos: Vector3): boolean;
     /**
      * dispatchResponseHash: see common/data/dispatchresponses/..
      *
@@ -13922,25 +13922,25 @@ export declare namespace law {
      *
      * Hash: 0x259CE340A8738814 | Since: 1207
      */
-    function getHudPlayerCrimeType(player: number | string | Player): number;
+    function getHudPlayerCrimeType(player: number | string | IPlayer): number;
     /**
      * Returns the amount of time (probably in game minutes) since last seen by the law / left the wanted radius
      *
      * Hash: 0x717DA2281DF90855 | Since: 1207
      */
-    function getTimeSinceLastSeenBy(player: number | string | Player): number;
+    function getTimeSinceLastSeenBy(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xD743C4293F47AFAD | Since: 1207
      */
-    function isGuardPedInvestigating(ped: number | Ped): boolean;
+    function isGuardPedInvestigating(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF0B67BAD53C35BD9 | Since: 1207
      */
-    function witnessResponseTask(pedGroup1: number | Ped, ped: number | Ped, pedGroup2: number | Ped, pos: Vector3, crimeType: number | string): boolean;
+    function witnessResponseTask(pedGroup1: number | IPed, ped: number | IPed, pedGroup2: number | IPed, pos: Vector3, crimeType: number | string): boolean;
     /**
      * p0 is always BOUNTYHUNTERSGLOBALCOOLDOWN in R* scripts
      *
@@ -14019,13 +14019,13 @@ export declare namespace law {
      *
      * Hash: 0xF60386770878A98F | Since: 1207
      */
-    function reportCrime(player: number | string | Player, crimeType: number | string, bounty: number, entity: number | Entity, isKnownSuspect: boolean): void;
+    function reportCrime(player: number | string | IPlayer, crimeType: number | string, bounty: number, entity: number | IEntity, isKnownSuspect: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x9C4352134B2835FB | Since: 1207
      */
-    function reportPlayerDispatchResponseOverride(player: number | string | Player, dispatchResponseHash: number | string): void;
+    function reportPlayerDispatchResponseOverride(player: number | string | IPlayer, dispatchResponseHash: number | string): void;
     /**
      * No comment provided
      *
@@ -14116,7 +14116,7 @@ export declare namespace law {
      *
      * Hash: 0x9BBDCB8DF789EBC1 | Since: 1207
      */
-    function setRbsVolume(player: number | string | Player, p1: number | string): void;
+    function setRbsVolume(player: number | string | IPlayer, p1: number | string): void;
     /**
      * enum eLawRegion : Hash
      * {
@@ -14174,13 +14174,13 @@ export declare namespace law {
      *
      * Hash: 0x4752F68EB7F2D280 | Since: 1207
      */
-    function setRegion(player: number | string | Player, lawRegionHash: number | string, stateHash: number | string): void;
+    function setRegion(player: number | string | IPlayer, lawRegionHash: number | string, stateHash: number | string): void;
     /**
      * behaviour: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CLawBehavior__Flags
      *
      * Hash: 0x819ADD5EF1742F47 | Since: 1207
      */
-    function setPedBehaviour(ped: number | Ped, behaviour: number): void;
+    function setPedBehaviour(ped: number | IPed, behaviour: number): void;
 }
 export declare namespace localization {
     /**
@@ -14250,7 +14250,7 @@ export declare namespace map {
      *
      * Hash: 0x23F74C2FDA6E7C61 | Since: 1207
      */
-    function blipAddForEntity(blipHash: number | string, entity: number | Entity): number;
+    function blipAddForEntity(blipHash: number | string, entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -14271,13 +14271,13 @@ export declare namespace map {
      *
      * Hash: 0x662D364ABF16DE2F | Since: 1207
      */
-    function blipAddModifier(blip: number | Blip, modifierHash: number | string): boolean;
+    function blipAddModifier(blip: number | IBlip, modifierHash: number | string): boolean;
     /**
      * If modifierHash is 0, ALL modifiers will be removed.
      *
      * Hash: 0xB059D7BD3D78C16F | Since: 1207
      */
-    function blipRemoveModifier(blip: number | Blip, modifierHash: number | string): boolean;
+    function blipRemoveModifier(blip: number | IBlip, modifierHash: number | string): boolean;
     /**
      * No comment provided
      *
@@ -14313,7 +14313,7 @@ export declare namespace map {
      *
      * Hash: 0xCD82FA174080B3B1 | Since: 1207
      */
-    function doesBlipExist(blip: number | Blip): boolean;
+    function doesBlipExist(blip: number | IBlip): boolean;
     /**
      * Doesn't actually return anything.
      *
@@ -14325,13 +14325,13 @@ export declare namespace map {
      *
      * Hash: 0x201C319797BDA603 | Since: 1207
      */
-    function getBlipCoords(blip: number | Blip): Vector3;
+    function getBlipCoords(blip: number | IBlip): Vector3;
     /**
      * Returns the Blip handle of given Entity.
      *
      * Hash: 0x6D2C41A8BD6D6FD0 | Since: 1207
      */
-    function getBlipFromEntity(entity: number | Entity): number;
+    function getBlipFromEntity(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -14343,7 +14343,7 @@ export declare namespace map {
      *
      * Hash: 0x46534526B9CD2D17 | Since: 1207
      */
-    function isBlipOnMini(blip: number | Blip): boolean;
+    function isBlipOnMini(blip: number | IBlip): boolean;
     /**
      * No comment provided
      *
@@ -14363,7 +14363,7 @@ export declare namespace map {
      *
      * Hash: 0xF2C3C9DA47AAA54A | Since: 1207
      */
-    function removeBlip(blip: number | Blip): void;
+    function removeBlip(blip: number | IBlip): void;
     /**
      * No comment provided
      *
@@ -14375,49 +14375,49 @@ export declare namespace map {
      *
      * Hash: 0x4FF674F5E23D49CE | Since: 1207
      */
-    function setBlipCoords(blip: number | Blip, pos: Vector3): void;
+    function setBlipCoords(blip: number | IBlip, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x0DF2B55F717DDB10 | Since: 1207
      */
-    function setBlipFlashes(blip: number | Blip): [boolean, number, number];
+    function setBlipFlashes(blip: number | IBlip): [boolean, number, number];
     /**
      * No comment provided
      *
      * Hash: 0x02FF4CF43B7209D1 | Since: 1207
      */
-    function setBlipFlashTimer(blip: number | Blip, blipType: number, blipHash: number | string): void;
+    function setBlipFlashTimer(blip: number | IBlip, blipType: number, blipHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x0A062D6D7C0B2C2C | Since: 1207
      */
-    function setBlipNameFromTextFile(blip: number | Blip, textLabel: string): void;
+    function setBlipNameFromTextFile(blip: number | IBlip, textLabel: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x093DD5A31BC2B459 | Since: 1207
      */
-    function setBlipNameToPlayerName(blip: number | Blip, player: number | string | Player): void;
+    function setBlipNameToPlayerName(blip: number | IBlip, player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x6049966A94FBE706 | Since: 1207
      */
-    function setBlipRotation(blip: number | Blip, rotation: number): void;
+    function setBlipRotation(blip: number | IBlip, rotation: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xD38744167B2FA257 | Since: 1207
      */
-    function setBlipScale(blip: number | Blip, scale: number): void;
+    function setBlipScale(blip: number | IBlip, scale: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x74F74D3207ED525C | Since: 1207
      */
-    function setBlipSprite(blip: number | Blip, hash: number | string): void;
+    function setBlipSprite(blip: number | IBlip, hash: number | string): void;
     /**
      * No comment provided
      *
@@ -14501,7 +14501,7 @@ export declare namespace map {
      *
      * Hash: 0xDEEDE7C41742E011 | Since: 1207
      */
-    function abandonBlip(blip: number | Blip): void;
+    function abandonBlip(blip: number | IBlip): void;
     /**
      * list of minimap props: https://github.com/femga/rdr3_discoveries/tree/master/graphics/minimap/minimapObjects
      *
@@ -14531,27 +14531,27 @@ export declare namespace map {
      *
      * Hash: 0xBD62D98799A3DAF0 | Since: 1207
      */
-    function blipAddStyle(blip: number | Blip, styleHash: number | string): boolean;
+    function blipAddStyle(blip: number | IBlip, styleHash: number | string): boolean;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/useful_info_from_rpfs/blip_styles
      * Removes any existing modifiers and sets the style.
      *
      * Hash: 0xEDD964B7984AC291 | Since: 1207
      */
-    function blipSetStyle(blip: number | Blip, styleHash: number | string): boolean;
+    function blipSetStyle(blip: number | IBlip, styleHash: number | string): boolean;
     /**
      * Clears blip data, must be called before REMOVE_BLIP.
      * Blips seem to be handled via databinding internally, this function should then allow you to clear blip container and therefore free up memory.
      *
      * Hash: 0x01B928CA2E198B01 | Since: 1207
      */
-    function clearBlip(blip: number | Blip): boolean;
+    function clearBlip(blip: number | IBlip): boolean;
     /**
      * Removes the blip icon from the entity lockon prompt
      *
      * Hash: 0x44813684F72B563C | Since: 1207
      */
-    function clearBlipIconFromLockonEntityPrompt(entity: number | Entity, blip: number | Blip): void;
+    function clearBlipIconFromLockonEntityPrompt(entity: number | IEntity, blip: number | IBlip): void;
     /**
      * Clears the previously set coordinates for the pause map view, removing any specified focal point and radius that were set using `_SET_PAUSEMAP_COORDS_WITH_RADIUS` (0xE0884C184728C75B). This function resets the map view, allowing it to open with the default coordinates and view instead of a specific target area.
      * Clears any previously set coordinates for the pause map view, restoring the default view when the map is opened.
@@ -14566,7 +14566,7 @@ export declare namespace map {
      *
      * Hash: 0x9FA00E2FC134A9D0 | Since: 1207
      */
-    function doesEntityHaveBlip(entity: number | Entity): boolean;
+    function doesEntityHaveBlip(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -14597,13 +14597,13 @@ export declare namespace map {
      *
      * Hash: 0xE9F676788F8D5E1E | Since: 1207
      */
-    function isBlipAttachedToAnyEntity(blip: number | Blip): boolean;
+    function isBlipAttachedToAnyEntity(blip: number | IBlip): boolean;
     /**
      * Returns true if the entity lockon prompt contains an blip icon.
      *
      * Hash: 0x3CB8859F04763C78 | Since: 1207
      */
-    function isDisplayBlipIconOnLockonEntityPrompt(entity: number | Entity, blip: number | Blip): boolean;
+    function isDisplayBlipIconOnLockonEntityPrompt(entity: number | IEntity, blip: number | IBlip): boolean;
     /**
      * Checks if the GPS route to the waypoint is navigable along a road.
      * If a route exists but there is no valid road path, this function returns false.
@@ -14664,38 +14664,38 @@ export declare namespace map {
      *
      * Hash: 0x250C75EB1728CC0D | Since: 1207
      */
-    function setBlipFrozen(blip: number | Blip): void;
+    function setBlipFrozen(blip: number | IBlip): void;
     /**
      * No comment provided
      *
      * Hash: 0x9CB1A1623062F402 | Since: 1207
      */
-    function setBlipName(blip: number | Blip, name: string): void;
+    function setBlipName(blip: number | IBlip, name: string): void;
     /**
      * Removes the icon from the lockon prompt. Never executed in R* Scripts due to hardcoded 0.
      *
      * Hash: 0xBB68D4D3CA3DE402 | Since: 1207
      */
-    function setDisplayBlipIconForEntityPromptRemoved(entity: number | Entity): void;
+    function setDisplayBlipIconForEntityPromptRemoved(entity: number | IEntity): void;
     /**
      * Activates a blip icon prompt for a specific entity, allowing it to be displayed without requiring a lock-on. This function enables the blip to appear associated with the given entity, making it visible without the need to focus or target the entity directly.
      * Video: https://imgur.com/gallery/0x1726963e6049db53-vuuCwqe
      *
      * Hash: 0x1726963E6049DB53 | Since: 1207
      */
-    function setDisplayBlipIconForEntityPromptWithoutLockon(entity: number | Entity): void;
+    function setDisplayBlipIconForEntityPromptWithoutLockon(entity: number | IEntity): void;
     /**
      * Sets the blip icon to lockon entity prompt.
      *
      * Hash: 0x7563CBCA99253D1A | Since: 1207
      */
-    function setDisplayBlipIconForEntityPromptWithLockon(entity: number | Entity, blipIcon: number | string): void;
+    function setDisplayBlipIconForEntityPromptWithLockon(entity: number | IEntity, blipIcon: number | string): void;
     /**
      * Adds entity blip icon to the entity lockon prompt, if invalid param it will remove the icon if it had any.
      *
      * Hash: 0x97F6F158CC5B5CA2 | Since: 1207
      */
-    function setDisplayBlipIconToLockonEntityPrompt(entity: number | Entity, blip: number | Blip): void;
+    function setDisplayBlipIconToLockonEntityPrompt(entity: number | IEntity, blip: number | IBlip): void;
     /**
      * Used for GUARMA MODE; Enabled: toggle = false, 0; Disabled: toggle = true, 0
      * Hash p1 seems to be unused, always 0
@@ -14752,7 +14752,7 @@ export declare namespace map {
      *
      * Hash: 0x0C7A2289A5C4D7C9 | Since: 1207
      */
-    function triggerSonarBlipOnEntity(typeHash: number | string, entity: number | Entity): void;
+    function triggerSonarBlipOnEntity(typeHash: number | string, entity: number | IEntity): void;
 }
 export declare namespace minigame {
     /**
@@ -15328,7 +15328,7 @@ export declare namespace misc {
      *
      * Hash: 0xD73C960A681052DF | Since: 1207
      */
-    function getCoordsOfProjectileTypeWithinDistance(ped: number | Ped, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3];
+    function getCoordsOfProjectileTypeWithinDistance(ped: number | IPed, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3];
     /**
      * Params: percentWeather2: 0f - 0.75f in R* Scripts
      *
@@ -15430,7 +15430,7 @@ export declare namespace misc {
      *
      * Hash: 0x9578986A6105A6AD | Since: 1207
      */
-    function getProjectileOfProjectileTypeWithinDistance(ped: number | Ped, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3, number];
+    function getProjectileOfProjectileTypeWithinDistance(ped: number | IPed, weaponHash: number | string, distance: number, mustBeOwnedByThisPed: boolean): [boolean, Vector3, number];
     /**
      * No comment provided
      *
@@ -15683,7 +15683,7 @@ export declare namespace misc {
      *
      * Hash: 0x870708A6E147A9AD | Since: 1207
      */
-    function registerInteractionLockonPrompt(entity: number | Entity, text: string, radius: number, flag: number, prompt: any): boolean;
+    function registerInteractionLockonPrompt(entity: number | IEntity, text: string, radius: number, flag: number, prompt: any): boolean;
     /**
      * No comment provided
      *
@@ -15840,7 +15840,7 @@ export declare namespace misc {
      *
      * Hash: 0x674B90BE1115846D | Since: 1207
      */
-    function setPedDecomposed(ped: number | Ped, toggle: boolean): void;
+    function setPedDecomposed(ped: number | IPed, toggle: boolean): void;
     /**
      * Old name: _SET_RAIN_LEVEL
      *
@@ -15871,7 +15871,7 @@ export declare namespace misc {
      *
      * Hash: 0xB3E9BE963F10C445 | Since: 1207
      */
-    function setSuperJumpThisFrame(player: number | string | Player): void;
+    function setSuperJumpThisFrame(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -15914,7 +15914,7 @@ export declare namespace misc {
      *
      * Hash: 0x867654CBC7606F2C | Since: 1207
      */
-    function shootSingleBulletBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, weaponHash: number | string, ownerPed: number | Ped, isAudible: boolean, isInvisible: boolean, speed: number): void;
+    function shootSingleBulletBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, weaponHash: number | string, ownerPed: number | IPed, isAudible: boolean, isInvisible: boolean, speed: number): void;
     /**
      * Returns whether the game's measurement system is set to metric.
      *
@@ -15968,7 +15968,7 @@ export declare namespace misc {
      *
      * Hash: 0xE98D55C5983F2509 | Since: 1207
      */
-    function unregisterInteractionLockonPrompt(entity: number | Entity): boolean;
+    function unregisterInteractionLockonPrompt(entity: number | IEntity): boolean;
     /**
      * Returns the current status of the onscreen keyboard, and updates the output.
      *
@@ -16123,7 +16123,7 @@ export declare namespace misc {
      *
      * Hash: 0x4B101DBCC9482F2D | Since: 1207
      */
-    function _0x4B101DBCC9482F2D(ped: number | Ped): boolean;
+    function _0x4B101DBCC9482F2D(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -16136,7 +16136,7 @@ export declare namespace misc {
      *
      * Hash: 0x553D67295DDD2309 | Since: 1207
      */
-    function _0x553D67295DDD2309(entity: number | Entity): void;
+    function _0x553D67295DDD2309(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -16202,7 +16202,7 @@ export declare namespace misc {
      *
      * Hash: 0x7A76104CC2CC69E8 | Since: 1207
      */
-    function _0x7A76104CC2CC69E8(entity: number | Entity): any;
+    function _0x7A76104CC2CC69E8(entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -16232,7 +16232,7 @@ export declare namespace misc {
      *
      * Hash: 0x8C0F6A3D7236DEEB | Since: 1207
      */
-    function _0x8C0F6A3D7236DEEB(entity: number | Entity, _string: string): void;
+    function _0x8C0F6A3D7236DEEB(entity: number | IEntity, _string: string): void;
     /**
      * No comment provided
      *
@@ -16394,7 +16394,7 @@ export declare namespace misc {
      *
      * Hash: 0xEB946B9E579729AD | Since: 1207
      */
-    function _0xEB946B9E579729AD(ped: number | Ped): void;
+    function _0xEB946B9E579729AD(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -16406,7 +16406,7 @@ export declare namespace misc {
      *
      * Hash: 0xF63FA29D4A9ACA86 | Since: 1207
      */
-    function _0xF63FA29D4A9ACA86(entity: number | Entity, _string: string): void;
+    function _0xF63FA29D4A9ACA86(entity: number | IEntity, _string: string): void;
     /**
      * No comment provided
      *
@@ -16626,7 +16626,7 @@ export declare namespace misc {
      *
      * Hash: 0xF9B91C5129EABC08 | Since: 1207
      */
-    function getLootingEventHasFired(ped: number | Ped, eventName: string): boolean;
+    function getLootingEventHasFired(ped: number | IPed, eventName: string): boolean;
     /**
      * No comment provided
      *
@@ -16764,7 +16764,7 @@ export declare namespace misc {
      *
      * Hash: 0x5170DDA6D63ACAAA | Since: 1207
      */
-    function isPedDecomposed(ped: number | Ped): boolean;
+    function isPedDecomposed(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -16776,7 +16776,7 @@ export declare namespace misc {
      *
      * Hash: 0x48E4D50F87A96AA5 | Since: 1207
      */
-    function lootTablesGetInfo(ped: number | Ped, lootTableKey: number | string): any;
+    function lootTablesGetInfo(ped: number | IPed, lootTableKey: number | string): any;
     /**
      * p0 must be < 2
      *
@@ -16857,7 +16857,7 @@ export declare namespace misc {
      *
      * Hash: 0x9B47971234169990 | Since: 1207
      */
-    function setLootPeltSatchelItem(ped: number | Ped, item: any): void;
+    function setLootPeltSatchelItem(ped: number | IPed, item: any): void;
     /**
      * No comment provided
      *
@@ -17438,7 +17438,7 @@ export declare namespace network {
      *
      * Hash: 0x07F723401B9D921C | Since: 1207
      */
-    function getUniqueIntForPlayer(player: number | string | Player): number;
+    function getUniqueIntForPlayer(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -17456,7 +17456,7 @@ export declare namespace network {
      *
      * Hash: 0x21D04D7BC538C146 | Since: 1207
      */
-    function isEntityAGhost(entity: number | Entity): boolean;
+    function isEntityAGhost(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -17552,13 +17552,13 @@ export declare namespace network {
      *
      * Hash: 0xF3354D6CA46F419D | Since: 1207
      */
-    function allowEntityFadingForInstances(entity: number | Entity, toggle: boolean): void;
+    function allowEntityFadingForInstances(entity: number | IEntity, toggle: boolean): void;
     /**
      * Old name: _NETWORK_ALLOW_LOCAL_ENTITY_ATTACHMENT
      *
      * Hash: 0x267C78C60E806B9A | Since: 1207
      */
-    function allowRemoteAttachmentModification(entity: number | Entity, toggle: boolean): void;
+    function allowRemoteAttachmentModification(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -17570,7 +17570,7 @@ export declare namespace network {
      *
      * Hash: 0x9DE986FC9A87C474 | Since: 1207
      */
-    function arePlayersInSameTutorialSession(player: number | string | Player, index: number): boolean;
+    function arePlayersInSameTutorialSession(player: number | string | IPlayer, index: number): boolean;
     /**
      * No comment provided
      *
@@ -17678,7 +17678,7 @@ export declare namespace network {
      *
      * Hash: 0xBBDF066252829606 | Since: 1207
      */
-    function concealPlayer(player: number | string | Player, toggle: boolean): void;
+    function concealPlayer(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -17744,19 +17744,19 @@ export declare namespace network {
      *
      * Hash: 0x4CACA84440FA26F6 | Since: 1207
      */
-    function getAssistedDamageOfEntity(player: number | string | Player, entity: number | Entity): [boolean, number];
+    function getAssistedDamageOfEntity(player: number | string | IPlayer, entity: number | IEntity): [boolean, number];
     /**
      * Old name: _NETWORK_GET_AVERAGE_LATENCY_FOR_PLAYER
      *
      * Hash: 0xD414BE129BB81B32 | Since: 1207
      */
-    function getAverageLatency(player: number | string | Player): number;
+    function getAverageLatency(player: number | string | IPlayer): number;
     /**
      * Old name: _NETWORK_GET_AVERAGE_PACKET_LOSS_FOR_PLAYER
      *
      * Hash: 0x350C23949E43686C | Since: 1207
      */
-    function getAveragePacketLoss(player: number | string | Player): number;
+    function getAveragePacketLoss(player: number | string | IPlayer): number;
     /**
      * Same as NETWORK_GET_AVERAGE_LATENCY (0xD414BE129BB81B32)
      *
@@ -17764,7 +17764,7 @@ export declare namespace network {
      *
      * Hash: 0x0E3A041ED6AC2B45 | Since: 1207
      */
-    function getAveragePing(player: number | string | Player): number;
+    function getAveragePing(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -17788,13 +17788,13 @@ export declare namespace network {
      *
      * Hash: 0xC7827959479DCC78 | Since: 1207
      */
-    function getEntityIsNetworked(entity: number | Entity): boolean;
+    function getEntityIsNetworked(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x42B2DAA6B596F5F8 | Since: 1207
      */
-    function getEntityKillerOfPlayer(player: number | string | Player): [number, number];
+    function getEntityKillerOfPlayer(player: number | string | IPlayer): [number, number];
     /**
      * Always returns a null string.
      *
@@ -17824,7 +17824,7 @@ export declare namespace network {
      *
      * Hash: 0x52C1EADAF7B10302 | Since: 1207
      */
-    function getHighestReliableResendCount(player: number | string | Player): number;
+    function getHighestReliableResendCount(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -17872,7 +17872,7 @@ export declare namespace network {
      *
      * Hash: 0xA11700682F3AD45C | Since: 1207
      */
-    function getNetworkIdFromEntity(entity: number | Entity): number;
+    function getNetworkIdFromEntity(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -17927,7 +17927,7 @@ export declare namespace network {
      *
      * Hash: 0xFF8FCF9FFC458A1C | Since: 1207
      */
-    function getNumUnackedReliables(player: number | string | Player): number;
+    function getNumUnackedReliables(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -17945,19 +17945,19 @@ export declare namespace network {
      *
      * Hash: 0x24FB80D107371267 | Since: 1207
      */
-    function getPlayerIndex(player: number | string | Player): number;
+    function getPlayerIndex(player: number | string | IPlayer): number;
     /**
      * Returns the Player associated to a given Ped when in an online session.
      *
      * Hash: 0x6C0E2E0125610278 | Since: 1207
      */
-    function getPlayerIndexFromPed(ped: number | Ped): number | string;
+    function getPlayerIndexFromPed(ped: number | IPed): number | string;
     /**
      * No comment provided
      *
      * Hash: 0x3B39236746714134 | Since: unknown
      */
-    function getPlayerTutorialSessionInstance(player: number | string | Player): number;
+    function getPlayerTutorialSessionInstance(player: number | string | IPlayer): number;
     /**
      * Hardcoded to return zero.
      *
@@ -18023,7 +18023,7 @@ export declare namespace network {
      *
      * Hash: 0x3765C3A3E8192E10 | Since: 1207
      */
-    function getUnreliableResendCount(player: number | string | Player): number;
+    function getUnreliableResendCount(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -18035,19 +18035,19 @@ export declare namespace network {
      *
      * Hash: 0x388EB2B86C73B6B3 | Since: 1207
      */
-    function handleFromPlayer(player: number | string | Player): any;
+    function handleFromPlayer(player: number | string | IPlayer): any;
     /**
      * No comment provided
      *
      * Hash: 0xBC1D768F2F5D6C05 | Since: 1207
      */
-    function hashFromPlayerHandle(player: number | string | Player): number;
+    function hashFromPlayerHandle(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x01BF60A500E28887 | Since: 1207
      */
-    function hasControlOfEntity(entity: number | Entity): boolean;
+    function hasControlOfEntity(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -18071,7 +18071,7 @@ export declare namespace network {
      *
      * Hash: 0xB07D3185E11657A5 | Since: 1207
      */
-    function hasEntityBeenRegisteredWithThisThread(entity: number | Entity): boolean;
+    function hasEntityBeenRegisteredWithThisThread(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -18119,7 +18119,7 @@ export declare namespace network {
      *
      * Hash: 0x8E7CE19219669AEB | Since: 1207
      */
-    function isAimCamActive(player: number | string | Player): boolean;
+    function isAimCamActive(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -18137,7 +18137,7 @@ export declare namespace network {
      *
      * Hash: 0x16D3D49902F697BB | Since: 1207
      */
-    function isConnectedViaRelay(player: number | string | Player): boolean;
+    function isConnectedViaRelay(player: number | string | IPlayer): boolean;
     /**
      * Hardcoded to return false.
      *
@@ -18251,43 +18251,43 @@ export declare namespace network {
      *
      * Hash: 0xB8DFD30D6973E135 | Since: 1207
      */
-    function isPlayerActive(player: number | string | Player): boolean;
+    function isPlayerActive(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3CA58F6CB7CBD784 | Since: 1207
      */
-    function isPlayerAParticipant(player: number | string | Player): boolean;
+    function isPlayerAParticipant(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1AD5B71586B94820 | Since: 1207
      */
-    function isPlayerAParticipantOnScript(p0: number | string | Player): [boolean, any];
+    function isPlayerAParticipantOnScript(p0: number | string | IPlayer): [boolean, any];
     /**
      * No comment provided
      *
      * Hash: 0x919B3C98ED8292F9 | Since: 1207
      */
-    function isPlayerConcealed(player: number | string | Player): boolean;
+    function isPlayerConcealed(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x93DC1BE4E1ABE9D1 | Since: 1207
      */
-    function isPlayerConnected(player: number | string | Player): boolean;
+    function isPlayerConnected(player: number | string | IPlayer): boolean;
     /**
      * Returns true if the passed value is less than 32.
      *
      * Hash: 0x255A5EF65EDA9167 | Since: 1207
      */
-    function isPlayerIndexValid(player: number | string | Player): boolean;
+    function isPlayerIndexValid(player: number | string | IPlayer): boolean;
     /**
      * Note: scripts seem to indicate that this was renamed to NETWORK_IS_PLAYER_IN_MP_FAST_INSTANCE
      *
      * Hash: 0x63F9EE203C3619F2 | Since: 1207
      */
-    function isPlayerInMpCutscene(player: number | string | Player): boolean;
+    function isPlayerInMpCutscene(player: number | string | IPlayer): boolean;
     /**
      * Hardcoded to return false.
      *
@@ -18359,7 +18359,7 @@ export declare namespace network {
      *
      * Hash: 0x06FAACD625D80CAA | Since: 1207
      */
-    function registerEntityAsNetworked(entity: number | Entity): void;
+    function registerEntityAsNetworked(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -18383,7 +18383,7 @@ export declare namespace network {
      *
      * Hash: 0xB69317BF5E782347 | Since: 1207
      */
-    function requestControlOfEntity(entity: number | Entity): boolean;
+    function requestControlOfEntity(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -18563,13 +18563,13 @@ export declare namespace network {
      *
      * Hash: 0xF1CA12B18AEF5298 | Since: 1207
      */
-    function setEntityOnlyExistsForParticipants(entity: number | Entity, toggle: boolean): void;
+    function setEntityOnlyExistsForParticipants(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xD785864798258032 | Since: 1207
      */
-    function setEntityRemainsWhenUnnetworked(entity: number | Entity, toggle: boolean): void;
+    function setEntityRemainsWhenUnnetworked(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -18587,7 +18587,7 @@ export declare namespace network {
      *
      * Hash: 0x423DE3854BB50894 | Since: 1207
      */
-    function setInSpectatorMode(toggle: boolean, playerPed: number | Ped): void;
+    function setInSpectatorMode(toggle: boolean, playerPed: number | IPed): void;
     /**
      * No comment provided
      *
@@ -18665,7 +18665,7 @@ export declare namespace network {
      *
      * Hash: 0x6BFF5F84102DF80A | Since: 1207
      */
-    function showChatRestrictionMsc(player: number | string | Player): void;
+    function showChatRestrictionMsc(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -18713,7 +18713,7 @@ export declare namespace network {
      *
      * Hash: 0x0C8BC052AE87D744 | Since: 1207
      */
-    function triggerDamageEventForZeroDamage(entity: number | Entity): void;
+    function triggerDamageEventForZeroDamage(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -18737,7 +18737,7 @@ export declare namespace network {
      *
      * Hash: 0xE31A04513237DC89 | Since: 1207
      */
-    function unregisterNetworkedEntity(entity: number | Entity): void;
+    function unregisterNetworkedEntity(entity: number | IEntity): void;
     /**
      * gets the entity id of a network id
      *
@@ -18767,7 +18767,7 @@ export declare namespace network {
      *
      * Hash: 0x99BFDC94A603E541 | Since: 1207
      */
-    function objToNet(_object: number | Object): number;
+    function objToNet(_object: number | IObject): number;
     /**
      * Return the local Participant ID
      *
@@ -18787,7 +18787,7 @@ export declare namespace network {
      *
      * Hash: 0x0EDEC3C276198689 | Since: 1207
      */
-    function pedToNet(ped: number | Ped): number;
+    function pedToNet(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -18841,7 +18841,7 @@ export declare namespace network {
      *
      * Hash: 0xE0031D3C8F36AB82 | Since: 1207
      */
-    function setEntityVisibleInCutscene(entity: number | Entity): void;
+    function setEntityVisibleInCutscene(entity: number | IEntity): void;
     /**
      * Old name: _SET_LOCAL_PLAYER_AS_GHOST
      *
@@ -18865,7 +18865,7 @@ export declare namespace network {
      *
      * Hash: 0xA8A024587329F36A | Since: 1207
      */
-    function setIdAlwaysExistsForPlayer(netId: number, player: number | string | Player, toggle: boolean): void;
+    function setIdAlwaysExistsForPlayer(netId: number, player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -18889,13 +18889,13 @@ export declare namespace network {
      *
      * Hash: 0x12B37D54667DB0B8 | Since: 1207
      */
-    function setPlayerInvisibleLocally(player: number | string | Player, toggle: boolean): void;
+    function setPlayerInvisibleLocally(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xFAA10F1FAFB11AF2 | Since: 1207
      */
-    function setPlayerVisibleLocally(player: number | string | Player, toggle: boolean): void;
+    function setPlayerVisibleLocally(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -19027,7 +19027,7 @@ export declare namespace network {
      *
      * Hash: 0xB4C94523F023419C | Since: 1207
      */
-    function vehToNet(vehicle: number | Vehicle): number;
+    function vehToNet(vehicle: number | IVehicle): number;
     /**
      * Note: this native was added in build 1311.16
      *
@@ -19041,7 +19041,7 @@ export declare namespace network {
      *
      * Hash: 0x02C4C6C2900D84DF | Since: 1207
      */
-    function _0x02C4C6C2900D84DF(player: number | string | Player): void;
+    function _0x02C4C6C2900D84DF(player: number | string | IPlayer): void;
     /**
      * Note: this native was added in build 1311.23
      *
@@ -19155,7 +19155,7 @@ export declare namespace network {
      *
      * Hash: 0x236321F1178A5446 | Since: 1207
      */
-    function _0x236321F1178A5446(player: number | string | Player, ped: number | Ped): [boolean, any];
+    function _0x236321F1178A5446(player: number | string | IPlayer, ped: number | IPed): [boolean, any];
     /**
      * No comment provided
      *
@@ -19168,7 +19168,7 @@ export declare namespace network {
      *
      * Hash: 0x26A867C0B7A456D1 | Since: 1232
      */
-    function _0x26A867C0B7A456D1(entity: number | Entity): boolean;
+    function _0x26A867C0B7A456D1(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -19330,7 +19330,7 @@ export declare namespace network {
      *
      * Hash: 0x51951DE06C0D1C40 | Since: 1207
      */
-    function _0x51951DE06C0D1C40(player: number | string | Player, _type: number): void;
+    function _0x51951DE06C0D1C40(player: number | string | IPlayer, _type: number): void;
     /**
      * No comment provided
      *
@@ -19348,7 +19348,7 @@ export declare namespace network {
      *
      * Hash: 0x5A91BCEF74944E93 | Since: 1207
      */
-    function _0x5A91BCEF74944E93(player: number | string | Player): void;
+    function _0x5A91BCEF74944E93(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -19444,7 +19444,7 @@ export declare namespace network {
      *
      * Hash: 0x6CF82A7F65A5AD5F | Since: 1207
      */
-    function _0x6CF82A7F65A5AD5F(ped: number | Ped): [number | string, any];
+    function _0x6CF82A7F65A5AD5F(ped: number | IPed): [number | string, any];
     /**
      * No comment provided
      *
@@ -19468,7 +19468,7 @@ export declare namespace network {
      *
      * Hash: 0x75FC34A2BA345BD1 | Since: 1207
      */
-    function _0x75FC34A2BA345BD1(entity: number | Entity, player: number | string | Player): [boolean, any];
+    function _0x75FC34A2BA345BD1(entity: number | IEntity, player: number | string | IPlayer): [boolean, any];
     /**
      * Note: this native was added in build 1311.23
      *
@@ -19504,7 +19504,7 @@ export declare namespace network {
      *
      * Hash: 0x7B3FF2D193628126 | Since: 1207
      */
-    function _0x7B3FF2D193628126(player: number | string | Player): void;
+    function _0x7B3FF2D193628126(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -19528,7 +19528,7 @@ export declare namespace network {
      *
      * Hash: 0x862C5040F4888741 | Since: 1207
      */
-    function _0x862C5040F4888741(player1: number | string | Player, player2: number | string | Player): boolean;
+    function _0x862C5040F4888741(player1: number | string | IPlayer, player2: number | string | IPlayer): boolean;
     /**
      * Params: p5 = 50.f, p6 = 0 in R* Script net_fetch (NET_FETCH_CLIENT_UPDATE_PED_ROLE_CLUE_IDLE)
      *
@@ -19558,13 +19558,13 @@ export declare namespace network {
      *
      * Hash: 0x950ACD8F05B7B9DF | Since: 1355
      */
-    function _0x950ACD8F05B7B9DF(entity: number | Entity): boolean;
+    function _0x950ACD8F05B7B9DF(entity: number | IEntity): boolean;
     /**
      * Must be called from a background script, otherwise it will do nothing.
      *
      * Hash: 0x979765465A6F25FC | Since: 1207
      */
-    function _0x979765465A6F25FC(entity: number | Entity): void;
+    function _0x979765465A6F25FC(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -19678,7 +19678,7 @@ export declare namespace network {
      *
      * Hash: 0xBB1EC8C2EEF33BAA | Since: 1207
      */
-    function _0xBB1EC8C2EEF33BAA(entity: number | Entity): void;
+    function _0xBB1EC8C2EEF33BAA(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -19798,7 +19798,7 @@ export declare namespace network {
      *
      * Hash: 0xD78A26024BB13E08 | Since: 1207
      */
-    function _0xD78A26024BB13E08(player: number | string | Player): void;
+    function _0xD78A26024BB13E08(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -19906,7 +19906,7 @@ export declare namespace network {
      *
      * Hash: 0xF302AB9D978352EE | Since: 1207
      */
-    function _0xF302AB9D978352EE(entity: number | Entity): number;
+    function _0xF302AB9D978352EE(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -19942,7 +19942,7 @@ export declare namespace network {
      *
      * Hash: 0xFE53B1F8D43F19BF | Since: 1207
      */
-    function _0xFE53B1F8D43F19BF(player1: number | string | Player, player2: number | string | Player): number;
+    function _0xFE53B1F8D43F19BF(player1: number | string | IPlayer, player2: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -20008,7 +20008,7 @@ export declare namespace network {
      *
      * Hash: 0xDCC4B7F7112E8AB7 | Since: 1207
      */
-    function getPlayerWaypointIsActive(player: number | string | Player): boolean;
+    function getPlayerWaypointIsActive(player: number | string | IPlayer): boolean;
     /**
      * Only used in R* Script net_stable_manager
      *
@@ -20038,7 +20038,7 @@ export declare namespace network {
      *
      * Hash: 0x157D8F3DE12B307F | Since: 1207
      */
-    function addPlayerToRecentGamersList(player: number | string | Player): void;
+    function addPlayerToRecentGamersList(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -20182,7 +20182,7 @@ export declare namespace network {
      *
      * Hash: 0xDD7806FD0543BC3D | Since: 1207
      */
-    function getGlobalEntityFlags(entity: number | Entity): number;
+    function getGlobalEntityFlags(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -20206,7 +20206,7 @@ export declare namespace network {
      *
      * Hash: 0xD9267375834C5EAB | Since: 1207
      */
-    function getPlayerFastInstanceId(player: number | string | Player): number;
+    function getPlayerFastInstanceId(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -20290,7 +20290,7 @@ export declare namespace network {
      *
      * Hash: 0x5B709519997ECF0F | Since: 1207
      */
-    function isPlayerInSpectatorMode(player: number | string | Player): boolean;
+    function isPlayerInSpectatorMode(player: number | string | IPlayer): boolean;
     /**
      * _NETWORK_IS_T* - _NETWORK_RE*
      *
@@ -20314,7 +20314,7 @@ export declare namespace network {
      *
      * Hash: 0xE525878A35B9EEBD | Since: 1207
      */
-    function isTrackedPlayerVisible(player: number | string | Player, trackedPlayer: number | string | Player): boolean;
+    function isTrackedPlayerVisible(player: number | string | IPlayer, trackedPlayer: number | string | IPlayer): boolean;
     /**
      * Only used in R* Script startup_clip Seems to just kill the network connection, sets the players coords to 0, 0, 0 when doing GetEntityCoords
      *
@@ -20565,7 +20565,7 @@ export declare namespace network {
      *
      * Hash: 0xA197C35F73AC0F12 | Since: 1207
      */
-    function reportPlayer(player: number | string | Player, reportType: number, description: string, horseName: string): void;
+    function reportPlayer(player: number | string | IPlayer, reportType: number, description: string, horseName: string): void;
     /**
      * Only used in R* SP Scripts
      *
@@ -20601,7 +20601,7 @@ export declare namespace network {
      *
      * Hash: 0xEE5AE9956743BA20 | Since: 1207
      */
-    function setEntityGhostedToLocalPlayer(entity: number | Entity, toggle: boolean): void;
+    function setEntityGhostedToLocalPlayer(entity: number | IEntity, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -20619,19 +20619,19 @@ export declare namespace network {
      *
      * Hash: 0xD041A32992A55F84 | Since: 1207
      */
-    function setLocalPlayerDamageMultiplierForPlayer(player: number | string | Player, damageMultiplier: number): void;
+    function setLocalPlayerDamageMultiplierForPlayer(player: number | string | IPlayer, damageMultiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x442B4347B6EC36E8 | Since: 1207
      */
-    function setRespotTimer(entity: number | Entity, timer: number): void;
+    function setRespotTimer(entity: number | IEntity, timer: number): void;
     /**
      * _SET_PLAYER_V* - _SET_S*
      *
      * Hash: 0xDCA6ABDB9288FBE4 | Since: 1207
      */
-    function setPlayerVisibilityToLocalPlayerDisabled(player: number | string | Player, disabled: boolean): void;
+    function setPlayerVisibilityToLocalPlayerDisabled(player: number | string | IPlayer, disabled: boolean): void;
     /**
      * No comment provided
      *
@@ -20783,7 +20783,7 @@ export declare namespace object {
      *
      * Hash: 0x8DC39368BDD57755 | Since: 1207
      */
-    function attachPortablePickupToPed(pickupObject: number | Object, ped: number | Ped): void;
+    function attachPortablePickupToPed(pickupObject: number | IObject, ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -20795,13 +20795,13 @@ export declare namespace object {
      *
      * Hash: 0x8462BE2341A55B6F | Since: 1207
      */
-    function breakAllFragmentBones(_object: number | Object): void;
+    function breakAllFragmentBones(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0xE7E4C198B0185900 | Since: 1207
      */
-    function breakFragmentChild(_object: number | Object): void;
+    function breakFragmentChild(_object: number | IObject): void;
     /**
      * Old name: _GET_PICKUP_HASH
      *
@@ -20831,7 +20831,7 @@ export declare namespace object {
      *
      * Hash: 0xB6CBD40F8EA69E8A | Since: 1207
      */
-    function createSkeleton(_object: number | Object): boolean;
+    function createSkeleton(_object: number | IObject): boolean;
     /**
      * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/Placement%20Flags
      * https://github.com/femga/rdr3_discoveries/blob/master/objects/pickup_list.lua
@@ -20856,13 +20856,13 @@ export declare namespace object {
      *
      * Hash: 0x931914268722C263 | Since: 1207
      */
-    function deleteObject(_object: number | Object): void;
+    function deleteObject(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0xCF463D1E9A0AECB1 | Since: 1207
      */
-    function detachPortablePickupFromPed(pickupObject: number | Object): void;
+    function detachPortablePickupFromPed(pickupObject: number | IObject): void;
     /**
      * No comment provided
      *
@@ -20880,7 +20880,7 @@ export declare namespace object {
      *
      * Hash: 0xD9EFB6DBF7DAAEA3 | Since: 1207
      */
-    function doesPickupObjectExist(pickupObject: number | Object): boolean;
+    function doesPickupObjectExist(pickupObject: number | IObject): boolean;
     /**
      * No comment provided
      *
@@ -20892,7 +20892,7 @@ export declare namespace object {
      *
      * Hash: 0x52AF537A0C5B8AAD | Since: 1207
      */
-    function doesRayfireMapExist(_object: number | Object): boolean;
+    function doesRayfireMapExist(_object: number | IObject): boolean;
     /**
      * No comment provided
      *
@@ -20944,7 +20944,7 @@ export declare namespace object {
      *
      * Hash: 0xF9C1681347C8BD15 | Since: 1207
      */
-    function fixFragment(_object: number | Object): void;
+    function fixFragment(_object: number | IObject): void;
     /**
      * No comment provided
      *
@@ -20994,7 +20994,7 @@ export declare namespace object {
      *
      * Hash: 0x260EE4FDBDF4DB01 | Since: 1207
      */
-    function getRayfireMapAnimPhase(_object: number | Object): number;
+    function getRayfireMapAnimPhase(_object: number | IObject): number;
     /**
      * No comment provided
      *
@@ -21006,7 +21006,7 @@ export declare namespace object {
      *
      * Hash: 0x899BA936634A322E | Since: 1207
      */
-    function getStateOfRayfireMap(_object: number | Object): number;
+    function getStateOfRayfireMap(_object: number | IObject): number;
     /**
      * No comment provided
      *
@@ -21048,13 +21048,13 @@ export declare namespace object {
      *
      * Hash: 0x0378C08504160D0D | Since: 1207
      */
-    function isAPortablePickup(_object: number | Object): boolean;
+    function isAPortablePickup(_object: number | IObject): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8B32ACE6326A7546 | Since: 1207
      */
-    function isVisible(_object: number | Object): boolean;
+    function isVisible(_object: number | IObject): boolean;
     /**
      * No comment provided
      *
@@ -21066,19 +21066,19 @@ export declare namespace object {
      *
      * Hash: 0xADBE4809F19F927A | Since: 1207
      */
-    function onlyCleanUpWhenOutOfRange(_object: number | Object): void;
+    function onlyCleanUpWhenOutOfRange(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0x58A850EAEE20FAA3 | Since: 1207
      */
-    function placeOnGroundProperly(_object: number | Object): boolean;
+    function placeOnGroundProperly(_object: number | IObject): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x92AEFB5F6E294023 | Since: 1207
      */
-    function preventCollectionOfPortablePickup(_object: number | Object): void;
+    function preventCollectionOfPortablePickup(_object: number | IObject): void;
     /**
      * No comment provided
      *
@@ -21102,13 +21102,13 @@ export declare namespace object {
      *
      * Hash: 0x406137F8EF90EAF5 | Since: 1207
      */
-    function setActivatePhysicsAsSoonAsItIsUnfrozen(_object: number | Object, toggle: boolean): void;
+    function setActivatePhysicsAsSoonAsItIsUnfrozen(_object: number | IObject, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE124889AE0521FCF | Since: 1207
      */
-    function setCustomTexturesOn(_object: number | Object, txdHash: number | string): void;
+    function setCustomTexturesOn(_object: number | IObject, txdHash: number | string): void;
     /**
      * No comment provided
      *
@@ -21140,7 +21140,7 @@ export declare namespace object {
      *
      * Hash: 0x4D89D607CB3DD1D2 | Since: 1207
      */
-    function setAllowLowLodBuoyancy(_object: number | Object, toggle: boolean): void;
+    function setAllowLowLodBuoyancy(_object: number | IObject, toggle: boolean): void;
     /**
      * Adjust the physics parameters of a prop, or otherwise known as "object". This is useful for simulated gravity.
      *
@@ -21153,19 +21153,19 @@ export declare namespace object {
      *
      * Hash: 0xF6DF6E90DE7DF90F | Since: 1207
      */
-    function setPhysicsParams(_object: number | Object, weight: number, gravity: number, buoyancy: number): void;
+    function setPhysicsParams(_object: number | IObject, weight: number, gravity: number, buoyancy: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xEB6F1A9B5510A5D2 | Since: 1207
      */
-    function setTakesDamageFromCollidingWithBuildings(_object: number | Object, enabled: boolean): void;
+    function setTakesDamageFromCollidingWithBuildings(_object: number | IObject, enabled: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x8A7391690F5AFD81 | Since: 1207
      */
-    function setTargettable(_object: number | Object, targettable: boolean): void;
+    function setTargettable(_object: number | IObject, targettable: boolean): void;
     /**
      * Alt name: _SET_OBJECT_TINT
      *
@@ -21173,13 +21173,13 @@ export declare namespace object {
      *
      * Hash: 0x971DA0055324D033 | Since: 1207
      */
-    function setTintIndex(_object: number | Object, textureVariation: number): void;
+    function setTintIndex(_object: number | IObject, textureVariation: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x634C19521485AB25 | Since: 1207
      */
-    function setPickupDoNotAutoPlaceOnGround(pickupObject: number | Object): void;
+    function setPickupDoNotAutoPlaceOnGround(pickupObject: number | IObject): void;
     /**
      * No comment provided
      *
@@ -21227,19 +21227,19 @@ export declare namespace object {
      *
      * Hash: 0x5C29F698D404C5E1 | Since: 1207
      */
-    function setStateOfRayfireMap(_object: number | Object, state: number): void;
+    function setStateOfRayfireMap(_object: number | IObject, state: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x53E0DF1A2A3CF0CA | Since: 1207
      */
-    function setTeamPickup(_object: number | Object): void;
+    function setTeamPickup(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0x2FDFF4107B8C1147 | Since: 1207
      */
-    function slide(_object: number | Object, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
+    function slide(_object: number | IObject, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
     /**
      * No comment provided
      *
@@ -21251,7 +21251,7 @@ export declare namespace object {
      *
      * Hash: 0xB252BC036B525623 | Since: 1207
      */
-    function trackVisibility(_object: number | Object): void;
+    function trackVisibility(_object: number | IObject): void;
     /**
      * No comment provided
      *
@@ -21263,7 +21263,7 @@ export declare namespace object {
      *
      * Hash: 0x0943113E02322164 | Since: 1207
      */
-    function _0x0943113E02322164(_object: number | Object): any;
+    function _0x0943113E02322164(_object: number | IObject): any;
     /**
      * something to do with doors lockdown when navmesh is swapping?UPDATE_WORLD_STATE  seems to be for unlocking something
      *
@@ -21317,7 +21317,7 @@ export declare namespace object {
      *
      * Hash: 0x3DF1A0A58498E209 | Since: 1436
      */
-    function _0x3DF1A0A58498E209(_object: number | Object): void;
+    function _0x3DF1A0A58498E209(_object: number | IObject): void;
     /**
      * No comment provided
      *
@@ -21449,7 +21449,7 @@ export declare namespace object {
      *
      * Hash: 0xCAAF2BCCFEF37F77 | Since: 1207
      */
-    function _0xCAAF2BCCFEF37F77(_object: number | Object): void;
+    function _0xCAAF2BCCFEF37F77(_object: number | IObject): void;
     /**
      * No comment provided
      *
@@ -21521,7 +21521,7 @@ export declare namespace object {
      *
      * Hash: 0xE4EFB315BCD2A838 | Since: 1207
      */
-    function damageBoneOnProp(_object: number | Object, bone: number): void;
+    function damageBoneOnProp(_object: number | IObject, bone: number): void;
     /**
      * No comment provided
      *
@@ -21563,19 +21563,19 @@ export declare namespace object {
      *
      * Hash: 0xFA3B61EC249B4674 | Since: 1207
      */
-    function getLightIntensityFrom(_object: number | Object): number;
+    function getLightIntensityFrom(_object: number | IObject): number;
     /**
      * Returns float value to be used with _SET_LIGHT_INTENSITY_FOR_OBJECT
      *
      * Hash: 0x3397CD4E0353DFBA | Since: 1207
      */
-    function getLightIntensity(_object: number | Object): number;
+    function getLightIntensity(_object: number | IObject): number;
     /**
      * No comment provided
      *
      * Hash: 0x2777150CC7D9365E | Since: 1207
      */
-    function hidePickup(pickupObject: number | Object, toggle: boolean): void;
+    function hidePickup(pickupObject: number | IObject, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -21599,13 +21599,13 @@ export declare namespace object {
      *
      * Hash: 0x1461DF6DB886BE3F | Since: 1207
      */
-    function makeItemCarriable(_object: number | Object): void;
+    function makeItemCarriable(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0xF40AB58D83C35027 | Since: 1207
      */
-    function resetVelocity(_object: number | Object): void;
+    function resetVelocity(_object: number | IObject): void;
     /**
      * No comment provided
      *
@@ -21617,103 +21617,103 @@ export declare namespace object {
      *
      * Hash: 0x98D2D9C053A1F449 | Since: 1207
      */
-    function setAutoJumpableByHorse(_object: number | Object): void;
+    function setAutoJumpableByHorse(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0xF49574E2332A8F06 | Since: 1207
      */
-    function setLightIntensityFor(_object: number | Object, lightIntensity: number): void;
+    function setLightIntensityFor(_object: number | IObject, lightIntensity: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x04D1D4E411CE52D0 | Since: 1207
      */
-    function setLightScatteringDisabledFor(_object: number | Object, disable: boolean): void;
+    function setLightScatteringDisabledFor(_object: number | IObject, disable: boolean): void;
     /**
      * Params: value = 0.0 - 586.67 (?)
      *
      * Hash: 0x63E39F09310F481F | Since: 1207
      */
-    function setLightTranslucencyFor(_object: number | Object, value: number): void;
+    function setLightTranslucencyFor(_object: number | IObject, value: number): void;
     /**
      * Params: p2 controls whether to make pickups usable/collectable or not in networked games
      *
      * Hash: 0x94F3D956BFAEAE18 | Since: 1207
      */
-    function setNetworkPickupUsableForPlayer(player: number | string | Player, pickupHash: number | string, isUsable: boolean): void;
+    function setNetworkPickupUsableForPlayer(player: number | string | IPlayer, pickupHash: number | string, isUsable: boolean): void;
     /**
      * Sets object as not jumpable by horse.
      *
      * Hash: 0xE1C708BA4885796B | Since: 1207
      */
-    function setNotJumpableByHorse(_object: number | Object): void;
+    function setNotJumpableByHorse(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0xFFB99FFD17F65889 | Since: 1207
      */
-    function setBreakScale(_object: number | Object, scale: number): void;
+    function setBreakScale(_object: number | IObject, scale: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC8E21C1677DC5E6F | Since: 1207
      */
-    function setBurnIntensity(_object: number | Object, intensity: number): void;
+    function setBurnIntensity(_object: number | IObject, intensity: number): void;
     /**
      * Seems to mostly have effect on wood-made objects https://imgur.com/a/32oQvOn
      *
      * Hash: 0x2797C633DCDBBAC5 | Since: 1207
      */
-    function setBurnLevel(_object: number | Object, burnLevel: number, affectAsh: boolean): void;
+    function setBurnLevel(_object: number | IObject, burnLevel: number, affectAsh: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x7D7285EFEAB5AF15 | Since: 1207
      */
-    function setBurnOpacity(_object: number | Object, opacity: number): void;
+    function setBurnOpacity(_object: number | IObject, opacity: number): void;
     /**
      * p2 is usually the same as speed parameter
      *
      * Hash: 0x646564A3B7DF68F8 | Since: 1207
      */
-    function setBurnSpeed(_object: number | Object, speed: number): void;
+    function setBurnSpeed(_object: number | IObject, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xB7017DA4D498269F | Since: 1207
      */
-    function setKickable(_object: number | Object, kickable: boolean): void;
+    function setKickable(_object: number | IObject, kickable: boolean): void;
     /**
      * _SET_FORCE* - _SET_LOCAL*
      *
      * Hash: 0xAEE6C800E124CFE1 | Since: 1207
      */
-    function setPromptName(_object: number | Object, name: string): void;
+    function setPromptName(_object: number | IObject, name: string): void;
     /**
      * _SET_FORCE* - _SET_LOCAL*
      *
      * Hash: 0xD503D6F0986D58BC | Since: 1207
      */
-    function setPromptNameFromGxtEntry(_object: number | Object, name: number | string): void;
+    function setPromptNameFromGxtEntry(_object: number | IObject, name: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x581EDBE56E8D62C9 | Since: 1207
      */
-    function setTargettable2(_object: number | Object, targettable: boolean): void;
+    function setTargettable2(_object: number | IObject, targettable: boolean): void;
     /**
      * focus on objects like focus on peds, p1 is to enable/disable p2 is to enable/disable focus when you have a weapon out
      *
      * Hash: 0xA22712E8471AA08E | Since: 1207
      */
-    function setTargettableFocus(_object: number | Object, toggle: boolean, weaponLock: boolean): void;
+    function setTargettableFocus(_object: number | IObject, toggle: boolean, weaponLock: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x00EE08603EADEE92 | Since: 1207
      */
-    function setPickupCollectableOnMount(_object: number | Object): void;
+    function setPickupCollectableOnMount(_object: number | IObject): void;
 }
 export declare namespace pad {
     /**
@@ -21994,7 +21994,7 @@ export declare namespace pathfind {
      *
      * Hash: 0x0EAEB0DB4B132399 | Since: 1207
      */
-    function doesNavmeshBlockingObjectExist(_object: number | Object): boolean;
+    function doesNavmeshBlockingObjectExist(_object: number | IObject): boolean;
     /**
      * Returns CGameWorldHeightMap's minimum Z value at specified point (grid node).
      *
@@ -22102,7 +22102,7 @@ export declare namespace pathfind {
      *
      * Hash: 0x125BF4ABFC536B09 | Since: 1207
      */
-    function isPointOnRoad(pos: Vector3, vehicle: number | Vehicle): boolean;
+    function isPointOnRoad(pos: Vector3, vehicle: number | IVehicle): boolean;
     /**
      * Returns true if the id is non zero.
      *
@@ -22116,13 +22116,13 @@ export declare namespace pathfind {
      *
      * Hash: 0x348F211CA2404039 | Since: 1207
      */
-    function navmeshRequestPath(ped: number | Ped, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, bitFlag: number): number;
+    function navmeshRequestPath(ped: number | IPed, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, bitFlag: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x46399A7895957C0E | Since: 1207
      */
-    function removeNavmeshBlockingObject(_object: number | Object): void;
+    function removeNavmeshBlockingObject(_object: number | IObject): void;
     /**
      * Old name: REQUEST_PATHS_PREFER_ACCURATE_BOUNDINGSTRUCT
      *
@@ -22351,7 +22351,7 @@ export declare namespace pathfind {
      *
      * Hash: 0x44026E3DB3CED602 | Since: 1207
      */
-    function navmeshAssignNavmeshToVehicle(vehicle: number | Vehicle, navMeshName: string): boolean;
+    function navmeshAssignNavmeshToVehicle(vehicle: number | IVehicle, navMeshName: string): boolean;
     /**
      * Called in scripts after finished with requested pathes. Immediately resets all values connected to the path handle except query status, which changes from 1 to 2 before eventually becoming fully invalidated to 0.
      *
@@ -22447,7 +22447,7 @@ export declare namespace ped {
      *
      * Hash: 0x5BA652A0CD14DF2F | Since: 1207
      */
-    function addArmourTo(ped: number | Ped, amount: number): void;
+    function addArmourTo(ped: number | IPed, amount: number): void;
     /**
      * No comment provided
      *
@@ -22477,43 +22477,43 @@ export declare namespace ped {
      *
      * Hash: 0x697157CED63F18D4 | Since: 1207
      */
-    function applyDamageTo(ped: number | Ped, damageAmount: number, damageArmour: boolean, boneId: number, pedKiller: number | Ped): void;
+    function applyDamageTo(ped: number | IPed, damageAmount: number, damageArmour: boolean, boneId: number, pedKiller: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xEF0D582CBF2D9B0F | Since: 1207
      */
-    function applyBloodSpecific(ped: number | Ped): any;
+    function applyBloodSpecific(ped: number | IPed): any;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/peds_customization/ped_decals.lua
      *
      * Hash: 0x46DF918788CB093F | Since: 1207
      */
-    function applyDamagePack(ped: number | Ped, damagePack: string, damage: number, mult: number): void;
+    function applyDamagePack(ped: number | IPed, damagePack: string, damage: number, mult: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x51AC07A44D4F5B8A | Since: 1207
      */
-    function canKnockOffVehicle(ped: number | Ped): boolean;
+    function canKnockOffVehicle(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2D64376CF437363E | Since: 1207
      */
-    function canBeMounted(ped: number | Ped): boolean;
+    function canBeMounted(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEAD42DE3610D0721 | Since: 1207
      */
-    function canInCombatSeeTarget(ped: number | Ped, target: number | Ped): boolean;
+    function canInCombatSeeTarget(ped: number | IPed, target: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x128F79EDCECE4FD5 | Since: 1207
      */
-    function canRagdoll(ped: number | Ped): boolean;
+    function canRagdoll(ped: number | IPed): boolean;
     /**
      * Returns:
      * 0 - CTR_CANNOT_TARGET
@@ -22522,55 +22522,55 @@ export declare namespace ped {
      *
      * Hash: 0x7F9B9791D4CB71F6 | Since: 1207
      */
-    function canSeeEntity(ped: number | Ped, targetEntity: number | Entity, doFoliageCheck: boolean): number;
+    function canSeeEntity(ped: number | IPed, targetEntity: number | IEntity, doFoliageCheck: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0x9D9473CB82D83A30 | Since: 1207
      */
-    function canSeePedCached(ped: number | Ped, targetPed: number | Ped): number;
+    function canSeePedCached(ped: number | IPed, targetPed: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x726256CC1EEB182F | Since: 1207
      */
-    function clearFacialIdleAnimOverride(ped: number | Ped): void;
+    function clearFacialIdleAnimOverride(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x8FE22675A5A45817 | Since: 1207
      */
-    function clearBloodDamage(ped: number | Ped): void;
+    function clearBloodDamage(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x56E3B78C5408D9F4 | Since: 1207
      */
-    function clearBloodDamageByZone(ped: number | Ped): void;
+    function clearBloodDamageByZone(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x523C79AEEFCC4A2A | Since: 1207
      */
-    function clearDamageDecalByZone(ped: number | Ped): void;
+    function clearDamageDecalByZone(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x0E5173C163976E38 | Since: 1207
      */
-    function clearDecorations(ped: number | Ped): void;
+    function clearDecorations(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x6585D955A68452A5 | Since: 1207
      */
-    function clearEnvDirt(ped: number | Ped): void;
+    function clearEnvDirt(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x8EF6B7AC68E2F01B | Since: 1207
      */
-    function clearLastDamageBone(ped: number | Ped): void;
+    function clearLastDamageBone(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -22582,13 +22582,13 @@ export declare namespace ped {
      *
      * Hash: 0x9C720776DAA43E7E | Since: 1207
      */
-    function clearWetness(ped: number | Ped): void;
+    function clearWetness(ped: number | IPed): void;
     /**
      * flags: see SET_RAGDOLL_BLOCKING_FLAGS
      *
      * Hash: 0xD86D101FCFD00A4B | Since: 1207
      */
-    function clearRagdollBlockingFlags(ped: number | Ped, flags: number): void;
+    function clearRagdollBlockingFlags(ped: number | IPed, flags: number): void;
     /**
      * No comment provided
      *
@@ -22600,32 +22600,32 @@ export declare namespace ped {
      *
      * Hash: 0xEF29A16337FACADB | Since: 1207
      */
-    function clone(ped: number | Ped, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean): number;
+    function clone(ped: number | IPed, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean): number;
     /**
      * Copies ped's components and props to targetPed.
      * Can be used to clear anything from a ped by cloning it, including bullet holes.
      *
      * Hash: 0xE952D6431689AD9A | Since: 1207
      */
-    function cloneToTarget(ped: number | Ped, targetPed: number | Ped): void;
+    function cloneToTarget(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x9E7738B291706746 | Since: 1207
      */
-    function computeSatchelItemForDamage(pedAttached: number | Ped, damageCleanliness: number): boolean;
+    function computeSatchelItemForDamage(pedAttached: number | IPed, damageCleanliness: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5407B7288D0478B7 | Since: 1207
      */
-    function countsInCombatWithTarget(ped: number | Ped, flag: number): number;
+    function countsInCombatWithTarget(ped: number | IPed, flag: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x336B3D200AB007CB | Since: 1207
      */
-    function countsInCombatWithTargetWithinRadius(ped: number | Ped, pos: Vector3, radius: number, flag: number): number;
+    function countsInCombatWithTargetWithinRadius(ped: number | IPed, pos: Vector3, radius: number, flag: number): number;
     /**
      * Creates a new ped group.
      * Groups can contain up to 8 peds.
@@ -22663,31 +22663,31 @@ export declare namespace ped {
      *
      * Hash: 0x7DD959874C1FD534 | Since: 1207
      */
-    function createInsideVehicle(vehicle: number | Vehicle, modelHash: number | string, seatIndex: number): number;
+    function createInsideVehicle(vehicle: number | IVehicle, modelHash: number | string, seatIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xF89AA2BD01FC06B7 | Since: 1207
      */
-    function createOnMount(mount: number | Ped, modelHash: number | string, index: number): number;
+    function createOnMount(mount: number | IPed, modelHash: number | string, index: number): number;
     /**
      * Deletes the specified ped, then sets the handle pointed to by the pointer to NULL.
      *
      * Hash: 0xCC0EF140F99365C5 | Since: 1207
      */
-    function deletePed(ped: number | Ped): void;
+    function deletePed(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xED00D72F81CF7278 | Since: 1207
      */
-    function detachCarriableEntity(entity: number | Entity): void;
+    function detachCarriableEntity(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x733C87D4CE22BEA2 | Since: 1207
      */
-    function disableInjuredOnGroundBehaviour(ped: number | Ped): void;
+    function disableInjuredOnGroundBehaviour(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -22701,37 +22701,37 @@ export declare namespace ped {
      *
      * Hash: 0x2D05CED3A38D0F3A | Since: 1207
      */
-    function explodeHead(ped: number | Ped, weaponHash: number | string): void;
+    function explodeHead(ped: number | IPed, weaponHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x7043D0681285BA2D | Since: 1207
      */
-    function fadeAndDestroy(ped: number | Ped): void;
+    function fadeAndDestroy(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xB5ACE8B23A438EC0 | Since: 1207
      */
-    function findAllAttachedCarriableEntities(ped: number | Ped, itemset: any): void;
+    function findAllAttachedCarriableEntities(ped: number | IPed, itemset: any): void;
     /**
      * Old name: _FREEZE_PED_CAMERA_ROTATION
      *
      * Hash: 0xFF287323B0E2C69A | Since: 1207
      */
-    function forceAllHeadingValuesToAlign(ped: number | Ped): void;
+    function forceAllHeadingValuesToAlign(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x2208438012482A1A | Since: 1207
      */
-    function forceAiAndAnimationUpdate(ped: number | Ped): void;
+    function forceAiAndAnimationUpdate(ped: number | IPed): void;
     /**
      * motionStateHash: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CPedMotionStates__eMotionState
      *
      * Hash: 0xF28965D04F570DCA | Since: 1207
      */
-    function forceMotionState(ped: number | Ped, motionStateHash: number | string): boolean;
+    function forceMotionState(ped: number | IPed, motionStateHash: number | string): boolean;
     /**
      * No comment provided
      *
@@ -22761,19 +22761,19 @@ export declare namespace ped {
      *
      * Hash: 0x52DFF8A10508090A | Since: 1207
      */
-    function getCombatFloat(ped: number | Ped, combatType: number): number;
+    function getCombatFloat(ped: number | IPed, combatType: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xCD66FEA29400A0B5 | Since: 1207
      */
-    function getCurrentTargetFor(ped: number | Ped): number;
+    function getCurrentTargetFor(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xCD5003B097200F36 | Since: 1207
      */
-    function getDeadPickupCoords(ped: number | Ped): Vector3;
+    function getDeadPickupCoords(ped: number | IPed): Vector3;
     /**
      * No comment provided
      *
@@ -22785,31 +22785,31 @@ export declare namespace ped {
      *
      * Hash: 0xA454D234E45BB6E5 | Since: 1207
      */
-    function getIsRespondingToNegativeInteraction(ped: number | Ped, player: number | string | Player): boolean;
+    function getIsRespondingToNegativeInteraction(ped: number | IPed, player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9337183FDA2E9035 | Since: 1207
      */
-    function getIsRespondingToPositiveInteraction(ped: number | Ped, player: number | string | Player): boolean;
+    function getIsRespondingToPositiveInteraction(ped: number | IPed, player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5486A79D9FBD342D | Since: 1207
      */
-    function getJackTarget(ped: number | Ped): number;
+    function getJackTarget(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x14169FA823679E41 | Since: 1207
      */
-    function getLootingPickupTargetEntity(ped: number | Ped): number;
+    function getLootingPickupTargetEntity(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x18A3E9EE1297FD39 | Since: 1207
      */
-    function getMeleeTargetFor(ped: number | Ped): number;
+    function getMeleeTargetFor(ped: number | IPed): number;
     /**
      * This is a way to get what drawables a ped has equipped
      * Example: you are able to tell if the ped has the drawable PLAYER_ZERO_HAT_017 attached
@@ -22817,37 +22817,37 @@ export declare namespace ped {
      *
      * Hash: 0xA9C28516A6DC9D56 | Since: 1207
      */
-    function getMetaAssetGuids(ped: number | Ped, index: number): [boolean, number, number, number, number];
+    function getMetaAssetGuids(ped: number | IPed, index: number): [boolean, number, number, number, number];
     /**
      * No comment provided
      *
      * Hash: 0xE7998FEC53A33BBE | Since: 1207
      */
-    function getMetaAssetTint(ped: number | Ped, index: number): [boolean, number, number, number, number];
+    function getMetaAssetTint(ped: number | IPed, index: number): [boolean, number, number, number, number];
     /**
      * No comment provided
      *
      * Hash: 0xE7E11B8DCBED1058 | Since: 1207
      */
-    function getMount(ped: number | Ped): number;
+    function getMount(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x10C70A515BC03707 | Since: 1207
      */
-    function getNumMetaOutfits(ped: number | Ped): number;
+    function getNumMetaOutfits(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x9B128DC36C1E04CF | Since: 1207
      */
-    function getsJacker(ped: number | Ped): number;
+    function getsJacker(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x37F4AD56ECBC0CD6 | Since: 1207
      */
-    function getAccuracy(ped: number | Ped): number;
+    function getAccuracy(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -22865,19 +22865,19 @@ export declare namespace ped {
      *
      * Hash: 0x4912DFE492DB98CD | Since: 1207
      */
-    function getBlackboardScriptBool(ped: number | Ped, variableName: string): boolean;
+    function getBlackboardScriptBool(ped: number | IPed, variableName: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA29FD00D45311EB7 | Since: 1207
      */
-    function getBlackboardScriptFloat(ped: number | Ped, variableName: string): number;
+    function getBlackboardScriptFloat(ped: number | IPed, variableName: string): number;
     /**
      * No comment provided
      *
      * Hash: 0xB71B91B398F8F067 | Since: 1207
      */
-    function getBlackboardScriptInt(ped: number | Ped, variableName: string): number;
+    function getBlackboardScriptInt(ped: number | IPed, variableName: string): number;
     /**
      * Gets the position of the specified bone of the specified ped.
      *
@@ -22889,85 +22889,85 @@ export declare namespace ped {
      *
      * Hash: 0x17C07FC640E86B4E | Since: 1207
      */
-    function getBoneCoords(ped: number | Ped, boneId: number, offsetX: number, offsetY: number, offsetZ: number): Vector3;
+    function getBoneCoords(ped: number | IPed, boneId: number, offsetX: number, offsetY: number, offsetZ: number): Vector3;
     /**
      * no bone = -1
      *
      * Hash: 0x3F428D08BE5AAE31 | Since: 1207
      */
-    function getBoneIndex(ped: number | Ped, boneId: number): number;
+    function getBoneIndex(ped: number | IPed, boneId: number): number;
     /**
      * Returns the hash of the weapon/model/object that killed the ped.
      *
      * Hash: 0x16FFE42AB2D2DC59 | Since: 1207
      */
-    function getCauseOfDeath(ped: number | Ped): number;
+    function getCauseOfDeath(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xDEA92412FCAEB3F5 | Since: 1207
      */
-    function getCombatMovement(ped: number | Ped): number;
+    function getCombatMovement(ped: number | IPed): number;
     /**
      * flagId: see SET_PED_CONFIG_FLAG
      *
      * Hash: 0x7EE53118C892B513 | Since: 1207
      */
-    function getConfigFlag(ped: number | Ped, flagId: number): boolean;
+    function getConfigFlag(ped: number | IPed, flagId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD5FE956C70FF370B | Since: 1207
      */
-    function getCrouchMovement(ped: number | Ped): boolean;
+    function getCrouchMovement(ped: number | IPed): boolean;
     /**
      * Old name: _GET_PED_CURRENT_MOVEMENT_SPEED
      *
      * Hash: 0xF60165E1D2C5370B | Since: 1207
      */
-    function getCurrentMoveBlendRatio(ped: number | Ped): [boolean, number, number];
+    function getCurrentMoveBlendRatio(ped: number | IPed): [boolean, number, number];
     /**
      * No comment provided
      *
      * Hash: 0x3C06B8786DD94CD1 | Since: 1207
      */
-    function getDefensiveAreaPosition(ped: number | Ped): Vector3;
+    function getDefensiveAreaPosition(ped: number | IPed): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x2311F15D971AA680 | Since: 1207
      */
-    function getGrappleState(ped: number | Ped): number;
+    function getGrappleState(ped: number | IPed): number;
     /**
      * Returns the groupId of which the specified ped is a member of.
      *
      * Hash: 0xF162E133B4E7A675 | Since: 1207
      */
-    function getGroupIndex(ped: number | Ped): number;
+    function getGroupIndex(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x3BDFCF25B58B0415 | Since: 1207
      */
-    function getIsBeingGrappled(ped: number | Ped): boolean;
+    function getIsBeingGrappled(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC48A9EB0D499B3E5 | Since: 1207
      */
-    function getIsDoingCombatRoll(ped: number | Ped): boolean;
+    function getIsDoingCombatRoll(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0E99E3BF11BB6367 | Since: 1207
      */
-    function getIsGrappling(ped: number | Ped): boolean;
+    function getIsGrappling(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD75960F6BD9EA49C | Since: 1207
      */
-    function getLastDamageBone(ped: number | Ped): [boolean, number];
+    function getLastDamageBone(ped: number | IPed): [boolean, number];
     /**
      * enum ePedLootStatus
      * {
@@ -22979,55 +22979,55 @@ export declare namespace ped {
      *
      * Hash: 0xC737697C41628340 | Since: 1311
      */
-    function getLootStatusMp(ped: number | Ped): number;
+    function getLootStatusMp(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x4700A416E8324EF3 | Since: 1207
      */
-    function getMaxHealth(ped: number | Ped): number;
+    function getMaxHealth(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x3F69145BBA87BAE7 | Since: 1207
      */
-    function getMoney(ped: number | Ped): number;
+    function getMoney(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x243E1B4607040057 | Since: 1207
      */
-    function getMotionFocusEntity(ped: number | Ped): number;
+    function getMotionFocusEntity(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x23F8F5FC7E8C4A6B | Since: 1207
      */
-    function getNearbyPeds(ped: number | Ped, ignoredPedType: number): [number, any];
+    function getNearbyPeds(ped: number | IPed, ignoredPedType: number): [number, any];
     /**
      * No comment provided
      *
      * Hash: 0xCFF869CBFA210D82 | Since: 1207
      */
-    function getNearbyVehicles(ped: number | Ped): [number, any];
+    function getNearbyVehicles(ped: number | IPed): [number, any];
     /**
      * No comment provided
      *
      * Hash: 0x42FDD0F017B1E38E | Since: 1207
      */
-    function getRelationshipGroupDefaultHash(ped: number | Ped): number;
+    function getRelationshipGroupDefaultHash(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x7DBDD04862D95F04 | Since: 1207
      */
-    function getRelationshipGroupHash(ped: number | Ped): number;
+    function getRelationshipGroupHash(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xAF9E59B1B1FBF2A0 | Since: 1207
      */
-    function getResetFlag(ped: number | Ped, flagId: number): boolean;
+    function getResetFlag(ped: number | IPed, flagId: number): boolean;
     /**
      * Returns the entity that killed the ped
      *
@@ -23035,37 +23035,37 @@ export declare namespace ped {
      *
      * Hash: 0x93C8B64DEB84728C | Since: 1207
      */
-    function getSourceOfDeath(ped: number | Ped): number;
+    function getSourceOfDeath(ped: number | IPed): number;
     /**
      * Returns whether the entity is in stealth mode
      *
      * Hash: 0x7C2AC9CA66575FBF | Since: 1207
      */
-    function getStealthMovement(ped: number | Ped): boolean;
+    function getStealthMovement(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1E98817B311AE98A | Since: 1207
      */
-    function getTimeOfDeath(ped: number | Ped): number;
+    function getTimeOfDeath(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x936E7CAD0AE2EE14 | Since: 1207
      */
-    function getToPlayerWeaponDamageModifier(ped: number | Ped): number;
+    function getToPlayerWeaponDamageModifier(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xFF059E1E4C01E63C | Since: 1207
      */
-    function getType(ped: number | Ped): number;
+    function getType(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x6A3975DEA89F9A17 | Since: 1207
      */
-    function getPlayerIsFollowing(ped: number | Ped): number | string;
+    function getPlayerIsFollowing(ped: number | IPed): number | string;
     /**
      * No comment provided
      *
@@ -23077,31 +23077,31 @@ export declare namespace ped {
      *
      * Hash: 0xEBA5AD3A0EAF7121 | Since: 1207
      */
-    function getRelationshipBetweens(ped1: number | Ped, ped2: number | Ped): number;
+    function getRelationshipBetweens(ped1: number | IPed, ped2: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x6F4C85ACD641BCD2 | Since: 1207
      */
-    function getSeatIsTryingToEnter(ped: number | Ped): number;
+    function getSeatIsTryingToEnter(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x4E76CB57222A00E5 | Since: 1207
      */
-    function getSeatIsUsing(ped: number | Ped): number;
+    function getSeatIsUsing(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x511F1A683387C7E2 | Since: 1207
      */
-    function getTrackedPixelcount(ped: number | Ped): number;
+    function getTrackedPixelcount(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xF92691AED837A5FC | Since: 1207
      */
-    function getVehicleIsEntering(ped: number | Ped): number;
+    function getVehicleIsEntering(ped: number | IPed): number;
     /**
      * Gets the vehicle the specified Ped is in.
      *
@@ -23109,31 +23109,31 @@ export declare namespace ped {
      *
      * Hash: 0x9A9112A0FE9A4713 | Since: 1207
      */
-    function getVehicleIsIn(ped: number | Ped, lastVehicle: boolean): number;
+    function getVehicleIsIn(ped: number | IPed, lastVehicle: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0x6094AD011A2EA87D | Since: 1207
      */
-    function getVehicleIsUsing(ped: number | Ped): number;
+    function getVehicleIsUsing(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x2B02DB082258625F | Since: 1207
      */
-    function giveHashScenarioProp(ped: number | Ped, _object: number | Object, conditionalAnim: string, scenarioType: number | string, p4: number | string): boolean;
+    function giveHashScenarioProp(ped: number | IPed, _object: number | IObject, conditionalAnim: string, scenarioType: number | string, p4: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x854BC9B1A1CCD034 | Since: 1207
      */
-    function hasMotionTypeAssetLoaded(nameHash: number | string, ped: number | Ped): boolean;
+    function hasMotionTypeAssetLoaded(nameHash: number | string, ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7DD7FB3480D8083E | Since: 1207
      */
-    function initDefaultHealth(ped: number | Ped): void;
+    function initDefaultHealth(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -23145,13 +23145,13 @@ export declare namespace ped {
      *
      * Hash: 0xD543D3A8FDE4F185 | Since: 1207
      */
-    function isAnimalInteractionPossible(ped: number | Ped, animal: number | Ped): boolean;
+    function isAnimalInteractionPossible(ped: number | IPed, animal: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x68772DB2B2526F9F | Since: 1311
      */
-    function isAnyHostileNearPoint(ped: number | Ped, pos: Vector3, radius: number): boolean;
+    function isAnyHostileNearPoint(ped: number | IPed, pos: Vector3, radius: number): boolean;
     /**
      * No comment provided
      *
@@ -23169,7 +23169,7 @@ export declare namespace ped {
      *
      * Hash: 0xC8D523BF5BBD3808 | Since: 1207
      */
-    function isEventInQueue(ped: number | Ped, eventType: number | string): boolean;
+    function isEventInQueue(ped: number | IPed, eventType: number | string): boolean;
     /**
      * No comment provided
      *
@@ -23187,194 +23187,194 @@ export declare namespace ped {
      *
      * Hash: 0xFB1E7998B8595825 | Since: 1207
      */
-    function isLocationSpawnSafe(ped: number | Ped): boolean;
+    function isLocationSpawnSafe(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3998B1276A3300E5 | Since: 1207
      */
-    function isAimingFromCover(ped: number | Ped): boolean;
+    function isAimingFromCover(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x12534C348C6CB68B | Since: 1207
      */
-    function isAPlayer(ped: number | Ped): boolean;
+    function isAPlayer(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEF3A8772F085B4AA | Since: 1207
      */
-    function isBeingDragged(ped: number | Ped): boolean;
+    function isBeingDragged(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD453BB601D4A606E | Since: 1207
      */
-    function isBeingHogtied(ped: number | Ped): boolean;
+    function isBeingHogtied(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9A497FE2DF198913 | Since: 1207
      */
-    function isBeingJacked(ped: number | Ped): boolean;
+    function isBeingJacked(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x863B23EFDE9C5DF2 | Since: 1207
      */
-    function isBeingStealthKilled(ped: number | Ped): boolean;
+    function isBeingStealthKilled(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4FBACCE3B4138EE8 | Since: 1207
      */
-    function isBeingStunned(ped: number | Ped, weaponType: number | string): boolean;
+    function isBeingStunned(ped: number | IPed, weaponType: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA911EE21EDF69DAF | Since: 1207
      */
-    function isCarryingSomething(ped: number | Ped): boolean;
+    function isCarryingSomething(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x53E8CB4F48BFE623 | Since: 1207
      */
-    function isClimbing(ped: number | Ped): boolean;
+    function isClimbing(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3317DEDB88C95038 | Since: 1207
      */
-    function isDeadOrDying(ped: number | Ped): boolean;
+    function isDeadOrDying(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xBA63D9FE45412247 | Since: 1207
      */
-    function isDefensiveAreaActive(ped: number | Ped): boolean;
+    function isDefensiveAreaActive(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5527B8246FEF9B11 | Since: 1207
      */
-    function isDiving(ped: number | Ped): boolean;
+    function isDiving(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1D46B417F926D34D | Since: 1207
      */
-    function isEnteringAnyTransport(ped: number | Ped): boolean;
+    function isEnteringAnyTransport(ped: number | IPed): boolean;
     /**
      * Presumably returns the Entity that the Ped is currently diving out of the way of.
      *
      * Hash: 0x414641C26E105898 | Since: 1207
      */
-    function isEvasiveDiving(ped: number | Ped): [boolean, number];
+    function isEvasiveDiving(ped: number | IPed): [boolean, number];
     /**
      * angle is ped's view cone
      *
      * Hash: 0xD71649DB0A545AA3 | Since: 1207
      */
-    function isFacingPed(ped: number | Ped, otherPed: number | Ped, angle: number): boolean;
+    function isFacingPed(ped: number | IPed, otherPed: number | IPed, angle: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xFB92A102F1C4DFA3 | Since: 1207
      */
-    function isFalling(ped: number | Ped): boolean;
+    function isFalling(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3E592D0486DEC0F6 | Since: 1207
      */
-    function isFallingOver(ped: number | Ped): boolean;
+    function isFallingOver(ped: number | IPed): boolean;
     /**
      * Gets a value indicating whether this ped's health is below its fatally injured threshold. The default threshold is 100.
      * If the handle is invalid, the function returns true.
      *
      * Hash: 0xD839450756ED5A80 | Since: 1207
      */
-    function isFatallyInjured(ped: number | Ped): boolean;
+    function isFatallyInjured(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xBBCCE00B381F8482 | Since: 1207
      */
-    function isFleeing(ped: number | Ped): boolean;
+    function isFleeing(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x95CBC65780DE7EB1 | Since: 1207
      */
-    function isFullyOnMount(ped: number | Ped): boolean;
+    function isFullyOnMount(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xBB062B2B5722478E | Since: 1207
      */
-    function isGettingIntoAVehicle(ped: number | Ped): boolean;
+    function isGettingIntoAVehicle(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9F65DBC537E59AD5 | Since: 1207
      */
-    function isGoingIntoCover(ped: number | Ped): boolean;
+    function isGoingIntoCover(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9BB01E3834671191 | Since: 1207
      */
-    function isGroupMember(ped: number | Ped, groupId: number): boolean;
+    function isGroupMember(ped: number | IPed, groupId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1C86D8AEF8254B78 | Since: 1207
      */
-    function isHangingOnToVehicle(ped: number | Ped): boolean;
+    function isHangingOnToVehicle(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xFCF37A457CB96DC0 | Since: 1207
      */
-    function isHeadingTowardsPosition(ped: number | Ped, pos: Vector3): boolean;
+    function isHeadingTowardsPosition(ped: number | IPed, pos: Vector3): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x813A0A7C9D2E831F | Since: 1207
      */
-    function isHeadtrackingEntity(ped: number | Ped, entity: number | Entity): boolean;
+    function isHeadtrackingEntity(ped: number | IPed, entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5CD3CB88A7F8850D | Since: 1207
      */
-    function isHeadtrackingPed(ped1: number | Ped, ped2: number | Ped): boolean;
+    function isHeadtrackingPed(ped1: number | IPed, ped2: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3AA24CCC0D451379 | Since: 1207
      */
-    function isHogtied(ped: number | Ped): boolean;
+    function isHogtied(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x42429C674B61238B | Since: 1207
      */
-    function isHogtying(ped: number | Ped): boolean;
+    function isHogtying(ped: number | IPed): boolean;
     /**
      * Returns true/false if the ped is/isn't humanoid.
      *
      * Hash: 0xB980061DA992779D | Since: 1207
      */
-    function isHuman(ped: number | Ped): boolean;
+    function isHuman(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB655DB7582AEC805 | Since: 1207
      */
-    function isIncapacitated(ped: number | Ped): boolean;
+    function isIncapacitated(ped: number | IPed): boolean;
     /**
      * Gets a value indicating whether this ped's health is below its injured threshold.
      *
@@ -23382,73 +23382,73 @@ export declare namespace ped {
      *
      * Hash: 0x84A2DD9AC37C35C1 | Since: 1207
      */
-    function isInjured(ped: number | Ped): boolean;
+    function isInjured(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2E0E1C2B4F6CB339 | Since: 1207
      */
-    function isInAnyBoat(ped: number | Ped): boolean;
+    function isInAnyBoat(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x298B91AE825E5705 | Since: 1207
      */
-    function isInAnyHeli(ped: number | Ped): boolean;
+    function isInAnyHeli(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5FFF4CFC74D8FB80 | Since: 1207
      */
-    function isInAnyPlane(ped: number | Ped): boolean;
+    function isInAnyPlane(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x6E575D6A898AB852 | Since: 1207
      */
-    function isInAnyTaxi(ped: number | Ped): boolean;
+    function isInAnyTaxi(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x6F972C1AB75A1ED0 | Since: 1207
      */
-    function isInAnyTrain(ped: number | Ped): boolean;
+    function isInAnyTrain(ped: number | IPed): boolean;
     /**
      * Gets a value indicating whether the specified ped is in any vehicle.
      *
      * Hash: 0x997ABD671D25CA0B | Since: 1207
      */
-    function isInAnyVehicle(ped: number | Ped, atGetIn: boolean): boolean;
+    function isInAnyVehicle(ped: number | IPed, atGetIn: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4859F1FC66A6278E | Since: 1207
      */
-    function isInCombat(ped: number | Ped, target: number | Ped): boolean;
+    function isInCombat(ped: number | IPed, target: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x60DFD0691A170B88 | Since: 1207
      */
-    function isInCover(ped: number | Ped): boolean;
+    function isInCover(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x845333B3150583AB | Since: 1207
      */
-    function isInCoverFacingLeft(ped: number | Ped): boolean;
+    function isInCoverFacingLeft(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9134873537FA419C | Since: 1207
      */
-    function isInFlyingVehicle(ped: number | Ped): boolean;
+    function isInFlyingVehicle(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5891CAC5D4ACFF74 | Since: 1207
      */
-    function isInGroup(ped: number | Ped): boolean;
+    function isInGroup(ped: number | IPed): boolean;
     /**
      * Notes: The function only returns true while the ped is:
      * A.) Swinging a random melee attack (including pistol-whipping)
@@ -23461,67 +23461,67 @@ export declare namespace ped {
      *
      * Hash: 0x4E209B2C1EAD5159 | Since: 1207
      */
-    function isInMeleeCombat(ped: number | Ped): boolean;
+    function isInMeleeCombat(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x796D90EFB19AA332 | Since: 1207
      */
-    function isInModel(ped: number | Ped, modelHash: number | string): boolean;
+    function isInModel(ped: number | IPed, modelHash: number | string): boolean;
     /**
      * Gets a value indicating whether the specified ped is in the specified vehicle.
      *
      * Hash: 0xA3EE4A07279BB9DB | Since: 1207
      */
-    function isInVehicle(ped: number | Ped, vehicle: number | Vehicle, atGetIn: boolean): boolean;
+    function isInVehicle(ped: number | IPed, vehicle: number | IVehicle, atGetIn: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4AE4FF911DFB61DA | Since: 1207
      */
-    function isJacking(ped: number | Ped): boolean;
+    function isJacking(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xCEDABC5900A0BF97 | Since: 1207
      */
-    function isJumping(ped: number | Ped): boolean;
+    function isJumping(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9682F850056C9ADE | Since: 1207
      */
-    function isLassoed(ped: number | Ped): boolean;
+    function isLassoed(ped: number | IPed): boolean;
     /**
      * Returns true/false if the ped is/isn't male.
      *
      * Hash: 0x6D9F5FAA7488BA46 | Since: 1207
      */
-    function isMale(ped: number | Ped): boolean;
+    function isMale(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC9D55B1A358A5BF7 | Since: 1207
      */
-    function isModel(ped: number | Ped, modelHash: number | string): boolean;
+    function isModel(ped: number | IPed, modelHash: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x01FEE67DB37F59B2 | Since: 1207
      */
-    function isOnFoot(ped: number | Ped): boolean;
+    function isOnFoot(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x460BC76A0E10655E | Since: 1207
      */
-    function isOnMount(ped: number | Ped): boolean;
+    function isOnMount(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEC5F66E459AF3BB2 | Since: 1207
      */
-    function isOnSpecificVehicle(ped: number | Ped, vehicle: number | Vehicle): boolean;
+    function isOnSpecificVehicle(ped: number | IPed, vehicle: number | IVehicle): boolean;
     /**
      * Gets a value indicating whether the specified ped is on top of any vehicle.
      *
@@ -23530,7 +23530,7 @@ export declare namespace ped {
      *
      * Hash: 0x67722AEB798E5FAB | Since: 1207
      */
-    function isOnVehicle(ped: number | Ped): boolean;
+    function isOnVehicle(ped: number | IPed): boolean;
     /**
      * Returns true if the ped is currently opening a door (CTaskOpenDoor).
      *
@@ -23538,197 +23538,197 @@ export declare namespace ped {
      *
      * Hash: 0x26AF0E8E30BD2A2C | Since: 1207
      */
-    function isOpeningDoor(ped: number | Ped): boolean;
+    function isOpeningDoor(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDCCA191DF9980FD7 | Since: 1207
      */
-    function isPerformingMeleeAction(ped: number | Ped, p2: number | string): boolean;
+    function isPerformingMeleeAction(ped: number | IPed, p2: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC70B5FAE151982D8 | Since: 1207
      */
-    function isPlantingBomb(ped: number | Ped): boolean;
+    function isPlantingBomb(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD6A86331A537A7B9 | Since: 1207
      */
-    function isProne(ped: number | Ped): boolean;
+    function isProne(ped: number | IPed): boolean;
     /**
      * If the ped handle passed through the parenthesis is in a ragdoll state this will return true.
      *
      * Hash: 0x47E4E977581C5B55 | Since: 1207
      */
-    function isRagdoll(ped: number | Ped): boolean;
+    function isRagdoll(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA0BC8FAED8CFEB3C | Since: 1207
      */
-    function isReadyToRender(ped: number | Ped): boolean;
+    function isReadyToRender(ped: number | IPed): boolean;
     /**
      * Returns whether the specified ped is reloading.
      *
      * Hash: 0x24B100C68C645951 | Since: 1207
      */
-    function isReloading(ped: number | Ped): boolean;
+    function isReloading(ped: number | IPed): boolean;
     /**
      * eventType: https://alloc8or.re/rdr3/doc/enums/eEventType.txt
      *
      * Hash: 0x625B774D75C87068 | Since: 1207
      */
-    function isRespondingToEvent(ped: number | Ped, eventType: number | string): boolean;
+    function isRespondingToEvent(ped: number | IPed, eventType: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x77525BBF433F2CD6 | Since: 1207
      */
-    function isRespondingToThreat(ped: number | Ped): boolean;
+    function isRespondingToThreat(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2AFE52F782F25775 | Since: 1207
      */
-    function isRunningMobilePhoneTask(ped: number | Ped): boolean;
+    function isRunningMobilePhoneTask(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xE3B6097CC25AA69E | Since: 1207
      */
-    function isRunningRagdollTask(ped: number | Ped): boolean;
+    function isRunningRagdollTask(ped: number | IPed): boolean;
     /**
      * Returns whether the specified ped is shooting.
      *
      * Hash: 0x34616828CD07F1A1 | Since: 1207
      */
-    function isShooting(ped: number | Ped): boolean;
+    function isShooting(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x84D0BF2B21862059 | Since: 1207
      */
-    function isSitting(ped: number | Ped): boolean;
+    function isSitting(ped: number | IPed): boolean;
     /**
      * Detect if ped is in any vehicle
      * [True/False]
      *
      * Hash: 0x826AA586EDB9FEF8 | Since: 1207
      */
-    function isSittingInAnyVehicle(ped: number | Ped): boolean;
+    function isSittingInAnyVehicle(ped: number | IPed): boolean;
     /**
      * Detect if ped is sitting in the specified vehicle
      * [True/False]
      *
      * Hash: 0xA808AA1D79230FC2 | Since: 1207
      */
-    function isSittingInVehicle(ped: number | Ped, vehicle: number | Vehicle): boolean;
+    function isSittingInVehicle(ped: number | IPed, vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x530944F6F4B8A214 | Since: 1207
      */
-    function isStopped(ped: number | Ped): boolean;
+    function isStopped(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9DE327631295B4C2 | Since: 1207
      */
-    function isSwimming(ped: number | Ped): boolean;
+    function isSwimming(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC024869A53992F34 | Since: 1207
      */
-    function isSwimmingUnderWater(ped: number | Ped): boolean;
+    function isSwimmingUnderWater(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x00E73468D085F745 | Since: 1207
      */
-    function isUsingActionMode(ped: number | Ped): boolean;
+    function isUsingActionMode(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x57AB4A3080F85143 | Since: 1207
      */
-    function isUsingAnyScenario(ped: number | Ped): boolean;
+    function isUsingAnyScenario(ped: number | IPed): boolean;
     /**
      * Equivalent to IS_PED_USING_SCENARIO from V but takes a hash instead of a string.
      *
      * Hash: 0x34D6AC1157C8226C | Since: 1207
      */
-    function isUsingScenarioHash(ped: number | Ped, scenarioHash: number | string): boolean;
+    function isUsingScenarioHash(ped: number | IPed, scenarioHash: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9C54041BB66BCF9E | Since: 1207
      */
-    function isUsingThisScenario(ped: number | Ped, scenario: number): boolean;
+    function isUsingThisScenario(ped: number | IPed, scenario: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x117C70D1F5730B5E | Since: 1207
      */
-    function isVaulting(ped: number | Ped): boolean;
+    function isVaulting(ped: number | IPed): boolean;
     /**
      * Returns true if ped is in perception (focused and looking at target ped)
      * Most float params are -1.f in R* Scripts
      *
      * Hash: 0x06087579E7AA85A9 | Since: 1207
      */
-    function isTargetInPerceptionArea(ped: number | Ped, targetPed: number | Ped, customDistance: number): boolean;
+    function isTargetInPerceptionArea(ped: number | IPed, targetPed: number | IPed, customDistance: number): boolean;
     /**
      * Returns whether or not a ped is visible within your FOV, not this check auto's to false after a certain distance.
      * Target needs to be tracked first, won't work otherwise.
      *
      * Hash: 0x91C8E617F64188AC | Since: 1207
      */
-    function isTrackedVisible(ped: number | Ped): boolean;
+    function isTrackedVisible(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x6FD7816A36615F48 | Since: 1207
      */
-    function knockOffProp(ped: number | Ped): void;
+    function knockOffProp(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x45BBCBA77C29A841 | Since: 1207
      */
-    function knockOffVehicle(ped: number | Ped): void;
+    function knockOffVehicle(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xF6E1E9F47A7686F8 | Since: 1207
      */
-    function cowerInPlace(ped: number | Ped, ped2: number | Ped): void;
+    function cowerInPlace(ped: number | IPed, ped2: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x1E4C940233FC0C6F | Since: 1207
      */
-    function cowerMoveToPoint(ped: number | Ped, ped2: number | Ped): void;
+    function cowerMoveToPoint(ped: number | IPed, ped2: number | IPed): void;
     /**
      * Based on TASK_COMBAT_HATED_TARGETS_AROUND_PED, the parameters are likely similar (PedHandle, and area to attack in).
      *
      * Hash: 0x9222F300BF8354FE | Since: 1207
      */
-    function registerHatedTargetsAround(ped: number | Ped, radius: number): void;
+    function registerHatedTargetsAround(ped: number | IPed, radius: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2F25D9AEFA34FBA2 | Since: 1207
      */
-    function registerTarget(ped: number | Ped, targetPed: number | Ped): void;
+    function registerTarget(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x3088634CF8C819CF | Since: 1207
      */
-    function releaseVisibilityTracking(ped: number | Ped): void;
+    function releaseVisibilityTracking(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -23740,13 +23740,13 @@ export declare namespace ped {
      *
      * Hash: 0x74D4E028107450A9 | Since: 1207
      */
-    function removeDefensiveArea(ped: number | Ped, toggle: boolean): void;
+    function removeDefensiveArea(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xED74007FFB146BC2 | Since: 1207
      */
-    function removeFromGroup(ped: number | Ped): void;
+    function removeFromGroup(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -23770,31 +23770,31 @@ export declare namespace ped {
      *
      * Hash: 0xDF631E4BCE1B1FC4 | Since: 1207
      */
-    function removeShopItemFromByCategory(ped: number | Ped, componentCategory: number | string): void;
+    function removeShopItemFromByCategory(ped: number | IPed, componentCategory: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xD710A5007C2AC539 | Since: 1207
      */
-    function removeTagFromMeta(ped: number | Ped, component: number | string): void;
+    function removeTagFromMeta(ped: number | IPed, component: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x75BA1CB3B7D40CAF | Since: 1207
      */
-    function requestUseSmallBboxVisibilityTracking(ped: number | Ped): void;
+    function requestUseSmallBboxVisibilityTracking(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x2BC338A7B21F4608 | Since: 1207
      */
-    function requestVehicleVisibilityTracking(ped: number | Ped): void;
+    function requestVehicleVisibilityTracking(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x7D7A2E43E74E2EB8 | Since: 1207
      */
-    function requestVisibilityTracking(ped: number | Ped): void;
+    function requestVisibilityTracking(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -23812,31 +23812,31 @@ export declare namespace ped {
      *
      * Hash: 0x2A5AFD2B8381A6E1 | Since: 1207
      */
-    function resetHorseAvoidanceLevelToDefault(horse: number | Ped): void;
+    function resetHorseAvoidanceLevelToDefault(horse: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x22EF8FF8778030EB | Since: 1207
      */
-    function resetInVehicleContext(ped: number | Ped): void;
+    function resetInVehicleContext(ped: number | IPed): void;
     /**
      * Resets the value for the last vehicle driven by the Ped.
      *
      * Hash: 0xBB8DE8CF6A8DD8BB | Since: 1207
      */
-    function resetLastVehicle(ped: number | Ped): void;
+    function resetLastVehicle(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x9FA4664CF62E47E8 | Since: 1207
      */
-    function resetRagdollTimer(ped: number | Ped): void;
+    function resetRagdollTimer(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x97B0DB5B4AA74E77 | Since: 1207
      */
-    function resetWeaponMovementClipset(ped: number | Ped): void;
+    function resetWeaponMovementClipset(ped: number | IPed): void;
     /**
      * This function will simply bring the dead ped back to life.
      *
@@ -23846,13 +23846,13 @@ export declare namespace ped {
      *
      * Hash: 0x71BC8E838B9C6035 | Since: 1207
      */
-    function resurrect(ped: number | Ped): void;
+    function resurrect(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x8D8ACD8388CD99CE | Since: 1207
      */
-    function reviveInjured(ped: number | Ped): void;
+    function reviveInjured(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -23870,7 +23870,7 @@ export declare namespace ped {
      *
      * Hash: 0x9F8AA94D6D97DBF4 | Since: 1207
      */
-    function setBlockingOfNonTemporaryEvents(ped: number | Ped, toggle: boolean): void;
+    function setBlockingOfNonTemporaryEvents(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -23884,7 +23884,7 @@ export declare namespace ped {
      *
      * Hash: 0xFF41B4B141ED981C | Since: 1207
      */
-    function setCombatFloat(ped: number | Ped, combatType: number, newValue: number): void;
+    function setCombatFloat(ped: number | IPed, combatType: number, newValue: number): void;
     /**
      * No comment provided
      *
@@ -23896,19 +23896,19 @@ export declare namespace ped {
      *
      * Hash: 0xC52E0F855C58FC2E | Since: 1207
      */
-    function setEnableBoundAnkles(ped: number | Ped, toggle: boolean): void;
+    function setEnableBoundAnkles(ped: number | IPed, toggle: boolean): void;
     /**
      * Ped can not pull out a weapon when true
      *
      * Hash: 0xDF1AF8B5D56542FA | Since: 1207
      */
-    function setEnableHandcuffs(ped: number | Ped): void;
+    function setEnableHandcuffs(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xFFC24B988B938B38 | Since: 1207
      */
-    function setFacialIdleAnimOverride(ped: number | Ped, animName: string, animDict: string): void;
+    function setFacialIdleAnimOverride(ped: number | IPed, animName: string, animDict: string): void;
     /**
      * No comment provided
      *
@@ -23946,13 +23946,13 @@ export declare namespace ped {
      *
      * Hash: 0xDDCF6FEA5D7ACC17 | Since: 1207
      */
-    function setHorseAvoidanceLevel(horse: number | Ped, avoidanceLevel: number): void;
+    function setHorseAvoidanceLevel(horse: number | IPed, avoidanceLevel: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC32779C16FCEECD9 | Since: 1207
      */
-    function setIkTarget(ped: number | Ped, ikIndex: number, entityLookAt: number | Entity, boneLookAt: number, offsetX: number, offsetY: number, offsetZ: number, blendInDuration: number, blendOutDuration: number): void;
+    function setIkTarget(ped: number | IPed, ikIndex: number, entityLookAt: number | IEntity, boneLookAt: number, offsetX: number, offsetY: number, offsetZ: number, blendInDuration: number, blendOutDuration: number): void;
     /**
      * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/CLootingFlags__Flags
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/LOOTING_FLAGS
@@ -23967,50 +23967,50 @@ export declare namespace ped {
      *
      * Hash: 0x6569F31A01B4C097 | Since: 1207
      */
-    function setLootingFlag(ped: number | Ped, lootFlag: number, enabled: boolean): void;
+    function setLootingFlag(ped: number | IPed, lootFlag: number, enabled: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x925A160133003AC6 | Since: 1207
      */
-    function setPauseWritheBleedout(ped: number | Ped, toggle: boolean): void;
+    function setPauseWritheBleedout(ped: number | IPed, toggle: boolean): void;
     /**
      * accuracy = 0-100, 100 being perfectly accurate
      *
      * Hash: 0x7AEFB85C1D49DEB6 | Since: 1207
      */
-    function setAccuracy(ped: number | Ped, accuracy: number): void;
+    function setAccuracy(ped: number | IPed, accuracy: number): void;
     /**
      * Turns the desired ped into a cop. If you use this on the player ped, you will become almost invisible to cops dispatched for you. You will also report your own crimes, get a generic cop voice, get a cop-vision-cone on the radar, and you will be unable to shoot at other cops. Toggling ped as "false" has no effect; you must change p0's ped model to disable the effect.
      * toggle = bSetRelGroup
      *
      * Hash: 0xBB03C38DD3FB7FFD | Since: 1207
      */
-    function setAsCop(ped: number | Ped, toggle: boolean): void;
+    function setAsCop(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x2A7819605465FBCE | Since: 1207
      */
-    function setAsGroupLeader(ped: number | Ped, groupId: number): void;
+    function setAsGroupLeader(ped: number | IPed, groupId: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9F3480FE65DB31B5 | Since: 1207
      */
-    function setAsGroupMember(ped: number | Ped, groupId: number): void;
+    function setAsGroupMember(ped: number | IPed, groupId: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6C3B4D6D13B4C841 | Since: 1207
      */
-    function setCanArmIk(ped: number | Ped, toggle: boolean): void;
+    function setCanArmIk(ped: number | IPed, toggle: boolean): void;
     /**
      * When set on a player ped, its just like when you die in RDO
      *
      * Hash: 0x5240864E847C691C | Since: 1207
      */
-    function setCanBeIncapacitated(ped: number | Ped, toggle: boolean): void;
+    function setCanBeIncapacitated(ped: number | IPed, toggle: boolean): void;
     /**
      * state:
      * enum eKnockOffVehicle
@@ -24023,73 +24023,73 @@ export declare namespace ped {
      *
      * Hash: 0x7A6535691B477C48 | Since: 1207
      */
-    function setCanBeKnockedOffVehicle(ped: number | Ped, state: number): void;
+    function setCanBeKnockedOffVehicle(ped: number | IPed, state: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x63F58F7C80513AAD | Since: 1207
      */
-    function setCanBeTargetted(ped: number | Ped, toggle: boolean): void;
+    function setCanBeTargetted(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x66B57B72E0836A76 | Since: 1207
      */
-    function setCanBeTargettedByPlayer(ped: number | Ped, player: number | string | Player, toggle: boolean): void;
+    function setCanBeTargettedByPlayer(ped: number | IPed, player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xBF1CA77833E58F2C | Since: 1207
      */
-    function setCanBeTargettedByTeam(ped: number | Ped, team: number, toggle: boolean): void;
+    function setCanBeTargettedByTeam(ped: number | IPed, team: number, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xEE9DF765990E8D1D | Since: 1207
      */
-    function setCanBodyRecoilIk(ped: number | Ped, toggle: boolean): void;
+    function setCanBodyRecoilIk(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC11C18092C5530DC | Since: 1207
      */
-    function setCanHeadIk(ped: number | Ped, toggle: boolean): void;
+    function setCanHeadIk(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x73518ECE2485412B | Since: 1207
      */
-    function setCanLegIk(ped: number | Ped, toggle: boolean): void;
+    function setCanLegIk(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x6373D1349925A70E | Since: 1207
      */
-    function setCanPlayAmbientAnims(ped: number | Ped, toggle: boolean): void;
+    function setCanPlayAmbientAnims(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0EB0585D15254740 | Since: 1207
      */
-    function setCanPlayAmbientBaseAnims(ped: number | Ped, toggle: boolean): void;
+    function setCanPlayAmbientBaseAnims(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xBAF20C5432058024 | Since: 1207
      */
-    function setCanPlayGestureAnims(ped: number | Ped): void;
+    function setCanPlayGestureAnims(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xB128377056A54E2A | Since: 1207
      */
-    function setCanRagdoll(ped: number | Ped, toggle: boolean): void;
+    function setCanRagdoll(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xDF993EE5E90ABA25 | Since: 1207
      */
-    function setCanRagdollFromPlayerImpact(ped: number | Ped, toggle: boolean): void;
+    function setCanRagdollFromPlayerImpact(ped: number | IPed, toggle: boolean): void;
     /**
      * This only will teleport the ped to the group leader if the group leader teleports (sets coords).
      *
@@ -24097,31 +24097,31 @@ export declare namespace ped {
      *
      * Hash: 0x2E2F4240B3F24647 | Since: 1207
      */
-    function setCanTeleportToGroupLeader(pedHandle: number | Ped, groupId: number, toggle: boolean): void;
+    function setCanTeleportToGroupLeader(pedHandle: number | IPed, groupId: number, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xF2B7106D37947CE0 | Since: 1207
      */
-    function setCanTorsoIk(ped: number | Ped, toggle: boolean): void;
+    function setCanTorsoIk(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xF5846EDB26A98A24 | Since: 1207
      */
-    function setCanTorsoReactIk(ped: number | Ped, toggle: boolean): void;
+    function setCanTorsoReactIk(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x6647C5F6F5792496 | Since: 1207
      */
-    function setCanTorsoVehicleIk(ped: number | Ped, toggle: boolean): void;
+    function setCanTorsoVehicleIk(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xEC4686EC06434678 | Since: 1207
      */
-    function setCanUseAutoConversationLookat(ped: number | Ped, toggle: boolean): void;
+    function setCanUseAutoConversationLookat(ped: number | IPed, toggle: boolean): void;
     /**
      * Overrides the ped's collision capsule radius for the current tick.
      * Must be called every tick to be effective.
@@ -24130,13 +24130,13 @@ export declare namespace ped {
      *
      * Hash: 0x364DF566EC833DE2 | Since: 1207
      */
-    function setCapsule(ped: number | Ped, value: number): void;
+    function setCapsule(ped: number | IPed, value: number): void;
     /**
      * Old name: SET_PED_CLOTH_PACKAGE_INDEX
      *
      * Hash: 0x78C4E9961DB3EB5B | Since: 1207
      */
-    function setClothPinFrames(ped: number | Ped): void;
+    function setClothPinFrames(ped: number | IPed): void;
     /**
      * abilityLevel:
      * enum eCombatAbilityLevel
@@ -24148,14 +24148,14 @@ export declare namespace ped {
      *
      * Hash: 0xC7622C0D36B2FDA8 | Since: 1207
      */
-    function setCombatAbility(ped: number | Ped, abilityLevel: number): void;
+    function setCombatAbility(ped: number | IPed, abilityLevel: number): void;
     /**
      * attributeIndex: https://alloc8or.re/rdr3/doc/enums/eCombatAttribute.txt
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/COMBAT_ATTRIBUTES
      *
      * Hash: 0x9F7794730795E019 | Since: 1207
      */
-    function setCombatAttributes(ped: number | Ped, attributeIndex: number, enabled: boolean): void;
+    function setCombatAttributes(ped: number | IPed, attributeIndex: number, enabled: boolean): void;
     /**
      * 0 - Stationary (Will just stand in place)
      * 1 - Defensive (Will try to find cover and very likely to blind fire)
@@ -24164,7 +24164,7 @@ export declare namespace ped {
      *
      * Hash: 0x4D9CA1009AFBD057 | Since: 1207
      */
-    function setCombatMovement(ped: number | Ped, combatMovement: number): void;
+    function setCombatMovement(ped: number | IPed, combatMovement: number): void;
     /**
      * range:
      * enum eCombatRange
@@ -24177,7 +24177,7 @@ export declare namespace ped {
      *
      * Hash: 0x3C606747B23E497B | Since: 1207
      */
-    function setCombatRange(ped: number | Ped, range: number): void;
+    function setCombatRange(ped: number | IPed, range: number): void;
     /**
      * flagId: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/ePedScriptConfigFlags
      * https://alloc8or.re/rdr3/doc/enums/ePedScriptConfigFlags.txt
@@ -24185,31 +24185,31 @@ export declare namespace ped {
      *
      * Hash: 0x1913FE4CBF41C463 | Since: 1207
      */
-    function setConfigFlag(ped: number | Ped, flagId: number, value: boolean): void;
+    function setConfigFlag(ped: number | IPed, flagId: number, value: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x413C6C763A4AFFAD | Since: 1207
      */
-    function setDefensiveAreaDirection(ped: number | Ped): void;
+    function setDefensiveAreaDirection(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xFC3DB99C8144CD81 | Since: 1207
      */
-    function setDefensiveAreaVolume(ped: number | Ped, volume: number): void;
+    function setDefensiveAreaVolume(ped: number | IPed, volume: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xAA5A7ECE2AA8FE70 | Since: 1207
      */
-    function setDesiredHeading(ped: number | Ped, heading: number): void;
+    function setDesiredHeading(ped: number | IPed, heading: number): void;
     /**
      * Used in various R* MP & SP Scripts
      *
      * Hash: 0x9AC577F5A12AD8A9 | Since: 1207
      */
-    function setFiringPattern(ped: number | Ped, patternHash: number | string): void;
+    function setFiringPattern(ped: number | IPed, patternHash: number | string): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/FLEE_ATTRIBUTES
      *
@@ -24223,49 +24223,49 @@ export declare namespace ped {
      *
      * Hash: 0x70A2D1137C8ED7C9 | Since: 1207
      */
-    function setFleeAttributes(ped: number | Ped, attributeFlags: number, enable: boolean): void;
+    function setFleeAttributes(ped: number | IPed, attributeFlags: number, enable: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xDDF803377F94AAA8 | Since: 1207
      */
-    function setGestureGroup(ped: number | Ped, gesture: string): void;
+    function setGestureGroup(ped: number | IPed, gesture: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x9FF447B6B6AD960A | Since: 1207
      */
-    function setGravity(ped: number | Ped, toggle: boolean): void;
+    function setGravity(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0BDDB8D9EC6BCF3C | Since: 1207
      */
-    function setGroupMemberPassengerIndex(ped: number | Ped, index: number): void;
+    function setGroupMemberPassengerIndex(ped: number | IPed, index: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x33A8F7F7D5F7F33C | Since: 1207
      */
-    function setHearingRange(ped: number | Ped, value: number): void;
+    function setHearingRange(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x52D59AB61DDC05DD | Since: 1207
      */
-    function setHighlyPerceptive(ped: number | Ped, toggle: boolean): void;
+    function setHighlyPerceptive(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xF107E836A70DCE05 | Since: 1207
      */
-    function setIdRange(ped: number | Ped, value: number): void;
+    function setIdRange(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xEC4B4B3B9908052A | Since: 1311
      */
-    function setInjuredOnGroundBehaviour(ped: number | Ped, unk: number): void;
+    function setInjuredOnGroundBehaviour(ped: number | IPed, unk: number): void;
     /**
      * Ped: The ped to warp.
      * vehicle: The vehicle to warp the ped into.
@@ -24273,61 +24273,61 @@ export declare namespace ped {
      *
      * Hash: 0xF75B0D629E1C063D | Since: 1207
      */
-    function setIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void;
+    function setIntoVehicle(ped: number | IPed, vehicle: number | IVehicle, seatIndex: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x971D38760FBC02EF | Since: 1207
      */
-    function setKeepTask(ped: number | Ped, toggle: boolean): void;
+    function setKeepTask(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xAE6004120C18DF97 | Since: 1207
      */
-    function setLassoHogtieFlag(ped: number | Ped, flagId: number, value: boolean): void;
+    function setLassoHogtieFlag(ped: number | IPed, flagId: number, value: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC396F5B86FF9FEBD | Since: 1207
      */
-    function setLegIkMode(ped: number | Ped, mode: number): void;
+    function setLegIkMode(ped: number | IPed, mode: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xDC2C5C242AAC342B | Since: 1207
      */
-    function setLodMultiplier(ped: number | Ped, multiplier: number): void;
+    function setLodMultiplier(ped: number | IPed, multiplier: number): void;
     /**
      * Sets the maximum health of a ped.
      *
      * Hash: 0xF5F6378C4F3419D3 | Since: 1207
      */
-    function setMaxHealth(ped: number | Ped, value: number): void;
+    function setMaxHealth(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x433083750C5E064A | Since: 1207
      */
-    function setMaxMoveBlendRatio(ped: number | Ped, value: number): void;
+    function setMaxMoveBlendRatio(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x43C851690662113D | Since: 1207
      */
-    function setMaxTimeInWater(ped: number | Ped, value: number): void;
+    function setMaxTimeInWater(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6BA428C528D9E522 | Since: 1207
      */
-    function setMaxTimeUnderwater(ped: number | Ped, value: number): void;
+    function setMaxTimeUnderwater(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x01A898D26E2333DD | Since: 1207
      */
-    function setMinMoveBlendRatio(ped: number | Ped, value: number): void;
+    function setMinMoveBlendRatio(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
@@ -24339,26 +24339,26 @@ export declare namespace ped {
      *
      * Hash: 0xA9C8960E8684C1B5 | Since: 1207
      */
-    function setMoney(ped: number | Ped, amount: number): void;
+    function setMoney(ped: number | IPed, amount: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9E8C908F41584ECD | Since: 1207
      */
-    function setMoveAnimsBlendOut(ped: number | Ped): void;
+    function setMoveAnimsBlendOut(ped: number | IPed): void;
     /**
      * Min: 0.0f
      * Max: 1.15f
      *
      * Hash: 0x085BF80FA50A39D1 | Since: 1207
      */
-    function setMoveRateOverride(ped: number | Ped, value: number): void;
+    function setMoveRateOverride(ped: number | IPed, value: number): void;
     /**
      * nullsub, doesn't do anything
      *
      * Hash: 0x98EFA132A4117BE1 | Since: 1207
      */
-    function setNameDebug(ped: number | Ped, name: string): void;
+    function setNameDebug(ped: number | IPed, name: string): void;
     /**
      * The distance between these points, is the diagonal of a box (remember it's 3D).
      *
@@ -24370,49 +24370,49 @@ export declare namespace ped {
      *
      * Hash: 0x028F76B6E78246EB | Since: 1207
      */
-    function setOntoMount(ped: number | Ped, mount: number | Ped, seatIndex: number): void;
+    function setOntoMount(ped: number | IPed, mount: number | IPed, seatIndex: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x931B241409216C1F | Since: 1207
      */
-    function setOwnsAnimal(ped: number | Ped, animal: number | Ped): void;
+    function setOwnsAnimal(ped: number | IPed, animal: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xFE07FF6495D52E2A | Since: 1207
      */
-    function setPanicExitScenario(ped: number | Ped, pos: Vector3): boolean;
+    function setPanicExitScenario(ped: number | IPed, pos: Vector3): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x01F6594B923B9251 | Since: 1207
      */
-    function setRagdollForceFall(ped: number | Ped): void;
+    function setRagdollForceFall(ped: number | IPed): void;
     /**
      * Causes Ped to ragdoll on collision with any object (e.g Running into trashcan). If applied to player you will sometimes trip on the sidewalk.
      *
      * Hash: 0xF0A4F1BBF4FA7497 | Since: 1207
      */
-    function setRagdollOnCollision(ped: number | Ped, toggle: boolean): void;
+    function setRagdollOnCollision(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC8A9481A01E63C28 | Since: 1207
      */
-    function setRandomComponentVariation(ped: number | Ped): void;
+    function setRandomComponentVariation(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xADB3F206518799E8 | Since: 1207
      */
-    function setRelationshipGroupDefaultHash(ped: number | Ped, hash: number | string): void;
+    function setRelationshipGroupDefaultHash(ped: number | IPed, hash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xC80A74AC829DDD92 | Since: 1207
      */
-    function setRelationshipGroupHash(ped: number | Ped, relationshipGroup: number | string): void;
+    function setRelationshipGroupHash(ped: number | IPed, relationshipGroup: number | string): void;
     /**
      * Needs to be called every frame
      *
@@ -24421,37 +24421,37 @@ export declare namespace ped {
      *
      * Hash: 0xC1E8A365BF3B29F2 | Since: 1207
      */
-    function setResetFlag(ped: number | Ped, flagId: number, doReset: boolean): void;
+    function setResetFlag(ped: number | IPed, flagId: number, doReset: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xF29CF591C4BF6CEE | Since: 1207
      */
-    function setSeeingRange(ped: number | Ped, value: number): void;
+    function setSeeingRange(ped: number | IPed, value: number): void;
     /**
      * Params: shootRate = 0 - 1000
      *
      * Hash: 0x614DA022990752DC | Since: 1207
      */
-    function setShootRate(ped: number | Ped, shootRate: number): void;
+    function setShootRate(ped: number | IPed, shootRate: number): void;
     /**
      * lookIntensity: see SET_PED_SHOULD_PLAY_FLEE_SCENARIO_EXIT
      *
      * Hash: 0x802092B07E3B1EEA | Since: 1207
      */
-    function setShouldPlayCombatScenarioExit(ped: number | Ped, pos: Vector3, lookIntensity: number): boolean;
+    function setShouldPlayCombatScenarioExit(ped: number | IPed, pos: Vector3, lookIntensity: number): boolean;
     /**
      * Old name: _SET_PED_SHOULD_PLAY_DIRECTED_SCENARIO_EXIT
      *
      * Hash: 0xEC6935EBE0847B90 | Since: 1207
      */
-    function setShouldPlayDirectedNormalScenarioExit(ped: number | Ped, pos: Vector3): boolean;
+    function setShouldPlayDirectedNormalScenarioExit(ped: number | IPed, pos: Vector3): boolean;
     /**
      * lookIntensity: see SET_PED_SHOULD_PLAY_FLEE_SCENARIO_EXIT
      *
      * Hash: 0x62FDAD5E01D2DD47 | Since: 1207
      */
-    function setShouldPlayEmotionalScenarioExit(ped: number | Ped, pos: Vector3, lookIntensity: number): boolean;
+    function setShouldPlayEmotionalScenarioExit(ped: number | IPed, pos: Vector3, lookIntensity: number): boolean;
     /**
      * lookIntensity:
      * 0 - REACT_LOOK_NONE
@@ -24461,43 +24461,43 @@ export declare namespace ped {
      *
      * Hash: 0xEEED8FAFEC331A70 | Since: 1207
      */
-    function setShouldPlayFleeScenarioExit(ped: number | Ped, pos: Vector3, lookIntensity: number): boolean;
+    function setShouldPlayFleeScenarioExit(ped: number | IPed, pos: Vector3, lookIntensity: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF1C03A5352243A30 | Since: 1207
      */
-    function setShouldPlayImmediateScenarioExit(ped: number | Ped): void;
+    function setShouldPlayImmediateScenarioExit(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xA3A9299C4F2ADB98 | Since: 1207
      */
-    function setShouldPlayNormalScenarioExit(ped: number | Ped): void;
+    function setShouldPlayNormalScenarioExit(ped: number | IPed): void;
     /**
      * lookIntensity: see SET_PED_SHOULD_PLAY_FLEE_SCENARIO_EXIT
      *
      * Hash: 0x463803429297117C | Since: 1207
      */
-    function setShouldPlayQuickScenarioExit(ped: number | Ped, pos: Vector3, lookIntensity: number): boolean;
+    function setShouldPlayQuickScenarioExit(ped: number | IPed, pos: Vector3, lookIntensity: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9D3151A373974804 | Since: 1207
      */
-    function setSphereDefensiveArea(ped: number | Ped, pos: Vector3, radius: number): void;
+    function setSphereDefensiveArea(ped: number | IPed, pos: Vector3, radius: number): void;
     /**
      * Not implemented.
      *
      * Hash: 0x88CBB5CEB96B7BD2 | Since: 1207
      */
-    function setStealthMovement(ped: number | Ped, toggle: boolean): void;
+    function setStealthMovement(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x27B0405F59637D1F | Since: 1207
      */
-    function setSweat(ped: number | Ped, sweat: number): void;
+    function setSweat(ped: number | IPed, sweat: number): void;
     /**
      * TLR_ExitTask = 0,
      * TLR_NeverLoseTarget,
@@ -24505,73 +24505,73 @@ export declare namespace ped {
      *
      * Hash: 0x0703B9079823DA4A | Since: 1207
      */
-    function setTargetLossResponse(ped: number | Ped, responseType: number): void;
+    function setTargetLossResponse(ped: number | IPed, responseType: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x112942C6E708F70B | Since: 1207
      */
-    function setToInformRespectedFriends(ped: number | Ped, radius: number, maxFriends: number): void;
+    function setToInformRespectedFriends(ped: number | IPed, radius: number, maxFriends: number): void;
     /**
      * Old name: _SET_PED_DAMAGE_MODIFIER
      *
      * Hash: 0xD77AE48611B7B10A | Since: 1207
      */
-    function setToPlayerWeaponDamageModifier(ped: number | Ped, damageModifier: number): void;
+    function setToPlayerWeaponDamageModifier(ped: number | IPed, damageModifier: number): void;
     /**
      * nmTaskMessageParameterName: See physicstasks.ymt. Search for DraggedByCart or 0xD00820D7 (Used in R* SP Script marston8)
      *
      * Hash: 0xAE99FB955581844A | Since: 1207
      */
-    function setToRagdoll(ped: number | Ped, timeMin: number, timeMax: number, ragdollType: number, abortIfInjured: boolean, abortIfDead: boolean, nmTaskMessageParameterName: string): boolean;
+    function setToRagdoll(ped: number | IPed, timeMin: number, timeMax: number, ragdollType: number, abortIfInjured: boolean, abortIfDead: boolean, nmTaskMessageParameterName: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD76632D99E4966C8 | Since: 1207
      */
-    function setToRagdollWithFall(ped: number | Ped, timeMin: number, timeMax: number, ragdollType: number, falldirX: number, falldirY: number, falldirZ: number): boolean;
+    function setToRagdollWithFall(ped: number | IPed, timeMin: number, timeMax: number, ragdollType: number, falldirX: number, falldirY: number, falldirZ: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD75ACCF5E0FB5367 | Since: 1207
      */
-    function setUsingActionMode(ped: number | Ped, bActionModeEnabled: boolean, action: string): void;
+    function setUsingActionMode(ped: number | IPed, bActionModeEnabled: boolean, action: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x3B6405E8AB34A907 | Since: 1207
      */
-    function setVisualFieldCenterAngle(ped: number | Ped, angle: number): void;
+    function setVisualFieldCenterAngle(ped: number | IPed, angle: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x70793BDCA1E854D4 | Since: 1207
      */
-    function setVisualFieldMaxAngle(ped: number | Ped, value: number): void;
+    function setVisualFieldMaxAngle(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2DB492222FB21E26 | Since: 1207
      */
-    function setVisualFieldMinAngle(ped: number | Ped, value: number): void;
+    function setVisualFieldMinAngle(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9C74B0BC831B753A | Since: 1207
      */
-    function setVisualFieldPeripheralRange(ped: number | Ped, range: number): void;
+    function setVisualFieldPeripheralRange(ped: number | IPed, range: number): void;
     /**
      * `combined with PED::SET_PED_WETNESS_HEIGHT(), this native makes the ped drenched in water up to the height specified in the other function`
      *
      * Hash: 0xB5485E4907B53019 | Since: 1207
      */
-    function setWetnessEnabledThisFrame(ped: number | Ped): void;
+    function setWetnessEnabledThisFrame(ped: number | IPed): void;
     /**
      * It adds the wetness level to the player clothing/outfit. As if player just got out from water surface.
      *
      * Hash: 0x44CB6447D2571AA0 | Since: 1207
      */
-    function setWetnessHeight(ped: number | Ped, height: number): void;
+    function setWetnessHeight(ped: number | IPed, height: number): void;
     /**
      * No comment provided
      *
@@ -24608,7 +24608,7 @@ export declare namespace ped {
      *
      * Hash: 0x26695EC767728D84 | Since: 1207
      */
-    function setRagdollBlockingFlags(ped: number | Ped, flags: number): void;
+    function setRagdollBlockingFlags(ped: number | IPed, flags: number): void;
     /**
      * No comment provided
      *
@@ -24680,13 +24680,13 @@ export declare namespace ped {
      *
      * Hash: 0xF9ACF4A08098EA25 | Since: 1207
      */
-    function specialFunctionDoNotUse(ped: number | Ped): void;
+    function specialFunctionDoNotUse(ped: number | IPed): void;
     /**
      * Returns time since the specified ped last shot, in seconds. (fPlayerJustShotTime)
      *
      * Hash: 0x285D36C5C72B0569 | Since: 1207
      */
-    function timeSinceLastShot(ped: number | Ped): number;
+    function timeSinceLastShot(ped: number | IPed): number;
     /**
      * If toggle is true, when the ped is using a scenario he will stop it and become scared
      * If toggle is false, the ped will not be scared anymore and continue his scenario
@@ -24695,13 +24695,13 @@ export declare namespace ped {
      *
      * Hash: 0x9A77DFD295E29B09 | Since: 1207
      */
-    function toggleScenarioCowerInPlace(ped: number | Ped, toggle: boolean): void;
+    function toggleScenarioCowerInPlace(ped: number | IPed, toggle: boolean): void;
     /**
      * Despite this function's name, it simply returns whether the specified handle is a Ped.
      *
      * Hash: 0x11B499C1E0FF8559 | Since: 1207
      */
-    function wasSkeletonUpdated(ped: number | Ped): boolean;
+    function wasSkeletonUpdated(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -24719,19 +24719,19 @@ export declare namespace ped {
      *
      * Hash: 0x024EC9B649111915 | Since: 1207
      */
-    function _0x024EC9B649111915(ped: number | Ped): void;
+    function _0x024EC9B649111915(ped: number | IPed): void;
     /**
      * _SET_ST* - _SET_SW*
      *
      * Hash: 0x028E7B3BBA0BD2FC | Since: 1207
      */
-    function _0x028E7B3BBA0BD2FC(ped: number | Ped): void;
+    function _0x028E7B3BBA0BD2FC(ped: number | IPed): void;
     /**
      * _SET_PLAYER_SN* - _SET_PLAYER_STAMINA*
      *
      * Hash: 0x02E741E19E39628C | Since: 1207
      */
-    function _0x02E741E19E39628C(ped: number | Ped): void;
+    function _0x02E741E19E39628C(ped: number | IPed): void;
     /**
      * _DOES_GROUP_* - _DOES_N*
      *
@@ -24743,7 +24743,7 @@ export declare namespace ped {
      *
      * Hash: 0x06A10B4D7F50B0C3 | Since: 1207
      */
-    function _0x06A10B4D7F50B0C3(ped: number | Ped): boolean;
+    function _0x06A10B4D7F50B0C3(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -24773,7 +24773,7 @@ export declare namespace ped {
      *
      * Hash: 0x09D7AFD3716DA8E1 | Since: 1207
      */
-    function _0x09D7AFD3716DA8E1(ped: number | Ped): boolean;
+    function _0x09D7AFD3716DA8E1(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -24797,7 +24797,7 @@ export declare namespace ped {
      *
      * Hash: 0x0D3B1568917EBDA0 | Since: 1207
      */
-    function _0x0D3B1568917EBDA0(ped: number | Ped): boolean;
+    function _0x0D3B1568917EBDA0(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -24809,13 +24809,13 @@ export declare namespace ped {
      *
      * Hash: 0x0EA9EACBA3B01601 | Since: 1207
      */
-    function _0x0EA9EACBA3B01601(ped1: number | Ped, ped2: number | Ped): number;
+    function _0x0EA9EACBA3B01601(ped1: number | IPed, ped2: number | IPed): number;
     /**
      * _IS_PED_L* - _IS_PED_M*
      *
      * Hash: 0x0EEF7A81C17679DB | Since: 1207
      */
-    function _0x0EEF7A81C17679DB(ped: number | Ped): boolean;
+    function _0x0EEF7A81C17679DB(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -24839,19 +24839,19 @@ export declare namespace ped {
      *
      * Hash: 0x101B45C5F56D970F | Since: 1207
      */
-    function _0x101B45C5F56D970F(ped: number | Ped, damageCleanliness: number): [boolean, any];
+    function _0x101B45C5F56D970F(ped: number | IPed, damageCleanliness: number): [boolean, any];
     /**
      * NB_CUSTOM_CLIENT_ON_CREATE_COMPLETE - set legendary to not avoid prey
      *
      * Hash: 0x10F96086123B939F | Since: 1207
      */
-    function _0x10F96086123B939F(legendaryPed: number | Ped, preyPed: number | Ped): void;
+    function _0x10F96086123B939F(legendaryPed: number | IPed, preyPed: number | IPed): void;
     /**
      * _CAN_PED_SEE* - _CAN_PED_USE_(SCENARIO_HASH?)*
      *
      * Hash: 0x1148F706CF4EBDDA | Since: 1207
      */
-    function _0x1148F706CF4EBDDA(ped: number | Ped, p1: number | string): boolean;
+    function _0x1148F706CF4EBDDA(ped: number | IPed, p1: number | string): boolean;
     /**
      * No comment provided
      *
@@ -24863,19 +24863,19 @@ export declare namespace ped {
      *
      * Hash: 0x12EB4E31F092C9B3 | Since: 1207
      */
-    function _0x12EB4E31F092C9B3(ped: number | Ped): boolean;
+    function _0x12EB4E31F092C9B3(ped: number | IPed): boolean;
     /**
      * _SET_A* - _SET_B*
      *
      * Hash: 0x12F2D161BF4031FC | Since: 1207
      */
-    function _0x12F2D161BF4031FC(ped: number | Ped): void;
+    function _0x12F2D161BF4031FC(ped: number | IPed): void;
     /**
      * _GET_PED_M*
      *
      * Hash: 0x134775B093AD5C38 | Since: 1207
      */
-    function _0x134775B093AD5C38(ped: number | Ped): number;
+    function _0x134775B093AD5C38(ped: number | IPed): number;
     /**
      * _SET_SCENARIO_PED_* - _SET_SPAWNER_*
      *
@@ -24899,7 +24899,7 @@ export declare namespace ped {
      *
      * Hash: 0x16F798A05BB9E3B5 | Since: 1207
      */
-    function _0x16F798A05BB9E3B5(ped: number | Ped): void;
+    function _0x16F798A05BB9E3B5(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -24911,13 +24911,13 @@ export declare namespace ped {
      *
      * Hash: 0x1D4636C90BBEFACB | Since: 1207
      */
-    function _0x1D4636C90BBEFACB(ped: number | Ped): void;
+    function _0x1D4636C90BBEFACB(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x1E017404784AA6A3 | Since: 1207
      */
-    function _0x1E017404784AA6A3(ped: number | Ped, p1: number | string): boolean;
+    function _0x1E017404784AA6A3(ped: number | IPed, p1: number | string): boolean;
     /**
      * Only used in SP R* Scripts
      * Params: p2 = same as p2 of 0x3C529A827998F9B3
@@ -24925,19 +24925,19 @@ export declare namespace ped {
      *
      * Hash: 0x1F44B7E283C09EDE | Since: 1207
      */
-    function _0x1F44B7E283C09EDE(ped: number | Ped): void;
+    function _0x1F44B7E283C09EDE(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x2371C39D4F91C288 | Since: 1207
      */
-    function _0x2371C39D4F91C288(ped: number | Ped): void;
+    function _0x2371C39D4F91C288(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x23BDE06596A22CEC | Since: 1207
      */
-    function _0x23BDE06596A22CEC(ped: number | Ped): void;
+    function _0x23BDE06596A22CEC(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -24949,7 +24949,7 @@ export declare namespace ped {
      *
      * Hash: 0x256EDD55C6BE1482 | Since: 1207
      */
-    function _0x256EDD55C6BE1482(ped: number | Ped): boolean;
+    function _0x256EDD55C6BE1482(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -24973,13 +24973,13 @@ export declare namespace ped {
      *
      * Hash: 0x290B2E6CCDE532E1 | Since: 1207
      */
-    function _0x290B2E6CCDE532E1(ped: number | Ped): boolean;
+    function _0x290B2E6CCDE532E1(ped: number | IPed): boolean;
     /**
      * _SET_PED_K* or _SET_PED_L*
      *
      * Hash: 0x29924EB8EE9DB926 | Since: 1207
      */
-    function _0x29924EB8EE9DB926(ped: number | Ped): void;
+    function _0x29924EB8EE9DB926(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -24991,38 +24991,38 @@ export declare namespace ped {
      *
      * Hash: 0x2B4CE170DE09F346 | Since: 1207
      */
-    function _0x2B4CE170DE09F346(ped: number | Ped, p1: number | string): void;
+    function _0x2B4CE170DE09F346(ped: number | IPed, p1: number | string): void;
     /**
      * Used in Script Function CHECK_IS_PLAYER_SEEN
      * _GET_PED_*
      *
      * Hash: 0x2BA9D7BF629F920C | Since: 1207
      */
-    function _0x2BA9D7BF629F920C(ped: number | Ped): number;
+    function _0x2BA9D7BF629F920C(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x2D976DBDC731DF80 | Since: 1207
      */
-    function _0x2D976DBDC731DF80(ped: number | Ped): void;
+    function _0x2D976DBDC731DF80(ped: number | IPed): void;
     /**
      * _IS_PED_D*
      *
      * Hash: 0x2DC0E8DCBD3546E9 | Since: 1207
      */
-    function _0x2DC0E8DCBD3546E9(ped: number | Ped): boolean;
+    function _0x2DC0E8DCBD3546E9(ped: number | IPed): boolean;
     /**
      * _IS_PED_M* - _IS_PED_O*
      *
      * Hash: 0x2DD4E0E26DFAD97D | Since: 1207
      */
-    function _0x2DD4E0E26DFAD97D(ped1: number | Ped, ped2: number | Ped): boolean;
+    function _0x2DD4E0E26DFAD97D(ped1: number | IPed, ped2: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2E5B5D1F1453E08E | Since: 1207
      */
-    function _0x2E5B5D1F1453E08E(ped: number | Ped): void;
+    function _0x2E5B5D1F1453E08E(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25047,31 +25047,31 @@ export declare namespace ped {
      *
      * Hash: 0x326F7951EF0D7F75 | Since: 1207
      */
-    function _0x326F7951EF0D7F75(ped: number | Ped, eventType: number | string): any;
+    function _0x326F7951EF0D7F75(ped: number | IPed, eventType: number | string): any;
     /**
      * _SET_PED_P* - _SET_PED_R*
      *
      * Hash: 0x329772C47DBB2FBC | Since: 1207
      */
-    function _0x329772C47DBB2FBC(ped: number | Ped): void;
+    function _0x329772C47DBB2FBC(ped: number | IPed): void;
     /**
      * _STOP_(?)*
      *
      * Hash: 0x32CCAD8A981B53D3 | Since: 1207
      */
-    function _0x32CCAD8A981B53D3(ped: number | Ped): void;
+    function _0x32CCAD8A981B53D3(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x32CEDA9A0AB4CEF7 | Since: 1207
      */
-    function _0x32CEDA9A0AB4CEF7(ped: number | Ped, p1: number | string): void;
+    function _0x32CEDA9A0AB4CEF7(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x34B5CEAC180A5D6E | Since: 1207
      */
-    function _0x34B5CEAC180A5D6E(ped: number | Ped, p1: number | string): void;
+    function _0x34B5CEAC180A5D6E(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
@@ -25083,25 +25083,25 @@ export declare namespace ped {
      *
      * Hash: 0x34EDDD59364AD74A | Since: 1207
      */
-    function _0x34EDDD59364AD74A(ped: number | Ped): any;
+    function _0x34EDDD59364AD74A(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x354CA4DDDEEC397A | Since: 1207
      */
-    function _0x354CA4DDDEEC397A(ped: number | Ped): number;
+    function _0x354CA4DDDEEC397A(ped: number | IPed): number;
     /**
      * _RESET_PED_*
      *
      * Hash: 0x370A973252741AC4 | Since: 1207
      */
-    function _0x370A973252741AC4(ped: number | Ped): void;
+    function _0x370A973252741AC4(ped: number | IPed): void;
     /**
      * _SET_PED_MO*
      *
      * Hash: 0x3A5697B80FED5EBE | Since: 1207
      */
-    function _0x3A5697B80FED5EBE(ped: number | Ped): void;
+    function _0x3A5697B80FED5EBE(ped: number | IPed): void;
     /**
      * Used in R* Script net_fetch (NET_FETCH_UPDATE_RECIPIENT_PROP_ILO_IN_COMBAT) and various SP Scripts
      * Params: p1 = 4/5/6, p5 = 40.f/100.f, coords = Player ped
@@ -25110,25 +25110,25 @@ export declare namespace ped {
      *
      * Hash: 0x3ACCE14DFA6BA8C2 | Since: 1207
      */
-    function _0x3ACCE14DFA6BA8C2(ped: number | Ped, pos: Vector3, itemset: any): number;
+    function _0x3ACCE14DFA6BA8C2(ped: number | IPed, pos: Vector3, itemset: any): number;
     /**
      * _IS_PED_R*
      *
      * Hash: 0x3AEC4A410ECAF30D | Since: 1207
      */
-    function _0x3AEC4A410ECAF30D(ped: number | Ped): boolean;
+    function _0x3AEC4A410ECAF30D(ped: number | IPed): boolean;
     /**
      * _SET_PED_TA* - _SET_PED_TO_*
      *
      * Hash: 0x3C529A827998F9B3 | Since: 1207
      */
-    function _0x3C529A827998F9B3(ped: number | Ped): void;
+    function _0x3C529A827998F9B3(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x3D9F958834AB9C30 | Since: 1207
      */
-    function _0x3D9F958834AB9C30(ped: number | Ped): number;
+    function _0x3D9F958834AB9C30(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -25156,13 +25156,13 @@ export declare namespace ped {
      *
      * Hash: 0x3FDCC1F8C17E303E | Since: 1207
      */
-    function _0x3FDCC1F8C17E303E(ped: number | Ped): void;
+    function _0x3FDCC1F8C17E303E(ped: number | IPed): void;
     /**
      * _SET_PED_A*
      *
      * Hash: 0x405180B14DA5A935 | Since: 1207
      */
-    function _0x405180B14DA5A935(ped: number | Ped): void;
+    function _0x405180B14DA5A935(ped: number | IPed): void;
     /**
      * _SET_SCENARIO_PED_* - _SET_SPAWNER_*
      *
@@ -25174,7 +25174,7 @@ export declare namespace ped {
      *
      * Hash: 0x40C9155AF8BC13F3 | Since: 1207
      */
-    function _0x40C9155AF8BC13F3(ped: number | Ped): boolean;
+    function _0x40C9155AF8BC13F3(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25186,26 +25186,26 @@ export declare namespace ped {
      *
      * Hash: 0x41C23A8E6B344867 | Since: 1207
      */
-    function _0x41C23A8E6B344867(ped: number | Ped): void;
+    function _0x41C23A8E6B344867(ped: number | IPed): void;
     /**
      * _SET_PED_IN*
      *
      * Hash: 0x45FEA6D5539BD474 | Since: 1207
      */
-    function _0x45FEA6D5539BD474(ped: number | Ped): void;
+    function _0x45FEA6D5539BD474(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4642182A298187D0 | Since: 1207
      */
-    function _0x4642182A298187D0(ped: number | Ped): [number, any];
+    function _0x4642182A298187D0(ped: number | IPed): [number, any];
     /**
      * Returns vehicle (desired) speed
      * _COMPUTE_(VEHICLE_SPEED_USING_BLEND_RATIO?)*
      *
      * Hash: 0x46BF2A810679D6E6 | Since: 1207
      */
-    function _0x46BF2A810679D6E6(ped: number | Ped, maxMoveBlendRatio: number): number;
+    function _0x46BF2A810679D6E6(ped: number | IPed, maxMoveBlendRatio: number): number;
     /**
      * No comment provided
      *
@@ -25217,38 +25217,38 @@ export declare namespace ped {
      *
      * Hash: 0x4B19F171450E0D4F | Since: 1207
      */
-    function _0x4B19F171450E0D4F(ped: number | Ped): number;
+    function _0x4B19F171450E0D4F(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x4E68C7EF706DF35D | Since: 1207
      */
-    function _0x4E68C7EF706DF35D(ped: number | Ped, pos: Vector3, relationshipGroup: number | string): void;
+    function _0x4E68C7EF706DF35D(ped: number | IPed, pos: Vector3, relationshipGroup: number | string): void;
     /**
      * _SET_PED_A*
      *
      * Hash: 0x4EC4EA2F72B36358 | Since: 1207
      */
-    function _0x4EC4EA2F72B36358(ped: number | Ped): void;
+    function _0x4EC4EA2F72B36358(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4F27603E44A8E4C0 | Since: 1207
      */
-    function _0x4F27603E44A8E4C0(ped: number | Ped): void;
+    function _0x4F27603E44A8E4C0(ped: number | IPed): void;
     /**
      * Only used in R* Script shop_harriet
      * _SET_PED_F*
      *
      * Hash: 0x4F63433CE3C08230 | Since: 1311
      */
-    function _0x4F63433CE3C08230(ped: number | Ped): void;
+    function _0x4F63433CE3C08230(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x5203038FF8BAE577 | Since: 1207
      */
-    function _0x5203038FF8BAE577(ped: number | Ped): boolean;
+    function _0x5203038FF8BAE577(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25260,7 +25260,7 @@ export declare namespace ped {
      *
      * Hash: 0x52A24D8A1DA89658 | Since: 1207
      */
-    function _0x52A24D8A1DA89658(ped: number | Ped): void;
+    function _0x52A24D8A1DA89658(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25272,13 +25272,13 @@ export declare namespace ped {
      *
      * Hash: 0x54D3CD482742C482 | Since: 1355
      */
-    function _0x54D3CD482742C482(animal: number | Ped): void;
+    function _0x54D3CD482742C482(animal: number | IPed): void;
     /**
      * _HAS_PED_*
      *
      * Hash: 0x550CB89DD7F4FA3D | Since: 1207
      */
-    function _0x550CB89DD7F4FA3D(ped1: number | Ped, ped2: number | Ped): boolean;
+    function _0x550CB89DD7F4FA3D(ped1: number | IPed, ped2: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25302,25 +25302,25 @@ export declare namespace ped {
      *
      * Hash: 0x577C60BA06D0EA64 | Since: 1207
      */
-    function _0x577C60BA06D0EA64(ped: number | Ped): boolean;
+    function _0x577C60BA06D0EA64(ped: number | IPed): boolean;
     /**
      * _SET_PED_M*
      *
      * Hash: 0x57F35552E771BE9D | Since: 1207
      */
-    function _0x57F35552E771BE9D(ped: number | Ped): void;
+    function _0x57F35552E771BE9D(ped: number | IPed): void;
     /**
      * _C*
      *
      * Hash: 0x5A1A929C8B729B4A | Since: 1207
      */
-    function _0x5A1A929C8B729B4A(ped: number | Ped): void;
+    function _0x5A1A929C8B729B4A(ped: number | IPed): void;
     /**
      * _SET_C*
      *
      * Hash: 0x5AF24CA9C974E51A | Since: 1207
      */
-    function _0x5AF24CA9C974E51A(ped1: number | Ped, ped2: number | Ped): void;
+    function _0x5AF24CA9C974E51A(ped1: number | IPed, ped2: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25338,13 +25338,13 @@ export declare namespace ped {
      *
      * Hash: 0x5BF0B9D9A8E227A0 | Since: 1207
      */
-    function _0x5BF0B9D9A8E227A0(ped: number | Ped): boolean;
+    function _0x5BF0B9D9A8E227A0(ped: number | IPed): boolean;
     /**
      * _IS_PED_IN*
      *
      * Hash: 0x5C6C7C70CA302801 | Since: 1207
      */
-    function _0x5C6C7C70CA302801(ped: number | Ped): boolean;
+    function _0x5C6C7C70CA302801(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25356,20 +25356,20 @@ export declare namespace ped {
      *
      * Hash: 0x5CA20FBE49891BBD | Since: 1207
      */
-    function _0x5CA20FBE49891BBD(ped: number | Ped): void;
+    function _0x5CA20FBE49891BBD(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x5CB2EBB467BE3ED6 | Since: 1355
      */
-    function _0x5CB2EBB467BE3ED6(animal: number | Ped): void;
+    function _0x5CB2EBB467BE3ED6(animal: number | IPed): void;
     /**
      * Related to ped hat
      * _SET_PED_LA* - _SET_PED_LE*
      *
      * Hash: 0x5D4CD22A8C82A81A | Since: 1207
      */
-    function _0x5D4CD22A8C82A81A(ped: number | Ped): void;
+    function _0x5D4CD22A8C82A81A(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25382,7 +25382,7 @@ export declare namespace ped {
      *
      * Hash: 0x5E9FAF6C513347B4 | Since: 1207
      */
-    function _0x5E9FAF6C513347B4(ped: number | Ped, eventType: number | string): number;
+    function _0x5E9FAF6C513347B4(ped: number | IPed, eventType: number | string): number;
     /**
      * No comment provided
      *
@@ -25400,7 +25400,7 @@ export declare namespace ped {
      *
      * Hash: 0x600BBDD29820370C | Since: 1207
      */
-    function _0x600BBDD29820370C(ped: number | Ped): void;
+    function _0x600BBDD29820370C(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25412,7 +25412,7 @@ export declare namespace ped {
      *
      * Hash: 0x606D529DADA3C940 | Since: 1207
      */
-    function _0x606D529DADA3C940(ped: number | Ped): void;
+    function _0x606D529DADA3C940(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25424,7 +25424,7 @@ export declare namespace ped {
      *
      * Hash: 0x642720D8D69328B6 | Since: 1207
      */
-    function _0x642720D8D69328B6(ped: number | Ped, p1: number | string): void;
+    function _0x642720D8D69328B6(ped: number | IPed, p1: number | string): void;
     /**
      * _IS_N* - _IS_P*
      *
@@ -25436,7 +25436,7 @@ export declare namespace ped {
      *
      * Hash: 0x6734F0A6A52C371C | Since: 1207
      */
-    function _0x6734F0A6A52C371C(player: number | string | Player, horseSlot: number): void;
+    function _0x6734F0A6A52C371C(player: number | string | IPlayer, horseSlot: number): void;
     /**
      * No comment provided
      *
@@ -25454,20 +25454,20 @@ export declare namespace ped {
      *
      * Hash: 0x6B67320E0D57856A | Since: 1207
      */
-    function _0x6B67320E0D57856A(ped: number | Ped): any;
+    function _0x6B67320E0D57856A(ped: number | IPed): any;
     /**
      * Only used in R* SP Script winter1: p1 = 5000
      * _SET_PED_M*
      *
      * Hash: 0x6DB875AFC584FA32 | Since: 1207
      */
-    function _0x6DB875AFC584FA32(ped: number | Ped): any;
+    function _0x6DB875AFC584FA32(ped: number | IPed): any;
     /**
      * Only used in SP R* Script train_robbery3: p1 = CLIPSET@VEH_TRAIN@HANDCART@BASE_PANIC & CLIPSET@VEH_TRAIN@HANDCART@BASE_PANIC_JOHN
      *
      * Hash: 0x6E8B87139854022D | Since: 1207
      */
-    function _0x6E8B87139854022D(ped: number | Ped, clipset: string): void;
+    function _0x6E8B87139854022D(ped: number | IPed, clipset: string): void;
     /**
      * No comment provided
      *
@@ -25479,25 +25479,25 @@ export declare namespace ped {
      *
      * Hash: 0x7020839C7302D8AC | Since: 1207
      */
-    function _0x7020839C7302D8AC(ped: number | Ped): boolean;
+    function _0x7020839C7302D8AC(ped: number | IPed): boolean;
     /**
      * _CLEAR*
      *
      * Hash: 0x704C908E9C405136 | Since: 1207
      */
-    function _0x704C908E9C405136(ped: number | Ped): void;
+    function _0x704C908E9C405136(ped: number | IPed): void;
     /**
      * _SET_PED_MO*
      *
      * Hash: 0x712B2C2B2471B493 | Since: 1207
      */
-    function _0x712B2C2B2471B493(ped: number | Ped, p1: number | string): void;
+    function _0x712B2C2B2471B493(ped: number | IPed, p1: number | string): void;
     /**
      * _SET_PED_F*
      *
      * Hash: 0x735662994E60A710 | Since: 1207
      */
-    function _0x735662994E60A710(ped: number | Ped): void;
+    function _0x735662994E60A710(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25509,7 +25509,7 @@ export declare namespace ped {
      *
      * Hash: 0x758F081DB204DDDE | Since: 1207
      */
-    function _0x758F081DB204DDDE(ped: number | Ped): boolean;
+    function _0x758F081DB204DDDE(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25527,19 +25527,19 @@ export declare namespace ped {
      *
      * Hash: 0x763FA8A9D76EE3A7 | Since: 1311
      */
-    function _0x763FA8A9D76EE3A7(ped: number | Ped): number;
+    function _0x763FA8A9D76EE3A7(ped: number | IPed): number;
     /**
      * _IS_I* - _IS_L*
      *
      * Hash: 0x77243ED4F7CAAA55 | Since: 1207
      */
-    function _0x77243ED4F7CAAA55(ped: number | Ped): boolean;
+    function _0x77243ED4F7CAAA55(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7ABBD9E449E0DB00 | Since: 1207
      */
-    function _0x7ABBD9E449E0DB00(ped: number | Ped): void;
+    function _0x7ABBD9E449E0DB00(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25558,20 +25558,20 @@ export declare namespace ped {
      *
      * Hash: 0x7C08E7CB8D951B70 | Since: 1207
      */
-    function _0x7C08E7CB8D951B70(ped: number | Ped): void;
+    function _0x7C08E7CB8D951B70(ped: number | IPed): void;
     /**
      * _CLEAR_PED_M*
      *
      * Hash: 0x7C10221CE718AA72 | Since: 1207
      */
-    function _0x7C10221CE718AA72(ped: number | Ped): void;
+    function _0x7C10221CE718AA72(ped: number | IPed): void;
     /**
      * Returns wether `0x1E017404784AA6A3` was applied on the ped.
      * some hashs MAR2_RIDE1, MAR2_RIDE1, RBCH1_RIDE1, SAD5_RIDE1
      *
      * Hash: 0x7C8AA850617651D9 | Since: 1207
      */
-    function _0x7C8AA850617651D9(ped: number | Ped, p1: number | string): boolean;
+    function _0x7C8AA850617651D9(ped: number | IPed, p1: number | string): boolean;
     /**
      * _SET_FORMATION_P*
      *
@@ -25590,31 +25590,31 @@ export declare namespace ped {
      *
      * Hash: 0x7EDB3C766B0D073F | Since: 1232
      */
-    function _0x7EDB3C766B0D073F(ped: number | Ped): void;
+    function _0x7EDB3C766B0D073F(ped: number | IPed): void;
     /**
      * _IS_PED_H* - _IS_PED_I*
      *
      * Hash: 0x7EE3A8660F38797E | Since: 1207
      */
-    function _0x7EE3A8660F38797E(ped: number | Ped): boolean;
+    function _0x7EE3A8660F38797E(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7F090958AE95B61B | Since: 1207
      */
-    function _0x7F090958AE95B61B(ped: number | Ped): boolean;
+    function _0x7F090958AE95B61B(ped: number | IPed): boolean;
     /**
      * _ATTACH_*
      *
      * Hash: 0x8101BA1C0B462412 | Since: 1207
      */
-    function _0x8101BA1C0B462412(ped: number | Ped, ropeId: number): void;
+    function _0x8101BA1C0B462412(ped: number | IPed, ropeId: number): void;
     /**
      * _SET_PED_COMBAT_R - _SET_PED_C*
      *
      * Hash: 0x815C0074A1BC0D93 | Since: 1207
      */
-    function _0x815C0074A1BC0D93(ped: number | Ped): void;
+    function _0x815C0074A1BC0D93(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25633,13 +25633,13 @@ export declare namespace ped {
      *
      * Hash: 0x85F500F4E24CA43E | Since: 1207
      */
-    function _0x85F500F4E24CA43E(ped: number | Ped): void;
+    function _0x85F500F4E24CA43E(ped: number | IPed): void;
     /**
      * _SET_PED_*
      *
      * Hash: 0x86F0B6730C32AC14 | Since: 1207
      */
-    function _0x86F0B6730C32AC14(ped: number | Ped): void;
+    function _0x86F0B6730C32AC14(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25651,64 +25651,64 @@ export declare namespace ped {
      *
      * Hash: 0x878E8104FA27CDAE | Since: 1207
      */
-    function _0x878E8104FA27CDAE(vehicle: number | Vehicle, p1: number | string): void;
+    function _0x878E8104FA27CDAE(vehicle: number | IVehicle, p1: number | string): void;
     /**
      * _CLEAR_PED_E* - _CLEAR_PED_L*
      *
      * Hash: 0x87C2724A56F66020 | Since: 1207
      */
-    function _0x87C2724A56F66020(ped: number | Ped): void;
+    function _0x87C2724A56F66020(ped: number | IPed): void;
     /**
      * Only used in R* Script train_robbery4
      * _SET_PED_D*
      *
      * Hash: 0x8822F124788B8D0A | Since: 1207
      */
-    function _0x8822F124788B8D0A(ped: number | Ped): void;
+    function _0x8822F124788B8D0A(ped: number | IPed): void;
     /**
      * If returned true, SET_ENABLE_BOUND_ANKLES is called in R* Script guama2
      * _GET_D* - _GET_E*
      *
      * Hash: 0x8822F139408B8D0A | Since: 1207
      */
-    function _0x8822F139408B8D0A(ped: number | Ped): boolean;
+    function _0x8822F139408B8D0A(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x88A5564B19C15391 | Since: 1207
      */
-    function _0x88A5564B19C15391(ped: number | Ped): boolean;
+    function _0x88A5564B19C15391(ped: number | IPed): boolean;
     /**
      * Used in R* Script generic_weight_control_item
      * _CLEAR_PED_E* - CLEAR_PED_(G?)L*
      *
      * Hash: 0x88A95BB640FC186F | Since: 1207
      */
-    function _0x88A95BB640FC186F(ped: number | Ped): void;
+    function _0x88A95BB640FC186F(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x88B2026A3B0BE33D | Since: 1207
      */
-    function _0x88B2026A3B0BE33D(ped: number | Ped): void;
+    function _0x88B2026A3B0BE33D(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x897934E868EDDD6C | Since: 1207
      */
-    function _0x897934E868EDDD6C(ped: number | Ped): void;
+    function _0x897934E868EDDD6C(ped: number | IPed): void;
     /**
      * _GET_PED_B* - _GET_PED_C*
      *
      * Hash: 0x89816B58C3466262 | Since: 1207
      */
-    function _0x89816B58C3466262(ped: number | Ped): any;
+    function _0x89816B58C3466262(ped: number | IPed): any;
     /**
      * _SET_PED_O*
      *
      * Hash: 0x899DFA0009AC93DE | Since: 1207
      */
-    function _0x899DFA0009AC93DE(ped: number | Ped): void;
+    function _0x899DFA0009AC93DE(ped: number | IPed): void;
     /**
      * _SET_C*
      *
@@ -25720,14 +25720,14 @@ export declare namespace ped {
      *
      * Hash: 0x8AF46E5159A5B620 | Since: 1207
      */
-    function _0x8AF46E5159A5B620(ped: number | Ped, speechParams: number | string): void;
+    function _0x8AF46E5159A5B620(ped: number | IPed, speechParams: number | string): void;
     /**
      * `Returns offset (0 < 32) to be used with MISC::SET_BIT`
      * _GET_PED_CR*
      *
      * Hash: 0x8AF8E647D6B2A649 | Since: 1207
      */
-    function _0x8AF8E647D6B2A649(groupId: number, ped: number | Ped): number;
+    function _0x8AF8E647D6B2A649(groupId: number, ped: number | IPed): number;
     /**
      * _SET_FORMATION_*
      *
@@ -25751,13 +25751,13 @@ export declare namespace ped {
      *
      * Hash: 0x8BE24D74D74C6E9B | Since: 1207
      */
-    function _0x8BE24D74D74C6E9B(ped: number | Ped): number;
+    function _0x8BE24D74D74C6E9B(ped: number | IPed): number;
     /**
      * _SET_PED_T* - SET_PED_U*
      *
      * Hash: 0x8CB2553C559102C1 | Since: 1207
      */
-    function _0x8CB2553C559102C1(ped: number | Ped): void;
+    function _0x8CB2553C559102C1(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25770,7 +25770,7 @@ export declare namespace ped {
      *
      * Hash: 0x900CA00CE703E1E2 | Since: 1207
      */
-    function _0x900CA00CE703E1E2(ped: number | Ped): number;
+    function _0x900CA00CE703E1E2(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -25782,7 +25782,7 @@ export declare namespace ped {
      *
      * Hash: 0x913D04A5176F84C9 | Since: 1207
      */
-    function _0x913D04A5176F84C9(ped: number | Ped): boolean;
+    function _0x913D04A5176F84C9(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25806,7 +25806,7 @@ export declare namespace ped {
      *
      * Hash: 0x94132D7C8D3575C4 | Since: 1207
      */
-    function _0x94132D7C8D3575C4(ped: number | Ped): boolean;
+    function _0x94132D7C8D3575C4(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25819,7 +25819,7 @@ export declare namespace ped {
      *
      * Hash: 0x96595B36D6A2279B | Since: 1207
      */
-    function _0x96595B36D6A2279B(animal: number | Ped, toggle: boolean): void;
+    function _0x96595B36D6A2279B(animal: number | IPed, toggle: boolean): void;
     /**
      * _SET_FORMATION_P*
      *
@@ -25837,13 +25837,13 @@ export declare namespace ped {
      *
      * Hash: 0x97A38B65EBDA3D50 | Since: 1207
      */
-    function _0x97A38B65EBDA3D50(ped: number | Ped): void;
+    function _0x97A38B65EBDA3D50(ped: number | IPed): void;
     /**
      * _CLEAR*
      *
      * Hash: 0x97B06669AC569003 | Since: 1207
      */
-    function _0x97B06669AC569003(ped1: number | Ped, ped2: number | Ped): void;
+    function _0x97B06669AC569003(ped1: number | IPed, ped2: number | IPed): void;
     /**
      * _SET_SCENARIO_PED_* - _SET_SPAWNER_*
      *
@@ -25867,7 +25867,7 @@ export declare namespace ped {
      *
      * Hash: 0x99DF2639DA76C1DC | Since: 1232
      */
-    function _0x99DF2639DA76C1DC(ped1: number | Ped, ped2: number | Ped): boolean;
+    function _0x99DF2639DA76C1DC(ped1: number | IPed, ped2: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -25879,32 +25879,32 @@ export declare namespace ped {
      *
      * Hash: 0x9AB33CB5834885B3 | Since: 1207
      */
-    function _0x9AB33CB5834885B3(ped: number | Ped): void;
+    function _0x9AB33CB5834885B3(ped: number | IPed): void;
     /**
      * Only used in SP R* Script winter1: p1 = Winter1Mount
      *
      * Hash: 0x9B65444C07B782BF | Since: 1207
      */
-    function _0x9B65444C07B782BF(ped: number | Ped): void;
+    function _0x9B65444C07B782BF(ped: number | IPed): void;
     /**
      * Used in Script Function SKCS_PLAYER_ROBBING
      * _SET_PED_SHOULD_PLAY_* - _SET_PED_SW*
      *
      * Hash: 0x9B9B9FA0EA283E3D | Since: 1207
      */
-    function _0x9B9B9FA0EA283E3D(ped: number | Ped): void;
+    function _0x9B9B9FA0EA283E3D(ped: number | IPed): void;
     /**
      * _SET_PLAYER_CAN_B* - _SET_PLAYER_CAN_U*
      *
      * Hash: 0x9BBEAF8B0C007F1E | Since: 1207
      */
-    function _0x9BBEAF8B0C007F1E(ped: number | Ped): void;
+    function _0x9BBEAF8B0C007F1E(ped: number | IPed): void;
     /**
      * _RESET_PED_*
      *
      * Hash: 0x9D8DFE2DE9CB4DFC | Since: 1207
      */
-    function _0x9D8DFE2DE9CB4DFC(ped: number | Ped): void;
+    function _0x9D8DFE2DE9CB4DFC(ped: number | IPed): void;
     /**
      * Only used in SP R* Script loanshark_hunter
      *
@@ -25922,13 +25922,13 @@ export declare namespace ped {
      *
      * Hash: 0x9F0F28B42C4EE80A | Since: 1355
      */
-    function _0x9F0F28B42C4EE80A(animal: number | Ped): void;
+    function _0x9F0F28B42C4EE80A(animal: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x9F933E0985E12C51 | Since: 1207
      */
-    function _0x9F933E0985E12C51(ped: number | Ped): void;
+    function _0x9F933E0985E12C51(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -25952,7 +25952,7 @@ export declare namespace ped {
      *
      * Hash: 0xA2116C1E4ED85C24 | Since: 1207
      */
-    function _0xA2116C1E4ED85C24(ped: number | Ped, inverted: boolean): void;
+    function _0xA2116C1E4ED85C24(ped: number | IPed, inverted: boolean): void;
     /**
      * No comment provided
      *
@@ -26000,26 +26000,26 @@ export declare namespace ped {
      *
      * Hash: 0xA4B6432E3880F2F9 | Since: 1311
      */
-    function _0xA4B6432E3880F2F9(ped: number | Ped): boolean;
+    function _0xA4B6432E3880F2F9(ped: number | IPed): boolean;
     /**
      * _DELETE_*
      *
      * Hash: 0xA6D6F03095C88F59 | Since: 1207
      */
-    function _0xA6D6F03095C88F59(ped: number | Ped): void;
+    function _0xA6D6F03095C88F59(ped: number | IPed): void;
     /**
      * Washing player's face/hands now
      * _CLEAR_PED_E* - _CLEAR_PED_L*
      *
      * Hash: 0xA7A806677F8DE138 | Since: 1207
      */
-    function _0xA7A806677F8DE138(ped: number | Ped): void;
+    function _0xA7A806677F8DE138(ped: number | IPed): void;
     /**
      * _CLEAR_PED_B* - _CLEAR_PED_C*
      *
      * Hash: 0xA7DC9266ED6A4E51 | Since: 1207
      */
-    function _0xA7DC9266ED6A4E51(ped: number | Ped): void;
+    function _0xA7DC9266ED6A4E51(ped: number | IPed): void;
     /**
      * _SET_ENABLE_B* - _SET_ENABLE_H*
      *
@@ -26032,25 +26032,25 @@ export declare namespace ped {
      *
      * Hash: 0xA90684ED185CCB4B | Since: 1207
      */
-    function _0xA90684ED185CCB4B(animal: number | Ped): void;
+    function _0xA90684ED185CCB4B(animal: number | IPed): void;
     /**
      * _SET_PED_P* - _SET_PED_R*
      *
      * Hash: 0xA967D6A8ED2D713B | Since: 1207
      */
-    function _0xA967D6A8ED2D713B(ped: number | Ped): void;
+    function _0xA967D6A8ED2D713B(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xAA6C49AE90A32299 | Since: 1207
      */
-    function _0xAA6C49AE90A32299(ped: number | Ped, p1: number | string): void;
+    function _0xAA6C49AE90A32299(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xAAC0EE3B4999ABB5 | Since: 1207
      */
-    function _0xAAC0EE3B4999ABB5(ped: number | Ped, targetPed: number | Ped): void;
+    function _0xAAC0EE3B4999ABB5(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26068,7 +26068,7 @@ export declare namespace ped {
      *
      * Hash: 0xAF041C10756C30FB | Since: 1207
      */
-    function _0xAF041C10756C30FB(ped: number | Ped): void;
+    function _0xAF041C10756C30FB(ped: number | IPed): void;
     /**
      * Used to set up bad guy groups in nb_kidnapped R* Script (MP_RE_KIDNAPPED): p1 = 4.f
      * _SET_FORMATION_*
@@ -26093,25 +26093,25 @@ export declare namespace ped {
      *
      * Hash: 0xB4B7C92FCE7347B7 | Since: 1207
      */
-    function _0xB4B7C92FCE7347B7(ped: number | Ped): void;
+    function _0xB4B7C92FCE7347B7(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xB65927F861E7AE39 | Since: 1207
      */
-    function _0xB65927F861E7AE39(ped: number | Ped): boolean;
+    function _0xB65927F861E7AE39(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB7DBB2986B87E230 | Since: 1207
      */
-    function _0xB7DBB2986B87E230(ped: number | Ped): boolean;
+    function _0xB7DBB2986B87E230(ped: number | IPed): boolean;
     /**
      * _SET_HO*
      *
      * Hash: 0xB8AB265426CFE6DD | Since: 1207
      */
-    function _0xB8AB265426CFE6DD(ped: number | Ped): void;
+    function _0xB8AB265426CFE6DD(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26123,7 +26123,7 @@ export declare namespace ped {
      *
      * Hash: 0xB91AB3BE7F655D49 | Since: 1207
      */
-    function _0xB91AB3BE7F655D49(ped: number | Ped): boolean;
+    function _0xB91AB3BE7F655D49(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -26147,7 +26147,7 @@ export declare namespace ped {
      *
      * Hash: 0xBD0E4F52F6D95242 | Since: 1207
      */
-    function _0xBD0E4F52F6D95242(ped: number | Ped): boolean;
+    function _0xBD0E4F52F6D95242(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -26166,13 +26166,13 @@ export declare namespace ped {
      *
      * Hash: 0xC17A94CC8FC3C61A | Since: 1207
      */
-    function _0xC17A94CC8FC3C61A(entity: number | Entity, boneId: number): void;
+    function _0xC17A94CC8FC3C61A(entity: number | IEntity, boneId: number): void;
     /**
      * _FORCE_PED_*
      *
      * Hash: 0xC2722B252C79E641 | Since: 1232
      */
-    function _0xC2722B252C79E641(ped: number | Ped): void;
+    function _0xC2722B252C79E641(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26184,19 +26184,19 @@ export declare namespace ped {
      *
      * Hash: 0xC3995D396F1D97B6 | Since: 1207
      */
-    function _0xC3995D396F1D97B6(ped: number | Ped): boolean;
+    function _0xC3995D396F1D97B6(ped: number | IPed): boolean;
     /**
      * _SET_PED_M*
      *
      * Hash: 0xC48AF420371C7407 | Since: 1207
      */
-    function _0xC48AF420371C7407(ped: number | Ped, grapple: number | string): any;
+    function _0xC48AF420371C7407(ped: number | IPed, grapple: number | string): any;
     /**
      * _SET_H* - _SET_I*
      *
      * Hash: 0xC5B78E41DCF8227C | Since: 1207
      */
-    function _0xC5B78E41DCF8227C(ped: number | Ped): void;
+    function _0xC5B78E41DCF8227C(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26220,26 +26220,26 @@ export declare namespace ped {
      *
      * Hash: 0xC9151483CC06A414 | Since: 1207
      */
-    function _0xC9151483CC06A414(ped: number | Ped): void;
+    function _0xC9151483CC06A414(ped: number | IPed): void;
     /**
      * Not implemented.
      *
      * Hash: 0xC991EF46FE323867 | Since: 1207
      */
-    function _0xC991EF46FE323867(ped: number | Ped): void;
+    function _0xC991EF46FE323867(ped: number | IPed): void;
     /**
      * _SET_PLAYER_N* - _SET_PLAYER_S*
      *
      * Hash: 0xC99F104BDF8C7F5A | Since: 1207
      */
-    function _0xC99F104BDF8C7F5A(ped: number | Ped): void;
+    function _0xC99F104BDF8C7F5A(ped: number | IPed): void;
     /**
      * Returns vehicle speed
      * _COMPUTE_*
      *
      * Hash: 0xCA95924C893A0C91 | Since: 1207
      */
-    function _0xCA95924C893A0C91(ped: number | Ped): number;
+    function _0xCA95924C893A0C91(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -26251,7 +26251,7 @@ export declare namespace ped {
      *
      * Hash: 0xCAC43D060099EA72 | Since: 1207
      */
-    function _0xCAC43D060099EA72(ped: number | Ped): void;
+    function _0xCAC43D060099EA72(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26270,7 +26270,7 @@ export declare namespace ped {
      *
      * Hash: 0xCB8F4C9343EBE240 | Since: 1207
      */
-    function _0xCB8F4C9343EBE240(ped: number | Ped, eventType: number | string): [boolean, Vector3];
+    function _0xCB8F4C9343EBE240(ped: number | IPed, eventType: number | string): [boolean, Vector3];
     /**
      * No comment provided
      *
@@ -26282,7 +26282,7 @@ export declare namespace ped {
      *
      * Hash: 0xCD9E5F94A2F38683 | Since: 1207
      */
-    function _0xCD9E5F94A2F38683(ped: number | Ped): void;
+    function _0xCD9E5F94A2F38683(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26294,13 +26294,13 @@ export declare namespace ped {
      *
      * Hash: 0xCE7A6C1D5CDE1F9D | Since: 1207
      */
-    function _0xCE7A6C1D5CDE1F9D(ped: number | Ped, _object: number | Object, propName: string, animName: string): void;
+    function _0xCE7A6C1D5CDE1F9D(ped: number | IPed, _object: number | IObject, propName: string, animName: string): void;
     /**
      * _SET_PED_COMBAT_*
      *
      * Hash: 0xCF0B19806473D324 | Since: 1207
      */
-    function _0xCF0B19806473D324(ped: number | Ped, pos: Vector3): void;
+    function _0xCF0B19806473D324(ped: number | IPed, pos: Vector3): void;
     /**
      * No comment provided
      *
@@ -26312,14 +26312,14 @@ export declare namespace ped {
      *
      * Hash: 0xD049FDAF089FDDB0 | Since: 1207
      */
-    function _0xD049FDAF089FDDB0(ped: number | Ped, p1: number | string): void;
+    function _0xD049FDAF089FDDB0(ped: number | IPed, p1: number | string): void;
     /**
      * Params: p1 either a 1 or 0, so perhaps BOOL
      * _SET_PED_A*
      *
      * Hash: 0xD103F6DBB5442BE8 | Since: 1207
      */
-    function _0xD103F6DBB5442BE8(ped: number | Ped): void;
+    function _0xD103F6DBB5442BE8(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26331,20 +26331,20 @@ export declare namespace ped {
      *
      * Hash: 0xD355E2F1BB41087E | Since: 1207
      */
-    function _0xD355E2F1BB41087E(ped: number | Ped): boolean;
+    function _0xD355E2F1BB41087E(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD4D403EA031F351C | Since: 1207
      */
-    function _0xD4D403EA031F351C(ped: number | Ped): boolean;
+    function _0xD4D403EA031F351C(ped: number | IPed): boolean;
     /**
      * Used in Script Function LA_CHECK_ALERTED
      * _GET_IS_PED_*
      *
      * Hash: 0xD55DB4466D00A258 | Since: 1207
      */
-    function _0xD55DB4466D00A258(legendaryAnimal: number | Ped): boolean;
+    function _0xD55DB4466D00A258(legendaryAnimal: number | IPed): boolean;
     /**
      * _SET_FORMATION_*
      *
@@ -26370,7 +26370,7 @@ export declare namespace ped {
      *
      * Hash: 0xD8544F6260F5F01E | Since: 1232
      */
-    function _0xD8544F6260F5F01E(ped: number | Ped): void;
+    function _0xD8544F6260F5F01E(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26395,7 +26395,7 @@ export declare namespace ped {
      *
      * Hash: 0xDD9540E7B1C9714F | Since: 1207
      */
-    function _0xDD9540E7B1C9714F(ped: number | Ped, p1: number | string, r: number, g: number, b: number): void;
+    function _0xDD9540E7B1C9714F(ped: number | IPed, p1: number | string, r: number, g: number, b: number): void;
     /**
      * _SET_FORMATION_P*
      *
@@ -26413,7 +26413,7 @@ export declare namespace ped {
      *
      * Hash: 0xDEE8D30AA5C2E28D | Since: 1207
      */
-    function _0xDEE8D30AA5C2E28D(ped: number | Ped, p1: number | string): void;
+    function _0xDEE8D30AA5C2E28D(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
@@ -26431,13 +26431,13 @@ export declare namespace ped {
      *
      * Hash: 0xE1AADD0055D76603 | Since: 1207
      */
-    function _0xE1AADD0055D76603(ped: number | Ped, entity: number | Entity, boneIndex1: number, boneIndex2: number, pos: Vector3): void;
+    function _0xE1AADD0055D76603(ped: number | IPed, entity: number | IEntity, boneIndex1: number, boneIndex2: number, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0xE1B3BE07D3AADDED | Since: 1207
      */
-    function _0xE1B3BE07D3AADDED(ped: number | Ped): void;
+    function _0xE1B3BE07D3AADDED(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26449,19 +26449,19 @@ export declare namespace ped {
      *
      * Hash: 0xE29D8CD66553DBAA | Since: 1207
      */
-    function _0xE29D8CD66553DBAA(horse: number | Ped): void;
+    function _0xE29D8CD66553DBAA(horse: number | IPed): void;
     /**
      * _SET_PED_IN*
      *
      * Hash: 0xE37ACEE15AC50C7E | Since: 1207
      */
-    function _0xE37ACEE15AC50C7E(ped: number | Ped): void;
+    function _0xE37ACEE15AC50C7E(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xE4C95E0AE31C6512 | Since: 1207
      */
-    function _0xE4C95E0AE31C6512(ped: number | Ped): void;
+    function _0xE4C95E0AE31C6512(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26473,7 +26473,7 @@ export declare namespace ped {
      *
      * Hash: 0xE50C9816B3F22D8B | Since: 1311
      */
-    function _0xE50C9816B3F22D8B(ped: number | Ped, p1: number | string): void;
+    function _0xE50C9816B3F22D8B(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
@@ -26492,7 +26492,7 @@ export declare namespace ped {
      *
      * Hash: 0xE737D5F14304A2EC | Since: 1207
      */
-    function _0xE737D5F14304A2EC(ped: number | Ped, player: number | string | Player): void;
+    function _0xE737D5F14304A2EC(ped: number | IPed, player: number | string | IPlayer): void;
     /**
      * Used for AUDIO / ANIMSCENE (REFERENCE_REGIONAL_CHARACTER)
      * Params: p1 = 0
@@ -26525,7 +26525,7 @@ export declare namespace ped {
      *
      * Hash: 0xEB8886E1065654CD | Since: 1207
      */
-    function _0xEB8886E1065654CD(ped: number | Ped): void;
+    function _0xEB8886E1065654CD(ped: number | IPed): void;
     /**
      * If returned true: PROCESS_RESIZING_TRACKING_BOUNDS_VOLUME - Scaling UP the bounds due to tracking
      * If returned false: PROCESS_RESIZING_TRACKING_BOUNDS_VOLUME - Scaling DOWN the bounds due to tracking
@@ -26533,7 +26533,7 @@ export declare namespace ped {
      *
      * Hash: 0xEBAAC9A750E7563B | Since: 1207
      */
-    function _0xEBAAC9A750E7563B(ped: number | Ped): boolean;
+    function _0xEBAAC9A750E7563B(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -26545,13 +26545,13 @@ export declare namespace ped {
      *
      * Hash: 0xEC60D1D225BC50AA | Since: 1207
      */
-    function _0xEC60D1D225BC50AA(ped: number | Ped): void;
+    function _0xEC60D1D225BC50AA(ped: number | IPed): void;
     /**
      * Only used in R* Script nb_stalking_hunter
      *
      * Hash: 0xED1C764997A86D5A | Since: 1207
      */
-    function _0xED1C764997A86D5A(ped1: number | Ped, ped2: number | Ped): void;
+    function _0xED1C764997A86D5A(ped1: number | IPed, ped2: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26563,13 +26563,13 @@ export declare namespace ped {
      *
      * Hash: 0xEF371232BC6053E1 | Since: 1207
      */
-    function _0xEF371232BC6053E1(ped: number | Ped): void;
+    function _0xEF371232BC6053E1(ped: number | IPed): void;
     /**
      * Used in Script Function MOONSHINE_BAND_CLIENT_PATRON_UPDATE
      *
      * Hash: 0xF47D54B986F0A346 | Since: 1232
      */
-    function _0xF47D54B986F0A346(ped: number | Ped, danceIntensity: number): void;
+    function _0xF47D54B986F0A346(ped: number | IPed, danceIntensity: number): void;
     /**
      * Only used in SP Scripts
      * Returns count / index
@@ -26583,7 +26583,7 @@ export declare namespace ped {
      *
      * Hash: 0xF634E2892220EF34 | Since: 1207
      */
-    function _0xF634E2892220EF34(ped: number | Ped): void;
+    function _0xF634E2892220EF34(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26607,13 +26607,13 @@ export declare namespace ped {
      *
      * Hash: 0xF9331B3A314EB49D | Since: 1207
      */
-    function _0xF9331B3A314EB49D(ped: number | Ped): boolean;
+    function _0xF9331B3A314EB49D(ped: number | IPed): boolean;
     /**
      * Used in Script Function PLAYER_HEAD_TRACKING_MAINTAIN
      *
      * Hash: 0xF9CBD46433E36713 | Since: 1207
      */
-    function _0xF9CBD46433E36713(ped: number | Ped, targetEntity: number | Entity): void;
+    function _0xF9CBD46433E36713(ped: number | IPed, targetEntity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -26631,7 +26631,7 @@ export declare namespace ped {
      *
      * Hash: 0xFA8C10DCE0706D43 | Since: 1207
      */
-    function _0xFA8C10DCE0706D43(ped: number | Ped): boolean;
+    function _0xFA8C10DCE0706D43(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -26643,7 +26643,7 @@ export declare namespace ped {
      *
      * Hash: 0xFD3C31A2E45671E7 | Since: 1207
      */
-    function _0xFD3C31A2E45671E7(ped: number | Ped): void;
+    function _0xFD3C31A2E45671E7(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26656,7 +26656,7 @@ export declare namespace ped {
      *
      * Hash: 0xFEA6126C34DF2532 | Since: 1207
      */
-    function _0xFEA6126C34DF2532(ped: number | Ped): void;
+    function _0xFEA6126C34DF2532(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26668,25 +26668,25 @@ export declare namespace ped {
      *
      * Hash: 0xFFA1594703ED27CA | Since: 1207
      */
-    function _0xFFA1594703ED27CA(ped: number | Ped): void;
+    function _0xFFA1594703ED27CA(ped: number | IPed): void;
     /**
      * _GET_PED_COMBAT_M* - _GET_PED_C*
      *
      * Hash: 0xFFDE295662405B25 | Since: 1207
      */
-    function _0xFFDE295662405B25(ped: number | Ped): number;
+    function _0xFFDE295662405B25(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xE9B168527B337BF0 | Since: 1207
      */
-    function addStayOutVolume(ped: number | Ped, volume: number): boolean;
+    function addStayOutVolume(ped: number | IPed, volume: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xE37287EE358939C3 | Since: 1311
      */
-    function addSubscribeToLegendaryBlips(ped: number | Ped): boolean;
+    function addSubscribeToLegendaryBlips(ped: number | IPed): boolean;
     /**
      * flag: see ADD_SCENARIO_BLOCKING_AREA
      *
@@ -26698,7 +26698,7 @@ export declare namespace ped {
      *
      * Hash: 0x6D07B371E9439019 | Since: 1207
      */
-    function addScenarioTransition(ped: number | Ped): void;
+    function addScenarioTransition(ped: number | IPed): void;
     /**
      * Creates ped overlay in texture override data and returns it's index.
      * This index are used for further overlay editing.
@@ -26714,7 +26714,7 @@ export declare namespace ped {
      *
      * Hash: 0x1F8215D0E446F593 | Since: 1207
      */
-    function applyColdTo(ped: number | Ped, intensity: number): void;
+    function applyColdTo(ped: number | IPed, intensity: number): void;
     /**
      * Applies damage pack to a ped bone with offset and rotation.
      * Note: for boneId only PD_Vomit seems to work.
@@ -26723,25 +26723,25 @@ export declare namespace ped {
      *
      * Hash: 0x58D32261AE0F0843 | Since: 1207
      */
-    function applyDamagePackToBone(ped: number | Ped, boneId: number, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, damagePack: string): void;
+    function applyDamagePackToBone(ped: number | IPed, boneId: number, xOffset: number, yOffset: number, zOffset: number, rot: Vector3, damagePack: string): void;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/clothes/metaped_outfits.lua
      *
      * Hash: 0x74F512E29CB717E2 | Since: 1207
      */
-    function applyMetaPedOutfit(requestId: number, ped: number | Ped): boolean;
+    function applyMetaPedOutfit(requestId: number, ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD3A7B003ED343FD9 | Since: 1207
      */
-    function applyShopItemTo(ped: number | Ped, componentHash: number | string, immediately: boolean, isMp: boolean): void;
+    function applyShopItemTo(ped: number | IPed, componentHash: number | string, immediately: boolean, isMp: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0B46E25761519058 | Since: 1207
      */
-    function applyTextureOn(ped: number | Ped, componentHash: number | string, textureId: number): void;
+    function applyTextureOn(ped: number | IPed, componentHash: number | string, textureId: number): void;
     /**
      * No comment provided
      *
@@ -26753,74 +26753,74 @@ export declare namespace ped {
      *
      * Hash: 0x7C00CFC48A782DC0 | Since: 1207
      */
-    function attachVolumeToEntity(volume: number, entity: number | Entity, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3): void;
+    function attachVolumeToEntity(volume: number, entity: number | IEntity, offsetX: number, offsetY: number, offsetZ: number, rot: Vector3): void;
     /**
      * p2 is always 0, p3 is always 0, p4 is always 1
      *
      * Hash: 0xAB643407D0B26F07 | Since: 1207
      */
-    function canUseScenarioPoint(ped: number | Ped, scenario: number): boolean;
+    function canUseScenarioPoint(ped: number | IPed, scenario: number): boolean;
     /**
      * Alters entity's stamina by 'amount'. Can be negative (to drain stamina). float amount: -1000.0 - 1000.0
      *
      * Hash: 0xC3D4B754C0E86B9E | Since: 1207
      */
-    function changeStamina(ped: number | Ped, amount: number): boolean;
+    function changeStamina(ped: number | IPed, amount: number): boolean;
     /**
      * Used in Script Functions PLAYER_HORSE_RELEASE_HORSE_TO_AMBIENT_WORLD (p1 = true), HORSE_SETUP_PLAYER_HORSE_ATTRIBUTES (p1 = false)
      * Set to false for player horse in scripts and seems it's only true when releasing/changing a player horse? Cannot determine what effect it has, but it doesn't seem to affect _GET_HORSE_TAMING_STATE
      *
      * Hash: 0xBCC76708E5677E1D | Since: 1207
      */
-    function clearActiveAnimalOwner(horse: number | Ped, clear: boolean): void;
+    function clearActiveAnimalOwner(horse: number | IPed, clear: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x949B2F9ED2917F5D | Since: 1207
      */
-    function clearActionDisableFlag(ped: number | Ped, actionDisableFlag: number): void;
+    function clearActionDisableFlag(ped: number | IPed, actionDisableFlag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x7F5D88333EE8A86F | Since: 1207
      */
-    function clearBloodDamageFacial(ped: number | Ped): void;
+    function clearBloodDamageFacial(ped: number | IPed): void;
     /**
      * Params: p1 = 1 in R* Scripts
      *
      * Hash: 0x78815FC52832B690 | Since: 1207
      */
-    function clearCombatStyle(ped: number | Ped): void;
+    function clearCombatStyle(ped: number | IPed): void;
     /**
      * _CLEAR_PED_COMBAT_*
      *
      * Hash: 0x1FA132CBCD7CB239 | Since: 1207
      */
-    function clearCombatStyleMod(ped: number | Ped, combatStyleModHash: number | string): void;
+    function clearCombatStyleMod(ped: number | IPed, combatStyleModHash: number | string): void;
     /**
      * Clears locomotion archetype
      *
      * Hash: 0x4FD80C3DD84B817B | Since: 1207
      */
-    function clearDesiredLocoForModel(ped: number | Ped): void;
+    function clearDesiredLocoForModel(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x58F7DB5BD8FA2288 | Since: 1207
      */
-    function clearDesiredLocoMotionType(ped: number | Ped): void;
+    function clearDesiredLocoMotionType(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xEAE3B5B019C8D23F | Since: 1207
      */
-    function clearGrappleFlag(ped: number | Ped, flag: number): void;
+    function clearGrappleFlag(ped: number | IPed, flag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xBBF6D1D07C02D00A | Since: 1207
      */
-    function clearTargetActionDisableFlag(ped: number | Ped, actionDisableFlag: number): void;
+    function clearTargetActionDisableFlag(ped: number | IPed, actionDisableFlag: number): void;
     /**
      * Removes every texture layer
      * Old Name: _RESET_PED_TEXTURE_2
@@ -26833,14 +26833,14 @@ export declare namespace ped {
      *
      * Hash: 0x627F7F3A0C4C51FF | Since: 1207
      */
-    function clearPeltFromHorse(horse: number | Ped, peltId: number): void;
+    function clearPeltFromHorse(horse: number | IPed, peltId: number): void;
     /**
      * Related to dead animals items/loots
      * Notice: skinningQuality is partially calculated using pedQuality
      *
      * Hash: 0x6B89FAA36FC909A3 | Since: 1207
      */
-    function computeSatchelItemForCarcass(ped: number | Ped, damageCleanliness: number, skinningQuality: number): [number, any];
+    function computeSatchelItemForCarcass(ped: number | IPed, damageCleanliness: number, skinningQuality: number): [number, any];
     /**
      * Creates a handle to an instance of "CScriptResource_GravityWell", this system forces local ped to target specified position when moving, however player still can interrupt this.
      * Can be useful to "point" player at some specific position.
@@ -26876,13 +26876,13 @@ export declare namespace ped {
      *
      * Hash: 0x19C975B81BE53C28 | Since: 1207
      */
-    function detachVolumeFromEntity(volume: number, entity: number | Entity): void;
+    function detachVolumeFromEntity(volume: number, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0xE1965A380342BE1F | Since: 1355
      */
-    function disableAllLookAtRequests(ped: number | Ped): void;
+    function disableAllLookAtRequests(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -26940,7 +26940,7 @@ export declare namespace ped {
      *
      * Hash: 0x1902C4CFCC5BE57C | Since: 1207
      */
-    function equipMetaOutfit(ped: number | Ped, hash: number | string): void;
+    function equipMetaOutfit(ped: number | IPed, hash: number | string): void;
     /**
      * Changes Multiplayer ped face and body type components, they can be stacked
      * Params: p3 = 1
@@ -26950,7 +26950,7 @@ export declare namespace ped {
      *
      * Hash: 0xA5BAE410B03E7371 | Since: 1207
      */
-    function equipMetaOutfitExtra(ped: number | Ped, component: number): void;
+    function equipMetaOutfitExtra(ped: number | IPed, component: number): void;
     /**
      * Sets the outfit preset for the ped. The presetId is an index which determines its preset outfit. p2 is always false in the scripts.
      * If p2 is true as player, then certain components like facial hair and hair will not be removed.
@@ -26958,85 +26958,85 @@ export declare namespace ped {
      *
      * Hash: 0x77FF8D35EEC6BBC4 | Since: 1207
      */
-    function equipMetaOutfitPreset(ped: number | Ped, presetId: number): void;
+    function equipMetaOutfitPreset(ped: number | IPed, presetId: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x66FF395445A88A6E | Since: 1207
      */
-    function equipMetaSuboutfit(ped: number | Ped, suboutfit: number | string): void;
+    function equipMetaSuboutfit(ped: number | IPed, suboutfit: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x8B3CB08158E98481 | Since: 1207
      */
-    function fakeSetLocoInjured(ped: number | Ped, enabled: boolean): void;
+    function fakeSetLocoInjured(ped: number | IPed, enabled: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x1CE875505D45338A | Since: 1207
      */
-    function forceDeath(ped: number | Ped, pedKiller: number | Ped, weapon: number | string): void;
+    function forceDeath(ped: number | IPed, pedKiller: number | IPed, weapon: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xDC9273D95976BA22 | Since: 1207
      */
-    function getAccuracyAgainstLocalPlayerModifier(ped: number | Ped): number;
+    function getAccuracyAgainstLocalPlayerModifier(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xF103823FFE72BB49 | Since: 1207
      */
-    function getActiveAnimalOwner(animal: number | Ped): number;
+    function getActiveAnimalOwner(animal: number | IPed): number;
     /**
      * Returns kneeling, sitting, squating, and sleeping scenario hashes
      *
      * Hash: 0x569F1E1237508DEB | Since: 1207
      */
-    function getActiveDynamicScenario(ped: number | Ped): number;
+    function getActiveDynamicScenario(ped: number | IPed): number;
     /**
      * Returns kneeling, sitting, squating, and sleeping scenario hashes
      *
      * Hash: 0xC22AA08A8ADB87D4 | Since: 1207
      */
-    function getActiveDynamicScenario2(ped: number | Ped): number;
+    function getActiveDynamicScenario2(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x268B3AEBF032A88D | Since: 1207
      */
-    function getBlockingOfNonTemporaryEvents(ped: number | Ped): boolean;
+    function getBlockingOfNonTemporaryEvents(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x6F43C351A5D51E2F | Since: 1207
      */
-    function getCarriedPeltSkins(mount: number | Ped): [number, any];
+    function getCarriedPeltSkins(mount: number | IPed): [number, any];
     /**
      * No comment provided
      *
      * Hash: 0x79443D56C8DF45EE | Since: 1207
      */
-    function getCarrierAsHuman(entity: number | Entity): number;
+    function getCarrierAsHuman(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xA033D7E4BBF9844D | Since: 1207
      */
-    function getCarrierAsMount(entity: number | Entity): number;
+    function getCarrierAsMount(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x09B83E68DE004CD4 | Since: 1207
      */
-    function getCarrierAs(entity: number | Entity): number;
+    function getCarrierAs(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x9B90842304C938A7 | Since: 1207
      */
-    function getCategoryOfComponentAtIndex(ped: number | Ped, componentIndex: number): number;
+    function getCategoryOfComponentAtIndex(ped: number | IPed, componentIndex: number): number;
     /**
      * Gets MetaPedExpression at index specified
      *
@@ -27046,7 +27046,7 @@ export declare namespace ped {
      *
      * Hash: 0xFD1BA1EEF7985BB8 | Since: 1207
      */
-    function getCharExpression(ped: number | Ped, index: number): number;
+    function getCharExpression(ped: number | IPed, index: number): number;
     /**
      * No comment provided
      *
@@ -27058,7 +27058,7 @@ export declare namespace ped {
      *
      * Hash: 0xD806CD2A4F2C2996 | Since: 1207
      */
-    function getFirstEntityIsCarrying(ped: number | Ped): number;
+    function getFirstEntityIsCarrying(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -27070,7 +27070,7 @@ export declare namespace ped {
      *
      * Hash: 0x95B8E397B8F4360F | Since: 1207
      */
-    function getHealthRechargeMultiplier(ped: number | Ped): number;
+    function getHealthRechargeMultiplier(ped: number | IPed): number;
     /**
      * Returns an int based on enum eTamingState
      *
@@ -27090,93 +27090,93 @@ export declare namespace ped {
      *
      * Hash: 0x454AD4DA6C41B5BD | Since: 1207
      */
-    function getHorseTamingState(horse: number | Ped): number;
+    function getHorseTamingState(horse: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x88D9D76D78065487 | Since: 1207
      */
-    function getIncapacitationTimeRemaining(ped: number | Ped): number;
+    function getIncapacitationTimeRemaining(ped: number | IPed): number;
     /**
      * If p2 is false, then this native will return true until the interaction is complete. If true, the native will return true until player pockets robbery item.
      * _GET_IS_PED_[M-R]*
      *
      * Hash: 0xE33F98BD76490ABC | Since: 1207
      */
-    function getIsBeingRobbed(ped: number | Ped, player: number | string | Player, trueUntilPlayerPocketsItem: boolean): boolean;
+    function getIsBeingRobbed(ped: number | IPed, player: number | string | IPlayer, trueUntilPlayerPocketsItem: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x68821369A2CEADD5 | Since: 1207
      */
-    function getIsCommandHashPresent(ped: number | Ped, commandHash: number | string): boolean;
+    function getIsCommandHashPresent(ped: number | IPed, commandHash: number | string): boolean;
     /**
      * Returns true if ped is in a dispute another ped (pedInDisputeWith can also be 0)
      *
      * Hash: 0x331550B212014B92 | Since: 1207
      */
-    function getIsInDisputeWithPed(ped: number | Ped, pedInDisputeWith: number | Ped): boolean;
+    function getIsInDisputeWithPed(ped: number | IPed, pedInDisputeWith: number | IPed): boolean;
     /**
      * motivationState: see _SET_PED_MOTIVATION
      *
      * Hash: 0x33FA048675821DA7 | Since: 1207
      */
-    function getIsMotivationStateEnabled(ped: number | Ped, motivationState: number): boolean;
+    function getIsMotivationStateEnabled(ped: number | IPed, motivationState: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0C31C51168E80365 | Since: 1207
      */
-    function getLassoedLassoer(ped: number | Ped): number;
+    function getLassoedLassoer(ped: number | IPed): number;
     /**
      * _IS_PED_S* - _IS_PED_U*
      * This native name may or may not be misleading.
      *
      * Hash: 0x833F0053340EF413 | Since: 1207
      */
-    function getLassoerOf(ped: number | Ped): number;
+    function getLassoerOf(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xB65A4DAB460A19BD | Since: 1207
      */
-    function getLassoTarget(ped: number | Ped): number;
+    function getLassoTarget(ped: number | IPed): number;
     /**
      * Returns last horse the ped was leading
      *
      * Hash: 0x693126B5D0457D0D | Since: 1232
      */
-    function getLastLedMount(ped: number | Ped): number;
+    function getLastLedMount(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x4C8B59171957BCF7 | Since: 1207
      */
-    function getLastMount(ped: number | Ped): number;
+    function getLastMount(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x5064DB5083C29921 | Since: 1207
      */
-    function getLastVehicleDraftHorseWasAttachedTo(horse: number | Ped): number;
+    function getLastVehicleDraftHorseWasAttachedTo(horse: number | IPed): number;
     /**
      * lootFlag: see SET_LOOTING_FLAG
      *
      * Hash: 0xE4C11F104620DDCE | Since: 1207
      */
-    function getLootingFlag(ped: number | Ped, lootFlag: number): boolean;
+    function getLootingFlag(ped: number | IPed, lootFlag: number): boolean;
     /**
      * Returns p1 value for 0x8E84119A23C16623,  get index outfit using GET_NUM_META_PED_OUTFITS
      *
      * Hash: 0x62FDF4E678E40CC6 | Since: 1207
      */
-    function getMetaOutfitByIndex(entity: number | Entity, index: number): number;
+    function getMetaOutfitByIndex(entity: number | IEntity, index: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xB292203008EBBAAC | Since: 1207
      */
-    function getMetaRace(ped: number | Ped): number;
+    function getMetaRace(ped: number | IPed): number;
     /**
      * enum eMetaPedType
      * {
@@ -27189,19 +27189,19 @@ export declare namespace ped {
      *
      * Hash: 0xEC9A1261BF0CE510 | Since: 1207
      */
-    function getMetaType(ped: number | Ped): number;
+    function getMetaType(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x90403E8107B60E81 | Since: 1207
      */
-    function getNumComponentsIn(ped: number | Ped): number;
+    function getNumComponentsIn(ped: number | IPed): number;
     /**
      * Works similar to 0x90403E8107B60E81 (_GET_NUM_COMPONENTS_IN_PED) but is used to get category hashes instead
      *
      * Hash: 0xA622E66EEE92A08D | Since: 1207
      */
-    function getNumComponentCategoriesIn(ped: number | Ped): number;
+    function getNumComponentCategoriesIn(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -27225,19 +27225,19 @@ export declare namespace ped {
      *
      * Hash: 0x16F2C8C084AB2092 | Since: 1207
      */
-    function getNumReservedHealth(ped: number | Ped): any;
+    function getNumReservedHealth(ped: number | IPed): any;
     /**
      * returns the number of reserved stamina similar to _GET_NUM_RESERVED_HEALTH
      *
      * Hash: 0xFC3B580C4380B5B7 | Since: 1207
      */
-    function getNumReservedStamina(ped: number | Ped): number;
+    function getNumReservedStamina(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x7BE607DAFF382FD2 | Since: 1207
      */
-    function getsInCombatWithTarget(ped: number | Ped, itemset: any, flag: number): number;
+    function getsInCombatWithTarget(ped: number | IPed, itemset: any, flag: number): number;
     /**
      * AI_ATTITUDE_NEUTRAL = 0,
      * AI_ATTITUDE_FRIENDLY,
@@ -27247,55 +27247,55 @@ export declare namespace ped {
      *
      * Hash: 0x7CC2186C32D3540A | Since: 1207
      */
-    function getAttitude(ped: number | Ped, player: number | string | Player): number;
+    function getAttitude(ped: number | IPed, player: number | string | IPlayer): number;
     /**
      * Can be used to get a peds foliage active status: variableName = FoliageActive
      *
      * Hash: 0x498F2E77982D6945 | Since: 1207
      */
-    function getBlackboardBool(ped: number | Ped, variableName: string): boolean;
+    function getBlackboardBool(ped: number | IPed, variableName: string): boolean;
     /**
      * Can be used to get a peds foliage raw height: variableName = FoliageHeight
      *
      * Hash: 0x56E58D4D118FB45E | Since: 1207
      */
-    function getBlackboardFloat(ped: number | Ped, variableName: string): number;
+    function getBlackboardFloat(ped: number | IPed, variableName: string): number;
     /**
      * No comment provided
      *
      * Hash: 0xBF5E791BBBF90A3C | Since: 1207
      */
-    function getBlackboardHash(ped: number | Ped, variableName: string): number;
+    function getBlackboardHash(ped: number | IPed, variableName: string): number;
     /**
      * No comment provided
      *
      * Hash: 0xEC6B59BE445FEC51 | Since: 1207
      */
-    function getBrawlingStyle(ped: number | Ped): number;
+    function getBrawlingStyle(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x7A4E00364B5D727B | Since: 1207
      */
-    function getCanBeIncapacitatedThisFrame(ped: number | Ped): boolean;
+    function getCanBeIncapacitatedThisFrame(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xCC2B20596E29E4E3 | Since: 1207
      */
-    function getCombatAttribute(ped: number | Ped, attributeIndex: number): boolean;
+    function getCombatAttribute(ped: number | IPed, attributeIndex: number): boolean;
     /**
      * Returns category hash that each ped component has. Hash examples: MASKS, HATS, HEADS, HORSE_MANES
      *
      * Hash: 0xCCB97B51893C662F | Since: 1207
      */
-    function getComponentCategoryByIndex(ped: number | Ped, index: number): number;
+    function getComponentCategoryByIndex(ped: number | IPed, index: number): number;
     /**
      * Returns true if _GET_PED_DAMAGE_CLEANLINESS was ever lower than 2
      *
      * Hash: 0x6CFC373008A1EDAF | Since: 1207
      */
-    function getDamaged(ped: number | Ped): boolean;
+    function getDamaged(ped: number | IPed): boolean;
     /**
      * enum ePedDamageCleanliness
      * {
@@ -27306,99 +27306,99 @@ export declare namespace ped {
      *
      * Hash: 0x88EFFED5FE8B0B4A | Since: 1207
      */
-    function getDamageCleanliness(ped: number | Ped): number;
+    function getDamageCleanliness(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xEF2E6F870783369B | Since: 1207
      */
-    function getDefensiveVolume(ped: number | Ped): number;
+    function getDefensiveVolume(ped: number | IPed): number;
     /**
      * Returns ped drunk level
      * _H* or _I*
      *
      * Hash: 0x6FB76442469ABD68 | Since: 1207
      */
-    function getDrunkness(ped: number | Ped): number;
+    function getDrunkness(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xD0B7AEB56229D317 | Since: 1207
      */
-    function getGrappler(ped: number | Ped): number;
+    function getGrappler(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xF3C873ED0C595109 | Since: 1207
      */
-    function getGrappleFlag(ped: number | Ped): number;
+    function getGrappleFlag(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x753B15AD0FD6F3E3 | Since: 1207
      */
-    function getGrappleStyle(ped: number | Ped): number;
+    function getGrappleStyle(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x1D491CCF7211FB74 | Since: 1207
      */
-    function getHeight(ped: number | Ped): number;
+    function getHeight(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x31167ED4324B758D | Since: 1207
      */
-    function getIdRange(ped: number | Ped): number;
+    function getIdRange(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x89BFDF6D53145545 | Since: 1207
      */
-    function getIncapacitationHealth(ped: number | Ped): number;
+    function getIncapacitationHealth(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xD7AD3C7EBAF88C92 | Since: 1207
      */
-    function getInteractionPersonality(ped: number | Ped): number;
+    function getInteractionPersonality(ped: number | IPed): number;
     /**
      * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/Lasso%20Hogtie%20Flags
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/LASSO_HOGTIE_FLAG
      *
      * Hash: 0x2C76FA0E01681F8D | Since: 1207
      */
-    function getLassoHogtieFlag(ped: number | Ped, flagId: number): boolean;
+    function getLassoHogtieFlag(ped: number | IPed, flagId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1F714E7A9DADFC42 | Since: 1207
      */
-    function getLastDroppedHat(ped: number | Ped): number;
+    function getLastDroppedHat(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x1B710E6F4AB69341 | Since: 1355
      */
-    function getLodMultiplier(ped: number | Ped): number;
+    function getLodMultiplier(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xCB42AFE2B613EE55 | Since: 1207
      */
-    function getMaxStamina(ped: number | Ped): number;
+    function getMaxStamina(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x6127F25ED21C533C | Since: 1207
      */
-    function getMeleeActionPhase(ped: number | Ped): number;
+    function getMeleeActionPhase(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x30569F348D126A5A | Since: 1207
      */
-    function getMetaOutfitHash(ped: number | Ped): number;
+    function getMetaOutfitHash(ped: number | IPed): number;
     /**
      * PS_SMALL = 0,
      * PS_MEDIUM,
@@ -27414,7 +27414,7 @@ export declare namespace ped {
      *
      * Hash: 0x42688E94E96FD9B4 | Since: 1207
      */
-    function getMotivation(ped: number | Ped, motivationState: number, targetPed: number | Ped): number;
+    function getMotivation(ped: number | IPed, motivationState: number, targetPed: number | IPed): number;
     /**
      * Returns Ped Quality to be used to calculate Skinning Quality
      *
@@ -27429,13 +27429,13 @@ export declare namespace ped {
      *
      * Hash: 0x7BCC6087D130312A | Since: 1207
      */
-    function getQuality(ped: number | Ped): number;
+    function getQuality(ped: number | IPed): number;
     /**
      * Returns boneIndex
      *
      * Hash: 0xC5303F460A40D21D | Since: 1207
      */
-    function getRagdollBoneIndex(ped: number | Ped, boneId: number): number;
+    function getRagdollBoneIndex(ped: number | IPed, boneId: number): number;
     /**
      * Gets a registered/attached prop entity for a particular ped. Second parameter will detach the prop entity from the ped if true. Props primarily appear to come from scenarios, such as a broom or hay bale.
      *
@@ -27443,7 +27443,7 @@ export declare namespace ped {
      *
      * Hash: 0x4D0D2E3D8BC000EB | Since: 1207
      */
-    function getRegisterProp(ped: number | Ped, propName: string, detachProp: boolean): number;
+    function getRegisterProp(ped: number | IPed, propName: string, detachProp: boolean): number;
     /**
      * normalized / non normalized
      * 0.0        / 1000.0         STARTED IN WRITHE STAGE
@@ -27454,43 +27454,43 @@ export declare namespace ped {
      *
      * Hash: 0xEBE89623EB861271 | Since: 1207
      */
-    function getRemainingRevivalTime(ped: number | Ped, normalized: boolean): number;
+    function getRemainingRevivalTime(ped: number | IPed, normalized: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0x775A1CA7893AA8B5 | Since: 1207
      */
-    function getStamina(ped: number | Ped): number;
+    function getStamina(ped: number | IPed): number;
     /**
      * Returns stamina normalizedValue / normalizedUnlockedMax
      *
      * Hash: 0x22F2A386D43048A9 | Since: 1207
      */
-    function getStaminaNormalized(ped: number | Ped): number;
+    function getStaminaNormalized(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x65C75FDCCAC86464 | Since: 1355
      */
-    function getTranquilizer(ped: number | Ped): number;
+    function getTranquilizer(ped: number | IPed): number;
     /**
      * Returns peltId
      *
      * Hash: 0x0CEEB6F4780B1F2F | Since: 1207
      */
-    function getPeltFromHorse(horse: number | Ped, index: number): number;
+    function getPeltFromHorse(horse: number | IPed, index: number): number;
     /**
      * Returns animal skin quality modifier
      *
      * Hash: 0xEE2D5C819A65BF26 | Since: 1311
      */
-    function getPlayerCurrentAnimalDamageModifier(player: number | string | Player): number;
+    function getPlayerCurrentAnimalDamageModifier(player: number | string | IPlayer): number;
     /**
      * Returns dismounted timestamp
      *
      * Hash: 0xE8D1CCB9375C101B | Since: 1207
      */
-    function getPlayerDismountTimestamp(mount: number | Ped, player: number | string | Player): number;
+    function getPlayerDismountTimestamp(mount: number | IPed, player: number | string | IPlayer): number;
     /**
      * Returns how deep the water is below the ped (if in water)
      * -1.0f = Not in water
@@ -27498,25 +27498,25 @@ export declare namespace ped {
      *
      * Hash: 0x2942457417A5FD24 | Since: 1207
      */
-    function getPlayerWaterDepth(ped: number | Ped): number;
+    function getPlayerWaterDepth(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xB676EFDA03DADA52 | Since: 1207
      */
-    function getRiderOfMount(mount: number | Ped): number;
+    function getRiderOfMount(mount: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x63342C50EC115CE8 | Since: 1207
      */
-    function getShopItemBaseLayers(shopItem: number | string, ped: number | Ped, metapedType: number): [boolean, number, number, number, number, number, number, number, number];
+    function getShopItemBaseLayers(shopItem: number | string, ped: number | IPed, metapedType: number): [boolean, number, number, number, number, number, number, number, number];
     /**
      * Returns the current shop item component at index and it's wearable state
      *
      * Hash: 0x77BA37622E22023B | Since: 1207
      */
-    function getShopItemComponentAtIndex(ped: number | Ped, index: number): [number, any, number];
+    function getShopItemComponentAtIndex(ped: number | IPed, index: number): [number, any, number];
     /**
      * No comment provided
      *
@@ -27528,7 +27528,7 @@ export declare namespace ped {
      *
      * Hash: 0x7E02E4218D916B94 | Since: 1207
      */
-    function getShopItemHatComponent(ped: number | Ped, metapedType: number): any;
+    function getShopItemHatComponent(ped: number | IPed, metapedType: number): any;
     /**
      * Returns the number of wearable states available for a shop item / component. p2 seems to be true in scripts.
      *
@@ -27550,50 +27550,50 @@ export declare namespace ped {
      *
      * Hash: 0x825F6DD559A0895B | Since: 1207
      */
-    function getStaminaDepletionMultiplier(ped: number | Ped): number;
+    function getStaminaDepletionMultiplier(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xE7687EB2F634ABF0 | Since: 1207
      */
-    function getStaminaRechargeMultiplier(ped: number | Ped): number;
+    function getStaminaRechargeMultiplier(ped: number | IPed): number;
     /**
      * _GET_WA*
      *
      * Hash: 0x92C8EACA29F6BED6 | Since: 1207
      */
-    function getTotalDamageFromAi(ped: number | Ped): number;
+    function getTotalDamageFromAi(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x849BD6C6314793D0 | Since: 1207
      */
-    function getTransportIsSeatedOn(ped: number | Ped): number;
+    function getTransportIsSeatedOn(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xE4770DA1B8FF4FD1 | Since: 1207
      */
-    function getVehicleDraftHorseIsAttachedTo(horse: number | Ped): number;
+    function getVehicleDraftHorseIsAttachedTo(horse: number | IPed): number;
     /**
      * Ped Command Hash are special commands, that can be activated to change conditional anim variations or trigger transitions between conditional anims.
      * https://github.com/femga/rdr3_discoveries/blob/master/animations/scenarios
      *
      * Hash: 0xD65FDC686A031C83 | Since: 1207
      */
-    function giveHashCommand(ped: number | Ped, commandHash: number | string, activationDuration: number): void;
+    function giveHashCommand(ped: number | IPed, commandHash: number | string, activationDuration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x3BBDD6143FF16F98 | Since: 1207
      */
-    function giveScenarioProp(ped: number | Ped, _object: number | Object, conditionalAnim: string): boolean;
+    function giveScenarioProp(ped: number | IPed, _object: number | IObject, conditionalAnim: string): boolean;
     /**
      * Only used in SP R* Script rcm_jack2
      *
      * Hash: 0xA0774E388CE4A679 | Since: 1207
      */
-    function giveScenarioPropDynamic(ped: number | Ped, _object: number | Object): boolean;
+    function giveScenarioPropDynamic(ped: number | IPed, _object: number | IObject): boolean;
     /**
      * No comment provided
      *
@@ -27617,57 +27617,57 @@ export declare namespace ped {
      *
      * Hash: 0x9C81338B2E62CE0A | Since: 1207
      */
-    function hasBeenShotByPlayerRecently(player: number | string | Player, ped: number | Ped, duration: number): boolean;
+    function hasBeenShotByPlayerRecently(player: number | string | IPlayer, ped: number | IPed, duration: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x29FCE825613FEFCA | Since: 1207
      */
-    function hasBeenShovedRecently(ped: number | Ped, ms: number): boolean;
+    function hasBeenShovedRecently(ped: number | IPed, ms: number): boolean;
     /**
      * See _REQUEST_PED_EMOTIONAL_PRESET
      *
      * Hash: 0xDE3904B22695D9F9 | Since: 1207
      */
-    function hasEmotionalPresetLoaded(ped: number | Ped, name: string): boolean;
+    function hasEmotionalPresetLoaded(ped: number | IPed, name: string): boolean;
     /**
      * Returns whether a ped has interacted with a player recently.
      * flags: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/0x947E43F544B6AB34
      *
      * Hash: 0x947E43F544B6AB34 | Since: 1207
      */
-    function hasInteractedWithPlayerRecently(ped: number | Ped, player: number | string | Player, flag: number, ms: number): boolean;
+    function hasInteractedWithPlayerRecently(ped: number | IPed, player: number | string | IPlayer, flag: number, ms: number): boolean;
     /**
      * limb: 3 = Left Hand, 4 = Left Arm, 6 = Right Hand, 7 = Right Arm, 9 = Left Foot, 10 = Left Leg, 12 = Right Foot, 13 = Right Leg, 37 = Head
      *
      * Hash: 0xBA208A8D6399A3AC | Since: 1207
      */
-    function hasTakenGoreDamage(ped: number | Ped, limb: number): boolean;
+    function hasTakenGoreDamage(ped: number | IPed, limb: number): boolean;
     /**
      * _H* - _I*
      *
      * Hash: 0xBAE08F00021BFFB2 | Since: 1207
      */
-    function horseAgitate(mount: number | Ped, kickOffRider: boolean): void;
+    function horseAgitate(mount: number | IPed, kickOffRider: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xF6262491C7704A63 | Since: 1207
      */
-    function incapacitatedRevive(ped: number | Ped, ped2: number | Ped): void;
+    function incapacitatedRevive(ped: number | IPed, ped2: number | IPed): void;
     /**
      * Returns true only if it's a player ped and an animal as well.
      * _IS_ANY_* - _IS_CONTROL_*
      *
      * Hash: 0x0E2F43516F998269 | Since: 1311
      */
-    function isAnimalControlledByAPlayer(ped: number | Ped): boolean;
+    function isAnimalControlledByAPlayer(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7FC84E85D98F063D | Since: 1207
      */
-    function isAnimalInteractionRunning(ped: number | Ped): boolean;
+    function isAnimalInteractionRunning(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -27680,13 +27680,13 @@ export declare namespace ped {
      *
      * Hash: 0x118D476A6F1A13F1 | Since: 1207
      */
-    function isMetaFish(ped: number | Ped): boolean;
+    function isMetaFish(ped: number | IPed): boolean;
     /**
      * Used in script function HORSE_IS_META_PED_OUTFIT_SADDLE_EQUIPPED
      *
      * Hash: 0x98082246107A6ACF | Since: 1207
      */
-    function isMetaOutfitEquipped(ped: number | Ped, outfit: number | string): boolean;
+    function isMetaOutfitEquipped(ped: number | IPed, outfit: number | string): boolean;
     /**
      * No comment provided
      *
@@ -27706,79 +27706,79 @@ export declare namespace ped {
      *
      * Hash: 0xFB4891BD7578CDC1 | Since: 1207
      */
-    function isMetaUsingComponentCategory(ped: number | Ped, componentCategory: number | string): boolean;
+    function isMetaUsingComponentCategory(ped: number | IPed, componentCategory: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xAAB0FE202E9FC9F0 | Since: 1207
      */
-    function isMountSeatFree(mount: number | Ped, seat: number): boolean;
+    function isMountSeatFree(mount: number | IPed, seat: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB346C85D49CC998E | Since: 1207
      */
-    function isActionDisableFlagEnabled(ped: number | Ped, actionDisableFlag: number): boolean;
+    function isActionDisableFlagEnabled(ped: number | IPed, actionDisableFlag: number): boolean;
     /**
      * detects if ped is afloat in water like swimming or in a boat (driving or standing on it)
      *
      * Hash: 0xDC88D06719070C39 | Since: 1207
      */
-    function isAfloat(ped: number | Ped): boolean;
+    function isAfloat(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x137772000DAF42C5 | Since: 1207
      */
-    function isChild(ped: number | Ped): boolean;
+    function isChild(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x59643424B68D52B5 | Since: 1207
      */
-    function isClimbingLadder(ped: number | Ped): boolean;
+    function isClimbingLadder(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB086C8C0F5701D14 | Since: 1207
      */
-    function isCowering(ped: number | Ped): boolean;
+    function isCowering(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC488B8C0E52560D8 | Since: 1207
      */
-    function isDoingScenarioTransition(ped: number | Ped): boolean;
+    function isDoingScenarioTransition(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x226CF9B159E38F42 | Since: 1207
      */
-    function isDragging(ped: number | Ped): boolean;
+    function isDragging(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x50F124E6EF188B22 | Since: 1207
      */
-    function isDrunk(ped: number | Ped): boolean;
+    function isDrunk(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x878B68960C1C2A35 | Since: 1207
      */
-    function isGroupLeader(ped: number | Ped, groupId: number): boolean;
+    function isGroupLeader(ped: number | IPed, groupId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x57779B55B83E2BEA | Since: 1207
      */
-    function isIntimidated(ped: number | Ped): boolean;
+    function isIntimidated(ped: number | IPed): boolean;
     /**
      * _IS_PED_IN*
      *
      * Hash: 0x7583A9D35248B83F | Since: 1207
      */
-    function isInvestigating(ped: number | Ped): boolean;
+    function isInvestigating(ped: number | IPed): boolean;
     /**
      * If returned true: There are enemy peds near friendly turn in ped. Going to aggro.
      * If returned false: Moving back to idle as there aren't any remaining enemy peds near ped
@@ -27786,13 +27786,13 @@ export declare namespace ped {
      *
      * Hash: 0x078076AB50FB117F | Since: 1207
      */
-    function isInPoint(ped: number | Ped, pos: Vector3, radius: number): boolean;
+    function isInPoint(ped: number | IPed, pos: Vector3, radius: number): boolean;
     /**
      * _IS_PED_L* - _IS_PED_M*
      *
      * Hash: 0x917760CFE7A0E0F1 | Since: 1207
      */
-    function isLeadingAnyGroup(ped: number | Ped): boolean;
+    function isLeadingAnyGroup(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -27804,31 +27804,31 @@ export declare namespace ped {
      *
      * Hash: 0x8D9BFCE3352DE47F | Since: 1207
      */
-    function isQueuedForDeletion(ped: number | Ped): boolean;
+    function isQueuedForDeletion(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD6740E14E4CEFC0B | Since: 1207
      */
-    function isSliding(ped: number | Ped): boolean;
+    function isSliding(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x02AA2096FE00F3E1 | Since: 1207
      */
-    function isTargetActionDisableFlagEnabled(ped: number | Ped, actionDisableFlag: number): boolean;
+    function isTargetActionDisableFlagEnabled(ped: number | IPed, actionDisableFlag: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEBB208D6AE712C03 | Since: 1207
      */
-    function isUsingActionMode2(ped: number | Ped): boolean;
+    function isUsingActionMode2(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5102307CE88798EB | Since: 1207
      */
-    function isVisibilityTracked(ped: number | Ped): boolean;
+    function isVisibilityTracked(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -27840,7 +27840,7 @@ export declare namespace ped {
      *
      * Hash: 0x6E5CBCB3941D7D08 | Since: 1207
      */
-    function isTarget(ped: number | Ped, targetPed: number | Ped): boolean;
+    function isTarget(ped: number | IPed, targetPed: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -27858,25 +27858,25 @@ export declare namespace ped {
      *
      * Hash: 0x164CECC59E70DF86 | Since: 1207
      */
-    function isTrackedVisibilityPercentageNotLessThan(ped: number | Ped, percent: number): boolean;
+    function isTrackedVisibilityPercentageNotLessThan(ped: number | IPed, percent: number): boolean;
     /**
      * _IS_TRACKED_* - IS_V*
      *
      * Hash: 0xAF61B3CD8C3B82C3 | Since: 1207
      */
-    function isUsingSlipstream(ped: number | Ped): boolean;
+    function isUsingSlipstream(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x935CF6E42BAF7F4D | Since: 1207
      */
-    function clearLocoMotion(ped: number | Ped): void;
+    function clearLocoMotion(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xBD6B242B8BD5543A | Since: 1207
      */
-    function duelingDidPlayerHeadshotOpponent(ped: number | Ped): boolean;
+    function duelingDidPlayerHeadshotOpponent(ped: number | IPed): boolean;
     /**
      * target: 0 affects everyone
      * duration: -1 indefinite
@@ -27884,19 +27884,19 @@ export declare namespace ped {
      *
      * Hash: 0xAAB050DA48B57978 | Since: 1207
      */
-    function emotionalPresetLocoMotion(ped: number | Ped, presetName: string, targetPed: number | Ped, duration: number, flag: number): void;
+    function emotionalPresetLocoMotion(ped: number | IPed, presetName: string, targetPed: number | IPed, duration: number, flag: number): void;
     /**
      * memoryType: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/_PED_SET_SIMPLE_PLAYER_MEMORY
      *
      * Hash: 0xC494C76A34266E82 | Since: 1207
      */
-    function setSimplePlayerMemory(ped: number | Ped, memoryType: number): void;
+    function setSimplePlayerMemory(ped: number | IPed, memoryType: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x06FA94C835787C64 | Since: 1207
      */
-    function wasKilledByHeadshot(ped: number | Ped): boolean;
+    function wasKilledByHeadshot(ped: number | IPed): boolean;
     /**
      * Returns loot state
      * enum eLootState
@@ -27916,19 +27916,19 @@ export declare namespace ped {
      *
      * Hash: 0x5463C962BC7777C3 | Since: 1207
      */
-    function refreshLootStateFor(ped: number | Ped): [number, number];
+    function refreshLootStateFor(ped: number | IPed): [number, number];
     /**
      * p1 is always 1
      *
      * Hash: 0x59BD177A1A48600A | Since: 1207
      */
-    function refreshMetaShopItems(ped: number | Ped): void;
+    function refreshMetaShopItems(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xD8736EFDA38EDC5C | Since: 1207
      */
-    function registerHatedTargetsInArea(ped: number | Ped, pos: Vector3, radius: number): void;
+    function registerHatedTargetsInArea(ped: number | IPed, pos: Vector3, radius: number): void;
     /**
      * No comment provided
      *
@@ -27964,43 +27964,43 @@ export declare namespace ped {
      *
      * Hash: 0xDE7B2B4144906CDF | Since: 1207
      */
-    function removeMotionTypeAsset(nameHash: number | string, ped: number | Ped): void;
+    function removeMotionTypeAsset(nameHash: number | string, ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xA6F67BEC53379A32 | Since: 1207
      */
-    function removeBlackboardBool(ped: number | Ped, variableName: string): void;
+    function removeBlackboardBool(ped: number | IPed, variableName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x411189E51B8020BA | Since: 1207
      */
-    function removeBlackboardFloat(ped: number | Ped, variableName: string): void;
+    function removeBlackboardFloat(ped: number | IPed, variableName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x0E17378642156790 | Since: 1207
      */
-    function removeBlackboardHash(ped: number | Ped, variableName: string): void;
+    function removeBlackboardHash(ped: number | IPed, variableName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x81B75428A7813E67 | Since: 1207
      */
-    function removeBlackboardInt(ped: number | Ped, variableName: string): void;
+    function removeBlackboardInt(ped: number | IPed, variableName: string): void;
     /**
      * See _REQUEST_PED_EMOTIONAL_PRESET
      *
      * Hash: 0xFC3BAB1801A8255A | Since: 1207
      */
-    function removeEmotionalPreset(ped: number | Ped, name: string): void;
+    function removeEmotionalPreset(ped: number | IPed, name: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x5337B721C51883A9 | Since: 1207
      */
-    function removeFromMount(ped: number | Ped): void;
+    function removeFromMount(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -28012,32 +28012,32 @@ export declare namespace ped {
      *
      * Hash: 0x3A50753042B6891B | Since: 1207
      */
-    function removeProp(ped: number | Ped, propName: string): void;
+    function removeProp(ped: number | IPed, propName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x0CAB404CD2DB41F5 | Since: 1207
      */
-    function removeStayOutVolume(ped: number | Ped, volume: number): boolean;
+    function removeStayOutVolume(ped: number | IPed, volume: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x011A42FD923D41CA | Since: 1311
      */
-    function removeSubscribeToLegendaryBlips(ped: number | Ped): boolean;
+    function removeSubscribeToLegendaryBlips(ped: number | IPed): boolean;
     /**
      * Directly removes a shop item component from a ped
      * Params: p2 and p3 are always 0
      *
      * Hash: 0x0D7FFA1B2F69ED82 | Since: 1355
      */
-    function removeShopItemFrom(ped: number | Ped, componentHash: number | string): void;
+    function removeShopItemFrom(ped: number | IPed, componentHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x4707E9C23D8CA3FE | Since: 1207
      */
-    function removeTarget(ped: number | Ped, targetPed: number | Ped): void;
+    function removeTarget(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * Returns requestId
      * Params: p1 = 1 in R* Scripts (Used in SP only)
@@ -28070,38 +28070,38 @@ export declare namespace ped {
      *
      * Hash: 0xF7EA250B9A919E03 | Since: 1207
      */
-    function requestMotionTypeAsset(nameHash: number | string, ped: number | Ped): void;
+    function requestMotionTypeAsset(nameHash: number | string, ped: number | IPed): void;
     /**
      * For more information, see common:/data/emotional_presets.meta
      *
      * Hash: 0x5C3C55EAAD19915F | Since: 1207
      */
-    function requestEmotionalPreset(ped: number | Ped, name: string): void;
+    function requestEmotionalPreset(ped: number | IPed, name: string): void;
     /**
      * mood: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/fwFacialAnimRequest__Mood
      * Params: p2 = 6 in R* Scripts
      *
      * Hash: 0x8B3B71C80A29A4BB | Since: 1207
      */
-    function requestFacialMoodThisFrame(ped: number | Ped, mood: number | string): void;
+    function requestFacialMoodThisFrame(ped: number | IPed, mood: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xBDED916A9F9B0604 | Since: 1207
      */
-    function requestForScenarioType(ped: number | Ped, _object: number | Object, scenarioType: number | string): any;
+    function requestForScenarioType(ped: number | IPed, _object: number | IObject, scenarioType: number | string): any;
     /**
      * Known get up animation types: REAR, FRONT
      *
      * Hash: 0xEAA8242C8479C27D | Since: 1207
      */
-    function requestGetupAnimation(ped: number | Ped, getUpType: string): void;
+    function requestGetupAnimation(ped: number | IPed, getUpType: string): void;
     /**
      * No comment provided
      *
      * Hash: 0xBEC65C6049B3219D | Since: 1207
      */
-    function requestPropScenario(ped: number | Ped, _object: number | Object): any;
+    function requestPropScenario(ped: number | IPed, _object: number | IObject): any;
     /**
      * Creates a texture override data for ped and returns it's index.
      * So you can replace any texture of any ped's component.
@@ -28132,25 +28132,25 @@ export declare namespace ped {
      *
      * Hash: 0x0BFA1BD465CDFEFD | Since: 1207
      */
-    function resetComponents(ped: number | Ped): void;
+    function resetComponents(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4B9668DB91DC39B8 | Since: 1207
      */
-    function resetIncapacitationBleedOutDuration(ped: number | Ped): void;
+    function resetIncapacitationBleedOutDuration(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x801917E7D7BCE418 | Since: 1207
      */
-    function resetLadderMovementSpeedModifier(ped: number | Ped): void;
+    function resetLadderMovementSpeedModifier(ped: number | IPed): void;
     /**
      * Seems to set the peds stamina to 30%
      *
      * Hash: 0x36513AFFC703C60D | Since: 1207
      */
-    function resetStamina(ped: number | Ped): void;
+    function resetStamina(ped: number | IPed): void;
     /**
      * Removes every texture layer but the base layer
      * Clearing texture's data: setting params to default values, but keep overlays.
@@ -28163,13 +28163,13 @@ export declare namespace ped {
      *
      * Hash: 0x675680D089BFA21F | Since: 1207
      */
-    function restoreStamina(ped: number | Ped, stamina: number): void;
+    function restoreStamina(ped: number | IPed, stamina: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC2266AA617668AD3 | Since: 1207
      */
-    function setAccuracyAgainstLocalPlayerModifier(ped: number | Ped, modifier: number): void;
+    function setAccuracyAgainstLocalPlayerModifier(ped: number | IPed, modifier: number): void;
     /**
      * Related to _0x704C908E9C405136 for component loading
      * Can be used to fix missing outfit changes, always paired with _UPDATE_PED_VARIATION
@@ -28178,7 +28178,7 @@ export declare namespace ped {
      *
      * Hash: 0xAAB86462966168CE | Since: 1207
      */
-    function setActiveMetaComponentsUpdated(ped: number | Ped, isMP: boolean): any;
+    function setActiveMetaComponentsUpdated(ped: number | IPed, isMP: boolean): any;
     /**
      * No comment provided
      *
@@ -28213,19 +28213,19 @@ export declare namespace ped {
      *
      * Hash: 0x5653AB26C82938CF | Since: 1207
      */
-    function setCharExpression(ped: number | Ped, index: number, value: number): void;
+    function setCharExpression(ped: number | IPed, index: number, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x069EDDF1FD4DEB0A | Since: 1207
      */
-    function setCurrentDefenseAgainstPlayersModifier(horse: number | Ped, modifier: number): void;
+    function setCurrentDefenseAgainstPlayersModifier(horse: number | IPed, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9B6808EC46BE849B | Since: 1207
      */
-    function setDefenseModifierFor(ped: number | Ped, modifier: number): void;
+    function setDefenseModifierFor(ped: number | IPed, modifier: number): void;
     /**
      * No comment provided
      *
@@ -28237,50 +28237,50 @@ export declare namespace ped {
      *
      * Hash: 0xDE1B1907A83A1550 | Since: 1207
      */
-    function setHealthRechargeMultiplier(ped: number | Ped, multiplier: number): void;
+    function setHealthRechargeMultiplier(ped: number | IPed, multiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xFECA2081F61ED2CD | Since: 1207
      */
-    function setInteractionLockonFlag(ped: number | Ped, player: number | string | Player, flag: number, enable: boolean): void;
+    function setInteractionLockonFlag(ped: number | IPed, player: number | string | IPlayer, flag: number, enable: boolean): void;
     /**
      * Use to apply metaped player components
      * Replaces asset, alternatively you can remove assets using REMOVE_TAG_FROM_META_PED
      *
      * Hash: 0xBC6DF00D7A4A6819 | Since: 1207
      */
-    function setMetaTag(ped: number | Ped, drawable: number | string, albedo: number | string, normal: number | string, material: number | string, palette: number | string, tint0: number, tint1: number, tint2: number): void;
+    function setMetaTag(ped: number | IPed, drawable: number | string, albedo: number | string, normal: number | string, material: number | string, palette: number | string, tint0: number, tint1: number, tint2: number): void;
     /**
      * Sets ped eye redness, weariness: 0.f to 1.f
      *
      * Hash: 0x314C5465195F3B30 | Since: 1207
      */
-    function setMetaWeariness(ped: number | Ped, weariness: number): void;
+    function setMetaWeariness(ped: number | IPed, weariness: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x7883AA809DF43D98 | Since: 1355
      */
-    function setMinHealthThreshold(ped: number | Ped, healthAmount: number): void;
+    function setMinHealthThreshold(ped: number | IPed, healthAmount: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA69899995997A63B | Since: 1207
      */
-    function setMountBondingLevel(ped: number | Ped, bondingLevel: number): void;
+    function setMountBondingLevel(ped: number | IPed, bondingLevel: number): void;
     /**
      * Note: this native was added in build 1232.40
      *
      * Hash: 0x11E6B9629C46D6EC | Since: 1232
      */
-    function setMountSecurityEnabled(ped: number | Ped, toggle: boolean): void;
+    function setMountSecurityEnabled(ped: number | IPed, toggle: boolean): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/COMBAT_ACTION_DISABLE_FLAGS
      *
      * Hash: 0xB8DE69D9473B7593 | Since: 1207
      */
-    function setActionDisableFlag(ped: number | Ped, actionDisableFlag: number): void;
+    function setActionDisableFlag(ped: number | IPed, actionDisableFlag: number): void;
     /**
      * bloodFountainPressure: visible effect from 0.0 till 20.0
      * yaw: visible effect from -3.0 till 3.0
@@ -28290,38 +28290,38 @@ export declare namespace ped {
      *
      * Hash: 0xFFD54D9FE71B966A | Since: 1207
      */
-    function setActivateWoundEffect(ped: number | Ped, boneId: number, moveWoundLeftRight: number, bloodFountainPressure: number, yaw: number, bloodFountainDirection: number, bloodFountainPulse: number): void;
+    function setActivateWoundEffect(ped: number | IPed, boneId: number, moveWoundLeftRight: number, bloodFountainPressure: number, yaw: number, bloodFountainDirection: number, bloodFountainPulse: number): void;
     /**
      * Params: hash - ARTHUR or JOHN
      * _SET_PED_(A-D)*
      *
      * Hash: 0xB285AD0EC870B2DF | Since: 1207
      */
-    function setActivePlayerType(ped: number | Ped, playerType: number | string): void;
+    function setActivePlayerType(ped: number | IPed, playerType: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x43CA928E892CFDB8 | Since: 1311
      */
-    function setAnimalDetectionModifier(ped: number | Ped, modifier: number): void;
+    function setAnimalDetectionModifier(ped: number | IPed, modifier: number): void;
     /**
      * NET_FETCH_CLIENT_UPDATE_PED_FIGHT_PROFICIENCY: Changing parry multiplier for ped
      *
      * Hash: 0x6DBF2D78709AD70B | Since: 1207
      */
-    function setBeatMultiplier(ped: number | Ped): void;
+    function setBeatMultiplier(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xCB9401F918CB0F75 | Since: 1207
      */
-    function setBlackboardBool(ped: number | Ped, variableName: string, value: boolean, removeTimer: number): void;
+    function setBlackboardBool(ped: number | IPed, variableName: string, value: boolean, removeTimer: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x437C08DB4FEBE2BD | Since: 1207
      */
-    function setBlackboardFloat(ped: number | Ped, variableName: string, value: number, removeTimer: number): void;
+    function setBlackboardFloat(ped: number | IPed, variableName: string, value: number, removeTimer: number): void;
     /**
      * p1:
      * BodyPartChained
@@ -28334,7 +28334,7 @@ export declare namespace ped {
      *
      * Hash: 0xA762C9D6CF165E0D | Since: 1207
      */
-    function setBlackboardHash(ped: number | Ped, variableName: string, value: string, removeTimer: number): void;
+    function setBlackboardHash(ped: number | IPed, variableName: string, value: string, removeTimer: number): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/BLACKBOARDS
      * Blackboard natives allow you to apply and check certain data to/for peds.
@@ -28344,7 +28344,7 @@ export declare namespace ped {
      *
      * Hash: 0x5F53010C4C3F6BAF | Since: 1207
      */
-    function setBlackboardInt(ped: number | Ped, variableName: string, value: number, removeTimer: number): void;
+    function setBlackboardInt(ped: number | IPed, variableName: string, value: number, removeTimer: number): void;
     /**
      * Bleedout profiles:
      * Animal_FastBleedout
@@ -28357,7 +28357,7 @@ export declare namespace ped {
      *
      * Hash: 0x66C047719B0E80E1 | Since: 1207
      */
-    function setBleedoutProfile(ped: number | Ped, bleedoutProfile: number | string): void;
+    function setBleedoutProfile(ped: number | IPed, bleedoutProfile: number | string): void;
     /**
      * brawlingStyle:
      * enum eBrawlingStyle : Hash
@@ -28407,26 +28407,26 @@ export declare namespace ped {
      *
      * Hash: 0x8BA83CC4288CD56D | Since: 1207
      */
-    function setBrawlingStyle(ped: number | Ped, brawlingStyle: number | string): void;
+    function setBrawlingStyle(ped: number | IPed, brawlingStyle: number | string): void;
     /**
      * SET_PED_CAN_*
      *
      * Hash: 0xFD6943B6DF77E449 | Since: 1207
      */
-    function setCanBeLassoed(ped: number | Ped, toggle: boolean): void;
+    function setCanBeLassoed(ped: number | IPed, toggle: boolean): void;
     /**
      * Hashes: GUARD, COMBAT_ANIMAL, LAW, LAW_SHERIFF
      * _SET_PED_COMBAT_A* - _SET_PED_COMBAT_M*
      *
      * Hash: 0xBD75500141E4725C | Since: 1207
      */
-    function setCombatAttributeHash(ped: number | Ped, p1: number | string): void;
+    function setCombatAttributeHash(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x9238A3D970BBB0A9 | Since: 1207
      */
-    function setCombatBehaviour(ped: number | Ped, behaviour: number | string): void;
+    function setCombatBehaviour(ped: number | IPed, behaviour: number | string): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/COMBAT_STYLES
      * Params: p2 is usually 1, sometimes 0 or 2
@@ -28434,49 +28434,49 @@ export declare namespace ped {
      *
      * Hash: 0x8ACC0506743A8A5C | Since: 1207
      */
-    function setCombatStyle(ped: number | Ped, combatStyleHash: number | string, duration: number): void;
+    function setCombatStyle(ped: number | IPed, combatStyleHash: number | string, duration: number): void;
     /**
      * duration in seconds, -1.0 = forever
      *
      * Hash: 0x8B1E8E35A6E814EA | Since: 1207
      */
-    function setCombatStyleMod(ped: number | Ped, combatStyleModHash: number | string, duration: number): void;
+    function setCombatStyleMod(ped: number | IPed, combatStyleModHash: number | string, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x7DE9692C6F64CFE8 | Since: 1207
      */
-    function setCrouchMovement(ped: number | Ped, state: boolean, immediately: boolean): void;
+    function setCrouchMovement(ped: number | IPed, state: boolean, immediately: boolean): void;
     /**
      * The higher the multiplier the less the engine renders culls (https://docs.unity3d.com/Manual/OcclusionCulling.html)
      *
      * Hash: 0x8AC1D721B2097B6E | Since: 1207
      */
-    function setCullRange(ped: number | Ped): void;
+    function setCullRange(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xDACE03C65C6666DB | Since: 1207
      */
-    function setDamaged(ped: number | Ped, damaged: boolean): void;
+    function setDamaged(ped: number | IPed, damaged: boolean): void;
     /**
      * damageCleanliness: see _GET_PED_DAMAGE_CLEANLINESS
      *
      * Hash: 0x7528720101A807A5 | Since: 1207
      */
-    function setDamageCleanliness(ped: number | Ped, damageCleanliness: number): void;
+    function setDamageCleanliness(ped: number | IPed, damageCleanliness: number): void;
     /**
      * _SET_PED_(A?)*
      *
      * Hash: 0xEB2BFE5D009F0331 | Since: 1232
      */
-    function setDefensiveAreaToAngledArea(ped: number | Ped, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, entity: number | Entity): void;
+    function setDefensiveAreaToAngledArea(ped: number | IPed, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x1854217C640B39EC | Since: 1207
      */
-    function setDefensiveSphereAttachedToEntity(ped: number | Ped, entity: number | Entity, pos: Vector3, radius: number): void;
+    function setDefensiveSphereAttachedToEntity(ped: number | IPed, entity: number | IEntity, pos: Vector3, radius: number): void;
     /**
      * Seems to set the ped's loco type.
      * Values used in the scripts:
@@ -28507,172 +28507,172 @@ export declare namespace ped {
      *
      * Hash: 0x923583741DC87BCE | Since: 1207
      */
-    function setDesiredLocoForModel(ped: number | Ped, locomotionArchetype: string): void;
+    function setDesiredLocoForModel(ped: number | IPed, locomotionArchetype: string): void;
     /**
      * Sets peds motion type
      *
      * Hash: 0x89F5E7ADECCCB49C | Since: 1207
      */
-    function setDesiredLocoMotionType(ped: number | Ped, locoMotionType: string): void;
+    function setDesiredLocoMotionType(ped: number | IPed, locoMotionType: string): void;
     /**
      * No comment provided
      *
      * Hash: 0xBAD2A311667A50D7 | Since: 1207
      */
-    function setDesiresGroup(ped: number | Ped, toggle: boolean): void;
+    function setDesiresGroup(ped: number | IPed, toggle: boolean): void;
     /**
      * Params: ped, 0f, -1, true, true in R* MP Scripts
      * _SET_PED_DE* - _SET_PED_F*
      *
      * Hash: 0xE3144B932DFDFF65 | Since: 1207
      */
-    function setDirtCleaned(ped: number | Ped): void;
+    function setDirtCleaned(ped: number | IPed): void;
     /**
      * Disables being able to kick move ped.
      *
      * Hash: 0xADD31A5C7A5FAA73 | Since: 1207
      */
-    function setDisableKickMove(ped: number | Ped, disable: boolean): void;
+    function setDisableKickMove(ped: number | IPed, disable: boolean): void;
     /**
      * SOBER = 0.0f, SLIGHTLY_DRUNK = 0.25f, MODERATELY_DRUNK = 0.5f, VERY_DRUNK = 1.0f
      *
      * Hash: 0x406CCF555B04FAD3 | Since: 1207
      */
-    function setDrunkness(ped: number | Ped, enabled: boolean, drunknessLevel: number): void;
+    function setDrunkness(ped: number | IPed, enabled: boolean, drunknessLevel: number): void;
     /**
      * Used in R* MP Script fm_mission_controller and various R* SP Scripts for ambush*
      *
      * Hash: 0x20E54854DEF6A54A | Since: 1207
      */
-    function setFiringPattern2(ped: number | Ped, patternHash: number | string): void;
+    function setFiringPattern2(ped: number | IPed, patternHash: number | string): void;
     /**
      * Only used in R* MP Script fm_mission_controller
      *
      * Hash: 0x244E8C282188E40F | Since: 1207
      */
-    function setFiringPattern3(ped: number | Ped, patternHash: number | string): void;
+    function setFiringPattern3(ped: number | IPed, patternHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x0E9E95FDEDCC9D35 | Since: 1207
      */
-    function setFormationPosition(ped: number | Ped, position: number, toggle: boolean): void;
+    function setFormationPosition(ped: number | IPed, position: number, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x3AE3552E7C207CC5 | Since: 1207
      */
-    function setGetupAnimation(ped: number | Ped, animName: string): void;
+    function setGetupAnimation(ped: number | IPed, animName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x8301D87B1B89E219 | Since: 1207
      */
-    function setGrappleAction(ped: number | Ped, grappleAction: number | string): void;
+    function setGrappleAction(ped: number | IPed, grappleAction: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x56E9C26CD29D1ED6 | Since: 1207
      */
-    function setGrappleAnimation(ped: number | Ped, grappleAnim: number | string): void;
+    function setGrappleAnimation(ped: number | IPed, grappleAnim: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x99A6E246C315BF60 | Since: 1207
      */
-    function setGrappleEffectMultiplier(ped: number | Ped, multiplier: number): any;
+    function setGrappleEffectMultiplier(ped: number | IPed, multiplier: number): any;
     /**
      * No comment provided
      *
      * Hash: 0x789DABD18E9024DB | Since: 1207
      */
-    function setGrappleFlag(ped: number | Ped, flag: number, enable: boolean): void;
+    function setGrappleFlag(ped: number | IPed, flag: number, enable: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x604190F0CF0DF158 | Since: 1207
      */
-    function setGrappleSequence(ped: number | Ped, grappleSequence: string): void;
+    function setGrappleSequence(ped: number | IPed, grappleSequence: string): void;
     /**
      * Hashes: GS_DRAGGING, GS_FACE_TO_BACK, GS_FACE_TO_FACE, GS_FACE_TO_FACE_WALL, GS_MOUNTED
      *
      * Hash: 0x630E7B01F091A197 | Since: 1207
      */
-    function setGrappleStyle(ped: number | Ped, style: number | string): any;
+    function setGrappleStyle(ped: number | IPed, style: number | string): any;
     /**
      * No comment provided
      *
      * Hash: 0x2BA918C823B8BA56 | Since: 1207
      */
-    function setHeadshotDamageMultiplier(ped: number | Ped, multiplier: number): void;
+    function setHeadshotDamageMultiplier(ped: number | IPed, multiplier: number): void;
     /**
      * configHash: see pedhealth.meta
      *
      * Hash: 0xF6B82FCE03B43A37 | Since: 1207
      */
-    function setHealthConfig(ped: number | Ped, configHash: number | string): void;
+    function setHealthConfig(ped: number | IPed, configHash: number | string): void;
     /**
      * Only used in R* Script beat_sharp_shooter
      * Blocks ped from swimming underwater
      *
      * Hash: 0x7FB0088E8769CDDB | Since: 1207
      */
-    function setImmersionFlag(ped: number | Ped, toggle: boolean): void;
+    function setImmersionFlag(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xD67B6F3BCF81BA47 | Since: 1207
      */
-    function setIncapacitationFlags(ped: number | Ped, flags: number): void;
+    function setIncapacitationFlags(ped: number | IPed, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x39ED303390DDEAC7 | Since: 1207
      */
-    function setIncapacitationModifiers(ped: number | Ped, canBeIncapacitated: boolean, threshold: number, bleedoutTime: number): void;
+    function setIncapacitationModifiers(ped: number | IPed, canBeIncapacitated: boolean, threshold: number, bleedoutTime: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2890418B39BC8FFF | Since: 1207
      */
-    function setIncapacitationTotalBleedOutDuration(ped: number | Ped, duration: number): void;
+    function setIncapacitationTotalBleedOutDuration(ped: number | IPed, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA3C53CDE922BC78B | Since: 1207
      */
-    function setInteractionNegativeResponse(ped: number | Ped, speech: string): void;
+    function setInteractionNegativeResponse(ped: number | IPed, speech: string): void;
     /**
      * personality (script_mp_rel): NONE, AGGRESSIVE, TIMID (non-aggressive), CRIPPS, SCRIPTEDINTIMIDATION, MAGGIE, MARCEL, SCRIPTEDSALOON
      * personality (script_rel): AVOID, SCRIPTEDOUTLAW, TIMIDGUARDDOG, SCRIPTEDTIMIDROB, AGGRESSIVECAMPER, LAZYDOG, KIERANTIEDUP, SCRIPTEDGALA
      *
      * Hash: 0x24C82EF607105FAA | Since: 1207
      */
-    function setInteractionPersonality(ped: number | Ped, personality: number | string): void;
+    function setInteractionPersonality(ped: number | IPed, personality: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x20C5459379D75C1C | Since: 1207
      */
-    function setInteractionPositiveResponse(ped: number | Ped, speech: string): void;
+    function setInteractionPositiveResponse(ped: number | IPed, speech: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x5BCF0B79D4F5DBA3 | Since: 1207
      */
-    function setKnockedByOneHit(ped: number | Ped): void;
+    function setKnockedByOneHit(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x05CE6AF4DF071D23 | Since: 1207
      */
-    function setLadderMovementSpeedModifier(ped: number | Ped): void;
+    function setLadderMovementSpeedModifier(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x13A210949FCBD92B | Since: 1207
      */
-    function setLights(ped: number | Ped, toggle: boolean): void;
+    function setLights(ped: number | IPed, toggle: boolean): void;
     /**
      * enum eMotivationState
      * {
@@ -28693,166 +28693,166 @@ export declare namespace ped {
      *
      * Hash: 0x06D26A96CA1BCA75 | Since: 1207
      */
-    function setMotivation(ped: number | Ped, motivationState: number, threshold: number, targetPed: number | Ped): void;
+    function setMotivation(ped: number | IPed, motivationState: number, threshold: number, targetPed: number | IPed): void;
     /**
      * The higher the modifier, the slower the motivationState value will decrease
      *
      * Hash: 0xA1EB5D029E0191D3 | Since: 1207
      */
-    function setMotivationModifier(ped: number | Ped, motivationState: number, modifier: number): void;
+    function setMotivationModifier(ped: number | IPed, motivationState: number, modifier: number): void;
     /**
      * motivationState: see _SET_PED_MOTIVATION
      *
      * Hash: 0x2EB75FB86C41F026 | Since: 1207
      */
-    function setMotivationStateOverride(ped: number | Ped, motivationState: number, enabled: boolean): void;
+    function setMotivationStateOverride(ped: number | IPed, motivationState: number, enabled: boolean): void;
     /**
      * Hashes: STANDARD_PED_AGRO_GUARD, BOUNTY_HUNTER, PLAYER_HORSE, LAW_POLICE, GUARD_DOG, ATTACK_DOG
      * Personalities can also be found in common:/data/ai/interactionpersonalities
      *
      * Hash: 0xB8B6430EAD2D2437 | Since: 1207
      */
-    function setPersonality(ped: number | Ped, personality: number | string): void;
+    function setPersonality(ped: number | IPed, personality: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x4A48B6E03BABB4AC | Since: 1207
      */
-    function setPromptName(ped: number | Ped, name: string): void;
+    function setPromptName(ped: number | IPed, name: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x19B14E04B009E28B | Since: 1207
      */
-    function setPromptName2(ped: number | Ped, name: string): void;
+    function setPromptName2(ped: number | IPed, name: string): void;
     /**
      * No comment provided
      *
      * Hash: 0xFCA8FB9E15FA80D3 | Since: 1207
      */
-    function setPromptNameFromGxtEntry(ped: number | Ped, gxtEntryHash: number | string): void;
+    function setPromptNameFromGxtEntry(ped: number | IPed, gxtEntryHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xC2745D9261664901 | Since: 1207
      */
-    function setPromptNameFromGxtEntry2(ped: number | Ped, gxtEntryHash: number | string): void;
+    function setPromptNameFromGxtEntry2(ped: number | IPed, gxtEntryHash: number | string): void;
     /**
      * quality: see _GET_PED_QUALITY
      *
      * Hash: 0xCE6B874286D640BB | Since: 1207
      */
-    function setQuality(ped: number | Ped, quality: number): void;
+    function setQuality(ped: number | IPed, quality: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x25ACFC650B65C538 | Since: 1207
      */
-    function setScale(ped: number | Ped, scale: number): void;
+    function setScale(ped: number | IPed, scale: number): void;
     /**
      * 0.0 - 1.0
      * Modifies the "scent line" on the ped's body when using Eagle Eye.
      *
      * Hash: 0x01B21B81865E2A1F | Since: 1207
      */
-    function setScent(ped: number | Ped, scent: number): void;
+    function setScent(ped: number | IPed, scent: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC163DAC52AC975D3 | Since: 1207
      */
-    function setTargetActionDisableFlag(ped: number | Ped, actionDisableFlag: number): void;
+    function setTargetActionDisableFlag(ped: number | IPed, actionDisableFlag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x36E4B61DC56DE77C | Since: 1207
      */
-    function setToBeRemoved(ped: number | Ped): void;
+    function setToBeRemoved(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x221F4D9912B7FE86 | Since: 1207
      */
-    function setToDisableRagdoll(ped: number | Ped, toggle: boolean): void;
+    function setToDisableRagdoll(ped: number | IPed, toggle: boolean): void;
     /**
      * duration in seconds
      *
      * Hash: 0xA5950E16B8F31052 | Since: 1207
      */
-    function setTrailEffect(ped: number | Ped, duration: number): void;
+    function setTrailEffect(ped: number | IPed, duration: number): void;
     /**
      * Doesn't actually return anything.
      *
      * Hash: 0xEB72453B6F5B45B0 | Since: 1232
      */
-    function setUseHorseMapCollision(ped: number | Ped, toggle: boolean): any;
+    function setUseHorseMapCollision(ped: number | IPed, toggle: boolean): any;
     /**
      * _SET_PED_S* - _SET_PED_T*
      *
      * Hash: 0xD05AD61F242C626B | Since: 1207
      */
-    function setVoiceVolume(ped: number | Ped, volume: number): void;
+    function setVoiceVolume(ped: number | IPed, volume: number): void;
     /**
      * only works when you use SET_PED_WETNESS_HEIGHT first , if you do 0.0 (it resets) you need to apply again with SET_PED_WETNESS_HEIGHT to see the wetness effects again
      *
      * Hash: 0xF9CFF5BB70E8A2CB | Since: 1207
      */
-    function setWetness(ped: number | Ped): void;
+    function setWetness(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4DB9D03AC4E1FA84 | Since: 1207
      */
-    function setWrithingDuration(ped: number | Ped, writhingDuration1: number, writhingDuration2: number): void;
+    function setWrithingDuration(ped: number | IPed, writhingDuration1: number, writhingDuration2: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA73F50E8796150D5 | Since: 1207
      */
-    function setPeltForHorse(horse: number | Ped, peltId: number): void;
+    function setPeltForHorse(horse: number | IPed, peltId: number): void;
     /**
      * Adds a pelt to a horse from an inventoryItem hash and albedoHash, optionally normalHash textures.
      *
      * Hash: 0xC412AA1C73111FE0 | Since: 1207
      */
-    function setPeltForHorseByInventoryItem(horse: number | Ped, inventoryItem: number | string, albedoHash: number | string, normalHash: number | string): void;
+    function setPeltForHorseByInventoryItem(horse: number | IPed, inventoryItem: number | string, albedoHash: number | string, normalHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x5708EDD71B50C008 | Since: 1207
      */
-    function setPlayerAntagonizeDisabledFor(ped: number | Ped, player: number | string | Player, duration: number): void;
+    function setPlayerAntagonizeDisabledFor(ped: number | IPed, player: number | string | IPlayer, duration: number): void;
     /**
      * Animal Skin Quality Modifier
      * Params: p2 = 2, p3 = 3 in R* Scripts
      *
      * Hash: 0x9EFF3C91DF38304F | Since: 1311
      */
-    function setPlayerCurrentAnimalDamageModifier(player: number | string | Player, modifier: number): any;
+    function setPlayerCurrentAnimalDamageModifier(player: number | string | IPlayer, modifier: number): any;
     /**
      * No comment provided
      *
      * Hash: 0xA691C10054275290 | Since: 1207
      */
-    function setPlayerDismountTimestamp(mount: number | Ped, player: number | string | Player, dismountedTimestamp: number): void;
+    function setPlayerDismountTimestamp(mount: number | IPed, player: number | string | IPlayer, dismountedTimestamp: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x19173C3F15367B54 | Since: 1207
      */
-    function setPlayerGreetDisabledFor(ped: number | Ped, player: number | string | Player, duration: number): void;
+    function setPlayerGreetDisabledFor(ped: number | IPed, player: number | string | IPlayer, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x283978A15512B2FE | Since: 1207
      */
-    function setRandomOutfitVariation(ped: number | Ped): void;
+    function setRandomOutfitVariation(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x39A2FC5AF55A52B1 | Since: 1207
      */
-    function setRemoveNetworked(ped: number | Ped): void;
+    function setRemoveNetworked(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -28894,19 +28894,19 @@ export declare namespace ped {
      *
      * Hash: 0xEF5A3D2285D8924B | Since: 1207
      */
-    function setStaminaDepletionMultiplier(ped: number | Ped, multiplier: number): void;
+    function setStaminaDepletionMultiplier(ped: number | IPed, multiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x345C9F993A8AB4A4 | Since: 1207
      */
-    function setStaminaRechargeMultiplier(ped: number | Ped, multiplier: number): void;
+    function setStaminaRechargeMultiplier(ped: number | IPed, multiplier: number): void;
     /**
      * Size will be permanent
      *
      * Hash: 0x7FF72DE061DF55E2 | Since: 1207
      */
-    function setTankAttributeSize(ped: number | Ped, attributeIndex: number, size: number): void;
+    function setTankAttributeSize(ped: number | IPed, attributeIndex: number, size: number): void;
     /**
      * No comment provided
      *
@@ -28954,26 +28954,26 @@ export declare namespace ped {
      *
      * Hash: 0x4EFC1F8FF1AD94DE | Since: 1207
      */
-    function setTextureOutfitTints(ped: number | Ped, componentCategory: number | string, palette: number | string, tint0: number, tint1: number, tint2: number): void;
+    function setTextureOutfitTints(ped: number | IPed, componentCategory: number | string, palette: number | string, tint0: number, tint1: number, tint2: number): void;
     /**
      * _SET_W(EAPON?)*
      *
      * Hash: 0x932786CE3C76477C | Since: 1207
      */
-    function setTotalDamageFalloffBonus(ped: number | Ped, bonus: number): void;
+    function setTotalDamageFalloffBonus(ped: number | IPed, bonus: number): void;
     /**
      * _SET_W(EAPON?)*
      *
      * Hash: 0x73B6F907B913C860 | Since: 1207
      */
-    function setTotalDamageFromAi(ped: number | Ped, totalDamage: number): void;
+    function setTotalDamageFromAi(ped: number | IPed, totalDamage: number): void;
     /**
      * Triggers a gunshot
      * Params: p5 = -1 in R* Scripts
      *
      * Hash: 0x4C57F27D1554E6B0 | Since: 1207
      */
-    function shootTriggerAtCoords(ped: number | Ped, pos: Vector3): any;
+    function shootTriggerAtCoords(ped: number | IPed, pos: Vector3): any;
     /**
      * No comment provided
      *
@@ -28985,7 +28985,7 @@ export declare namespace ped {
      *
      * Hash: 0x09E378C52B1433B5 | Since: 1207
      */
-    function togglePlayerFlinch(ped: number | Ped, pos: Vector3, scale: number): void;
+    function togglePlayerFlinch(ped: number | IPed, pos: Vector3, scale: number): void;
     /**
      * No comment provided
      *
@@ -28997,7 +28997,7 @@ export declare namespace ped {
      *
      * Hash: 0x0F9E754EBE8FDBFA | Since: 1311
      */
-    function updateAnimalDamageModifier(player: number | string | Player): void;
+    function updateAnimalDamageModifier(player: number | string | IPlayer): void;
     /**
      * Should be called at least once for any new texture override.
      * Otherwise component textures will be just black.
@@ -29011,25 +29011,25 @@ export declare namespace ped {
      *
      * Hash: 0xCC8CA3E88256E58F | Since: 1207
      */
-    function updateVariation(ped: number | Ped): void;
+    function updateVariation(ped: number | IPed): void;
     /**
      * Params: 0.0f to remove wound effects
      *
      * Hash: 0x66B1CB778D911F49 | Since: 1207
      */
-    function updateWoundEffect(ped: number | Ped, value: number): void;
+    function updateWoundEffect(ped: number | IPed, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x66B957AAC2EAAEAB | Since: 1207
      */
-    function updateShopItemWearableState(ped: number | Ped, componentHash: number | string, wearableState: number | string, isMp: boolean): void;
+    function updateShopItemWearableState(ped: number | IPed, componentHash: number | string, wearableState: number | string, isMp: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE0B61ED8BB37712F | Since: 1207
      */
-    function warpOutOfVehicle(ped: number | Ped): void;
+    function warpOutOfVehicle(ped: number | IPed): void;
 }
 export declare namespace perschar {
     /**
@@ -29277,7 +29277,7 @@ export declare namespace perschar {
      *
      * Hash: 0x32A1E3B83D501096 | Since: 1207
      */
-    function getIndexFromPedIndex(ped: number | Ped): any;
+    function getIndexFromPedIndex(ped: number | IPed): any;
     /**
      * No comment provided
      *
@@ -29479,7 +29479,7 @@ export declare namespace physics {
      *
      * Hash: 0x710311ADF0E20730 | Since: 1207
      */
-    function activate(entity: number | Entity): void;
+    function activate(entity: number | IEntity): void;
     /**
      * There are 19 types of rope, from type = 0 to type = 18
      * Rope definitions are stored in ropedata.xml
@@ -29494,13 +29494,13 @@ export declare namespace physics {
      *
      * Hash: 0x3D95EC8B6D940AC3 | Since: 1207
      */
-    function attachEntitiesToRope(ropeId: number, entity1: number | Entity, entity2: number | Entity, ent1X: number, ent1Y: number, ent1Z: number, ent2X: number, ent2Y: number, ent2Z: number, length: number, alwaysZero1: number, alwaysZero2: number, boneName1: string, boneName2: string, boneId1: number, boneId2: number, alwaysZero3: number, alwaysZero4: number): void;
+    function attachEntitiesToRope(ropeId: number, entity1: number | IEntity, entity2: number | IEntity, ent1X: number, ent1Y: number, ent1Z: number, ent2X: number, ent2Y: number, ent2Z: number, length: number, alwaysZero1: number, alwaysZero2: number, boneName1: string, boneName2: string, boneId1: number, boneId2: number, alwaysZero3: number, alwaysZero4: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2E648D16F6E308F3 | Since: 1207
      */
-    function breakEntityGlass(entity: number | Entity): void;
+    function breakEntityGlass(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -29518,7 +29518,7 @@ export declare namespace physics {
      *
      * Hash: 0xBCF3026912A8647D | Since: 1207
      */
-    function detachRopeFromEntity(ropeId: number, entity: number | Entity): void;
+    function detachRopeFromEntity(ropeId: number, entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -29566,19 +29566,19 @@ export declare namespace physics {
      *
      * Hash: 0xEEA3B200A6FEB65B | Since: 1207
      */
-    function setDamping(entity: number | Entity, vertex: number, value: number): void;
+    function setDamping(entity: number | IEntity, vertex: number, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x5CEC1A84620E7D5B | Since: 1207
      */
-    function setDisableBreaking(_object: number | Object, toggle: boolean): void;
+    function setDisableBreaking(_object: number | IObject, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x01BA3AED21C16CFB | Since: 1207
      */
-    function setDisableFragDamage(_object: number | Object, toggle: boolean): void;
+    function setDisableFragDamage(_object: number | IObject, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -29830,13 +29830,13 @@ export declare namespace physics {
      *
      * Hash: 0xE9CD9A67834985A7 | Since: 1207
      */
-    function attachEntitesToRope3(ropeId: number, entity1: number | Entity, entity2: number | Entity): void;
+    function attachEntitesToRope3(ropeId: number, entity1: number | IEntity, entity2: number | IEntity): void;
     /**
      * Attaches a rope to two entities: binds two bones from two entities; one entity can be an object, i.e. a suspension point, the other an NPC bone
      *
      * Hash: 0x462FF2A432733A44 | Since: 1207
      */
-    function attachEntitiesToRope2(ropeId: number, entity1: number | Entity, entity2: number | Entity, ent1X: number, ent1Y: number, ent1Z: number, ent2X: number, ent2Y: number, ent2Z: number, boneName1: string, boneName2: string): void;
+    function attachEntitiesToRope2(ropeId: number, entity1: number | IEntity, entity2: number | IEntity, ent1X: number, ent1Y: number, ent1Z: number, ent2X: number, ent2Y: number, ent2Z: number, boneName1: string, boneName2: string): void;
     /**
      * ropeTop returns top half of rope, ropeBottom returns bottom half of rope
      *
@@ -29857,13 +29857,13 @@ export declare namespace physics {
      *
      * Hash: 0x06AADE17334F7A40 | Since: 1207
      */
-    function hitchHorse(horse: number | Ped, pos: Vector3): void;
+    function hitchHorse(horse: number | IPed, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x9B4F7E3E4F9C77B3 | Since: 1207
      */
-    function isRopeAttachedToEntity(ropeId: number, entity: number | Entity): boolean;
+    function isRopeAttachedToEntity(ropeId: number, entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -29911,7 +29911,7 @@ export declare namespace physics {
      *
      * Hash: 0x0348469DAA17576C | Since: 1207
      */
-    function unhitchHorse(horse: number | Ped): void;
+    function unhitchHorse(horse: number | IPed): void;
 }
 export declare namespace player {
     /**
@@ -29919,31 +29919,31 @@ export declare namespace player {
      *
      * Hash: 0x09C28F828EE674FA | Since: 1207
      */
-    function boostHorseSpeedForTime(player: number | string | Player, speedBoost: number, duration: number): void;
+    function boostHorseSpeedForTime(player: number | string | IPlayer, speedBoost: number, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2DF170B1185AF777 | Since: 1207
      */
-    function canStartMission(player: number | string | Player): boolean;
+    function canStartMission(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0361096D6CE4372C | Since: 1207
      */
-    function clearHasDamagedAtLeastOneNonAnimalPed(player: number | string | Player): void;
+    function clearHasDamagedAtLeastOneNonAnimalPed(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x270B63A641BE32F2 | Since: 1207
      */
-    function clearHasDamagedAtLeastOnePed(player: number | string | Player): void;
+    function clearHasDamagedAtLeastOnePed(player: number | string | IPlayer): void;
     /**
      * nullsub, doesn't do anything
      *
      * Hash: 0x4E4B996C928C7AA6 | Since: 1207
      */
-    function clearWantedLevel(player: number | string | Player): void;
+    function clearWantedLevel(player: number | string | IPlayer): void;
     /**
      * Inhibits the player from using any method of combat including melee and firearms.
      *
@@ -29951,13 +29951,13 @@ export declare namespace player {
      *
      * Hash: 0x2970929FD5F9FC89 | Since: 1207
      */
-    function disableFiring(player: number | string | Player, toggle: boolean): void;
+    function disableFiring(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x62ED71E133B6C9F1 | Since: 1207
      */
-    function eagleEyeSetCustomEntityTint(entity: number | Entity, red: number, green: number, blue: number): void;
+    function eagleEyeSetCustomEntityTint(entity: number | IEntity, red: number, green: number, blue: number): void;
     /**
      * No comment provided
      *
@@ -29987,13 +29987,13 @@ export declare namespace player {
      *
      * Hash: 0x0139637A3BFF8B6D | Since: 1207
      */
-    function getDiscoverableNameHashAndTypeForEntity(entity: number | Entity): [number, number];
+    function getDiscoverableNameHashAndTypeForEntity(entity: number | IEntity): [number, number];
     /**
      * No comment provided
      *
      * Hash: 0xA6817C110B830EAD | Since: 1207
      */
-    function getEntityIsFreeAimingAt(player: number | string | Player): [boolean, number];
+    function getEntityIsFreeAimingAt(player: number | string | IPlayer): [boolean, number];
     /**
      * No comment provided
      *
@@ -30005,7 +30005,7 @@ export declare namespace player {
      *
      * Hash: 0x51BEA356B1C60225 | Since: 1207
      */
-    function getIsUiPromptActive(player: number | string | Player): boolean;
+    function getIsUiPromptActive(player: number | string | IPlayer): boolean;
     /**
      * Gets the maximum wanted level the player can get.
      * Ranges from 0 to 5.
@@ -30018,7 +30018,7 @@ export declare namespace player {
      *
      * Hash: 0xF49F14462F0AE27C | Since: 1207
      */
-    function getMountOwnedBy(player: number | string | Player): number;
+    function getMountOwnedBy(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -30030,13 +30030,13 @@ export declare namespace player {
      *
      * Hash: 0xD7ECC25E176ECBA5 | Since: 1207
      */
-    function getCurrentStealthNoise(player: number | string | Player): number;
+    function getCurrentStealthNoise(player: number | string | IPlayer): number;
     /**
      * Returns the group ID the player is member of.
      *
      * Hash: 0x9BAB31815159ABCF | Since: 1207
      */
-    function getGroup(player: number | string | Player): number;
+    function getGroup(player: number | string | IPlayer): number;
     /**
      * Returns the same as PLAYER_ID and NETWORK_PLAYER_ID_TO_INT
      *
@@ -30048,74 +30048,74 @@ export declare namespace player {
      *
      * Hash: 0x3EE1F7A8C32F24E1 | Since: 1207
      */
-    function getInteractionTargetEntity(player: number | string | Player): [boolean, number];
+    function getInteractionTargetEntity(player: number | string | IPlayer): [boolean, number];
     /**
      * Returns the player's invincibility status.
      *
      * Hash: 0x0CBBCB2CCFA7DC4E | Since: 1207
      */
-    function getInvincible(player: number | string | Player): boolean;
+    function getInvincible(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7124FD9AC0E01BA0 | Since: 1207
      */
-    function getName(player: number | string | Player): string;
+    function getName(player: number | string | IPlayer): string;
     /**
      * No comment provided
      *
      * Hash: 0x275F255ED201B937 | Since: 1207
      */
-    function getPed(player: number | string | Player): number;
+    function getPed(player: number | string | IPlayer): number;
     /**
      * `Does the same like PLAYER::GET_PLAYER_PED`
      *
      * Hash: 0x5C880F9056D784C8 | Since: 1207
      */
-    function getPedScriptIndex(player: number | string | Player): number;
+    function getPedScriptIndex(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xFB6EB8785F808551 | Since: 1207
      */
-    function getReceivedBattleEventRecently(player: number | string | Player): boolean;
+    function getReceivedBattleEventRecently(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xAE663DDD99C8A670 | Since: 1207
      */
-    function getTargetEntity(player: number | string | Player): [boolean, number];
+    function getTargetEntity(player: number | string | IPlayer): [boolean, number];
     /**
      * Gets the player's team.
      * Returns -1 in singleplayer.
      *
      * Hash: 0xB464EB6A40C7975B | Since: 1207
      */
-    function getTeam(player: number | string | Player): number;
+    function getTeam(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xABC532F9098BFD9D | Since: 1207
      */
-    function getWantedLevel(player: number | string | Player): number;
+    function getWantedLevel(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x36E3D8B5A6552FE8 | Since: 1207
      */
-    function getTargetCharacterNameForLocal(ped: number | Ped): number;
+    function getTargetCharacterNameForLocal(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x0335106F3ACABBED | Since: 1207
      */
-    function getTargetCharacterNameScriptOverrideHash(ped: number | Ped): number;
+    function getTargetCharacterNameScriptOverrideHash(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x755E08680F21EF30 | Since: 1207
      */
-    function getTargetCharacterNameScriptOverrideRawString(ped: number | Ped): string;
+    function getTargetCharacterNameScriptOverrideRawString(ped: number | IPed): string;
     /**
      * No comment provided
      *
@@ -30139,19 +30139,19 @@ export declare namespace player {
      *
      * Hash: 0xC932F57F31EA9152 | Since: 1207
      */
-    function hasBeenSpottedInStolenVehicle(player: number | string | Player): boolean;
+    function hasBeenSpottedInStolenVehicle(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x16C8D205DD5A2E90 | Since: 1207
      */
-    function hasDamagedAtLeastOneNonAnimalPed(player: number | string | Player): boolean;
+    function hasDamagedAtLeastOneNonAnimalPed(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDA4A4B9B96E20092 | Since: 1207
      */
-    function hasDamagedAtLeastOnePed(player: number | string | Player): boolean;
+    function hasDamagedAtLeastOnePed(player: number | string | IPlayer): boolean;
     /**
      * Simply returns whatever is passed to it (Regardless of whether the handle is valid or not).
      *
@@ -30173,73 +30173,73 @@ export declare namespace player {
      *
      * Hash: 0xC8183AE963C58374 | Since: 1207
      */
-    function isBeingArrested(player: number | string | Player, atArresting: boolean): boolean;
+    function isBeingArrested(player: number | string | IPlayer, atArresting: boolean): boolean;
     /**
      * Returns TRUE if the player ('s ped) is climbing at the moment.
      *
      * Hash: 0xB8A70C22FD48197A | Since: 1207
      */
-    function isClimbing(player: number | string | Player): boolean;
+    function isClimbing(player: number | string | IPlayer): boolean;
     /**
      * Returns whether the player can control himself.
      *
      * Hash: 0x7964097FCE4C244B | Since: 1207
      */
-    function isControlOn(player: number | string | Player): boolean;
+    function isControlOn(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2E9C3FCB6798F397 | Since: 1207
      */
-    function isDead(player: number | string | Player): boolean;
+    function isDead(player: number | string | IPlayer): boolean;
     /**
      * Gets a value indicating whether the specified player is currently aiming freely.
      *
      * Hash: 0x936F967D4BE1CE9D | Since: 1207
      */
-    function isFreeAiming(player: number | string | Player): boolean;
+    function isFreeAiming(player: number | string | IPlayer): boolean;
     /**
      * Gets a value indicating whether the specified player is currently aiming freely at the specified entity.
      *
      * Hash: 0x8C67C11C68713D25 | Since: 1207
      */
-    function isFreeAimingAtEntity(player: number | string | Player, entity: number | Entity): boolean;
+    function isFreeAimingAtEntity(player: number | string | IPlayer, entity: number | IEntity): boolean;
     /**
      * Checks whether the specified player has a Ped, the Ped is not dead, is not injured and is not arrested.
      *
      * Hash: 0xBFFB35986CAAE58C | Since: 1207
      */
-    function isPlaying(player: number | string | Player): boolean;
+    function isPlaying(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xAA67BCB0097F2FA3 | Since: 1207
      */
-    function isReadyForCutscene(player: number | string | Player): boolean;
+    function isReadyForCutscene(player: number | string | IPlayer): boolean;
     /**
      * Returns true if the player is riding a train.
      *
      * Hash: 0x2FB0ACADA6A238DD | Since: 1207
      */
-    function isRidingTrain(player: number | string | Player): boolean;
+    function isRidingTrain(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB78350754157C00F | Since: 1207
      */
-    function isScriptControlOn(player: number | string | Player): boolean;
+    function isScriptControlOn(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4605C66E0F935F83 | Since: 1207
      */
-    function isTargettingAnything(player: number | string | Player): boolean;
+    function isTargettingAnything(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x27F89FDC16688A7A | Since: 1207
      */
-    function isTargettingEntity(player: number | string | Player, entity: number | Entity): boolean;
+    function isTargettingEntity(player: number | string | IPlayer, entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
@@ -30251,7 +30251,7 @@ export declare namespace player {
      *
      * Hash: 0xE1C0AD4C24324C36 | Since: 1207
      */
-    function isWantedLevelGreater(player: number | string | Player, wantedLevel: number): boolean;
+    function isWantedLevelGreater(player: number | string | IPlayer, wantedLevel: number): boolean;
     /**
      * No comment provided
      *
@@ -30283,7 +30283,7 @@ export declare namespace player {
      *
      * Hash: 0xCBCCF73FFA69CC6B | Since: 1207
      */
-    function reportPoliceSpotted(player: number | string | Player): void;
+    function reportPoliceSpotted(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -30295,55 +30295,55 @@ export declare namespace player {
      *
      * Hash: 0x12917931C31F1750 | Since: 1207
      */
-    function resetArrestState(player: number | string | Player): void;
+    function resetArrestState(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x61A2EECAB274829B | Since: 1207
      */
-    function resetInputGait(player: number | string | Player): void;
+    function resetInputGait(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x062D14F18E8B0CAE | Since: 1207
      */
-    function resetWantedLevelDifficulty(player: number | string | Player): void;
+    function resetWantedLevelDifficulty(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xC41F4B6E23FE6A4A | Since: 1207
      */
-    function restoreStamina(player: number | string | Player): void;
+    function restoreStamina(player: number | string | IPlayer): void;
     /**
      * This can be between 1.0f - 50.0f
      *
      * Hash: 0x5DA6500FE849DA16 | Since: 1207
      */
-    function setAirDragMultiplierForsVehicle(player: number | string | Player, multiplier: number): void;
+    function setAirDragMultiplierForsVehicle(player: number | string | IPlayer, multiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x16752DAA7E6D3F72 | Since: 1207
      */
-    function setAllNeutralRandomPedsFleeThisFrame(player: number | string | Player): void;
+    function setAllNeutralRandomPedsFleeThisFrame(player: number | string | IPlayer): void;
     /**
      * Sets whether all random peds will run away from player if they are agitated (threatened) (bool=true), or some peds can stand up for themselves (bool=false).
      *
      * Hash: 0xE705309B8C6445A4 | Since: 1207
      */
-    function setAllRandomPedsFlee(player: number | string | Player, toggle: boolean): void;
+    function setAllRandomPedsFlee(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xD5C198A62F1DEB0A | Since: 1207
      */
-    function setAllRandomPedsFleeThisFrame(player: number | string | Player): void;
+    function setAllRandomPedsFleeThisFrame(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x34630A768925B852 | Since: 1207
      */
-    function setEveryoneIgnore(player: number | string | Player, toggle: boolean): void;
+    function setEveryoneIgnore(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -30355,7 +30355,7 @@ export declare namespace player {
      *
      * Hash: 0x4A056257802DD3E5 | Since: 1207
      */
-    function setLockonToFriendlys(player: number | string | Player, toggle: boolean): void;
+    function setLockonToFriendlys(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -30367,115 +30367,115 @@ export declare namespace player {
      *
      * Hash: 0x506CE71FB6E8CF5E | Since: 1207
      */
-    function setMinTimeBeforeHorseBucking(mount: number | Ped, iMinBuckTime: number): void;
+    function setMinTimeBeforeHorseBucking(mount: number | IPed, iMinBuckTime: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x227B06324234FB09 | Since: 1207
      */
-    function setPedAsTempHorse(player: number | string | Player, horse: number | Ped): boolean;
+    function setPedAsTempHorse(player: number | string | IPlayer, horse: number | IPed): boolean;
     /**
      * Sets whether this player can be hassled by gangs.
      *
      * Hash: 0xC7FE774412046825 | Since: 1207
      */
-    function setCanBeHassledByGangs(player: number | string | Player, toggle: boolean): void;
+    function setCanBeHassledByGangs(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * Sets whether this player can take cover.
      *
      * Hash: 0x5EDA520F7A3BAF4E | Since: 1207
      */
-    function setCanUseCover(player: number | string | Player, toggle: boolean): void;
+    function setCanUseCover(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xD0D9317DFEEF9A66 | Since: 1207
      */
-    function setClothPinFrames(ped: number | Ped): void;
+    function setClothPinFrames(ped: number | IPed): void;
     /**
      * flags: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eSetPlayerControlFlags
      *
      * Hash: 0x4D51E59243281D80 | Since: 1207
      */
-    function setControl(player: number | string | Player, toggle: boolean, flags: number, bPreventHeadingChange: boolean): void;
+    function setControl(player: number | string | IPlayer, toggle: boolean, flags: number, bPreventHeadingChange: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xD5FCC166AEB2FD0F | Since: 1207
      */
-    function setForcedAim(player: number | string | Player, toggle: boolean, ped: number | Ped): void;
+    function setForcedAim(player: number | string | IPlayer, toggle: boolean, ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x8899C244EBCF70DE | Since: 1207
      */
-    function setHealthRechargeMultiplier(player: number | string | Player, regenRate: number): void;
+    function setHealthRechargeMultiplier(player: number | string | IPlayer, regenRate: number): void;
     /**
      * Simply sets you as invincible (Health will not deplete).
      *
      * Hash: 0xFEBEEBC9CBDF4B12 | Since: 1207
      */
-    function setInvincible(player: number | string | Player, toggle: boolean): void;
+    function setInvincible(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x462AA1973CBBA75E | Since: 1207
      */
-    function setLockon(player: number | string | Player, toggle: boolean): void;
+    function setLockon(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * Affects the range of auto aim target.
      *
      * Hash: 0x3A3CD06597388322 | Since: 1207
      */
-    function setLockonRangeOverride(player: number | string | Player, range: number): void;
+    function setLockonRangeOverride(player: number | string | IPlayer, range: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xBEC463B3A11C909E | Since: 1207
      */
-    function setMayNotEnterAnyVehicle(player: number | string | Player): void;
+    function setMayNotEnterAnyVehicle(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xDA35A134038557EC | Since: 1207
      */
-    function setMayOnlyEnterThisVehicle(player: number | string | Player, vehicle: number | Vehicle): void;
+    function setMayOnlyEnterThisVehicle(player: number | string | IPlayer, vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xE4CB5A3F18170381 | Since: 1207
      */
-    function setMeleeWeaponDamageModifier(player: number | string | Player, modifier: number): void;
+    function setMeleeWeaponDamageModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * Make sure to request the model first and wait until it has loaded.
      *
      * Hash: 0xED40380076A31506 | Since: 1207
      */
-    function setModel(player: number | string | Player, modelHash: number | string): void;
+    function setModel(player: number | string | IPlayer, modelHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xB5EC6BDAEBCA454C | Since: 1207
      */
-    function setNoiseMultiplier(player: number | string | Player, multiplier: number): void;
+    function setNoiseMultiplier(player: number | string | IPlayer, multiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xE0447DEF81CCDFD2 | Since: 1207
      */
-    function setSimulateAiming(player: number | string | Player, toggle: boolean): void;
+    function setSimulateAiming(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x4DE44FA389DCA565 | Since: 1207
      */
-    function setSneakingNoiseMultiplier(player: number | string | Player, multiplier: number): void;
+    function setSneakingNoiseMultiplier(player: number | string | IPlayer, multiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xFECA17CF3343694B | Since: 1207
      */
-    function setStaminaRechargeMultiplier(player: number | string | Player, multiplier: number): void;
+    function setStaminaRechargeMultiplier(player: number | string | IPlayer, multiplier: number): void;
     /**
      * Sets your targeting mode for when you're on foot.
      * enum eTargetingMode
@@ -30495,31 +30495,31 @@ export declare namespace player {
      *
      * Hash: 0xE8DD8536F01DE600 | Since: 1207
      */
-    function setTeam(player: number | string | Player, team: number, bRestrictToThisScript: boolean): void;
+    function setTeam(player: number | string | IPlayer, team: number, bRestrictToThisScript: boolean): void;
     /**
      * nullsub, doesn't do anything
      *
      * Hash: 0x384D4765395E006C | Since: 1207
      */
-    function setWantedLevel(player: number | string | Player, wantedLevel: number, disableNoMission: boolean): void;
+    function setWantedLevel(player: number | string | IPlayer, wantedLevel: number, disableNoMission: boolean): void;
     /**
      * This modifies the damage value of your weapon. Whether it is a multiplier or base damage is unknown.
      *
      * Hash: 0x94D529F7B73D7A85 | Since: 1207
      */
-    function setWeaponDamageModifier(player: number | string | Player, modifier: number): void;
+    function setWeaponDamageModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xD15CC2D493160BE3 | Since: 1207
      */
-    function setWeaponDefenseModifier(player: number | string | Player, modifier: number): void;
+    function setWeaponDefenseModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xD04AD186CE8BB129 | Since: 1207
      */
-    function setWeaponTypeDamageModifier(player: number | string | Player, weaponHash: number | string, damageModifier: number): void;
+    function setWeaponTypeDamageModifier(player: number | string | IPlayer, weaponHash: number | string, damageModifier: number): void;
     /**
      * If toggle is set to false:
      * The police won't be shown on the (mini)map
@@ -30536,7 +30536,7 @@ export declare namespace player {
      *
      * Hash: 0xBFCEABDE34DA5085 | Since: 1207
      */
-    function setSwimMultiplierFor(player: number | string | Player, multiplier: number): void;
+    function setSwimMultiplierFor(player: number | string | IPlayer, multiplier: number): void;
     /**
      * No comment provided
      *
@@ -30548,13 +30548,13 @@ export declare namespace player {
      *
      * Hash: 0xFA0C063C422C4355 | Since: 1207
      */
-    function simulateInputGait(player: number | string | Player, speed: number, duration: number, heading: number): void;
+    function simulateInputGait(player: number | string | IPlayer, speed: number, duration: number, heading: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xDF8822C55EDDA65B | Since: 1207
      */
-    function startTeleport(player: number | string | Player, pos: Vector3, heading: number): void;
+    function startTeleport(player: number | string | IPlayer, pos: Vector3, heading: number): void;
     /**
      * Disables the player's teleportation
      *
@@ -30566,19 +30566,19 @@ export declare namespace player {
      *
      * Hash: 0x96722257E5381E00 | Since: 1207
      */
-    function suppressWitnessesCallingPoliceThisFrame(player: number | string | Player): void;
+    function suppressWitnessesCallingPoliceThisFrame(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xC39DCE4672CBFBC1 | Since: 1207
      */
-    function updateTeleport(player: number | string | Player): boolean;
+    function updateTeleport(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD0B0B044112BF424 | Since: 1207
      */
-    function updateWantedPositionThisFrame(player: number | string | Player): void;
+    function updateWantedPositionThisFrame(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -30596,7 +30596,7 @@ export declare namespace player {
      *
      * Hash: 0x06E1FB78B1E59CA5 | Since: 1207
      */
-    function _0x06E1FB78B1E59CA5(ped: number | Ped): void;
+    function _0x06E1FB78B1E59CA5(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -30614,7 +30614,7 @@ export declare namespace player {
      *
      * Hash: 0x08E22898A6AF4905 | Since: 1207
      */
-    function _0x08E22898A6AF4905(player: number | string | Player): void;
+    function _0x08E22898A6AF4905(player: number | string | IPlayer): void;
     /**
      * Hardcoded to return zero/false.
      *
@@ -30686,13 +30686,13 @@ export declare namespace player {
      *
      * Hash: 0x1F488807BC8E0630 | Since: 1207
      */
-    function _0x1F488807BC8E0630(player: number | string | Player): void;
+    function _0x1F488807BC8E0630(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x1FDA57E8908F2609 | Since: 1207
      */
-    function _0x1FDA57E8908F2609(player: number | string | Player, ped: number | Ped, useSteerassist: boolean): void;
+    function _0x1FDA57E8908F2609(player: number | string | IPlayer, ped: number | IPed, useSteerassist: boolean): void;
     /**
      * No comment provided
      *
@@ -30704,19 +30704,19 @@ export declare namespace player {
      *
      * Hash: 0x216BC0D3D2E413D2 | Since: 1207
      */
-    function _0x216BC0D3D2E413D2(player: number | string | Player): void;
+    function _0x216BC0D3D2E413D2(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x22B3CABEDDB538B2 | Since: 1207
      */
-    function _0x22B3CABEDDB538B2(player: number | string | Player): void;
+    function _0x22B3CABEDDB538B2(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x263D69767F76059C | Since: 1207
      */
-    function _0x263D69767F76059C(player: number | string | Player): void;
+    function _0x263D69767F76059C(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -30752,7 +30752,7 @@ export declare namespace player {
      *
      * Hash: 0x310CE349E0C0EC4B | Since: 1207
      */
-    function _0x310CE349E0C0EC4B(player: number | string | Player, ped: number | Ped): void;
+    function _0x310CE349E0C0EC4B(player: number | string | IPlayer, ped: number | IPed): void;
     /**
      * Only used in script function UPDATE_PLAYER_JUST_DIED_STATE
      * The value passed to this native in the scripts is whether a global UGC mission is active or not
@@ -30783,7 +30783,7 @@ export declare namespace player {
      *
      * Hash: 0x3ACAC8832E77BC93 | Since: 1207
      */
-    function _0x3ACAC8832E77BC93(player: number | string | Player): void;
+    function _0x3ACAC8832E77BC93(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -30837,7 +30837,7 @@ export declare namespace player {
      *
      * Hash: 0x4D1699543B1C023C | Since: 1207
      */
-    function _0x4D1699543B1C023C(player: number | string | Player): void;
+    function _0x4D1699543B1C023C(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -30849,7 +30849,7 @@ export declare namespace player {
      *
      * Hash: 0x4EC8BE63B8A5D4EF | Since: 1207
      */
-    function _0x4EC8BE63B8A5D4EF(player: number | string | Player): void;
+    function _0x4EC8BE63B8A5D4EF(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -30873,7 +30873,7 @@ export declare namespace player {
      *
      * Hash: 0x570A13A4CA2799BB | Since: 1207
      */
-    function _0x570A13A4CA2799BB(player: number | string | Player): void;
+    function _0x570A13A4CA2799BB(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -30903,7 +30903,7 @@ export declare namespace player {
      *
      * Hash: 0x621D1B289CAF5978 | Since: 1207
      */
-    function _0x621D1B289CAF5978(player: number | string | Player): boolean;
+    function _0x621D1B289CAF5978(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -30982,13 +30982,13 @@ export declare namespace player {
      *
      * Hash: 0x7AE93C45EC14A166 | Since: 1207
      */
-    function _0x7AE93C45EC14A166(player: number | string | Player): [boolean, number];
+    function _0x7AE93C45EC14A166(player: number | string | IPlayer): [boolean, number];
     /**
      * _SET_PLAYER_DAMAGE_* - _SET_PLAYER_DEFENSE_*
      *
      * Hash: 0x818241B3EDA84191 | Since: 1207
      */
-    function _0x818241B3EDA84191(player: number | string | Player): void;
+    function _0x818241B3EDA84191(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -31000,13 +31000,13 @@ export declare namespace player {
      *
      * Hash: 0x84481018E668E1B8 | Since: 1207
      */
-    function _0x84481018E668E1B8(player: number | string | Player, ped: number | Ped): void;
+    function _0x84481018E668E1B8(player: number | string | IPlayer, ped: number | IPed): void;
     /**
      * SET_PLAYER_S/T*
      *
      * Hash: 0x8591EE69CC3ED257 | Since: 1207
      */
-    function _0x8591EE69CC3ED257(player: number | string | Player, toggle: boolean): void;
+    function _0x8591EE69CC3ED257(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -31042,7 +31042,7 @@ export declare namespace player {
      *
      * Hash: 0x927861B2C08DBEA5 | Since: 1207
      */
-    function _0x927861B2C08DBEA5(player: number | string | Player): boolean;
+    function _0x927861B2C08DBEA5(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -31054,7 +31054,7 @@ export declare namespace player {
      *
      * Hash: 0x93624B36E8851B42 | Since: 1207
      */
-    function _0x93624B36E8851B42(player: number | string | Player): void;
+    function _0x93624B36E8851B42(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -31114,7 +31114,7 @@ export declare namespace player {
      *
      * Hash: 0xB331D8A73F9D2BDF | Since: 1207
      */
-    function _0xB331D8A73F9D2BDF(player: number | string | Player): [boolean, any];
+    function _0xB331D8A73F9D2BDF(player: number | string | IPlayer): [boolean, any];
     /**
      * No comment provided
      *
@@ -31192,7 +31192,7 @@ export declare namespace player {
      *
      * Hash: 0xC900A465364A85D6 | Since: 1207
      */
-    function _0xC900A465364A85D6(player: number | string | Player): void;
+    function _0xC900A465364A85D6(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -31270,7 +31270,7 @@ export declare namespace player {
      *
      * Hash: 0xDD33A82352C4652F | Since: 1207
      */
-    function _0xDD33A82352C4652F(player: number | string | Player, ped: number | Ped): void;
+    function _0xDD33A82352C4652F(player: number | string | IPlayer, ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -31288,7 +31288,7 @@ export declare namespace player {
      *
      * Hash: 0xE7F8707269544B29 | Since: 1207
      */
-    function _0xE7F8707269544B29(player: number | string | Player, ped: number | Ped): boolean;
+    function _0xE7F8707269544B29(player: number | string | IPlayer, ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -31318,7 +31318,7 @@ export declare namespace player {
      *
      * Hash: 0xF21C7A3F3FFBA629 | Since: 1207
      */
-    function _0xF21C7A3F3FFBA629(player: number | string | Player): void;
+    function _0xF21C7A3F3FFBA629(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -31337,7 +31337,7 @@ export declare namespace player {
      *
      * Hash: 0xFA437FA0738C370C | Since: 1207
      */
-    function _0xFA437FA0738C370C(player: number | string | Player): void;
+    function _0xFA437FA0738C370C(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -31352,7 +31352,7 @@ export declare namespace player {
      *
      * Hash: 0x3946FC742AC305CD | Since: 1207
      */
-    function addAmbientInteractiveFocusPreset(player: number | string | Player, ped: number | Ped, preset: string, pos: Vector3, targetEntity: number | Entity, name: string): void;
+    function addAmbientInteractiveFocusPreset(player: number | string | IPlayer, ped: number | IPed, preset: string, pos: Vector3, targetEntity: number | IEntity, name: string): void;
     /**
      * Adds an "interactive focus mode preset" between a player and a specific set of coordinates with a target entity.
      * To access all available presets, refer to the file located at:
@@ -31365,7 +31365,7 @@ export declare namespace player {
      *
      * Hash: 0xD48227263E3D06AE | Since: 1232
      */
-    function addAmbientInteractiveFocusPresetAtCoords(player: number | string | Player, x1: number, y1: number, z1: number, preset: string, x2: number, y2: number, z2: number, targetEntity: number | Entity, name: string): void;
+    function addAmbientInteractiveFocusPresetAtCoords(player: number | string | IPlayer, x1: number, y1: number, z1: number, preset: string, x2: number, y2: number, z2: number, targetEntity: number | IEntity, name: string): void;
     /**
      * Used in script function: NET_AUTO_FOLLOW_UPDATE_LEADER_VALUES
      * followMode:
@@ -31382,19 +31382,19 @@ export declare namespace player {
      *
      * Hash: 0xAC22AA6DF4D1C1DE | Since: 1207
      */
-    function addAsFollowTarget(player: number | string | Player, ped: number | Ped, followMode: number, followPriority: number): void;
+    function addAsFollowTarget(player: number | string | IPlayer, ped: number | IPed, followMode: number, followPriority: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x8F2A81C09DA9124A | Since: 1207
      */
-    function clearBountyTarget(player: number | string | Player): void;
+    function clearBountyTarget(player: number | string | IPlayer): void;
     /**
      * Clears the intensity of aura effects applied to entities for a specific player in Deadeye mode based on a flag parameter. This function is used to reset any intensity modifications set by `_SET_DEADEYE_ENTITY_AURA_INTENSITY_WITH_FLAG - 0x131E294EF60160DF`, restoring affected entities' aura intensity to their default state.
      *
      * Hash: 0x0E9057A9DA78D0F8 | Since: 1207
      */
-    function clearDeadeyeAuraIntensityWithFlag(player: number | string | Player, flag: number): void;
+    function clearDeadeyeAuraIntensityWithFlag(player: number | string | IPlayer, flag: number): void;
     /**
      * Disables the previously set "interactive focus mode preset" for a given player.
      * Example usage:
@@ -31406,7 +31406,7 @@ export declare namespace player {
      *
      * Hash: 0xC67A4910425F11F1 | Since: 1207
      */
-    function disableInteractiveFocusPreset(player: number | string | Player, name: string): void;
+    function disableInteractiveFocusPreset(player: number | string | IPlayer, name: string): void;
     /**
      * Add a yellow particle to the entity.
      * entity: entity to apply yellow particle
@@ -31416,7 +31416,7 @@ export declare namespace player {
      *
      * Hash: 0x6ECFC621A168424C | Since: 1207
      */
-    function eagleEyeAddParticleEffectToEntity(entity1: number | Entity, entity2: number | Entity): void;
+    function eagleEyeAddParticleEffectToEntity(entity1: number | IEntity, entity2: number | IEntity): void;
     /**
      * Retrieves whether all trails are currently hidden during Eagle Eye mode for the specified player.
      * Images:
@@ -31425,7 +31425,7 @@ export declare namespace player {
      *
      * Hash: 0xA62BBAAE67A05BB0 | Since: 1207
      */
-    function eagleEyeAreAllTrailsHidden(player: number | string | Player): boolean;
+    function eagleEyeAreAllTrailsHidden(player: number | string | IPlayer): boolean;
     /**
      * Checks if the player can focus on tracks while in Eagle Eye mode. Returns true if the player is able to focus on a track, otherwise false.
      * Example usage:
@@ -31436,19 +31436,19 @@ export declare namespace player {
      *
      * Hash: 0x1DA5C5B0923E1B85 | Since: 1207
      */
-    function eagleEyeCanFocusOnTrack(player: number | string | Player): boolean;
+    function eagleEyeCanFocusOnTrack(player: number | string | IPlayer): boolean;
     /**
      * Clears all Eagle Eye trails that were registered for entities associated with the specified player.
      *
      * Hash: 0xE5D3EB37ABC1EB03 | Since: 1207
      */
-    function eagleEyeClearRegisteredTrails(player: number | string | Player): void;
+    function eagleEyeClearRegisteredTrails(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x40AB73092C95B5F5 | Since: 1207
      */
-    function eagleEyeDisableTrackingTrail(entity: number | Entity, trail: string): void;
+    function eagleEyeDisableTrackingTrail(entity: number | IEntity, trail: string): void;
     /**
      * Retrieves the ID of the ped that the specified player is currently tracking while in Eagle Eye mode.
      * Images:
@@ -31457,7 +31457,7 @@ export declare namespace player {
      *
      * Hash: 0x3813E11A378958A5 | Since: 1207
      */
-    function eagleEyeGetTrackedPedId(player: number | string | Player): number;
+    function eagleEyeGetTrackedPedId(player: number | string | IPlayer): number;
     /**
      * Remove yellow particle from the entity when it was set using `0x6ECFC621A168424C`
      * entity: entity to remove yellow particles
@@ -31466,32 +31466,32 @@ export declare namespace player {
      *
      * Hash: 0xDC5E09D012D759C4 | Since: 1207
      */
-    function eagleEyeRemoveParticleEffectFromEntity(entity1: number | Entity, entity2: number | Entity): void;
+    function eagleEyeRemoveParticleEffectFromEntity(entity1: number | IEntity, entity2: number | IEntity): void;
     /**
      * false: default eagleeye color
      * true: green eagleeye color
      *
      * Hash: 0x2C41D93F550D5E37 | Since: 1207
      */
-    function eagleEyeSetColor(player: number | string | Player): any;
+    function eagleEyeSetColor(player: number | string | IPlayer): any;
     /**
      * No comment provided
      *
      * Hash: 0x907B16B3834C69E2 | Since: 1207
      */
-    function eagleEyeSetCustomDistance(entity: number | Entity, distance: number): void;
+    function eagleEyeSetCustomDistance(entity: number | IEntity, distance: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xE0D6C2A146A5C993 | Since: 1207
      */
-    function eagleEyeSetDrainRateModifier(player: number | string | Player, modifier: number): void;
+    function eagleEyeSetDrainRateModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2AF423D6ECB2C485 | Since: 1207
      */
-    function eagleEyeSetFocusOnAssociatedClueTrail(player: number | string | Player, linkedWaypointPed: number | Entity): void;
+    function eagleEyeSetFocusOnAssociatedClueTrail(player: number | string | IPlayer, linkedWaypointPed: number | IEntity): void;
     /**
      * Sets whether all trails are hidden during Eagle Eye mode.
      * Example usage:
@@ -31506,7 +31506,7 @@ export declare namespace player {
      *
      * Hash: 0x330CA55A3647FA1C | Since: 1207
      */
-    function eagleEyeSetHideAllTrails(player: number | string | Player, hideTrails: boolean): void;
+    function eagleEyeSetHideAllTrails(player: number | string | IPlayer, hideTrails: boolean): void;
     /**
      * Sets the behavior of sprinting while the eagle eye feature is active, determining whether sprinting cancels the effect based on the specified parameter.
      * disabled = true: sprinting will cancel the eagle eye effect when active. If the player starts sprinting, the Eagleeye feature will be deactivated.
@@ -31514,43 +31514,43 @@ export declare namespace player {
      *
      * Hash: 0xCE285A4413B00B7F | Since: 1207
      */
-    function eagleEyeSetPlusFlagDisabled(player: number | string | Player, disabled: boolean): void;
+    function eagleEyeSetPlusFlagDisabled(player: number | string | IPlayer, disabled: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x22C8B10802301381 | Since: 1207
      */
-    function eagleEyeSetRange(player: number | string | Player, range: number): void;
+    function eagleEyeSetRange(player: number | string | IPlayer, range: number): void;
     /**
      * Enable/disable a color on the entity in eagle eye mode.
      *
      * Hash: 0xBC02B3D151D3859F | Since: 1207
      */
-    function eagleEyeSetRegisteredEntityGlow(entity: number | Entity, enable: boolean): void;
+    function eagleEyeSetRegisteredEntityGlow(entity: number | IEntity, enable: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xDFC85C5199045026 | Since: 1207
      */
-    function eagleEyeSetTrackingUpgrade(player: number | string | Player): void;
+    function eagleEyeSetTrackingUpgrade(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x6FA957D1B55941C1 | Since: 1311
      */
-    function eagleEyeSetTrackingUpgrade2(player: number | string | Player): void;
+    function eagleEyeSetTrackingUpgrade2(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x95EE1DEE1DCD9070 | Since: 1207
      */
-    function enableCustomDeadeyeAbility(player: number | string | Player, enable: boolean): void;
+    function enableCustomDeadeyeAbility(player: number | string | IPlayer, enable: boolean): void;
     /**
      * (Un)lock Eagle Eye functionality
      *
      * Hash: 0xA63FCAD3A6FEC6D2 | Since: 1207
      */
-    function enableEagleeye(player: number | string | Player, enable: boolean): void;
+    function enableEagleeye(player: number | string | IPlayer, enable: boolean): void;
     /**
      * No comment provided
      *
@@ -31568,13 +31568,13 @@ export declare namespace player {
      *
      * Hash: 0x46FA0AE18F4C7FA9 | Since: 1207
      */
-    function getActiveHorseFor(player: number | string | Player): number;
+    function getActiveHorseFor(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x2E78D822208E740A | Since: 1207
      */
-    function getAiDefenseModifierAgainstAi(player: number | string | Player): number;
+    function getAiDefenseModifierAgainstAi(player: number | string | IPlayer): number;
     /**
      * p0: mostly Ped Hashes
      *
@@ -31591,25 +31591,25 @@ export declare namespace player {
      *
      * Hash: 0xE92261BD28C0878F | Since: 1207
      */
-    function getDeadeyeAbilityDepletionDelay(player: number | string | Player): number;
+    function getDeadeyeAbilityDepletionDelay(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xCCE7C695C164C35F | Since: 1207
      */
-    function getDeadeyeAbilityLevel(player: number | string | Player): number;
+    function getDeadeyeAbilityLevel(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x0772F87D7B07719A | Since: 1207
      */
-    function getHasDiscoveredCharacterNameSp(player: number | string | Player, discoveryHash: number | string): boolean;
+    function getHasDiscoveredCharacterNameSp(player: number | string | IPlayer, discoveryHash: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x32348719DCED2969 | Since: 1207
      */
-    function getIsDeadeyeTaggingEnabled(player: number | string | Player): boolean;
+    function getIsDeadeyeTaggingEnabled(player: number | string | IPlayer): boolean;
     /**
      * Retrieves the number of marks placed on a PED when Deadeye mode is active for the specified player.
      * Example usage:
@@ -31618,13 +31618,13 @@ export declare namespace player {
      *
      * Hash: 0x27AD7162D3FED01E | Since: 1207
      */
-    function getNumDeadeyeMarksOnPed(player: number | string | Player, ped: number | Ped): number;
+    function getNumDeadeyeMarksOnPed(player: number | string | IPlayer, ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xCCD9B77F70D31C9D | Since: 1207
      */
-    function getNumMarkedDeadeyeTargets(player: number | string | Player): number;
+    function getNumMarkedDeadeyeTargets(player: number | string | IPlayer): number;
     /**
      * it is used to check for that period of time if player damaged any peds only returns the last 3 hits with the entity ids so if you hit the same entity 3 times it will return the same entity id 3 times, if you hit 4 different entities within that time it will return the last 3 entity ids
      * only stores the last 3 hits in the data view buffer
@@ -31633,147 +31633,147 @@ export declare namespace player {
      *
      * Hash: 0x1A6E84F13C952094 | Since: 1207
      */
-    function getPedsDamagedByRecently(player: number | string | Player, duration: number): [boolean, any];
+    function getPedsDamagedByRecently(player: number | string | IPlayer, duration: number): [boolean, any];
     /**
      * No comment provided
      *
      * Hash: 0xDF66A37936D5F3D9 | Since: 1207
      */
-    function getCachedDeadEyeAmount(player: number | string | Player): number;
+    function getCachedDeadEyeAmount(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xA81D24AE0AF99A5E | Since: 1207
      */
-    function getDeadEye(player: number | string | Player): number;
+    function getDeadEye(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x3A6AE4EEE30370FE | Since: 1207
      */
-    function getDeadEyeMeterLevel(player: number | string | Player): number;
+    function getDeadEyeMeterLevel(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x0317C947D062854E | Since: 1207
      */
-    function getHealth(player: number | string | Player): number;
+    function getHealth(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x22CD23BB0C45E0CD | Since: 1207
      */
-    function getHealthRechargeMultiplier(player: number | string | Player): number;
+    function getHealthRechargeMultiplier(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x5CA6BBD4A7D8145E | Since: 1207
      */
-    function getHuntingWagon(player: number | string | Player): number;
+    function getHuntingWagon(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x592F58BC4D2A2CF3 | Since: 1207
      */
-    function getMaxDeadEye(player: number | string | Player): number;
+    function getMaxDeadEye(player: number | string | IPlayer): number;
     /**
      * See _SET_PLAYER_MOOD
      *
      * Hash: 0x054473164C012699 | Since: 1207
      */
-    function getMood(player: number | string | Player): number;
+    function getMood(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xAD03B03737CE6810 | Since: 1207
      */
-    function getOwnerOfMount(mount: number | Ped): number | string;
+    function getOwnerOfMount(mount: number | IPed): number | string;
     /**
      * No comment provided
      *
      * Hash: 0x7C803BDC8343228D | Since: 1207
      */
-    function getOwnerOfVehicle(vehicle: number | Vehicle): number | string;
+    function getOwnerOfVehicle(vehicle: number | IVehicle): number | string;
     /**
      * No comment provided
      *
      * Hash: 0x5EBE38A20BC51C27 | Since: 1207
      */
-    function getPed2(player: number | string | Player): number;
+    function getPed2(player: number | string | IPlayer): number;
     /**
      * If player has less Dead Eye than required, Dead Eye cant be triggered.
      *
      * Hash: 0x811A748B1BE231BA | Since: 1207
      */
-    function getRequiredDeadEyeAmount(player: number | string | Player): number;
+    function getRequiredDeadEyeAmount(player: number | string | IPlayer): number;
     /**
      * playerResetFlag: See 0x9F9A829C6751F3C7
      *
      * Hash: 0xFE691E89C08937B6 | Since: 1207
      */
-    function getResetFlag(player: number | string | Player, playerResetFlag: number): boolean;
+    function getResetFlag(player: number | string | IPlayer, playerResetFlag: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xAB3773E7AA1E9DCC | Since: 1207
      */
-    function getSpecialAbilityMultiplier(player: number | string | Player): number;
+    function getSpecialAbilityMultiplier(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x0FF421E467373FCF | Since: 1207
      */
-    function getStamina(player: number | string | Player): number;
+    function getStamina(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x68A0389E0718AC8F | Since: 1207
      */
-    function getStaminaDepletionMultiplier(player: number | string | Player): number;
+    function getStaminaDepletionMultiplier(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0x617D3494AD58200F | Since: 1207
      */
-    function getStaminaRechargeMultiplier(player: number | string | Player): number;
+    function getStaminaRechargeMultiplier(player: number | string | IPlayer): number;
     /**
      * Returns true if PromptType is enabled for ped (mount)
      * Params: See 0x0751D461F06E41CE
      *
      * Hash: 0xEA8F168A76A0B9BC | Since: 1207
      */
-    function getUiPromptForPedIsEnabled(player: number | string | Player, ped: number | Ped, promptType: number, promptMode: number): boolean;
+    function getUiPromptForPedIsEnabled(player: number | string | IPlayer, ped: number | IPed, promptType: number, promptMode: number): boolean;
     /**
      * Returns false if PromptType is enabled
      * Params: See 0x0751D461F06E41CE
      *
      * Hash: 0x6614F9039BD31931 | Since: 1207
      */
-    function getUiPromptIsDisabled(player: number | string | Player, promptType: number, promptMode: number): boolean;
+    function getUiPromptIsDisabled(player: number | string | IPlayer, promptType: number, promptMode: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xFE0304050261442C | Since: 1207
      */
-    function getWeaponDamage(player: number | string | Player, weaponHash: number | string): number;
+    function getWeaponDamage(player: number | string | IPlayer, weaponHash: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0xB48050D326E9A2F3 | Since: 1207
      */
-    function getSaddleHorseFor(player: number | string | Player): number;
+    function getSaddleHorseFor(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xD3F7445CEA2E5035 | Since: 1207
      */
-    function getTempHorse(player: number | string | Player): number;
+    function getTempHorse(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
      * Hash: 0xB9050A97594C8832 | Since: 1207
      */
-    function getVehicleOwnedBy(player: number | string | Player): number;
+    function getVehicleOwnedBy(player: number | string | IPlayer): number;
     /**
      * Returns -1.0f if no multiplier has been set
      *
@@ -31786,67 +31786,67 @@ export declare namespace player {
      *
      * Hash: 0x72AD59F7B7FB6E24 | Since: 1207
      */
-    function hasDamagedAnyPedRecently(player: number | string | Player, duration: number): boolean;
+    function hasDamagedAnyPedRecently(player: number | string | IPlayer, duration: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8A0643B0B4CA276B | Since: 1207
      */
-    function isDeadeyeAbilityLocked(player: number | string | Player, abilityType: number): boolean;
+    function isDeadeyeAbilityLocked(player: number | string | IPlayer, abilityType: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0E6846476906C9DD | Since: 1207
      */
-    function isEagleEyeRegisteredForEntity(player: number | string | Player, entity: number | Entity): boolean;
+    function isEagleEyeRegisteredForEntity(player: number | string | IPlayer, entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xE24C64D9ADED2EF5 | Since: 1207
      */
-    function isFollowingTarget(player: number | string | Player, ped: number | Ped): boolean;
+    function isFollowingTarget(player: number | string | IPlayer, ped: number | IPed): boolean;
     /**
      * Checks if player is focused on any entity
      *
      * Hash: 0x1A51BFE60708E482 | Since: 1207
      */
-    function isFreeFocusing(player: number | string | Player): boolean;
+    function isFreeFocusing(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x04D7F33640662FA2 | Since: 1207
      */
-    function isInScope(player: number | string | Player): boolean;
+    function isInScope(player: number | string | IPlayer): boolean;
     /**
      * returns true if the player is on a road while riding a horse but at a certain speed, if you go off road then it returns false or if you go too slow like walking state it also returns false
      *
      * Hash: 0xE631EAF35828FA67 | Since: 1207
      */
-    function isMountOnRoad(player: number | string | Player): boolean;
+    function isMountOnRoad(player: number | string | IPlayer): boolean;
     /**
      * This native is used to determine if the player has an active lockon an entity while riding a horse.
      *
      * Hash: 0x2009F8AB7A5E9D6D | Since: 1207
      */
-    function isOnMountLockonEntity(player: number | string | Player): boolean;
+    function isOnMountLockonEntity(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x45AB66D02B601FA7 | Since: 1207
      */
-    function isSecondarySpecialAbilityActive(player: number | string | Player): boolean;
+    function isSecondarySpecialAbilityActive(player: number | string | IPlayer): boolean;
     /**
      * Returns true if eagle eye is enabled for the player
      *
      * Hash: 0xE022CC1B545F1D9F | Since: 1207
      */
-    function isSecondarySpecialAbilityEnabled(player: number | string | Player): boolean;
+    function isSecondarySpecialAbilityEnabled(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB16223CB7DA965F0 | Since: 1207
      */
-    function isSpecialAbilityActive(player: number | string | Player): boolean;
+    function isSpecialAbilityActive(player: number | string | IPlayer): boolean;
     /**
      * Checks if the player's Deadeye ability is enabled.
      *
@@ -31862,13 +31862,13 @@ export declare namespace player {
      *
      * Hash: 0xDE6C85975F9D4894 | Since: 1207
      */
-    function isSpecialAbilityEnabled(player: number | string | Player): boolean;
+    function isSpecialAbilityEnabled(player: number | string | IPlayer): boolean;
     /**
      * Toggle handles wether Deadeye and Eagleeye are infinite or not.
      *
      * Hash: 0x28A13BF6B05C3D83 | Since: 1207
      */
-    function modifyInfiniteTrailVision(player: number | string | Player, toggle: boolean): void;
+    function modifyInfiniteTrailVision(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -31881,38 +31881,38 @@ export declare namespace player {
      *
      * Hash: 0x0751D461F06E41CE | Since: 1207
      */
-    function modifyUiPrompt(player: number | string | Player, promptType: number, promptMode: number, disabled: boolean): void;
+    function modifyUiPrompt(player: number | string | IPlayer, promptType: number, promptMode: number, disabled: boolean): void;
     /**
      * Params: See 0x0751D461F06E41CE
      *
      * Hash: 0xA3DB37EDF9A74635 | Since: 1207
      */
-    function modifyUiPromptForPed(player: number | string | Player, ped: number | Ped, promptType: number, promptMode: number, enabled: boolean): void;
+    function modifyUiPromptForPed(player: number | string | IPlayer, ped: number | IPed, promptType: number, promptMode: number, enabled: boolean): void;
     /**
      * Returns true if the given player has a valid ped.
      *
      * Hash: 0x0760D6F70EBCC05C | Since: 1207
      */
-    function networkHasValidPed(player: number | string | Player): boolean;
+    function networkHasValidPed(player: number | string | IPlayer): boolean;
     /**
      * Used for setting up eagle eye for entity
      * Params: p2 = re-register or not?
      *
      * Hash: 0x543DFE14BE720027 | Since: 1207
      */
-    function registerEagleEyeForEntity(player: number | string | Player, entity: number | Entity): void;
+    function registerEagleEyeForEntity(player: number | string | IPlayer, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0xAC67098A1E54ABB0 | Since: 1207
      */
-    function registerEagleEyeTrailsForEntity(player: number | string | Player, entity: number | Entity): void;
+    function registerEagleEyeTrailsForEntity(player: number | string | IPlayer, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x0C6B89876262A99D | Since: 1207
      */
-    function removeAsFollowTarget(player: number | string | Player, ped: number | Ped): void;
+    function removeAsFollowTarget(player: number | string | IPlayer, ped: number | IPed): void;
     /**
      * `Resets any aura effects applied to entities for a specific player in Deadeye mode, returning all aura-related visuals to their default state. This function is primarily used to remove any highlighting or aura effects set by `PLAYER::_SET_DEADEYE_ENTITY_AURA_EFFECT` (0x2B12B6FC8B8772AB) and `PLAYER::_SET_DEADEYE_ENTITY_AURA_EFFECT_INTENSITY` (0x131E294EF60160DF).`
      *
@@ -31924,117 +31924,117 @@ export declare namespace player {
      *
      * Hash: 0xE910932F4B30BE23 | Since: 1207
      */
-    function resetDeadeyeAuraEffect(player: number | string | Player): void;
+    function resetDeadeyeAuraEffect(player: number | string | IPlayer): void;
     /**
      * Activates EagleEye, called together with 0x28A13BF6B05C3D83
      *
      * Hash: 0x1710BC33CFB83634 | Since: 1207
      */
-    function secondarySpecialAbilitySetActive(player: number | string | Player): void;
+    function secondarySpecialAbilitySetActive(player: number | string | IPlayer): void;
     /**
      * Deactivates EagleEye, called together with 0xC0B21F235C02139C
      *
      * Hash: 0x64FF4BF9AF59E139 | Since: 1207
      */
-    function secondarySpecialAbilitySetDisabled(player: number | string | Player, disabled: boolean): void;
+    function secondarySpecialAbilitySetDisabled(player: number | string | IPlayer, disabled: boolean): void;
     /**
      * Sets Player's Defense against AI modifier
      *
      * Hash: 0x914071FF93AF2692 | Since: 1207
      */
-    function setAiDefenseModifierAgainstAi(player: number | string | Player, modifier: number): void;
+    function setAiDefenseModifierAgainstAi(player: number | string | IPlayer, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6ADF821FBF21920E | Since: 1207
      */
-    function setBountyTarget(player: number | string | Player, target: number | string | Player): void;
+    function setBountyTarget(player: number | string | IPlayer, target: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xBE0C524970892D41 | Since: 1207
      */
-    function setBowDrawReductionTimeInDeadeye(player: number | string | Player, drawReductionTime: number): void;
+    function setBowDrawReductionTimeInDeadeye(player: number | string | IPlayer, drawReductionTime: number): void;
     /**
      * Decreases Stamina bar drain speed by % when drawing a bow.
      *
      * Hash: 0xFE7C9CF376D23342 | Since: 1207
      */
-    function setBowStaminaDrainSpeed(player: number | string | Player, staminaDrain: number): void;
+    function setBowStaminaDrainSpeed(player: number | string | IPlayer, staminaDrain: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x7761A30432C91297 | Since: 1207
      */
-    function setDamageCloseDistanceBonus(player: number | string | Player, closeRangeLowerBound: number, closeRangeUpperBound: number): void;
+    function setDamageCloseDistanceBonus(player: number | string | IPlayer, closeRangeLowerBound: number, closeRangeUpperBound: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x5006C36652D6EC56 | Since: 1207
      */
-    function setDamageCloseDistanceBonusTotal(player: number | string | Player, closeDamageBonus: number): void;
+    function setDamageCloseDistanceBonusTotal(player: number | string | IPlayer, closeDamageBonus: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xED591CB17C8BA216 | Since: 1207
      */
-    function setDamageFarDistanceBonus(player: number | string | Player, farRangeLowerBound: number, farRangeUpperBound: number): void;
+    function setDamageFarDistanceBonus(player: number | string | IPlayer, farRangeLowerBound: number, farRangeUpperBound: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x1F0E3A4434565F8F | Since: 1207
      */
-    function setDamageFarDistanceBonusTotal(player: number | string | Player, farDamageBonus: number): void;
+    function setDamageFarDistanceBonusTotal(player: number | string | IPlayer, farDamageBonus: number): void;
     /**
      * Only used in R* SP Script short_update
      *
      * Hash: 0x870634493CB4372C | Since: 1207
      */
-    function setDeadeyeAbilityDepletionDelay(player: number | string | Player, delay: number): void;
+    function setDeadeyeAbilityDepletionDelay(player: number | string | IPlayer, delay: number): void;
     /**
      * Max level is 5.
      *
      * Hash: 0xF0FE8E790BFEB5BB | Since: 1207
      */
-    function setDeadeyeAbilityLevel(player: number | string | Player, level: number): void;
+    function setDeadeyeAbilityLevel(player: number | string | IPlayer, level: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2797B8D66DD0EBB8 | Since: 1207
      */
-    function setDeadeyeAbilityLocked(player: number | string | Player, abilityType: number, toggle: boolean): void;
+    function setDeadeyeAbilityLocked(player: number | string | IPlayer, abilityType: number, toggle: boolean): void;
     /**
      * Applies a customizable aura effect to nearby entities when Deadeye is active, with control over aura intensity and additional behavior based on a flag parameter.
      * - flag (int): A flag that determines the behavior of the aura effect and which entities are affected. 2: Applies aura to humans. 4: Applies aura to animals.
      *
      * Hash: 0x131E294EF60160DF | Since: 1207
      */
-    function setDeadeyeEntityAuraIntensityWithFlag(player: number | string | Player, intensity: number, flag: number): void;
+    function setDeadeyeEntityAuraIntensityWithFlag(player: number | string | IPlayer, intensity: number, flag: number): void;
     /**
      * Applies a aura effect to nearby entities when Deadeye is active, based on a flag parameter. This includes humans, animals, vehicles, and horses pulling those vehicles. Additionally, depending on the flag value, the player's appearance may change (e.g., turning gray).
      * - flag (int): A flag that determines the behavior of the aura effect. 2 means people 4 means animal etc.
      *
      * Hash: 0x2B12B6FC8B8772AB | Since: 1207
      */
-    function setDeadeyeEntityAuraWithFlag(player: number | string | Player, flag: number): void;
+    function setDeadeyeEntityAuraWithFlag(player: number | string | IPlayer, flag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x83FCD6921FC8FD05 | Since: 1207
      */
-    function setDeadeyeTaggingConfig(player: number | string | Player, filter: number): void;
+    function setDeadeyeTaggingConfig(player: number | string | IPlayer, filter: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6B5DDFB967E5073D | Since: 1207
      */
-    function setDeadeyeTaggingEnabled(player: number | string | Player, toggle: boolean): void;
+    function setDeadeyeTaggingEnabled(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * Disables the players ability to be wanted by lawmen
      *
      * Hash: 0x8674D138391FFB1B | Since: 1207
      */
-    function setDisableWantedLevel(player: number | string | Player, disable: boolean): void;
+    function setDisableWantedLevel(player: number | string | IPlayer, disable: boolean): void;
     /**
      * see personaabilities.meta
      * enum ePersonaAbilityFlag
@@ -32079,7 +32079,7 @@ export declare namespace player {
      *
      * Hash: 0x5F8E0303C229C84B | Since: 1207
      */
-    function setLockonFocusFireVfx(player: number | string | Player): void;
+    function setLockonFocusFireVfx(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -32097,13 +32097,13 @@ export declare namespace player {
      *
      * Hash: 0x8FBF9EDB378CCB8C | Since: 1207
      */
-    function setPedActiveHorse(player: number | string | Player, horse: number | Ped): void;
+    function setPedActiveHorse(player: number | string | IPlayer, horse: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xD2CB0FB0FDCB473D | Since: 1207
      */
-    function setPedAsSaddleHorseFor(player: number | string | Player, mount: number | Ped): void;
+    function setPedAsSaddleHorseFor(player: number | string | IPlayer, mount: number | IPed): void;
     /**
      * Sets the weapon that the specified player will aim with. The weapon must already be assigned to the PED. This also determines the weapon order, specifying which weapon the player will automatically switch to when the current weapon runs out of ammo.
      * Example usage:
@@ -32115,20 +32115,20 @@ export declare namespace player {
      *
      * Hash: 0xCFFC3ECCD7A5CCEB | Since: 1207
      */
-    function setAimWeapon(player: number | string | Player, weapon: number | string, weaponDrawOrder: number): void;
+    function setAimWeapon(player: number | string | IPlayer, weapon: number | string, weaponDrawOrder: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x39363DFD04E91496 | Since: 1311
      */
-    function setCanMercyKill(player: number | string | Player, toggle: boolean): void;
+    function setCanMercyKill(player: number | string | IPlayer, toggle: boolean): void;
     /**
      * Enables or disables the "Pick Up" prompt for a hat on the ground for the specified player. When set to true, the player will see a prompt to pick up the hat if they are near it.
      * Video: https://imgur.com/gallery/0xaca45ddcef6071c4-dzlnm8Z
      *
      * Hash: 0xACA45DDCEF6071C4 | Since: 1207
      */
-    function setCanPickupHat(player: number | string | Player, enable: boolean): void;
+    function setCanPickupHat(player: number | string | IPlayer, enable: boolean): void;
     /**
      * Activates the "Surrender" prompt for the specified player in the current frame.
      * Notes:
@@ -32139,13 +32139,13 @@ export declare namespace player {
      *
      * Hash: 0xCBB54CC7FFFFAB86 | Since: 1207
      */
-    function setCooperatePromptThisFrame(player: number | string | Player, targetPed: number | Ped, promptOrder: number): void;
+    function setCooperatePromptThisFrame(player: number | string | IPlayer, targetPed: number | IPed, promptOrder: number): void;
     /**
      * damageInfo: STANDARD_PED_DAMAGE, STANDARD_FEMALE_PED_DAMAGE, STANDARD_PLAYER_PED_DAMAGE_MP, STANDARD_FEMALE_PLAYER_PED_DAMAGE_MP
      *
      * Hash: 0x78B3D19AF6391A55 | Since: 1207
      */
-    function setDamageInfoOverride(player: number | string | Player, damageInfo: string): void;
+    function setDamageInfoOverride(player: number | string | IPlayer, damageInfo: string): void;
     /**
      * Sets the aura color for entities that the player can target in Deadeye mode, based on a specific hash value.
      * Known hash :
@@ -32160,13 +32160,13 @@ export declare namespace player {
      *
      * Hash: 0x768E81AE285A4B67 | Since: 1207
      */
-    function setDeadEyeAuraByHash(player: number | string | Player, auraHash: number | string): void;
+    function setDeadEyeAuraByHash(player: number | string | IPlayer, auraHash: number | string): void;
     /**
      * Sets stamina core drains peed using ranged damage scale and melee damage scale
      *
      * Hash: 0x497A6539BB0E8787 | Since: 1207
      */
-    function setDefenseModifier(player: number | string | Player, weaponDefenseMod: number, meleeDefenseMod: number): void;
+    function setDefenseModifier(player: number | string | IPlayer, weaponDefenseMod: number, meleeDefenseMod: number): void;
     /**
      * bullet damage modifier: type = 4
      * explosive damage Defense mod: type = 7
@@ -32174,13 +32174,13 @@ export declare namespace player {
      *
      * Hash: 0x93F499CAE53FCD05 | Since: 1207
      */
-    function setDefenseTypeModifier(player: number | string | Player, _type: number, defenseModifier: number): void;
+    function setDefenseTypeModifier(player: number | string | IPlayer, _type: number, defenseModifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2D3ACE3DE0A2B622 | Since: 1207
      */
-    function setExplosiveWeaponDamageModifier(player: number | string | Player, modifier: number): void;
+    function setExplosiveWeaponDamageModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * No comment provided
      *
@@ -32192,7 +32192,7 @@ export declare namespace player {
      *
      * Hash: 0x946D46CD6DFB9742 | Since: 1207
      */
-    function setHasDiscoveredCharacterNameSp(player: number | string | Player, discoveryHash: number | string): void;
+    function setHasDiscoveredCharacterNameSp(player: number | string | IPlayer, discoveryHash: number | string): void;
     /**
      * Sets the player's ability to wear hats based on the specified flag. The flag value determines whether the player can wear all hats or only the ones they own.
      *
@@ -32211,31 +32211,31 @@ export declare namespace player {
      *
      * Hash: 0xA0C683284DF027C7 | Since: 1207
      */
-    function setHatAccess(player: number | string | Player, flag: number, enable: boolean): void;
+    function setHatAccess(player: number | string | IPlayer, flag: number, enable: boolean): void;
     /**
      * Setting player's Health recharge time to zero forces immediate health regen
      *
      * Hash: 0x535ED4605F89AB6E | Since: 1207
      */
-    function setHealthRechargeTimeModifier(player: number | string | Player, modifier: number): void;
+    function setHealthRechargeTimeModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * Only applies to HUNTERCART01
      *
      * Hash: 0x6A4404BDFA62CE2C | Since: 1207
      */
-    function setHuntingWagon(player: number | string | Player, wagon: number | Vehicle): void;
+    function setHuntingWagon(player: number | string | IPlayer, wagon: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x98CD760DE43B612E | Since: 1207
      */
-    function setInteractionNegativeResponse(player: number | string | Player, speech: string): void;
+    function setInteractionNegativeResponse(player: number | string | IPlayer, speech: string): void;
     /**
      * No comment provided
      *
      * Hash: 0xC6366A585659D15C | Since: 1207
      */
-    function setInteractionPositiveResponse(player: number | string | Player, speech: string): void;
+    function setInteractionPositiveResponse(player: number | string | IPlayer, speech: string): void;
     /**
      * Sets your targeting mode for when you're in a vehicle (perhaps a mount/horse).
      * see SET_PLAYER_TARGETING_MODE for eTargetingMode
@@ -32248,31 +32248,31 @@ export declare namespace player {
      *
      * Hash: 0x43F50A7CD2482156 | Since: 1207
      */
-    function setLassoDamagePerSecond(player: number | string | Player, damage: number): void;
+    function setLassoDamagePerSecond(player: number | string | IPlayer, damage: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x4EA69188FBCE6A7D | Since: 1207
      */
-    function setLocalAccuracyFloorModifier(player: number | string | Player, accuracy: number): void;
+    function setLocalAccuracyFloorModifier(player: number | string | IPlayer, accuracy: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x292F0B6EDC82E3A4 | Since: 1207
      */
-    function setManageBuffSuperJump(player: number | string | Player): void;
+    function setManageBuffSuperJump(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xE133C1EC5300F740 | Since: 1207
      */
-    function setMaxAmmoOverrideForAmmoType(player: number | string | Player, ammoType: number | string, amount: number): void;
+    function setMaxAmmoOverrideForAmmoType(player: number | string | IPlayer, ammoType: number | string, amount: number): void;
     /**
      * mood: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/ePedMood
      *
      * Hash: 0x39BED552DB46FFA9 | Since: 1207
      */
-    function setMood(player: number | string | Player, mood: number): void;
+    function setMood(player: number | string | IPlayer, mood: number): void;
     /**
      * Name could potentially be inaccurate.
      * Used in Script Function HORSE_SETUP_PLAYER_HORSE_ATTRIBUTES (p1 = true)
@@ -32280,25 +32280,25 @@ export declare namespace player {
      *
      * Hash: 0xDF93973251FB2CA5 | Since: 1207
      */
-    function setMountStateActive(player: number | string | Player, active: boolean): void;
+    function setMountStateActive(player: number | string | IPlayer, active: boolean): void;
     /**
      * Seems to enable active horse equipment prompt when being near it and enables the control that opens the inventory as well
      *
      * Hash: 0xE6D4E435B56D5BD0 | Since: 1207
      */
-    function setOwnsMount(player: number | string | Player, mount: number | Ped): void;
+    function setOwnsMount(player: number | string | IPlayer, mount: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xD0E02AA618020D17 | Since: 1207
      */
-    function setOwnsVehicle(player: number | string | Player, vehicle: number | Vehicle): void;
+    function setOwnsVehicle(player: number | string | IPlayer, vehicle: number | IVehicle): void;
     /**
      * Shows or hides all Pick Up prompts for the specified player, including the prompt for picking up hats from the ground. When set to true, the player will see Pick Up prompts for all nearby items. If set to false, all Pick Up prompts will be hidden.
      *
      * Hash: 0xD1A70C1E8D1031FE | Since: 1207
      */
-    function setPickupPromptVisible(player: number | string | Player, enable: boolean): void;
+    function setPickupPromptVisible(player: number | string | IPlayer, enable: boolean): void;
     /**
      * Sets the stand prompt for a specific player using a predefined text entry.
      * Example usage:
@@ -32308,7 +32308,7 @@ export declare namespace player {
      *
      * Hash: 0x06C3DB00B69D5435 | Since: 1232
      */
-    function setPromptLeaveText(player: number | string | Player, promptTextKey: string): void;
+    function setPromptLeaveText(player: number | string | IPlayer, promptTextKey: string): void;
     /**
      * Sets the melee combat prompt for a specific player using a predefined text entry.
      * Example usage:
@@ -32318,7 +32318,7 @@ export declare namespace player {
      *
      * Hash: 0x0FAF95D71ED67ADE | Since: 1207
      */
-    function setPromptMeleeText(player: number | string | Player, promptTextKey: string): void;
+    function setPromptMeleeText(player: number | string | IPlayer, promptTextKey: string): void;
     /**
      * Sets the sit prompt for a specific player using a predefined text entry.
      * Example usage:
@@ -32328,93 +32328,93 @@ export declare namespace player {
      *
      * Hash: 0x988C9045531B9FCE | Since: 1232
      */
-    function setPromptSitText(player: number | string | Player, promptTextKey: string): void;
+    function setPromptSitText(player: number | string | IPlayer, promptTextKey: string): void;
     /**
      * No comment provided
      *
      * Hash: 0xDEE80FEDFDD43C9B | Since: 1207
      */
-    function setRemoteAccuracyFloorModifier(player: number | string | Player, accuracy: number): void;
+    function setRemoteAccuracyFloorModifier(player: number | string | IPlayer, accuracy: number): void;
     /**
      * https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/ePlayerResetFlags
      * https://github.com/femga/rdr3_discoveries/tree/master/AI/PLAYER_RESET_FLAGS
      *
      * Hash: 0x9F9A829C6751F3C7 | Since: 1207
      */
-    function setResetFlag(player: number | string | Player, playerResetFlag: number): void;
+    function setResetFlag(player: number | string | IPlayer, playerResetFlag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xBBADFB5E5E5766FB | Since: 1207
      */
-    function setStaminaSprintDepletionMultiplier(player: number | string | Player, multiplier: number): void;
+    function setStaminaSprintDepletionMultiplier(player: number | string | IPlayer, multiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x967FF5BC0CFE6D26 | Since: 1207
      */
-    function setTotalAccuracyModifier(player: number | string | Player, accuracy: number): void;
+    function setTotalAccuracyModifier(player: number | string | IPlayer, accuracy: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xAF341032E97FB061 | Since: 1207
      */
-    function setTrampleDamageModifier(player: number | string | Player, modifier: number): void;
+    function setTrampleDamageModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x00EB5A760638DB55 | Since: 1207
      */
-    function setWeaponDrawSpeed(player: number | string | Player, weapon: number | string, speed: number): void;
+    function setWeaponDrawSpeed(player: number | string | IPlayer, weapon: number | string, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x59F0AFF3E0A1B019 | Since: 1207
      */
-    function setWeaponGroupAsInstantKill(player: number | string | Player, weaponGroup: number | string, toggle: boolean): void;
+    function setWeaponGroupAsInstantKill(player: number | string | IPlayer, weaponGroup: number | string, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xFC79DCC94D0A5897 | Since: 1207
      */
-    function setWeaponGroupDamageModifier(player: number | string | Player, weaponGroup: number | string, modifier: number): void;
+    function setWeaponGroupDamageModifier(player: number | string | IPlayer, weaponGroup: number | string, modifier: number): void;
     /**
      * Decreases the damage the player receives while on horseback
      * Previous name: _SET_RECEIVED_HORSEBACK_DAMAGE_DECREASE
      *
      * Hash: 0xB427911EA6DFFEF3 | Since: 1207
      */
-    function setReceivedDamageTakenOnHorsebackModifier(player: number | string | Player, damageDecrease: number): void;
+    function setReceivedDamageTakenOnHorsebackModifier(player: number | string | IPlayer, damageDecrease: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xDC68829BB3F37023 | Since: 1207
      */
-    function setShowInfoCard(player: number | string | Player, showingInfoCard: boolean): void;
+    function setShowInfoCard(player: number | string | IPlayer, showingInfoCard: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xAE4BCC79C587EBBF | Since: 1207
      */
-    function setSpecialAbilityActivationCost(player: number | string | Player, activationCost: number): void;
+    function setSpecialAbilityActivationCost(player: number | string | IPlayer, activationCost: number): void;
     /**
      * Only used in R* SP Script short_update
      *
      * Hash: 0xC0B1C05B313693D1 | Since: 1207
      */
-    function setSpecialAbilityDisableTimer(player: number | string | Player, timer: number): void;
+    function setSpecialAbilityDisableTimer(player: number | string | IPlayer, timer: number): void;
     /**
      * durationCost: per second
      *
      * Hash: 0xB783F75940B23014 | Since: 1207
      */
-    function setSpecialAbilityDurationCost(player: number | string | Player, durationCost: number): void;
+    function setSpecialAbilityDurationCost(player: number | string | IPlayer, durationCost: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x5A498FCA232F71E1 | Since: 1207
      */
-    function setSpecialAbilityMultiplier(player: number | string | Player, multiplier: number): void;
+    function setSpecialAbilityMultiplier(player: number | string | IPlayer, multiplier: number): void;
     /**
      * SPECIAL_ABILITY_NONE = -1,
      * SPECIAL_ABILITY_CAR_SLOWDOWN,
@@ -32427,7 +32427,7 @@ export declare namespace player {
      *
      * Hash: 0x00BA333DA05ADC23 | Since: 1207
      */
-    function setSpecialAbilityType(player: number | string | Player, _type: number): void;
+    function setSpecialAbilityType(player: number | string | IPlayer, _type: number): void;
     /**
      * No comment provided
      *
@@ -32439,33 +32439,33 @@ export declare namespace player {
      *
      * Hash: 0x11A7FF918EF6BC66 | Since: 1207
      */
-    function setWeaponDegradationModifier(player: number | string | Player, modifier: number): void;
+    function setWeaponDegradationModifier(player: number | string | IPlayer, modifier: number): void;
     /**
      * Drains Deadeye by given amount.
      *
      * Hash: 0x200114E99552462B | Since: 1207
      */
-    function specialAbilityDrainByAmount(player: number | string | Player, amount: number): void;
+    function specialAbilityDrainByAmount(player: number | string | IPlayer, amount: number): void;
     /**
      * Returns Deadeye value from player
      *
      * Hash: 0x029884FB65821B07 | Since: 1207
      */
-    function specialAbilityGetAmountCached(player: number | string | Player): number;
+    function specialAbilityGetAmountCached(player: number | string | IPlayer): number;
     /**
      * Restores Deadeye by given amount.
      * Params: p2, p3, p4 = 0, 0, 1 in R* Scripts
      *
      * Hash: 0x51345AE20F22C261 | Since: 1207
      */
-    function specialAbilityRestoreByAmount(player: number | string | Player, amount: number): void;
+    function specialAbilityRestoreByAmount(player: number | string | IPlayer, amount: number): void;
     /**
      * Only used in R* SP Script short_update
      * Restores Deadeye Outer Ring
      *
      * Hash: 0x2498035289B5688F | Since: 1207
      */
-    function specialAbilityRestoreOuterRing(player: number | string | Player, amount: number): void;
+    function specialAbilityRestoreOuterRing(player: number | string | IPlayer, amount: number): void;
     /**
      * Activates the special ability for the specified player.
      * Example usage:
@@ -32477,37 +32477,37 @@ export declare namespace player {
      *
      * Hash: 0xBBA140062B15A8AC | Since: 1207
      */
-    function specialAbilitySetActivate(player: number | string | Player): void;
+    function specialAbilitySetActivate(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0xAE637BB8EF017875 | Since: 1207
      */
-    function specialAbilitySetDisabled(player: number | string | Player, disabled: boolean): void;
+    function specialAbilitySetDisabled(player: number | string | IPlayer, disabled: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC0B21F235C02139C | Since: 1207
      */
-    function specialAbilitySetEagleEyeDisabled(player: number | string | Player): void;
+    function specialAbilitySetEagleEyeDisabled(player: number | string | IPlayer): void;
     /**
      * Params: p1 = -1 in R* Scripts
      *
      * Hash: 0x1D77B47AFA584E90 | Since: 1207
      */
-    function specialAbilityStartRestore(player: number | string | Player, abilityType: number): void;
+    function specialAbilityStartRestore(player: number | string | IPlayer, abilityType: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9DAE1380CC5C6451 | Since: 1207
      */
-    function unregisterEagleEyeForEntity(player: number | string | Player, entity: number | Entity): void;
+    function unregisterEagleEyeForEntity(player: number | string | IPlayer, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x9A957912CE2EABD1 | Since: 1207
      */
-    function unregisterEagleEyeTrailsForEntity(player: number | string | Player, entity: number | Entity): void;
+    function unregisterEagleEyeTrailsForEntity(player: number | string | IPlayer, entity: number | IEntity): void;
 }
 export declare namespace population {
     /**
@@ -32696,7 +32696,7 @@ export declare namespace population {
      *
      * Hash: 0xF74E134F40192884 | Since: 1207
      */
-    function setPedShouldIgnoreAvoidanceVolumes(ped: number | Ped): void;
+    function setPedShouldIgnoreAvoidanceVolumes(ped: number | IPed): void;
 }
 export declare namespace posse {
     /**
@@ -32892,7 +32892,7 @@ export declare namespace propset {
      *
      * Hash: 0x9609DBDDE18FAD8C | Since: 1207
      */
-    function createInstanceAttachedToEntity(hash: number | string, pos: Vector3, entity: number | Entity): any;
+    function createInstanceAttachedToEntity(hash: number | string, pos: Vector3, entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -32916,7 +32916,7 @@ export declare namespace propset {
      *
      * Hash: 0x75F90E4051CC084C | Since: 1207
      */
-    function addAdditionalForVehicle(vehicle: number | Vehicle, propset: number | string): void;
+    function addAdditionalForVehicle(vehicle: number | IVehicle, propset: number | string): void;
     /**
      * To remove propsets either parse a zero as hash or call 0xE31C0CB1C3186D40
      * 0xA6A9712955F53D9C returns lightPropset Hashes
@@ -32924,13 +32924,13 @@ export declare namespace propset {
      *
      * Hash: 0xC0F0417A90402742 | Since: 1207
      */
-    function addLightToVehicle(vehicle: number | Vehicle, lightPropset: number | string): void;
+    function addLightToVehicle(vehicle: number | IVehicle, lightPropset: number | string): void;
     /**
      * List of vehicle propsets (wagons & trains): https://pastebin.com/1CsnvGLu / https://pastebin.com/v7TtqTgE
      *
      * Hash: 0xD80FAF919A2E56EA | Since: 1207
      */
-    function addForVehicle(vehicle: number | Vehicle, propset: number | string): void;
+    function addForVehicle(vehicle: number | IVehicle, propset: number | string): void;
     /**
      * propsetType: https://github.com/femga/rdr3_discoveries/blob/master/objects/propsets_list.lua
      * placementType: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/PlacementType
@@ -32949,7 +32949,7 @@ export declare namespace propset {
      *
      * Hash: 0xACA7FB30269096D4 | Since: 1207
      */
-    function createInstanceAttachedToEntity2(hash: number | string, pos: Vector3, entity: number | Entity): any;
+    function createInstanceAttachedToEntity2(hash: number | string, pos: Vector3, entity: number | IEntity): any;
     /**
      * No comment provided
      *
@@ -32967,13 +32967,13 @@ export declare namespace propset {
      *
      * Hash: 0xC9B4B3A36F81FD75 | Since: 1207
      */
-    function doesVehicleHaveAnyLight(vehicle: number | Vehicle): boolean;
+    function doesVehicleHaveAnyLight(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x53784CEA0159439B | Since: 1207
      */
-    function doesVehicleHaveAny(vehicle: number | Vehicle): boolean;
+    function doesVehicleHaveAny(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
@@ -32997,25 +32997,25 @@ export declare namespace propset {
      *
      * Hash: 0xCFC0BD09BB1B73FF | Since: 1207
      */
-    function getTrainCarriage(trainCarriage: number | Entity): any;
+    function getTrainCarriage(trainCarriage: number | IEntity): any;
     /**
      * Returns PropSet handle to be used with _GET_PROP_SET_MODEL
      *
      * Hash: 0xA079300AF757FB1A | Since: 1207
      */
-    function getVehicleLight(vehicle: number | Vehicle): any;
+    function getVehicleLight(vehicle: number | IVehicle): any;
     /**
      * No comment provided
      *
      * Hash: 0xCE2ACD6F602803E5 | Since: 1207
      */
-    function getVehicle(vehicle: number | Vehicle): any;
+    function getVehicle(vehicle: number | IVehicle): any;
     /**
      * No comment provided
      *
      * Hash: 0x36F69E7A22655653 | Since: 1207
      */
-    function getVehicleHash(vehicle: number | Vehicle): number;
+    function getVehicleHash(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -33033,7 +33033,7 @@ export declare namespace propset {
      *
      * Hash: 0x8F3333F0A6900B3C | Since: 1207
      */
-    function hasVehicleTrailerLoaded(vehicle: number | Vehicle, wagonIndex: number): boolean;
+    function hasVehicleTrailerLoaded(vehicle: number | IVehicle, wagonIndex: number): boolean;
     /**
      * No comment provided
      *
@@ -33045,19 +33045,19 @@ export declare namespace propset {
      *
      * Hash: 0x0790473EEE1977D3 | Since: 1207
      */
-    function isVehicleLightLoaded(vehicle: number | Vehicle): boolean;
+    function isVehicleLightLoaded(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x155B2FBE72D7D1D0 | Since: 1207
      */
-    function isVehicleLoaded(vehicle: number | Vehicle): boolean;
+    function isVehicleLoaded(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7264F9CA87A9830B | Since: 1207
      */
-    function isVehicleLoadedAdditional(vehicle: number | Vehicle): boolean;
+    function isVehicleLoadedAdditional(vehicle: number | IVehicle): boolean;
     /**
      * Relocates an existing prop set to specified coordinates and adjusts its heading (rotation) without affecting the prop set's internal layout or structure. The `propSet` parameter identifies the prop set to move. The parameters (`coordsX`, `coordsY`, `coordsZ`) set the new central position of the prop set, while `heading` specifies its rotation around the Z-axis (in degrees). When `onGroundProperly` is true, the prop set automatically aligns accurately with the terrain
      *
@@ -33075,13 +33075,13 @@ export declare namespace propset {
      *
      * Hash: 0xE31C0CB1C3186D40 | Since: 1207
      */
-    function removeVehicleLights(vehicle: number | Vehicle): void;
+    function removeVehicleLights(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x3BCF32FF37EA9F1D | Since: 1207
      */
-    function removeVehicles(vehicle: number | Vehicle): void;
+    function removeVehicles(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -33949,19 +33949,19 @@ export declare namespace shapetest {
      *
      * Hash: 0x377906D8A31E5586 | Since: 1207
      */
-    function startExpensiveSynchronousLosProbe(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, entityToIgnore: number | Entity): number;
+    function startExpensiveSynchronousLosProbe(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, entityToIgnore: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xFE466162C4401D18 | Since: 1207
      */
-    function startBox(pos: Vector3, dimensionsX: number, dimensionsY: number, dimensionsZ: number, rot: Vector3, rotationOrder: number, flags: number, entityToIgnore: number | Entity, options: number): number;
+    function startBox(pos: Vector3, dimensionsX: number, dimensionsY: number, dimensionsZ: number, rot: Vector3, rotationOrder: number, flags: number, entityToIgnore: number | IEntity, options: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x28579D1B8F8AAC80 | Since: 1207
      */
-    function startCapsule(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entityToIgnore: number | Entity): number;
+    function startCapsule(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entityToIgnore: number | IEntity): number;
     /**
      * Asynchronously starts a line-of-sight (raycast) world probe shape test.
      *
@@ -33971,19 +33971,19 @@ export declare namespace shapetest {
      *
      * Hash: 0x7EE9F5D83DD4F90E | Since: 1207
      */
-    function startLosProbe(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, entity: number | Entity): number;
+    function startLosProbe(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, entity: number | IEntity): number;
     /**
      * Old name: _START_SHAPE_TEST_SURROUNDING_COORDS
      *
      * Hash: 0x9839013D8B6014F1 | Since: 1207
      */
-    function startMouseCursorLosProbe(flag: number, entity: number | Entity, flag2: number): [number, Vector3, Vector3];
+    function startMouseCursorLosProbe(flag: number, entity: number | IEntity, flag2: number): [number, Vector3, Vector3];
     /**
      * No comment provided
      *
      * Hash: 0xAA5B7C8309F73230 | Since: 1207
      */
-    function startSweptSphere(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entity: number | Entity): number;
+    function startSweptSphere(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -34375,19 +34375,19 @@ export declare namespace stats {
      *
      * Hash: 0x6B1044FDC2B09101 | Since: 1207
      */
-    function statAddBountyTarget(unlockHash: number | string, ped: number | Ped): void;
+    function statAddBountyTarget(unlockHash: number | string, ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x262EF7CF49CF1EB9 | Since: 1207
      */
-    function statBountyCaptured(entity: number | Entity): void;
+    function statBountyCaptured(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0xB22F05732F72F70C | Since: 1207
      */
-    function statBountyEscaped(ped: number | Ped): void;
+    function statBountyEscaped(ped: number | IPed): void;
     /**
      * statId: see STAT_ID_IS_VALID
      *
@@ -34607,7 +34607,7 @@ export declare namespace stats {
      *
      * Hash: 0x8C889E4CBB4B2356 | Since: 1207
      */
-    function _0x8C889E4CBB4B2356(ped: number | Ped): void;
+    function _0x8C889E4CBB4B2356(ped: number | IPed): void;
     /**
      * statId: see STAT_ID_IS_VALID
      *
@@ -34649,7 +34649,7 @@ export declare namespace stats {
      *
      * Hash: 0xA596890CF55B5095 | Since: 1436
      */
-    function _0xA596890CF55B5095(ped: number | Ped): void;
+    function _0xA596890CF55B5095(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -34667,7 +34667,7 @@ export declare namespace stats {
      *
      * Hash: 0xBE66B26B6529E943 | Since: 1311
      */
-    function _0xBE66B26B6529E943(unlockHash: number | string, ped: number | Ped, animalType: number | string): void;
+    function _0xBE66B26B6529E943(unlockHash: number | string, ped: number | IPed, animalType: number | string): void;
     /**
      * No comment provided
      *
@@ -34691,7 +34691,7 @@ export declare namespace stats {
      *
      * Hash: 0xD64DBC8B0424135F | Since: 1207
      */
-    function _0xD64DBC8B0424135F(ped: number | Ped, animalType: number | string): void;
+    function _0xD64DBC8B0424135F(ped: number | IPed, animalType: number | string): void;
     /**
      * No comment provided
      *
@@ -34709,7 +34709,7 @@ export declare namespace stats {
      *
      * Hash: 0xDDBD560745B1EE98 | Since: 1207
      */
-    function _0xDDBD560745B1EE98(chalHash: number | string, goalHash: number | string, player: number | string | Player): number;
+    function _0xDDBD560745B1EE98(chalHash: number | string, goalHash: number | string, player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -34741,13 +34741,13 @@ export declare namespace stats {
      *
      * Hash: 0xF2B5ABDE09958689 | Since: 1311
      */
-    function _0xF2B5ABDE09958689(unlockHash: number | string, ped1: number | Ped, ped2: number | Ped): void;
+    function _0xF2B5ABDE09958689(unlockHash: number | string, ped1: number | IPed, ped2: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xF8181B5EF156862C | Since: 1207
      */
-    function _0xF8181B5EF156862C(ped: number | Ped): void;
+    function _0xF8181B5EF156862C(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -34771,7 +34771,7 @@ export declare namespace stats {
      *
      * Hash: 0x831BF01C56149A8A | Since: 1207
      */
-    function statCarriedSatchelItemFromPed(ped: number | Ped): void;
+    function statCarriedSatchelItemFromPed(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -34801,13 +34801,13 @@ export declare namespace stats {
      *
      * Hash: 0xDA26263C87CCE9C1 | Since: 1207
      */
-    function statItemFishCaught(fish: number | Ped, weight: number, category: number | string, subcategory: number | string): void;
+    function statItemFishCaught(fish: number | IPed, weight: number, category: number | string, subcategory: number | string): void;
     /**
      * statId: see STAT_ID_IS_VALID
      *
      * Hash: 0x5420D398A42917FC | Since: 1311
      */
-    function statPheromoneCooldownLegendaryAnimal(entity: number | Entity): [boolean, any];
+    function statPheromoneCooldownLegendaryAnimal(entity: number | IEntity): [boolean, any];
 }
 export declare namespace streaming {
     /**
@@ -34929,7 +34929,7 @@ export declare namespace streaming {
      *
      * Hash: 0xF87DE697E9A06EC6 | Since: 1207
      */
-    function isEntityFocus(entity: number | Entity): boolean;
+    function isEntityFocus(entity: number | IEntity): boolean;
     /**
      * Old name: _IS_IMAP_ACTIVE_2
      *
@@ -35139,7 +35139,7 @@ export declare namespace streaming {
      *
      * Hash: 0x955AEDD58F4BD309 | Since: 1207
      */
-    function setFocusEntity(entity: number | Entity): void;
+    function setFocusEntity(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -35522,7 +35522,7 @@ export declare namespace task {
      *
      * Hash: 0x3923EC958249657D | Since: 1207
      */
-    function addFleeTargetPed(ped: number | Ped, targetPed: number | Ped): void;
+    function addFleeTargetPed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
@@ -35564,25 +35564,25 @@ export declare namespace task {
      *
      * Hash: 0x2D19BC4DF626CBE7 | Since: 1207
      */
-    function canStartItemInteraction(ped: number | Ped, itemHash: number | string, interactionAnimHash: number | string): boolean;
+    function canStartItemInteraction(ped: number | IPed, itemHash: number | string, interactionAnimHash: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC35B5CDB2824CF69 | Since: 1207
      */
-    function clearDrivebyUnderneathDrivingTask(ped: number | Ped): void;
+    function clearDrivebyUnderneathDrivingTask(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x176CECF6F920D707 | Since: 1207
      */
-    function clearPedSecondary(ped: number | Ped): void;
+    function clearPedSecondary(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xE1EF3C1216AFF2CD | Since: 1207
      */
-    function clearPeds(ped: number | Ped): void;
+    function clearPeds(ped: number | IPed): void;
     /**
      * Immediately stops the pedestrian from whatever it's doing. They stop fighting, animations, etc. they forget what they were doing.
      *
@@ -35590,7 +35590,7 @@ export declare namespace task {
      *
      * Hash: 0xAAA34F8A7CB32098 | Since: 1207
      */
-    function clearPedsImmediately(ped: number | Ped, resetCrouch: boolean): void;
+    function clearPedsImmediately(ped: number | IPed, resetCrouch: boolean): void;
     /**
      * No comment provided
      *
@@ -35626,7 +35626,7 @@ export declare namespace task {
      *
      * Hash: 0x794AB1379A74064D | Since: 1207
      */
-    function createScenarioPointHashAttachedToEntity(entity: number | Entity, scenarioHash: number | string, pos: Vector3, heading: number): number;
+    function createScenarioPointHashAttachedToEntity(entity: number | IEntity, scenarioHash: number | string, pos: Vector3, heading: number): number;
     /**
      * No comment provided
      *
@@ -35668,7 +35668,7 @@ export declare namespace task {
      *
      * Hash: 0xEED08A3A98B847E2 | Since: 1207
      */
-    function endDuel(ped: number | Ped): void;
+    function endDuel(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -35686,25 +35686,25 @@ export declare namespace task {
      *
      * Hash: 0x534AEBA6E5ED4CAB | Since: 1207
      */
-    function getActiveVehicleMissionType(vehicle: number | Vehicle): number;
+    function getActiveVehicleMissionType(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x0CCFE72B43C9CF96 | Since: 1207
      */
-    function getIsCarriableEntity(entity: number | Entity): boolean;
+    function getIsCarriableEntity(entity: number | IEntity): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8785E6E40C7A8819 | Since: 1207
      */
-    function getIsPedAimingInTheAir(ped: number | Ped): boolean;
+    function getIsPedAimingInTheAir(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB0760331C7AA4155 | Since: 1207
      */
-    function getIsActive(ped: number | Ped, taskIndex: number): boolean;
+    function getIsActive(ped: number | IPed, taskIndex: number): boolean;
     /**
      * No comment provided
      *
@@ -35716,43 +35716,43 @@ export declare namespace task {
      *
      * Hash: 0x804425C4BBD00883 | Since: 1207
      */
-    function getItemInteractionItemId(ped: number | Ped): number;
+    function getItemInteractionItemId(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xBC864A70AD55E0C1 | Since: 1207
      */
-    function getItemInteractionPromptProgress(ped: number | Ped, inputContext: number | string): number;
+    function getItemInteractionPromptProgress(ped: number | IPed, inputContext: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0x6AA3DCA2C6F5EB6D | Since: 1207
      */
-    function getItemInteractionState(ped: number | Ped): number;
+    function getItemInteractionState(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x8517D4A6CA8513ED | Since: 1207
      */
-    function getPedDesiredMoveBlendRatio(ped: number | Ped): number;
+    function getPedDesiredMoveBlendRatio(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xE6A877C64CAF1BC5 | Since: 1207
      */
-    function getPedWaypointDistance(ped: number | Ped): number;
+    function getPedWaypointDistance(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xD39A2F3E7FCAFF08 | Since: 1207
      */
-    function getPedWaypointOverrideSpeed(ped: number | Ped): number;
+    function getPedWaypointOverrideSpeed(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x2720AAA75001E094 | Since: 1207
      */
-    function getPedWaypointProgress(ped: number | Ped): number;
+    function getPedWaypointProgress(ped: number | IPed): number;
     /**
      * Old name: _GET_SCENARIO_POINT_ENTITY
      *
@@ -35764,7 +35764,7 @@ export declare namespace task {
      *
      * Hash: 0xD04241BBF6D03A5E | Since: 1207
      */
-    function getRansackScenarioPointPedIsUsing(ped: number | Ped): any;
+    function getRansackScenarioPointPedIsUsing(ped: number | IPed): any;
     /**
      * Note: scenariosInRadius is an array, and its size and values should be aligned to 8 bytes.
      *
@@ -35793,7 +35793,7 @@ export declare namespace task {
      *
      * Hash: 0x77F1BEB8863288D5 | Since: 1207
      */
-    function getScriptStatus(ped: number | Ped, taskHash: number | string): number;
+    function getScriptStatus(ped: number | IPed, taskHash: number | string): number;
     /**
      * returned values:
      * 0 to 7 = task that's currently in progress, 0 meaning the first one.
@@ -35801,19 +35801,19 @@ export declare namespace task {
      *
      * Hash: 0x00A9010CFE1E3533 | Since: 1207
      */
-    function getSequenceProgress(ped: number | Ped): number;
+    function getSequenceProgress(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xB4F47213DF45A64C | Since: 1207
      */
-    function getMoveNetworkEvent(ped: number | Ped, eventName: string): boolean;
+    function getMoveNetworkEvent(ped: number | IPed, eventName: string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x717E4D1F2048376D | Since: 1207
      */
-    function getMoveNetworkState(ped: number | Ped): string;
+    function getMoveNetworkState(ped: number | IPed): string;
     /**
      * No comment provided
      *
@@ -35825,13 +35825,13 @@ export declare namespace task {
      *
      * Hash: 0x9824CFF8FC66E159 | Since: 1207
      */
-    function getVehicleWaypointProgress(vehicle: number | Vehicle): number;
+    function getVehicleWaypointProgress(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x416B62AC8B9E5BBD | Since: 1207
      */
-    function getVehicleWaypointTargetPoint(vehicle: number | Vehicle): number;
+    function getVehicleWaypointTargetPoint(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -35843,19 +35843,19 @@ export declare namespace task {
      *
      * Hash: 0x8785E6E40C7A8818 | Since: 1207
      */
-    function isDrivebyUnderneathDrivingTask(ped: number | Ped): boolean;
+    function isDrivebyUnderneathDrivingTask(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xCF9B71C0AF824036 | Since: 1355
      */
-    function isEmoteRunning(ped: number | Ped): boolean;
+    function isEmoteRunning(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA320EF046186FA3B | Since: 1207
      */
-    function isMountedWeaponUnderneathDrivingTask(ped: number | Ped): boolean;
+    function isMountedWeaponUnderneathDrivingTask(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -35885,85 +35885,85 @@ export declare namespace task {
      *
      * Hash: 0xAA135F9482C82CC3 | Since: 1207
      */
-    function isPedActiveInScenario(ped: number | Ped, scenario: number): boolean;
+    function isPedActiveInScenario(ped: number | IPed, scenario: number): boolean;
     /**
      * This function is hard-coded to always return false.
      *
      * Hash: 0x90A09F3A45FED688 | Since: 1207
      */
-    function isPedBeingArrested(ped: number | Ped): boolean;
+    function isPedBeingArrested(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x74E559B3BC910685 | Since: 1207
      */
-    function isPedCuffed(ped: number | Ped): boolean;
+    function isPedCuffed(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0C3CB2E600C8977D | Since: 1207
      */
-    function isPedExitingScenario(ped: number | Ped): boolean;
+    function isPedExitingScenario(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2A74E1D5F2F00EEC | Since: 1207
      */
-    function isPedGettingUp(ped: number | Ped): boolean;
+    function isPedGettingUp(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF330A5C062B29BED | Since: 1207
      */
-    function isPedInHitReact(ped: number | Ped): boolean;
+    function isPedInHitReact(ped: number | IPed): boolean;
     /**
      * This native checks if a ped is on the ground, in pain from a (gunshot) wound.
      *
      * Hash: 0xDEB6D52126E7D640 | Since: 1207
      */
-    function isPedInWrithe(ped: number | Ped): boolean;
+    function isPedInWrithe(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC5286FFC176F28A2 | Since: 1207
      */
-    function isPedRunning(ped: number | Ped): boolean;
+    function isPedRunning(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x038B1F1674F0E242 | Since: 1207
      */
-    function isPedRunningInspection(ped: number | Ped): boolean;
+    function isPedRunningInspection(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEC7E480FF8BD0BED | Since: 1207
      */
-    function isPedRunningItemInteraction(ped: number | Ped): boolean;
+    function isPedRunningItemInteraction(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x916B8E075ABC8B4E | Since: 1207
      */
-    function isPedScenarioReactLooking(ped: number | Ped): boolean;
+    function isPedScenarioReactLooking(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x57E457CD2C0FC168 | Since: 1207
      */
-    function isPedSprinting(ped: number | Ped): boolean;
+    function isPedSprinting(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xAC29253EEF8F0180 | Since: 1207
      */
-    function isPedStill(ped: number | Ped): boolean;
+    function isPedStill(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDE4C184B2B9B071A | Since: 1207
      */
-    function isPedWalking(ped: number | Ped): boolean;
+    function isPedWalking(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -35987,13 +35987,13 @@ export declare namespace task {
      *
      * Hash: 0x921CE12C489C4C41 | Since: 1207
      */
-    function isMoveNetworkActive(ped: number | Ped): boolean;
+    function isMoveNetworkActive(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x30ED88D5E0C56A37 | Since: 1207
      */
-    function isMoveNetworkReadyForTransition(ped: number | Ped): boolean;
+    function isMoveNetworkReadyForTransition(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -36005,7 +36005,7 @@ export declare namespace task {
      *
      * Hash: 0xE03B3F2D3DC59B64 | Since: 1207
      */
-    function isWaypointPlaybackGoingOnForPed(ped: number | Ped, waypointRecording: string): boolean;
+    function isWaypointPlaybackGoingOnForPed(ped: number | IPed, waypointRecording: string): boolean;
     /**
      * No comment provided
      *
@@ -36017,7 +36017,7 @@ export declare namespace task {
      *
      * Hash: 0x67BFCED22909834D | Since: 1207
      */
-    function makeObjectNotCarriable(_object: number | Object): void;
+    function makeObjectNotCarriable(_object: number | IObject): void;
     /**
      * Note: patrolRoute must be prefixed with 'miss_' for it to be valid
      *
@@ -36035,19 +36035,19 @@ export declare namespace task {
      *
      * Hash: 0x295E3CCEC879CCD7 | Since: 1207
      */
-    function pedHasUseScenario(ped: number | Ped): boolean;
+    function pedHasUseScenario(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x748040460F8DF5DC | Since: 1207
      */
-    function playAnimOnRunningScenario(ped: number | Ped, animDict: string, animName: string): void;
+    function playAnimOnRunningScenario(ped: number | IPed, animDict: string, animName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x77A1EEC547E7FCF1 | Since: 1207
      */
-    function playEntityScriptedAnim(entity: number | Entity): any;
+    function playEntityScriptedAnim(entity: number | IEntity): any;
     /**
      * lookIntensity: see SET_PED_SHOULD_PLAY_FLEE_SCENARIO_EXIT
      *
@@ -36057,13 +36057,13 @@ export declare namespace task {
      *
      * Hash: 0xE7FA07624574B79A | Since: 1207
      */
-    function reactLookAt(ped: number | Ped, targetPed: number | Ped, lookIntensity: number, exitAnimation: number, duration: number, targetPed2: number | Ped): void;
+    function reactLookAt(ped: number | IPed, targetPed: number | IPed, lookIntensity: number, exitAnimation: number, duration: number, targetPed2: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x541E5B41DCA45828 | Since: 1207
      */
-    function reactLookAtEnd(ped: number | Ped, exitAnimation: number): void;
+    function reactLookAtEnd(ped: number | IPed, exitAnimation: number): void;
     /**
      * No comment provided
      *
@@ -36087,7 +36087,7 @@ export declare namespace task {
      *
      * Hash: 0xD01015C7316AE176 | Since: 1207
      */
-    function requestMoveNetworkStateTransition(ped: number | Ped, name: string): void;
+    function requestMoveNetworkStateTransition(ped: number | IPed, name: string): void;
     /**
      * No comment provided
      *
@@ -36111,7 +36111,7 @@ export declare namespace task {
      *
      * Hash: 0x87B66D77D545DB66 | Since: 1207
      */
-    function setAnimFilter(entity: number | Entity, filterName: string, priority: number, secondary: boolean): void;
+    function setAnimFilter(entity: number | IEntity, filterName: string, priority: number, secondary: boolean): void;
     /**
      * No comment provided
      *
@@ -36123,19 +36123,19 @@ export declare namespace task {
      *
      * Hash: 0xE5B302114D8162EE | Since: 1207
      */
-    function setDrivebyTarget(shootingPed: number | Ped, targetPed: number | Ped, targetVehicle: number | Vehicle, pos: Vector3): void;
+    function setDrivebyTarget(shootingPed: number | IPed, targetPed: number | IPed, targetVehicle: number | IVehicle, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x5C9B84BD7D31D908 | Since: 1207
      */
-    function setDriveCruiseSpeed(driver: number | Ped, cruiseSpeed: number): void;
+    function setDriveCruiseSpeed(driver: number | IPed, cruiseSpeed: number): void;
     /**
      * Not implemented.
      *
      * Hash: 0x404A5AA9B9F0B746 | Since: 1207
      */
-    function setDriveMaxCruiseSpeed(ped: number | Ped, maxCruiseSpeed: number): void;
+    function setDriveMaxCruiseSpeed(ped: number | IPed, maxCruiseSpeed: number): void;
     /**
      * No comment provided
      *
@@ -36148,79 +36148,79 @@ export declare namespace task {
      *
      * Hash: 0x1BF9D36A5EAFFBAE | Since: 1207
      */
-    function setEnhancedBreakFree(ped: number | Ped, clipset: string): boolean;
+    function setEnhancedBreakFree(ped: number | IPed, clipset: string): boolean;
     /**
      * Makes the ped ragdoll like when falling from a great height
      *
      * Hash: 0x8C825BDC7741D37C | Since: 1207
      */
-    function setHighFall(ped: number | Ped): void;
+    function setHighFall(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x1E982AC8716912C5 | Since: 1207
      */
-    function setPedDesiredMoveBlendRatio(ped: number | Ped): void;
+    function setPedDesiredMoveBlendRatio(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4455517B28441E60 | Since: 1207
      */
-    function setPedPathAvoidFire(ped: number | Ped, avoidFire: boolean): void;
+    function setPedPathAvoidFire(ped: number | IPed, avoidFire: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE361C5C71C431A4F | Since: 1207
      */
-    function setPedPathCanDropFromHeight(ped: number | Ped, toggle: boolean): void;
+    function setPedPathCanDropFromHeight(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x8E06A6FE76C9EFF4 | Since: 1207
      */
-    function setPedPathCanUseClimbovers(ped: number | Ped, toggle: boolean): void;
+    function setPedPathCanUseClimbovers(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x77A5B103C87F476E | Since: 1207
      */
-    function setPedPathCanUseLadders(ped: number | Ped, toggle: boolean): void;
+    function setPedPathCanUseLadders(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x88E32DB8C1A4AA4B | Since: 1207
      */
-    function setPedPathClimbCostModifier(ped: number | Ped, modifier: number): void;
+    function setPedPathClimbCostModifier(ped: number | IPed, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xE8C296B75EACC357 | Since: 1207
      */
-    function setPedPathDeepSnowCostModifier(ped: number | Ped, modifier: number): void;
+    function setPedPathDeepSnowCostModifier(ped: number | IPed, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x3AD8EFF9703BE657 | Since: 1207
      */
-    function setPedPathFoliageCostModifier(ped: number | Ped, modifier: number): void;
+    function setPedPathFoliageCostModifier(ped: number | IPed, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xF35425A4204367EC | Since: 1207
      */
-    function setPedPathMayEnterWater(ped: number | Ped, mayEnterWater: boolean): void;
+    function setPedPathMayEnterWater(ped: number | IPed, mayEnterWater: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x38FE1EC73743793C | Since: 1207
      */
-    function setPedPathPreferToAvoidWater(ped: number | Ped, avoidWater: boolean): void;
+    function setPedPathPreferToAvoidWater(ped: number | IPed, avoidWater: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xED98E10B0AFCE4B4 | Since: 1207
      */
-    function setPedWaypointRouteOffset(ped: number | Ped): boolean;
+    function setPedWaypointRouteOffset(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -36244,13 +36244,13 @@ export declare namespace task {
      *
      * Hash: 0xB0A6CFD2C69C1088 | Since: 1207
      */
-    function setMoveNetworkSignalBool(ped: number | Ped, signalName: string, value: boolean): void;
+    function setMoveNetworkSignalBool(ped: number | IPed, signalName: string, value: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xD5BB4025AE449A4E | Since: 1207
      */
-    function setMoveNetworkSignalFloat(ped: number | Ped, signalName: string, value: number): void;
+    function setMoveNetworkSignalFloat(ped: number | IPed, signalName: string, value: number): void;
     /**
      * No comment provided
      *
@@ -36269,19 +36269,19 @@ export declare namespace task {
      *
      * Hash: 0xAE72E7DF013AAA61 | Since: 1207
      */
-    function startItemInteraction(ped: number | Ped, itemHash: number | string, interactionAnimHash: number | string, flag: number): void;
+    function startItemInteraction(ped: number | IPed, itemHash: number | string, interactionAnimHash: number | string, flag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xEE08C992D238C5D1 | Since: 1207
      */
-    function stopAnimPlayback(ped: number | Ped): void;
+    function stopAnimPlayback(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x97FF36A1D40EA00A | Since: 1207
      */
-    function stopAnim(ped: number | Ped, animDictionary: string, animationName: string): void;
+    function stopAnim(ped: number | IPed, animDictionary: string, animationName: string): void;
     /**
      * Makes the specified ped achieve the specified heading.
      *
@@ -36291,97 +36291,97 @@ export declare namespace task {
      *
      * Hash: 0x93B93A37987F1F3D | Since: 1207
      */
-    function achieveHeading(ped: number | Ped, heading: number, timeout: number): void;
+    function achieveHeading(ped: number | IPed, heading: number, timeout: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x4AF1D73861212F52 | Since: 1207
      */
-    function aimAtCoord(ped: number | Ped): void;
+    function aimAtCoord(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xCF7569BD0FB480A0 | Since: 1207
      */
-    function aimAtEntity(ped: number | Ped): void;
+    function aimAtEntity(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x6671F3EEC681BDA1 | Since: 1207
      */
-    function aimGunAtCoord(ped: number | Ped, pos: Vector3, time: number): void;
+    function aimGunAtCoord(ped: number | IPed, pos: Vector3, time: number): void;
     /**
      * duration: the amount of time in milliseconds to do the task.  -1 will keep the task going until either another task is applied, or CLEAR_ALL_TASKS() is called with the ped
      *
      * Hash: 0x9B53BB6E8943AF53 | Since: 1207
      */
-    function aimGunAtEntity(ped: number | Ped, targetEntity: number | Entity, duration: number): void;
+    function aimGunAtEntity(ped: number | IPed, targetEntity: number | IEntity, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x4B39D8F9D0FE7749 | Since: 1207
      */
-    function ambientAnimalHunt(ped: number | Ped): void;
+    function ambientAnimalHunt(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x37C13863ABA1B4A3 | Since: 1207
      */
-    function ambientAnimalStalk(ped: number | Ped): void;
+    function ambientAnimalStalk(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x979D93372FC8C565 | Since: 1207
      */
-    function animalAlerted(ped: number | Ped): void;
+    function animalAlerted(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xA899B61C66F09134 | Since: 1207
      */
-    function animalFlee(ped: number | Ped, targetPed: number | Ped): void;
+    function animalFlee(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/tasks/TASK_ANIMAL_INTERACTION
      *
      * Hash: 0xCD181A959CFDD7F4 | Since: 1207
      */
-    function animalInteraction(ped: number | Ped, targetPed: number | Ped, interactionType: number | string, interactionModel: number | string, skipIdleAnimationClip: boolean): void;
+    function animalInteraction(ped: number | IPed, targetPed: number | IPed, interactionType: number | string, interactionModel: number | string, skipIdleAnimationClip: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x21FDF9A25CFE1CE5 | Since: 1207
      */
-    function animalUnalerted(ped: number | Ped): void;
+    function animalUnalerted(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x8C038A39C4A4B6D6 | Since: 1207
      */
-    function animalWrithe(ped: number | Ped): void;
+    function animalWrithe(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xF3B9A78A178572B1 | Since: 1207
      */
-    function arrestPed(ped: number | Ped, target: number | Ped): void;
+    function arrestPed(ped: number | IPed, target: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x83BFC1F836B2F3F2 | Since: 1207
      */
-    function bark(ped: number | Ped, barkAtTarget: number | Ped, mood: number | string): void;
+    function bark(ped: number | IPed, barkAtTarget: number | IPed, mood: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x15C86013127CE63F | Since: 1207
      */
-    function boatMission(pedDriver: number | Ped, boat: number | Vehicle, pos: Vector3, maxSpeed: number, drivingStyle: number): void;
+    function boatMission(pedDriver: number | IPed, boat: number | IVehicle, pos: Vector3, maxSpeed: number, drivingStyle: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xBB28D1BC9EA8A6A5 | Since: 1207
      */
-    function breakVehicleDoorLock(ped: number | Ped, vehicle: number | Vehicle): void;
+    function breakVehicleDoorLock(ped: number | IPed, vehicle: number | IVehicle): void;
     /**
      * carriableSlot:
      * 7 > Back of a horse
@@ -36392,146 +36392,146 @@ export declare namespace task {
      *
      * Hash: 0xF0B4F759F35CC7F5 | Since: 1207
      */
-    function carriable(entity: number | Entity, carryConfig: number | string, carrier: number | Ped, carriableSlot: number, flags: number): void;
+    function carriable(entity: number | IEntity, carryConfig: number | string, carrier: number | IPed, carriableSlot: number, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x95A6C46A31D1917D | Since: 1207
      */
-    function clearDefensiveArea(ped: number | Ped): void;
+    function clearDefensiveArea(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x0F804F1DB19B9689 | Since: 1207
      */
-    function clearLookAt(ped: number | Ped): void;
+    function clearLookAt(ped: number | IPed): void;
     /**
      * Climbs or vaults the nearest thing.
      *
      * Hash: 0x89D9FCC2435112F1 | Since: 1207
      */
-    function climb(ped: number | Ped, unused: boolean): void;
+    function climb(ped: number | IPed, unused: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xB6C987F9285A3814 | Since: 1207
      */
-    function climbLadder(ped: number | Ped): void;
+    function climbLadder(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xEE3AA414CF99F368 | Since: 1207
      */
-    function combatAnimalChargePed(ped: number | Ped, targetPed: number | Ped): void;
+    function combatAnimalChargePed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xF960F3D57B660E96 | Since: 1207
      */
-    function combatAnimalWarn(ped: number | Ped): void;
+    function combatAnimalWarn(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x8182B561A29BD597 | Since: 1207
      */
-    function combatHatedTargets(ped: number | Ped, radius: number): void;
+    function combatHatedTargets(ped: number | IPed, radius: number): void;
     /**
      * Despite its name, it only attacks ONE hated target. The one closest hated target.
      *
      * Hash: 0x7BF835BB9E2698C8 | Since: 1207
      */
-    function combatHatedTargetsAroundPed(ped: number | Ped, radius: number, flags: number): void;
+    function combatHatedTargetsAroundPed(ped: number | IPed, radius: number, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2BBA30B854534A0C | Since: 1207
      */
-    function combatHatedTargetsAroundPedTimed(ped: number | Ped, radius: number, time: number, flags: number): void;
+    function combatHatedTargetsAroundPedTimed(ped: number | IPed, radius: number, time: number, flags: number): void;
     /**
      * Despite its name, it only attacks ONE hated target. The one closest to the specified position.
      *
      * Hash: 0x4CF5F55DAC3280A0 | Since: 1207
      */
-    function combatHatedTargetsInArea(ped: number | Ped, pos: Vector3, radius: number, flags: number): void;
+    function combatHatedTargetsInArea(ped: number | IPed, pos: Vector3, radius: number, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xB5BC69D9C4060BC3 | Since: 1207
      */
-    function combatHatedTargetsNoLosTest(ped: number | Ped, radius: number): void;
+    function combatHatedTargetsNoLosTest(ped: number | IPed, radius: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xF166E48407BAC484 | Since: 1207
      */
-    function combatPed(ped: number | Ped, targetPed: number | Ped): void;
+    function combatPed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x944F30DCB7096BDE | Since: 1207
      */
-    function combatPedTimed(ped: number | Ped, targetPed: number | Ped): void;
+    function combatPedTimed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xE017CF6E2527FE4F | Since: 1207
      */
-    function companionAmbient(ped: number | Ped): void;
+    function companionAmbient(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x3A2A2071DF5CC569 | Since: 1207
      */
-    function confront(ped: number | Ped, targetPed: number | Ped): boolean;
+    function confront(ped: number | IPed, targetPed: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3EB1FE9E8E908E15 | Since: 1207
      */
-    function cower(ped: number | Ped, duration: number, pedToCowerFrom: number | Ped): void;
+    function cower(ped: number | IPed, duration: number, pedToCowerFrom: number | IPed): void;
     /**
      * flags: See TASK_ENTER_VEHICLE
      *
      * Hash: 0x0A11F3BDEC03ED5F | Since: 1207
      */
-    function disembarkNearestTrainCarriage(ped: number | Ped, flags: number): void;
+    function disembarkNearestTrainCarriage(ped: number | IPed, flags: number): void;
     /**
      * Dismounts the ped from the animal it's mounted on. taskFlag affects what side the rider gets off. p2-p5 are almost always 0.
      * flags: See TASK_ENTER_VEHICLE
      *
      * Hash: 0x48E92D3DDE23C23A | Since: 1207
      */
-    function dismountAnimal(rider: number | Ped, taskFlag: number, targetPed: number | Ped): void;
+    function dismountAnimal(rider: number | IPed, taskFlag: number, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x2F8AF0E82773A171 | Since: 1207
      */
-    function driveBy(driverPed: number | Ped, targetPed: number | Ped, targetVehicle: number | Vehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void;
+    function driveBy(driverPed: number | IPed, targetPed: number | IPed, targetVehicle: number | IVehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xA14B5FBF986BAC23 | Since: 1207
      */
-    function duck(ped: number | Ped, time: number): void;
+    function duck(ped: number | IPed, time: number): void;
     /**
      * Params: p4 either 0.2f, 0.25f, 0.31f, 0.4f
      *
      * Hash: 0x5D5B0D5BC3626E5A | Since: 1207
      */
-    function duel(ped: number | Ped, entity: number | Entity, vPosOpponentX: number, vPosOpponentY: number, vPosOpponentZ: number, fOpponentHead: number): void;
+    function duel(ped: number | IPed, entity: number | IEntity, vPosOpponentX: number, vPosOpponentY: number, vPosOpponentZ: number, fOpponentHead: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x17CA98707B15926A | Since: 1207
      */
-    function dumpCarriableFromParent(ped: number | Ped, ped2: number | Ped, entity: number | Entity): void;
+    function dumpCarriableFromParent(ped: number | IPed, ped2: number | IPed, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0xBD7949BD07299672 | Since: 1207
      */
-    function eat(ped: number | Ped): void;
+    function eat(ped: number | IPed): void;
     /**
      * flags:
      * MOVE_WHILST_WAITING_FOR_PATH = (1 << 0),
@@ -36543,19 +36543,19 @@ export declare namespace task {
      *
      * Hash: 0xC2329B0206426644 | Since: 1207
      */
-    function enterAnimScene(ped: number | Ped, animScene: any, entityName: string, playbackListName: string, enterSpeed: number, bAutoStart: boolean, flag: number): void;
+    function enterAnimScene(ped: number | IPed, animScene: any, entityName: string, playbackListName: string, enterSpeed: number, bAutoStart: boolean, flag: number): void;
     /**
      * flags: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eEnterExitVehicleFlags
      *
      * Hash: 0xC20E50AA46D09CA8 | Since: 1207
      */
-    function enterVehicle(ped: number | Ped, vehicle: number | Vehicle, timeout: number, seat: number, speed: number, flag: number): void;
+    function enterVehicle(ped: number | IPed, vehicle: number | IVehicle, timeout: number, seat: number, speed: number, flag: number): void;
     /**
      * `Params: p2 is returned by BUILTIN::SHIFT_LEFT`
      *
      * Hash: 0x5F22926E1BCE9B08 | Since: 1207
      */
-    function evasiveAnim(ped1: number | Ped, ped2: number | Ped): void;
+    function evasiveAnim(ped1: number | IPed, ped2: number | IPed): void;
     /**
      * No comment provided
      *
@@ -36567,7 +36567,7 @@ export declare namespace task {
      *
      * Hash: 0x6F1C49F275BD25B3 | Since: 1207
      */
-    function everyoneLeaveVehicleInOrder(vehicle: number | Vehicle): void;
+    function everyoneLeaveVehicleInOrder(vehicle: number | IVehicle): void;
     /**
      * Adds a new point to the current point route. Call TASK_FLUSH_ROUTE before the first call to this. Call TASK_FOLLOW_POINT_ROUTE to make the Ped go the route.
      *
@@ -36582,7 +36582,7 @@ export declare namespace task {
      *
      * Hash: 0x58428248BF4B64E4 | Since: 1207
      */
-    function fleeCoord(ped: number | Ped, pos: Vector3, fleeStyle: number, duration: number): void;
+    function fleeCoord(ped: number | IPed, pos: Vector3, fleeStyle: number, duration: number): void;
     /**
      * No comment provided
      *
@@ -36595,7 +36595,7 @@ export declare namespace task {
      *
      * Hash: 0xFD45175A6DFD7CE9 | Since: 1207
      */
-    function fleePed(ped: number | Ped, fleeFromTarget: number | Ped, fleeStyle: number, flag: number): void;
+    function fleePed(ped: number | IPed, fleeFromTarget: number | IPed, fleeStyle: number, flag: number): void;
     /**
      * No comment provided
      *
@@ -36613,97 +36613,97 @@ export declare namespace task {
      *
      * Hash: 0x72997893BFB8ECCC | Since: 1207
      */
-    function flyingCircle(ped: number | Ped): void;
+    function flyingCircle(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xE86A537B5A3C297C | Since: 1207
      */
-    function flyAway(ped: number | Ped, fleeFromTarget: number | Ped): void;
+    function flyAway(ped: number | IPed, fleeFromTarget: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xD6CFC2D59DA72042 | Since: 1207
      */
-    function flyToCoord(ped: number | Ped, travelMbr: number, pos: Vector3): void;
+    function flyToCoord(ped: number | IPed, travelMbr: number, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x489FFCCCE7392B55 | Since: 1207
      */
-    function followAndConverseWithPed(ped: number | Ped, targetPed: number | Ped): void;
+    function followAndConverseWithPed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4D2B787BAE9AB760 | Since: 1207
      */
-    function followEntityAlongWaypointRecordingAtOffset(ped0: number | Ped, ped1: number | Ped, waypointRecording: string): void;
+    function followEntityAlongWaypointRecordingAtOffset(ped0: number | IPed, ped1: number | IPed, waypointRecording: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x2D532EAA142CF83F | Since: 1207
      */
-    function followEntityWhileAimingAtEntity(ped: number | Ped): void;
+    function followEntityWhileAimingAtEntity(ped: number | IPed): void;
     /**
      * If no timeout, set timeout to -1.
      *
      * Hash: 0x15D3A79D4E44B913 | Since: 1207
      */
-    function followNavMeshToCoord(ped: number | Ped, pos: Vector3, speedMultiplier: number, timeout: number, stoppingRange: number, flags: number, heading: number): void;
+    function followNavMeshToCoord(ped: number | IPed, pos: Vector3, speedMultiplier: number, timeout: number, stoppingRange: number, flags: number, heading: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x17F58B88D085DBAC | Since: 1207
      */
-    function followNavMeshToCoordAdvanced(ped: number | Ped, pos: Vector3, speedMultiplier: number, timeout: number, stoppingRange: number, flags: number, entity: number | Entity, unk: number): void;
+    function followNavMeshToCoordAdvanced(ped: number | IPed, pos: Vector3, speedMultiplier: number, timeout: number, stoppingRange: number, flags: number, entity: number | IEntity, unk: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x1B1475414E70DD8E | Since: 1207
      */
-    function followPavementToCoord(ped: number | Ped): any;
+    function followPavementToCoord(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x0E14C5550DC3CD1D | Since: 1207
      */
-    function followPointRoute(ped: number | Ped): void;
+    function followPointRoute(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x2E3676282C18A692 | Since: 1207
      */
-    function followToOffsetOfCoord(ped: number | Ped): void;
+    function followToOffsetOfCoord(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x304AE42E357B8C7E | Since: 1207
      */
-    function followToOffsetOfEntity(ped: number | Ped, entity: number | Entity, offsetX: number, offsetY: number, offsetZ: number, movementSpeed: number, timeout: number, stoppingRange: number, persistFollowing: boolean, walkOnly: boolean): void;
+    function followToOffsetOfEntity(ped: number | IPed, entity: number | IEntity, offsetX: number, offsetY: number, offsetZ: number, movementSpeed: number, timeout: number, stoppingRange: number, persistFollowing: boolean, walkOnly: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0759591819534F7B | Since: 1207
      */
-    function followWaypointRecording(ped: number | Ped, waypointRecording: string, flag: number): void;
+    function followWaypointRecording(ped: number | IPed, waypointRecording: string, flag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x0CFC13EBC19BCA52 | Since: 1207
      */
-    function followWaypointRecordingAdvanced(ped: number | Ped): void;
+    function followWaypointRecordingAdvanced(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xBE9B0520BD7C445B | Since: 1207
      */
-    function followWaypointRecordingAtOffset(ped: number | Ped, waypointRecording: string): void;
+    function followWaypointRecordingAtOffset(ped: number | IPed, waypointRecording: string): void;
     /**
      * motionStateHash: see FORCE_PED_MOTION_STATE
      *
      * Hash: 0x4F056E1AFFEF17AB | Since: 1207
      */
-    function forceMotionState(ped: number | Ped, motionStateHash: number | string): void;
+    function forceMotionState(ped: number | IPed, motionStateHash: number | string): void;
     /**
      * ped = Ped you want to perform this task.
      * target = the Entity they should aim at.
@@ -36712,73 +36712,73 @@ export declare namespace task {
      *
      * Hash: 0xA9DA48FAB8A76C12 | Since: 1207
      */
-    function gotoEntityAiming(ped: number | Ped, target: number | Entity, distanceToStopAt: number, StartAimingDist: number): void;
+    function gotoEntityAiming(ped: number | IPed, target: number | IEntity, distanceToStopAt: number, StartAimingDist: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xE39B4FF4FDEBDE27 | Since: 1207
      */
-    function gotoEntityOffset(ped: number | Ped, entity: number | Entity, pos: Vector3, duration: number): void;
+    function gotoEntityOffset(ped: number | IPed, entity: number | IEntity, pos: Vector3, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x338E7EF52B6095A9 | Since: 1207
      */
-    function gotoEntityOffsetXy(ped: number | Ped, entity: number | Entity, duration: number, targetRadius: number, xOffset: number, yOffset: number, moveBlendRatio: number, offsetFlags: number): void;
+    function gotoEntityOffsetXy(ped: number | IPed, entity: number | IEntity, duration: number, targetRadius: number, xOffset: number, yOffset: number, moveBlendRatio: number, offsetFlags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xFA6DA9D151769392 | Since: 1311
      */
-    function gotoEntityOffsetXyz(ped: number | Ped): void;
+    function gotoEntityOffsetXyz(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x41B0832CA96B5351 | Since: 1207
      */
-    function gotoEntityOffsetXyzAiming(ped: number | Ped): void;
+    function gotoEntityOffsetXyzAiming(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x901BD69984400F62 | Since: 1207
      */
-    function gotoEntityOffsetXyAiming(ped: number | Ped): void;
+    function gotoEntityOffsetXyAiming(ped: number | IPed): void;
     /**
      * Tells the ped to go to a coord, without using the navemesh. if timeBeforeTeleport is -1 the ped will never warp, p8 is always 0 or 1 still unknown
      *
      * Hash: 0xD76B57B44F1E6F8B | Since: 1207
      */
-    function goStraightToCoord(ped: number | Ped, pos: Vector3, moveBlendRatio: number, timeBeforeTeleport: number, finalHeading: number, targetRadius: number): void;
+    function goStraightToCoord(ped: number | IPed, pos: Vector3, moveBlendRatio: number, timeBeforeTeleport: number, finalHeading: number, targetRadius: number): void;
     /**
      * Tells the ped to go to an offset coord from an entity, without using the navmesh. if timeBeforeTeleport is -1 the ped will never warp, p7 is 1 or 0 still unknown param
      *
      * Hash: 0x61E360B7E040D12E | Since: 1207
      */
-    function goStraightToCoordRelativeToEntity(ped: number | Ped, entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, moveBlendRatio: number, timeBeforeTeleport: number): void;
+    function goStraightToCoordRelativeToEntity(ped: number | IPed, entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number, moveBlendRatio: number, timeBeforeTeleport: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA55547801EB331FC | Since: 1207
      */
-    function goToCoordAndAimAtHatedEntitiesNearCoord(ped: number | Ped, goToLocationX: number, goToLocationY: number, goToLocationZ: number, focusLocationX: number, focusLocationY: number, focusLocationZ: number, speed: number, shootAtEnemies: boolean, distanceToStopAt: number, noRoadsDistance: number, unkTrue: boolean, unkFlag: number, aimingFlag: number, firingPattern: number | string): void;
+    function goToCoordAndAimAtHatedEntitiesNearCoord(ped: number | IPed, goToLocationX: number, goToLocationY: number, goToLocationZ: number, focusLocationX: number, focusLocationY: number, focusLocationZ: number, speed: number, shootAtEnemies: boolean, distanceToStopAt: number, noRoadsDistance: number, unkTrue: boolean, unkFlag: number, aimingFlag: number, firingPattern: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x87BD711FC31EA273 | Since: 1207
      */
-    function goToCoordAndAimAtHatedEntitiesNearCoordUsingCombatStyle(ped: number | Ped): void;
+    function goToCoordAndAimAtHatedEntitiesNearCoordUsingCombatStyle(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x5BC448CB78FA3E88 | Since: 1207
      */
-    function goToCoordAnyMeans(ped: number | Ped, pos: Vector3, speed: number, entity: number | Entity, walkingStyle: number): void;
+    function goToCoordAnyMeans(ped: number | IPed, pos: Vector3, speed: number, entity: number | IEntity, walkingStyle: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x1DD45F9ECFDB1BC9 | Since: 1207
      */
-    function goToCoordAnyMeansExtraParams(ped: number | Ped, pos: Vector3, speed: number, walkingStyle: number): void;
+    function goToCoordAnyMeansExtraParams(ped: number | IPed, pos: Vector3, speed: number, walkingStyle: number): void;
     /**
      * This native allows to control the cruise speed of where you want the ped to go
      * 3rd param might be the entity ped is in? like boat or wagon, 12th param might be the cruiseSpeed of the entity ped is in?
@@ -36786,37 +36786,37 @@ export declare namespace task {
      *
      * Hash: 0xB8ECD61F531A7B02 | Since: 1207
      */
-    function goToCoordAnyMeansExtraParamsWithCruiseSpeed(ped: number | Ped, gotoCoords: Vector3, cruiseSpeed: number, entity: number | Entity, cruiseSpeed_2: number): void;
+    function goToCoordAnyMeansExtraParamsWithCruiseSpeed(ped: number | IPed, gotoCoords: Vector3, cruiseSpeed: number, entity: number | IEntity, cruiseSpeed_2: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x11315AB3385B8AC0 | Since: 1207
      */
-    function goToCoordWhileAimingAtCoord(ped: number | Ped): void;
+    function goToCoordWhileAimingAtCoord(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x639C0425A0B4E77E | Since: 1207
      */
-    function goToCoordWhileAimingAtCoordUsingCombatStyle(ped: number | Ped): void;
+    function goToCoordWhileAimingAtCoordUsingCombatStyle(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xB2A16444EAD9AE47 | Since: 1207
      */
-    function goToCoordWhileAimingAtEntity(ped1: number | Ped, pos: Vector3, ped2: number | Ped, firingPattern: number | string): void;
+    function goToCoordWhileAimingAtEntity(ped1: number | IPed, pos: Vector3, ped2: number | IPed, firingPattern: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x78426D0982D083C9 | Since: 1207
      */
-    function goToCoordWhileAimingAtEntityUsingCombatStyle(ped: number | Ped): void;
+    function goToCoordWhileAimingAtEntityUsingCombatStyle(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x6A071245EB0D1882 | Since: 1207
      */
-    function goToEntity(ped: number | Ped, target: number | Entity, duration: number, distance: number, speed: number): void;
+    function goToEntity(ped: number | IPed, target: number | IEntity, duration: number, distance: number, speed: number): void;
     /**
      * shootatEntity:
      * If true, peds will shoot at Entity till it is dead.
@@ -36824,13 +36824,13 @@ export declare namespace task {
      *
      * Hash: 0x97465886D35210E9 | Since: 1207
      */
-    function goToEntityWhileAimingAtEntity(ped: number | Ped): void;
+    function goToEntityWhileAimingAtEntity(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xCEF0117C233026AD | Since: 1207
      */
-    function goToEntityWhileAimingAtEntityUsingCombatStyle(ped: number | Ped): void;
+    function goToEntityWhileAimingAtEntityUsingCombatStyle(ped: number | IPed): void;
     /**
      * enum eWhistleType
      * {
@@ -36843,122 +36843,122 @@ export declare namespace task {
      *
      * Hash: 0xBAD6545608CECA6E | Since: 1207
      */
-    function goToWhistle(ped: number | Ped, p1: number | Ped, whistleType: number): void;
+    function goToWhistle(ped: number | IPed, p1: number | IPed, whistleType: number): void;
     /**
      * grappleStyle: AR_GRAPPLE_MOUNT_STANDING_FROM_FRONT, AR_GRAPPLE_MOUNT_STANDING_FROM_RIGHT, AR_GRAPPLE_MOUNT_STANDING_FROM_BACK, AR_GRAPPLE_MOUNT_STANDING_FROM_LEFT, AR_GRAPPLE_MOUNT_FROM_FRONT, AR_WOLF_EXECUTION_ENTER_FROM_BACK, AR_GRAPPLE_DRAG_FRONT_ON_ASS, AR_GRAPPLE_FRONT_FROM_LEFT_FAR, AR_BEAR_CHALLENGE_FRONT, AR_GRAPPLE_FRONT_FROM_FRONT, AR_GRAPPLE_MOUNT_FACEUP_FROM_FRONT
      *
      * Hash: 0x779A2FFACEFAEA7B | Since: 1207
      */
-    function grapple(ped: number | Ped, targetPed: number | Ped, grappleStyle: number | string): boolean;
+    function grapple(ped: number | IPed, targetPed: number | IPed, grappleStyle: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB9FB242EACCAF30F | Since: 1207
      */
-    function guard(ped: number | Ped): void;
+    function guard(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xD2A207EEBDF9889B | Since: 1207
      */
-    function guardAssignedDefensiveArea(ped: number | Ped): void;
+    function guardAssignedDefensiveArea(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4A58A47A72E3FCB4 | Since: 1207
      */
-    function guardCurrentPosition(ped: number | Ped): void;
+    function guardCurrentPosition(ped: number | IPed): void;
     /**
      * flags: 0 = HANDS_UP_NOTHING; 1 = HANDS_UP_STRAIGHT_TO_LOOP
      *
      * Hash: 0xF2EAB31979A7F910 | Since: 1207
      */
-    function handsUp(ped: number | Ped, duration: number, facingPed: number | Ped, timeToFacePed: number, flags: number): void;
+    function handsUp(ped: number | IPed, duration: number, facingPed: number | IPed, timeToFacePed: number, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9030AD4B6207BFE8 | Since: 1207
      */
-    function hitchAnimal(ped: number | Ped, scenarioPoint: number, flag: number): void;
+    function hitchAnimal(ped: number | IPed, scenarioPoint: number, flag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6AFD8FE0D723328F | Since: 1207
      */
-    function hogtieable(ped: number | Ped): void;
+    function hogtieable(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x27829AFD3E03AC1A | Since: 1207
      */
-    function hogtieTargetPed(ped: number | Ped, targetPed: number | Ped): void;
+    function hogtieTargetPed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/tasks/TASK_HORSE_ACTION
      * Params: p2, p3 are set to 0 in R* Scripts
      *
      * Hash: 0xA09CFD29100F06C3 | Since: 1207
      */
-    function horseAction(ped: number | Ped, action: number, targetPed: number | Ped): void;
+    function horseAction(ped: number | IPed, action: number, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x5C8514540D27FBFB | Since: 1207
      */
-    function investigate(ped: number | Ped): void;
+    function investigate(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x0AE4086104E067B1 | Since: 1207
      */
-    function jump(ped: number | Ped, unused: boolean): void;
+    function jump(ped: number | IPed, unused: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xF90427F00A495A28 | Since: 1207
      */
-    function knockedOut(ped: number | Ped, permanently: boolean): void;
+    function knockedOut(ped: number | IPed, permanently: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x42AC6401ABB8C7E5 | Since: 1207
      */
-    function knockedOutAndHogtied(ped: number | Ped): void;
+    function knockedOutAndHogtied(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xC716EB2BD16370A3 | Since: 1207
      */
-    function lassoPed(ped: number | Ped, targetPed: number | Ped): void;
+    function lassoPed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xAA19711D33C6708C | Since: 1207
      */
-    function leadAndConverse(ped: number | Ped): void;
+    function leadAndConverse(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x9A7A4A54596FE09D | Since: 1207
      */
-    function leadHorse(ped: number | Ped, horse: number | Ped): void;
+    function leadHorse(ped: number | IPed, horse: number | IPed): void;
     /**
      * flags: See TASK_ENTER_VEHICLE
      *
      * Hash: 0x504D54DF3F6F2247 | Since: 1207
      */
-    function leaveAnyVehicle(ped: number | Ped, taskFlag: number): void;
+    function leaveAnyVehicle(ped: number | IPed, taskFlag: number): void;
     /**
      * flags: See TASK_ENTER_VEHICLE
      *
      * Hash: 0xD3DBCE61A490BE02 | Since: 1207
      */
-    function leaveVehicle(ped: number | Ped, vehicle: number | Vehicle, flags: number, unkPed: number | Ped): void;
+    function leaveVehicle(ped: number | IPed, vehicle: number | IVehicle, flags: number, unkPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x6FA46612594F7973 | Since: 1207
      */
-    function lookAtCoord(ped: number | Ped, pos: Vector3, duration: number, flags: number): void;
+    function lookAtCoord(ped: number | IPed, pos: Vector3, duration: number, flags: number): void;
     /**
      * param3: duration in ms, use -1 to look forever
      * param4: using 2048 is fine
@@ -36966,25 +36966,25 @@ export declare namespace task {
      *
      * Hash: 0x69F4BE8C8CC4796C | Since: 1207
      */
-    function lookAtEntity(ped: number | Ped, lookAtTarget: number | Entity, duration: number): void;
+    function lookAtEntity(ped: number | IPed, lookAtTarget: number | IEntity, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x48FAE038401A2888 | Since: 1207
      */
-    function lootEntity(ped: number | Ped, entity: number | Entity): void;
+    function lootEntity(ped: number | IPed, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0xCF1501CBC4059412 | Since: 1207
      */
-    function lootNearestEntity(ped: number | Ped, pos: Vector3): void;
+    function lootNearestEntity(ped: number | IPed, pos: Vector3): void;
     /**
      * Params: p2: AR_TAKEDOWN_FRONT, AR_EXECUTION_FRONT, 0 in R* Scripts
      *
      * Hash: 0x482C99D0B38D1B0A | Since: 1207
      */
-    function melee(ped: number | Ped, targetPed: number | Ped, p2: number | string): boolean;
+    function melee(ped: number | IPed, targetPed: number | IPed, p2: number | string): boolean;
     /**
      * timer: in ms, if it reaches 0 it will auto warp the ped on the horse
      * mountStyle: See TASK_ENTER_VEHICLE
@@ -36992,92 +36992,92 @@ export declare namespace task {
      *
      * Hash: 0x92DB0739813C5186 | Since: 1207
      */
-    function mountAnimal(ped: number | Ped, mount: number | Ped, timer: number, seatIndex: number, pedSpeed: number, mountStyle: number): void;
+    function mountAnimal(ped: number | IPed, mount: number | IPed, timer: number, seatIndex: number, pedSpeed: number, mountStyle: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x4AA5AA97C65E4A2F | Since: 1207
      */
-    function moveBeInFormation(ped: number | Ped): void;
+    function moveBeInFormation(ped: number | IPed): void;
     /**
      * Params: moveBlendRatio commonly 1.25f, p5 is always 0 in R* Scripts
      *
      * Hash: 0x79482C12482A860D | Since: 1207
      */
-    function moveFollowRoadUsingNavmesh(ped: number | Ped, moveBlendRatio: number, pos: Vector3): void;
+    function moveFollowRoadUsingNavmesh(ped: number | IPed, moveBlendRatio: number, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x8AA1593AEC087A29 | Since: 1207
      */
-    function moveInTraffic(ped: number | Ped): void;
+    function moveInTraffic(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x13DED0BC45600FE1 | Since: 1207
      */
-    function moveInTrafficAwayFromEntity(ped: number | Ped): void;
+    function moveInTrafficAwayFromEntity(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xDCA3A13F7A45338B | Since: 1207
      */
-    function moveInTrafficToDestination(ped: number | Ped): void;
+    function moveInTrafficToDestination(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x7B6A04F98BBAFB2C | Since: 1207
      */
-    function moveNetworkAdvancedByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, pos: Vector3, rot: Vector3, flag: number): any;
+    function moveNetworkAdvancedByNameWithInitParams(ped: number | IPed, moveNetworkDefName: string, pos: Vector3, rot: Vector3, flag: number): any;
     /**
      * No comment provided
      *
      * Hash: 0xF92171093BCABED4 | Since: 1207
      */
-    function moveNetworkAdvancedByNameWithInitParamsAttached(ped: number | Ped): void;
+    function moveNetworkAdvancedByNameWithInitParamsAttached(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x2D537BA194896636 | Since: 1207
      */
-    function moveNetworkByName(ped: number | Ped, task: string, multiplier: number, animDict: string, flags: number): void;
+    function moveNetworkByName(ped: number | IPed, task: string, multiplier: number, animDict: string, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x139805C2A67C4795 | Since: 1207
      */
-    function moveNetworkByNameWithInitParams(ped: number | Ped, moveNetworkDefName: string, animDict: string, flags: number): any;
+    function moveNetworkByNameWithInitParams(ped: number | IPed, moveNetworkDefName: string, animDict: string, flags: number): any;
     /**
      * No comment provided
      *
      * Hash: 0xBDA5DF49D080FE4E | Since: 1207
      */
-    function patrol(ped: number | Ped, patrolRoute: string): void;
+    function patrol(ped: number | IPed, patrolRoute: string): void;
     /**
      * This tasks the ped to do nothing for the specified amount of milliseconds.
      * This is useful if you want to add a delay between tasks when using a sequence task.
      *
      * Hash: 0xE73A266DB0CA9042 | Since: 1207
      */
-    function pause(ped: number | Ped, ms: number): void;
+    function pause(ped: number | IPed, ms: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xD04FE6765D990A06 | Since: 1207
      */
-    function pedSlideToCoord(ped: number | Ped, pos: Vector3, heading: number): void;
+    function pedSlideToCoord(ped: number | IPed, pos: Vector3, heading: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x5ABA3986D90D8A3B | Since: 1207
      */
-    function performSequence(ped: number | Ped, taskSequenceId: number): void;
+    function performSequence(ped: number | IPed, taskSequenceId: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x89221B16730234F0 | Since: 1207
      */
-    function performSequenceFromProgress(ped: number | Ped): void;
+    function performSequenceFromProgress(ped: number | IPed): void;
     /**
      * Old name: _TASK_PERFORM_SEQUENCE_2
      *
@@ -37089,37 +37089,37 @@ export declare namespace task {
      *
      * Hash: 0x4391700CBD89C3D8 | Since: 1207
      */
-    function persistentCharacter(ped: number | Ped): void;
+    function persistentCharacter(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x502EC17B1BED4BFA | Since: 1207
      */
-    function pickupCarriableEntity(ped: number | Ped, entity: number | Entity): void;
+    function pickupCarriableEntity(ped: number | IPed, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x55B0ECFD98596624 | Since: 1207
      */
-    function pickUpWeapon(ped: number | Ped): void;
+    function pickUpWeapon(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xC7F0B43DCDC57E3D | Since: 1207
      */
-    function placeCarriedEntityAtCoord(ped: number | Ped, entity: number | Entity, pos: Vector3, flags: number): void;
+    function placeCarriedEntityAtCoord(ped: number | IPed, entity: number | IEntity, pos: Vector3, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x6D3D87C57B3D52C7 | Since: 1207
      */
-    function placeCarriedEntityOnMount(ped: number | Ped, entity: number | Entity, mount: number | Ped): void;
+    function placeCarriedEntityOnMount(ped: number | IPed, entity: number | IEntity, mount: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x965FEC691D55E9BF | Since: 1207
      */
-    function plantBomb(ped: number | Ped, pos: Vector3, heading: number): void;
+    function plantBomb(ped: number | IPed, pos: Vector3, heading: number): void;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/animations
      * flags: https://github.com/Halen84/RDR3-Native-Flags-And-Enums/tree/main/eScriptedAnimFlags
@@ -37127,14 +37127,14 @@ export declare namespace task {
      *
      * Hash: 0xEA47FE3719165B94 | Since: 1207
      */
-    function playAnim(ped: number | Ped, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flags: number, playbackRate: number, ikFlags: number, taskFilter: string): void;
+    function playAnim(ped: number | IPed, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flags: number, playbackRate: number, ikFlags: number, taskFilter: string): void;
     /**
      * flags: see TASK_PLAY_ANIM
      * ikFlags: see TASK_PLAY_ANIM
      *
      * Hash: 0x83CDB10EA29B370B | Since: 1207
      */
-    function playAnimAdvanced(ped: number | Ped, animDict: string, animName: string, pos: Vector3, rot: Vector3, speed: number, speedMultiplier: number, duration: number, flags: number): void;
+    function playAnimAdvanced(ped: number | IPed, animDict: string, animName: string, pos: Vector3, rot: Vector3, speed: number, speedMultiplier: number, duration: number, flags: number): void;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/animations/kit_emotes_list.lua
      * emote: https://alloc8or.re/rdr3/doc/enums/eEmote.txt
@@ -37160,166 +37160,166 @@ export declare namespace task {
      *
      * Hash: 0xB31A277C1AC7B7FF | Since: 1207
      */
-    function playEmoteWithHash(ped: number | Ped, emoteType: number, playbackMode: number, emote: number | string, isSecondaryTask: boolean, canBreakOut: boolean, disableEarlyOutAnimTag: boolean, ignoreInvalidMainTask: boolean, destroyProps: boolean): void;
+    function playEmoteWithHash(ped: number | IPed, emoteType: number, playbackMode: number, emote: number | string, isSecondaryTask: boolean, canBreakOut: boolean, disableEarlyOutAnimTag: boolean, ignoreInvalidMainTask: boolean, destroyProps: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xAD67214236AB1CFE | Since: 1207
      */
-    function playUpperAnimFacingEntity(ped: number | Ped, animDict: string, animName: string, entity: number | Entity): void;
+    function playUpperAnimFacingEntity(ped: number | IPed, animDict: string, animName: string, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x87BE56724650408E | Since: 1207
      */
-    function police(ped: number | Ped): boolean;
+    function police(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4172393E6BE1FECE | Since: 1207
      */
-    function putPedDirectlyIntoCover(ped: number | Ped, pos: Vector3, timeout: number, coverpoint: number): void;
+    function putPedDirectlyIntoCover(ped: number | IPed, pos: Vector3, timeout: number, coverpoint: number): void;
     /**
      * grappleStyle: AR_GRAPPLE_STRUGGLE, AR_ALLIGATOR_LEG_GRAB_CHALLENGE_FAIL, AR_GRAPPLE_BACK_FROM_BACK, AR_GRAPPLE_BACK_DEFEND, AR_GRAPPLE_FRONT_FROM_FRONT
      *
      * Hash: 0xA05F3F20889D7A5B | Since: 1207
      */
-    function putPedDirectlyIntoGrapple(ped: number | Ped, grappleTarget: number | Ped, grappleStyle: number | string): void;
+    function putPedDirectlyIntoGrapple(ped: number | IPed, grappleTarget: number | IPed, grappleStyle: number | string): void;
     /**
      * meleeStyles: AR_GRAPPLE_BACK_FROM_BACK, AR_GRAPPLE_MOUNT_FACEDOWN_FROM_FRONT, AR_ALLIGATOR_LEAPKILL, AR_ALLIGATOR_WAIST_AUTOKILL_FRONT
      *
      * Hash: 0x1C6CD14A876FFE39 | Since: 1207
      */
-    function putPedDirectlyIntoMelee(ped: number | Ped, meleeTarget: number | Ped, meleeStyle: number | string, animBlendRatio: number): void;
+    function putPedDirectlyIntoMelee(ped: number | IPed, meleeTarget: number | IPed, meleeStyle: number | string, animBlendRatio: number): void;
     /**
      * Makes a ped react to an entity.
      * Params: reactingTo Entity can be 0, p8 is always 4
      *
      * Hash: 0xC4C32C31920E1B70 | Since: 1207
      */
-    function react(ped: number | Ped, reactingTo: number | Entity, pos: Vector3, reactionName: string): void;
+    function react(ped: number | IPed, reactingTo: number | IEntity, pos: Vector3, reactionName: string): void;
     /**
      * No comment provided
      *
      * Hash: 0x62D2916F56B9CD2D | Since: 1207
      */
-    function reloadWeapon(ped: number | Ped, unused: boolean): void;
+    function reloadWeapon(ped: number | IPed, unused: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x356088527D9EBAAD | Since: 1207
      */
-    function reviveTarget(ped: number | Ped, reviver: number | Ped, tool: number | string): void;
+    function reviveTarget(ped: number | IPed, reviver: number | IPed, tool: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x37FB1C870E2EC2C6 | Since: 1207
      */
-    function rideTrain(ped: number | Ped, train: number | Vehicle, scenarioPoint: number, scenarioHash: number | string): void;
+    function rideTrain(ped: number | IPed, train: number | IVehicle, scenarioPoint: number, scenarioHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x7BB967F85D8CCBDB | Since: 1207
      */
-    function robPed(ped: number | Ped, target: number | Ped, flag: number): void;
+    function robPed(ped: number | IPed, target: number | IPed, flag: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x126EF75F1E17ABE5 | Since: 1207
      */
-    function scriptedAnimation(ped: number | Ped): any;
+    function scriptedAnimation(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x8D7F2A63688C20A4 | Since: 1207
      */
-    function seekClearLosToEntity(ped: number | Ped, entity: number | Entity): void;
+    function seekClearLosToEntity(ped: number | IPed, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x84D32B3BEC531324 | Since: 1207
      */
-    function seekCoverFromPed(ped: number | Ped, fromPed: number | Ped, duration: number): void;
+    function seekCoverFromPed(ped: number | IPed, fromPed: number | IPed, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x75AC2B60386D89F2 | Since: 1207
      */
-    function seekCoverFromPos(ped: number | Ped, pos: Vector3, duration: number): void;
+    function seekCoverFromPos(ped: number | IPed, pos: Vector3, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x39246A6958EF072C | Since: 1207
      */
-    function seekCoverToCoords(ped: number | Ped): void;
+    function seekCoverToCoords(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xD43D95C7A869447F | Since: 1207
      */
-    function seekCoverToCoverPoint(ped: number | Ped): void;
+    function seekCoverToCoverPoint(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x90D2156198831D69 | Since: 1207
      */
-    function setBlockingOfNonTemporaryEvents(ped: number | Ped, toggle: boolean): void;
+    function setBlockingOfNonTemporaryEvents(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x17293C633C8AC019 | Since: 1207
      */
-    function setCrouchMovement(ped: number | Ped): void;
+    function setCrouchMovement(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x933C06518B52A9A4 | Since: 1207
      */
-    function setSphereDefensiveArea(ped: number | Ped): void;
+    function setSphereDefensiveArea(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x4C3FA937B44A90FA | Since: 1207
      */
-    function setStealthMovement(ped: number | Ped): void;
+    function setStealthMovement(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x452419CBD838065B | Since: 1207
      */
-    function shockingEventReact(ped: number | Ped): void;
+    function shockingEventReact(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x46A6CC01E0826106 | Since: 1207
      */
-    function shootAtCoord(ped: number | Ped, pos: Vector3, duration: number, firingPattern: number | string): void;
+    function shootAtCoord(ped: number | IPed, pos: Vector3, duration: number, firingPattern: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x08DA95E8298AE772 | Since: 1207
      */
-    function shootAtEntity(entity: number | Entity, targetEntity: number | Entity, duration: number, firingPattern: number | string, affectCockedState: boolean): void;
+    function shootAtEntity(entity: number | IEntity, targetEntity: number | IEntity, duration: number, firingPattern: number | string, affectCockedState: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x08AA95E8298AE772 | Since: 1207
      */
-    function shootWithWeapon(ped: number | Ped): any;
+    function shootWithWeapon(ped: number | IPed): any;
     /**
      * Makes the specified ped shuffle to the next vehicle seat.
      * The ped MUST be in a vehicle and the vehicle parameter MUST be the ped's current vehicle.
      *
      * Hash: 0x7AA80209BDA643EB | Since: 1207
      */
-    function shuffleToNextVehicleSeat(ped: number | Ped, vehicle: number | Vehicle): void;
+    function shuffleToNextVehicleSeat(ped: number | IPed, vehicle: number | IVehicle): void;
     /**
      * Makes the specified ped flee the specified distance from the specified position.
      * fleeType: see TASK_FLEE_COORD
      *
      * Hash: 0x94587F17E9C365D5 | Since: 1207
      */
-    function smartFleeCoord(ped: number | Ped, pos: Vector3, distance: number, time: number, fleeType: number, fleeSpeed: number): void;
+    function smartFleeCoord(ped: number | IPed, pos: Vector3, distance: number, time: number, fleeType: number, fleeSpeed: number): void;
     /**
      * Makes a ped run away from another ped (fleeFromTarget)
      *
@@ -37330,25 +37330,25 @@ export declare namespace task {
      *
      * Hash: 0x22B0D0E37CCB840D | Since: 1207
      */
-    function smartFleePed(ped: number | Ped, fleeFromTarget: number | Ped, fleeDistance: number, fleeTime: number, fleeType: number, fleeSpeed: number, targetPed: number | Ped): void;
+    function smartFleePed(ped: number | IPed, fleeFromTarget: number | IPed, fleeDistance: number, fleeTime: number, fleeType: number, fleeSpeed: number, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xAE032F8BBA959E90 | Since: 1207
      */
-    function standGuard(ped: number | Ped, pos: Vector3, heading: number, scenarioName: string): void;
+    function standGuard(ped: number | IPed, pos: Vector3, heading: number, scenarioName: string): void;
     /**
      * Makes the specified ped stand still for (time) milliseconds.
      *
      * Hash: 0x919BE13EED931959 | Since: 1207
      */
-    function standStill(ped: number | Ped, time: number): void;
+    function standStill(ped: number | IPed, time: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x4D1F61FC34AF3CD1 | Since: 1207
      */
-    function startScenarioAtPosition(ped: number | Ped, scenarioHash: number | string, pos: Vector3, heading: number, duration: number, sittingScenario: boolean, teleport: boolean): void;
+    function startScenarioAtPosition(ped: number | IPed, scenarioHash: number | string, pos: Vector3, heading: number, duration: number, sittingScenario: boolean, teleport: boolean): void;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/animations/scenarios
      * Params: duration in milliseconds
@@ -37361,117 +37361,117 @@ export declare namespace task {
      *
      * Hash: 0x524B54361229154F | Since: 1207
      */
-    function startScenarioInPlaceHash(ped: number | Ped, scenarioHash: number | string, duration: number, playEnterAnim: boolean, conditionalHash: number | string, heading: number): void;
+    function startScenarioInPlaceHash(ped: number | IPed, scenarioHash: number | string, duration: number, playEnterAnim: boolean, conditionalHash: number | string, heading: number): void;
     /**
      * Makes the ped run to take cover
      *
      * Hash: 0xE5DA8615A6180789 | Since: 1207
      */
-    function stayInCover(ped: number | Ped): void;
+    function stayInCover(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xED27560703F37258 | Since: 1207
      */
-    function stopLeadingHorse(ped: number | Ped): void;
+    function stopLeadingHorse(ped: number | IPed): void;
     /**
      * Baits: see 0x9B0C7FA063E67629
      *
      * Hash: 0x2C28AC30A72722DA | Since: 1207
      */
-    function swapFishingBait(ped: number | Ped, bait: string, withoutBuoy: boolean): void;
+    function swapFishingBait(ped: number | IPed, bait: string, withoutBuoy: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xA21C51255B205245 | Since: 1207
      */
-    function swapWeapon(ped: number | Ped): void;
+    function swapWeapon(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x7285951DBF6B5A51 | Since: 1207
      */
-    function throwProjectile(ped: number | Ped): void;
+    function throwProjectile(ped: number | IPed): void;
     /**
      * duration in milliseconds
      *
      * Hash: 0x1DDA930A0AC38571 | Since: 1207
      */
-    function turnPedToFaceCoord(ped: number | Ped, pos: Vector3, duration: number): void;
+    function turnPedToFaceCoord(ped: number | IPed, pos: Vector3, duration: number): void;
     /**
      * duration: the amount of time in milliseconds to do the task. -1 will keep the task going until either another task is applied, or CLEAR_ALL_TASKS() is called with the ped
      *
      * Hash: 0x5AD23D40115353AC | Since: 1207
      */
-    function turnPedToFaceEntity(ped: number | Ped, targetEntity: number | Entity, duration: number): void;
+    function turnPedToFaceEntity(ped: number | IPed, targetEntity: number | IEntity, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x84179419DBDD36F2 | Since: 1207
      */
-    function turnToFaceClosestPed(ped: number | Ped): void;
+    function turnToFaceClosestPed(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x9FDA1B3D7E7028B3 | Since: 1207
      */
-    function useNearestScenarioChainToCoord(ped: number | Ped, pos: Vector3, distance: number): void;
+    function useNearestScenarioChainToCoord(ped: number | IPed, pos: Vector3, distance: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x97A28E63F0BA5631 | Since: 1207
      */
-    function useNearestScenarioChainToCoordWarp(ped: number | Ped, pos: Vector3, distance: number): void;
+    function useNearestScenarioChainToCoordWarp(ped: number | IPed, pos: Vector3, distance: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x58E2E0F23F6B76C3 | Since: 1207
      */
-    function useNearestScenarioToCoordWarp(ped: number | Ped, pos: Vector3, distance: number, duration: number): void;
+    function useNearestScenarioToCoordWarp(ped: number | IPed, pos: Vector3, distance: number, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x3774B03456DD6106 | Since: 1207
      */
-    function useNearestTrainScenarioToCoordWarp(ped: number | Ped, pos: Vector3, distance: number): void;
+    function useNearestTrainScenarioToCoordWarp(ped: number | IPed, pos: Vector3, distance: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x14747F4A5971DE4E | Since: 1207
      */
-    function useRandomScenarioInGroup(ped: number | Ped): void;
+    function useRandomScenarioInGroup(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xCCDAE6324B6A821C | Since: 1207
      */
-    function useScenarioPoint(ped: number | Ped, scenario: number, conditionalAnim: string, p6: number | string): void;
+    function useScenarioPoint(ped: number | IPed, scenario: number, conditionalAnim: string, p6: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x447C1E9EF844BC0F | Since: 1207
      */
-    function vehicleAimAtCoord(ped: number | Ped, pos: Vector3): void;
+    function vehicleAimAtCoord(ped: number | IPed, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0xE41885592B08B097 | Since: 1207
      */
-    function vehicleAimAtPed(ped: number | Ped, target: number | Ped): void;
+    function vehicleAimAtPed(ped: number | IPed, target: number | IPed): void;
     /**
      * Old name: _TASK_VEHICLE_DRIVE_TO_POINT
      * flag: 524419 and 0 in shop_horse_shop R* Script
      *
      * Hash: 0x089FF2FB965F0A29 | Since: 1207
      */
-    function vehicleDriveStraightToPoint(driver: number | Ped, vehicle: number | Vehicle, pos: Vector3, flag: number): void;
+    function vehicleDriveStraightToPoint(driver: number | IPed, vehicle: number | IVehicle, pos: Vector3, flag: number): void;
     /**
      * stopRange: how close vehicle will get to destination before stopping, default 4.0
      * straightLineDist: distance at which AI switches to heading for target directly instead of following nodes, default -1
      *
      * Hash: 0xE2A2AA2F659D77A7 | Since: 1207
      */
-    function vehicleDriveToCoord(ped: number | Ped, vehicle: number | Vehicle, pos: Vector3, speed: number, drivingStyle: number, vehicleModel: number | string, drivingMode: number, stopRange: number, straightLineDist: number): void;
+    function vehicleDriveToCoord(ped: number | IPed, vehicle: number | IVehicle, pos: Vector3, speed: number, drivingStyle: number, vehicleModel: number | string, drivingMode: number, stopRange: number, straightLineDist: number): void;
     /**
      * flags: 67108864, 2097152, 524564, 524675 (eDrivingFlags)
      * p7 = 6 or 3
@@ -37481,55 +37481,55 @@ export declare namespace task {
      *
      * Hash: 0x7F241A0D14354583 | Since: 1207
      */
-    function vehicleDriveToDestination(driver: number | Ped, vehicle: number | Vehicle, pos: Vector3, speed: number, drivingFlags: number, stoppingRange1: number, stoppingRange2: number): void;
+    function vehicleDriveToDestination(driver: number | IPed, vehicle: number | IVehicle, pos: Vector3, speed: number, drivingFlags: number, stoppingRange1: number, stoppingRange2: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x480142959D337D00 | Since: 1207
      */
-    function vehicleDriveWander(ped: number | Ped, vehicle: number | Vehicle, speed: number, drivingStyle: number): void;
+    function vehicleDriveWander(ped: number | IPed, vehicle: number | IVehicle, speed: number, drivingStyle: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x0FA6E4B75F302400 | Since: 1207
      */
-    function vehicleEscort(ped: number | Ped, vehicle: number | Vehicle, targetVehicle: number | Vehicle, mode: number, speed: number, drivingStyle: number, minDistance: number, noRoadsDistance: number): void;
+    function vehicleEscort(ped: number | IPed, vehicle: number | IVehicle, targetVehicle: number | IVehicle, mode: number, speed: number, drivingStyle: number, minDistance: number, noRoadsDistance: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x3123FAA6DB1CF7ED | Since: 1207
      */
-    function vehicleFollowWaypointRecording(ped: number | Ped, vehicle: number | Vehicle, waypointRecording: string, drivingMode: number, eWaypoint: number, flag: number, stoppingDist: number): void;
+    function vehicleFollowWaypointRecording(ped: number | IPed, vehicle: number | IVehicle, waypointRecording: string, drivingMode: number, eWaypoint: number, flag: number, stoppingDist: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x195AEEB13CEFE2EE | Since: 1207
      */
-    function vehicleGotoNavmesh(ped: number | Ped, vehicle: number | Vehicle, pos: Vector3, speed: number, behaviorFlag: number, stoppingRange: number): void;
+    function vehicleGotoNavmesh(ped: number | IPed, vehicle: number | IVehicle, pos: Vector3, speed: number, behaviorFlag: number, stoppingRange: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x659427E0EF36BCDE | Since: 1207
      */
-    function vehicleMission(driver: number | Ped, vehicle: number | Vehicle, vehicleTarget: number | Vehicle, missionType: number, DriveAgainstTraffic: boolean): void;
+    function vehicleMission(driver: number | IPed, vehicle: number | IVehicle, vehicleTarget: number | IVehicle, missionType: number, DriveAgainstTraffic: boolean): void;
     /**
      * See TASK_VEHICLE_MISSION
      *
      * Hash: 0x9454528DF15D657A | Since: 1207
      */
-    function vehicleMissionPedTarget(ped: number | Ped, vehicle: number | Vehicle, pedTarget: number | Ped, mode: number, maxSpeed: number, drivingStyle: number, minDistance: number, DriveAgainstTraffic: boolean): void;
+    function vehicleMissionPedTarget(ped: number | IPed, vehicle: number | IVehicle, pedTarget: number | IPed, mode: number, maxSpeed: number, drivingStyle: number, minDistance: number, DriveAgainstTraffic: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x5190796ED39C9B6D | Since: 1207
      */
-    function vehicleShootAtCoord(ped: number | Ped, pos: Vector3): void;
+    function vehicleShootAtCoord(ped: number | IPed, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x10AB107B887214D8 | Since: 1207
      */
-    function vehicleShootAtPed(ped: number | Ped, target: number | Ped): void;
+    function vehicleShootAtPed(ped: number | IPed, target: number | IPed): void;
     /**
      * Documentation from GTA V, might be the same in RDR:
      *
@@ -37567,31 +37567,31 @@ export declare namespace task {
      *
      * Hash: 0xC429DCEEB339E129 | Since: 1207
      */
-    function vehicleTempAction(driver: number | Ped, vehicle: number | Vehicle, action: number, time: number): void;
+    function vehicleTempAction(driver: number | IPed, vehicle: number | IVehicle, action: number, time: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x04ACFAC71E6858F9 | Since: 1207
      */
-    function walkAway(ped: number | Ped, entity: number | Entity): void;
+    function walkAway(ped: number | IPed, entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x8AC76D1408731732 | Since: 1207
      */
-    function wanderAndConverseWithPed(ped: number | Ped): void;
+    function wanderAndConverseWithPed(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xE054346CA3A0F315 | Since: 1207
      */
-    function wanderInArea(ped: number | Ped, pos: Vector3, radius: number): void;
+    function wanderInArea(ped: number | IPed, pos: Vector3, radius: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9FDA168777B28424 | Since: 1207
      */
-    function wanderInVolume(ped: number | Ped, volume: number): void;
+    function wanderInVolume(ped: number | IPed, volume: number): void;
     /**
      * Makes ped walk around the area.
      *
@@ -37599,50 +37599,50 @@ export declare namespace task {
      *
      * Hash: 0xBB9CE077274F6A1B | Since: 1207
      */
-    function wanderStandard(ped: number | Ped): void;
+    function wanderStandard(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x527EA3DB8BC7F03B | Since: 1207
      */
-    function wanderSwim(ped: number | Ped): void;
+    function wanderSwim(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x9A7D091411C5F684 | Since: 1207
      */
-    function warpPedIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seat: number): void;
+    function warpPedIntoVehicle(ped: number | IPed, vehicle: number | IVehicle, seat: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x7157B82D60E4BC46 | Since: 1207
      */
-    function weapon(ped: number | Ped): void;
+    function weapon(ped: number | IPed): void;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/AI/EVENTS/aud_ped_whistle_types.lua
      * p2: UNSPECIFIED
      *
      * Hash: 0xD6401A1B2F63BED6 | Since: 1207
      */
-    function whistleAnim(ped: number | Ped, audPedWhistleType: number | string, p2: number | string): void;
+    function whistleAnim(ped: number | IPed, audPedWhistleType: number | string, p2: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x67406F2C8F87FC4F | Since: 1207
      */
-    function uncuffPed(ped: number | Ped): void;
+    function uncuffPed(ped: number | IPed): void;
     /**
      * getupSetHash: see nm_blend_out_sets.meta
      *
      * Hash: 0x79559BAD83CCD038 | Since: 1207
      */
-    function unhogtiePed(ped: number | Ped, flags: number, getupSetHash: number | string): void;
+    function unhogtiePed(ped: number | IPed, flags: number, getupSetHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xA98FCAFD7893C834 | Since: 1207
      */
-    function updateHandsUpDuration(ped: number | Ped, duration: number): void;
+    function updateHandsUpDuration(ped: number | IPed, duration: number): void;
     /**
      * No comment provided
      *
@@ -37660,61 +37660,61 @@ export declare namespace task {
      *
      * Hash: 0x121F0593E0A431D7 | Since: 1207
      */
-    function vehicleWaypointPlaybackOverrideSpeed(vehicle: number | Vehicle, speed: number): void;
+    function vehicleWaypointPlaybackOverrideSpeed(vehicle: number | IVehicle, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x8A4E6AC373666BC5 | Since: 1207
      */
-    function vehicleWaypointPlaybackPause(vehicle: number | Vehicle): void;
+    function vehicleWaypointPlaybackPause(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xDC04FCAA7839D492 | Since: 1207
      */
-    function vehicleWaypointPlaybackResume(vehicle: number | Vehicle): void;
+    function vehicleWaypointPlaybackResume(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x5CEB25A7D2848963 | Since: 1207
      */
-    function vehicleWaypointPlaybackUseDefaultSpeed(vehicle: number | Vehicle): void;
+    function vehicleWaypointPlaybackUseDefaultSpeed(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xD73A5D1F0325C71C | Since: 1207
      */
-    function waypointPlaybackGetIsAiming(ped: number | Ped): boolean;
+    function waypointPlaybackGetIsAiming(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x701375A7D43F01CB | Since: 1207
      */
-    function waypointPlaybackGetIsPaused(ped: number | Ped): boolean;
+    function waypointPlaybackGetIsPaused(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA5B94DF8AF058F46 | Since: 1207
      */
-    function waypointPlaybackGetIsShooting(ped: number | Ped): boolean;
+    function waypointPlaybackGetIsShooting(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x7D7D2B47FA788E85 | Since: 1207
      */
-    function waypointPlaybackOverrideSpeed(ped: number | Ped, speed: number): void;
+    function waypointPlaybackOverrideSpeed(ped: number | IPed, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x0F342546AA06FED5 | Since: 1207
      */
-    function waypointPlaybackPause(ped: number | Ped): void;
+    function waypointPlaybackPause(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x244F70C84C547D2D | Since: 1207
      */
-    function waypointPlaybackResume(ped: number | Ped): void;
+    function waypointPlaybackResume(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -37762,7 +37762,7 @@ export declare namespace task {
      *
      * Hash: 0x6599D834B12D0800 | Since: 1207
      */
-    function waypointPlaybackUseDefaultSpeed(ped: number | Ped): void;
+    function waypointPlaybackUseDefaultSpeed(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -37792,7 +37792,7 @@ export declare namespace task {
      *
      * Hash: 0x0000A8ACDC2E1B6A | Since: 1207
      */
-    function _0x0000A8ACDC2E1B6A(ped: number | Ped): void;
+    function _0x0000A8ACDC2E1B6A(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -37882,7 +37882,7 @@ export declare namespace task {
      *
      * Hash: 0x141BC64C8D7C5529 | Since: 1207
      */
-    function _0x141BC64C8D7C5529(vehicle: number | Vehicle): void;
+    function _0x141BC64C8D7C5529(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -37930,7 +37930,7 @@ export declare namespace task {
      *
      * Hash: 0x1F298C7BD30D1240 | Since: 1207
      */
-    function _0x1F298C7BD30D1240(ped: number | Ped): void;
+    function _0x1F298C7BD30D1240(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -37954,7 +37954,7 @@ export declare namespace task {
      *
      * Hash: 0x22CDBF317C40A122 | Since: 1207
      */
-    function _0x22CDBF317C40A122(ped: number | Ped): void;
+    function _0x22CDBF317C40A122(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -37966,7 +37966,7 @@ export declare namespace task {
      *
      * Hash: 0x2416EC2F31F75266 | Since: 1207
      */
-    function _0x2416EC2F31F75266(entity: number | Entity, targetEntity: number | Entity, duration: number): void;
+    function _0x2416EC2F31F75266(entity: number | IEntity, targetEntity: number | IEntity, duration: number): void;
     /**
      * No comment provided
      *
@@ -37978,7 +37978,7 @@ export declare namespace task {
      *
      * Hash: 0x28EF780BDEA8A639 | Since: 1207
      */
-    function _0x28EF780BDEA8A639(ped: number | Ped, facingPed: number | Ped): void;
+    function _0x28EF780BDEA8A639(ped: number | IPed, facingPed: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38008,7 +38008,7 @@ export declare namespace task {
      *
      * Hash: 0x2D657B10F211C572 | Since: 1207
      */
-    function _0x2D657B10F211C572(ped: number | Ped): any;
+    function _0x2D657B10F211C572(ped: number | IPed): any;
     /**
      * No comment provided
      *
@@ -38038,7 +38038,7 @@ export declare namespace task {
      *
      * Hash: 0x31BB338F64D5C861 | Since: 1207
      */
-    function _0x31BB338F64D5C861(ped: number | Ped): void;
+    function _0x31BB338F64D5C861(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38086,7 +38086,7 @@ export declare namespace task {
      *
      * Hash: 0x3FFCD7BBA074CC80 | Since: 1207
      */
-    function _0x3FFCD7BBA074CC80(ped: number | Ped): void;
+    function _0x3FFCD7BBA074CC80(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38104,7 +38104,7 @@ export declare namespace task {
      *
      * Hash: 0x41D1331AFAD5A091 | Since: 1207
      */
-    function _0x41D1331AFAD5A091(ped: number | Ped): void;
+    function _0x41D1331AFAD5A091(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38141,7 +38141,7 @@ export declare namespace task {
      *
      * Hash: 0x508F5053E3F6F0C4 | Since: 1207
      */
-    function _0x508F5053E3F6F0C4(ped: number | Ped, pos: Vector3): boolean;
+    function _0x508F5053E3F6F0C4(ped: number | IPed, pos: Vector3): boolean;
     /**
      * No comment provided
      *
@@ -38153,7 +38153,7 @@ export declare namespace task {
      *
      * Hash: 0x517D01BF27B682D1 | Since: 1207
      */
-    function _0x517D01BF27B682D1(ped: number | Ped, entity: number | Entity): void;
+    function _0x517D01BF27B682D1(ped: number | IPed, entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -38165,7 +38165,7 @@ export declare namespace task {
      *
      * Hash: 0x583AE9AF9CEE0958 | Since: 1207
      */
-    function _0x583AE9AF9CEE0958(vehicle: number | Vehicle, pos: Vector3): boolean;
+    function _0x583AE9AF9CEE0958(vehicle: number | IVehicle, pos: Vector3): boolean;
     /**
      * No comment provided
      *
@@ -38244,7 +38244,7 @@ export declare namespace task {
      *
      * Hash: 0x678D3226CF70B9C8 | Since: 1207
      */
-    function _0x678D3226CF70B9C8(ped: number | Ped): number;
+    function _0x678D3226CF70B9C8(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -38394,13 +38394,13 @@ export declare namespace task {
      *
      * Hash: 0x88FD60D846D9CD63 | Since: 1207
      */
-    function _0x88FD60D846D9CD63(ped: number | Ped): void;
+    function _0x88FD60D846D9CD63(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x8B1FDF63C3193EDA | Since: 1207
      */
-    function _0x8B1FDF63C3193EDA(ped: number | Ped): void;
+    function _0x8B1FDF63C3193EDA(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38418,7 +38418,7 @@ export declare namespace task {
      *
      * Hash: 0x9050DF2C53801208 | Since: 1207
      */
-    function _0x9050DF2C53801208(ped: number | Ped): void;
+    function _0x9050DF2C53801208(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38478,7 +38478,7 @@ export declare namespace task {
      *
      * Hash: 0x9ADDBB9242179D56 | Since: 1207
      */
-    function _0x9ADDBB9242179D56(_object: number | Object, ped: number | Ped): void;
+    function _0x9ADDBB9242179D56(_object: number | IObject, ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38580,7 +38580,7 @@ export declare namespace task {
      *
      * Hash: 0xB520DBDA7FCF573F | Since: 1207
      */
-    function _0xB520DBDA7FCF573F(ped: number | Ped): boolean;
+    function _0xB520DBDA7FCF573F(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -38628,7 +38628,7 @@ export declare namespace task {
      *
      * Hash: 0xBEDBE39B5FD98FD6 | Since: 1207
      */
-    function _0xBEDBE39B5FD98FD6(ped: number | Ped): boolean;
+    function _0xBEDBE39B5FD98FD6(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -38676,7 +38676,7 @@ export declare namespace task {
      *
      * Hash: 0xDF94844D474F31E5 | Since: 1207
      */
-    function _0xDF94844D474F31E5(ped: number | Ped): void;
+    function _0xDF94844D474F31E5(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38796,7 +38796,7 @@ export declare namespace task {
      *
      * Hash: 0xF3C3503276F4A034 | Since: 1436
      */
-    function _0xF3C3503276F4A034(entity: number | Entity): void;
+    function _0xF3C3503276F4A034(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -38838,7 +38838,7 @@ export declare namespace task {
      *
      * Hash: 0xFDECCA06E8B81346 | Since: 1207
      */
-    function _0xFDECCA06E8B81346(ped: number | Ped): any;
+    function _0xFDECCA06E8B81346(ped: number | IPed): any;
     /**
      * No comment provided
      *
@@ -38856,7 +38856,7 @@ export declare namespace task {
      *
      * Hash: 0xFFB520A3E16F7B7B | Since: 1207
      */
-    function _0xFFB520A3E16F7B7B(ped: number | Ped): void;
+    function _0xFFB520A3E16F7B7B(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38868,13 +38868,13 @@ export declare namespace task {
      *
      * Hash: 0xE8F1A5B4CED3725A | Since: 1207
      */
-    function addFleeTargetCoords(ped: number | Ped, pos: Vector3): void;
+    function addFleeTargetCoords(ped: number | IPed, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x8360C47380B6F351 | Since: 1207
      */
-    function associatePropWithScenario(scenario: number, entity: number | Entity, propName: string): boolean;
+    function associatePropWithScenario(scenario: number, entity: number | IEntity, propName: string): boolean;
     /**
      * groundSetting: 0: spawn on ground, 2 (1?): do not spawn on ground
      * p7: -1 in R* Scripts
@@ -38894,7 +38894,7 @@ export declare namespace task {
      *
      * Hash: 0x7981037A96E7D174 | Since: 1207
      */
-    function cuffPed(ped: number | Ped): void;
+    function cuffPed(ped: number | IPed): void;
     /**
      * Params: p1 is always false except in script nb_egg_protector
      *
@@ -38912,7 +38912,7 @@ export declare namespace task {
      *
      * Hash: 0x36D188AECB26094B | Since: 1207
      */
-    function detachCarriablePed(ped: number | Ped): void;
+    function detachCarriablePed(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -38942,7 +38942,7 @@ export declare namespace task {
      *
      * Hash: 0x59872EA4CBD11C56 | Since: 1207
      */
-    function getCoverpointFromEntityWithOffset(entity: number | Entity, xOffset: number, yOffset: number, zOffset: number, heading: number): number;
+    function getCoverpointFromEntityWithOffset(entity: number | IEntity, xOffset: number, yOffset: number, zOffset: number, heading: number): number;
     /**
      * Flowers, Stalks or whatever the composite has
      *
@@ -38954,7 +38954,7 @@ export declare namespace task {
      *
      * Hash: 0x4687E69D258BBE41 | Since: 1207
      */
-    function getHogtieEscapeTimer(ped: number | Ped): number;
+    function getHogtieEscapeTimer(ped: number | IPed): number;
     /**
      * item hashes: PRIMARYITEM, P_MUGCOFFEE01X_PH_R_HAND, P_BOTTLEBEER01X_PH_R_HAND
      * http://prntscr.com/1qtp3bz
@@ -38962,19 +38962,19 @@ export declare namespace task {
      *
      * Hash: 0x05A0100EA714DB68 | Since: 1207
      */
-    function getItemInteractionEntityFromPed(ped: number | Ped, item: number | string): number;
+    function getItemInteractionEntityFromPed(ped: number | IPed, item: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0xED1F514AF4732258 | Since: 1207
      */
-    function getLedHorseFromPed(ped: number | Ped): number;
+    function getLedHorseFromPed(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x1948BBE561A2375A | Since: 1207
      */
-    function getPedIsIgnoringDeadBodies(ped: number | Ped): boolean;
+    function getPedIsIgnoringDeadBodies(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -38986,7 +38986,7 @@ export declare namespace task {
      *
      * Hash: 0xB219612B5568E9EC | Since: 1207
      */
-    function getScenarioContainerOpeningState(entity: number | Entity): boolean;
+    function getScenarioContainerOpeningState(entity: number | IEntity): boolean;
     /**
      * Params: p1 is always true in R* Scripts
      *
@@ -39011,7 +39011,7 @@ export declare namespace task {
      *
      * Hash: 0xDF7993356F52359A | Since: 1207
      */
-    function getScenarioPointPedIsUsing(ped: number | Ped): number;
+    function getScenarioPointPedIsUsing(ped: number | IPed): number;
     /**
      * No comment provided
      *
@@ -39029,71 +39029,71 @@ export declare namespace task {
      *
      * Hash: 0x2D0571BB55879DA2 | Since: 1207
      */
-    function getScenarioPointTypePedIsUsing(ped: number | Ped): number;
+    function getScenarioPointTypePedIsUsing(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xA710DC5D25F8B942 | Since: 1207
      */
-    function getScriptActionTime(ped: number | Ped, task: number | string): number;
+    function getScriptActionTime(ped: number | IPed, task: number | string): number;
     /**
      * Fishing Research: https://pastebin.com/NmK5ZLVs
      * Only used in R* Scripts fishing_core and av_fishing_river
      *
      * Hash: 0xF3735ACD11ACD500 | Since: 1207
      */
-    function getFishing(ped: number | Ped): [boolean, any];
+    function getFishing(ped: number | IPed): [boolean, any];
     /**
      * Returns hash of the underlying move network def, see move_networks.xml
      * https://alloc8or.re/rdr3/doc/misc/move_networks.txt
      *
      * Hash: 0xCACC2F9D994504B7 | Since: 1207
      */
-    function getMoveNetworkId(ped: number | Ped): number;
+    function getMoveNetworkId(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x844CEEE428EA35B0 | Since: 1207
      */
-    function getMoveNetworkPhaseFloat(ped: number | Ped, phaseName: string): number;
+    function getMoveNetworkPhaseFloat(ped: number | IPed, phaseName: string): number;
     /**
      * No comment provided
      *
      * Hash: 0x6C50B9DCCCA70023 | Since: 1207
      */
-    function isEntityRevivable(ped: number | Ped): boolean;
+    function isEntityRevivable(ped: number | IPed): boolean;
     /**
      * Returns true while a hat is being picked up
      * _IS_A* - _IS_D*
      *
      * Hash: 0x11CD066F54DA0133 | Since: 1207
      */
-    function isHatBeingPickedUp(hatObject: number | Object): boolean;
+    function isHatBeingPickedUp(hatObject: number | IObject): boolean;
     /**
      * Returns true while a hat is being picked up. Similar to 0x11CD066F54DA0133
      * _IS_A* - _IS_D*
      *
      * Hash: 0x4ECCC2815CA79AE2 | Since: 1207
      */
-    function isHatBeingPickedUp2(hatObject: number | Object): boolean;
+    function isHatBeingPickedUp2(hatObject: number | IObject): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xA9CC7856D52DBD25 | Since: 1207
      */
-    function isPedArrestingAnyPed(ped: number | Ped): boolean;
+    function isPedArrestingAnyPed(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC8B29D18022EA2B7 | Since: 1207
      */
-    function isPedDuelling(ped: number | Ped): boolean;
+    function isPedDuelling(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEFC4303DDC6E60D3 | Since: 1207
      */
-    function isPedLeadingHorse(ped: number | Ped): boolean;
+    function isPedLeadingHorse(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -39129,25 +39129,25 @@ export declare namespace task {
      *
      * Hash: 0x78B4567E18B54480 | Since: 1207
      */
-    function makeObjectCarriable(_object: number | Object): void;
+    function makeObjectCarriable(_object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0x1A52076D26E09004 | Since: 1207
      */
-    function pedFishingrodHookEntity(ped: number | Ped, entity: number | Entity): void;
+    function pedFishingrodHookEntity(ped: number | IPed, entity: number | IEntity): void;
     /**
      * Used with 'P_BODYPARTARMFLOAT02X' model in fishing_core.c
      *
      * Hash: 0xCE71C2F9BAA3F975 | Since: 1207
      */
-    function pedFishingrodHookObject(ped: number | Ped, _object: number | Object): void;
+    function pedFishingrodHookObject(ped: number | IPed, _object: number | IObject): void;
     /**
      * No comment provided
      *
      * Hash: 0x02EBBB3989B7E695 | Since: 1207
      */
-    function pedIsInScenarioBase(ped: number | Ped): boolean;
+    function pedIsInScenarioBase(ped: number | IPed): boolean;
     /**
      * https://github.com/femga/rdr3_discoveries/tree/master/objects/composites
      *
@@ -39159,7 +39159,7 @@ export declare namespace task {
      *
      * Hash: 0x2E20878FD208A68E | Since: 1207
      */
-    function resetScenarioForEntity(scenario: number, entity: number | Entity): void;
+    function resetScenarioForEntity(scenario: number, entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -39171,93 +39171,93 @@ export declare namespace task {
      *
      * Hash: 0x9B0C7FA063E67629 | Since: 1207
      */
-    function setFishingBait(ped: number | Ped, bait: string, withoutBuoy: boolean, instantly: boolean): void;
+    function setFishingBait(ped: number | IPed, bait: string, withoutBuoy: boolean, instantly: boolean): void;
     /**
      * Sets the time it takes for a hogtied ped to escape
      * -1.0f for ped to never escape
      *
      * Hash: 0xAB591AE6B48B913E | Since: 1207
      */
-    function setHogtieEscapeTimer(ped: number | Ped, time: number): void;
+    function setHogtieEscapeTimer(ped: number | IPed, time: number): void;
     /**
      * All Interaction states
      * https://github.com/abdulkadiraktas/rdr3_discoveries/tree/master/tasks/ItemInteraction#4-item_interaction_state_name--item_interaction_propid
      *
      * Hash: 0xB35370D5353995CB | Since: 1207
      */
-    function setItemInteractionState(ped: number | Ped, itemInteractionState: number | string): void;
+    function setItemInteractionState(ped: number | IPed, itemInteractionState: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x34C0010188D7C54A | Since: 1207
      */
-    function setPedClearAimingInTheAir(ped: number | Ped): void;
+    function setPedClearAimingInTheAir(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x013A7BA5015C1372 | Since: 1207
      */
-    function setPedIgnoreDeadBodies(ped: number | Ped, toggle: boolean): void;
+    function setPedIgnoreDeadBodies(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x7C015D8BCEC72CF4 | Since: 1207
      */
-    function setPedPathAvoidTraffic(ped: number | Ped, avoidTraffic: boolean): void;
+    function setPedPathAvoidTraffic(ped: number | IPed, avoidTraffic: boolean): void;
     /**
      * _SET_PED_PATH_P*
      *
      * Hash: 0x70F7A1EAB1AE3AA8 | Since: 1232
      */
-    function setPedPathLadderCostModifier(ped: number | Ped, modifier: number): void;
+    function setPedPathLadderCostModifier(ped: number | IPed, modifier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x9DE63896B176EA94 | Since: 1207
      */
-    function setPedPathMayEnterDeepWater(ped: number | Ped, mayEnterDeepWater: boolean): void;
+    function setPedPathMayEnterDeepWater(ped: number | IPed, mayEnterDeepWater: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x06ECF3925BC2ABAE | Since: 1311
      */
-    function setPedPathMayUseSlidingSurfaces(ped: number | Ped, useSlidingSurfaces: boolean): void;
+    function setPedPathMayUseSlidingSurfaces(ped: number | IPed, useSlidingSurfaces: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x42CFD8FD8CC8DC69 | Since: 1207
      */
-    function setPedPathNeverUseInteriors(ped: number | Ped, neverUseInteriors: boolean): void;
+    function setPedPathNeverUseInteriors(ped: number | IPed, neverUseInteriors: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x216343750545A486 | Since: 1207
      */
-    function setPedPathPreferHorseWalkable(ped: number | Ped, preferHorseWalkable: boolean): void;
+    function setPedPathPreferHorseWalkable(ped: number | IPed, preferHorseWalkable: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC6170856E54557B2 | Since: 1207
      */
-    function setPedPathPreferStayInWater(ped: number | Ped, preferStayInWater: boolean): void;
+    function setPedPathPreferStayInWater(ped: number | IPed, preferStayInWater: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x12990818C1D35886 | Since: 1207
      */
-    function setPedPathPreferToAvoidFoliage(ped: number | Ped, preferAvoidFoliage: boolean): void;
+    function setPedPathPreferToAvoidFoliage(ped: number | IPed, preferAvoidFoliage: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x8BB283A7888AD1AD | Since: 1207
      */
-    function setPedPathPreferToAvoidMud(ped: number | Ped, preferAvoidMud: boolean): void;
+    function setPedPathPreferToAvoidMud(ped: number | IPed, preferAvoidMud: boolean): void;
     /**
      * Opens/closes containers: ChestDugUp
      *
      * Hash: 0x188F8071F244B9B8 | Since: 1207
      */
-    function setScenarioContainerOpeningState(entity: number | Entity, open: boolean): void;
+    function setScenarioContainerOpeningState(entity: number | IEntity, open: boolean): void;
     /**
      * No comment provided
      *
@@ -39305,80 +39305,80 @@ export declare namespace task {
      *
      * Hash: 0xF3735ACD11ACD501 | Since: 1207
      */
-    function setFishing(ped: number | Ped): [boolean, any];
+    function setFishing(ped: number | IPed): [boolean, any];
     /**
      * No comment provided
      *
      * Hash: 0x099D4A855D53B03B | Since: 1207
      */
-    function setMoveNetworkSignalFloat2(ped: number | Ped, signalName: string, value: number): void;
+    function setMoveNetworkSignalFloat2(ped: number | IPed, signalName: string, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x4662BFE01938D98D | Since: 1207
      */
-    function setMoveNetworkSignalVector(ped: number | Ped, signalName: string, pos: Vector3): void;
+    function setMoveNetworkSignalVector(ped: number | IPed, signalName: string, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x30A768C30D385EC5 | Since: 1207
      */
-    function animalBleedOut(ped: number | Ped, killer: number | Ped, weaponHash: number | string): void;
+    function animalBleedOut(ped: number | IPed, killer: number | IPed, weaponHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xE53D17AD837CBF7C | Since: 1207
      */
-    function boardVehicle(ped: number | Ped, vehicle: number | Vehicle, speed: number, boardingFlags: number): void;
+    function boardVehicle(ped: number | IPed, vehicle: number | IVehicle, speed: number, boardingFlags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xE41A09C8DDFF7AA4 | Since: 1207
      */
-    function boardVehicle2(ped: number | Ped, speed: number, boardingFlags: number): void;
+    function boardVehicle2(ped: number | IPed, speed: number, boardingFlags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xDF1D85BCAF60D537 | Since: 1207
      */
-    function climb2(ped: number | Ped, heading: number): void;
+    function climb2(ped: number | IPed, heading: number): void;
     /**
      * Coords: volume coords used in R* Script smuggler2
      * p4/p5 = 0 in R* Scripts
      *
      * Hash: 0xC624414FA748B9BA | Since: 1207
      */
-    function combatPedAtCoords(ped: number | Ped, pos: Vector3): void;
+    function combatPedAtCoords(ped: number | IPed, pos: Vector3): void;
     /**
      * No comment provided
      *
      * Hash: 0x81D16C4FF3A77ADF | Since: 1207
      */
-    function cutFreeHogtiedTargetPed(ped: number | Ped, targetPed: number | Ped): void;
+    function cutFreeHogtiedTargetPed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x525421A507216084 | Since: 1207
      */
-    function cutFreeHogtiedTargetPed2(ped: number | Ped, targetPed: number | Ped): void;
+    function cutFreeHogtiedTargetPed2(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xA7C6854BB5A4192A | Since: 1207
      */
-    function disembarkVehicle(vehicle: number | Vehicle): void;
+    function disembarkVehicle(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xBDFEEB7600BCD938 | Since: 1207
      */
-    function emoteOutro(ped: number | Ped): void;
+    function emoteOutro(ped: number | IPed): void;
     /**
      * _A*
      *
      * Hash: 0xAA0AF6025160243A | Since: 1207
      */
-    function equipHat(hatObject: number | Object, ped: number | Ped): void;
+    function equipHat(hatObject: number | IObject, ped: number | IPed): void;
     /**
      * fleeType: see TASK_FLEE_COORD
      *
@@ -39390,44 +39390,44 @@ export declare namespace task {
      *
      * Hash: 0x7B74D8EEDE9B5727 | Since: 1207
      */
-    function fleeFromPed(ped: number | Ped, fleeFromTarget: number | Ped, pos: Vector3, distance: number, targetPed: number | Ped): void;
+    function fleeFromPed(ped: number | IPed, fleeFromTarget: number | IPed, pos: Vector3, distance: number, targetPed: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x1FC9B33976BACD6C | Since: 1207
      */
-    function guardAssignedDefensiveArea2(ped: number | Ped): void;
+    function guardAssignedDefensiveArea2(ped: number | IPed): void;
     /**
      * Only used in R* SP Script homeinvasion:
      * Params p2, p3, p4: 0, 0, 1
      *
      * Hash: 0x648B75D44930D6BD | Since: 1207
      */
-    function intimidated(ped: number | Ped): boolean;
+    function intimidated(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x933ACC1A1771A288 | Since: 1207
      */
-    function intimidated2(victim: number | Ped, attacker: number | Ped, everyFrame: boolean, flag: number): boolean;
+    function intimidated2(victim: number | IPed, attacker: number | IPed, everyFrame: boolean, flag: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x72F52AA2D2B172CC | Since: 1207
      */
-    function itemInteraction2(ped: number | Ped, propNameGxt: number | string, prop: number | Object, propId: number | string, itemInteractionState: number | string): void;
+    function itemInteraction2(ped: number | IPed, propNameGxt: number | string, prop: number | IObject, propId: number | string, itemInteractionState: number | string): void;
     /**
      * Params: p3, p4, p5, p6: 0, 0, 0, -1.0f in R* Scripts
      *
      * Hash: 0xD61D5E1AD9876DEB | Since: 1207
      */
-    function itemInteraction3(ped: number | Ped, item: number | string): any;
+    function itemInteraction3(ped: number | IPed, item: number | string): any;
     /**
      * No comment provided
      *
      * Hash: 0x91083103137D7254 | Since: 1207
      */
-    function jump2(ped: number | Ped, pos: Vector3, entity: number | Entity): void;
+    function jump2(ped: number | IPed, pos: Vector3, entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -39439,19 +39439,19 @@ export declare namespace task {
      *
      * Hash: 0x884E3436CC1F41DD | Since: 1207
      */
-    function playEmote(ped: number | Ped, emoteType: number, playbackMode: number, emote: number | string, isSecondaryTask: boolean, canBreakOut: boolean, disableEarlyOutAnimTag: boolean, ignoreInvalidMainTask: boolean, destroyProps: boolean): void;
+    function playEmote(ped: number | IPed, emoteType: number, playbackMode: number, emote: number | string, isSecondaryTask: boolean, canBreakOut: boolean, disableEarlyOutAnimTag: boolean, ignoreInvalidMainTask: boolean, destroyProps: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xDF8A5855B9F9A97B | Since: 1207
      */
-    function putPedDirectlyIntoCoverFromCoords(ped: number | Ped, pos: Vector3, fromX: number, fromY: number, fromZ: number, timeout: number): void;
+    function putPedDirectlyIntoCoverFromCoords(ped: number | IPed, pos: Vector3, fromX: number, fromY: number, fromZ: number, timeout: number): void;
     /**
      * Takes scenario point handle instead of hash
      *
      * Hash: 0xA917E39F2CEFD215 | Since: 1207
      */
-    function startScenarioInPlace2(ped: number | Ped): void;
+    function startScenarioInPlace2(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -39463,31 +39463,31 @@ export declare namespace task {
      *
      * Hash: 0x322BFDEA666E2B0E | Since: 1207
      */
-    function useNearestScenarioToCoord(ped: number | Ped, pos: Vector3, distance: number, duration: number): void;
+    function useNearestScenarioToCoord(ped: number | IPed, pos: Vector3, distance: number, duration: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x0F6641449DD86FBE | Since: 1207
      */
-    function useScenarioPoint2(ped: number | Ped, ped2: number | Ped, p5: number | string): void;
+    function useScenarioPoint2(ped: number | IPed, ped2: number | IPed, p5: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xF0108F01FB105DA2 | Since: 1207
      */
-    function vehicleDriveToCoord2(ped: number | Ped): void;
+    function vehicleDriveToCoord2(ped: number | IPed): void;
     /**
      * Tasks vehicle towards owner
      *
      * Hash: 0x391073B9D3CCE2BA | Since: 1207
      */
-    function vehicleDriveToDestination2(vehicle: number | Vehicle, pos: Vector3, speed: number): void;
+    function vehicleDriveToDestination2(vehicle: number | IVehicle, pos: Vector3, speed: number): void;
     /**
      * Params: p4 = 3.f or 8.f, p5 = 0.25f, p6 = 0 in R* Scripts
      *
      * Hash: 0x6524A8981E8BE7C9 | Since: 1207
      */
-    function vehicleDriveToPoint2(vehicle: number | Vehicle, pos: Vector3): void;
+    function vehicleDriveToPoint2(vehicle: number | IVehicle, pos: Vector3): void;
     /**
      * Vehicle Auto Drive (?)
      * p1/p2/p3: usually 1f, 1f, 0f or 0f, 0f, 0f
@@ -39496,7 +39496,7 @@ export declare namespace task {
      *
      * Hash: 0x55CD5FDDD4335C1E | Since: 1207
      */
-    function vehicleFleeOnCleanup(vehicle: number | Vehicle, speed: number, _type: number | string): void;
+    function vehicleFleeOnCleanup(vehicle: number | IVehicle, speed: number, _type: number | string): void;
     /**
      * No comment provided
      *
@@ -39840,7 +39840,7 @@ export declare namespace telemetry {
      *
      * Hash: 0x5DA4718DF897EB25 | Since: 1207
      */
-    function playerSpawned(ped: number | Ped): void;
+    function playerSpawned(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -39852,7 +39852,7 @@ export declare namespace telemetry {
      *
      * Hash: 0xB204BF9F30298D77 | Since: 1207
      */
-    function prison(transactionId: any, bountyAmount: any, ped: number | Ped, completionType: any, jailTimeServed: any, jailTimeLeft: any, posseRole: any): void;
+    function prison(transactionId: any, bountyAmount: any, ped: number | IPed, completionType: any, jailTimeServed: any, jailTimeLeft: any, posseRole: any): void;
     /**
      * No comment provided
      *
@@ -40789,7 +40789,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xA0A424505A1B6429 | Since: 1207
      */
-    function areAnySeatsFree(vehicle: number | Vehicle): boolean;
+    function areAnySeatsFree(vehicle: number | IVehicle): boolean;
     /**
      * This native makes the vehicle stop immediately
      *
@@ -40797,19 +40797,19 @@ export declare namespace vehicle {
      *
      * Hash: 0x260BE8F09E326A20 | Since: 1207
      */
-    function bringToHalt(vehicle: number | Vehicle, distance: number, duration: number, _unknown: boolean): void;
+    function bringToHalt(vehicle: number | IVehicle, distance: number, duration: number, _unknown: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC075176CFB8B4128 | Since: 1207
      */
-    function canAnchorBoatHere(vehicle: number | Vehicle): boolean;
+    function canAnchorBoatHere(vehicle: number | IVehicle): boolean;
     /**
      * seatIndex: see CREATE_PED_INSIDE_VEHICLE
      *
      * Hash: 0xF8B2D32A2231FD24 | Since: 1207
      */
-    function canShuffleSeat(vehicle: number | Vehicle, seatIndex: number): boolean;
+    function canShuffleSeat(vehicle: number | IVehicle, seatIndex: number): boolean;
     /**
      * No comment provided
      *
@@ -40821,7 +40821,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xDBC28A8C683CD80B | Since: 1207
      */
-    function copyDamages(sourceVehicle: number | Vehicle, targetVehicle: number | Vehicle): void;
+    function copyDamages(sourceVehicle: number | IVehicle, targetVehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -40839,7 +40839,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x0D3630FB07E8B570 | Since: 1207
      */
-    function deleteMissionTrain(train: number | Vehicle): void;
+    function deleteMissionTrain(train: number | IVehicle): void;
     /**
      * Deletes a vehicle.
      * The vehicle must be a mission entity to delete, so call this before deleting: SET_ENTITY_AS_MISSION_ENTITY(vehicle, true, true);
@@ -40852,19 +40852,19 @@ export declare namespace vehicle {
      *
      * Hash: 0xE20A909D8C4A70F8 | Since: 1207
      */
-    function deleteVehicle(vehicle: number | Vehicle): void;
+    function deleteVehicle(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x94B1E71B144356A5 | Since: 1207
      */
-    function disableWeapon(disabled: boolean, weaponHash: number | string, vehicle: number | Vehicle, owner: number | Ped): void;
+    function disableWeapon(disabled: boolean, weaponHash: number | string, vehicle: number | IVehicle, owner: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xAF5E7E9A7620FFB5 | Since: 1207
      */
-    function doesExtraExist(vehicle: number | Vehicle, extraId: number): boolean;
+    function doesExtraExist(vehicle: number | IVehicle, extraId: number): boolean;
     /**
      * Explodes a selected vehicle.
      *
@@ -40876,13 +40876,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x75DCED9EEC5769D7 | Since: 1207
      */
-    function explode(vehicle: number | Vehicle, isAudible: boolean, isInvisible: boolean): void;
+    function explode(vehicle: number | IVehicle, isAudible: boolean, isInvisible: boolean): void;
     /**
      * Often called after START_PLAYBACK_RECORDED_VEHICLE and SKIP_TIME_IN_PLAYBACK_RECORDED_VEHICLE; similar in use to FORCE_ENTITY_AI_AND_ANIMATION_UPDATE.
      *
      * Hash: 0x59ECA796021B0539 | Since: 1207
      */
-    function forcePlaybackRecordedUpdate(vehicle: number | Vehicle): void;
+    function forcePlaybackRecordedUpdate(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -40894,19 +40894,19 @@ export declare namespace vehicle {
      *
      * Hash: 0x86FA6D8B48667D75 | Since: 1207
      */
-    function getCurrentStationForTrain(train: number | Vehicle): number;
+    function getCurrentStationForTrain(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xA19447D83294E29F | Since: 1207
      */
-    function getDraftAnimalCount(vehicle: number | Vehicle): [boolean, number, number];
+    function getDraftAnimalCount(vehicle: number | IVehicle): [boolean, number, number];
     /**
      * No comment provided
      *
      * Hash: 0x2963B5C1637E8A27 | Since: 1207
      */
-    function getDriverOf(vehicle: number | Vehicle): number;
+    function getDriverOf(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -40918,13 +40918,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x74583B19FEEAFDA7 | Since: 1207
      */
-    function getLastPedInSeat(vehicle: number | Vehicle, seatIndex: number): number;
+    function getLastPedInSeat(vehicle: number | IVehicle, seatIndex: number): number;
     /**
      * seatIndex: see CREATE_PED_INSIDE_VEHICLE
      *
      * Hash: 0xBB40DD2270B65366 | Since: 1207
      */
-    function getPedInSeat(vehicle: number | Vehicle, seatIndex: number): number;
+    function getPedInSeat(vehicle: number | IVehicle, seatIndex: number): number;
     /**
      * This native does no interpolation between pathpoints. The same position will be returned for all times up to the next pathpoint in the recording.
      *
@@ -40946,19 +40946,19 @@ export declare namespace vehicle {
      *
      * Hash: 0x233B51C7913FA031 | Since: 1207
      */
-    function getTimePositionInRecording(vehicle: number | Vehicle): number;
+    function getTimePositionInRecording(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x865FEC2FA899F29C | Since: 1207
      */
-    function getTrackIndexOfTrain(train: number | Vehicle): number;
+    function getTrackIndexOfTrain(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xD0FB093A4CDB932C | Since: 1207
      */
-    function getTrainCarriage(train: number | Vehicle, trailerNumber: number): number;
+    function getTrainCarriage(train: number | IVehicle, trailerNumber: number): number;
     /**
      * Seems related to vehicle health, like the one in IV.
      * Max 1000, min 0.
@@ -40966,19 +40966,19 @@ export declare namespace vehicle {
      *
      * Hash: 0x42113B857E33C16E | Since: 1207
      */
-    function getBodyHealth(vehicle: number | Vehicle): number;
+    function getBodyHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xFA2CDDFEB8BC898B | Since: 1207
      */
-    function getDoorsLockedForPlayer(vehicle: number | Vehicle, player: number | string | Player): boolean;
+    function getDoorsLockedForPlayer(vehicle: number | IVehicle, player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC867FD144F2469D3 | Since: 1207
      */
-    function getDoorLockStatus(vehicle: number | Vehicle): number;
+    function getDoorLockStatus(vehicle: number | IVehicle): number;
     /**
      * Returns 1000.0 if the function is unable to get the address of the specified vehicle or if it's not a vehicle.
      *
@@ -40992,19 +40992,19 @@ export declare namespace vehicle {
      *
      * Hash: 0x90DBFFAC43B22081 | Since: 1207
      */
-    function getEngineHealth(vehicle: number | Vehicle): number;
+    function getEngineHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xFE52F34491529F0B | Since: 1207
      */
-    function getEstimatedMaxSpeed(vehicle: number | Vehicle): number;
+    function getEstimatedMaxSpeed(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xA9C55F1C15E62E06 | Since: 1207
      */
-    function getMaxNumberOfPassengers(vehicle: number | Vehicle): number;
+    function getMaxNumberOfPassengers(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -41016,19 +41016,19 @@ export declare namespace vehicle {
      *
      * Hash: 0x59F3F16577CD79B2 | Since: 1207
      */
-    function getNumberOfPassengers(vehicle: number | Vehicle): number;
+    function getNumberOfPassengers(vehicle: number | IVehicle): number;
     /**
      * 1000 is max health
      *
      * Hash: 0x1E5A9B356D5098BE | Since: 1207
      */
-    function getPetrolTankHealth(vehicle: number | Vehicle): number;
+    function getPetrolTankHealth(vehicle: number | IVehicle): number;
     /**
      * Gets the trailer of a vehicle and puts it into the trailer parameter.
      *
      * Hash: 0xCF867A239EC30741 | Since: 1207
      */
-    function getTrailerVehicle(vehicle: number | Vehicle): [boolean, number];
+    function getTrailerVehicle(vehicle: number | IVehicle): [boolean, number];
     /**
      * No comment provided
      *
@@ -41064,31 +41064,31 @@ export declare namespace vehicle {
      *
      * Hash: 0xEA44E97849E9F3DD | Since: 1207
      */
-    function isDraft(vehicle: number | Vehicle): boolean;
+    function isDraft(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x80DDCCB2F4A3EB57 | Since: 1207
      */
-    function isEntryPointForSeatClear(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number, side: boolean, onEnter: boolean): boolean;
+    function isEntryPointForSeatClear(ped: number | IPed, vehicle: number | IVehicle, seatIndex: number, side: boolean, onEnter: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x02774B3A9034278F | Since: 1207
      */
-    function isPlaybackGoingOnFor(vehicle: number | Vehicle): boolean;
+    function isPlaybackGoingOnFor(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5A7472606EC5B7C1 | Since: 1207
      */
-    function isPlaybackUsingAiGoingOnFor(vehicle: number | Vehicle): boolean;
+    function isPlaybackUsingAiGoingOnFor(vehicle: number | IVehicle): boolean;
     /**
      * seatIndex: see CREATE_PED_INSIDE_VEHICLE
      *
      * Hash: 0x7892685BF6D9775E | Since: 1207
      */
-    function isSeatWarpOnly(vehicle: number | Vehicle, seatIndex: number): boolean;
+    function isSeatWarpOnly(vehicle: number | IVehicle, seatIndex: number): boolean;
     /**
      * No comment provided
      *
@@ -41106,50 +41106,50 @@ export declare namespace vehicle {
      *
      * Hash: 0xE887BD31D97793F6 | Since: 1207
      */
-    function isTrainWaitingAtStation(train: number | Vehicle): boolean;
+    function isTrainWaitingAtStation(train: number | IVehicle): boolean;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      *
      * Hash: 0x7AE191143C7A9107 | Since: 1207
      */
-    function isDoorFullyOpen(vehicle: number | Vehicle, doorId: number): boolean;
+    function isDoorFullyOpen(vehicle: number | IVehicle, doorId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB86D29B10F627379 | Since: 1207
      */
-    function isDriveable(vehicle: number | Vehicle): boolean;
+    function isDriveable(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xFA9A55D9C4351625 | Since: 1207
      */
-    function isExtraTurnedOn(vehicle: number | Vehicle, extraId: number): boolean;
+    function isExtraTurnedOn(vehicle: number | IVehicle, extraId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3F5029A8FC060C48 | Since: 1207
      */
-    function isInBurnout(vehicle: number | Vehicle): boolean;
+    function isInBurnout(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0045A54EC7A22455 | Since: 1207
      */
-    function isModel(vehicle: number | Vehicle, model: number | string): boolean;
+    function isModel(vehicle: number | IVehicle, model: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0D5D119529654EE0 | Since: 1207
      */
-    function isOnAllWheels(vehicle: number | Vehicle): boolean;
+    function isOnAllWheels(vehicle: number | IVehicle): boolean;
     /**
      * seatIndex: see CREATE_PED_INSIDE_VEHICLE
      * Use GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(vehicle) - 1 for last seat index.
      *
      * Hash: 0xE052C1B1CAA4ECE4 | Since: 1207
      */
-    function isSeatFree(vehicle: number | Vehicle, seatIndex: number): boolean;
+    function isSeatFree(vehicle: number | IVehicle, seatIndex: number): boolean;
     /**
      * Returns true if the vehicle's current speed is less than, or equal to 0.0025f.
      *
@@ -41157,7 +41157,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x78C3311A73135241 | Since: 1207
      */
-    function isStopped(vehicle: number | Vehicle): boolean;
+    function isStopped(vehicle: number | IVehicle): boolean;
     /**
      * VEH_STUCK_ON_ROOF = 0,
      * VEH_STUCK_ON_SIDE,
@@ -41166,37 +41166,37 @@ export declare namespace vehicle {
      *
      * Hash: 0x1ABA9753939503C5 | Since: 1207
      */
-    function isStuckTimerUp(vehicle: number | Vehicle, stuckType: number, ms: number): boolean;
+    function isStuckTimerUp(vehicle: number | IVehicle, stuckType: number, ms: number): boolean;
     /**
      * Requires a visibility tracker on the vehicle (TRACK_VEHICLE_VISIBILITY)
      *
      * Hash: 0x424910CD5DE8C246 | Since: 1207
      */
-    function isVisible(vehicle: number | Vehicle): boolean;
+    function isVisible(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0E7910A63E05B12C | Since: 1436
      */
-    function isWindowIntact(vehicle: number | Vehicle, windowIndex: number): boolean;
+    function isWindowIntact(vehicle: number | IVehicle, windowIndex: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDDBEA5506C848227 | Since: 1207
      */
-    function isWrecked(vehicle: number | Vehicle): boolean;
+    function isWrecked(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1EF36558FBDE2DAA | Since: 1207
      */
-    function lockDoorsWhenNoLongerNeeded(vehicle: number | Vehicle): void;
+    function lockDoorsWhenNoLongerNeeded(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x35AD938C74CACD6A | Since: 1207
      */
-    function modifyTopSpeed(vehicle: number | Vehicle, value: number): void;
+    function modifyTopSpeed(vehicle: number | IVehicle, value: number): void;
     /**
      * No comment provided
      *
@@ -41230,7 +41230,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x745F15A215F2DDF1 | Since: 1207
      */
-    function removeWindow(vehicle: number | Vehicle, windowIndex: number): void;
+    function removeWindow(vehicle: number | IVehicle, windowIndex: number): void;
     /**
      * No comment provided
      *
@@ -41242,7 +41242,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x84B81EF78BD22357 | Since: 1207
      */
-    function requestHighDetailModel(vehicle: number | Vehicle): void;
+    function requestHighDetailModel(vehicle: number | IVehicle): void;
     /**
      * Request the vehicle recording defined by the lowercase format string "%s%03d.yvr". For example, REQUEST_VEHICLE_RECORDING(1, "FBIs1UBER") corresponds to fbis1uber001.yvr.
      * For all vehicle recording/playback natives, "script" is a common prefix that usually corresponds to the script/mission the recording is used in, "recording" is its int suffix, and "id" corresponds to a unique identifier within the recording streaming module.
@@ -41256,13 +41256,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x23298B468F7D88B6 | Since: 1207
      */
-    function resetStuckTimer(vehicle: number | Vehicle, nullAttributes: number): void;
+    function resetStuckTimer(vehicle: number | IVehicle, nullAttributes: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x8D3230A0ED7DE39F | Since: 1207
      */
-    function setAllowExplodesOnContact(vehicle: number | Vehicle): void;
+    function setAllowExplodesOnContact(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -41280,7 +41280,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xAEAB044F05B92659 | Since: 1207
      */
-    function setBoatAnchor(vehicle: number | Vehicle, toggle: boolean): void;
+    function setBoatAnchor(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Value: mostly 99999.9f
      *
@@ -41288,25 +41288,25 @@ export declare namespace vehicle {
      *
      * Hash: 0xE3261532550D6A9F | Since: 1207
      */
-    function setBoatLowLodAnchorDistance(vehicle: number | Vehicle, value: number): void;
+    function setBoatLowLodAnchorDistance(vehicle: number | IVehicle, value: number): void;
     /**
      * Old name: _SET_BOAT_FROZEN_WHEN_ANCHORED
      *
      * Hash: 0x286771F3059A37A7 | Since: 1207
      */
-    function setBoatRemainsAnchoredWhilePlayerIsDriver(vehicle: number | Vehicle): void;
+    function setBoatRemainsAnchoredWhilePlayerIsDriver(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x62A6D317A011EA1D | Since: 1207
      */
-    function setBoatSinksWhenWrecked(vehicle: number | Vehicle, toggle: boolean): void;
+    function setBoatSinksWhenWrecked(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xBC4735F48CD983EF | Since: 1207
      */
-    function setBreakableLocksUnbreakable(vehicle: number | Vehicle, toggle: boolean): void;
+    function setBreakableLocksUnbreakable(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * nullsub, doesn't do anything
      *
@@ -41318,31 +41318,31 @@ export declare namespace vehicle {
      *
      * Hash: 0x1716D787D9B94202 | Since: 1232
      */
-    function setDisableSuperdummy(vehicle: number | Vehicle, disable: boolean): void;
+    function setDisableSuperdummy(vehicle: number | IVehicle, disable: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xD146EE5F2B06B95E | Since: 1207
      */
-    function setDisableEngineFires(vehicle: number | Vehicle): void;
+    function setDisableEngineFires(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x5795FBE7A2001C14 | Since: 1207
      */
-    function setDisablePetrolTankDamage(vehicle: number | Vehicle, toggle: boolean): void;
+    function setDisablePetrolTankDamage(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xB70986AB19B04AFF | Since: 1207
      */
-    function setDisablePetrolTankFires(vehicle: number | Vehicle, toggle: boolean): void;
+    function setDisablePetrolTankFires(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x63DC1F22C903B709 | Since: 1207
      */
-    function setDontAllowPlayerToEnterIfLockedForPlayer(vehicle: number | Vehicle): void;
+    function setDontAllowPlayerToEnterIfLockedForPlayer(vehicle: number | IVehicle): void;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      *
@@ -41350,7 +41350,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x081FB9D6422F804C | Since: 1207
      */
-    function setDoorAllowedToBeBrokenOff(vehicle: number | Vehicle, doorId: number, isBreakable: boolean): void;
+    function setDoorAllowedToBeBrokenOff(vehicle: number | IVehicle, doorId: number, isBreakable: boolean): void;
     /**
      * No comment provided
      *
@@ -41362,31 +41362,31 @@ export declare namespace vehicle {
      *
      * Hash: 0x373CB1283308BD7B | Since: 1207
      */
-    function setForceHd(vehicle: number | Vehicle, toggle: boolean): void;
+    function setForceHd(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Sets boat to be anchored on spawn, called together with SET_BOAT_ANCHOR and _SET_BOAT_ANCHOR_BUOYANCY_COEFFICIENT
      *
      * Hash: 0x75B49ACD73617437 | Since: 1207
      */
-    function setForceLowLodAnchorMode(vehicle: number | Vehicle): void;
+    function setForceLowLodAnchorMode(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x7F8E2B131E1DCA6C | Since: 1207
      */
-    function setForceEngineDamageByBullet(vehicle: number | Vehicle, toggle: boolean): void;
+    function setForceEngineDamageByBullet(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * flags = 0: DEFAULT; 1: KEEP_OLD_SPEED
      *
      * Hash: 0xBBE7648349B49BE8 | Since: 1207
      */
-    function setMissionTrainAsNoLongerNeeded(train: number | Vehicle, flags: number): void;
+    function setMissionTrainAsNoLongerNeeded(train: number | IVehicle, flags: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x7632755962AB9922 | Since: 1207
      */
-    function setMissionTrainCoords(train: number | Vehicle, pos: Vector3): void;
+    function setMissionTrainCoords(train: number | IVehicle, pos: Vector3): void;
     /**
      * No comment provided
      *
@@ -41398,13 +41398,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x838C216C2B05A009 | Since: 1207
      */
-    function setPedOwns(ped: number | Ped, vehicle: number | Vehicle): void;
+    function setPedOwns(ped: number | IPed, vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xD78084EED4CD94C6 | Since: 1207
      */
-    function setPlaybackSpeed(vehicle: number | Vehicle, speed: number): void;
+    function setPlaybackSpeed(vehicle: number | IVehicle, speed: number): void;
     /**
      * No comment provided
      *
@@ -41428,85 +41428,85 @@ export declare namespace vehicle {
      *
      * Hash: 0x01021EB2E96B793C | Since: 1207
      */
-    function setTrainCruiseSpeed(train: number | Vehicle, speed: number): void;
+    function setTrainCruiseSpeed(train: number | IVehicle, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x8EC47DD4300BF063 | Since: 1207
      */
-    function setTrainOffsetFromStation(train: number | Vehicle, offset: number): void;
+    function setTrainOffsetFromStation(train: number | IVehicle, offset: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xDFBA6BBFF7CCAFBB | Since: 1207
      */
-    function setTrainSpeed(train: number | Vehicle, speed: number): void;
+    function setTrainSpeed(train: number | IVehicle, speed: number): void;
     /**
      * Used to be incorrectly named SET_VEHICLE_EXCLUSIVE_DRIVER
      *
      * Hash: 0x0893DAFBFA67110E | Since: 1207
      */
-    function setAiCanUseExclusiveSeats(vehicle: number | Vehicle, toggle: boolean): void;
+    function setAiCanUseExclusiveSeats(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x1240E8596A8308B9 | Since: 1207
      */
-    function setAllowHomingMissleLockon(vehicle: number | Vehicle, toggle: boolean): void;
+    function setAllowHomingMissleLockon(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Makes the vehicle accept no passengers.
      *
      * Hash: 0xECB9E9BC887E8060 | Since: 1207
      */
-    function setAllowNoPassengersLockon(vehicle: number | Vehicle, toggle: boolean): void;
+    function setAllowNoPassengersLockon(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x501354951CD942DE | Since: 1207
      */
-    function setAutomaticallyAttaches(vehicle: number | Vehicle): any;
+    function setAutomaticallyAttaches(vehicle: number | IVehicle): any;
     /**
      * No comment provided
      *
      * Hash: 0x55CCAAE4F28C67A0 | Since: 1207
      */
-    function setBodyHealth(vehicle: number | Vehicle, value: number): void;
+    function setBodyHealth(vehicle: number | IVehicle, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xCEC4CA2CAB8FA98C | Since: 1207
      */
-    function setBrokenPartsDontAffectAiHandling(vehicle: number | Vehicle): void;
+    function setBrokenPartsDontAffectAiHandling(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x05254BA0B44ADC16 | Since: 1207
      */
-    function setCanBeTargetted(vehicle: number | Vehicle, state: boolean): void;
+    function setCanBeTargetted(vehicle: number | IVehicle, state: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE42952510F84AFDB | Since: 1207
      */
-    function setCanBeUsedByFleeingPeds(vehicle: number | Vehicle, toggle: boolean): void;
+    function setCanBeUsedByFleeingPeds(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x4BF8131AE811541C | Since: 1207
      */
-    function setCanBeVisiblyDamaged(vehicle: number | Vehicle, state: boolean): void;
+    function setCanBeVisiblyDamaged(vehicle: number | IVehicle, state: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC5ED9D59B4646611 | Since: 1207
      */
-    function setCanBreak(vehicle: number | Vehicle, toggle: boolean): void;
+    function setCanBreak(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x065D03A9D6B2C6B5 | Since: 1207
      */
-    function setCanEjectPassengersIfLocked(vehicle: number | Vehicle): void;
+    function setCanEjectPassengersIfLocked(vehicle: number | IVehicle): void;
     /**
      * Apply damage to vehicle at a location. Location is relative to vehicle model (not world).
      *
@@ -41514,7 +41514,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x1D7678F81452BB41 | Since: 1207
      */
-    function setDamage(vehicle: number | Vehicle, xOffset: number, yOffset: number, zOffset: number, damage: number, radius: number): void;
+    function setDamage(vehicle: number | IVehicle, xOffset: number, yOffset: number, zOffset: number, damage: number, radius: number): void;
     /**
      * No comment provided
      *
@@ -41526,68 +41526,68 @@ export declare namespace vehicle {
      *
      * Hash: 0x758C3460EE915D0A | Since: 1207
      */
-    function setDirtLevel(vehicle: number | Vehicle, dirtLevel: number): void;
+    function setDirtLevel(vehicle: number | IVehicle, dirtLevel: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x96F78A6A075D55D9 | Since: 1207
      */
-    function setDoorsLocked(vehicle: number | Vehicle, doorLockStatus: number): void;
+    function setDoorsLocked(vehicle: number | IVehicle, doorLockStatus: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x2381977DA948F8DC | Since: 1207
      */
-    function setDoorsLockedForAllPlayers(vehicle: number | Vehicle, toggle: boolean): void;
+    function setDoorsLockedForAllPlayers(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x359A8EA1FB8D6F0F | Since: 1207
      */
-    function setDoorsLockedForPlayer(vehicle: number | Vehicle, player: number | string | Player, toggle: boolean): void;
+    function setDoorsLockedForPlayer(vehicle: number | IVehicle, player: number | string | IPlayer, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xE712BC978770F105 | Since: 1207
      */
-    function setDoorsLockedForTeam(vehicle: number | Vehicle, team: number, toggle: boolean): void;
+    function setDoorsLockedForTeam(vehicle: number | IVehicle, team: number, toggle: boolean): void;
     /**
      * Closes all doors of a vehicle:
      *
      * Hash: 0xA4FFCD645B11F25A | Since: 1207
      */
-    function setDoorsShut(vehicle: number | Vehicle, closeInstantly: boolean): void;
+    function setDoorsShut(vehicle: number | IVehicle, closeInstantly: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x362CEDD2A41E0747 | Since: 1232
      */
-    function setDoorsToOpenAtAnyDistance(vehicle: number | Vehicle, toggle: boolean): void;
+    function setDoorsToOpenAtAnyDistance(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      *
      * Hash: 0x9666CF20A1C6D780 | Since: 1207
      */
-    function setDoorBroken(vehicle: number | Vehicle, doorId: number, deleteDoor: boolean): void;
+    function setDoorBroken(vehicle: number | IVehicle, doorId: number, deleteDoor: boolean): void;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      *
      * Hash: 0xD57F10EBBA814ECF | Since: 1207
      */
-    function setDoorControl(vehicle: number | Vehicle, doorId: number, speed: number, angle: number): void;
+    function setDoorControl(vehicle: number | IVehicle, doorId: number, speed: number, angle: number): void;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      *
      * Hash: 0x06F8A202EB312A3C | Since: 1207
      */
-    function setDoorLatched(vehicle: number | Vehicle, doorId: number): void;
+    function setDoorLatched(vehicle: number | IVehicle, doorId: number): void;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      * Can also be used on trains and its wagons
      *
      * Hash: 0x550CE392A4672412 | Since: 1207
      */
-    function setDoorOpen(vehicle: number | Vehicle, doorId: number, loose: boolean, openInstantly: boolean): void;
+    function setDoorOpen(vehicle: number | IVehicle, doorId: number, loose: boolean, openInstantly: boolean): void;
     /**
      * doorId: enum eDoorId
      * {
@@ -41608,13 +41608,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x6A3C24B91FD0EA09 | Since: 1207
      */
-    function setDoorShut(vehicle: number | Vehicle, doorId: number, closeInstantly: boolean): void;
+    function setDoorShut(vehicle: number | IVehicle, doorId: number, closeInstantly: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x48E4C137A71C2688 | Since: 1207
      */
-    function setEngineCanDegrade(vehicle: number | Vehicle, toggle: boolean): void;
+    function setEngineCanDegrade(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * 1000 is max health
      * Begins leaking gas at around 650 health
@@ -41631,7 +41631,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x8BDC5B998B4654EF | Since: 1207
      */
-    function setEngineHealth(vehicle: number | Vehicle, health: number): void;
+    function setEngineHealth(vehicle: number | IVehicle, health: number): void;
     /**
      * Starts or stops the engine on the specified vehicle.
      *
@@ -41641,7 +41641,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xB64CFA14CB9A2E78 | Since: 1207
      */
-    function setEngineOn(vehicle: number | Vehicle, value: boolean, instantly: boolean): void;
+    function setEngineOn(vehicle: number | IVehicle, value: boolean, instantly: boolean): void;
     /**
      * index: 0 - 1
      *
@@ -41649,147 +41649,147 @@ export declare namespace vehicle {
      *
      * Hash: 0xC6B9BF123B9463B6 | Since: 1207
      */
-    function setExclusiveDriver(vehicle: number | Vehicle, ped: number | Ped, index: number): void;
+    function setExclusiveDriver(vehicle: number | IVehicle, ped: number | IPed, index: number): void;
     /**
      * Sets a vehicle to be strongly resistant to explosions. p0 is the vehicle; set p1 to false to toggle the effect on/off.
      *
      * Hash: 0xA402939C6761E1A3 | Since: 1207
      */
-    function setExplodesOnHighExplosionDamage(vehicle: number | Vehicle, toggle: boolean): void;
+    function setExplodesOnHighExplosionDamage(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Note: only some vehicle have extras
      * https://github.com/femga/rdr3_discoveries/blob/master/vehicles/vehicle_modding/vehicle_extras.lua
      *
      * Hash: 0xBB6F89150BC9D16B | Since: 1207
      */
-    function setExtra(vehicle: number | Vehicle, extraId: number, disable: boolean): void;
+    function setExtra(vehicle: number | IVehicle, extraId: number, disable: boolean): void;
     /**
      * This fixes a vehicle.
      * If the vehicle's engine's broken then you cannot fix it with this native.
      *
      * Hash: 0x79811282A9D1AE56 | Since: 1207
      */
-    function setFixed(vehicle: number | Vehicle): void;
+    function setFixed(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xF9F92AF49F12F6E7 | Since: 1207
      */
-    function setForwardSpeed(vehicle: number | Vehicle, speed: number): void;
+    function setForwardSpeed(vehicle: number | IVehicle, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x91BE51AEC4E99710 | Since: 1207
      */
-    function setHandbrake(vehicle: number | Vehicle, toggle: boolean): void;
+    function setHandbrake(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xBB5A3FA8ED3979C5 | Since: 1207
      */
-    function setHasBeenOwnedByPlayer(vehicle: number | Vehicle, owned: boolean): void;
+    function setHasBeenOwnedByPlayer(vehicle: number | IVehicle, owned: boolean): void;
     /**
      * if true, axles won't bend.
      *
      * Hash: 0x252253C8A45AA1FC | Since: 1207
      */
-    function setHasStrongAxles(vehicle: number | Vehicle, toggle: boolean): void;
+    function setHasStrongAxles(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC903855E028A05F2 | Since: 1207
      */
-    function setHasUnbreakableLights(vehicle: number | Vehicle): void;
+    function setHasUnbreakableLights(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x4EA71B4C9DB3C3F1 | Since: 1207
      */
-    function setInactiveDuringPlayback(vehicle: number | Vehicle, toggle: boolean): void;
+    function setInactiveDuringPlayback(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      *
      * Hash: 0xA9F1D75195CC40F6 | Since: 1207
      */
-    function setIndividualDoorsLocked(vehicle: number | Vehicle, doorId: number, doorLockStatus: number): void;
+    function setIndividualDoorsLocked(vehicle: number | IVehicle, doorId: number, doorLockStatus: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC1842F40FD501DA2 | Since: 1207
      */
-    function setInfluencesWantedLevel(vehicle: number | Vehicle, toggle: boolean): void;
+    function setInfluencesWantedLevel(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Setting this to false, makes the specified vehicle to where if you press Y your character doesn't even attempt the animation to enter the vehicle. Hence it's not considered aka ignored.
      *
      * Hash: 0x54800D386C5825E5 | Since: 1207
      */
-    function setIsConsideredByPlayer(vehicle: number | Vehicle, toggle: boolean): void;
+    function setIsConsideredByPlayer(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x6C32FC81DFF25C9A | Since: 1207
      */
-    function setIsStolen(vehicle: number | Vehicle, isStolen: boolean): void;
+    function setIsStolen(vehicle: number | IVehicle, isStolen: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x1549BA7FE83A2383 | Since: 1207
      */
-    function setKeepEngineOnWhenAbandoned(vehicle: number | Vehicle, toggle: boolean): void;
+    function setKeepEngineOnWhenAbandoned(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Sets the vehicle's lights state.
      *
      * Hash: 0x629F0A0E952CAE7D | Since: 1207
      */
-    function setLights(vehicle: number | Vehicle, state: number): void;
+    function setLights(vehicle: number | IVehicle, state: number): void;
     /**
      * _SET_VEHICLE_LI*
      *
      * Hash: 0x8F75941C86EEBFCA | Since: 1207
      */
-    function setLimitSpeedWhenPlayerInactive(vehicle: number | Vehicle): void;
+    function setLimitSpeedWhenPlayerInactive(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x5F5E2B1B9EAECC0F | Since: 1207
      */
-    function setLodMultiplier(vehicle: number | Vehicle, multiplier: number): void;
+    function setLodMultiplier(vehicle: number | IVehicle, multiplier: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x7549B9E841940695 | Since: 1207
      */
-    function setMayBeUsedByGotoPointAnyMeans(vehicle: number | Vehicle): void;
+    function setMayBeUsedByGotoPointAnyMeans(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x09C970AE59ABF6B2 | Since: 1207
      */
-    function setNotStealableAmbiently(vehicle: number | Vehicle): void;
+    function setNotStealableAmbiently(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x7263332501E07F52 | Since: 1207
      */
-    function setOnGroundProperly(vehicle: number | Vehicle): boolean;
+    function setOnGroundProperly(vehicle: number | IVehicle): boolean;
     /**
      * 1000 is max health
      *
      * Hash: 0x6AB2918EE3BEC94C | Since: 1207
      */
-    function setPetrolTankHealth(vehicle: number | Vehicle, health: number): void;
+    function setPetrolTankHealth(vehicle: number | IVehicle, health: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x652712478F1721F4 | Since: 1207
      */
-    function setProvidesCover(vehicle: number | Vehicle, toggle: boolean): void;
+    function setProvidesCover(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x33992A808DF1C1BA | Since: 1207
      */
-    function setRespectsLocksWhenHasDriver(vehicle: number | Vehicle): void;
+    function setRespectsLocksWhenHasDriver(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -41801,7 +41801,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x23A3AB86E0807721 | Since: 1207
      */
-    function setStaysFrozenWhenCleanedUp(vehicle: number | Vehicle, toggle: boolean): void;
+    function setStaysFrozenWhenCleanedUp(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Locks the vehicle's steering to the desired angle, explained below.
      *
@@ -41814,49 +41814,49 @@ export declare namespace vehicle {
      *
      * Hash: 0x84DAAE11E9EE4FC3 | Since: 1207
      */
-    function setSteerBias(vehicle: number | Vehicle, value: number): void;
+    function setSteerBias(vehicle: number | IVehicle, value: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC84E138448507567 | Since: 1207
      */
-    function setStopInstantlyWhenPlayerInactive(vehicle: number | Vehicle): void;
+    function setStopInstantlyWhenPlayerInactive(vehicle: number | IVehicle): void;
     /**
      * If set to true, vehicle will not take crash damage, but is still susceptible to damage from bullets and explosives
      *
      * Hash: 0xAB315515C9F8803D | Since: 1207
      */
-    function setStrong(vehicle: number | Vehicle, toggle: boolean): void;
+    function setStrong(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Allows you to toggle bulletproof tires.
      *
      * Hash: 0xEBD0A4E935106FE5 | Since: 1207
      */
-    function setTyresCanBurst(vehicle: number | Vehicle, toggle: boolean): void;
+    function setTyresCanBurst(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x6E884BAB713A2A94 | Since: 1207
      */
-    function setUndriveable(vehicle: number | Vehicle, toggle: boolean): void;
+    function setUndriveable(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x839137C40275FB77 | Since: 1207
      */
-    function setWheelsCanBreak(vehicle: number | Vehicle, enabled: boolean): void;
+    function setWheelsCanBreak(vehicle: number | IVehicle, enabled: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xC462C79379ABBCB1 | Since: 1207
      */
-    function setWheelsCanBreakOffWhenBlowUp(vehicle: number | Vehicle, toggle: boolean): void;
+    function setWheelsCanBreakOffWhenBlowUp(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * SET_TIME_POSITION_IN_RECORDING can be emulated by: desired_time - GET_TIME_POSITION_IN_RECORDING(vehicle)
      *
      * Hash: 0x5F5E6379C59EFC56 | Since: 1207
      */
-    function skipTimeInPlaybackRecorded(vehicle: number | Vehicle, time: number): void;
+    function skipTimeInPlaybackRecorded(vehicle: number | IVehicle, time: number): void;
     /**
      * `p3 is some flag related to 'trailers' (invokes CVehicle::GetTrailer).`
      *
@@ -41864,7 +41864,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x4932B84E3276508E | Since: 1207
      */
-    function startPlaybackRecorded(vehicle: number | Vehicle, recording: number, script: string): void;
+    function startPlaybackRecorded(vehicle: number | IVehicle, recording: number, script: string): void;
     /**
      * Sounds the horn for the specified vehicle.
      *
@@ -41876,25 +41876,25 @@ export declare namespace vehicle {
      *
      * Hash: 0xB4E3BFC39CA16057 | Since: 1207
      */
-    function startHorn(vehicle: number | Vehicle, duration: number, mode: number | string, forever: boolean): void;
+    function startHorn(vehicle: number | IVehicle, duration: number, mode: number | string, forever: boolean): void;
     /**
      * Old name: _STOP_BRING_VEHICLE_TO_HALT
      *
      * Hash: 0x7C06330BFDDA182E | Since: 1207
      */
-    function stopBringingToHalt(vehicle: number | Vehicle): void;
+    function stopBringingToHalt(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xBF9B4D6267E8C26D | Since: 1207
      */
-    function stopPlaybackRecorded(vehicle: number | Vehicle): void;
+    function stopPlaybackRecorded(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x1F3969B140DEE157 | Since: 1207
      */
-    function trackVisibility(vehicle: number | Vehicle): void;
+    function trackVisibility(vehicle: number | IVehicle): void;
     /**
      * Only used in SP Scripts.
      * Related to Vehicle Speed.
@@ -41913,7 +41913,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x04F0579DBDD32F34 | Since: 1207
      */
-    function _0x04F0579DBDD32F34(vehicle: number | Vehicle): void;
+    function _0x04F0579DBDD32F34(vehicle: number | IVehicle): void;
     /**
      * Takes value returned from 0x45853F4E17D847D5
      *
@@ -41925,13 +41925,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x06A09A6E0C6D2A84 | Since: 1207
      */
-    function _0x06A09A6E0C6D2A84(train: number | Vehicle): void;
+    function _0x06A09A6E0C6D2A84(train: number | IVehicle): void;
     /**
      * _SET_VEHICLE_S*
      *
      * Hash: 0x0794199B25E499E1 | Since: 1207
      */
-    function _0x0794199B25E499E1(wagon: number | Vehicle): void;
+    function _0x0794199B25E499E1(wagon: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -41979,7 +41979,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x104D9A7B1C0D0783 | Since: 1207
      */
-    function _0x104D9A7B1C0D0783(vehicle: number | Vehicle): void;
+    function _0x104D9A7B1C0D0783(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -41992,14 +41992,14 @@ export declare namespace vehicle {
      *
      * Hash: 0x1180A2974D251B7B | Since: 1207
      */
-    function _0x1180A2974D251B7B(train: number | Vehicle): number;
+    function _0x1180A2974D251B7B(train: number | IVehicle): number;
     /**
      * Params: coords = GET_ENTITY_VELOCITY
      * _SET_VELOCITY*
      *
      * Hash: 0x12F6C6ED3EFF42DE | Since: 1207
      */
-    function _0x12F6C6ED3EFF42DE(vehicle: number | Vehicle, pos: Vector3): void;
+    function _0x12F6C6ED3EFF42DE(vehicle: number | IVehicle, pos: Vector3): void;
     /**
      * No comment provided
      *
@@ -42029,13 +42029,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x15CC8C33D7FFCC4A | Since: 1436
      */
-    function _0x15CC8C33D7FFCC4A(vehicle: number | Vehicle): void;
+    function _0x15CC8C33D7FFCC4A(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x160C1B5AB48AB87C | Since: 1207
      */
-    function _0x160C1B5AB48AB87C(train: number | Vehicle): void;
+    function _0x160C1B5AB48AB87C(train: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42059,13 +42059,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x1A861F899EBBE17C | Since: 1207
      */
-    function _0x1A861F899EBBE17C(train: number | Vehicle): void;
+    function _0x1A861F899EBBE17C(train: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x1BFBAFCC6760FF02 | Since: 1207
      */
-    function _0x1BFBAFCC6760FF02(train: number | Vehicle): void;
+    function _0x1BFBAFCC6760FF02(train: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42077,7 +42077,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x2200AB13CBD10F4E | Since: 1207
      */
-    function _0x2200AB13CBD10F4E(vehicle: number | Vehicle, pos: Vector3): void;
+    function _0x2200AB13CBD10F4E(vehicle: number | IVehicle, pos: Vector3): void;
     /**
      * No comment provided
      *
@@ -42173,7 +42173,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x41F0B254DDF71473 | Since: 1207
      */
-    function _0x41F0B254DDF71473(wagon: number | Vehicle): void;
+    function _0x41F0B254DDF71473(wagon: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42204,7 +42204,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x4C60C333F9CCA2B6 | Since: 1207
      */
-    function _0x4C60C333F9CCA2B6(vehicle: number | Vehicle): void;
+    function _0x4C60C333F9CCA2B6(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42234,7 +42234,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x6355602C02EDC6DF | Since: 1207
      */
-    function _0x6355602C02EDC6DF(entity: number | Entity): void;
+    function _0x6355602C02EDC6DF(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -42270,7 +42270,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x6B53F4B811E583D2 | Since: 1207
      */
-    function _0x6B53F4B811E583D2(vehicle: number | Vehicle, toggle: boolean): void;
+    function _0x6B53F4B811E583D2(vehicle: number | IVehicle, toggle: boolean): void;
     /**
      * Returns trackIndex
      *
@@ -42282,7 +42282,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x6DE072AC8A95FFC1 | Since: 1207
      */
-    function _0x6DE072AC8A95FFC1(vehicle: number | Vehicle): void;
+    function _0x6DE072AC8A95FFC1(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42312,7 +42312,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x73118A3EE9C9B6DB | Since: 1207
      */
-    function _0x73118A3EE9C9B6DB(wagon: number | Vehicle): void;
+    function _0x73118A3EE9C9B6DB(wagon: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42330,13 +42330,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x762FDC4C19E5A981 | Since: 1207
      */
-    function _0x762FDC4C19E5A981(trainCarriage: number | Entity): void;
+    function _0x762FDC4C19E5A981(trainCarriage: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x7840576C50A13DBA | Since: 1207
      */
-    function _0x7840576C50A13DBA(train: number | Vehicle): void;
+    function _0x7840576C50A13DBA(train: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42360,7 +42360,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x850CE59DEC2028F3 | Since: 1207
      */
-    function _0x850CE59DEC2028F3(vehicle: number | Vehicle): void;
+    function _0x850CE59DEC2028F3(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42378,7 +42378,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x87B974E54C71BA7B | Since: 1207
      */
-    function _0x87B974E54C71BA7B(vehicle: number | Vehicle): void;
+    function _0x87B974E54C71BA7B(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42421,7 +42421,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x9E8711C81AA17876 | Since: 1207
      */
-    function _0x9E8711C81AA17876(vehicle: number | Vehicle): void;
+    function _0x9E8711C81AA17876(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42439,7 +42439,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xA72B1BF3857B94D7 | Since: 1207
      */
-    function _0xA72B1BF3857B94D7(train: number | Vehicle): void;
+    function _0xA72B1BF3857B94D7(train: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42457,7 +42457,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xAE7E66A61E7C17A5 | Since: 1207
      */
-    function _0xAE7E66A61E7C17A5(train: number | Vehicle): void;
+    function _0xAE7E66A61E7C17A5(train: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42469,7 +42469,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xB42C87521D1BDD2F | Since: 1207
      */
-    function _0xB42C87521D1BDD2F(vehicle: number | Vehicle, pos: Vector3): void;
+    function _0xB42C87521D1BDD2F(vehicle: number | IVehicle, pos: Vector3): void;
     /**
      * No comment provided
      *
@@ -42487,7 +42487,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xC325A6BAA62CF8A2 | Since: 1207
      */
-    function _0xC325A6BAA62CF8A2(vehicle: number | Vehicle): void;
+    function _0xC325A6BAA62CF8A2(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42499,13 +42499,13 @@ export declare namespace vehicle {
      *
      * Hash: 0xC399CC89FBA05DA0 | Since: 1207
      */
-    function _0xC399CC89FBA05DA0(vehicle: number | Vehicle): void;
+    function _0xC399CC89FBA05DA0(vehicle: number | IVehicle): void;
     /**
      * _SET_DRAFT_VEHICLE_(STOP?)*
      *
      * Hash: 0xC4A2C11FC0D41916 | Since: 1207
      */
-    function _0xC4A2C11FC0D41916(vehicle: number | Vehicle): void;
+    function _0xC4A2C11FC0D41916(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42529,7 +42529,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xCBF88256E44D5D39 | Since: 1207
      */
-    function _0xCBF88256E44D5D39(vehicle: number | Vehicle): void;
+    function _0xCBF88256E44D5D39(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42541,7 +42541,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xCF342503CA4C8DF1 | Since: 1207
      */
-    function _0xCF342503CA4C8DF1(vehicle: number | Vehicle): void;
+    function _0xCF342503CA4C8DF1(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42589,7 +42589,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xD826690B5CF3BEFF | Since: 1207
      */
-    function _0xD826690B5CF3BEFF(vehicle: number | Vehicle): void;
+    function _0xD826690B5CF3BEFF(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42619,7 +42619,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xDE8C5B9F65017FA1 | Since: 1207
      */
-    function _0xDE8C5B9F65017FA1(train: number | Vehicle): any;
+    function _0xDE8C5B9F65017FA1(train: number | IVehicle): any;
     /**
      * No comment provided
      *
@@ -42632,7 +42632,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xE1C0F8781BF130C2 | Since: 1207
      */
-    function _0xE1C0F8781BF130C2(wagon: number | Vehicle): boolean;
+    function _0xE1C0F8781BF130C2(wagon: number | IVehicle): boolean;
     /**
      * No comment provided
      *
@@ -42644,7 +42644,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xE6BD7DD3FD474415 | Since: 1207
      */
-    function _0xE6BD7DD3FD474415(train: number | Vehicle): void;
+    function _0xE6BD7DD3FD474415(train: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42662,7 +42662,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xEF28A614B4B264B8 | Since: 1207
      */
-    function _0xEF28A614B4B264B8(train: number | Vehicle): void;
+    function _0xEF28A614B4B264B8(train: number | IVehicle): void;
     /**
      * _IS_* (related to CREATE_MISSION_TRAIN)
      *
@@ -42698,7 +42698,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xFC4F15A7DDDC47B1 | Since: 1207
      */
-    function _0xFC4F15A7DDDC47B1(vehicle: number | Vehicle): void;
+    function _0xFC4F15A7DDDC47B1(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -42716,32 +42716,32 @@ export declare namespace vehicle {
      *
      * Hash: 0x41503629D1139ABC | Since: 1207
      */
-    function addTrainTemporaryStop(train: number | Vehicle, trackIndex: number, pos: Vector3): void;
+    function addTrainTemporaryStop(train: number | IVehicle, trackIndex: number, pos: Vector3): void;
     /**
      * returns true if any wheel is destroyed/detached
      *
      * Hash: 0x18714953CCED17D3 | Since: 1207
      */
-    function areAnyWheelsDestroyed(vehicle: number | Vehicle): boolean;
+    function areAnyWheelsDestroyed(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x316CDB5B6E8F4110 | Since: 1207
      */
-    function attachDraftHarnessPed(mount: number | Ped, draft: number | Vehicle, harnessId: number): boolean;
+    function attachDraftHarnessPed(mount: number | IPed, draft: number | IVehicle, harnessId: number): boolean;
     /**
      * Params: destroyingForce is usually 100f in R* Scripts
      * Similar to 0xD4F5EFB55769D272, _A*
      *
      * Hash: 0xC372B6A88F6E4AD8 | Since: 1207
      */
-    function breakOffDraftWheel(vehicle: number | Vehicle, wheelIndex: number, destroyingForce: number): void;
+    function breakOffDraftWheel(vehicle: number | IVehicle, wheelIndex: number, destroyingForce: number): void;
     /**
      * wheelIndex 0: left, wheelIndex 1: right, 4 & 5: unknown
      *
      * Hash: 0xD4F5EFB55769D272 | Since: 1207
      */
-    function breakOffWheel(vehicle: number | Vehicle, wheelIndex: number): number;
+    function breakOffWheel(vehicle: number | IVehicle, wheelIndex: number): number;
     /**
      * Identical to CREATE_VEHICLE but allows to set draftAnimalPopGroup (see popgroups.#mt for DRAFT_HORSES_*)
      *
@@ -42761,26 +42761,26 @@ export declare namespace vehicle {
      *
      * Hash: 0xE1A83D4A3B5D7938 | Since: 1207
      */
-    function deleteLanterns(vehicle: number | Vehicle): boolean;
+    function deleteLanterns(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x4402960666000E62 | Since: 1207
      */
-    function detachDraftHarnessFromIndex(draft: number | Vehicle, harnessId: number): boolean;
+    function detachDraftHarnessFromIndex(draft: number | IVehicle, harnessId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB36D3EC70963BE60 | Since: 1207
      */
-    function detachDraftHarnessPed(draft: number | Vehicle, ped: number | Ped): boolean;
+    function detachDraftHarnessPed(draft: number | IVehicle, ped: number | IPed): boolean;
     /**
      * Only used in train_robbery4 R* Script
      * _C* - _DEL*
      *
      * Hash: 0x54CBDD6E1B4CB4DF | Since: 1207
      */
-    function detachWagonEntityFromTrain(entity: number | Entity): void;
+    function detachWagonEntityFromTrain(entity: number | IEntity): void;
     /**
      * No comment provided
      *
@@ -42792,19 +42792,19 @@ export declare namespace vehicle {
      *
      * Hash: 0x35DC1877312FBA0F | Since: 1207
      */
-    function fadeAndDestroy(vehicle: number | Vehicle): void;
+    function fadeAndDestroy(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0xE015CF1F2C0959D8 | Since: 1207
      */
-    function getBreakableLocksState(vehicle: number | Vehicle): number;
+    function getBreakableLocksState(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x58F2244C1286D09A | Since: 1207
      */
-    function getBreakableLockObject(vehicle: number | Vehicle, index: number): number;
+    function getBreakableLockObject(vehicle: number | IVehicle, index: number): number;
     /**
      * No comment provided
      *
@@ -42816,13 +42816,13 @@ export declare namespace vehicle {
      *
      * Hash: 0xAF787E081AC4A8EE | Since: 1207
      */
-    function getCurrentTrackForTrain(train: number | Vehicle): number;
+    function getCurrentTrackForTrain(train: number | IVehicle): number;
     /**
      * `Returns rage::NumericLimits<float>::kMax (3.402823466e+38) if vehicle is not a valid vehicle of type VEHICLE_TYPE_DRAFT.`
      *
      * Hash: 0xC6D7DDC843176701 | Since: 1207
      */
-    function getDraftDesiredSpeed(vehicle: number | Vehicle): number;
+    function getDraftDesiredSpeed(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -42834,7 +42834,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x2FA86833E3617E2D | Since: 1207
      */
-    function getNumBreakableLockObjects(vehicle: number | Vehicle): number;
+    function getNumBreakableLockObjects(vehicle: number | IVehicle): number;
     /**
      * Returns amount for CAN_REGISTER_MISSION_VEHICLES
      *
@@ -42861,13 +42861,13 @@ export declare namespace vehicle {
      *
      * Hash: 0xA8BA0BAE0173457B | Since: 1207
      */
-    function getPedInDraftHarness(vehicle: number | Vehicle, harnessId: number): number;
+    function getPedInDraftHarness(vehicle: number | IVehicle, harnessId: number): number;
     /**
      * Returns handles of boat paddles entities.
      *
      * Hash: 0xA6E210FB4283B767 | Since: 1207
      */
-    function getRowingOars(vehicle: number | Vehicle): [number, number];
+    function getRowingOars(vehicle: number | IVehicle): [number, number];
     /**
      * Returns Coords of vStation
      * p0 - NET_TRAIN_MANAGER_GET_TRAIN_STATION_DATA
@@ -42888,20 +42888,20 @@ export declare namespace vehicle {
      *
      * Hash: 0x671A07C9A1CD50A5 | Since: 1207
      */
-    function getTrainCar(train: number | Vehicle): number;
+    function getTrainCar(train: number | IVehicle): number;
     /**
      * Returns iNumCars - to be used with GET_TRAIN_CARRIAGE (trailerNumber)
      * _C* (O, P, Q, R)
      *
      * Hash: 0x60B7D1DCC312697D | Since: 1207
      */
-    function getTrainCarriageTrailerNumber(train: number | Vehicle): number;
+    function getTrainCarriageTrailerNumber(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x3C9628A811CBD724 | Since: 1207
      */
-    function getTrainDirection(train: number | Vehicle): boolean;
+    function getTrainDirection(train: number | IVehicle): boolean;
     /**
      * https://i.imgur.com/1rHibjW.jpg
      *
@@ -42925,7 +42925,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x45853F4E17D847D5 | Since: 1207
      */
-    function getTrainTrackFromTrain(train: number | Vehicle): number;
+    function getTrainTrackFromTrain(train: number | IVehicle): number;
     /**
      * Outputs junctionIndex, to be used with 0xE6C5E2125EB210C1
      *
@@ -42943,61 +42943,61 @@ export declare namespace vehicle {
      *
      * Hash: 0xDD1E1393D966D39A | Since: 1207
      */
-    function getDoorsLockedForTeam(vehicle: number | Vehicle, team: number): boolean;
+    function getDoorsLockedForTeam(vehicle: number | IVehicle, team: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD798DF5DB67B1659 | Since: 1207
      */
-    function getIsPropSetApplied(vehicle: number | Vehicle): boolean;
+    function getIsPropSetApplied(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xBB765B8FD49A796C | Since: 1207
      */
-    function getLivery(vehicle: number | Vehicle): number;
+    function getLivery(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xB729679356A889AE | Since: 1207
      */
-    function getOwner(vehicle: number | Vehicle): number;
+    function getOwner(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xA44D65E6C624526F | Since: 1207
      */
-    function getTint(vehicle: number | Vehicle): number;
+    function getTint(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xFF5791B7639C2A46 | Since: 1207
      */
-    function getTurretSeat(vehicle: number | Vehicle): [boolean, number];
+    function getTurretSeat(vehicle: number | IVehicle): [boolean, number];
     /**
      * No comment provided
      *
      * Hash: 0xBD3C4A2ED509205E | Since: 1207
      */
-    function hasTrainLoaded(train: number | Vehicle): boolean;
+    function hasTrainLoaded(train: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x201B8ED4FF7FE9F5 | Since: 1207
      */
-    function hideHorseReins(vehicle: number | Vehicle): void;
+    function hideHorseReins(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
      * Hash: 0x30D86B2B7622D0EB | Since: 1207
      */
-    function isBoatGrounded(vehicle: number | Vehicle): boolean;
+    function isBoatGrounded(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB213D2A560B2E48B | Since: 1207
      */
-    function isPedExclusiveDriverOf(ped: number | Ped, vehicle: number | Vehicle): [boolean, number];
+    function isPedExclusiveDriverOf(ped: number | IPed, vehicle: number | IVehicle): [boolean, number];
     /**
      * No comment provided
      *
@@ -43009,44 +43009,44 @@ export declare namespace vehicle {
      *
      * Hash: 0x404527BC03DA0E6C | Since: 1207
      */
-    function isBroughtToHalt(vehicle: number | Vehicle): boolean;
+    function isBroughtToHalt(vehicle: number | IVehicle): boolean;
     /**
      * doorId: see SET_VEHICLE_DOOR_SHUT
      *
      * Hash: 0xE979BB5602AD3402 | Since: 1207
      */
-    function isDoorBroken(vehicle: number | Vehicle, doorId: number): boolean;
+    function isDoorBroken(vehicle: number | IVehicle, doorId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5136B284B67B35C7 | Since: 1207
      */
-    function isFadingOut(vehicle: number | Vehicle): boolean;
+    function isFadingOut(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x0E3BF7ED4169EC43 | Since: 1207
      */
-    function isOnFire(vehicle: number | Vehicle): boolean;
+    function isOnFire(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xCB2CA620C48BC875 | Since: 1207
      */
-    function isWheelDestroyed(vehicle: number | Vehicle, wheel: number): boolean;
+    function isWheelDestroyed(vehicle: number | IVehicle, wheel: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xCF9DA72002FC16BF | Since: 1207
      */
-    function requestAssetAnims(ped: number | Ped, entity: number | Entity, vehicleAsset: number): void;
+    function requestAssetAnims(ped: number | IPed, entity: number | IEntity, vehicleAsset: number): void;
     /**
      * Outputs track hash and junction index on given train vehicle handle.
      * _RESET_VEHICLE_* (?)
      *
      * Hash: 0x09034479E6E3E269 | Since: 1207
      */
-    function returnTrainInfoFromHandle(train: number | Vehicle): [boolean, number, number];
+    function returnTrainInfoFromHandle(train: number | IVehicle): [boolean, number, number];
     /**
      * No comment provided
      *
@@ -43064,56 +43064,56 @@ export declare namespace vehicle {
      *
      * Hash: 0x7C9E45A4CED2E8DA | Since: 1207
      */
-    function setBalloonHoverState(balloon: number | Vehicle): void;
+    function setBalloonHoverState(balloon: number | IVehicle): void;
     /**
      * Total height is calculated using: cargo ratio + pelt ratio (by pelt count)
      * Screenshot: https://imgur.com/a/nsomtiv
      *
      * Hash: 0x31F343383F19C987 | Since: 1207
      */
-    function setBatchTarpHeight(vehicle: number | Vehicle, height: number, immediately: boolean): void;
+    function setBatchTarpHeight(vehicle: number | IVehicle, height: number, immediately: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x8C6D9A399126C194 | Since: 1207
      */
-    function setDraftAnimalRandomSeed(vehicle: number | Vehicle, seed: number): void;
+    function setDraftAnimalRandomSeed(vehicle: number | IVehicle, seed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x87344305778E5415 | Since: 1207
      */
-    function setDraftAllowDraftAnimalAutoCreation(vehicle: number | Vehicle, allow: boolean): void;
+    function setDraftAllowDraftAnimalAutoCreation(vehicle: number | IVehicle, allow: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x6090A031C69F384E | Since: 1207
      */
-    function setDraftAnimalsCanDetach(draft: number | Vehicle, canDetach: boolean): void;
+    function setDraftAnimalsCanDetach(draft: number | IVehicle, canDetach: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x0C3F0F7F92CA847C | Since: 1207
      */
-    function setDraftDesiredSpeed(vehicle: number | Vehicle, speed: number): void;
+    function setDraftDesiredSpeed(vehicle: number | IVehicle, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x226C6A4E3346D288 | Since: 1207
      */
-    function setDraftYokeCanBreak(draft: number | Vehicle, canBreak: boolean): void;
+    function setDraftYokeCanBreak(draft: number | IVehicle, canBreak: boolean): void;
     /**
      * Hashes: COACH2_BOOT_LOOT_ITEMS_COACHROB_RSC, COACH2_BOOT_LOOT_ITEMS_COACHROB, COACH2_MARY3
      *
      * Hash: 0xF489F94BFEE12BB0 | Since: 1207
      */
-    function setForceCoachRobberyLoot(vehicle: number | Vehicle, coachrobberyLoot: number | string): void;
+    function setForceCoachRobberyLoot(vehicle: number | IVehicle, coachrobberyLoot: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x1098CDA477890165 | Since: 1207
      */
-    function setForceHighLod(vehicle: number | Vehicle): void;
+    function setForceHighLod(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -43126,31 +43126,31 @@ export declare namespace vehicle {
      *
      * Hash: 0xC9EA26893C9E4024 | Since: 1207
      */
-    function setMissionTrainWarpToCoords(train: number | Vehicle, pos: Vector3, direction: boolean): void;
+    function setMissionTrainWarpToCoords(train: number | IVehicle, pos: Vector3, direction: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x3660BCAB3A6BB734 | Since: 1207
      */
-    function setTrainHalt(train: number | Vehicle): void;
+    function setTrainHalt(train: number | IVehicle): void;
     /**
      * Restarts the train
      *
      * Hash: 0x787E43477746876F | Since: 1207
      */
-    function setTrainLeaveStation(train: number | Vehicle): void;
+    function setTrainLeaveStation(train: number | IVehicle): void;
     /**
      * Maximum possible speed is 30.0 (108 km/h)
      *
      * Hash: 0x9F29999DFDF2AEB8 | Since: 1207
      */
-    function setTrainMaxSpeed(train: number | Vehicle, speed: number): void;
+    function setTrainMaxSpeed(train: number | IVehicle, speed: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x4182C037AA1F0091 | Since: 1207
      */
-    function setTrainStopsForStations(train: number | Vehicle, toggle: boolean): void;
+    function setTrainStopsForStations(train: number | IVehicle, toggle: boolean): void;
     /**
      * trainTrack: FREIGHT_GROUP, TRAINS3, BRAITHWAITES2_TRACK_CONFIG, TRAINS_OLD_WEST01, TRAINS_OLD_WEST03, TRAINS_NB1, TRAINS_INTERSECTION1_ANN
      *
@@ -43162,69 +43162,69 @@ export declare namespace vehicle {
      *
      * Hash: 0x8E5DA070BAD3279E | Since: 1207
      */
-    function setDeterioration(vehicle: number | Vehicle, amount: number): void;
+    function setDeterioration(vehicle: number | IVehicle, amount: number): void;
     /**
      * dirtLevel: 0.0 - 1.0
      *
      * Hash: 0xBAE0EEDF93F05EAA | Since: 1207
      */
-    function setDirtLevel2(vehicle: number | Vehicle, dirtLevel: number): void;
+    function setDirtLevel2(vehicle: number | IVehicle, dirtLevel: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xCE1531927AD6C9F8 | Since: 1207
      */
-    function setIsInHurry(vehicle: number | Vehicle, enabled: boolean): void;
+    function setIsInHurry(vehicle: number | IVehicle, enabled: boolean): void;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/vehicles/vehicle_modding/vehicle_liveries.lua
      *
      * Hash: 0xF89D82A0582E46ED | Since: 1207
      */
-    function setLivery(vehicle: number | Vehicle, liveryIndex: number): void;
+    function setLivery(vehicle: number | IVehicle, liveryIndex: number): void;
     /**
      * Ranges from -1 to 2? (internal type is int8)
      * https://imgur.com/a/bPzHcft
      *
      * Hash: 0x3FA7D7D1E0EA809E | Since: 1207
      */
-    function setLodLevel(vehicle: number | Vehicle, lodLevel: number): void;
+    function setLodLevel(vehicle: number | IVehicle, lodLevel: number): void;
     /**
      * mudLevel: 0.0 - 1.0
      *
      * Hash: 0x4D15E49764CB328A | Since: 1207
      */
-    function setMudLevel(vehicle: number | Vehicle, mudLevel: number): void;
+    function setMudLevel(vehicle: number | IVehicle, mudLevel: number): void;
     /**
      * snowLevel: 0.0 - 1.0
      *
      * Hash: 0x6F73EFAB11651D7F | Since: 1207
      */
-    function setSnowLevel(vehicle: number | Vehicle, snowLevel: number): void;
+    function setSnowLevel(vehicle: number | IVehicle, snowLevel: number): void;
     /**
      * https://github.com/femga/rdr3_discoveries/blob/master/vehicles/vehicle_modding/vehicle_tints.lua
      *
      * Hash: 0x8268B098F6FCA4E2 | Since: 1207
      */
-    function setTint(vehicle: number | Vehicle, tintId: number): void;
+    function setTint(vehicle: number | IVehicle, tintId: number): void;
     /**
      * wetLevel: 0.0 - 1.0
      *
      * Hash: 0x5AABB09F6FBD1F87 | Since: 1207
      */
-    function setWetLevel(vehicle: number | Vehicle, wetLevel: number): void;
+    function setWetLevel(vehicle: number | IVehicle, wetLevel: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x41CDA90EE3450921 | Since: 1207
      */
-    function showHorseReins(vehicle: number | Vehicle): void;
+    function showHorseReins(vehicle: number | IVehicle): void;
     /**
      * whistleSequence: ACKNOWLEDGE, BACKING_UP, CROSSING, DANGER, MOVING, NEXT_STATION, PASSING, STOPPED
      * p2 = true seems to mute the sound
      *
      * Hash: 0xCFE122EC635CC2B2 | Since: 1207
      */
-    function triggerTrainWhistle(train: number | Vehicle, whistleSequence: string): void;
+    function triggerTrainWhistle(train: number | IVehicle, whistleSequence: string): void;
 }
 export declare namespace voice {
     /**
@@ -43238,7 +43238,7 @@ export declare namespace voice {
      *
      * Hash: 0x0DED260A1958A82E | Since: 1207
      */
-    function _0x0DED260A1958A82E(player: number | string | Player): boolean;
+    function _0x0DED260A1958A82E(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -43256,7 +43256,7 @@ export declare namespace voice {
      *
      * Hash: 0x2F82CAB262C8AE26 | Since: 1207
      */
-    function _0x2F82CAB262C8AE26(player: number | string | Player): number;
+    function _0x2F82CAB262C8AE26(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -43268,13 +43268,13 @@ export declare namespace voice {
      *
      * Hash: 0x4791899615D70FA2 | Since: 1207
      */
-    function _0x4791899615D70FA2(player: number | string | Player): void;
+    function _0x4791899615D70FA2(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
      * Hash: 0x49623BCFC3A3D829 | Since: 1207
      */
-    function _0x49623BCFC3A3D829(player: number | string | Player, muted: boolean): boolean;
+    function _0x49623BCFC3A3D829(player: number | string | IPlayer, muted: boolean): boolean;
     /**
      * No comment provided
      *
@@ -43286,13 +43286,13 @@ export declare namespace voice {
      *
      * Hash: 0x5CA7FB7D6DE49DCC | Since: 1207
      */
-    function _0x5CA7FB7D6DE49DCC(player: number | string | Player): number;
+    function _0x5CA7FB7D6DE49DCC(player: number | string | IPlayer): number;
     /**
      * Returns p2 value of 0x4791899615D70FA2
      *
      * Hash: 0x767931C727DF2ED7 | Since: 1207
      */
-    function _0x767931C727DF2ED7(player: number | string | Player): number;
+    function _0x767931C727DF2ED7(player: number | string | IPlayer): number;
     /**
      * No comment provided
      *
@@ -43304,19 +43304,19 @@ export declare namespace voice {
      *
      * Hash: 0x8E462DB1EAA9C47C | Since: 1207
      */
-    function _0x8E462DB1EAA9C47C(player: number | string | Player): boolean;
+    function _0x8E462DB1EAA9C47C(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x919AF2D93E9AA89D | Since: 1207
      */
-    function _0x919AF2D93E9AA89D(player: number | string | Player): boolean;
+    function _0x919AF2D93E9AA89D(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xAA35FD9ABAB490A3 | Since: 1207
      */
-    function _0xAA35FD9ABAB490A3(player: number | string | Player): boolean;
+    function _0xAA35FD9ABAB490A3(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
@@ -43346,13 +43346,13 @@ export declare namespace voice {
      *
      * Hash: 0xDB622ECD3DCBE078 | Since: 1207
      */
-    function _0xDB622ECD3DCBE078(player: number | string | Player): boolean;
+    function _0xDB622ECD3DCBE078(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xDC9B361CB7776673 | Since: 1207
      */
-    function _0xDC9B361CB7776673(player: number | string | Player): void;
+    function _0xDC9B361CB7776673(player: number | string | IPlayer): void;
     /**
      * No comment provided
      *
@@ -43364,13 +43364,13 @@ export declare namespace voice {
      *
      * Hash: 0xEF6F2A35FAAF2ED7 | Since: 1207
      */
-    function _0xEF6F2A35FAAF2ED7(player: number | string | Player): boolean;
+    function _0xEF6F2A35FAAF2ED7(player: number | string | IPlayer): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF8938CF3984092A5 | Since: 1207
      */
-    function _0xF8938CF3984092A5(player: number | string | Player): void;
+    function _0xF8938CF3984092A5(player: number | string | IPlayer): void;
 }
 export declare namespace volume {
     /**
@@ -43769,7 +43769,7 @@ export declare namespace volume {
      *
      * Hash: 0xF383E96C4904DF0C | Since: 1207
      */
-    function createLockAttachedToEntity(entity: number | Entity, radius: number, flag: number): number;
+    function createLockAttachedToEntity(entity: number | IEntity, radius: number, flag: number): number;
     /**
      * No comment provided
      *
@@ -43924,7 +43924,7 @@ export declare namespace water {
      *
      * Hash: 0x0DCEC6A92E497E17 | Since: 1207
      */
-    function _0x0DCEC6A92E497E17(entity: number | Entity): void;
+    function _0x0DCEC6A92E497E17(entity: number | IEntity): void;
     /**
      * Only used in fishing_core R* Script
      *
@@ -43936,7 +43936,7 @@ export declare namespace water {
      *
      * Hash: 0xB34A6009A0DB80B8 | Since: 1207
      */
-    function _0xB34A6009A0DB80B8(entity: number | Entity): void;
+    function _0xB34A6009A0DB80B8(entity: number | IEntity): void;
     /**
      * Only used in fussar1 / train_robbery2 R* Script
      *
@@ -43948,7 +43948,7 @@ export declare namespace water {
      *
      * Hash: 0xF0FBF193F1F5C0EA | Since: 1207
      */
-    function _0xF0FBF193F1F5C0EA(ped: number | Ped): void;
+    function _0xF0FBF193F1F5C0EA(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -43982,91 +43982,91 @@ export declare namespace weapon {
      *
      * Hash: 0x918990BD9CE08582 | Since: 1207
      */
-    function getAllowDualWield(ped: number | Ped): boolean;
+    function getAllowDualWield(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2E1202248937775C | Since: 1207
      */
-    function getAmmoInClip(ped: number | Ped, weaponHash: number | string): [boolean, number];
+    function getAmmoInClip(ped: number | IPed, weaponHash: number | string): [boolean, number];
     /**
      * No comment provided
      *
      * Hash: 0x015A522136D7F951 | Since: 1207
      */
-    function getAmmoInPed(ped: number | Ped, weaponHash: number | string): number;
+    function getAmmoInPed(ped: number | IPed, weaponHash: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0xF52BD94B47CCF736 | Since: 1207
      */
-    function getBestPedShortarmGuid(ped: number | Ped): any;
+    function getBestPedShortarmGuid(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x8483E98E8B888AE2 | Since: 1207
      */
-    function getBestPed(ped: number | Ped): number;
+    function getBestPed(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x1017582BCD3832DC | Since: 1207
      */
-    function getCurrentPedVehicle(ped: number | Ped): [boolean, number];
+    function getCurrentPedVehicle(ped: number | IPed): [boolean, number];
     /**
      * attachPoint: see SET_CURRENT_PED_WEAPON
      *
      * Hash: 0x3A87E44BB9A01D54 | Since: 1207
      */
-    function getCurrentPed(ped: number | Ped, attachPoint: number): [boolean, number];
+    function getCurrentPed(ped: number | IPed, attachPoint: number): [boolean, number];
     /**
      * Returns weaponObject, attachPoint: see SET_CURRENT_PED_WEAPON
      *
      * Hash: 0x3B390A939AF0B5FC | Since: 1207
      */
-    function getCurrentPedEntityIndex(ped: number | Ped, attachPoint: number): number;
+    function getCurrentPedEntityIndex(ped: number | IPed, attachPoint: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xDC16122C7A20C933 | Since: 1207
      */
-    function getMaxAmmo(ped: number | Ped, weaponHash: number | string): [boolean, number];
+    function getMaxAmmo(ped: number | IPed, weaponHash: number | string): [boolean, number];
     /**
      * No comment provided
      *
      * Hash: 0xA38DCFFCEA8962FA | Since: 1207
      */
-    function getMaxAmmoInClip(ped: number | Ped, weaponHash: number | string): number;
+    function getMaxAmmoInClip(ped: number | IPed, weaponHash: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0x39D22031557946C1 | Since: 1207
      */
-    function getPedAmmoByType(ped: number | Ped, ammoType: number | string): number;
+    function getPedAmmoByType(ped: number | IPed, ammoType: number | string): number;
     /**
      * Returns the current ammo type of the specified ped's specified weapon.
      *
      * Hash: 0x7FEAD38B326B9F74 | Since: 1207
      */
-    function getPedAmmoTypeFrom(ped: number | Ped, weaponHash: number | string): number;
+    function getPedAmmoTypeFrom(ped: number | IPed, weaponHash: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0xC71FE230A513C30F | Since: 1207
      */
-    function getPedBackup(ped: number | Ped): number;
+    function getPedBackup(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x6C4D0409BA1A2BC2 | Since: 1207
      */
-    function getPedLastImpactCoord(ped: number | Ped): [boolean, Vector3];
+    function getPedLastImpactCoord(ped: number | IPed): [boolean, Vector3];
     /**
      * No comment provided
      *
      * Hash: 0x6929E22158E52265 | Since: 1207
      */
-    function getPedGuidAtAttachPoint(ped: number | Ped, attachPoint: number): [boolean, any];
+    function getPedGuidAtAttachPoint(ped: number | IPed, attachPoint: number): [boolean, any];
     /**
      * No comment provided
      *
@@ -44084,19 +44084,19 @@ export declare namespace weapon {
      *
      * Hash: 0x0D78E1097F89E637 | Since: 1207
      */
-    function getDegradation(weaponObject: number | Object): number;
+    function getDegradation(weaponObject: number | IObject): number;
     /**
      * Related to rust of weapons
      *
      * Hash: 0xD56E5F336C675EFA | Since: 1207
      */
-    function getPermanentDegradation(weaponObject: number | Object): number;
+    function getPermanentDegradation(weaponObject: number | IObject): number;
     /**
      * addReason: see _ADD_AMMO_TO_PED
      *
      * Hash: 0xB282DC6EBD803C75 | Since: 1207
      */
-    function giveDelayedToPed(ped: number | Ped, weaponHash: number | string, ammoCount: number, addReason: number | string): void;
+    function giveDelayedToPed(ped: number | IPed, weaponHash: number | string, ammoCount: number, addReason: number | string): void;
     /**
      * Gives the ped the weapon.
      * List: https://github.com/femga/rdr3_discoveries/blob/master/weapons/weapons.lua
@@ -44108,49 +44108,49 @@ export declare namespace weapon {
      *
      * Hash: 0x5E3BDDBCB83F3D84 | Since: 1207
      */
-    function giveToPed(ped: number | Ped, weaponHash: number | string, ammoCount: number, bForceInHand: boolean, bForceInHolster: boolean, attachPoint: number, bAllowMultipleCopies: boolean, addReason: number | string, bIgnoreUnlocks: boolean, permanentDegradation: number): number;
+    function giveToPed(ped: number | IPed, weaponHash: number | string, ammoCount: number, bForceInHand: boolean, bForceInHolster: boolean, attachPoint: number, bAllowMultipleCopies: boolean, addReason: number | string, bIgnoreUnlocks: boolean, permanentDegradation: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xBE7E42B07FD317AC | Since: 1207
      */
-    function giveToPedWithOptions(ped: number | Ped): [boolean, any, any];
+    function giveToPedWithOptions(ped: number | IPed): [boolean, any, any];
     /**
      * onlyCheckPlayerInventory: If true, it will only check the players current inventory. If false, it also checks your horse inventory
      *
      * Hash: 0x8DECB02F88F428BC | Since: 1207
      */
-    function hasPedGot(ped: number | Ped, weaponHash: number | string, onlyCheckPlayerInventory: boolean): boolean;
+    function hasPedGot(ped: number | IPed, weaponHash: number | string, onlyCheckPlayerInventory: boolean): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x76A18844E743BF91 | Since: 1207
      */
-    function hasGotWeaponComponent(weapon: number | Object, addonHash: number | string): boolean;
+    function hasGotWeaponComponent(weapon: number | IObject, addonHash: number | string): boolean;
     /**
      * Hides the ped's weapon during a cutscene.
      *
      * Hash: 0x6F6981D2253C208F | Since: 1207
      */
-    function hidePedForScriptedCutscene(ped: number | Ped, toggle: boolean): void;
+    function hidePedForScriptedCutscene(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xCB690F680A3EA971 | Since: 1207
      */
-    function isPedArmed(ped: number | Ped, flags: number): boolean;
+    function isPedArmed(ped: number | IPed, flags: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xF29A186ED428B552 | Since: 1207
      */
-    function isPedCarrying(ped: number | Ped, weaponHash: number | string): boolean;
+    function isPedCarrying(ped: number | IPed, weaponHash: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xB80CA294F2F26749 | Since: 1207
      */
-    function isPedReadyToShoot(ped: number | Ped): boolean;
+    function isPedReadyToShoot(ped: number | IPed): boolean;
     /**
      * `Returns true if CWeaponInfoFlags::Flags::Gun is set.`
      *
@@ -44210,19 +44210,19 @@ export declare namespace weapon {
      *
      * Hash: 0xCEF4C65DE502D367 | Since: 1207
      */
-    function makePedDrop(ped: number | Ped, attachPoint: number): number;
+    function makePedDrop(ped: number | IPed, attachPoint: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xF25DF915FA38C5F3 | Since: 1207
      */
-    function removeAllPeds(ped: number | Ped): void;
+    function removeAllPeds(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0xF7D82B0D66777611 | Since: 1207
      */
-    function removeComponentFromWeaponObject(weaponObject: number | Object, component: number | string): void;
+    function removeComponentFromWeaponObject(weaponObject: number | IObject, component: number | string): void;
     /**
      * removeReason:
      * enum eRemoveItemReason : Hash
@@ -44247,25 +44247,25 @@ export declare namespace weapon {
      *
      * Hash: 0x4899CB088EDF59B8 | Since: 1207
      */
-    function removeFromPed(ped: number | Ped, weaponHash: number | string, removeReason: number | string): void;
+    function removeFromPed(ped: number | IPed, weaponHash: number | string, removeReason: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x78030C7867D8B9B6 | Since: 1207
      */
-    function setAllowAnyDrop(ped: number | Ped, toggle: boolean): void;
+    function setAllowAnyDrop(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xDCD2A934D65CB497 | Since: 1207
      */
-    function setAmmoInClip(ped: number | Ped, weaponHash: number | string, ammo: number): boolean;
+    function setAmmoInClip(ped: number | IPed, weaponHash: number | string, ammo: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x75C55983C2C39DAA | Since: 1207
      */
-    function setCurrentPedVehicle(ped: number | Ped, weaponHash: number | string): boolean;
+    function setCurrentPedVehicle(ped: number | IPed, weaponHash: number | string): boolean;
     /**
      * attachPoint:
      * enum eWeaponAttachPoint
@@ -44307,73 +44307,73 @@ export declare namespace weapon {
      *
      * Hash: 0xADF692B254977C0C | Since: 1207
      */
-    function setCurrentPed(ped: number | Ped, weaponHash: number | string, equipNow: boolean, attachPoint: number): void;
+    function setCurrentPed(ped: number | IPed, weaponHash: number | string, equipNow: boolean, attachPoint: number): void;
     /**
      * Equips a weapon from a weaponItem, similar to GIVE_WEAPON_TO_PED
      *
      * Hash: 0x12FB95FE3D579238 | Since: 1207
      */
-    function setCurrentPedByGuid(ped: number | Ped): any;
+    function setCurrentPedByGuid(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x739B9C6D0E7F7F93 | Since: 1207
      */
-    function setInstantlyEquipPickups(ped: number | Ped, toggle: boolean): void;
+    function setInstantlyEquipPickups(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x14E56BC5B5DB6A19 | Since: 1207
      */
-    function setPedAmmo(ped: number | Ped, weaponHash: number | string, ammo: number): void;
+    function setPedAmmo(ped: number | IPed, weaponHash: number | string, ammo: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x5FD1E1F011E76D7E | Since: 1207
      */
-    function setPedAmmoByType(ped: number | Ped, ammoType: number | string, ammo: number): void;
+    function setPedAmmoByType(ped: number | IPed, ammoType: number | string, ammo: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA4EFEF9440A5B0EF | Since: 1207
      */
-    function setPedAmmoToDrop(ped: number | Ped): void;
+    function setPedAmmoToDrop(ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x0725A4CCFDED9A70 | Since: 1207
      */
-    function setPedCurrentVisible(ped: number | Ped, visible: boolean, deselectWeapon: boolean): void;
+    function setPedCurrentVisible(ped: number | IPed, visible: boolean, deselectWeapon: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x208A1888007FC0E6 | Since: 1207
      */
-    function setPedDropsInventory(ped: number | Ped, weaponHash: number | string, xOffset: number, yOffset: number, zOffset: number, ammoCount: number): void;
+    function setPedDropsInventory(ped: number | IPed, weaponHash: number | string, xOffset: number, yOffset: number, zOffset: number, ammoCount: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x476AE72C1D19D1A8 | Since: 1207
      */
-    function setPedDropssWhenDead(ped: number | Ped, toggle: boolean): void;
+    function setPedDropssWhenDead(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x3EDCB0505123623B | Since: 1207
      */
-    function setPedInfiniteAmmo(ped: number | Ped, toggle: boolean, weaponHash: number | string): void;
+    function setPedInfiniteAmmo(ped: number | IPed, toggle: boolean, weaponHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xEC1F85DA51D3D6C4 | Since: 1232
      */
-    function setPlayerPedQuickSwapByGuid(ped: number | Ped): [any, any];
+    function setPlayerPedQuickSwapByGuid(ped: number | IPed): [any, any];
     /**
      * No comment provided
      *
      * Hash: 0x194D877FC5597B7D | Since: 1207
      */
-    function setVehicleHeading(vehicle: number | Vehicle, seatIndex: number, heading: number): void;
+    function setVehicleHeading(vehicle: number | IVehicle, seatIndex: number, heading: number): void;
     /**
      * No comment provided
      *
@@ -44391,20 +44391,20 @@ export declare namespace weapon {
      *
      * Hash: 0x0DE0944ECCB3DF5D | Since: 1232
      */
-    function _0x0DE0944ECCB3DF5D(ped: number | Ped): boolean;
+    function _0x0DE0944ECCB3DF5D(ped: number | IPed): boolean;
     /**
      * Puts the gun visibly in your horse's holster without having to be close to the horse. Use 0xE9BD19F8121ADE3E before using this native
      * _A* or _B*
      *
      * Hash: 0x14FF0C2545527F9B | Since: 1207
      */
-    function _0x14FF0C2545527F9B(horse: number | Ped, weaponHash: number | string, ped: number | Ped): void;
+    function _0x14FF0C2545527F9B(horse: number | IPed, weaponHash: number | string, ped: number | IPed): void;
     /**
      * No comment provided
      *
      * Hash: 0x16D9841A85FA627E | Since: 1207
      */
-    function _0x16D9841A85FA627E(ped: number | Ped, toggle: boolean): void;
+    function _0x16D9841A85FA627E(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -44422,7 +44422,7 @@ export declare namespace weapon {
      *
      * Hash: 0x2EBF70E1D8C06683 | Since: 1207
      */
-    function _0x2EBF70E1D8C06683(ped: number | Ped, p1: number | string): void;
+    function _0x2EBF70E1D8C06683(ped: number | IPed, p1: number | string): void;
     /**
      * No comment provided
      *
@@ -44440,13 +44440,13 @@ export declare namespace weapon {
      *
      * Hash: 0x431240A58484D5D0 | Since: 1207
      */
-    function _0x431240A58484D5D0(ped: number | Ped, toggle: boolean): void;
+    function _0x431240A58484D5D0(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x44C8F4908F1B2622 | Since: 1207
      */
-    function _0x44C8F4908F1B2622(ped: number | Ped, ammoHash: number | string): boolean;
+    function _0x44C8F4908F1B2622(ped: number | IPed, ammoHash: number | string): boolean;
     /**
      * No comment provided
      *
@@ -44458,7 +44458,7 @@ export declare namespace weapon {
      *
      * Hash: 0x45E57FDD531C9477 | Since: 1207
      */
-    function _0x45E57FDD531C9477(ped: number | Ped, toggle: boolean): void;
+    function _0x45E57FDD531C9477(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -44478,7 +44478,7 @@ export declare namespace weapon {
      *
      * Hash: 0x5A695BD328586B44 | Since: 1207
      */
-    function _0x5A695BD328586B44(ped: number | Ped): boolean;
+    function _0x5A695BD328586B44(ped: number | IPed): boolean;
     /**
      * Only used in R* Script fme_escaped_convicts, p0 = 0
      *
@@ -44533,13 +44533,13 @@ export declare namespace weapon {
      *
      * Hash: 0x8A779706DA5CA3DD | Since: 1207
      */
-    function _0x8A779706DA5CA3DD(ped: number | Ped): void;
+    function _0x8A779706DA5CA3DD(ped: number | IPed): void;
     /**
      * Only used in R* SP Script guama3
      *
      * Hash: 0x9409C62504A8F9E9 | Since: 1207
      */
-    function _0x9409C62504A8F9E9(vehicle: number | Vehicle): void;
+    function _0x9409C62504A8F9E9(vehicle: number | IVehicle): void;
     /**
      * No comment provided
      *
@@ -44641,7 +44641,7 @@ export declare namespace weapon {
      *
      * Hash: 0xF08D8FEB455F2C8C | Since: 1207
      */
-    function _0xF08D8FEB455F2C8C(ped: number | Ped, toggle: boolean): void;
+    function _0xF08D8FEB455F2C8C(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
@@ -44691,19 +44691,19 @@ export declare namespace weapon {
      *
      * Hash: 0xB190BCA3F4042F95 | Since: 1207
      */
-    function addAmmoToPed(ped: number | Ped, weaponHash: number | string, amount: number, addReason: number | string): void;
+    function addAmmoToPed(ped: number | IPed, weaponHash: number | string, amount: number, addReason: number | string): void;
     /**
      * addReason: see _ADD_AMMO_TO_PED
      *
      * Hash: 0x106A811C6D3035F3 | Since: 1207
      */
-    function addAmmoToPedByType(ped: number | Ped, ammoType: number | string, amount: number, addReason: number | string): void;
+    function addAmmoToPedByType(ped: number | IPed, ammoType: number | string, amount: number, addReason: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x087D8F4BC65F68E4 | Since: 1207
      */
-    function clearPedLastDamage(ped: number | Ped): void;
+    function clearPedLastDamage(ped: number | IPed): void;
     /**
      * No comment provided
      *
@@ -44715,73 +44715,73 @@ export declare namespace weapon {
      *
      * Hash: 0xAA5A52204E077883 | Since: 1207
      */
-    function disableAmmoTypeForPed(ped: number | Ped, ammoHash: number | string): void;
+    function disableAmmoTypeForPed(ped: number | IPed, ammoHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xF0D728EEA3C99775 | Since: 1207
      */
-    function disableAmmoTypeForPedWeapon(ped: number | Ped, weaponHash: number | string, ammoHash: number | string): void;
+    function disableAmmoTypeForPedWeapon(ped: number | IPed, weaponHash: number | string, ammoHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xBFCA7AFABF9D7967 | Since: 1207
      */
-    function doesPedHavePistol(ped: number | Ped): boolean;
+    function doesPedHavePistol(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x495A04CAEC263AF8 | Since: 1207
      */
-    function doesPedHaveRepeater(ped: number | Ped): boolean;
+    function doesPedHaveRepeater(ped: number | IPed): boolean;
     /**
      * Preview: https://imgur.com/a/U8Q04Xu
      *
      * Hash: 0x5B235F24472F2C3B | Since: 1207
      */
-    function doesPedHaveRevolver(ped: number | Ped): boolean;
+    function doesPedHaveRevolver(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x95CA12E2C68043E5 | Since: 1207
      */
-    function doesPedHaveRifle(ped: number | Ped): boolean;
+    function doesPedHaveRifle(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xABC18A28BAD4B46F | Since: 1207
      */
-    function doesPedHaveShotgun(ped: number | Ped): boolean;
+    function doesPedHaveShotgun(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x80BB243789008A82 | Since: 1207
      */
-    function doesPedHaveSniper(ped: number | Ped): boolean;
+    function doesPedHaveSniper(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x3B7B7908B7ADFB4B | Since: 1207
      */
-    function enableAmmoTypeForPed(ped: number | Ped, weaponHash: number | string): void;
+    function enableAmmoTypeForPed(ped: number | IPed, weaponHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x23FB9FACA28779C1 | Since: 1207
      */
-    function enableAmmoTypeForPedWeapon(ped: number | Ped, weaponHash: number | string, ammoHash: number | string): void;
+    function enableAmmoTypeForPedWeapon(ped: number | IPed, weaponHash: number | string, ammoHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xC395355843BE134B | Since: 1207
      */
-    function enableRestore(ped: number | Ped): boolean;
+    function enableRestore(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x678F00858980F516 | Since: 1207
      */
-    function getAmmoInClipByInventoryUid(ped: number | Ped): [boolean, number, any];
+    function getAmmoInClipByInventoryUid(ped: number | IPed): [boolean, number, any];
     /**
      * No comment provided
      *
@@ -44794,13 +44794,13 @@ export declare namespace weapon {
      *
      * Hash: 0x9F67929D98E7C6E8 | Since: 1207
      */
-    function getBestPedInGroup(ped: number | Ped, weaponGroup: number | string): number;
+    function getBestPedInGroup(ped: number | IPed, weaponGroup: number | string): number;
     /**
      * No comment provided
      *
      * Hash: 0x7B98500614C8E8B8 | Since: 1232
      */
-    function getBestPedInInventory(ped: number | Ped): [any, any];
+    function getBestPedInInventory(ped: number | IPed): [any, any];
     /**
      * No comment provided
      *
@@ -44812,19 +44812,19 @@ export declare namespace weapon {
      *
      * Hash: 0xCD356B42C57BFE01 | Since: 1355
      */
-    function getCorrectKitEmoteTwirlGun(ped: number | Ped): [boolean, any];
+    function getCorrectKitEmoteTwirlGun(ped: number | IPed): [boolean, any];
     /**
      * Returns ammoHash
      *
      * Hash: 0xAF9D167A5656D6A6 | Since: 1207
      */
-    function getCurrentAmmoTypeFromGuid(ped: number | Ped): [number, any];
+    function getCurrentAmmoTypeFromGuid(ped: number | IPed): [number, any];
     /**
      * Returns ammoHash from weaponObject (Returned by 0x6CA484C9A7377E4F)
      *
      * Hash: 0x7E7B19A4355FEE13 | Since: 1207
      */
-    function getCurrentPedAmmoType(ped: number | Ped, weaponObject: number | Object): number;
+    function getCurrentPedAmmoType(ped: number | IPed, weaponObject: number | IObject): number;
     /**
      * Returns weaponCollection Hash
      * Example: RE_POLICECHASE_MALES_01: Carbine Repeater + Knife, LO_AGRO_PED
@@ -44838,7 +44838,7 @@ export declare namespace weapon {
      *
      * Hash: 0x08FF1099ED2E6E21 | Since: 1207
      */
-    function getDefaultUnarmedHash(ped: number | Ped): number;
+    function getDefaultUnarmedHash(ped: number | IPed): number;
     /**
      * Returns default attach point for given weapon hash. Returns -1 for melee as they can't be attached.
      * Example: https://imgur.com/a/mUE5fug
@@ -44851,62 +44851,62 @@ export declare namespace weapon {
      *
      * Hash: 0x79B1A6E780266DB0 | Since: 1207
      */
-    function getMaxLockonDistanceOfCurrentPed(ped: number | Ped): number;
+    function getMaxLockonDistanceOfCurrentPed(ped: number | IPed): number;
     /**
      * returns the amount of peds that were restrained with the weapon thrown bolas
      *
      * Hash: 0x46D42883E873C1D7 | Since: 1232
      */
-    function getNumPedsRestrainedFromBolas(ped: number | Ped): number;
+    function getNumPedsRestrainedFromBolas(ped: number | IPed): number;
     /**
      * Returns eCurrentHeldWeapon
      * _GET_R* - _GET_T*
      *
      * Hash: 0x8425C5F057012DAB | Since: 1207
      */
-    function getPedCurrentHeld(ped: number | Ped): number;
+    function getPedCurrentHeld(ped: number | IPed): number;
     /**
      * Returns emote Hash
      *
      * Hash: 0x2C4FEC3D0EFA9FC0 | Since: 1355
      */
-    function getPedGunSpinningEquippedKitEmoteTwirl(ped: number | Ped): number;
+    function getPedGunSpinningEquippedKitEmoteTwirl(ped: number | IPed): number;
     /**
      * Returns iSpinHash / iVariationSpin
      *
      * Hash: 0xF3B1620B920D1708 | Since: 1355
      */
-    function getPedGunSpinningHashFromEmoteVariation(ped: number | Ped, weaponEmoteVariation: number): number;
+    function getPedGunSpinningHashFromEmoteVariation(ped: number | IPed, weaponEmoteVariation: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x90EB1CB189923587 | Since: 1207
      */
-    function getPedHogtie(ped: number | Ped): number;
+    function getPedHogtie(ped: number | IPed): number;
     /**
      * slotHash is usually just the weaponHash name, but WEAPON_* is replaced with SLOT_*
      *
      * Hash: 0xDBC4B552B2AE9A83 | Since: 1207
      */
-    function getPedInSlot(ped: number | Ped, slotHash: number | string): number;
+    function getPedInSlot(ped: number | IPed, slotHash: number | string): number;
     /**
      * _GET_M* - _GET_PED_A*
      *
      * Hash: 0x6CA484C9A7377E4F | Since: 1207
      */
-    function getPedObject(ped: number | Ped): number;
+    function getPedObject(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xDA37A053C1522F5D | Since: 1207
      */
-    function getPedWorst(ped: number | Ped): number;
+    function getPedWorst(ped: number | IPed): number;
     /**
      * Outputs cached guids
      *
      * Hash: 0xB7E52A058B07C7E2 | Since: 1232
      */
-    function getPlayerPedQuickSwapByGuid(ped: number | Ped): [any, any];
+    function getPlayerPedQuickSwapByGuid(ped: number | IPed): [any, any];
     /**
      * Gets the model hash from the weapon hash.
      *
@@ -44924,7 +44924,7 @@ export declare namespace weapon {
      *
      * Hash: 0xCAD4FE9398820D24 | Since: 1207
      */
-    function getAttachPoint(ped: number | Ped, attachPoint: number): number;
+    function getAttachPoint(ped: number | IPed, attachPoint: number): number;
     /**
      * No comment provided
      *
@@ -44936,13 +44936,13 @@ export declare namespace weapon {
      *
      * Hash: 0x904103D5D2333977 | Since: 1207
      */
-    function getDamage(weaponObject: number | Object): number;
+    function getDamage(weaponObject: number | IObject): number;
     /**
      * No comment provided
      *
      * Hash: 0x810E8AE9AFEA7E54 | Since: 1207
      */
-    function getDirt(weaponObject: number | Object): number;
+    function getDirt(weaponObject: number | IObject): number;
     /**
      * Returns weaponEmoteVariation
      *
@@ -44957,7 +44957,7 @@ export declare namespace weapon {
      *
      * Hash: 0x86147D05FA831D3A | Since: 1355
      */
-    function getEmoteVariation(ped: number | Ped, variation: number): number;
+    function getEmoteVariation(ped: number | IPed, variation: number): number;
     /**
      * Returns a random weaponHash from default ped weapon collection (see _GET_DEFAULT_PED_WEAPON_COLLECTION).
      *
@@ -44999,19 +44999,19 @@ export declare namespace weapon {
      *
      * Hash: 0xC6A6789BB405D11C | Since: 1207
      */
-    function getObjectFromPed(ped: number | Ped): number;
+    function getObjectFromPed(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x22084CA699219624 | Since: 1207
      */
-    function getScale(weaponObject: number | Object): number;
+    function getScale(weaponObject: number | IObject): number;
     /**
      * No comment provided
      *
      * Hash: 0x4BF66F8878F67663 | Since: 1207
      */
-    function getSoot(weaponObject: number | Object): number;
+    function getSoot(weaponObject: number | IObject): number;
     /**
      * No comment provided
      *
@@ -45035,37 +45035,37 @@ export declare namespace weapon {
      *
      * Hash: 0x899A04AFCC725D04 | Since: 1207
      */
-    function giveCollectionToPed(ped: number | Ped, weaponCollection: number | string): void;
+    function giveCollectionToPed(ped: number | IPed, weaponCollection: number | string): void;
     /**
      * entity can be a ped or weapon object.
      *
      * Hash: 0x74C9090FDD1BB48E | Since: 1207
      */
-    function giveComponentToEntity(entity: number | Entity, componentHash: number | string, weaponHash: number | string): void;
+    function giveComponentToEntity(entity: number | IEntity, componentHash: number | string, weaponHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x1A47699E8D533E8F | Since: 1207
      */
-    function giveComponentToWeaponObject(weaponObject: number | Object, ped: number | Ped, componentHash: number | string): void;
+    function giveComponentToWeaponObject(weaponObject: number | IObject, ped: number | IPed, componentHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xDCF06D0CDFF68424 | Since: 1207
      */
-    function hasEntityBeenDamagedBy(entity: number | Entity, weaponName: number | string, weaponType: number): boolean;
+    function hasEntityBeenDamagedBy(entity: number | IEntity, weaponName: number | string, weaponType: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9E2D5D6BC97A5F1E | Since: 1207
      */
-    function hasEntityBeenDamagedByRecently(entity: number | Entity, weaponHash: number | string, ms: number): boolean;
+    function hasEntityBeenDamagedByRecently(entity: number | IEntity, weaponHash: number | string, ms: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xBBC67A6F965C688A | Since: 1207
      */
-    function hasPedGotComponent(ped: number | Ped, componentHash: number | string, weaponHash: number | string): boolean;
+    function hasPedGotComponent(ped: number | IPed, componentHash: number | string, weaponHash: number | string): boolean;
     /**
      * No comment provided
      *
@@ -45079,13 +45079,13 @@ export declare namespace weapon {
      *
      * Hash: 0xFCCC886EDE3C63EC | Since: 1207
      */
-    function hidePeds(ped: number | Ped, immediately: boolean): void;
+    function hidePeds(ped: number | IPed, immediately: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x94A3C1B804D291EC | Since: 1207
      */
-    function holsterPeds(ped: number | Ped, immediately: boolean): void;
+    function holsterPeds(ped: number | IPed, immediately: boolean): void;
     /**
      * No comment provided
      *
@@ -45115,7 +45115,7 @@ export declare namespace weapon {
      *
      * Hash: 0xBDD9C235D8D1052E | Since: 1207
      */
-    function isPedCurrentHolstered(ped: number | Ped): boolean;
+    function isPedCurrentHolstered(ped: number | IPed): boolean;
     /**
      * Returns whether the specified ped is holding a weapon with the given hash.
      * only these weapons below return true
@@ -45123,13 +45123,13 @@ export declare namespace weapon {
      *
      * Hash: 0x07E1C35F0078C3F9 | Since: 1207
      */
-    function isPedHolding(ped: number | Ped, weapon: number | string): boolean;
+    function isPedHolding(ped: number | IPed, weapon: number | string): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x8D50F43298AB9545 | Since: 1232
      */
-    function isTargetPedConstrainedByPedUsingBolas(ped: number | Ped, targetPed: number | Ped): boolean;
+    function isTargetPedConstrainedByPedUsingBolas(ped: number | IPed, targetPed: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -45149,7 +45149,7 @@ export declare namespace weapon {
      *
      * Hash: 0x2387D6E9C6B478AA | Since: 1207
      */
-    function isHolsterStateChanging(ped: number | Ped): boolean;
+    function isHolsterStateChanging(ped: number | IPed): boolean;
     /**
      * Returns true when the weapon passed is either a lasso, the camera or the binoculars
      * _IS_WEAPON_M* - _IS_WEAPON_P*
@@ -45229,25 +45229,25 @@ export declare namespace weapon {
      *
      * Hash: 0x79E1E511FF7EFB13 | Since: 1207
      */
-    function makePedReload(ped: number | Ped): any;
+    function makePedReload(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0xDF4A3404D022ADDE | Since: 1207
      */
-    function refillAmmoInClip(ped: number | Ped): [any, any];
+    function refillAmmoInClip(ped: number | IPed): [any, any];
     /**
      * No comment provided
      *
      * Hash: 0x0A2AB7B7ABC055F4 | Since: 1207
      */
-    function refillAmmoInCurrentPed(ped: number | Ped): any;
+    function refillAmmoInCurrentPed(ped: number | IPed): any;
     /**
      * No comment provided
      *
      * Hash: 0x1B83C0DEEBCBB214 | Since: 1207
      */
-    function removeAllPedAmmo(ped: number | Ped): void;
+    function removeAllPedAmmo(ped: number | IPed): void;
     /**
      * removeReason must be REMOVE_REASON_USED, REMOVE_REASON_GIVEN, REMOVE_REASON_DROPPED or REMOVE_REASON_DEBUG, unless amount is -1
      *
@@ -45255,7 +45255,7 @@ export declare namespace weapon {
      *
      * Hash: 0xF4823C813CB8277D | Since: 1207
      */
-    function removeAmmoFromPed(ped: number | Ped, weaponHash: number | string, amount: number, removeReason: number | string): void;
+    function removeAmmoFromPed(ped: number | IPed, weaponHash: number | string, amount: number, removeReason: number | string): void;
     /**
      * removeReason must be REMOVE_REASON_USED, REMOVE_REASON_GIVEN, REMOVE_REASON_DROPPED or REMOVE_REASON_DEBUG, unless amount is -1
      *
@@ -45263,7 +45263,7 @@ export declare namespace weapon {
      *
      * Hash: 0xB6CFEC32E3742779 | Since: 1207
      */
-    function removeAmmoFromPedByType(ped: number | Ped, ammoHash: number | string, amount: number, removeReason: number | string): void;
+    function removeAmmoFromPedByType(ped: number | IPed, ammoHash: number | string, amount: number, removeReason: number | string): void;
     /**
      * No comment provided
      *
@@ -45275,13 +45275,13 @@ export declare namespace weapon {
      *
      * Hash: 0x19F70C4D80494FF8 | Since: 1207
      */
-    function removeComponentFromPed(ped: number | Ped, componentHash: number | string, weaponHash: number | string): void;
+    function removeComponentFromPed(ped: number | IPed, componentHash: number | string, weaponHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x51C3B71591811485 | Since: 1311
      */
-    function removeFromPedByGuid(ped: number | Ped, removeReason: number | string): any;
+    function removeFromPedByGuid(ped: number | IPed, removeReason: number | string): any;
     /**
      * No comment provided
      *
@@ -45294,61 +45294,61 @@ export declare namespace weapon {
      *
      * Hash: 0xE9BD19F8121ADE3E | Since: 1207
      */
-    function sendToInventory(ped: number | Ped, weaponHash: number | string): void;
+    function sendToInventory(ped: number | IPed, weaponHash: number | string): void;
     /**
      * emote hashes: KIT_EMOTE_TWIRL_GUN, KIT_EMOTE_TWIRL_GUN_LEFT_HOLSTER, KIT_EMOTE_TWIRL_GUN_DUAL, 0 (to unequip)
      *
      * Hash: 0xCBCFFF805F1B4596 | Since: 1311
      */
-    function setActiveGunSpinningEquipKitEmoteTwirl(ped: number | Ped, emote: number | string): void;
+    function setActiveGunSpinningEquipKitEmoteTwirl(ped: number | IPed, emote: number | string): void;
     /**
      * spinHash can be -1, 0 to disable
      *
      * Hash: 0x01F661BB9C71B465 | Since: 1207
      */
-    function setActiveGunSpinningKitEmoteTwirl(ped: number | Ped, weaponEmoteTrickType: number, spin: number | string): void;
+    function setActiveGunSpinningKitEmoteTwirl(ped: number | IPed, weaponEmoteTrickType: number, spin: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0x83B8D50EB9446BBA | Since: 1207
      */
-    function setAllowDualWield(ped: number | Ped, allow: boolean): void;
+    function setAllowDualWield(ped: number | IPed, allow: boolean): void;
     /**
      * turretHash: WEAPON_TURRET_MAXIUM, WEAPON_TURRET_GATLING, WEAPON_TURRET_CANNON, WEAPON_TURRET_REVOLVING_CANNON
      *
      * Hash: 0xBDDA0C290C228159 | Since: 1207
      */
-    function setAmmoInTurret(vehicle: number | Vehicle, turretHash: number | string, ammo: number): void;
+    function setAmmoInTurret(vehicle: number | IVehicle, turretHash: number | string, ammo: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xCC9C4393523833E2 | Since: 1207
      */
-    function setAmmoTypeForPed(ped: number | Ped, weaponHash: number | string, ammoHash: number | string): void;
+    function setAmmoTypeForPed(ped: number | IPed, weaponHash: number | string, ammoHash: number | string): void;
     /**
      * No comment provided
      *
      * Hash: 0xEBE46B501BC3FBCF | Since: 1207
      */
-    function setAmmoTypeForPedInventory(ped: number | Ped, ammoHash: number | string): any;
+    function setAmmoTypeForPedInventory(ped: number | IPed, ammoHash: number | string): any;
     /**
      * No comment provided
      *
      * Hash: 0xBE711B14A159E84F | Since: 1207
      */
-    function setForceAutoEquip(ped: number | Ped, toggle: boolean): void;
+    function setForceAutoEquip(ped: number | IPed, toggle: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x5230D3F6EE56CFE6 | Since: 1207
      */
-    function setForceCurrentIntoCockedState(ped: number | Ped, attachPoint: number): void;
+    function setForceCurrentIntoCockedState(ped: number | IPed, attachPoint: number): void;
     /**
      * _STOP_* - _TEST_*
      *
      * Hash: 0x408CF580C5E96D49 | Since: 1355
      */
-    function setGunSpinningInventorySlotIdActivate(ped: number | Ped, emoteType: number): void;
+    function setGunSpinningInventorySlotIdActivate(ped: number | IPed, emoteType: number): void;
     /**
      * Stores longarms to your horse on dismount
      * Params: p2 = 0
@@ -45356,79 +45356,79 @@ export declare namespace weapon {
      *
      * Hash: 0xB832F1A686B9B810 | Since: 1207
      */
-    function setInstantlyStoreLongarmsOnDismount(ped: number | Ped, storeLongarms: boolean): void;
+    function setInstantlyStoreLongarmsOnDismount(ped: number | IPed, storeLongarms: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x4F806A6CFED89468 | Since: 1207
      */
-    function setPedAllsVisibility(ped: number | Ped, visible: boolean): void;
+    function setPedAllsVisibility(ped: number | IPed, visible: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0xFBAA1E06B6BCA741 | Since: 1207
      */
-    function setPedInfiniteAmmoClip(ped: number | Ped, toggle: boolean): void;
+    function setPedInfiniteAmmoClip(ped: number | IPed, toggle: boolean): void;
     /**
      * attachPoint: see SET_CURRENT_PED_WEAPON
      *
      * Hash: 0x67E21ACC5C0C970C | Since: 1207
      */
-    function setPedAttachPointVisibility(ped: number | Ped, attachPoint: number, visible: boolean): void;
+    function setPedAttachPointVisibility(ped: number | IPed, attachPoint: number, visible: boolean): void;
     /**
      * Holster the holded shoulder weapon. Precisions: 0 means with anim while 1 means direct holster
      *
      * Hash: 0x4820A6939D7CEF28 | Since: 1207
      */
-    function setPedOnBack(ped: number | Ped, disableAnim: boolean): void;
+    function setPedOnBack(ped: number | IPed, disableAnim: boolean): void;
     /**
      * No comment provided
      *
      * Hash: 0x56CB3B4305A4F7CE | Since: 1207
      */
-    function setVehicleHeadingLimits(vehicle: number | Vehicle, minHeading: number, maxHeading: number): void;
+    function setVehicleHeadingLimits(vehicle: number | IVehicle, minHeading: number, maxHeading: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xBF5987E1CDE63501 | Since: 1207
      */
-    function setVehicleHeadingLimits2(vehicle: number | Vehicle, minHeading: number, maxHeading: number): any;
+    function setVehicleHeadingLimits2(vehicle: number | IVehicle, minHeading: number, maxHeading: number): any;
     /**
      * Related to weapon visual damage, not actual damage.
      *
      * Hash: 0xE22060121602493B | Since: 1207
      */
-    function setDamage(weaponObject: number | Object, level: number): void;
+    function setDamage(weaponObject: number | IObject, level: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA7A57E89E965D839 | Since: 1207
      */
-    function setDegradation(weaponObject: number | Object, level: number): void;
+    function setDegradation(weaponObject: number | IObject, level: number): void;
     /**
      * No comment provided
      *
      * Hash: 0x812CE61DEBCAB948 | Since: 1207
      */
-    function setDirt(weaponObject: number | Object, level: number): void;
+    function setDirt(weaponObject: number | IObject, level: number): void;
     /**
      * every other level will have the max value of (brokeLevel - threshold)
      *
      * Hash: 0xD4071EFC83794B2F | Since: 1207
      */
-    function setLevelThreshold(weaponObject: number | Object, threshold: number): void;
+    function setLevelThreshold(weaponObject: number | IObject, threshold: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xC3544AD0522E69B4 | Since: 1207
      */
-    function setScale(weaponObject: number | Object, scale: number): void;
+    function setScale(weaponObject: number | IObject, scale: number): void;
     /**
      * No comment provided
      *
      * Hash: 0xA9EF4AD10BDDDB57 | Since: 1207
      */
-    function setSoot(weaponObject: number | Object, level: number): void;
+    function setSoot(weaponObject: number | IObject, level: number): void;
 }
 export declare namespace zone {
     /**
