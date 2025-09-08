@@ -10,7 +10,7 @@ client.nui.shutdownLoadingScreen();
 ```
 
 For native access see [this package](https://www.npmjs.com/package/@risinglife/redm-natives)<br>
-You can see all functions, and how they can be use at [https://rdr3natives.com/](https://rdr3natives.com/)<br>
+You can see all functions, and how they can be use at [https://nativedb.dotindustries.dev/rdr3/natives/](https://nativedb.dotindustries.dev/rdr3/natives/)<br>
 The package must be included when compile the code for example with **esbuild**.
 
 ### Since v0.1.0

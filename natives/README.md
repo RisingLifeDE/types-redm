@@ -19,7 +19,7 @@ Remind: Only the latest version contains the newest natives.
 ### Information
 
 For client access see [this package](https://www.npmjs.com/package/@risinglife/redm-client)<br>
-You can see all functions, and how they can be use at [rdr3natives.com/](https://rdr3natives.com/)<br>
+You can see all functions, and how they can be use at [rdr3natives.com/](https://nativedb.dotindustries.dev/rdr3/natives/)<br>
 The package must be included when compile the code for example with **esbuild**.
 
 ### Contribute
