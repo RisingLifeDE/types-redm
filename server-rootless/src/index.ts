@@ -1,4 +1,4 @@
-import {Vector3,Vector2,Entity,Ped,Player,Vehicle,Object,Blip,Camera} from '@risinglife/redm-shared'
+import {Vector3,Vector2,IEntity,IPed,IPlayer,IVehicle,IObject,IBlip,ICamera} from '@risinglife/redm-shared'
 
 export namespace events {
     interface api {
@@ -332,8 +332,8 @@ export namespace entity {
      *
      * Hash: 0x91B38FB6
      */
-    export function getRemoteSyncedScenesAllowed(entity: number | Entity): boolean {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getRemoteSyncedScenesAllowed(entity: number | IEntity): boolean {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityRemoteSyncedScenesAllowed(_entity);
     }
 
@@ -344,8 +344,8 @@ export namespace entity {
      *
      * Hash: 0xD3FC9D88
      */
-    export function setRemoteSyncedScenesAllowed(entity: number | Entity, allow: boolean): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setRemoteSyncedScenesAllowed(entity: number | IEntity, allow: boolean): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityRemoteSyncedScenesAllowed(_entity, allow);
     }
 
@@ -354,8 +354,8 @@ export namespace entity {
      *
      * Hash: 0xEDBE6ADD
      */
-    export function isPositionFrozen(entity: number | Entity): boolean {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function isPositionFrozen(entity: number | IEntity): boolean {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return IsEntityPositionFrozen(_entity);
     }
 
@@ -375,8 +375,8 @@ export namespace entity {
      *
      * Hash: 0xC1C0855A
      */
-    export function applyForceTo(entity: number | Entity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function applyForceTo(entity: number | IEntity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         ApplyForceToEntity(_entity, forceType, pos.x, pos.y, pos.z, offX, offY, offZ, nComponent, bLocalForce, bLocalOffset, bScaleByMass, bPlayAudio, bScaleByTimeWarp);
     }
 
@@ -387,8 +387,8 @@ export namespace entity {
      *
      * Hash: 0xFAA3D236
      */
-    export function deleteEntity(entity: number | Entity): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function deleteEntity(entity: number | IEntity): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         DeleteEntity(_entity);
     }
 
@@ -397,8 +397,8 @@ export namespace entity {
      *
      * Hash: 0x3AC90869
      */
-    export function doesExist(entity: number | Object): boolean {
-        const _entity = entity instanceof Object ? entity.handle() : entity;
+    export function doesExist(entity: number | IObject): boolean {
+        const _entity = entity instanceof IObject ? entity.handle() : entity;
         return DoesEntityExist(_entity);
     }
 
@@ -409,8 +409,8 @@ export namespace entity {
      *
      * Hash: 0x65C16D57
      */
-    export function freezePosition(entity: number | Entity, toggle: boolean): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function freezePosition(entity: number | IEntity, toggle: boolean): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         FreezeEntityPosition(_entity, toggle);
     }
 
@@ -419,8 +419,8 @@ export namespace entity {
      *
      * Hash: 0xFE1589F9
      */
-    export function getAttachedTo(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getAttachedTo(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityAttachedTo(_entity);
     }
 
@@ -429,8 +429,8 @@ export namespace entity {
      *
      * Hash: 0xE8C0C629
      */
-    export function getCollisionDisabled(entity: number | Entity): boolean {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getCollisionDisabled(entity: number | IEntity): boolean {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityCollisionDisabled(_entity);
     }
 
@@ -441,8 +441,8 @@ export namespace entity {
      *
      * Hash: 0x1647F1CB
      */
-    export function getCoords(entity: number | Entity): Vector3 {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getCoords(entity: number | IEntity): Vector3 {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return new Vector3(GetEntityCoords(_entity));
     }
 
@@ -451,8 +451,8 @@ export namespace entity {
      *
      * Hash: 0x972CC383
      */
-    export function getHeading(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getHeading(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityHeading(_entity);
     }
 
@@ -461,8 +461,8 @@ export namespace entity {
      *
      * Hash: 0x8E3222B7
      */
-    export function getHealth(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getHealth(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityHealth(_entity);
     }
 
@@ -471,8 +471,8 @@ export namespace entity {
      *
      * Hash: 0xC7AE6AA1
      */
-    export function getMaxHealth(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getMaxHealth(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityMaxHealth(_entity);
     }
 
@@ -481,8 +481,8 @@ export namespace entity {
      *
      * Hash: 0xDAFCB3EC
      */
-    export function getModel(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getModel(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityModel(_entity);
     }
 
@@ -491,8 +491,8 @@ export namespace entity {
      *
      * Hash: 0xD16EA02F
      */
-    export function getOrphanMode(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getOrphanMode(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityOrphanMode(_entity);
     }
 
@@ -501,8 +501,8 @@ export namespace entity {
      *
      * Hash: 0xFC30DDFF
      */
-    export function getPopulationType(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getPopulationType(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityPopulationType(_entity);
     }
 
@@ -511,8 +511,8 @@ export namespace entity {
      *
      * Hash: 0x8FF45B04
      */
-    export function getRotation(entity: number | Entity): Vector3 {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getRotation(entity: number | IEntity): Vector3 {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return new Vector3(GetEntityRotation(_entity));
     }
 
@@ -521,8 +521,8 @@ export namespace entity {
      *
      * Hash: 0x9BF8A73F
      */
-    export function getRotationVelocity(entity: number | Entity): Vector3 {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getRotationVelocity(entity: number | IEntity): Vector3 {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return new Vector3(GetEntityRotationVelocity(_entity));
     }
 
@@ -533,8 +533,8 @@ export namespace entity {
      *
      * Hash: 0xED4B0486
      */
-    export function getRoutingBucket(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getRoutingBucket(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityRoutingBucket(_entity);
     }
 
@@ -543,8 +543,8 @@ export namespace entity {
      *
      * Hash: 0xB7F70784
      */
-    export function getScript(entity: number | Entity): string {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getScript(entity: number | IEntity): string {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityScript(_entity);
     }
 
@@ -558,8 +558,8 @@ export namespace entity {
      *
      * Hash: 0x9E1E4798
      */
-    export function getSpeed(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getSpeed(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntitySpeed(_entity);
     }
 
@@ -595,8 +595,8 @@ export namespace entity {
      *
      * Hash: 0xB1BD08D
      */
-    export function getType(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getType(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetEntityType(_entity);
     }
 
@@ -605,8 +605,8 @@ export namespace entity {
      *
      * Hash: 0xC14C9B6B
      */
-    export function getVelocity(entity: number | Entity): Vector3 {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getVelocity(entity: number | IEntity): Vector3 {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return new Vector3(GetEntityVelocity(_entity));
     }
 
@@ -675,8 +675,8 @@ export namespace entity {
      *
      * Hash: 0x23B2A641
      */
-    export function getNetTypeFrom(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getNetTypeFrom(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return GetNetTypeFromEntity(_entity);
     }
 
@@ -685,8 +685,8 @@ export namespace entity {
      *
      * Hash: 0x9C9A3BE0
      */
-    export function hasBeenMarkedAsNoLongerNeeded(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function hasBeenMarkedAsNoLongerNeeded(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return HasEntityBeenMarkedAsNoLongerNeeded(_vehicle);
     }
 
@@ -695,8 +695,8 @@ export namespace entity {
      *
      * Hash: 0x120B4ED5
      */
-    export function isVisible(entity: number | Entity): boolean {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function isVisible(entity: number | IEntity): boolean {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return IsEntityVisible(_entity);
     }
 
@@ -707,8 +707,8 @@ export namespace entity {
      *
      * Hash: 0xDF70B41B
      */
-    export function setCoords(entity: number | Entity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setCoords(entity: number | IEntity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityCoords(_entity, pos.x, pos.y, pos.z, alive, deadFlag, ragdollFlag, clearArea);
     }
 
@@ -720,8 +720,8 @@ export namespace entity {
      *
      * Hash: 0xD3A183A3
      */
-    export function setDistanceCullingRadius(entity: number | Entity, radius: number): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setDistanceCullingRadius(entity: number | IEntity, radius: number): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityDistanceCullingRadius(_entity, radius);
     }
 
@@ -732,8 +732,8 @@ export namespace entity {
      *
      * Hash: 0xE0FF064D
      */
-    export function setHeading(entity: number | Entity, heading: number): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setHeading(entity: number | IEntity, heading: number): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityHeading(_entity, heading);
     }
 
@@ -742,8 +742,8 @@ export namespace entity {
      *
      * Hash: 0x9F7F8D36
      */
-    export function setIgnoreRequestControlFilter(entity: number | Entity, ignore: boolean): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setIgnoreRequestControlFilter(entity: number | IEntity, ignore: boolean): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityIgnoreRequestControlFilter(_entity, ignore);
     }
 
@@ -771,8 +771,8 @@ export namespace entity {
      *
      * Hash: 0x489E9162
      */
-    export function setOrphanMode(entity: number | Entity, orphanMode: number): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setOrphanMode(entity: number | IEntity, orphanMode: number): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityOrphanMode(_entity, orphanMode);
     }
 
@@ -787,8 +787,8 @@ export namespace entity {
      *
      * Hash: 0xA345EFE
      */
-    export function setRotation(entity: number | Entity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setRotation(entity: number | IEntity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityRotation(_entity, pitch, roll, yaw, rotationOrder, bDeadCheck);
     }
 
@@ -799,8 +799,8 @@ export namespace entity {
      *
      * Hash: 0x635E5289
      */
-    export function setRoutingBucket(entity: number | Entity, bucket: number): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setRoutingBucket(entity: number | IEntity, bucket: number): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityRoutingBucket(_entity, bucket);
     }
 
@@ -813,8 +813,8 @@ export namespace entity {
      *
      * Hash: 0xFF5A1988
      */
-    export function setVelocity(entity: number | Entity, pos: Vector3): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function setVelocity(entity: number | IEntity, pos: Vector3): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         SetEntityVelocity(_entity, pos.x, pos.y, pos.z);
     }
 
@@ -823,8 +823,8 @@ export namespace entity {
      *
      * Hash: 0x3BB78F05
      */
-    export function ensureStateBag(entity: number | Entity): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function ensureStateBag(entity: number | IEntity): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         EnsureEntityStateBag(_entity);
     }
 
@@ -860,8 +860,8 @@ export namespace entity {
      *
      * Hash: 0xDFFBA12F
      */
-    export function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | Object): number {
-        const _models = models instanceof Object ? models.handle() : models;
+    export function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | IObject): number {
+        const _models = models instanceof IObject ? models.handle() : models;
         return GetEntitiesInRadius(pos.x, pos.y, pos.z, radius, entityType, sortByDistance, _models);
     }
 
@@ -901,8 +901,8 @@ export namespace hud {
      *
      * Hash: 0x30822554
      */
-    export function addBlipForEntity(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function addBlipForEntity(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return AddBlipForEntity(_entity);
     }
 
@@ -927,8 +927,8 @@ export namespace hud {
      *
      * Hash: 0xD8C3C1CD
      */
-    export function removeBlip(blip: number | Blip): void {
-        const _blip = blip instanceof Blip ? blip.handle() : blip;
+    export function removeBlip(blip: number | IBlip): void {
+        const _blip = blip instanceof IBlip ? blip.handle() : blip;
         RemoveBlip(_blip);
     }
 
@@ -940,8 +940,8 @@ export namespace hud {
      *
      * Hash: 0x8DBBB0B9
      */
-    export function setBlipSprite(blip: number | Blip, spriteId: number): void {
-        const _blip = blip instanceof Blip ? blip.handle() : blip;
+    export function setBlipSprite(blip: number | IBlip, spriteId: number): void {
+        const _blip = blip instanceof IBlip ? blip.handle() : blip;
         SetBlipSprite(_blip, spriteId);
     }
 
@@ -1016,8 +1016,8 @@ export namespace misc {
      *
      * Hash: 0xF01E2AAB
      */
-    export function getHeliMainRotorHealth(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getHeliMainRotorHealth(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetHeliMainRotorHealth(_vehicle);
     }
 
@@ -1044,8 +1044,8 @@ export namespace misc {
      *
      * Hash: 0x76876154
      */
-    export function isFlashLightOn(ped: number | Ped): boolean {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function isFlashLightOn(ped: number | IPed): boolean {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsFlashLightOn(_ped);
     }
 
@@ -1063,8 +1063,8 @@ export namespace misc {
      *
      * Hash: 0x6B171E87
      */
-    export function performHttpRequestInternalEx(requestData: number | Object): number {
-        const _requestData = requestData instanceof Object ? requestData.handle() : requestData;
+    export function performHttpRequestInternalEx(requestData: number | IObject): number {
+        const _requestData = requestData instanceof IObject ? requestData.handle() : requestData;
         return PerformHttpRequestInternalEx(_requestData);
     }
 
@@ -1315,8 +1315,8 @@ export namespace misc {
      *
      * Hash: 0xD70C3BCA
      */
-    export function formatStackTrace(traceData: number | Object): string {
-        const _traceData = traceData instanceof Object ? traceData.handle() : traceData;
+    export function formatStackTrace(traceData: number | IObject): string {
+        const _traceData = traceData instanceof IObject ? traceData.handle() : traceData;
         return FormatStackTrace(_traceData);
     }
 
@@ -1618,8 +1618,8 @@ export namespace ped {
      *
      * Hash: 0x70559AC7
      */
-    export function addDecorationFromHashes(ped: number | Ped, collection: number | string, overlay: number | string): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function addDecorationFromHashes(ped: number | IPed, collection: number | string, overlay: number | string): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof collection === 'string') collection = misc.getHashKey(collection)
         if (typeof overlay === 'string') overlay = misc.getHashKey(overlay)
         AddPedDecorationFromHashes(_ped, collection, overlay);
@@ -1632,8 +1632,8 @@ export namespace ped {
      *
      * Hash: 0x2D23D743
      */
-    export function clearProp(ped: number | Ped, propId: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function clearProp(ped: number | IPed, propId: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         ClearPedProp(_ped, propId);
     }
 
@@ -1644,8 +1644,8 @@ export namespace ped {
      *
      * Hash: 0xA635F451
      */
-    export function clearSecondaryTask(ped: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function clearSecondaryTask(ped: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         ClearPedSecondaryTask(_ped);
     }
 
@@ -1670,8 +1670,8 @@ export namespace ped {
      *
      * Hash: 0x3000F092
      */
-    export function createInsideVehicle(vehicle: number | Vehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function createInsideVehicle(vehicle: number | IVehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         if (typeof modelHash === 'string') modelHash = misc.getHashKey(modelHash)
         return CreatePedInsideVehicle(_vehicle, pedType, modelHash, seat, isNetwork, bScriptHostPed);
     }
@@ -1695,8 +1695,8 @@ export namespace ped {
      *
      * Hash: 0xB0237302
      */
-    export function getCurrentWeapon(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getCurrentWeapon(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetCurrentPedWeapon(_ped);
     }
 
@@ -1705,8 +1705,8 @@ export namespace ped {
      *
      * Hash: 0xF7C6792D
      */
-    export function getLastInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getLastInVehicleSeat(vehicle: number | IVehicle, seatIndex: number): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetLastPedInVehicleSeat(_vehicle, seatIndex);
     }
 
@@ -1715,8 +1715,8 @@ export namespace ped {
      *
      * Hash: 0x2CE311A7
      */
-    export function getArmour(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getArmour(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedArmour(_ped);
     }
 
@@ -1725,8 +1725,8 @@ export namespace ped {
      *
      * Hash: 0x63458C27
      */
-    export function getCauseOfDeath(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getCauseOfDeath(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedCauseOfDeath(_ped);
     }
 
@@ -1735,8 +1735,8 @@ export namespace ped {
      *
      * Hash: 0xC182F76E
      */
-    export function getDesiredHeading(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getDesiredHeading(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedDesiredHeading(_ped);
     }
 
@@ -1745,8 +1745,8 @@ export namespace ped {
      *
      * Hash: 0x388FDE9A
      */
-    export function getInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getInVehicleSeat(vehicle: number | IVehicle, seatIndex: number): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetPedInVehicleSeat(_vehicle, seatIndex);
     }
 
@@ -1755,8 +1755,8 @@ export namespace ped {
      *
      * Hash: 0xA45B6C8D
      */
-    export function getMaxHealth(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getMaxHealth(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedMaxHealth(_ped);
     }
 
@@ -1765,8 +1765,8 @@ export namespace ped {
      *
      * Hash: 0x354F283C
      */
-    export function getRelationshipGroupHash(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getRelationshipGroupHash(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedRelationshipGroupHash(_ped);
     }
 
@@ -1775,8 +1775,8 @@ export namespace ped {
      *
      * Hash: 0x84FE084
      */
-    export function getScriptTaskCommand(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getScriptTaskCommand(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedScriptTaskCommand(_ped);
     }
 
@@ -1785,8 +1785,8 @@ export namespace ped {
      *
      * Hash: 0x44B0E5E2
      */
-    export function getScriptTaskStage(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getScriptTaskStage(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedScriptTaskStage(_ped);
     }
 
@@ -1795,8 +1795,8 @@ export namespace ped {
      *
      * Hash: 0x535DB43F
      */
-    export function getSourceOfDamage(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getSourceOfDamage(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedSourceOfDamage(_ped);
     }
 
@@ -1805,8 +1805,8 @@ export namespace ped {
      *
      * Hash: 0x84ADF9EB
      */
-    export function getSourceOfDeath(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getSourceOfDeath(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedSourceOfDeath(_ped);
     }
 
@@ -1816,8 +1816,8 @@ export namespace ped {
      *
      * Hash: 0x7F4563D3
      */
-    export function getSpecificTaskType(ped: number | Ped, index: number): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getSpecificTaskType(ped: number | IPed, index: number): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedSpecificTaskType(_ped, index);
     }
 
@@ -1826,8 +1826,8 @@ export namespace ped {
      *
      * Hash: 0x40321B83
      */
-    export function getStealthMovement(ped: number | Ped): boolean {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getStealthMovement(ped: number | IPed): boolean {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetPedStealthMovement(_ped);
     }
 
@@ -1838,8 +1838,8 @@ export namespace ped {
      *
      * Hash: 0xD240123E
      */
-    export function getSelectedWeapon(ped: number | Ped): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getSelectedWeapon(ped: number | IPed): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetSelectedPedWeapon(_ped);
     }
 
@@ -1848,8 +1848,8 @@ export namespace ped {
      *
      * Hash: 0x25865633
      */
-    export function isHandcuffed(ped: number | Ped): boolean {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function isHandcuffed(ped: number | IPed): boolean {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedHandcuffed(_ped);
     }
 
@@ -1858,8 +1858,8 @@ export namespace ped {
      *
      * Hash: 0xC833BBE1
      */
-    export function isRagdoll(ped: number | Ped): boolean {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function isRagdoll(ped: number | IPed): boolean {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedRagdoll(_ped);
     }
 
@@ -1868,8 +1868,8 @@ export namespace ped {
      *
      * Hash: 0xEFEED13C
      */
-    export function isStrafing(ped: number | Ped): boolean {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function isStrafing(ped: number | IPed): boolean {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedStrafing(_ped);
     }
 
@@ -1878,8 +1878,8 @@ export namespace ped {
      *
      * Hash: 0x5AE7EDA2
      */
-    export function isUsingActionMode(ped: number | Ped): boolean {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function isUsingActionMode(ped: number | IPed): boolean {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedUsingActionMode(_ped);
     }
 
@@ -1890,8 +1890,8 @@ export namespace ped {
      *
      * Hash: 0xB8278882
      */
-    export function setCurrentWeapon(ped: number | Ped, weaponHash: number | string, bForceInHand: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setCurrentWeapon(ped: number | IPed, weaponHash: number | string, bForceInHand: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         SetCurrentPedWeapon(_ped, weaponHash, bForceInHand);
     }
@@ -1905,8 +1905,8 @@ export namespace ped {
      *
      * Hash: 0xBF90DF1A
      */
-    export function setAmmo(ped: number | Ped, weaponHash: number | string, ammo: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setAmmo(ped: number | IPed, weaponHash: number | string, ammo: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         SetPedAmmo(_ped, weaponHash, ammo);
     }
@@ -1922,8 +1922,8 @@ export namespace ped {
      *
      * Hash: 0x4E3A0CC4
      */
-    export function setArmour(ped: number | Ped, amount: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setArmour(ped: number | IPed, amount: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedArmour(_ped, amount);
     }
 
@@ -1934,8 +1934,8 @@ export namespace ped {
      *
      * Hash: 0xCF1384C4
      */
-    export function setCanRagdoll(ped: number | Ped, toggle: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setCanRagdoll(ped: number | IPed, toggle: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedCanRagdoll(_ped, toggle);
     }
 
@@ -1983,8 +1983,8 @@ export namespace ped {
      *
      * Hash: 0xD4F7B05C
      */
-    export function setComponentVariation(ped: number | Ped, componentId: number, drawableId: number, textureId: number, paletteId: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setComponentVariation(ped: number | IPed, componentId: number, drawableId: number, textureId: number, paletteId: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedComponentVariation(_ped, componentId, drawableId, textureId, paletteId);
     }
 
@@ -2463,8 +2463,8 @@ export namespace ped {
      *
      * Hash: 0x9CFBE10D
      */
-    export function setConfigFlag(ped: number | Ped, flagId: number, value: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setConfigFlag(ped: number | IPed, flagId: number, value: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedConfigFlag(_ped, flagId, value);
     }
 
@@ -2477,8 +2477,8 @@ export namespace ped {
      *
      * Hash: 0xC866A984
      */
-    export function setDefaultComponentVariation(ped: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setDefaultComponentVariation(ped: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedDefaultComponentVariation(_ped);
     }
 
@@ -2493,8 +2493,8 @@ export namespace ped {
      *
      * Hash: 0xA23FE32C
      */
-    export function setHairTint(ped: number | Ped, colorID: number, highlightColorID: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setHairTint(ped: number | IPed, colorID: number, highlightColorID: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedHairTint(_ped, colorID, highlightColorID);
     }
 
@@ -2513,8 +2513,8 @@ export namespace ped {
      *
      * Hash: 0x60746B88
      */
-    export function setHeadBlendData(ped: number | Ped, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setHeadBlendData(ped: number | IPed, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedHeadBlendData(_ped, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent);
     }
 
@@ -2544,8 +2544,8 @@ export namespace ped {
      *
      * Hash: 0xD28DBA90
      */
-    export function setHeadOverlay(ped: number | Ped, overlayID: number, index: number, opacity: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setHeadOverlay(ped: number | IPed, overlayID: number, index: number, opacity: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedHeadOverlay(_ped, overlayID, index, opacity);
     }
 
@@ -2556,9 +2556,9 @@ export namespace ped {
      *
      * Hash: 0x7500C79
      */
-    export function setIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setIntoVehicle(ped: number | IPed, vehicle: number | IVehicle, seatIndex: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetPedIntoVehicle(_ped, _vehicle, seatIndex);
     }
 
@@ -2598,8 +2598,8 @@ export namespace ped {
      *
      * Hash: 0x829F2E2
      */
-    export function setPropIndex(ped: number | Ped, componentId: number, drawableId: number, textureId: number, attach: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setPropIndex(ped: number | IPed, componentId: number, drawableId: number, textureId: number, attach: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedPropIndex(_ped, componentId, drawableId, textureId, attach);
     }
 
@@ -2612,8 +2612,8 @@ export namespace ped {
      *
      * Hash: 0x4111BA46
      */
-    export function setRandomComponentVariation(ped: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setRandomComponentVariation(ped: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedRandomComponentVariation(_ped, 0);
     }
 
@@ -2624,8 +2624,8 @@ export namespace ped {
      *
      * Hash: 0xE3318E0E
      */
-    export function setRandomProps(ped: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setRandomProps(ped: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedRandomProps(_ped);
     }
 
@@ -2637,8 +2637,8 @@ export namespace ped {
      *
      * Hash: 0xCFF6FF66
      */
-    export function setResetFlag(ped: number | Ped, flagId: number, doReset: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setResetFlag(ped: number | IPed, flagId: number, doReset: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedResetFlag(_ped, flagId, doReset);
     }
 
@@ -2655,8 +2655,8 @@ export namespace ped {
      *
      * Hash: 0x83CB5052
      */
-    export function setToRagdoll(ped: number | Ped, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setToRagdoll(ped: number | IPed, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedToRagdoll(_ped, minTime, maxTime, ragdollType, bAbortIfInjured, bAbortIfDead, bForceScriptControl);
     }
 
@@ -2687,8 +2687,8 @@ export namespace ped {
      *
      * Hash: 0xFA12E286
      */
-    export function setToRagdollWithFall(ped: number | Ped, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setToRagdollWithFall(ped: number | IPed, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedToRagdollWithFall(_ped, minTime, maxTime, nFallType, dirX, dirY, dirZ, fGroundHeight, grab1X, grab1Y, grab1Z, grab2X, grab2Y, grab2Z);
     }
 
@@ -2731,8 +2731,8 @@ export namespace ped {
      *
      * Hash: 0xEC09DB1B
      */
-    export function setEyeColor(ped: number | Ped, index: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setEyeColor(ped: number | IPed, index: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedEyeColor(_ped, index);
     }
 
@@ -2768,8 +2768,8 @@ export namespace ped {
      *
      * Hash: 0x6C8D4458
      */
-    export function setFaceFeature(ped: number | Ped, index: number, scale: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setFaceFeature(ped: number | IPed, index: number, scale: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedFaceFeature(_ped, index, scale);
     }
 
@@ -2786,8 +2786,8 @@ export namespace ped {
      *
      * Hash: 0x78935A27
      */
-    export function setHeadOverlayColor(ped: number | Ped, overlayID: number, colorType: number, colorID: number, secondColorID: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function setHeadOverlayColor(ped: number | IPed, overlayID: number, colorType: number, colorID: number, secondColorID: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         SetPedHeadOverlayColor(_ped, overlayID, colorType, colorID, secondColorID);
     }
 
@@ -2800,8 +2800,8 @@ export namespace player {
      *
      * Hash: 0x8689A825
      */
-    export function getMeleeWeaponDamageModifier(playerId: number | string | Player): number {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+    export function getMeleeWeaponDamageModifier(playerId: number | string | IPlayer): number {
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerMeleeWeaponDamageModifier(_playerId);
     }
 
@@ -2810,8 +2810,8 @@ export namespace player {
      *
      * Hash: 0x2A3D7CDA
      */
-    export function getWeaponDamageModifier(playerId: number | string | Player): number {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+    export function getWeaponDamageModifier(playerId: number | string | IPlayer): number {
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerWeaponDamageModifier(_playerId);
     }
 
@@ -2820,8 +2820,8 @@ export namespace player {
      *
      * Hash: 0xF1543251
      */
-    export function getWeaponDefenseModifier(playerId: number | string | Player): number {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+    export function getWeaponDefenseModifier(playerId: number | string | IPlayer): number {
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerWeaponDefenseModifier(_playerId);
     }
 
@@ -2830,8 +2830,8 @@ export namespace player {
      *
      * Hash: 0x986B65FF
      */
-    export function getWeaponDefenseModifier2(playerId: number | string | Player): number {
-        const _playerId = playerId instanceof Player ? playerId.localId() : playerId;
+    export function getWeaponDefenseModifier2(playerId: number | string | IPlayer): number {
+        const _playerId = playerId instanceof IPlayer ? playerId.localId() : playerId;
         return GetPlayerWeaponDefenseModifier2(_playerId);
     }
 
@@ -2854,8 +2854,8 @@ export namespace player {
      *
      * Hash: 0x54EA5BCC
      */
-    export function clearWantedLevel(player: number | string | Player): void {
-        const _player = player instanceof Player ? player.localId() : player;
+    export function clearWantedLevel(player: number | string | IPlayer): void {
+        const _player = player instanceof IPlayer ? player.localId() : player;
         ClearPlayerWantedLevel(_player);
     }
 
@@ -3182,8 +3182,8 @@ export namespace player {
      *
      * Hash: 0x404794CA
      */
-    export function isPedA(ped: number | Ped): boolean {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function isPedA(ped: number | IPed): boolean {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return IsPedAPlayer(_ped);
     }
 
@@ -3302,8 +3302,8 @@ export namespace player {
      *
      * Hash: 0xD17AFCD8
      */
-    export function setControl(player: number | string | Player, bHasControl: boolean, flags: number): void {
-        const _player = player instanceof Player ? player.localId() : player;
+    export function setControl(player: number | string | IPlayer, bHasControl: boolean, flags: number): void {
+        const _player = player instanceof IPlayer ? player.localId() : player;
         SetPlayerControl(_player, bHasControl, flags);
     }
 
@@ -3326,8 +3326,8 @@ export namespace player {
      *
      * Hash: 0xDFB9A2A2
      */
-    export function setInvincible(player: number | string | Player, bInvincible: boolean): void {
-        const _player = player instanceof Player ? player.localId() : player;
+    export function setInvincible(player: number | string | IPlayer, bInvincible: boolean): void {
+        const _player = player instanceof IPlayer ? player.localId() : player;
         SetPlayerInvincible(_player, bInvincible);
     }
 
@@ -3339,8 +3339,8 @@ export namespace player {
      *
      * Hash: 0x774A4C54
      */
-    export function setModel(player: number | string | Player, model: number | string): void {
-        const _player = player instanceof Player ? player.localId() : player;
+    export function setModel(player: number | string | IPlayer, model: number | string): void {
+        const _player = player instanceof IPlayer ? player.localId() : player;
         if (typeof model === 'string') model = misc.getHashKey(model)
         SetPlayerModel(_player, model);
     }
@@ -3363,8 +3363,8 @@ export namespace player {
      *
      * Hash: 0xB7A0914B
      */
-    export function setWantedLevel(player: number | string | Player, wantedLevel: number, delayedResponse: boolean): void {
-        const _player = player instanceof Player ? player.localId() : player;
+    export function setWantedLevel(player: number | string | IPlayer, wantedLevel: number, delayedResponse: boolean): void {
+        const _player = player instanceof IPlayer ? player.localId() : player;
         SetPlayerWantedLevel(_player, wantedLevel, delayedResponse);
     }
 
@@ -3395,8 +3395,8 @@ export namespace vehicle {
      *
      * Hash: 0xA886495D
      */
-    export function getHeliBodyHealth(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliBodyHealth(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliBodyHealth(_heli);
     }
 
@@ -3405,8 +3405,8 @@ export namespace vehicle {
      *
      * Hash: 0x82AFC0A3
      */
-    export function getHeliDisableExplodeFromBodyDamage(heli: number | Vehicle): boolean {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliDisableExplodeFromBodyDamage(heli: number | IVehicle): boolean {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliDisableExplodeFromBodyDamage(_heli);
     }
 
@@ -3415,8 +3415,8 @@ export namespace vehicle {
      *
      * Hash: 0xA0FA0354
      */
-    export function getHeliEngineHealth(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliEngineHealth(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliEngineHealth(_heli);
     }
 
@@ -3425,8 +3425,8 @@ export namespace vehicle {
      *
      * Hash: 0xD4EC7858
      */
-    export function getHeliGasTankHealth(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliGasTankHealth(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliGasTankHealth(_heli);
     }
 
@@ -3435,8 +3435,8 @@ export namespace vehicle {
      *
      * Hash: 0xC37D668
      */
-    export function getHeliMainRotorDamageScale(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliMainRotorDamageScale(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliMainRotorDamageScale(_heli);
     }
 
@@ -3445,8 +3445,8 @@ export namespace vehicle {
      *
      * Hash: 0x1944AC95
      */
-    export function getHeliPitchControl(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliPitchControl(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliPitchControl(_heli);
     }
 
@@ -3455,8 +3455,8 @@ export namespace vehicle {
      *
      * Hash: 0xC40161E2
      */
-    export function getHeliRearRotorDamageScale(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliRearRotorDamageScale(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliRearRotorDamageScale(_heli);
     }
 
@@ -3465,8 +3465,8 @@ export namespace vehicle {
      *
      * Hash: 0x33EE6E2B
      */
-    export function getHeliRearRotorHealth(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getHeliRearRotorHealth(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetHeliRearRotorHealth(_vehicle);
     }
 
@@ -3475,8 +3475,8 @@ export namespace vehicle {
      *
      * Hash: 0x12948DE9
      */
-    export function getHeliRollControl(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliRollControl(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliRollControl(_heli);
     }
 
@@ -3485,8 +3485,8 @@ export namespace vehicle {
      *
      * Hash: 0x22239130
      */
-    export function getHeliTailRotorDamageScale(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliTailRotorDamageScale(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliTailRotorDamageScale(_heli);
     }
 
@@ -3495,8 +3495,8 @@ export namespace vehicle {
      *
      * Hash: 0xA41BC13D
      */
-    export function getHeliTailRotorHealth(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getHeliTailRotorHealth(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetHeliTailRotorHealth(_vehicle);
     }
 
@@ -3505,8 +3505,8 @@ export namespace vehicle {
      *
      * Hash: 0x8E86238D
      */
-    export function getHeliThrottleControl(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliThrottleControl(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliThrottleControl(_heli);
     }
 
@@ -3515,8 +3515,8 @@ export namespace vehicle {
      *
      * Hash: 0x8FDC0768
      */
-    export function getHeliYawControl(heli: number | Vehicle): number {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getHeliYawControl(heli: number | IVehicle): number {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetHeliYawControl(_heli);
     }
 
@@ -3525,8 +3525,8 @@ export namespace vehicle {
      *
      * Hash: 0x3EFE38D1
      */
-    export function getIsHeliEngineRunning(heli: number | Vehicle): boolean {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function getIsHeliEngineRunning(heli: number | IVehicle): boolean {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return GetIsHeliEngineRunning(_heli);
     }
 
@@ -3535,8 +3535,8 @@ export namespace vehicle {
      *
      * Hash: 0x1C939E87
      */
-    export function getThrusterSideRcsThrottle(jetpack: number | Vehicle): number {
-        const _jetpack = jetpack instanceof Vehicle ? jetpack.localId() : jetpack;
+    export function getThrusterSideRcsThrottle(jetpack: number | IVehicle): number {
+        const _jetpack = jetpack instanceof IVehicle ? jetpack.localId() : jetpack;
         return GetThrusterSideRcsThrottle(_jetpack);
     }
 
@@ -3545,8 +3545,8 @@ export namespace vehicle {
      *
      * Hash: 0x94E24C96
      */
-    export function getThrusterThrottle(jetpack: number | Vehicle): number {
-        const _jetpack = jetpack instanceof Vehicle ? jetpack.localId() : jetpack;
+    export function getThrusterThrottle(jetpack: number | IVehicle): number {
+        const _jetpack = jetpack instanceof IVehicle ? jetpack.localId() : jetpack;
         return GetThrusterThrottle(_jetpack);
     }
 
@@ -3555,8 +3555,8 @@ export namespace vehicle {
      *
      * Hash: 0x456E34A
      */
-    export function getTrainBackwardCarriage(train: number | Vehicle): number {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainBackwardCarriage(train: number | IVehicle): number {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainBackwardCarriage(_train);
     }
 
@@ -3565,8 +3565,8 @@ export namespace vehicle {
      *
      * Hash: 0x24DC88D9
      */
-    export function getTrainForwardCarriage(train: number | Vehicle): number {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainForwardCarriage(train: number | IVehicle): number {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainForwardCarriage(_train);
     }
 
@@ -3586,8 +3586,8 @@ export namespace vehicle {
      *
      * Hash: 0xDEA49773
      */
-    export function getHornType(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getHornType(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHornType(_vehicle);
     }
 
@@ -3596,8 +3596,8 @@ export namespace vehicle {
      *
      * Hash: 0x23E46BD7
      */
-    export function isHeliTailBoomBreakable(heli: number | Vehicle): boolean {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function isHeliTailBoomBreakable(heli: number | IVehicle): boolean {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return IsHeliTailBoomBreakable(_heli);
     }
 
@@ -3606,8 +3606,8 @@ export namespace vehicle {
      *
      * Hash: 0x2C59F987
      */
-    export function isHeliTailBoomBroken(heli: number | Vehicle): boolean {
-        const _heli = heli instanceof Vehicle ? heli.localId() : heli;
+    export function isHeliTailBoomBroken(heli: number | IVehicle): boolean {
+        const _heli = heli instanceof IVehicle ? heli.localId() : heli;
         return IsHeliTailBoomBroken(_heli);
     }
 
@@ -3616,8 +3616,8 @@ export namespace vehicle {
      *
      * Hash: 0xFA9336E5
      */
-    export function isTrainCaboose(train: number | Vehicle): boolean {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function isTrainCaboose(train: number | IVehicle): boolean {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return IsTrainCaboose(_train);
     }
 
@@ -3626,8 +3626,8 @@ export namespace vehicle {
      *
      * Hash: 0x77CC80DC
      */
-    export function doesTrainStopAtStations(train: number | Vehicle): boolean {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function doesTrainStopAtStations(train: number | IVehicle): boolean {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return DoesTrainStopAtStations(_train);
     }
 
@@ -3636,8 +3636,8 @@ export namespace vehicle {
      *
      * Hash: 0xA4921EF5
      */
-    export function getTrainCruiseSpeed(train: number | Vehicle): number {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainCruiseSpeed(train: number | IVehicle): number {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainCruiseSpeed(_train);
     }
 
@@ -3646,8 +3646,8 @@ export namespace vehicle {
      *
      * Hash: 0x8DAF79B6
      */
-    export function getTrainDirection(train: number | Vehicle): boolean {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainDirection(train: number | IVehicle): boolean {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainDirection(_train);
     }
 
@@ -3656,8 +3656,8 @@ export namespace vehicle {
      *
      * Hash: 0x81B50033
      */
-    export function getTrainState(train: number | Vehicle): number {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainState(train: number | IVehicle): number {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainState(_train);
     }
 
@@ -3666,8 +3666,8 @@ export namespace vehicle {
      *
      * Hash: 0x9AA339D
      */
-    export function getTrainTrackIndex(train: number | Vehicle): number {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainTrackIndex(train: number | IVehicle): number {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainTrackIndex(_train);
     }
 
@@ -3676,8 +3676,8 @@ export namespace vehicle {
      *
      * Hash: 0x483B013C
      */
-    export function getHandbrake(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getHandbrake(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHandbrake(_vehicle);
     }
 
@@ -3686,8 +3686,8 @@ export namespace vehicle {
      *
      * Hash: 0x1382FCEA
      */
-    export function getSteeringAngle(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getSteeringAngle(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleSteeringAngle(_vehicle);
     }
 
@@ -3696,8 +3696,8 @@ export namespace vehicle {
      *
      * Hash: 0xBB340D04
      */
-    export function isEngineStarting(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function isEngineStarting(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleEngineStarting(_vehicle);
     }
 
@@ -3736,8 +3736,8 @@ export namespace vehicle {
      *
      * Hash: 0x523BA3DA
      */
-    export function deleteTrain(entity: number | Entity): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function deleteTrain(entity: number | IEntity): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         DeleteTrain(_entity);
     }
 
@@ -3746,8 +3746,8 @@ export namespace vehicle {
      *
      * Hash: 0x43F15989
      */
-    export function doesBoatSinkWhenWrecked(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function doesBoatSinkWhenWrecked(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return DoesBoatSinkWhenWrecked(_vehicle);
     }
 
@@ -3770,8 +3770,8 @@ export namespace vehicle {
      *
      * Hash: 0x7DC6D022
      */
-    export function getIsEngineRunning(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getIsEngineRunning(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetIsVehicleEngineRunning(_vehicle);
     }
 
@@ -3780,8 +3780,8 @@ export namespace vehicle {
      *
      * Hash: 0xD7EC8760
      */
-    export function getIsPrimaryColourCustom(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getIsPrimaryColourCustom(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetIsVehiclePrimaryColourCustom(_vehicle);
     }
 
@@ -3790,8 +3790,8 @@ export namespace vehicle {
      *
      * Hash: 0x288AD228
      */
-    export function getIsSecondaryColourCustom(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getIsSecondaryColourCustom(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetIsVehicleSecondaryColourCustom(_vehicle);
     }
 
@@ -3800,8 +3800,8 @@ export namespace vehicle {
      *
      * Hash: 0xA6F02670
      */
-    export function getLandingGearState(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getLandingGearState(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetLandingGearState(_vehicle);
     }
 
@@ -3810,8 +3810,8 @@ export namespace vehicle {
      *
      * Hash: 0x95070FA
      */
-    export function getTrainCarriageEngine(train: number | Vehicle): number {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainCarriageEngine(train: number | IVehicle): number {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainCarriageEngine(_train);
     }
 
@@ -3820,8 +3820,8 @@ export namespace vehicle {
      *
      * Hash: 0x4B8285CF
      */
-    export function getTrainCarriageIndex(train: number | Vehicle): number {
-        const _train = train instanceof Vehicle ? train.localId() : train;
+    export function getTrainCarriageIndex(train: number | IVehicle): number {
+        const _train = train instanceof IVehicle ? train.localId() : train;
         return GetTrainCarriageIndex(_train);
     }
 
@@ -3830,8 +3830,8 @@ export namespace vehicle {
      *
      * Hash: 0x2B2FCC28
      */
-    export function getBodyHealth(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getBodyHealth(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleBodyHealth(_vehicle);
     }
 
@@ -3840,8 +3840,8 @@ export namespace vehicle {
      *
      * Hash: 0x40D82D88
      */
-    export function getColours(vehicle: number | Vehicle): [number, number] {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getColours(vehicle: number | IVehicle): [number, number] {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleColours(_vehicle);
     }
 
@@ -3850,8 +3850,8 @@ export namespace vehicle {
      *
      * Hash: 0x1C2B9FEF
      */
-    export function getCustomPrimaryColour(vehicle: number | Vehicle): [number, number, number] {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getCustomPrimaryColour(vehicle: number | IVehicle): [number, number, number] {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleCustomPrimaryColour(_vehicle);
     }
 
@@ -3860,8 +3860,8 @@ export namespace vehicle {
      *
      * Hash: 0x3FF247A2
      */
-    export function getCustomSecondaryColour(vehicle: number | Vehicle): [number, number, number] {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getCustomSecondaryColour(vehicle: number | IVehicle): [number, number, number] {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleCustomSecondaryColour(_vehicle);
     }
 
@@ -3870,8 +3870,8 @@ export namespace vehicle {
      *
      * Hash: 0xA0DBD08D
      */
-    export function getDashboardColour(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getDashboardColour(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleDashboardColour(_vehicle);
     }
 
@@ -3880,8 +3880,8 @@ export namespace vehicle {
      *
      * Hash: 0xFD15C065
      */
-    export function getDirtLevel(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getDirtLevel(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleDirtLevel(_vehicle);
     }
 
@@ -3890,8 +3890,8 @@ export namespace vehicle {
      *
      * Hash: 0x1DC50247
      */
-    export function getDoorsLockedForPlayer(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getDoorsLockedForPlayer(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleDoorsLockedForPlayer(_vehicle);
     }
 
@@ -3914,8 +3914,8 @@ export namespace vehicle {
      *
      * Hash: 0xD72CEF2
      */
-    export function getDoorLockStatus(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getDoorLockStatus(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleDoorLockStatus(_vehicle);
     }
 
@@ -3924,8 +3924,8 @@ export namespace vehicle {
      *
      * Hash: 0x6E35C49C
      */
-    export function getDoorStatus(vehicle: number | Vehicle, doorIndex: number): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getDoorStatus(vehicle: number | IVehicle, doorIndex: number): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleDoorStatus(_vehicle, doorIndex);
     }
 
@@ -3934,8 +3934,8 @@ export namespace vehicle {
      *
      * Hash: 0x8880038A
      */
-    export function getEngineHealth(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getEngineHealth(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleEngineHealth(_vehicle);
     }
 
@@ -3944,8 +3944,8 @@ export namespace vehicle {
      *
      * Hash: 0x80E4659B
      */
-    export function getExtraColours(vehicle: number | Vehicle): [number, number] {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getExtraColours(vehicle: number | IVehicle): [number, number] {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleExtraColours(_vehicle);
     }
 
@@ -3954,8 +3954,8 @@ export namespace vehicle {
      *
      * Hash: 0xAD40AD55
      */
-    export function getFlightNozzlePosition(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getFlightNozzlePosition(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleFlightNozzlePosition(_vehicle);
     }
 
@@ -3964,8 +3964,8 @@ export namespace vehicle {
      *
      * Hash: 0xD7147656
      */
-    export function getHeadlightsColour(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getHeadlightsColour(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHeadlightsColour(_vehicle);
     }
 
@@ -3974,8 +3974,8 @@ export namespace vehicle {
      *
      * Hash: 0xFBDE9FD8
      */
-    export function getHomingLockonState(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getHomingLockonState(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleHomingLockonState(_vehicle);
     }
 
@@ -3984,8 +3984,8 @@ export namespace vehicle {
      *
      * Hash: 0xCCFF3B6E
      */
-    export function getInteriorColour(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getInteriorColour(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleInteriorColour(_vehicle);
     }
 
@@ -3994,8 +3994,8 @@ export namespace vehicle {
      *
      * Hash: 0x7C278621
      */
-    export function getLightsState(vehicle: number | Vehicle): [boolean, boolean, boolean] {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getLightsState(vehicle: number | IVehicle): [boolean, boolean, boolean] {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleLightsState(_vehicle);
     }
 
@@ -4004,8 +4004,8 @@ export namespace vehicle {
      *
      * Hash: 0xEC82A51D
      */
-    export function getLivery(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getLivery(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleLivery(_vehicle);
     }
 
@@ -4014,8 +4014,8 @@ export namespace vehicle {
      *
      * Hash: 0x4A557117
      */
-    export function getLockOnTarget(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getLockOnTarget(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleLockOnTarget(_vehicle);
     }
 
@@ -4024,8 +4024,8 @@ export namespace vehicle {
      *
      * Hash: 0xD9319DCB
      */
-    export function getNeonColour(vehicle: number | Vehicle): [number, number, number] {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getNeonColour(vehicle: number | IVehicle): [number, number, number] {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleNeonColour(_vehicle);
     }
 
@@ -4044,8 +4044,8 @@ export namespace vehicle {
      *
      * Hash: 0x684BDBF2
      */
-    export function getNeonEnabled(vehicle: number | Vehicle, neonIndex: number): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getNeonEnabled(vehicle: number | IVehicle, neonIndex: number): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleNeonEnabled(_vehicle, neonIndex);
     }
 
@@ -4054,8 +4054,8 @@ export namespace vehicle {
      *
      * Hash: 0xE8522D58
      */
-    export function getNumberPlateText(vehicle: number | Vehicle): string {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getNumberPlateText(vehicle: number | IVehicle): string {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleNumberPlateText(_vehicle);
     }
 
@@ -4064,8 +4064,8 @@ export namespace vehicle {
      *
      * Hash: 0x499747B6
      */
-    export function getNumberPlateTextIndex(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getNumberPlateTextIndex(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleNumberPlateTextIndex(_vehicle);
     }
 
@@ -4074,8 +4074,8 @@ export namespace vehicle {
      *
      * Hash: 0xAFE92319
      */
-    export function getPedIsIn(ped: number | Ped, lastVehicle: boolean): number {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function getPedIsIn(ped: number | IPed, lastVehicle: boolean): number {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         return GetVehiclePedIsIn(_ped, lastVehicle);
     }
 
@@ -4084,8 +4084,8 @@ export namespace vehicle {
      *
      * Hash: 0xE41595CE
      */
-    export function getPetrolTankHealth(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getPetrolTankHealth(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehiclePetrolTankHealth(_vehicle);
     }
 
@@ -4094,8 +4094,8 @@ export namespace vehicle {
      *
      * Hash: 0x57037960
      */
-    export function getRadioStationIndex(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getRadioStationIndex(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleRadioStationIndex(_vehicle);
     }
 
@@ -4104,8 +4104,8 @@ export namespace vehicle {
      *
      * Hash: 0x872CF42
      */
-    export function getRoofLivery(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getRoofLivery(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleRoofLivery(_vehicle);
     }
 
@@ -4114,8 +4114,8 @@ export namespace vehicle {
      *
      * Hash: 0x9963D5F9
      */
-    export function getTotalRepairs(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getTotalRepairs(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleTotalRepairs(_vehicle);
     }
 
@@ -4124,8 +4124,8 @@ export namespace vehicle {
      *
      * Hash: 0x75280015
      */
-    export function getTyreSmokeColor(vehicle: number | Vehicle): [number, number, number] {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getTyreSmokeColor(vehicle: number | IVehicle): [number, number, number] {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleTyreSmokeColor(_vehicle);
     }
 
@@ -4134,8 +4134,8 @@ export namespace vehicle {
      *
      * Hash: 0xDA58D7AE
      */
-    export function getWheelType(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getWheelType(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWheelType(_vehicle);
     }
 
@@ -4144,8 +4144,8 @@ export namespace vehicle {
      *
      * Hash: 0x13D53892
      */
-    export function getWindowTint(vehicle: number | Vehicle): number {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getWindowTint(vehicle: number | IVehicle): number {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleWindowTint(_vehicle);
     }
 
@@ -4154,8 +4154,8 @@ export namespace vehicle {
      *
      * Hash: 0xB8AF3137
      */
-    export function hasBeenDamagedByBullets(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function hasBeenDamagedByBullets(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return HasVehicleBeenDamagedByBullets(_vehicle);
     }
 
@@ -4164,8 +4164,8 @@ export namespace vehicle {
      *
      * Hash: 0xE4E83A5B
      */
-    export function hasBeenOwnedByPlayer(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function hasBeenOwnedByPlayer(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return HasVehicleBeenOwnedByPlayer(_vehicle);
     }
 
@@ -4174,8 +4174,8 @@ export namespace vehicle {
      *
      * Hash: 0xD5C39EE6
      */
-    export function isBoatAnchoredAndFrozen(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function isBoatAnchoredAndFrozen(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsBoatAnchoredAndFrozen(_vehicle);
     }
 
@@ -4184,8 +4184,8 @@ export namespace vehicle {
      *
      * Hash: 0x9049DB44
      */
-    export function isBoatWrecked(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function isBoatWrecked(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsBoatWrecked(_vehicle);
     }
 
@@ -4194,8 +4194,8 @@ export namespace vehicle {
      *
      * Hash: 0x42098B5
      */
-    export function isExtraTurnedOn(vehicle: number | Vehicle, extraId: number): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function isExtraTurnedOn(vehicle: number | IVehicle, extraId: number): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleExtraTurnedOn(_vehicle, extraId);
     }
 
@@ -4204,8 +4204,8 @@ export namespace vehicle {
      *
      * Hash: 0x25EB5873
      */
-    export function isSirenOn(vehicle: number | Vehicle): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function isSirenOn(vehicle: number | IVehicle): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleSirenOn(_vehicle);
     }
 
@@ -4214,8 +4214,8 @@ export namespace vehicle {
      *
      * Hash: 0x48C80210
      */
-    export function isTyreBurst(vehicle: number | Vehicle, wheelID: number, completely: boolean): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function isTyreBurst(vehicle: number | IVehicle, wheelID: number, completely: boolean): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleTyreBurst(_vehicle, wheelID, completely);
     }
 
@@ -4224,8 +4224,8 @@ export namespace vehicle {
      *
      * Hash: 0xAC4EF23D
      */
-    export function isWindowIntact(vehicle: number | Vehicle, windowIndex: number): boolean {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function isWindowIntact(vehicle: number | IVehicle, windowIndex: number): boolean {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return IsVehicleWindowIntact(_vehicle, windowIndex);
     }
 
@@ -4236,8 +4236,8 @@ export namespace vehicle {
      *
      * Hash: 0x24877D84
      */
-    export function setAlarm(vehicle: number | Vehicle, state: boolean): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setAlarm(vehicle: number | IVehicle, state: boolean): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleAlarm(_vehicle, state);
     }
 
@@ -4250,8 +4250,8 @@ export namespace vehicle {
      *
      * Hash: 0x920C2517
      */
-    export function setBodyHealth(vehicle: number | Vehicle, value: number): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setBodyHealth(vehicle: number | IVehicle, value: number): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleBodyHealth(_vehicle, value);
     }
 
@@ -4263,8 +4263,8 @@ export namespace vehicle {
      *
      * Hash: 0x57F24253
      */
-    export function setColours(vehicle: number | Vehicle, colorPrimary: number, colorSecondary: number): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setColours(vehicle: number | IVehicle, colorPrimary: number, colorSecondary: number): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleColours(_vehicle, colorPrimary, colorSecondary);
     }
 
@@ -4276,8 +4276,8 @@ export namespace vehicle {
      *
      * Hash: 0xA557AEAD
      */
-    export function setColourCombination(vehicle: number | Vehicle, colorCombination: number): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setColourCombination(vehicle: number | IVehicle, colorCombination: number): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleColourCombination(_vehicle, colorCombination);
     }
 
@@ -4290,8 +4290,8 @@ export namespace vehicle {
      *
      * Hash: 0x8DF9F9BC
      */
-    export function setCustomPrimaryColour(vehicle: number | Vehicle, r: number, g: number, b: number): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setCustomPrimaryColour(vehicle: number | IVehicle, r: number, g: number, b: number): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleCustomPrimaryColour(_vehicle, r, g, b);
     }
 
@@ -4304,8 +4304,8 @@ export namespace vehicle {
      *
      * Hash: 0x9D77259E
      */
-    export function setCustomSecondaryColour(vehicle: number | Vehicle, r: number, g: number, b: number): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setCustomSecondaryColour(vehicle: number | IVehicle, r: number, g: number, b: number): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleCustomSecondaryColour(_vehicle, r, g, b);
     }
 
@@ -4316,8 +4316,8 @@ export namespace vehicle {
      *
      * Hash: 0x2B39128B
      */
-    export function setDirtLevel(vehicle: number | Vehicle, dirtLevel: number): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setDirtLevel(vehicle: number | IVehicle, dirtLevel: number): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleDirtLevel(_vehicle, dirtLevel);
     }
 
@@ -4359,8 +4359,8 @@ export namespace vehicle {
      *
      * Hash: 0x4CDD35D0
      */
-    export function setDoorsLocked(vehicle: number | Vehicle, doorLockStatus: number): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setDoorsLocked(vehicle: number | IVehicle, doorLockStatus: number): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleDoorsLocked(_vehicle, doorLockStatus);
     }
 
@@ -4371,8 +4371,8 @@ export namespace vehicle {
      *
      * Hash: 0x8147FEA7
      */
-    export function setDoorBroken(vehicle: number | Vehicle, doorIndex: number, deleteDoor: boolean): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setDoorBroken(vehicle: number | IVehicle, doorIndex: number, deleteDoor: boolean): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleDoorBroken(_vehicle, doorIndex, deleteDoor);
     }
 
@@ -4383,8 +4383,8 @@ export namespace vehicle {
      *
      * Hash: 0x400F9556
      */
-    export function setNumberPlateText(vehicle: number | Vehicle, plateText: string): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function setNumberPlateText(vehicle: number | IVehicle, plateText: string): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         SetVehicleNumberPlateText(_vehicle, plateText);
     }
 
@@ -4406,8 +4406,8 @@ export namespace vehicle {
      *
      * Hash: 0xA273060E
      */
-    export function getType(vehicle: number | Vehicle): string {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function getType(vehicle: number | IVehicle): string {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         return GetVehicleType(_vehicle);
     }
 
@@ -4422,8 +4422,8 @@ export namespace weapon {
      *
      * Hash: 0x3E1E286D
      */
-    export function giveComponentToPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function giveComponentToPed(ped: number | IPed, weaponHash: number | string, componentHash: number | string): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         if (typeof componentHash === 'string') componentHash = misc.getHashKey(componentHash)
         GiveWeaponComponentToPed(_ped, weaponHash, componentHash);
@@ -4436,8 +4436,8 @@ export namespace weapon {
      *
      * Hash: 0xC4D88A85
      */
-    export function giveToPed(ped: number | Ped, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function giveToPed(ped: number | IPed, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         GiveWeaponToPed(_ped, weaponHash, ammoCount, isHidden, bForceInHand);
     }
@@ -4450,8 +4450,8 @@ export namespace weapon {
      *
      * Hash: 0xA44CE817
      */
-    export function removeAllPeds(ped: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function removeAllPeds(ped: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         RemoveAllPedWeapons(_ped, false);
     }
 
@@ -4462,8 +4462,8 @@ export namespace weapon {
      *
      * Hash: 0x412AA00D
      */
-    export function removeComponentFromPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function removeComponentFromPed(ped: number | IPed, weaponHash: number | string, componentHash: number | string): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         if (typeof componentHash === 'string') componentHash = misc.getHashKey(componentHash)
         RemoveWeaponComponentFromPed(_ped, weaponHash, componentHash);
@@ -4485,8 +4485,8 @@ export namespace weapon {
      *
      * Hash: 0x9C37F220
      */
-    export function removeFromPed(ped: number | Ped, weaponHash: number | string): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function removeFromPed(ped: number | IPed, weaponHash: number | string): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof weaponHash === 'string') weaponHash = misc.getHashKey(weaponHash)
         RemoveWeaponFromPed(_ped, weaponHash);
     }
@@ -4509,8 +4509,8 @@ export namespace network {
      *
      * Hash: 0x1E546224
      */
-    export function getFirstEntityOwner(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getFirstEntityOwner(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return NetworkGetFirstEntityOwner(_entity);
     }
 
@@ -4519,8 +4519,8 @@ export namespace network {
      *
      * Hash: 0x9E35DAB6
      */
-    export function getNetworkIdFromEntity(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getNetworkIdFromEntity(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return NetworkGetNetworkIdFromEntity(_entity);
     }
 
@@ -4538,8 +4538,8 @@ export namespace network {
      *
      * Hash: 0x526FEE31
      */
-    export function getEntityOwner(entity: number | Entity): number {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
+    export function getEntityOwner(entity: number | IEntity): number {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
         return NetworkGetEntityOwner(_entity);
     }
 
@@ -4972,8 +4972,8 @@ export namespace task {
      *
      * Hash: 0xDE3316AB
      */
-    export function clearPeds(ped: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function clearPeds(ped: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         ClearPedTasks(_ped);
     }
 
@@ -4984,8 +4984,8 @@ export namespace task {
      *
      * Hash: 0xBC045625
      */
-    export function clearPedsImmediately(ped: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function clearPedsImmediately(ped: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         ClearPedTasksImmediately(_ped);
     }
 
@@ -5000,9 +5000,9 @@ export namespace task {
      *
      * Hash: 0xCB0D8932
      */
-    export function combatPed(ped: number | Ped, targetPed: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _targetPed = targetPed instanceof Ped ? targetPed.handle() : targetPed;
+    export function combatPed(ped: number | IPed, targetPed: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _targetPed = targetPed instanceof IPed ? targetPed.handle() : targetPed;
         TaskCombatPed(_ped, _targetPed, 0, 0);
     }
 
@@ -5020,10 +5020,10 @@ export namespace task {
      *
      * Hash: 0x2B84D1C4
      */
-    export function driveBy(driverPed: number | Ped, targetPed: number | Ped, targetVehicle: number | Vehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void {
-        const _driverPed = driverPed instanceof Ped ? driverPed.handle() : driverPed;
-        const _targetPed = targetPed instanceof Ped ? targetPed.handle() : targetPed;
-        const _targetVehicle = targetVehicle instanceof Vehicle ? targetVehicle.localId() : targetVehicle;
+    export function driveBy(driverPed: number | IPed, targetPed: number | IPed, targetVehicle: number | IVehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void {
+        const _driverPed = driverPed instanceof IPed ? driverPed.handle() : driverPed;
+        const _targetPed = targetPed instanceof IPed ? targetPed.handle() : targetPed;
+        const _targetVehicle = targetVehicle instanceof IVehicle ? targetVehicle.localId() : targetVehicle;
         if (typeof firingPattern === 'string') firingPattern = misc.getHashKey(firingPattern)
         TaskDriveBy(_driverPed, _targetPed, _targetVehicle, targetX, targetY, targetZ, distanceToShoot, pedAccuracy, false, firingPattern);
     }
@@ -5039,9 +5039,9 @@ export namespace task {
      *
      * Hash: 0xB8689B4E
      */
-    export function enterVehicle(ped: number | Ped, vehicle: number | Vehicle, timeout: number, seatIndex: number, speed: number, flag: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function enterVehicle(ped: number | IPed, vehicle: number | IVehicle, timeout: number, seatIndex: number, speed: number, flag: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         TaskEnterVehicle(_ped, _vehicle, timeout, seatIndex, speed, flag, undefined);
     }
 
@@ -5052,8 +5052,8 @@ export namespace task {
      *
      * Hash: 0xC1971F30
      */
-    export function everyoneLeaveVehicle(vehicle: number | Vehicle): void {
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function everyoneLeaveVehicle(vehicle: number | IVehicle): void {
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         TaskEveryoneLeaveVehicle(_vehicle);
     }
 
@@ -5064,8 +5064,8 @@ export namespace task {
      *
      * Hash: 0x80A9E7A7
      */
-    export function goStraightToCoord(ped: number | Ped, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function goStraightToCoord(ped: number | IPed, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         TaskGoStraightToCoord(_ped, pos.x, pos.y, pos.z, speed, timeout, targetHeading, distanceToSlide);
     }
 
@@ -5126,9 +5126,9 @@ export namespace task {
      *
      * Hash: 0xF91DF93B
      */
-    export function goToCoordAnyMeans(ped: number | Ped, pos: Vector3, fMoveBlendRatio: number, vehicle: number | Vehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function goToCoordAnyMeans(ped: number | IPed, pos: Vector3, fMoveBlendRatio: number, vehicle: number | IVehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         TaskGoToCoordAnyMeans(_ped, pos.x, pos.y, pos.z, fMoveBlendRatio, _vehicle, bUseLongRangeVehiclePathing, drivingFlags, fMaxRangeToShootTargets);
     }
 
@@ -5144,9 +5144,9 @@ export namespace task {
      *
      * Hash: 0x374827C2
      */
-    export function goToEntity(entity: number | Entity, target: number | Entity, duration: number, distance: number, speed: number): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
-        const _target = target instanceof Entity ? target.handle() : target;
+    export function goToEntity(entity: number | IEntity, target: number | IEntity, duration: number, distance: number, speed: number): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
+        const _target = target instanceof IEntity ? target.handle() : target;
         TaskGoToEntity(_entity, _target, duration, distance, speed, 0, 0);
     }
 
@@ -5161,9 +5161,9 @@ export namespace task {
      *
      * Hash: 0x8DCC19C5
      */
-    export function handsUp(ped: number | Ped, duration: number, facingPed: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _facingPed = facingPed instanceof Ped ? facingPed.handle() : facingPed;
+    export function handsUp(ped: number | IPed, duration: number, facingPed: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _facingPed = facingPed instanceof IPed ? facingPed.handle() : facingPed;
         TaskHandsUp(_ped, duration, _facingPed, 0, false);
     }
 
@@ -5174,8 +5174,8 @@ export namespace task {
      *
      * Hash: 0xDBDD79FA
      */
-    export function leaveAnyVehicle(ped: number | Ped, flags: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function leaveAnyVehicle(ped: number | IPed, flags: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         TaskLeaveAnyVehicle(_ped, 0, flags);
     }
 
@@ -5196,9 +5196,9 @@ export namespace task {
      *
      * Hash: 0x7B1141C6
      */
-    export function leaveVehicle(ped: number | Ped, vehicle: number | Vehicle, flags: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function leaveVehicle(ped: number | IPed, vehicle: number | IVehicle, flags: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         TaskLeaveVehicle(_ped, _vehicle, flags);
     }
 
@@ -5246,8 +5246,8 @@ export namespace task {
      *
      * Hash: 0x5AB552C6
      */
-    export function playAnim(ped: number | Ped, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function playAnim(ped: number | IPed, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         TaskPlayAnim(_ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ);
     }
 
@@ -5259,8 +5259,8 @@ export namespace task {
      *
      * Hash: 0x3DDEB0E6
      */
-    export function playAnimAdvanced(ped: number | Ped, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function playAnimAdvanced(ped: number | IPed, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         TaskPlayAnimAdvanced(_ped, animDictionary, animationName, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, blendInSpeed, blendOutSpeed, duration, flag, animTime, undefined, undefined);
     }
 
@@ -5271,9 +5271,9 @@ export namespace task {
      *
      * Hash: 0x8A632BD8
      */
-    export function reactAndFleePed(ped: number | Ped, fleeTarget: number | Ped): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _fleeTarget = fleeTarget instanceof Ped ? fleeTarget.handle() : fleeTarget;
+    export function reactAndFleePed(ped: number | IPed, fleeTarget: number | IPed): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _fleeTarget = fleeTarget instanceof IPed ? fleeTarget.handle() : fleeTarget;
         TaskReactAndFleePed(_ped, _fleeTarget);
     }
 
@@ -5286,8 +5286,8 @@ export namespace task {
      *
      * Hash: 0x601C22E3
      */
-    export function shootAtCoord(ped: number | Ped, pos: Vector3, duration: number, firingPattern: number | string): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
+    export function shootAtCoord(ped: number | IPed, pos: Vector3, duration: number, firingPattern: number | string): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
         if (typeof firingPattern === 'string') firingPattern = misc.getHashKey(firingPattern)
         TaskShootAtCoord(_ped, pos.x, pos.y, pos.z, duration, firingPattern);
     }
@@ -5308,9 +5308,9 @@ export namespace task {
      *
      * Hash: 0xAC0631C9
      */
-    export function shootAtEntity(entity: number | Entity, target: number | Entity, duration: number, firingPattern: number | string): void {
-        const _entity = entity instanceof Entity ? entity.handle() : entity;
-        const _target = target instanceof Entity ? target.handle() : target;
+    export function shootAtEntity(entity: number | IEntity, target: number | IEntity, duration: number, firingPattern: number | string): void {
+        const _entity = entity instanceof IEntity ? entity.handle() : entity;
+        const _target = target instanceof IEntity ? target.handle() : target;
         if (typeof firingPattern === 'string') firingPattern = misc.getHashKey(firingPattern)
         TaskShootAtEntity(_entity, _target, duration, firingPattern);
     }
@@ -5327,9 +5327,9 @@ export namespace task {
      *
      * Hash: 0x65D4A35D
      */
-    export function warpPedIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void {
-        const _ped = ped instanceof Ped ? ped.handle() : ped;
-        const _vehicle = vehicle instanceof Vehicle ? vehicle.localId() : vehicle;
+    export function warpPedIntoVehicle(ped: number | IPed, vehicle: number | IVehicle, seatIndex: number): void {
+        const _ped = ped instanceof IPed ? ped.handle() : ped;
+        const _vehicle = vehicle instanceof IVehicle ? vehicle.localId() : vehicle;
         TaskWarpPedIntoVehicle(_ped, _vehicle, seatIndex);
     }
 

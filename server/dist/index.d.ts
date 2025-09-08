@@ -1,4 +1,4 @@
-import { Vector3, Entity, Ped, Player, Vehicle, Object, Blip } from '@risinglife/redm-shared';
+import { Vector3, IEntity, IPed, IPlayer, IVehicle, IObject, IBlip } from '@risinglife/redm-shared';
 export declare namespace events {
     function removeAllListeners(key?: string): void;
     /**
@@ -57,7 +57,7 @@ export declare namespace entity {
      *
      * Hash: 0x91B38FB6
      */
-    function getRemoteSyncedScenesAllowed(entity: number | Entity): boolean;
+    function getRemoteSyncedScenesAllowed(entity: number | IEntity): boolean;
     /**
      * Enables or disables the owner check for the specified entity in network-synchronized scenes. When set to `false`, the entity cannot participate in synced scenes initiated by clients that do not own the entity.
      *
@@ -65,13 +65,13 @@ export declare namespace entity {
      *
      * Hash: 0xD3FC9D88
      */
-    function setRemoteSyncedScenesAllowed(entity: number | Entity, allow: boolean): void;
+    function setRemoteSyncedScenesAllowed(entity: number | IEntity, allow: boolean): void;
     /**
      * A getter for [FREEZE_ENTITY_POSITION](#\_0x428CA6DBD1094446).
      *
      * Hash: 0xEDBE6ADD
      */
-    function isPositionFrozen(entity: number | Entity): boolean;
+    function isPositionFrozen(entity: number | IEntity): boolean;
     /**
      * ```cpp
      * enum eApplyForceTypes {
@@ -88,7 +88,7 @@ export declare namespace entity {
      *
      * Hash: 0xC1C0855A
      */
-    function applyForceTo(entity: number | Entity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void;
+    function applyForceTo(entity: number | IEntity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void;
     /**
      * Deletes the specified entity.
      *
@@ -96,13 +96,13 @@ export declare namespace entity {
      *
      * Hash: 0xFAA3D236
      */
-    function deleteEntity(entity: number | Entity): void;
+    function deleteEntity(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x3AC90869
      */
-    function doesExist(entity: number | Object): boolean;
+    function doesExist(entity: number | IObject): boolean;
     /**
      * Freezes or unfreezes an entity preventing its coordinates to change by the player if set to `true`. You can still change the entity position using [`SET_ENTITY_COORDS`](#\_0x06843DA7060A026B).
      *
@@ -110,19 +110,19 @@ export declare namespace entity {
      *
      * Hash: 0x65C16D57
      */
-    function freezePosition(entity: number | Entity, toggle: boolean): void;
+    function freezePosition(entity: number | IEntity, toggle: boolean): void;
     /**
      * Gets the entity that this entity is attached to.
      *
      * Hash: 0xFE1589F9
      */
-    function getAttachedTo(entity: number | Entity): number;
+    function getAttachedTo(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xE8C0C629
      */
-    function getCollisionDisabled(entity: number | Entity): boolean;
+    function getCollisionDisabled(entity: number | IEntity): boolean;
     /**
      * Gets the current coordinates for a specified entity. This native is used server side when using OneSync.
      *
@@ -130,55 +130,55 @@ export declare namespace entity {
      *
      * Hash: 0x1647F1CB
      */
-    function getCoords(entity: number | Entity): Vector3;
+    function getCoords(entity: number | IEntity): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x972CC383
      */
-    function getHeading(entity: number | Entity): number;
+    function getHeading(entity: number | IEntity): number;
     /**
      * Only works for vehicle and peds
      *
      * Hash: 0x8E3222B7
      */
-    function getHealth(entity: number | Entity): number;
+    function getHealth(entity: number | IEntity): number;
     /**
      * Currently it only works with peds.
      *
      * Hash: 0xC7AE6AA1
      */
-    function getMaxHealth(entity: number | Entity): number;
+    function getMaxHealth(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xDAFCB3EC
      */
-    function getModel(entity: number | Entity): number;
+    function getModel(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xD16EA02F
      */
-    function getOrphanMode(entity: number | Entity): number;
+    function getOrphanMode(entity: number | IEntity): number;
     /**
      * This native gets an entity's population type.
      *
      * Hash: 0xFC30DDFF
      */
-    function getPopulationType(entity: number | Entity): number;
+    function getPopulationType(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x8FF45B04
      */
-    function getRotation(entity: number | Entity): Vector3;
+    function getRotation(entity: number | IEntity): Vector3;
     /**
      * No comment provided
      *
      * Hash: 0x9BF8A73F
      */
-    function getRotationVelocity(entity: number | Entity): Vector3;
+    function getRotationVelocity(entity: number | IEntity): Vector3;
     /**
      * Gets the routing bucket for the specified entity.
      *
@@ -186,13 +186,13 @@ export declare namespace entity {
      *
      * Hash: 0xED4B0486
      */
-    function getRoutingBucket(entity: number | Entity): number;
+    function getRoutingBucket(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xB7F70784
      */
-    function getScript(entity: number | Entity): string;
+    function getScript(entity: number | IEntity): string;
     /**
      * Gets the current speed of the entity in meters per second.
      *
@@ -203,7 +203,7 @@ export declare namespace entity {
      *
      * Hash: 0x9E1E4798
      */
-    function getSpeed(entity: number | Entity): number;
+    function getSpeed(entity: number | IEntity): number;
     /**
      * Gets the entity type (as an integer), which can be one of the following defined down below:
      *
@@ -236,13 +236,13 @@ export declare namespace entity {
      *
      * Hash: 0xB1BD08D
      */
-    function getType(entity: number | Entity): number;
+    function getType(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0xC14C9B6B
      */
-    function getVelocity(entity: number | Entity): Vector3;
+    function getVelocity(entity: number | IEntity): Vector3;
     /**
      * Gets the specific entity type (as an integer), which can be one of the following defined down below:
      *
@@ -308,19 +308,19 @@ export declare namespace entity {
      *
      * Hash: 0x23B2A641
      */
-    function getNetTypeFrom(entity: number | Entity): number;
+    function getNetTypeFrom(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x9C9A3BE0
      */
-    function hasBeenMarkedAsNoLongerNeeded(vehicle: number | Vehicle): boolean;
+    function hasBeenMarkedAsNoLongerNeeded(vehicle: number | IVehicle): boolean;
     /**
      * This native checks if the given entity is visible.
      *
      * Hash: 0x120B4ED5
      */
-    function isVisible(entity: number | Entity): boolean;
+    function isVisible(entity: number | IEntity): boolean;
     /**
      * Sets the coordinates (world position) for a specified entity, offset by the radius of the entity on the Z axis.
      *
@@ -328,7 +328,7 @@ export declare namespace entity {
      *
      * Hash: 0xDF70B41B
      */
-    function setCoords(entity: number | Entity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void;
+    function setCoords(entity: number | IEntity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void;
     /**
      * It overrides the default distance culling radius of an entity. Set to `0.0` to reset.
      * If you want to interact with an entity outside of your players' scopes set the radius to a huge number.
@@ -337,7 +337,7 @@ export declare namespace entity {
      *
      * Hash: 0xD3A183A3
      */
-    function setDistanceCullingRadius(entity: number | Entity, radius: number): void;
+    function setDistanceCullingRadius(entity: number | IEntity, radius: number): void;
     /**
      * Set the heading of an entity in degrees also known as "Yaw".
      *
@@ -345,13 +345,13 @@ export declare namespace entity {
      *
      * Hash: 0xE0FF064D
      */
-    function setHeading(entity: number | Entity, heading: number): void;
+    function setHeading(entity: number | IEntity, heading: number): void;
     /**
      * It allows to flag an entity to ignore the request control filter policy.
      *
      * Hash: 0x9F7F8D36
      */
-    function setIgnoreRequestControlFilter(entity: number | Entity, ignore: boolean): void;
+    function setIgnoreRequestControlFilter(entity: number | IEntity, ignore: boolean): void;
     /**
      * ```cpp
      * enum EntityOrphanMode {
@@ -376,7 +376,7 @@ export declare namespace entity {
      *
      * Hash: 0x489E9162
      */
-    function setOrphanMode(entity: number | Entity, orphanMode: number): void;
+    function setOrphanMode(entity: number | IEntity, orphanMode: number): void;
     /**
      * Sets the rotation of a specified entity in the game world.
      *
@@ -388,7 +388,7 @@ export declare namespace entity {
      *
      * Hash: 0xA345EFE
      */
-    function setRotation(entity: number | Entity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void;
+    function setRotation(entity: number | IEntity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void;
     /**
      * Sets the routing bucket for the specified entity.
      *
@@ -396,7 +396,7 @@ export declare namespace entity {
      *
      * Hash: 0x635E5289
      */
-    function setRoutingBucket(entity: number | Entity, bucket: number): void;
+    function setRoutingBucket(entity: number | IEntity, bucket: number): void;
     /**
      * ```
      * Note that the third parameter(denoted as z) is "up and down" with positive numbers encouraging upwards movement.
@@ -406,13 +406,13 @@ export declare namespace entity {
      *
      * Hash: 0xFF5A1988
      */
-    function setVelocity(entity: number | Entity, pos: Vector3): void;
+    function setVelocity(entity: number | IEntity, pos: Vector3): void;
     /**
      * Internal function for ensuring an entity has a state bag.
      *
      * Hash: 0x3BB78F05
      */
-    function ensureStateBag(entity: number | Entity): void;
+    function ensureStateBag(entity: number | IEntity): void;
     /**
      * ### Supported types
      *
@@ -445,7 +445,7 @@ export declare namespace entity {
      *
      * Hash: 0xDFFBA12F
      */
-    function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | Object): number;
+    function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | IObject): number;
     /**
      * Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](#\_0x5BA35AAF).
      *
@@ -474,7 +474,7 @@ export declare namespace hud {
      *
      * Hash: 0x30822554
      */
-    function addBlipForEntity(entity: number | Entity): number;
+    function addBlipForEntity(entity: number | IEntity): number;
     /**
      * Create a blip with a radius for the specified coordinates (it doesnt create the blip sprite, so you need to use [AddBlipCoords](#\_0xC6F43D0E))
      * Example image:
@@ -493,7 +493,7 @@ export declare namespace hud {
      *
      * Hash: 0xD8C3C1CD
      */
-    function removeBlip(blip: number | Blip): void;
+    function removeBlip(blip: number | IBlip): void;
     /**
      * Sets the displayed sprite for a specific blip.
      * There's a [list of sprites](https://docs.fivem.net/game-references/blips/) on the FiveM documentation site.
@@ -502,7 +502,7 @@ export declare namespace hud {
      *
      * Hash: 0x8DBBB0B9
      */
-    function setBlipSprite(blip: number | Blip, spriteId: number): void;
+    function setBlipSprite(blip: number | IBlip, spriteId: number): void;
     /**
      * Adds a rectangular blip for the specified coordinates/area.
      * It is recommended to use [SET_BLIP_ROTATION](#\_0xF87683CDF73C3F6E) and [SET_BLIP_COLOUR](#\_0x03D7FB09E75D6B7E) to make the blip not rotate along with the camera.
@@ -554,7 +554,7 @@ export declare namespace misc {
      *
      * Hash: 0xF01E2AAB
      */
-    function getHeliMainRotorHealth(vehicle: number | Vehicle): number;
+    function getHeliMainRotorHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
@@ -572,7 +572,7 @@ export declare namespace misc {
      *
      * Hash: 0x76876154
      */
-    function isFlashLightOn(ped: number | Ped): boolean;
+    function isFlashLightOn(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -584,7 +584,7 @@ export declare namespace misc {
      *
      * Hash: 0x6B171E87
      */
-    function performHttpRequestInternalEx(requestData: number | Object): number;
+    function performHttpRequestInternalEx(requestData: number | IObject): number;
     /**
      * Prints 'structured trace' data to the server `file descriptor 3` channel. This is not generally useful outside of
      * server monitoring utilities.
@@ -775,7 +775,7 @@ export declare namespace misc {
      *
      * Hash: 0xD70C3BCA
      */
-    function formatStackTrace(traceData: number | Object): string;
+    function formatStackTrace(traceData: number | IObject): string;
     /**
      * Can be used to get a console variable of type `char*`, for example a string.
      *
@@ -1009,7 +1009,7 @@ export declare namespace ped {
      *
      * Hash: 0x70559AC7
      */
-    function addDecorationFromHashes(ped: number | Ped, collection: number | string, overlay: number | string): void;
+    function addDecorationFromHashes(ped: number | IPed, collection: number | string, overlay: number | string): void;
     /**
      * CLEAR_PED_PROP
      *
@@ -1017,7 +1017,7 @@ export declare namespace ped {
      *
      * Hash: 0x2D23D743
      */
-    function clearProp(ped: number | Ped, propId: number): void;
+    function clearProp(ped: number | IPed, propId: number): void;
     /**
      * CLEAR_PED_SECONDARY_TASK
      *
@@ -1025,7 +1025,7 @@ export declare namespace ped {
      *
      * Hash: 0xA635F451
      */
-    function clearSecondaryTask(ped: number | Ped): void;
+    function clearSecondaryTask(ped: number | IPed): void;
     /**
      * Creates a ped (biped character, pedestrian, actor) with the specified model at the specified position and heading.
      * This ped will initially be owned by the creating script as a mission entity, and the model should be loaded already
@@ -1043,7 +1043,7 @@ export declare namespace ped {
      *
      * Hash: 0x3000F092
      */
-    function createInsideVehicle(vehicle: number | Vehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number;
+    function createInsideVehicle(vehicle: number | IVehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number;
     /**
      * Returns all peds handles known to the server.
      * The data returned adheres to the following layout:
@@ -1060,86 +1060,86 @@ export declare namespace ped {
      *
      * Hash: 0xB0237302
      */
-    function getCurrentWeapon(ped: number | Ped): number;
+    function getCurrentWeapon(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xF7C6792D
      */
-    function getLastInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number;
+    function getLastInVehicleSeat(vehicle: number | IVehicle, seatIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x2CE311A7
      */
-    function getArmour(ped: number | Ped): number;
+    function getArmour(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x63458C27
      */
-    function getCauseOfDeath(ped: number | Ped): number;
+    function getCauseOfDeath(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0xC182F76E
      */
-    function getDesiredHeading(ped: number | Ped): number;
+    function getDesiredHeading(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x388FDE9A
      */
-    function getInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number;
+    function getInVehicleSeat(vehicle: number | IVehicle, seatIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0xA45B6C8D
      */
-    function getMaxHealth(ped: number | Ped): number;
+    function getMaxHealth(ped: number | IPed): number;
     /**
      * Gets the current relationship group hash of a ped.
      *
      * Hash: 0x354F283C
      */
-    function getRelationshipGroupHash(ped: number | Ped): number;
+    function getRelationshipGroupHash(ped: number | IPed): number;
     /**
      * Gets the script task command currently assigned to the ped.
      *
      * Hash: 0x84FE084
      */
-    function getScriptTaskCommand(ped: number | Ped): number;
+    function getScriptTaskCommand(ped: number | IPed): number;
     /**
      * Gets the stage of the peds scripted task.
      *
      * Hash: 0x44B0E5E2
      */
-    function getScriptTaskStage(ped: number | Ped): number;
+    function getScriptTaskStage(ped: number | IPed): number;
     /**
      * Get the last entity that damaged the ped. This native is used server side when using OneSync.
      *
      * Hash: 0x535DB43F
      */
-    function getSourceOfDamage(ped: number | Ped): number;
+    function getSourceOfDamage(ped: number | IPed): number;
     /**
      * Get the entity that killed the ped. This native is used server side when using OneSync.
      *
      * Hash: 0x84ADF9EB
      */
-    function getSourceOfDeath(ped: number | Ped): number;
+    function getSourceOfDeath(ped: number | IPed): number;
     /**
      * Gets the type of a ped's specific task given an index of the CPedTaskSpecificDataNode nodes.
      * A ped will typically have a task at index 0, if a ped has multiple tasks at once they will be in the order 0, 1, 2, etc.
      *
      * Hash: 0x7F4563D3
      */
-    function getSpecificTaskType(ped: number | Ped, index: number): number;
+    function getSpecificTaskType(ped: number | IPed, index: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x40321B83
      */
-    function getStealthMovement(ped: number | Ped): boolean;
+    function getStealthMovement(ped: number | IPed): boolean;
     /**
      * An alias of [GET_CURRENT_PED_WEAPON](#\_0xB0237302).
      *
@@ -1147,31 +1147,31 @@ export declare namespace ped {
      *
      * Hash: 0xD240123E
      */
-    function getSelectedWeapon(ped: number | Ped): number;
+    function getSelectedWeapon(ped: number | IPed): number;
     /**
      * No comment provided
      *
      * Hash: 0x25865633
      */
-    function isHandcuffed(ped: number | Ped): boolean;
+    function isHandcuffed(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xC833BBE1
      */
-    function isRagdoll(ped: number | Ped): boolean;
+    function isRagdoll(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xEFEED13C
      */
-    function isStrafing(ped: number | Ped): boolean;
+    function isStrafing(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x5AE7EDA2
      */
-    function isUsingActionMode(ped: number | Ped): boolean;
+    function isUsingActionMode(ped: number | IPed): boolean;
     /**
      * SET_CURRENT_PED_WEAPON
      *
@@ -1179,7 +1179,7 @@ export declare namespace ped {
      *
      * Hash: 0xB8278882
      */
-    function setCurrentWeapon(ped: number | Ped, weaponHash: number | string, bForceInHand: boolean): void;
+    function setCurrentWeapon(ped: number | IPed, weaponHash: number | string, bForceInHand: boolean): void;
     /**
      * ```
      * NativeDB Added Parameter 4: BOOL p3
@@ -1189,7 +1189,7 @@ export declare namespace ped {
      *
      * Hash: 0xBF90DF1A
      */
-    function setAmmo(ped: number | Ped, weaponHash: number | string, ammo: number): void;
+    function setAmmo(ped: number | IPed, weaponHash: number | string, ammo: number): void;
     /**
      * ```
      * Sets the armor of the specified ped.
@@ -1201,7 +1201,7 @@ export declare namespace ped {
      *
      * Hash: 0x4E3A0CC4
      */
-    function setArmour(ped: number | Ped, amount: number): void;
+    function setArmour(ped: number | IPed, amount: number): void;
     /**
      * SET_PED_CAN_RAGDOLL
      *
@@ -1209,7 +1209,7 @@ export declare namespace ped {
      *
      * Hash: 0xCF1384C4
      */
-    function setCanRagdoll(ped: number | Ped, toggle: boolean): void;
+    function setCanRagdoll(ped: number | IPed, toggle: boolean): void;
     /**
      * This native is used to set component variation on a ped. Components, drawables and textures IDs are related to the ped model.
      *
@@ -1254,7 +1254,7 @@ export declare namespace ped {
      *
      * Hash: 0xD4F7B05C
      */
-    function setComponentVariation(ped: number | Ped, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
+    function setComponentVariation(ped: number | IPed, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
     /**
      * ```cpp
      * // Potential names and hash collisions included as comments
@@ -1730,7 +1730,7 @@ export declare namespace ped {
      *
      * Hash: 0x9CFBE10D
      */
-    function setConfigFlag(ped: number | Ped, flagId: number, value: boolean): void;
+    function setConfigFlag(ped: number | IPed, flagId: number, value: boolean): void;
     /**
      * ```
      * Sets Ped Default Clothes
@@ -1740,7 +1740,7 @@ export declare namespace ped {
      *
      * Hash: 0xC866A984
      */
-    function setDefaultComponentVariation(ped: number | Ped): void;
+    function setDefaultComponentVariation(ped: number | IPed): void;
     /**
      * Sets the tint index for the hair on the specified ped.
      *
@@ -1752,7 +1752,7 @@ export declare namespace ped {
      *
      * Hash: 0xA23FE32C
      */
-    function setHairTint(ped: number | Ped, colorID: number, highlightColorID: number): void;
+    function setHairTint(ped: number | IPed, colorID: number, highlightColorID: number): void;
     /**
      * For more info please refer to [this](https://gtaforums.com/topic/858970-all-gtao-face-ids-pedset-ped-head-blend-data-explained) topic.
      * <strong>Other information:</strong>
@@ -1768,7 +1768,7 @@ export declare namespace ped {
      *
      * Hash: 0x60746B88
      */
-    function setHeadBlendData(ped: number | Ped, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void;
+    function setHeadBlendData(ped: number | IPed, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void;
     /**
      * ```
      * OverlayID ranges from 0 to 12, index from 0 to _GET_NUM_OVERLAY_VALUES(overlayID)-1, and opacity from 0.0 to 1.0.
@@ -1795,7 +1795,7 @@ export declare namespace ped {
      *
      * Hash: 0xD28DBA90
      */
-    function setHeadOverlay(ped: number | Ped, overlayID: number, index: number, opacity: number): void;
+    function setHeadOverlay(ped: number | IPed, overlayID: number, index: number, opacity: number): void;
     /**
      * SET_PED_INTO_VEHICLE
      *
@@ -1803,7 +1803,7 @@ export declare namespace ped {
      *
      * Hash: 0x7500C79
      */
-    function setIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void;
+    function setIntoVehicle(ped: number | IPed, vehicle: number | IVehicle, seatIndex: number): void;
     /**
      * This native is used to set prop variation on a ped. Components, drawables and textures IDs are related to the ped model.
      *
@@ -1840,7 +1840,7 @@ export declare namespace ped {
      *
      * Hash: 0x829F2E2
      */
-    function setPropIndex(ped: number | Ped, componentId: number, drawableId: number, textureId: number, attach: boolean): void;
+    function setPropIndex(ped: number | IPed, componentId: number, drawableId: number, textureId: number, attach: boolean): void;
     /**
      * ```
      * p1 is always 0 in R* scripts; and a quick disassembly seems to indicate that p1 is unused.
@@ -1850,7 +1850,7 @@ export declare namespace ped {
      *
      * Hash: 0x4111BA46
      */
-    function setRandomComponentVariation(ped: number | Ped): void;
+    function setRandomComponentVariation(ped: number | IPed): void;
     /**
      * SET_PED_RANDOM_PROPS
      *
@@ -1858,7 +1858,7 @@ export declare namespace ped {
      *
      * Hash: 0xE3318E0E
      */
-    function setRandomProps(ped: number | Ped): void;
+    function setRandomProps(ped: number | IPed): void;
     /**
      * `PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 240, 1);`
      * Known values:
@@ -1867,7 +1867,7 @@ export declare namespace ped {
      *
      * Hash: 0xCFF6FF66
      */
-    function setResetFlag(ped: number | Ped, flagId: number, doReset: boolean): void;
+    function setResetFlag(ped: number | IPed, flagId: number, doReset: boolean): void;
     /**
      * p4/p5: Unusued in TU27
      *
@@ -1881,7 +1881,7 @@ export declare namespace ped {
      *
      * Hash: 0x83CB5052
      */
-    function setToRagdoll(ped: number | Ped, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void;
+    function setToRagdoll(ped: number | IPed, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void;
     /**
      * ```cpp
      * enum eNMFallType {
@@ -1909,7 +1909,7 @@ export declare namespace ped {
      *
      * Hash: 0xFA12E286
      */
-    function setToRagdollWithFall(ped: number | Ped, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void;
+    function setToRagdollWithFall(ped: number | IPed, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void;
     /**
      * Used for freemode (online) characters.
      * Indices:
@@ -1949,7 +1949,7 @@ export declare namespace ped {
      *
      * Hash: 0xEC09DB1B
      */
-    function setEyeColor(ped: number | Ped, index: number): void;
+    function setEyeColor(ped: number | IPed, index: number): void;
     /**
      * Sets the various freemode face features, e.g. nose length, chin shape.
      * <strong>Indexes (From 0 to 19):</strong>
@@ -1982,7 +1982,7 @@ export declare namespace ped {
      *
      * Hash: 0x6C8D4458
      */
-    function setFaceFeature(ped: number | Ped, index: number, scale: number): void;
+    function setFaceFeature(ped: number | IPed, index: number, scale: number): void;
     /**
      * ```
      * Used for freemode (online) characters.
@@ -1996,7 +1996,7 @@ export declare namespace ped {
      *
      * Hash: 0x78935A27
      */
-    function setHeadOverlayColor(ped: number | Ped, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
+    function setHeadOverlayColor(ped: number | IPed, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
 }
 export declare namespace player {
     /**
@@ -2004,25 +2004,25 @@ export declare namespace player {
      *
      * Hash: 0x8689A825
      */
-    function getMeleeWeaponDamageModifier(playerId: number | string | Player): number;
+    function getMeleeWeaponDamageModifier(playerId: number | string | IPlayer): number;
     /**
      * A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#\_0xCE07B9F7817AADA3).
      *
      * Hash: 0x2A3D7CDA
      */
-    function getWeaponDamageModifier(playerId: number | string | Player): number;
+    function getWeaponDamageModifier(playerId: number | string | IPlayer): number;
     /**
      * A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#\_0x2D83BC011CA14A3C).
      *
      * Hash: 0xF1543251
      */
-    function getWeaponDefenseModifier(playerId: number | string | Player): number;
+    function getWeaponDefenseModifier(playerId: number | string | IPlayer): number;
     /**
      * A getter for [\_SET_PLAYER_WEAPON_DEFENSE_MODIFIER\_2](#\_0xBCFDE9EDE4CF27DC).
      *
      * Hash: 0x986B65FF
      */
-    function getWeaponDefenseModifier2(playerId: number | string | Player): number;
+    function getWeaponDefenseModifier2(playerId: number | string | IPlayer): number;
     /**
      * Returns whether or not the specified player has enough information to start a commerce session for.
      *
@@ -2039,7 +2039,7 @@ export declare namespace player {
      *
      * Hash: 0x54EA5BCC
      */
-    function clearWantedLevel(player: number | string | Player): void;
+    function clearWantedLevel(player: number | string | IPlayer): void;
     /**
      * Returns whether or not the player exists
      *
@@ -2270,7 +2270,7 @@ export declare namespace player {
      *
      * Hash: 0x404794CA
      */
-    function isPedA(ped: number | Ped): boolean;
+    function isPedA(ped: number | IPed): boolean;
     /**
      * No comment provided
      *
@@ -2359,7 +2359,7 @@ export declare namespace player {
      *
      * Hash: 0xD17AFCD8
      */
-    function setControl(player: number | string | Player, bHasControl: boolean, flags: number): void;
+    function setControl(player: number | string | IPlayer, bHasControl: boolean, flags: number): void;
     /**
      * Sets the culling radius for the specified player.
      * Set to `0.0` to reset.
@@ -2376,7 +2376,7 @@ export declare namespace player {
      *
      * Hash: 0xDFB9A2A2
      */
-    function setInvincible(player: number | string | Player, bInvincible: boolean): void;
+    function setInvincible(player: number | string | IPlayer, bInvincible: boolean): void;
     /**
      * Set the model for a specific Player. Note that this will destroy the current Ped for the Player and create a new one, any reference to the old ped will be invalid after calling this.
      * As per usual, make sure to request the model first and wait until it has loaded.
@@ -2385,7 +2385,7 @@ export declare namespace player {
      *
      * Hash: 0x774A4C54
      */
-    function setModel(player: number | string | Player, model: number | string): void;
+    function setModel(player: number | string | IPlayer, model: number | string): void;
     /**
      * Sets the routing bucket for the specified player.
      *
@@ -2401,7 +2401,7 @@ export declare namespace player {
      *
      * Hash: 0xB7A0914B
      */
-    function setWantedLevel(player: number | string | Player, wantedLevel: number, delayedResponse: boolean): void;
+    function setWantedLevel(player: number | string | IPlayer, wantedLevel: number, delayedResponse: boolean): void;
     /**
      * No comment provided
      *
@@ -2421,109 +2421,109 @@ export declare namespace vehicle {
      *
      * Hash: 0xA886495D
      */
-    function getHeliBodyHealth(heli: number | Vehicle): number;
+    function getHeliBodyHealth(heli: number | IVehicle): number;
     /**
      * This is a getter for [SET_DISABLE_HELI_EXPLODE_FROM_BODY_DAMAGE](#\_0xEDBC8405B3895CC9)
      *
      * Hash: 0x82AFC0A3
      */
-    function getHeliDisableExplodeFromBodyDamage(heli: number | Vehicle): boolean;
+    function getHeliDisableExplodeFromBodyDamage(heli: number | IVehicle): boolean;
     /**
      * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
      *
      * Hash: 0xA0FA0354
      */
-    function getHeliEngineHealth(heli: number | Vehicle): number;
+    function getHeliEngineHealth(heli: number | IVehicle): number;
     /**
      * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
      *
      * Hash: 0xD4EC7858
      */
-    function getHeliGasTankHealth(heli: number | Vehicle): number;
+    function getHeliGasTankHealth(heli: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xC37D668
      */
-    function getHeliMainRotorDamageScale(heli: number | Vehicle): number;
+    function getHeliMainRotorDamageScale(heli: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x1944AC95
      */
-    function getHeliPitchControl(heli: number | Vehicle): number;
+    function getHeliPitchControl(heli: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xC40161E2
      */
-    function getHeliRearRotorDamageScale(heli: number | Vehicle): number;
+    function getHeliRearRotorDamageScale(heli: number | IVehicle): number;
     /**
      * This native is a getter for [SET_HELI_TAIL_ROTOR_HEALTH](#\_0xFE205F38AAA58E5B)
      *
      * Hash: 0x33EE6E2B
      */
-    function getHeliRearRotorHealth(vehicle: number | Vehicle): number;
+    function getHeliRearRotorHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x12948DE9
      */
-    function getHeliRollControl(heli: number | Vehicle): number;
+    function getHeliRollControl(heli: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x22239130
      */
-    function getHeliTailRotorDamageScale(heli: number | Vehicle): number;
+    function getHeliTailRotorDamageScale(heli: number | IVehicle): number;
     /**
      * **Note**: This native is deprecated, please use [`GET_HELI_REAR_ROTOR_HEALTH`](#\_0x33EE6E2B) instead.
      *
      * Hash: 0xA41BC13D
      */
-    function getHeliTailRotorHealth(vehicle: number | Vehicle): number;
+    function getHeliTailRotorHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x8E86238D
      */
-    function getHeliThrottleControl(heli: number | Vehicle): number;
+    function getHeliThrottleControl(heli: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x8FDC0768
      */
-    function getHeliYawControl(heli: number | Vehicle): number;
+    function getHeliYawControl(heli: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x3EFE38D1
      */
-    function getIsHeliEngineRunning(heli: number | Vehicle): boolean;
+    function getIsHeliEngineRunning(heli: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1C939E87
      */
-    function getThrusterSideRcsThrottle(jetpack: number | Vehicle): number;
+    function getThrusterSideRcsThrottle(jetpack: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x94E24C96
      */
-    function getThrusterThrottle(jetpack: number | Vehicle): number;
+    function getThrusterThrottle(jetpack: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x456E34A
      */
-    function getTrainBackwardCarriage(train: number | Vehicle): number;
+    function getTrainBackwardCarriage(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x24DC88D9
      */
-    function getTrainForwardCarriage(train: number | Vehicle): number;
+    function getTrainForwardCarriage(train: number | IVehicle): number;
     /**
      * This is a getter for the client-side native [`START_VEHICLE_HORN`](#\_0x9C8C6504B5B63D2C), which allows you to return the horn type of the vehicle.
      *
@@ -2540,73 +2540,73 @@ export declare namespace vehicle {
      *
      * Hash: 0xDEA49773
      */
-    function getHornType(vehicle: number | Vehicle): number;
+    function getHornType(vehicle: number | IVehicle): number;
     /**
      * This is a getter for [SET_HELI_TAIL_EXPLODE_THROW_DASHBOARD](#\_0x3EC8BF18AA453FE9)
      *
      * Hash: 0x23E46BD7
      */
-    function isHeliTailBoomBreakable(heli: number | Vehicle): boolean;
+    function isHeliTailBoomBreakable(heli: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x2C59F987
      */
-    function isHeliTailBoomBroken(heli: number | Vehicle): boolean;
+    function isHeliTailBoomBroken(heli: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xFA9336E5
      */
-    function isTrainCaboose(train: number | Vehicle): boolean;
+    function isTrainCaboose(train: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x77CC80DC
      */
-    function doesTrainStopAtStations(train: number | Vehicle): boolean;
+    function doesTrainStopAtStations(train: number | IVehicle): boolean;
     /**
      * Gets the trains desired speed.
      *
      * Hash: 0xA4921EF5
      */
-    function getTrainCruiseSpeed(train: number | Vehicle): number;
+    function getTrainCruiseSpeed(train: number | IVehicle): number;
     /**
      * Gets the direction the train is facing
      *
      * Hash: 0x8DAF79B6
      */
-    function getTrainDirection(train: number | Vehicle): boolean;
+    function getTrainDirection(train: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x81B50033
      */
-    function getTrainState(train: number | Vehicle): number;
+    function getTrainState(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x9AA339D
      */
-    function getTrainTrackIndex(train: number | Vehicle): number;
+    function getTrainTrackIndex(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x483B013C
      */
-    function getHandbrake(vehicle: number | Vehicle): boolean;
+    function getHandbrake(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x1382FCEA
      */
-    function getSteeringAngle(vehicle: number | Vehicle): number;
+    function getSteeringAngle(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xBB340D04
      */
-    function isEngineStarting(vehicle: number | Vehicle): boolean;
+    function isEngineStarting(vehicle: number | IVehicle): boolean;
     /**
      * Creates a vehicle with the specified model at the specified position. This vehicle will initially be owned by the creating
      * script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -2634,13 +2634,13 @@ export declare namespace vehicle {
      *
      * Hash: 0x523BA3DA
      */
-    function deleteTrain(entity: number | Entity): void;
+    function deleteTrain(entity: number | IEntity): void;
     /**
      * No comment provided
      *
      * Hash: 0x43F15989
      */
-    function doesBoatSinkWhenWrecked(vehicle: number | Vehicle): boolean;
+    function doesBoatSinkWhenWrecked(vehicle: number | IVehicle): boolean;
     /**
      * Returns all vehicle handles known to the server.
      * The data returned adheres to the following layout:
@@ -2657,79 +2657,79 @@ export declare namespace vehicle {
      *
      * Hash: 0x7DC6D022
      */
-    function getIsEngineRunning(vehicle: number | Vehicle): boolean;
+    function getIsEngineRunning(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD7EC8760
      */
-    function getIsPrimaryColourCustom(vehicle: number | Vehicle): boolean;
+    function getIsPrimaryColourCustom(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x288AD228
      */
-    function getIsSecondaryColourCustom(vehicle: number | Vehicle): boolean;
+    function getIsSecondaryColourCustom(vehicle: number | IVehicle): boolean;
     /**
      * See the client-side [GET_LANDING_GEAR_STATE](#\_0x9B0F3DCA3DB0F4CD) native for a description of landing gear states.
      *
      * Hash: 0xA6F02670
      */
-    function getLandingGearState(vehicle: number | Vehicle): number;
+    function getLandingGearState(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x95070FA
      */
-    function getTrainCarriageEngine(train: number | Vehicle): number;
+    function getTrainCarriageEngine(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x4B8285CF
      */
-    function getTrainCarriageIndex(train: number | Vehicle): number;
+    function getTrainCarriageIndex(train: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x2B2FCC28
      */
-    function getBodyHealth(vehicle: number | Vehicle): number;
+    function getBodyHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x40D82D88
      */
-    function getColours(vehicle: number | Vehicle): [number, number];
+    function getColours(vehicle: number | IVehicle): [number, number];
     /**
      * No comment provided
      *
      * Hash: 0x1C2B9FEF
      */
-    function getCustomPrimaryColour(vehicle: number | Vehicle): [number, number, number];
+    function getCustomPrimaryColour(vehicle: number | IVehicle): [number, number, number];
     /**
      * No comment provided
      *
      * Hash: 0x3FF247A2
      */
-    function getCustomSecondaryColour(vehicle: number | Vehicle): [number, number, number];
+    function getCustomSecondaryColour(vehicle: number | IVehicle): [number, number, number];
     /**
      * No comment provided
      *
      * Hash: 0xA0DBD08D
      */
-    function getDashboardColour(vehicle: number | Vehicle): number;
+    function getDashboardColour(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xFD15C065
      */
-    function getDirtLevel(vehicle: number | Vehicle): number;
+    function getDirtLevel(vehicle: number | IVehicle): number;
     /**
      * Currently it only works when set to "all players".
      *
      * Hash: 0x1DC50247
      */
-    function getDoorsLockedForPlayer(vehicle: number | Vehicle): number;
+    function getDoorsLockedForPlayer(vehicle: number | IVehicle): number;
     /**
      * ```lua
      * enum_VehicleLockStatus = {
@@ -2749,73 +2749,73 @@ export declare namespace vehicle {
      *
      * Hash: 0xD72CEF2
      */
-    function getDoorLockStatus(vehicle: number | Vehicle): number;
+    function getDoorLockStatus(vehicle: number | IVehicle): number;
     /**
      * Returns the open position of the specified door on the target vehicle.
      *
      * Hash: 0x6E35C49C
      */
-    function getDoorStatus(vehicle: number | Vehicle, doorIndex: number): number;
+    function getDoorStatus(vehicle: number | IVehicle, doorIndex: number): number;
     /**
      * No comment provided
      *
      * Hash: 0x8880038A
      */
-    function getEngineHealth(vehicle: number | Vehicle): number;
+    function getEngineHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x80E4659B
      */
-    function getExtraColours(vehicle: number | Vehicle): [number, number];
+    function getExtraColours(vehicle: number | IVehicle): [number, number];
     /**
      * Gets the flight nozzel position for the specified vehicle. See the client-side [\_GET_VEHICLE_FLIGHT_NOZZLE_POSITION](#\_0xDA62027C8BDB326E) native for usage examples.
      *
      * Hash: 0xAD40AD55
      */
-    function getFlightNozzlePosition(vehicle: number | Vehicle): number;
+    function getFlightNozzlePosition(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xD7147656
      */
-    function getHeadlightsColour(vehicle: number | Vehicle): number;
+    function getHeadlightsColour(vehicle: number | IVehicle): number;
     /**
      * Gets the lock on state for the specified vehicle. See the client-side [GET_VEHICLE_HOMING_LOCKON_STATE](#\_0xE6B0E8CFC3633BF0) native for a description of lock on states.
      *
      * Hash: 0xFBDE9FD8
      */
-    function getHomingLockonState(vehicle: number | Vehicle): number;
+    function getHomingLockonState(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xCCFF3B6E
      */
-    function getInteriorColour(vehicle: number | Vehicle): number;
+    function getInteriorColour(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x7C278621
      */
-    function getLightsState(vehicle: number | Vehicle): [boolean, boolean, boolean];
+    function getLightsState(vehicle: number | IVehicle): [boolean, boolean, boolean];
     /**
      * No comment provided
      *
      * Hash: 0xEC82A51D
      */
-    function getLivery(vehicle: number | Vehicle): number;
+    function getLivery(vehicle: number | IVehicle): number;
     /**
      * Gets the vehicle that is locked on to for the specified vehicle.
      *
      * Hash: 0x4A557117
      */
-    function getLockOnTarget(vehicle: number | Vehicle): number;
+    function getLockOnTarget(vehicle: number | IVehicle): number;
     /**
      * Getter to check the neon colour of a vehicle. This native is the server side getter of [GET_VEHICLE_NEON_LIGHTS_COLOUR](#\_0x7619EEE8C886757F).
      *
      * Hash: 0xD9319DCB
      */
-    function getNeonColour(vehicle: number | Vehicle): [number, number, number];
+    function getNeonColour(vehicle: number | IVehicle): [number, number, number];
     /**
      * Getter to check if one of the neon lights of a vehicle is enabled. This native is the server side getter of [IS_VEHICLE_NEON_LIGHT_ENABLED](#\_0x8C4B92553E4766A5).
      *
@@ -2831,115 +2831,115 @@ export declare namespace vehicle {
      *
      * Hash: 0x684BDBF2
      */
-    function getNeonEnabled(vehicle: number | Vehicle, neonIndex: number): boolean;
+    function getNeonEnabled(vehicle: number | IVehicle, neonIndex: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xE8522D58
      */
-    function getNumberPlateText(vehicle: number | Vehicle): string;
+    function getNumberPlateText(vehicle: number | IVehicle): string;
     /**
      * No comment provided
      *
      * Hash: 0x499747B6
      */
-    function getNumberPlateTextIndex(vehicle: number | Vehicle): number;
+    function getNumberPlateTextIndex(vehicle: number | IVehicle): number;
     /**
      * Gets the vehicle the specified Ped is/was in depending on bool value. This native is used server side when using OneSync.
      *
      * Hash: 0xAFE92319
      */
-    function getPedIsIn(ped: number | Ped, lastVehicle: boolean): number;
+    function getPedIsIn(ped: number | IPed, lastVehicle: boolean): number;
     /**
      * No comment provided
      *
      * Hash: 0xE41595CE
      */
-    function getPetrolTankHealth(vehicle: number | Vehicle): number;
+    function getPetrolTankHealth(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x57037960
      */
-    function getRadioStationIndex(vehicle: number | Vehicle): number;
+    function getRadioStationIndex(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x872CF42
      */
-    function getRoofLivery(vehicle: number | Vehicle): number;
+    function getRoofLivery(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x9963D5F9
      */
-    function getTotalRepairs(vehicle: number | Vehicle): number;
+    function getTotalRepairs(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x75280015
      */
-    function getTyreSmokeColor(vehicle: number | Vehicle): [number, number, number];
+    function getTyreSmokeColor(vehicle: number | IVehicle): [number, number, number];
     /**
      * No comment provided
      *
      * Hash: 0xDA58D7AE
      */
-    function getWheelType(vehicle: number | Vehicle): number;
+    function getWheelType(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0x13D53892
      */
-    function getWindowTint(vehicle: number | Vehicle): number;
+    function getWindowTint(vehicle: number | IVehicle): number;
     /**
      * No comment provided
      *
      * Hash: 0xB8AF3137
      */
-    function hasBeenDamagedByBullets(vehicle: number | Vehicle): boolean;
+    function hasBeenDamagedByBullets(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xE4E83A5B
      */
-    function hasBeenOwnedByPlayer(vehicle: number | Vehicle): boolean;
+    function hasBeenOwnedByPlayer(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0xD5C39EE6
      */
-    function isBoatAnchoredAndFrozen(vehicle: number | Vehicle): boolean;
+    function isBoatAnchoredAndFrozen(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x9049DB44
      */
-    function isBoatWrecked(vehicle: number | Vehicle): boolean;
+    function isBoatWrecked(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x42098B5
      */
-    function isExtraTurnedOn(vehicle: number | Vehicle, extraId: number): boolean;
+    function isExtraTurnedOn(vehicle: number | IVehicle, extraId: number): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x25EB5873
      */
-    function isSirenOn(vehicle: number | Vehicle): boolean;
+    function isSirenOn(vehicle: number | IVehicle): boolean;
     /**
      * No comment provided
      *
      * Hash: 0x48C80210
      */
-    function isTyreBurst(vehicle: number | Vehicle, wheelID: number, completely: boolean): boolean;
+    function isTyreBurst(vehicle: number | IVehicle, wheelID: number, completely: boolean): boolean;
     /**
      * See the client-side [IS_VEHICLE_WINDOW_INTACT](#\_0x46E571A0E20D01F1) for a window indexes list.
      *
      * Hash: 0xAC4EF23D
      */
-    function isWindowIntact(vehicle: number | Vehicle, windowIndex: number): boolean;
+    function isWindowIntact(vehicle: number | IVehicle, windowIndex: number): boolean;
     /**
      * SET_VEHICLE_ALARM
      *
@@ -2947,7 +2947,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x24877D84
      */
-    function setAlarm(vehicle: number | Vehicle, state: boolean): void;
+    function setAlarm(vehicle: number | IVehicle, state: boolean): void;
     /**
      * ```
      * p2 often set to 1000.0 in the decompiled scripts.
@@ -2957,7 +2957,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x920C2517
      */
-    function setBodyHealth(vehicle: number | Vehicle, value: number): void;
+    function setBodyHealth(vehicle: number | IVehicle, value: number): void;
     /**
      * colorPrimary & colorSecondary are the paint indexes for the vehicle.
      * For a list of valid paint indexes, view: pastebin.com/pwHci0xK
@@ -2966,7 +2966,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x57F24253
      */
-    function setColours(vehicle: number | Vehicle, colorPrimary: number, colorSecondary: number): void;
+    function setColours(vehicle: number | IVehicle, colorPrimary: number, colorSecondary: number): void;
     /**
      * Sets the selected vehicle's colors to their default value (specific variant specified using the colorCombination parameter).
      * Range of possible values for colorCombination is currently unknown, I couldn't find where these values are stored either (Disquse's guess was vehicles.meta but I haven't seen it in there.)
@@ -2975,7 +2975,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xA557AEAD
      */
-    function setColourCombination(vehicle: number | Vehicle, colorCombination: number): void;
+    function setColourCombination(vehicle: number | IVehicle, colorCombination: number): void;
     /**
      * ```
      * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -2985,7 +2985,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x8DF9F9BC
      */
-    function setCustomPrimaryColour(vehicle: number | Vehicle, r: number, g: number, b: number): void;
+    function setCustomPrimaryColour(vehicle: number | IVehicle, r: number, g: number, b: number): void;
     /**
      * ```
      * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -2995,7 +2995,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x9D77259E
      */
-    function setCustomSecondaryColour(vehicle: number | Vehicle, r: number, g: number, b: number): void;
+    function setCustomSecondaryColour(vehicle: number | IVehicle, r: number, g: number, b: number): void;
     /**
      * Sets the dirt level of the passed vehicle.
      *
@@ -3003,7 +3003,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x2B39128B
      */
-    function setDirtLevel(vehicle: number | Vehicle, dirtLevel: number): void;
+    function setDirtLevel(vehicle: number | IVehicle, dirtLevel: number): void;
     /**
      * Locks the doors of a specified vehicle to a defined lock state, affecting how players and NPCs can interact with the vehicle.
      *
@@ -3042,7 +3042,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x4CDD35D0
      */
-    function setDoorsLocked(vehicle: number | Vehicle, doorLockStatus: number): void;
+    function setDoorsLocked(vehicle: number | IVehicle, doorLockStatus: number): void;
     /**
      * See eDoorId declared in [`SET_VEHICLE_DOOR_SHUT`](#\_0x93D9BD300D7789E5)
      *
@@ -3050,7 +3050,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x8147FEA7
      */
-    function setDoorBroken(vehicle: number | Vehicle, doorIndex: number, deleteDoor: boolean): void;
+    function setDoorBroken(vehicle: number | IVehicle, doorIndex: number, deleteDoor: boolean): void;
     /**
      * SET_VEHICLE_NUMBER_PLATE_TEXT
      *
@@ -3058,7 +3058,7 @@ export declare namespace vehicle {
      *
      * Hash: 0x400F9556
      */
-    function setNumberPlateText(vehicle: number | Vehicle, plateText: string): void;
+    function setNumberPlateText(vehicle: number | IVehicle, plateText: string): void;
     /**
      * Returns the type of the passed vehicle.
      *
@@ -3077,7 +3077,7 @@ export declare namespace vehicle {
      *
      * Hash: 0xA273060E
      */
-    function getType(vehicle: number | Vehicle): string;
+    function getType(vehicle: number | IVehicle): string;
 }
 export declare namespace weapon {
     /**
@@ -3087,7 +3087,7 @@ export declare namespace weapon {
      *
      * Hash: 0x3E1E286D
      */
-    function giveComponentToPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void;
+    function giveComponentToPed(ped: number | IPed, weaponHash: number | string, componentHash: number | string): void;
     /**
      * GIVE_WEAPON_TO_PED
      *
@@ -3095,7 +3095,7 @@ export declare namespace weapon {
      *
      * Hash: 0xC4D88A85
      */
-    function giveToPed(ped: number | Ped, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void;
+    function giveToPed(ped: number | IPed, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void;
     /**
      * Parameter `p1` does not seem to be used or referenced in game binaries.\
      * **Note:** When called for networked entities, a `CRemoveAllWeaponsEvent` will be created per request.
@@ -3104,7 +3104,7 @@ export declare namespace weapon {
      *
      * Hash: 0xA44CE817
      */
-    function removeAllPeds(ped: number | Ped): void;
+    function removeAllPeds(ped: number | IPed): void;
     /**
      * REMOVE_WEAPON_COMPONENT_FROM_PED
      *
@@ -3112,7 +3112,7 @@ export declare namespace weapon {
      *
      * Hash: 0x412AA00D
      */
-    function removeComponentFromPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void;
+    function removeComponentFromPed(ped: number | IPed, weaponHash: number | string, componentHash: number | string): void;
     /**
      * ```
      * This native removes a specified weapon from your selected ped.
@@ -3129,7 +3129,7 @@ export declare namespace weapon {
      *
      * Hash: 0x9C37F220
      */
-    function removeFromPed(ped: number | Ped, weaponHash: number | string): void;
+    function removeFromPed(ped: number | IPed, weaponHash: number | string): void;
 }
 export declare namespace network {
     /**
@@ -3143,13 +3143,13 @@ export declare namespace network {
      *
      * Hash: 0x1E546224
      */
-    function getFirstEntityOwner(entity: number | Entity): number;
+    function getFirstEntityOwner(entity: number | IEntity): number;
     /**
      * No comment provided
      *
      * Hash: 0x9E35DAB6
      */
-    function getNetworkIdFromEntity(entity: number | Entity): number;
+    function getNetworkIdFromEntity(entity: number | IEntity): number;
     /**
      * No comment provided
      *
@@ -3161,7 +3161,7 @@ export declare namespace network {
      *
      * Hash: 0x526FEE31
      */
-    function getEntityOwner(entity: number | Entity): number;
+    function getEntityOwner(entity: number | IEntity): number;
 }
 export declare namespace kvp {
     /**
@@ -3462,7 +3462,7 @@ export declare namespace task {
      *
      * Hash: 0xDE3316AB
      */
-    function clearPeds(ped: number | Ped): void;
+    function clearPeds(ped: number | IPed): void;
     /**
      * Immediately stops the pedestrian from whatever it's doing. The difference between this and [CLEAR_PED_TASKS](#\_0xE1EF3C1216AFF2CD) is that this one teleports the ped but does not change the position of the ped.
      *
@@ -3470,7 +3470,7 @@ export declare namespace task {
      *
      * Hash: 0xBC045625
      */
-    function clearPedsImmediately(ped: number | Ped): void;
+    function clearPedsImmediately(ped: number | IPed): void;
     /**
      * ```
      * Makes the specified ped attack the target ped.
@@ -3482,7 +3482,7 @@ export declare namespace task {
      *
      * Hash: 0xCB0D8932
      */
-    function combatPed(ped: number | Ped, targetPed: number | Ped): void;
+    function combatPed(ped: number | IPed, targetPed: number | IPed): void;
     /**
      * ```
      * Example:
@@ -3497,7 +3497,7 @@ export declare namespace task {
      *
      * Hash: 0x2B84D1C4
      */
-    function driveBy(driverPed: number | Ped, targetPed: number | Ped, targetVehicle: number | Vehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void;
+    function driveBy(driverPed: number | IPed, targetPed: number | IPed, targetVehicle: number | IVehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void;
     /**
      * ```
      * speed 1.0 = walk, 2.0 = run
@@ -3509,7 +3509,7 @@ export declare namespace task {
      *
      * Hash: 0xB8689B4E
      */
-    function enterVehicle(ped: number | Ped, vehicle: number | Vehicle, timeout: number, seatIndex: number, speed: number, flag: number): void;
+    function enterVehicle(ped: number | IPed, vehicle: number | IVehicle, timeout: number, seatIndex: number, speed: number, flag: number): void;
     /**
      * TASK_EVERYONE_LEAVE_VEHICLE
      *
@@ -3517,7 +3517,7 @@ export declare namespace task {
      *
      * Hash: 0xC1971F30
      */
-    function everyoneLeaveVehicle(vehicle: number | Vehicle): void;
+    function everyoneLeaveVehicle(vehicle: number | IVehicle): void;
     /**
      * TASK_GO_STRAIGHT_TO_COORD
      *
@@ -3525,7 +3525,7 @@ export declare namespace task {
      *
      * Hash: 0x80A9E7A7
      */
-    function goStraightToCoord(ped: number | Ped, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
+    function goStraightToCoord(ped: number | IPed, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
     /**
      * Tells a ped to go to a coord by any means.
      *
@@ -3583,7 +3583,7 @@ export declare namespace task {
      *
      * Hash: 0xF91DF93B
      */
-    function goToCoordAnyMeans(ped: number | Ped, pos: Vector3, fMoveBlendRatio: number, vehicle: number | Vehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void;
+    function goToCoordAnyMeans(ped: number | IPed, pos: Vector3, fMoveBlendRatio: number, vehicle: number | IVehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void;
     /**
      * ```
      * The entity will move towards the target until time is over (duration) or get in target's range (distance). p5 and p6 are unknown, but you could leave p5 = 1073741824 or 100 or even 0 (didn't see any difference but on the decompiled scripts, they use 1073741824 mostly) and p6 = 0
@@ -3596,7 +3596,7 @@ export declare namespace task {
      *
      * Hash: 0x374827C2
      */
-    function goToEntity(entity: number | Entity, target: number | Entity, duration: number, distance: number, speed: number): void;
+    function goToEntity(entity: number | IEntity, target: number | IEntity, duration: number, distance: number, speed: number): void;
     /**
      * ```
      * In the scripts, p3 was always -1.
@@ -3608,7 +3608,7 @@ export declare namespace task {
      *
      * Hash: 0x8DCC19C5
      */
-    function handsUp(ped: number | Ped, duration: number, facingPed: number | Ped): void;
+    function handsUp(ped: number | IPed, duration: number, facingPed: number | IPed): void;
     /**
      * Flags are the same flags used in [`TASK_LEAVE_VEHICLE`](#\_0xD3DBCE61A490BE02)
      *
@@ -3616,7 +3616,7 @@ export declare namespace task {
      *
      * Hash: 0xDBDD79FA
      */
-    function leaveAnyVehicle(ped: number | Ped, flags: number): void;
+    function leaveAnyVehicle(ped: number | IPed, flags: number): void;
     /**
      * ```
      * Flags from decompiled scripts:
@@ -3634,7 +3634,7 @@ export declare namespace task {
      *
      * Hash: 0x7B1141C6
      */
-    function leaveVehicle(ped: number | Ped, vehicle: number | Vehicle, flags: number): void;
+    function leaveVehicle(ped: number | IPed, vehicle: number | IVehicle, flags: number): void;
     /**
      * [Animations list](https://alexguirre.github.io/animations-list/)
      *
@@ -3679,7 +3679,7 @@ export declare namespace task {
      *
      * Hash: 0x5AB552C6
      */
-    function playAnim(ped: number | Ped, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void;
+    function playAnim(ped: number | IPed, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void;
     /**
      * Similar in functionality to [`TASK_PLAY_ANIM`](#\_0xEA47FE3719165B94), except the position and rotation parameters let you specify the initial position and rotation of the task. The ped is teleported to the position specified.
      * [Animations list](https://alexguirre.github.io/animations-list/)
@@ -3688,7 +3688,7 @@ export declare namespace task {
      *
      * Hash: 0x3DDEB0E6
      */
-    function playAnimAdvanced(ped: number | Ped, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void;
+    function playAnimAdvanced(ped: number | IPed, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void;
     /**
      * TASK_REACT_AND_FLEE_PED
      *
@@ -3696,7 +3696,7 @@ export declare namespace task {
      *
      * Hash: 0x8A632BD8
      */
-    function reactAndFleePed(ped: number | Ped, fleeTarget: number | Ped): void;
+    function reactAndFleePed(ped: number | IPed, fleeTarget: number | IPed): void;
     /**
      * ```
      * Firing Pattern Hash Information: https://pastebin.com/Px036isB
@@ -3706,7 +3706,7 @@ export declare namespace task {
      *
      * Hash: 0x601C22E3
      */
-    function shootAtCoord(ped: number | Ped, pos: Vector3, duration: number, firingPattern: number | string): void;
+    function shootAtCoord(ped: number | IPed, pos: Vector3, duration: number, firingPattern: number | string): void;
     /**
      * ```
      * //this part of the code is to determine at which entity the player is aiming, for example if you want to create a mod where you give orders to peds
@@ -3723,7 +3723,7 @@ export declare namespace task {
      *
      * Hash: 0xAC0631C9
      */
-    function shootAtEntity(entity: number | Entity, target: number | Entity, duration: number, firingPattern: number | string): void;
+    function shootAtEntity(entity: number | IEntity, target: number | IEntity, duration: number, firingPattern: number | string): void;
     /**
      * ```
      * NativeDB Introduced: v323
@@ -3736,7 +3736,7 @@ export declare namespace task {
      *
      * Hash: 0x65D4A35D
      */
-    function warpPedIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void;
+    function warpPedIntoVehicle(ped: number | IPed, vehicle: number | IVehicle, seatIndex: number): void;
 }
 export declare namespace profiler {
     /**
@@ -3764,7 +3764,7 @@ export declare namespace profiler {
  * Hash: 0x91B38FB6
  * @deprecated Use entity.getRemoteSyncedScenesAllowed(entity1) instead
  */
-export declare function getEntityRemoteSyncedScenesAllowed(entity1: number | Entity): boolean;
+export declare function getEntityRemoteSyncedScenesAllowed(entity1: number | IEntity): boolean;
 /**
  * Enables or disables the owner check for the specified entity in network-synchronized scenes. When set to `false`, the entity cannot participate in synced scenes initiated by clients that do not own the entity.
  *
@@ -3773,14 +3773,14 @@ export declare function getEntityRemoteSyncedScenesAllowed(entity1: number | Ent
  * Hash: 0xD3FC9D88
  * @deprecated Use entity.setRemoteSyncedScenesAllowed(entity1, allow) instead
  */
-export declare function setEntityRemoteSyncedScenesAllowed(entity1: number | Entity, allow: boolean): void;
+export declare function setEntityRemoteSyncedScenesAllowed(entity1: number | IEntity, allow: boolean): void;
 /**
  * A getter for [FREEZE_ENTITY_POSITION](#\_0x428CA6DBD1094446).
  *
  * Hash: 0xEDBE6ADD
  * @deprecated Use entity.isPositionFrozen(entity1) instead
  */
-export declare function isEntityPositionFrozen(entity1: number | Entity): boolean;
+export declare function isEntityPositionFrozen(entity1: number | IEntity): boolean;
 /**
  * ```cpp
  * enum eApplyForceTypes {
@@ -3798,7 +3798,7 @@ export declare function isEntityPositionFrozen(entity1: number | Entity): boolea
  * Hash: 0xC1C0855A
  * @deprecated Use entity.applyForceTo(entity1, forceType, pos, offX, offY, offZ, nComponent, bLocalForce, bLocalOffset, bScaleByMass, bPlayAudio, bScaleByTimeWarp) instead
  */
-export declare function applyForceToEntity(entity1: number | Entity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void;
+export declare function applyForceToEntity(entity1: number | IEntity, forceType: number, pos: Vector3, offX: number, offY: number, offZ: number, nComponent: number, bLocalForce: boolean, bLocalOffset: boolean, bScaleByMass: boolean, bPlayAudio: boolean, bScaleByTimeWarp: boolean): void;
 /**
  * Deletes the specified entity.
  *
@@ -3807,14 +3807,14 @@ export declare function applyForceToEntity(entity1: number | Entity, forceType: 
  * Hash: 0xFAA3D236
  * @deprecated Use entity.deleteEntity(entity1) instead
  */
-export declare function deleteEntity(entity1: number | Entity): void;
+export declare function deleteEntity(entity1: number | IEntity): void;
 /**
  * No comment provided
  *
  * Hash: 0x3AC90869
  * @deprecated Use entity.doesExist(entity1) instead
  */
-export declare function doesEntityExist(entity1: number | Object): boolean;
+export declare function doesEntityExist(entity1: number | IObject): boolean;
 /**
  * Freezes or unfreezes an entity preventing its coordinates to change by the player if set to `true`. You can still change the entity position using [`SET_ENTITY_COORDS`](#\_0x06843DA7060A026B).
  *
@@ -3823,21 +3823,21 @@ export declare function doesEntityExist(entity1: number | Object): boolean;
  * Hash: 0x65C16D57
  * @deprecated Use entity.freezePosition(entity1, toggle) instead
  */
-export declare function freezeEntityPosition(entity1: number | Entity, toggle: boolean): void;
+export declare function freezeEntityPosition(entity1: number | IEntity, toggle: boolean): void;
 /**
  * Gets the entity that this entity is attached to.
  *
  * Hash: 0xFE1589F9
  * @deprecated Use entity.getAttachedTo(entity1) instead
  */
-export declare function getEntityAttachedTo(entity1: number | Entity): number;
+export declare function getEntityAttachedTo(entity1: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0xE8C0C629
  * @deprecated Use entity.getCollisionDisabled(entity1) instead
  */
-export declare function getEntityCollisionDisabled(entity1: number | Entity): boolean;
+export declare function getEntityCollisionDisabled(entity1: number | IEntity): boolean;
 /**
  * Gets the current coordinates for a specified entity. This native is used server side when using OneSync.
  *
@@ -3846,63 +3846,63 @@ export declare function getEntityCollisionDisabled(entity1: number | Entity): bo
  * Hash: 0x1647F1CB
  * @deprecated Use entity.getCoords(entity1) instead
  */
-export declare function getEntityCoords(entity1: number | Entity): Vector3;
+export declare function getEntityCoords(entity1: number | IEntity): Vector3;
 /**
  * No comment provided
  *
  * Hash: 0x972CC383
  * @deprecated Use entity.getHeading(entity1) instead
  */
-export declare function getEntityHeading(entity1: number | Entity): number;
+export declare function getEntityHeading(entity1: number | IEntity): number;
 /**
  * Only works for vehicle and peds
  *
  * Hash: 0x8E3222B7
  * @deprecated Use entity.getHealth(entity1) instead
  */
-export declare function getEntityHealth(entity1: number | Entity): number;
+export declare function getEntityHealth(entity1: number | IEntity): number;
 /**
  * Currently it only works with peds.
  *
  * Hash: 0xC7AE6AA1
  * @deprecated Use entity.getMaxHealth(entity1) instead
  */
-export declare function getEntityMaxHealth(entity1: number | Entity): number;
+export declare function getEntityMaxHealth(entity1: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0xDAFCB3EC
  * @deprecated Use entity.getModel(entity1) instead
  */
-export declare function getEntityModel(entity1: number | Entity): number;
+export declare function getEntityModel(entity1: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0xD16EA02F
  * @deprecated Use entity.getOrphanMode(entity1) instead
  */
-export declare function getEntityOrphanMode(entity1: number | Entity): number;
+export declare function getEntityOrphanMode(entity1: number | IEntity): number;
 /**
  * This native gets an entity's population type.
  *
  * Hash: 0xFC30DDFF
  * @deprecated Use entity.getPopulationType(entity1) instead
  */
-export declare function getEntityPopulationType(entity1: number | Entity): number;
+export declare function getEntityPopulationType(entity1: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0x8FF45B04
  * @deprecated Use entity.getRotation(entity1) instead
  */
-export declare function getEntityRotation(entity1: number | Entity): Vector3;
+export declare function getEntityRotation(entity1: number | IEntity): Vector3;
 /**
  * No comment provided
  *
  * Hash: 0x9BF8A73F
  * @deprecated Use entity.getRotationVelocity(entity1) instead
  */
-export declare function getEntityRotationVelocity(entity1: number | Entity): Vector3;
+export declare function getEntityRotationVelocity(entity1: number | IEntity): Vector3;
 /**
  * Gets the routing bucket for the specified entity.
  *
@@ -3911,14 +3911,14 @@ export declare function getEntityRotationVelocity(entity1: number | Entity): Vec
  * Hash: 0xED4B0486
  * @deprecated Use entity.getRoutingBucket(entity1) instead
  */
-export declare function getEntityRoutingBucket(entity1: number | Entity): number;
+export declare function getEntityRoutingBucket(entity1: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0xB7F70784
  * @deprecated Use entity.getScript(entity1) instead
  */
-export declare function getEntityScript(entity1: number | Entity): string;
+export declare function getEntityScript(entity1: number | IEntity): string;
 /**
  * Gets the current speed of the entity in meters per second.
  *
@@ -3930,7 +3930,7 @@ export declare function getEntityScript(entity1: number | Entity): string;
  * Hash: 0x9E1E4798
  * @deprecated Use entity.getSpeed(entity1) instead
  */
-export declare function getEntitySpeed(entity1: number | Entity): number;
+export declare function getEntitySpeed(entity1: number | IEntity): number;
 /**
  * Gets the entity type (as an integer), which can be one of the following defined down below:
  *
@@ -3964,14 +3964,14 @@ export declare function getEntitySpeed(entity1: number | Entity): number;
  * Hash: 0xB1BD08D
  * @deprecated Use entity.getType(entity1) instead
  */
-export declare function getEntityType(entity1: number | Entity): number;
+export declare function getEntityType(entity1: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0xC14C9B6B
  * @deprecated Use entity.getVelocity(entity1) instead
  */
-export declare function getEntityVelocity(entity1: number | Entity): Vector3;
+export declare function getEntityVelocity(entity1: number | IEntity): Vector3;
 /**
  * Gets the specific entity type (as an integer), which can be one of the following defined down below:
  *
@@ -4038,21 +4038,21 @@ export declare function getEntityVelocity(entity1: number | Entity): Vector3;
  * Hash: 0x23B2A641
  * @deprecated Use entity.getNetTypeFrom(entity1) instead
  */
-export declare function getNetTypeFromEntity(entity1: number | Entity): number;
+export declare function getNetTypeFromEntity(entity1: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0x9C9A3BE0
  * @deprecated Use entity.hasBeenMarkedAsNoLongerNeeded(vehicle) instead
  */
-export declare function hasEntityBeenMarkedAsNoLongerNeeded(vehicle: number | Vehicle): boolean;
+export declare function hasEntityBeenMarkedAsNoLongerNeeded(vehicle: number | IVehicle): boolean;
 /**
  * This native checks if the given entity is visible.
  *
  * Hash: 0x120B4ED5
  * @deprecated Use entity.isVisible(entity1) instead
  */
-export declare function isEntityVisible(entity1: number | Entity): boolean;
+export declare function isEntityVisible(entity1: number | IEntity): boolean;
 /**
  * Sets the coordinates (world position) for a specified entity, offset by the radius of the entity on the Z axis.
  *
@@ -4061,7 +4061,7 @@ export declare function isEntityVisible(entity1: number | Entity): boolean;
  * Hash: 0xDF70B41B
  * @deprecated Use entity.setCoords(entity1, pos, alive, deadFlag, ragdollFlag, clearArea) instead
  */
-export declare function setEntityCoords(entity1: number | Entity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void;
+export declare function setEntityCoords(entity1: number | IEntity, pos: Vector3, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void;
 /**
  * It overrides the default distance culling radius of an entity. Set to `0.0` to reset.
  * If you want to interact with an entity outside of your players' scopes set the radius to a huge number.
@@ -4071,7 +4071,7 @@ export declare function setEntityCoords(entity1: number | Entity, pos: Vector3, 
  * Hash: 0xD3A183A3
  * @deprecated Use entity.setDistanceCullingRadius(entity1, radius) instead
  */
-export declare function setEntityDistanceCullingRadius(entity1: number | Entity, radius: number): void;
+export declare function setEntityDistanceCullingRadius(entity1: number | IEntity, radius: number): void;
 /**
  * Set the heading of an entity in degrees also known as "Yaw".
  *
@@ -4080,14 +4080,14 @@ export declare function setEntityDistanceCullingRadius(entity1: number | Entity,
  * Hash: 0xE0FF064D
  * @deprecated Use entity.setHeading(entity1, heading) instead
  */
-export declare function setEntityHeading(entity1: number | Entity, heading: number): void;
+export declare function setEntityHeading(entity1: number | IEntity, heading: number): void;
 /**
  * It allows to flag an entity to ignore the request control filter policy.
  *
  * Hash: 0x9F7F8D36
  * @deprecated Use entity.setIgnoreRequestControlFilter(entity1, ignore) instead
  */
-export declare function setEntityIgnoreRequestControlFilter(entity1: number | Entity, ignore: boolean): void;
+export declare function setEntityIgnoreRequestControlFilter(entity1: number | IEntity, ignore: boolean): void;
 /**
  * ```cpp
  * enum EntityOrphanMode {
@@ -4113,7 +4113,7 @@ export declare function setEntityIgnoreRequestControlFilter(entity1: number | En
  * Hash: 0x489E9162
  * @deprecated Use entity.setOrphanMode(entity1, orphanMode) instead
  */
-export declare function setEntityOrphanMode(entity1: number | Entity, orphanMode: number): void;
+export declare function setEntityOrphanMode(entity1: number | IEntity, orphanMode: number): void;
 /**
  * Sets the rotation of a specified entity in the game world.
  *
@@ -4126,7 +4126,7 @@ export declare function setEntityOrphanMode(entity1: number | Entity, orphanMode
  * Hash: 0xA345EFE
  * @deprecated Use entity.setRotation(entity1, pitch, roll, yaw, rotationOrder, bDeadCheck) instead
  */
-export declare function setEntityRotation(entity1: number | Entity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void;
+export declare function setEntityRotation(entity1: number | IEntity, pitch: number, roll: number, yaw: number, rotationOrder: number, bDeadCheck: boolean): void;
 /**
  * Sets the routing bucket for the specified entity.
  *
@@ -4135,7 +4135,7 @@ export declare function setEntityRotation(entity1: number | Entity, pitch: numbe
  * Hash: 0x635E5289
  * @deprecated Use entity.setRoutingBucket(entity1, bucket) instead
  */
-export declare function setEntityRoutingBucket(entity1: number | Entity, bucket: number): void;
+export declare function setEntityRoutingBucket(entity1: number | IEntity, bucket: number): void;
 /**
  * ```
  * Note that the third parameter(denoted as z) is "up and down" with positive numbers encouraging upwards movement.
@@ -4146,14 +4146,14 @@ export declare function setEntityRoutingBucket(entity1: number | Entity, bucket:
  * Hash: 0xFF5A1988
  * @deprecated Use entity.setVelocity(entity1, pos) instead
  */
-export declare function setEntityVelocity(entity1: number | Entity, pos: Vector3): void;
+export declare function setEntityVelocity(entity1: number | IEntity, pos: Vector3): void;
 /**
  * Internal function for ensuring an entity has a state bag.
  *
  * Hash: 0x3BB78F05
  * @deprecated Use entity.ensureStateBag(entity1) instead
  */
-export declare function ensureEntityStateBag(entity1: number | Entity): void;
+export declare function ensureEntityStateBag(entity1: number | IEntity): void;
 /**
  * ### Supported types
  *
@@ -4187,7 +4187,7 @@ export declare function ensureEntityStateBag(entity1: number | Entity): void;
  * Hash: 0xDFFBA12F
  * @deprecated Use entity.getEntitiesInRadius(pos, radius, entityType, sortByDistance, models) instead
  */
-export declare function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | Object): number;
+export declare function getEntitiesInRadius(pos: Vector3, radius: number, entityType: number, sortByDistance: boolean, models: number | IObject): number;
 /**
  * Returns the entity handle for the specified state bag name. For use with [ADD_STATE_BAG_CHANGE_HANDLER](#\_0x5BA35AAF).
  *
@@ -4217,7 +4217,7 @@ export declare function addBlipForCoord(pos: Vector3): number;
  * Hash: 0x30822554
  * @deprecated Use hud.addBlipForEntity(entity) instead
  */
-export declare function addBlipForEntity(entity: number | Entity): number;
+export declare function addBlipForEntity(entity: number | IEntity): number;
 /**
  * Create a blip with a radius for the specified coordinates (it doesnt create the blip sprite, so you need to use [AddBlipCoords](#\_0xC6F43D0E))
  * Example image:
@@ -4238,7 +4238,7 @@ export declare function addBlipForRadius(pos: Vector3, radius: number): number;
  * Hash: 0xD8C3C1CD
  * @deprecated Use hud.removeBlip(blip) instead
  */
-export declare function removeBlip(blip: number | Blip): void;
+export declare function removeBlip(blip: number | IBlip): void;
 /**
  * Sets the displayed sprite for a specific blip.
  * There's a [list of sprites](https://docs.fivem.net/game-references/blips/) on the FiveM documentation site.
@@ -4248,7 +4248,7 @@ export declare function removeBlip(blip: number | Blip): void;
  * Hash: 0x8DBBB0B9
  * @deprecated Use hud.setBlipSprite(blip, spriteId) instead
  */
-export declare function setBlipSprite(blip: number | Blip, spriteId: number): void;
+export declare function setBlipSprite(blip: number | IBlip, spriteId: number): void;
 /**
  * Adds a rectangular blip for the specified coordinates/area.
  * It is recommended to use [SET_BLIP_ROTATION](#\_0xF87683CDF73C3F6E) and [SET_BLIP_COLOUR](#\_0x03D7FB09E75D6B7E) to make the blip not rotate along with the camera.
@@ -4305,7 +4305,7 @@ export declare function getHashKey(model: string): number;
  * Hash: 0xF01E2AAB
  * @deprecated Use misc.getHeliMainRotorHealth(vehicle) instead
  */
-export declare function getHeliMainRotorHealth(vehicle: number | Vehicle): number;
+export declare function getHeliMainRotorHealth(vehicle: number | IVehicle): number;
 /**
  * No comment provided
  *
@@ -4326,7 +4326,7 @@ export declare function getPasswordHash(password: string): string;
  * Hash: 0x76876154
  * @deprecated Use misc.isFlashLightOn(ped) instead
  */
-export declare function isFlashLightOn(ped: number | Ped): boolean;
+export declare function isFlashLightOn(ped: number | IPed): boolean;
 /**
  * No comment provided
  *
@@ -4340,7 +4340,7 @@ export declare function performHttpRequestInternal(requestData: string, requestD
  * Hash: 0x6B171E87
  * @deprecated Use misc.performHttpRequestInternalEx(requestData) instead
  */
-export declare function performHttpRequestInternalEx(requestData: number | Object): number;
+export declare function performHttpRequestInternalEx(requestData: number | IObject): number;
 /**
  * Prints 'structured trace' data to the server `file descriptor 3` channel. This is not generally useful outside of
  * server monitoring utilities.
@@ -4551,7 +4551,7 @@ export declare function executeCommand(commandString: string): void;
  * Hash: 0xD70C3BCA
  * @deprecated Use misc.formatStackTrace(traceData) instead
  */
-export declare function formatStackTrace(traceData: number | Object): string;
+export declare function formatStackTrace(traceData: number | IObject): string;
 /**
  * Can be used to get a console variable of type `char*`, for example a string.
  *
@@ -4805,7 +4805,7 @@ export declare function wasEventCanceled(): boolean;
  * Hash: 0x70559AC7
  * @deprecated Use ped.addDecorationFromHashes(ped1, collection, overlay) instead
  */
-export declare function addPedDecorationFromHashes(ped1: number | Ped, collection: number | string, overlay: number | string): void;
+export declare function addPedDecorationFromHashes(ped1: number | IPed, collection: number | string, overlay: number | string): void;
 /**
  * CLEAR_PED_PROP
  *
@@ -4814,7 +4814,7 @@ export declare function addPedDecorationFromHashes(ped1: number | Ped, collectio
  * Hash: 0x2D23D743
  * @deprecated Use ped.clearProp(ped1, propId) instead
  */
-export declare function clearPedProp(ped1: number | Ped, propId: number): void;
+export declare function clearPedProp(ped1: number | IPed, propId: number): void;
 /**
  * CLEAR_PED_SECONDARY_TASK
  *
@@ -4823,7 +4823,7 @@ export declare function clearPedProp(ped1: number | Ped, propId: number): void;
  * Hash: 0xA635F451
  * @deprecated Use ped.clearSecondaryTask(ped1) instead
  */
-export declare function clearPedSecondaryTask(ped1: number | Ped): void;
+export declare function clearPedSecondaryTask(ped1: number | IPed): void;
 /**
  * Creates a ped (biped character, pedestrian, actor) with the specified model at the specified position and heading.
  * This ped will initially be owned by the creating script as a mission entity, and the model should be loaded already
@@ -4843,7 +4843,7 @@ export declare function createPed(pedType: number, modelHash: number | string, p
  * Hash: 0x3000F092
  * @deprecated Use ped.createInsideVehicle(vehicle, pedType, modelHash, seat, isNetwork, bScriptHostPed) instead
  */
-export declare function createPedInsideVehicle(vehicle: number | Vehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number;
+export declare function createPedInsideVehicle(vehicle: number | IVehicle, pedType: number, modelHash: number | string, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number;
 /**
  * Returns all peds handles known to the server.
  * The data returned adheres to the following layout:
@@ -4862,84 +4862,84 @@ export declare function getAllPeds(): number;
  * Hash: 0xB0237302
  * @deprecated Use ped.getCurrentWeapon(ped1) instead
  */
-export declare function getCurrentPedWeapon(ped1: number | Ped): number;
+export declare function getCurrentPedWeapon(ped1: number | IPed): number;
 /**
  * No comment provided
  *
  * Hash: 0xF7C6792D
  * @deprecated Use ped.getLastInVehicleSeat(vehicle, seatIndex) instead
  */
-export declare function getLastPedInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number;
+export declare function getLastPedInVehicleSeat(vehicle: number | IVehicle, seatIndex: number): number;
 /**
  * No comment provided
  *
  * Hash: 0x2CE311A7
  * @deprecated Use ped.getArmour(ped1) instead
  */
-export declare function getPedArmour(ped1: number | Ped): number;
+export declare function getPedArmour(ped1: number | IPed): number;
 /**
  * No comment provided
  *
  * Hash: 0x63458C27
  * @deprecated Use ped.getCauseOfDeath(ped1) instead
  */
-export declare function getPedCauseOfDeath(ped1: number | Ped): number;
+export declare function getPedCauseOfDeath(ped1: number | IPed): number;
 /**
  * No comment provided
  *
  * Hash: 0xC182F76E
  * @deprecated Use ped.getDesiredHeading(ped1) instead
  */
-export declare function getPedDesiredHeading(ped1: number | Ped): number;
+export declare function getPedDesiredHeading(ped1: number | IPed): number;
 /**
  * No comment provided
  *
  * Hash: 0x388FDE9A
  * @deprecated Use ped.getInVehicleSeat(vehicle, seatIndex) instead
  */
-export declare function getPedInVehicleSeat(vehicle: number | Vehicle, seatIndex: number): number;
+export declare function getPedInVehicleSeat(vehicle: number | IVehicle, seatIndex: number): number;
 /**
  * No comment provided
  *
  * Hash: 0xA45B6C8D
  * @deprecated Use ped.getMaxHealth(ped1) instead
  */
-export declare function getPedMaxHealth(ped1: number | Ped): number;
+export declare function getPedMaxHealth(ped1: number | IPed): number;
 /**
  * Gets the current relationship group hash of a ped.
  *
  * Hash: 0x354F283C
  * @deprecated Use ped.getRelationshipGroupHash(ped1) instead
  */
-export declare function getPedRelationshipGroupHash(ped1: number | Ped): number;
+export declare function getPedRelationshipGroupHash(ped1: number | IPed): number;
 /**
  * Gets the script task command currently assigned to the ped.
  *
  * Hash: 0x84FE084
  * @deprecated Use ped.getScriptTaskCommand(ped1) instead
  */
-export declare function getPedScriptTaskCommand(ped1: number | Ped): number;
+export declare function getPedScriptTaskCommand(ped1: number | IPed): number;
 /**
  * Gets the stage of the peds scripted task.
  *
  * Hash: 0x44B0E5E2
  * @deprecated Use ped.getScriptTaskStage(ped1) instead
  */
-export declare function getPedScriptTaskStage(ped1: number | Ped): number;
+export declare function getPedScriptTaskStage(ped1: number | IPed): number;
 /**
  * Get the last entity that damaged the ped. This native is used server side when using OneSync.
  *
  * Hash: 0x535DB43F
  * @deprecated Use ped.getSourceOfDamage(ped1) instead
  */
-export declare function getPedSourceOfDamage(ped1: number | Ped): number;
+export declare function getPedSourceOfDamage(ped1: number | IPed): number;
 /**
  * Get the entity that killed the ped. This native is used server side when using OneSync.
  *
  * Hash: 0x84ADF9EB
  * @deprecated Use ped.getSourceOfDeath(ped1) instead
  */
-export declare function getPedSourceOfDeath(ped1: number | Ped): number;
+export declare function getPedSourceOfDeath(ped1: number | IPed): number;
 /**
  * Gets the type of a ped's specific task given an index of the CPedTaskSpecificDataNode nodes.
  * A ped will typically have a task at index 0, if a ped has multiple tasks at once they will be in the order 0, 1, 2, etc.
@@ -4947,14 +4947,14 @@ export declare function getPedSourceOfDeath(ped1: number | Ped): number;
  * Hash: 0x7F4563D3
  * @deprecated Use ped.getSpecificTaskType(ped1, index) instead
  */
-export declare function getPedSpecificTaskType(ped1: number | Ped, index: number): number;
+export declare function getPedSpecificTaskType(ped1: number | IPed, index: number): number;
 /**
  * No comment provided
  *
  * Hash: 0x40321B83
  * @deprecated Use ped.getStealthMovement(ped1) instead
  */
-export declare function getPedStealthMovement(ped1: number | Ped): boolean;
+export declare function getPedStealthMovement(ped1: number | IPed): boolean;
 /**
  * An alias of [GET_CURRENT_PED_WEAPON](#\_0xB0237302).
  *
@@ -4963,35 +4963,35 @@ export declare function getPedStealthMovement(ped1: number | Ped): boolean;
  * Hash: 0xD240123E
  * @deprecated Use ped.getSelectedWeapon(ped1) instead
  */
-export declare function getSelectedPedWeapon(ped1: number | Ped): number;
+export declare function getSelectedPedWeapon(ped1: number | IPed): number;
 /**
  * No comment provided
  *
  * Hash: 0x25865633
  * @deprecated Use ped.isHandcuffed(ped1) instead
  */
-export declare function isPedHandcuffed(ped1: number | Ped): boolean;
+export declare function isPedHandcuffed(ped1: number | IPed): boolean;
 /**
  * No comment provided
  *
  * Hash: 0xC833BBE1
  * @deprecated Use ped.isRagdoll(ped1) instead
  */
-export declare function isPedRagdoll(ped1: number | Ped): boolean;
+export declare function isPedRagdoll(ped1: number | IPed): boolean;
 /**
  * No comment provided
  *
  * Hash: 0xEFEED13C
  * @deprecated Use ped.isStrafing(ped1) instead
  */
-export declare function isPedStrafing(ped1: number | Ped): boolean;
+export declare function isPedStrafing(ped1: number | IPed): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x5AE7EDA2
  * @deprecated Use ped.isUsingActionMode(ped1) instead
  */
-export declare function isPedUsingActionMode(ped1: number | Ped): boolean;
+export declare function isPedUsingActionMode(ped1: number | IPed): boolean;
 /**
  * SET_CURRENT_PED_WEAPON
  *
@@ -5000,7 +5000,7 @@ export declare function isPedUsingActionMode(ped1: number | Ped): boolean;
  * Hash: 0xB8278882
  * @deprecated Use ped.setCurrentWeapon(ped1, weaponHash, bForceInHand) instead
  */
-export declare function setCurrentPedWeapon(ped1: number | Ped, weaponHash: number | string, bForceInHand: boolean): void;
+export declare function setCurrentPedWeapon(ped1: number | IPed, weaponHash: number | string, bForceInHand: boolean): void;
 /**
  * ```
  * NativeDB Added Parameter 4: BOOL p3
@@ -5011,7 +5011,7 @@ export declare function setCurrentPedWeapon(ped1: number | Ped, weaponHash: numb
  * Hash: 0xBF90DF1A
  * @deprecated Use ped.setAmmo(ped1, weaponHash, ammo) instead
  */
-export declare function setPedAmmo(ped1: number | Ped, weaponHash: number | string, ammo: number): void;
+export declare function setPedAmmo(ped1: number | IPed, weaponHash: number | string, ammo: number): void;
 /**
  * ```
  * Sets the armor of the specified ped.
@@ -5024,7 +5024,7 @@ export declare function setPedAmmo(ped1: number | Ped, weaponHash: number | stri
  * Hash: 0x4E3A0CC4
  * @deprecated Use ped.setArmour(ped1, amount) instead
  */
-export declare function setPedArmour(ped1: number | Ped, amount: number): void;
+export declare function setPedArmour(ped1: number | IPed, amount: number): void;
 /**
  * SET_PED_CAN_RAGDOLL
  *
@@ -5033,7 +5033,7 @@ export declare function setPedArmour(ped1: number | Ped, amount: number): void;
  * Hash: 0xCF1384C4
  * @deprecated Use ped.setCanRagdoll(ped1, toggle) instead
  */
-export declare function setPedCanRagdoll(ped1: number | Ped, toggle: boolean): void;
+export declare function setPedCanRagdoll(ped1: number | IPed, toggle: boolean): void;
 /**
  * This native is used to set component variation on a ped. Components, drawables and textures IDs are related to the ped model.
  *
@@ -5079,7 +5079,7 @@ export declare function setPedCanRagdoll(ped1: number | Ped, toggle: boolean): v
  * Hash: 0xD4F7B05C
  * @deprecated Use ped.setComponentVariation(ped1, componentId, drawableId, textureId, paletteId) instead
  */
-export declare function setPedComponentVariation(ped1: number | Ped, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
+export declare function setPedComponentVariation(ped1: number | IPed, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
 /**
  * ```cpp
  * // Potential names and hash collisions included as comments
@@ -5556,7 +5556,7 @@ export declare function setPedComponentVariation(ped1: number | Ped, componentId
  * Hash: 0x9CFBE10D
  * @deprecated Use ped.setConfigFlag(ped1, flagId, value) instead
  */
-export declare function setPedConfigFlag(ped1: number | Ped, flagId: number, value: boolean): void;
+export declare function setPedConfigFlag(ped1: number | IPed, flagId: number, value: boolean): void;
 /**
  * ```
  * Sets Ped Default Clothes
@@ -5567,7 +5567,7 @@ export declare function setPedConfigFlag(ped1: number | Ped, flagId: number, val
  * Hash: 0xC866A984
  * @deprecated Use ped.setDefaultComponentVariation(ped1) instead
  */
-export declare function setPedDefaultComponentVariation(ped1: number | Ped): void;
+export declare function setPedDefaultComponentVariation(ped1: number | IPed): void;
 /**
  * Sets the tint index for the hair on the specified ped.
  *
@@ -5580,7 +5580,7 @@ export declare function setPedDefaultComponentVariation(ped1: number | Ped): voi
  * Hash: 0xA23FE32C
  * @deprecated Use ped.setHairTint(ped1, colorID, highlightColorID) instead
  */
-export declare function setPedHairTint(ped1: number | Ped, colorID: number, highlightColorID: number): void;
+export declare function setPedHairTint(ped1: number | IPed, colorID: number, highlightColorID: number): void;
 /**
  * For more info please refer to [this](https://gtaforums.com/topic/858970-all-gtao-face-ids-pedset-ped-head-blend-data-explained) topic.
  * <strong>Other information:</strong>
@@ -5597,7 +5597,7 @@ export declare function setPedHairTint(ped1: number | Ped, colorID: number, high
  * Hash: 0x60746B88
  * @deprecated Use ped.setHeadBlendData(ped1, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent) instead
  */
-export declare function setPedHeadBlendData(ped1: number | Ped, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void;
+export declare function setPedHeadBlendData(ped1: number | IPed, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void;
 /**
  * ```
  * OverlayID ranges from 0 to 12, index from 0 to _GET_NUM_OVERLAY_VALUES(overlayID)-1, and opacity from 0.0 to 1.0.
@@ -5625,7 +5625,7 @@ export declare function setPedHeadBlendData(ped1: number | Ped, shapeFirstID: nu
  * Hash: 0xD28DBA90
  * @deprecated Use ped.setHeadOverlay(ped1, overlayID, index, opacity) instead
  */
-export declare function setPedHeadOverlay(ped1: number | Ped, overlayID: number, index: number, opacity: number): void;
+export declare function setPedHeadOverlay(ped1: number | IPed, overlayID: number, index: number, opacity: number): void;
 /**
  * SET_PED_INTO_VEHICLE
  *
@@ -5634,7 +5634,7 @@ export declare function setPedHeadOverlay(ped1: number | Ped, overlayID: number,
  * Hash: 0x7500C79
  * @deprecated Use ped.setIntoVehicle(ped1, vehicle, seatIndex) instead
  */
-export declare function setPedIntoVehicle(ped1: number | Ped, vehicle: number | Vehicle, seatIndex: number): void;
+export declare function setPedIntoVehicle(ped1: number | IPed, vehicle: number | IVehicle, seatIndex: number): void;
 /**
  * This native is used to set prop variation on a ped. Components, drawables and textures IDs are related to the ped model.
  *
@@ -5672,7 +5672,7 @@ export declare function setPedIntoVehicle(ped1: number | Ped, vehicle: number | 
  * Hash: 0x829F2E2
  * @deprecated Use ped.setPropIndex(ped1, componentId, drawableId, textureId, attach) instead
  */
-export declare function setPedPropIndex(ped1: number | Ped, componentId: number, drawableId: number, textureId: number, attach: boolean): void;
+export declare function setPedPropIndex(ped1: number | IPed, componentId: number, drawableId: number, textureId: number, attach: boolean): void;
 /**
  * ```
  * p1 is always 0 in R* scripts; and a quick disassembly seems to indicate that p1 is unused.
@@ -5683,7 +5683,7 @@ export declare function setPedPropIndex(ped1: number | Ped, componentId: number,
  * Hash: 0x4111BA46
  * @deprecated Use ped.setRandomComponentVariation(ped1) instead
  */
-export declare function setPedRandomComponentVariation(ped1: number | Ped): void;
+export declare function setPedRandomComponentVariation(ped1: number | IPed): void;
 /**
  * SET_PED_RANDOM_PROPS
  *
@@ -5692,7 +5692,7 @@ export declare function setPedRandomComponentVariation(ped1: number | Ped): void
  * Hash: 0xE3318E0E
  * @deprecated Use ped.setRandomProps(ped1) instead
  */
-export declare function setPedRandomProps(ped1: number | Ped): void;
+export declare function setPedRandomProps(ped1: number | IPed): void;
 /**
  * `PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 240, 1);`
  * Known values:
@@ -5702,7 +5702,7 @@ export declare function setPedRandomProps(ped1: number | Ped): void;
  * Hash: 0xCFF6FF66
  * @deprecated Use ped.setResetFlag(ped1, flagId, doReset) instead
  */
-export declare function setPedResetFlag(ped1: number | Ped, flagId: number, doReset: boolean): void;
+export declare function setPedResetFlag(ped1: number | IPed, flagId: number, doReset: boolean): void;
 /**
  * p4/p5: Unusued in TU27
  *
@@ -5717,7 +5717,7 @@ export declare function setPedResetFlag(ped1: number | Ped, flagId: number, doRe
  * Hash: 0x83CB5052
  * @deprecated Use ped.setToRagdoll(ped1, minTime, maxTime, ragdollType, bAbortIfInjured, bAbortIfDead, bForceScriptControl) instead
  */
-export declare function setPedToRagdoll(ped1: number | Ped, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void;
+export declare function setPedToRagdoll(ped1: number | IPed, minTime: number, maxTime: number, ragdollType: number, bAbortIfInjured: boolean, bAbortIfDead: boolean, bForceScriptControl: boolean): void;
 /**
  * ```cpp
  * enum eNMFallType {
@@ -5746,7 +5746,7 @@ export declare function setPedToRagdoll(ped1: number | Ped, minTime: number, max
  * Hash: 0xFA12E286
  * @deprecated Use ped.setToRagdollWithFall(ped1, minTime, maxTime, nFallType, dirX, dirY, dirZ, fGroundHeight, grab1X, grab1Y, grab1Z, grab2X, grab2Y, grab2Z) instead
  */
-export declare function setPedToRagdollWithFall(ped1: number | Ped, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void;
+export declare function setPedToRagdollWithFall(ped1: number | IPed, minTime: number, maxTime: number, nFallType: number, dirX: number, dirY: number, dirZ: number, fGroundHeight: number, grab1X: number, grab1Y: number, grab1Z: number, grab2X: number, grab2Y: number, grab2Z: number): void;
 /**
  * Used for freemode (online) characters.
  * Indices:
@@ -5787,7 +5787,7 @@ export declare function setPedToRagdollWithFall(ped1: number | Ped, minTime: num
  * Hash: 0xEC09DB1B
  * @deprecated Use ped.setEyeColor(ped1, index) instead
  */
-export declare function setPedEyeColor(ped1: number | Ped, index: number): void;
+export declare function setPedEyeColor(ped1: number | IPed, index: number): void;
 /**
  * Sets the various freemode face features, e.g. nose length, chin shape.
  * <strong>Indexes (From 0 to 19):</strong>
@@ -5821,7 +5821,7 @@ export declare function setPedEyeColor(ped1: number | Ped, index: number): void;
  * Hash: 0x6C8D4458
  * @deprecated Use ped.setFaceFeature(ped1, index, scale) instead
  */
-export declare function setPedFaceFeature(ped1: number | Ped, index: number, scale: number): void;
+export declare function setPedFaceFeature(ped1: number | IPed, index: number, scale: number): void;
 /**
  * ```
  * Used for freemode (online) characters.
@@ -5836,35 +5836,35 @@ export declare function setPedFaceFeature(ped1: number | Ped, index: number, sca
  * Hash: 0x78935A27
  * @deprecated Use ped.setHeadOverlayColor(ped1, overlayID, colorType, colorID, secondColorID) instead
  */
-export declare function setPedHeadOverlayColor(ped1: number | Ped, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
+export declare function setPedHeadOverlayColor(ped1: number | IPed, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
 /**
  * A getter for [SET_PLAYER_MELEE_WEAPON_DAMAGE_MODIFIER](#\_0x4A3DC7ECCC321032).
  *
  * Hash: 0x8689A825
  * @deprecated Use player.getMeleeWeaponDamageModifier(playerId) instead
  */
-export declare function getPlayerMeleeWeaponDamageModifier(playerId: number | string | Player): number;
+export declare function getPlayerMeleeWeaponDamageModifier(playerId: number | string | IPlayer): number;
 /**
  * A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#\_0xCE07B9F7817AADA3).
  *
  * Hash: 0x2A3D7CDA
  * @deprecated Use player.getWeaponDamageModifier(playerId) instead
  */
-export declare function getPlayerWeaponDamageModifier(playerId: number | string | Player): number;
+export declare function getPlayerWeaponDamageModifier(playerId: number | string | IPlayer): number;
 /**
  * A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#\_0x2D83BC011CA14A3C).
  *
  * Hash: 0xF1543251
  * @deprecated Use player.getWeaponDefenseModifier(playerId) instead
  */
-export declare function getPlayerWeaponDefenseModifier(playerId: number | string | Player): number;
+export declare function getPlayerWeaponDefenseModifier(playerId: number | string | IPlayer): number;
 /**
  * A getter for [\_SET_PLAYER_WEAPON_DEFENSE_MODIFIER\_2](#\_0xBCFDE9EDE4CF27DC).
  *
  * Hash: 0x986B65FF
  * @deprecated Use player.getWeaponDefenseModifier2(playerId) instead
  */
-export declare function getPlayerWeaponDefenseModifier2(playerId: number | string | Player): number;
+export declare function getPlayerWeaponDefenseModifier2(playerId: number | string | IPlayer): number;
 /**
  * Returns whether or not the specified player has enough information to start a commerce session for.
  *
@@ -5883,7 +5883,7 @@ export declare function canPlayerStartCommerceSession(playerSrc: string): boolea
  * Hash: 0x54EA5BCC
  * @deprecated Use player.clearWantedLevel(player1) instead
  */
-export declare function clearPlayerWantedLevel(player1: number | string | Player): void;
+export declare function clearPlayerWantedLevel(player1: number | string | IPlayer): void;
 /**
  * Returns whether or not the player exists
  *
@@ -6146,7 +6146,7 @@ export declare function getPlayerWantedLevel(playerSrc: string): number;
  * Hash: 0x404794CA
  * @deprecated Use player.isPedA(ped) instead
  */
-export declare function isPedAPlayer(ped: number | Ped): boolean;
+export declare function isPedAPlayer(ped: number | IPed): boolean;
 /**
  * No comment provided
  *
@@ -6245,7 +6245,7 @@ export declare function requestPlayerCommerceSession(playerSrc: string, skuId: n
  * Hash: 0xD17AFCD8
  * @deprecated Use player.setControl(player1, bHasControl, flags) instead
  */
-export declare function setPlayerControl(player1: number | string | Player, bHasControl: boolean, flags: number): void;
+export declare function setPlayerControl(player1: number | string | IPlayer, bHasControl: boolean, flags: number): void;
 /**
  * Sets the culling radius for the specified player.
  * Set to `0.0` to reset.
@@ -6264,7 +6264,7 @@ export declare function setPlayerCullingRadius(playerSrc: string, radius: number
  * Hash: 0xDFB9A2A2
  * @deprecated Use player.setInvincible(player1, bInvincible) instead
  */
-export declare function setPlayerInvincible(player1: number | string | Player, bInvincible: boolean): void;
+export declare function setPlayerInvincible(player1: number | string | IPlayer, bInvincible: boolean): void;
 /**
  * Set the model for a specific Player. Note that this will destroy the current Ped for the Player and create a new one, any reference to the old ped will be invalid after calling this.
  * As per usual, make sure to request the model first and wait until it has loaded.
@@ -6274,7 +6274,7 @@ export declare function setPlayerInvincible(player1: number | string | Player, b
  * Hash: 0x774A4C54
  * @deprecated Use player.setModel(player1, model) instead
  */
-export declare function setPlayerModel(player1: number | string | Player, model: number | string): void;
+export declare function setPlayerModel(player1: number | string | IPlayer, model: number | string): void;
 /**
  * Sets the routing bucket for the specified player.
  *
@@ -6292,7 +6292,7 @@ export declare function setPlayerRoutingBucket(playerSrc: string, bucket: number
  * Hash: 0xB7A0914B
  * @deprecated Use player.setWantedLevel(player1, wantedLevel, delayedResponse) instead
  */
-export declare function setPlayerWantedLevel(player1: number | string | Player, wantedLevel: number, delayedResponse: boolean): void;
+export declare function setPlayerWantedLevel(player1: number | string | IPlayer, wantedLevel: number, delayedResponse: boolean): void;
 /**
  * No comment provided
  *
@@ -6313,126 +6313,126 @@ export declare function getPlayerFromStateBagName(bagName: string): number;
  * Hash: 0xA886495D
  * @deprecated Use vehicle.getHeliBodyHealth(heli) instead
  */
-export declare function getHeliBodyHealth(heli: number | Vehicle): number;
+export declare function getHeliBodyHealth(heli: number | IVehicle): number;
 /**
  * This is a getter for [SET_DISABLE_HELI_EXPLODE_FROM_BODY_DAMAGE](#\_0xEDBC8405B3895CC9)
  *
  * Hash: 0x82AFC0A3
  * @deprecated Use vehicle.getHeliDisableExplodeFromBodyDamage(heli) instead
  */
-export declare function getHeliDisableExplodeFromBodyDamage(heli: number | Vehicle): boolean;
+export declare function getHeliDisableExplodeFromBodyDamage(heli: number | IVehicle): boolean;
 /**
  * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
  *
  * Hash: 0xA0FA0354
  * @deprecated Use vehicle.getHeliEngineHealth(heli) instead
  */
-export declare function getHeliEngineHealth(heli: number | Vehicle): number;
+export declare function getHeliEngineHealth(heli: number | IVehicle): number;
 /**
  * **Note** This native will always return `1000.0` unless [SET_VEHICLE_BODY_HEALTH](#\_0xB77D05AC8C78AADB), [SET_VEHICLE_ENGINE_HEALTH](#\_0x45F6D8EEF34ABEF1), or [SET_VEHICLE_PETROL_TANK_HEALTH](#\_0x70DB57649FA8D0D8) have been called with a value greater than `1000.0`.
  *
  * Hash: 0xD4EC7858
  * @deprecated Use vehicle.getHeliGasTankHealth(heli) instead
  */
-export declare function getHeliGasTankHealth(heli: number | Vehicle): number;
+export declare function getHeliGasTankHealth(heli: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0xC37D668
  * @deprecated Use vehicle.getHeliMainRotorDamageScale(heli) instead
  */
-export declare function getHeliMainRotorDamageScale(heli: number | Vehicle): number;
+export declare function getHeliMainRotorDamageScale(heli: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x1944AC95
  * @deprecated Use vehicle.getHeliPitchControl(heli) instead
  */
-export declare function getHeliPitchControl(heli: number | Vehicle): number;
+export declare function getHeliPitchControl(heli: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0xC40161E2
  * @deprecated Use vehicle.getHeliRearRotorDamageScale(heli) instead
  */
-export declare function getHeliRearRotorDamageScale(heli: number | Vehicle): number;
+export declare function getHeliRearRotorDamageScale(heli: number | IVehicle): number;
 /**
  * This native is a getter for [SET_HELI_TAIL_ROTOR_HEALTH](#\_0xFE205F38AAA58E5B)
  *
  * Hash: 0x33EE6E2B
  * @deprecated Use vehicle.getHeliRearRotorHealth(vehicle1) instead
  */
-export declare function getHeliRearRotorHealth(vehicle1: number | Vehicle): number;
+export declare function getHeliRearRotorHealth(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x12948DE9
  * @deprecated Use vehicle.getHeliRollControl(heli) instead
  */
-export declare function getHeliRollControl(heli: number | Vehicle): number;
+export declare function getHeliRollControl(heli: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x22239130
  * @deprecated Use vehicle.getHeliTailRotorDamageScale(heli) instead
  */
-export declare function getHeliTailRotorDamageScale(heli: number | Vehicle): number;
+export declare function getHeliTailRotorDamageScale(heli: number | IVehicle): number;
 /**
  * **Note**: This native is deprecated, please use [`GET_HELI_REAR_ROTOR_HEALTH`](#\_0x33EE6E2B) instead.
  *
  * Hash: 0xA41BC13D
  * @deprecated Use vehicle.getHeliTailRotorHealth(vehicle1) instead
  */
-export declare function getHeliTailRotorHealth(vehicle1: number | Vehicle): number;
+export declare function getHeliTailRotorHealth(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x8E86238D
  * @deprecated Use vehicle.getHeliThrottleControl(heli) instead
  */
-export declare function getHeliThrottleControl(heli: number | Vehicle): number;
+export declare function getHeliThrottleControl(heli: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x8FDC0768
  * @deprecated Use vehicle.getHeliYawControl(heli) instead
  */
-export declare function getHeliYawControl(heli: number | Vehicle): number;
+export declare function getHeliYawControl(heli: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x3EFE38D1
  * @deprecated Use vehicle.getIsHeliEngineRunning(heli) instead
  */
-export declare function getIsHeliEngineRunning(heli: number | Vehicle): boolean;
+export declare function getIsHeliEngineRunning(heli: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x1C939E87
  * @deprecated Use vehicle.getThrusterSideRcsThrottle(jetpack) instead
  */
-export declare function getThrusterSideRcsThrottle(jetpack: number | Vehicle): number;
+export declare function getThrusterSideRcsThrottle(jetpack: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x94E24C96
  * @deprecated Use vehicle.getThrusterThrottle(jetpack) instead
  */
-export declare function getThrusterThrottle(jetpack: number | Vehicle): number;
+export declare function getThrusterThrottle(jetpack: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x456E34A
  * @deprecated Use vehicle.getTrainBackwardCarriage(train) instead
  */
-export declare function getTrainBackwardCarriage(train: number | Vehicle): number;
+export declare function getTrainBackwardCarriage(train: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x24DC88D9
  * @deprecated Use vehicle.getTrainForwardCarriage(train) instead
  */
-export declare function getTrainForwardCarriage(train: number | Vehicle): number;
+export declare function getTrainForwardCarriage(train: number | IVehicle): number;
 /**
  * This is a getter for the client-side native [`START_VEHICLE_HORN`](#\_0x9C8C6504B5B63D2C), which allows you to return the horn type of the vehicle.
  *
@@ -6450,84 +6450,84 @@ export declare function getTrainForwardCarriage(train: number | Vehicle): number
  * Hash: 0xDEA49773
  * @deprecated Use vehicle.getHornType(vehicle1) instead
  */
-export declare function getVehicleHornType(vehicle1: number | Vehicle): number;
+export declare function getVehicleHornType(vehicle1: number | IVehicle): number;
 /**
  * This is a getter for [SET_HELI_TAIL_EXPLODE_THROW_DASHBOARD](#\_0x3EC8BF18AA453FE9)
  *
  * Hash: 0x23E46BD7
  * @deprecated Use vehicle.isHeliTailBoomBreakable(heli) instead
  */
-export declare function isHeliTailBoomBreakable(heli: number | Vehicle): boolean;
+export declare function isHeliTailBoomBreakable(heli: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x2C59F987
  * @deprecated Use vehicle.isHeliTailBoomBroken(heli) instead
  */
-export declare function isHeliTailBoomBroken(heli: number | Vehicle): boolean;
+export declare function isHeliTailBoomBroken(heli: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0xFA9336E5
  * @deprecated Use vehicle.isTrainCaboose(train) instead
  */
-export declare function isTrainCaboose(train: number | Vehicle): boolean;
+export declare function isTrainCaboose(train: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x77CC80DC
  * @deprecated Use vehicle.doesTrainStopAtStations(train) instead
  */
-export declare function doesTrainStopAtStations(train: number | Vehicle): boolean;
+export declare function doesTrainStopAtStations(train: number | IVehicle): boolean;
 /**
  * Gets the trains desired speed.
  *
  * Hash: 0xA4921EF5
  * @deprecated Use vehicle.getTrainCruiseSpeed(train) instead
  */
-export declare function getTrainCruiseSpeed(train: number | Vehicle): number;
+export declare function getTrainCruiseSpeed(train: number | IVehicle): number;
 /**
  * Gets the direction the train is facing
  *
  * Hash: 0x8DAF79B6
  * @deprecated Use vehicle.getTrainDirection(train) instead
  */
-export declare function getTrainDirection(train: number | Vehicle): boolean;
+export declare function getTrainDirection(train: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x81B50033
  * @deprecated Use vehicle.getTrainState(train) instead
  */
-export declare function getTrainState(train: number | Vehicle): number;
+export declare function getTrainState(train: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x9AA339D
  * @deprecated Use vehicle.getTrainTrackIndex(train) instead
  */
-export declare function getTrainTrackIndex(train: number | Vehicle): number;
+export declare function getTrainTrackIndex(train: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x483B013C
  * @deprecated Use vehicle.getHandbrake(vehicle1) instead
  */
-export declare function getVehicleHandbrake(vehicle1: number | Vehicle): boolean;
+export declare function getVehicleHandbrake(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x1382FCEA
  * @deprecated Use vehicle.getSteeringAngle(vehicle1) instead
  */
-export declare function getVehicleSteeringAngle(vehicle1: number | Vehicle): number;
+export declare function getVehicleSteeringAngle(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0xBB340D04
  * @deprecated Use vehicle.isEngineStarting(vehicle1) instead
  */
-export declare function isVehicleEngineStarting(vehicle1: number | Vehicle): boolean;
+export declare function isVehicleEngineStarting(vehicle1: number | IVehicle): boolean;
 /**
  * Creates a vehicle with the specified model at the specified position. This vehicle will initially be owned by the creating
  * script as a mission entity, and the model should be loaded already (e.g. using REQUEST_MODEL).
@@ -6558,14 +6558,14 @@ export declare function createVehicleServerSetter(modelHash: number | string, _t
  * Hash: 0x523BA3DA
  * @deprecated Use vehicle.deleteTrain(entity) instead
  */
-export declare function deleteTrain(entity: number | Entity): void;
+export declare function deleteTrain(entity: number | IEntity): void;
 /**
  * No comment provided
  *
  * Hash: 0x43F15989
  * @deprecated Use vehicle.doesBoatSinkWhenWrecked(vehicle1) instead
  */
-export declare function doesBoatSinkWhenWrecked(vehicle1: number | Vehicle): boolean;
+export declare function doesBoatSinkWhenWrecked(vehicle1: number | IVehicle): boolean;
 /**
  * Returns all vehicle handles known to the server.
  * The data returned adheres to the following layout:
@@ -6584,91 +6584,91 @@ export declare function getAllVehicles(): number;
  * Hash: 0x7DC6D022
  * @deprecated Use vehicle.getIsEngineRunning(vehicle1) instead
  */
-export declare function getIsVehicleEngineRunning(vehicle1: number | Vehicle): boolean;
+export declare function getIsVehicleEngineRunning(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0xD7EC8760
  * @deprecated Use vehicle.getIsPrimaryColourCustom(vehicle1) instead
  */
-export declare function getIsVehiclePrimaryColourCustom(vehicle1: number | Vehicle): boolean;
+export declare function getIsVehiclePrimaryColourCustom(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x288AD228
  * @deprecated Use vehicle.getIsSecondaryColourCustom(vehicle1) instead
  */
-export declare function getIsVehicleSecondaryColourCustom(vehicle1: number | Vehicle): boolean;
+export declare function getIsVehicleSecondaryColourCustom(vehicle1: number | IVehicle): boolean;
 /**
  * See the client-side [GET_LANDING_GEAR_STATE](#\_0x9B0F3DCA3DB0F4CD) native for a description of landing gear states.
  *
  * Hash: 0xA6F02670
  * @deprecated Use vehicle.getLandingGearState(vehicle1) instead
  */
-export declare function getLandingGearState(vehicle1: number | Vehicle): number;
+export declare function getLandingGearState(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x95070FA
  * @deprecated Use vehicle.getTrainCarriageEngine(train) instead
  */
-export declare function getTrainCarriageEngine(train: number | Vehicle): number;
+export declare function getTrainCarriageEngine(train: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x4B8285CF
  * @deprecated Use vehicle.getTrainCarriageIndex(train) instead
  */
-export declare function getTrainCarriageIndex(train: number | Vehicle): number;
+export declare function getTrainCarriageIndex(train: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x2B2FCC28
  * @deprecated Use vehicle.getBodyHealth(vehicle1) instead
  */
-export declare function getVehicleBodyHealth(vehicle1: number | Vehicle): number;
+export declare function getVehicleBodyHealth(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x40D82D88
  * @deprecated Use vehicle.getColours(vehicle1) instead
  */
-export declare function getVehicleColours(vehicle1: number | Vehicle): [number, number];
+export declare function getVehicleColours(vehicle1: number | IVehicle): [number, number];
 /**
  * No comment provided
  *
  * Hash: 0x1C2B9FEF
  * @deprecated Use vehicle.getCustomPrimaryColour(vehicle1) instead
  */
-export declare function getVehicleCustomPrimaryColour(vehicle1: number | Vehicle): [number, number, number];
+export declare function getVehicleCustomPrimaryColour(vehicle1: number | IVehicle): [number, number, number];
 /**
  * No comment provided
  *
  * Hash: 0x3FF247A2
  * @deprecated Use vehicle.getCustomSecondaryColour(vehicle1) instead
  */
-export declare function getVehicleCustomSecondaryColour(vehicle1: number | Vehicle): [number, number, number];
+export declare function getVehicleCustomSecondaryColour(vehicle1: number | IVehicle): [number, number, number];
 /**
  * No comment provided
  *
  * Hash: 0xA0DBD08D
  * @deprecated Use vehicle.getDashboardColour(vehicle1) instead
  */
-export declare function getVehicleDashboardColour(vehicle1: number | Vehicle): number;
+export declare function getVehicleDashboardColour(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0xFD15C065
  * @deprecated Use vehicle.getDirtLevel(vehicle1) instead
  */
-export declare function getVehicleDirtLevel(vehicle1: number | Vehicle): number;
+export declare function getVehicleDirtLevel(vehicle1: number | IVehicle): number;
 /**
  * Currently it only works when set to "all players".
  *
  * Hash: 0x1DC50247
  * @deprecated Use vehicle.getDoorsLockedForPlayer(vehicle1) instead
  */
-export declare function getVehicleDoorsLockedForPlayer(vehicle1: number | Vehicle): number;
+export declare function getVehicleDoorsLockedForPlayer(vehicle1: number | IVehicle): number;
 /**
  * ```lua
  * enum_VehicleLockStatus = {
@@ -6689,84 +6689,84 @@ export declare function getVehicleDoorsLockedForPlayer(vehicle1: number | Vehicl
  * Hash: 0xD72CEF2
  * @deprecated Use vehicle.getDoorLockStatus(vehicle1) instead
  */
-export declare function getVehicleDoorLockStatus(vehicle1: number | Vehicle): number;
+export declare function getVehicleDoorLockStatus(vehicle1: number | IVehicle): number;
 /**
  * Returns the open position of the specified door on the target vehicle.
  *
  * Hash: 0x6E35C49C
  * @deprecated Use vehicle.getDoorStatus(vehicle1, doorIndex) instead
  */
-export declare function getVehicleDoorStatus(vehicle1: number | Vehicle, doorIndex: number): number;
+export declare function getVehicleDoorStatus(vehicle1: number | IVehicle, doorIndex: number): number;
 /**
  * No comment provided
  *
  * Hash: 0x8880038A
  * @deprecated Use vehicle.getEngineHealth(vehicle1) instead
  */
-export declare function getVehicleEngineHealth(vehicle1: number | Vehicle): number;
+export declare function getVehicleEngineHealth(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x80E4659B
  * @deprecated Use vehicle.getExtraColours(vehicle1) instead
  */
-export declare function getVehicleExtraColours(vehicle1: number | Vehicle): [number, number];
+export declare function getVehicleExtraColours(vehicle1: number | IVehicle): [number, number];
 /**
  * Gets the flight nozzel position for the specified vehicle. See the client-side [\_GET_VEHICLE_FLIGHT_NOZZLE_POSITION](#\_0xDA62027C8BDB326E) native for usage examples.
  *
  * Hash: 0xAD40AD55
  * @deprecated Use vehicle.getFlightNozzlePosition(vehicle1) instead
  */
-export declare function getVehicleFlightNozzlePosition(vehicle1: number | Vehicle): number;
+export declare function getVehicleFlightNozzlePosition(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0xD7147656
  * @deprecated Use vehicle.getHeadlightsColour(vehicle1) instead
  */
-export declare function getVehicleHeadlightsColour(vehicle1: number | Vehicle): number;
+export declare function getVehicleHeadlightsColour(vehicle1: number | IVehicle): number;
 /**
  * Gets the lock on state for the specified vehicle. See the client-side [GET_VEHICLE_HOMING_LOCKON_STATE](#\_0xE6B0E8CFC3633BF0) native for a description of lock on states.
  *
  * Hash: 0xFBDE9FD8
  * @deprecated Use vehicle.getHomingLockonState(vehicle1) instead
  */
-export declare function getVehicleHomingLockonState(vehicle1: number | Vehicle): number;
+export declare function getVehicleHomingLockonState(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0xCCFF3B6E
  * @deprecated Use vehicle.getInteriorColour(vehicle1) instead
  */
-export declare function getVehicleInteriorColour(vehicle1: number | Vehicle): number;
+export declare function getVehicleInteriorColour(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x7C278621
  * @deprecated Use vehicle.getLightsState(vehicle1) instead
  */
-export declare function getVehicleLightsState(vehicle1: number | Vehicle): [boolean, boolean, boolean];
+export declare function getVehicleLightsState(vehicle1: number | IVehicle): [boolean, boolean, boolean];
 /**
  * No comment provided
  *
  * Hash: 0xEC82A51D
  * @deprecated Use vehicle.getLivery(vehicle1) instead
  */
-export declare function getVehicleLivery(vehicle1: number | Vehicle): number;
+export declare function getVehicleLivery(vehicle1: number | IVehicle): number;
 /**
  * Gets the vehicle that is locked on to for the specified vehicle.
  *
  * Hash: 0x4A557117
  * @deprecated Use vehicle.getLockOnTarget(vehicle1) instead
  */
-export declare function getVehicleLockOnTarget(vehicle1: number | Vehicle): number;
+export declare function getVehicleLockOnTarget(vehicle1: number | IVehicle): number;
 /**
  * Getter to check the neon colour of a vehicle. This native is the server side getter of [GET_VEHICLE_NEON_LIGHTS_COLOUR](#\_0x7619EEE8C886757F).
  *
  * Hash: 0xD9319DCB
  * @deprecated Use vehicle.getNeonColour(vehicle1) instead
  */
-export declare function getVehicleNeonColour(vehicle1: number | Vehicle): [number, number, number];
+export declare function getVehicleNeonColour(vehicle1: number | IVehicle): [number, number, number];
 /**
  * Getter to check if one of the neon lights of a vehicle is enabled. This native is the server side getter of [IS_VEHICLE_NEON_LIGHT_ENABLED](#\_0x8C4B92553E4766A5).
  *
@@ -6783,133 +6783,133 @@ export declare function getVehicleNeonColour(vehicle1: number | Vehicle): [numbe
  * Hash: 0x684BDBF2
  * @deprecated Use vehicle.getNeonEnabled(vehicle1, neonIndex) instead
  */
-export declare function getVehicleNeonEnabled(vehicle1: number | Vehicle, neonIndex: number): boolean;
+export declare function getVehicleNeonEnabled(vehicle1: number | IVehicle, neonIndex: number): boolean;
 /**
  * No comment provided
  *
  * Hash: 0xE8522D58
  * @deprecated Use vehicle.getNumberPlateText(vehicle1) instead
  */
-export declare function getVehicleNumberPlateText(vehicle1: number | Vehicle): string;
+export declare function getVehicleNumberPlateText(vehicle1: number | IVehicle): string;
 /**
  * No comment provided
  *
  * Hash: 0x499747B6
  * @deprecated Use vehicle.getNumberPlateTextIndex(vehicle1) instead
  */
-export declare function getVehicleNumberPlateTextIndex(vehicle1: number | Vehicle): number;
+export declare function getVehicleNumberPlateTextIndex(vehicle1: number | IVehicle): number;
 /**
  * Gets the vehicle the specified Ped is/was in depending on bool value. This native is used server side when using OneSync.
  *
  * Hash: 0xAFE92319
  * @deprecated Use vehicle.getPedIsIn(ped, lastVehicle) instead
  */
-export declare function getVehiclePedIsIn(ped: number | Ped, lastVehicle: boolean): number;
+export declare function getVehiclePedIsIn(ped: number | IPed, lastVehicle: boolean): number;
 /**
  * No comment provided
  *
  * Hash: 0xE41595CE
  * @deprecated Use vehicle.getPetrolTankHealth(vehicle1) instead
  */
-export declare function getVehiclePetrolTankHealth(vehicle1: number | Vehicle): number;
+export declare function getVehiclePetrolTankHealth(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x57037960
  * @deprecated Use vehicle.getRadioStationIndex(vehicle1) instead
  */
-export declare function getVehicleRadioStationIndex(vehicle1: number | Vehicle): number;
+export declare function getVehicleRadioStationIndex(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x872CF42
  * @deprecated Use vehicle.getRoofLivery(vehicle1) instead
  */
-export declare function getVehicleRoofLivery(vehicle1: number | Vehicle): number;
+export declare function getVehicleRoofLivery(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x9963D5F9
  * @deprecated Use vehicle.getTotalRepairs(vehicle1) instead
  */
-export declare function getVehicleTotalRepairs(vehicle1: number | Vehicle): number;
+export declare function getVehicleTotalRepairs(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x75280015
  * @deprecated Use vehicle.getTyreSmokeColor(vehicle1) instead
  */
-export declare function getVehicleTyreSmokeColor(vehicle1: number | Vehicle): [number, number, number];
+export declare function getVehicleTyreSmokeColor(vehicle1: number | IVehicle): [number, number, number];
 /**
  * No comment provided
  *
  * Hash: 0xDA58D7AE
  * @deprecated Use vehicle.getWheelType(vehicle1) instead
  */
-export declare function getVehicleWheelType(vehicle1: number | Vehicle): number;
+export declare function getVehicleWheelType(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0x13D53892
  * @deprecated Use vehicle.getWindowTint(vehicle1) instead
  */
-export declare function getVehicleWindowTint(vehicle1: number | Vehicle): number;
+export declare function getVehicleWindowTint(vehicle1: number | IVehicle): number;
 /**
  * No comment provided
  *
  * Hash: 0xB8AF3137
  * @deprecated Use vehicle.hasBeenDamagedByBullets(vehicle1) instead
  */
-export declare function hasVehicleBeenDamagedByBullets(vehicle1: number | Vehicle): boolean;
+export declare function hasVehicleBeenDamagedByBullets(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0xE4E83A5B
  * @deprecated Use vehicle.hasBeenOwnedByPlayer(vehicle1) instead
  */
-export declare function hasVehicleBeenOwnedByPlayer(vehicle1: number | Vehicle): boolean;
+export declare function hasVehicleBeenOwnedByPlayer(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0xD5C39EE6
  * @deprecated Use vehicle.isBoatAnchoredAndFrozen(vehicle1) instead
  */
-export declare function isBoatAnchoredAndFrozen(vehicle1: number | Vehicle): boolean;
+export declare function isBoatAnchoredAndFrozen(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x9049DB44
  * @deprecated Use vehicle.isBoatWrecked(vehicle1) instead
  */
-export declare function isBoatWrecked(vehicle1: number | Vehicle): boolean;
+export declare function isBoatWrecked(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x42098B5
  * @deprecated Use vehicle.isExtraTurnedOn(vehicle1, extraId) instead
  */
-export declare function isVehicleExtraTurnedOn(vehicle1: number | Vehicle, extraId: number): boolean;
+export declare function isVehicleExtraTurnedOn(vehicle1: number | IVehicle, extraId: number): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x25EB5873
  * @deprecated Use vehicle.isSirenOn(vehicle1) instead
  */
-export declare function isVehicleSirenOn(vehicle1: number | Vehicle): boolean;
+export declare function isVehicleSirenOn(vehicle1: number | IVehicle): boolean;
 /**
  * No comment provided
  *
  * Hash: 0x48C80210
  * @deprecated Use vehicle.isTyreBurst(vehicle1, wheelID, completely) instead
  */
-export declare function isVehicleTyreBurst(vehicle1: number | Vehicle, wheelID: number, completely: boolean): boolean;
+export declare function isVehicleTyreBurst(vehicle1: number | IVehicle, wheelID: number, completely: boolean): boolean;
 /**
  * See the client-side [IS_VEHICLE_WINDOW_INTACT](#\_0x46E571A0E20D01F1) for a window indexes list.
  *
  * Hash: 0xAC4EF23D
  * @deprecated Use vehicle.isWindowIntact(vehicle1, windowIndex) instead
  */
-export declare function isVehicleWindowIntact(vehicle1: number | Vehicle, windowIndex: number): boolean;
+export declare function isVehicleWindowIntact(vehicle1: number | IVehicle, windowIndex: number): boolean;
 /**
  * SET_VEHICLE_ALARM
  *
@@ -6918,7 +6918,7 @@ export declare function isVehicleWindowIntact(vehicle1: number | Vehicle, window
  * Hash: 0x24877D84
  * @deprecated Use vehicle.setAlarm(vehicle1, state) instead
  */
-export declare function setVehicleAlarm(vehicle1: number | Vehicle, state: boolean): void;
+export declare function setVehicleAlarm(vehicle1: number | IVehicle, state: boolean): void;
 /**
  * ```
  * p2 often set to 1000.0 in the decompiled scripts.
@@ -6929,7 +6929,7 @@ export declare function setVehicleAlarm(vehicle1: number | Vehicle, state: boole
  * Hash: 0x920C2517
  * @deprecated Use vehicle.setBodyHealth(vehicle1, value) instead
  */
-export declare function setVehicleBodyHealth(vehicle1: number | Vehicle, value: number): void;
+export declare function setVehicleBodyHealth(vehicle1: number | IVehicle, value: number): void;
 /**
  * colorPrimary & colorSecondary are the paint indexes for the vehicle.
  * For a list of valid paint indexes, view: pastebin.com/pwHci0xK
@@ -6939,7 +6939,7 @@ export declare function setVehicleBodyHealth(vehicle1: number | Vehicle, value: 
  * Hash: 0x57F24253
  * @deprecated Use vehicle.setColours(vehicle1, colorPrimary, colorSecondary) instead
  */
-export declare function setVehicleColours(vehicle1: number | Vehicle, colorPrimary: number, colorSecondary: number): void;
+export declare function setVehicleColours(vehicle1: number | IVehicle, colorPrimary: number, colorSecondary: number): void;
 /**
  * Sets the selected vehicle's colors to their default value (specific variant specified using the colorCombination parameter).
  * Range of possible values for colorCombination is currently unknown, I couldn't find where these values are stored either (Disquse's guess was vehicles.meta but I haven't seen it in there.)
@@ -6949,7 +6949,7 @@ export declare function setVehicleColours(vehicle1: number | Vehicle, colorPrima
  * Hash: 0xA557AEAD
  * @deprecated Use vehicle.setColourCombination(vehicle1, colorCombination) instead
  */
-export declare function setVehicleColourCombination(vehicle1: number | Vehicle, colorCombination: number): void;
+export declare function setVehicleColourCombination(vehicle1: number | IVehicle, colorCombination: number): void;
 /**
  * ```
  * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -6960,7 +6960,7 @@ export declare function setVehicleColourCombination(vehicle1: number | Vehicle, 
  * Hash: 0x8DF9F9BC
  * @deprecated Use vehicle.setCustomPrimaryColour(vehicle1, r, g, b) instead
  */
-export declare function setVehicleCustomPrimaryColour(vehicle1: number | Vehicle, r: number, g: number, b: number): void;
+export declare function setVehicleCustomPrimaryColour(vehicle1: number | IVehicle, r: number, g: number, b: number): void;
 /**
  * ```
  * p1, p2, p3 are RGB values for color (255,0,0 for Red, ect)
@@ -6971,7 +6971,7 @@ export declare function setVehicleCustomPrimaryColour(vehicle1: number | Vehicle
  * Hash: 0x9D77259E
  * @deprecated Use vehicle.setCustomSecondaryColour(vehicle1, r, g, b) instead
  */
-export declare function setVehicleCustomSecondaryColour(vehicle1: number | Vehicle, r: number, g: number, b: number): void;
+export declare function setVehicleCustomSecondaryColour(vehicle1: number | IVehicle, r: number, g: number, b: number): void;
 /**
  * Sets the dirt level of the passed vehicle.
  *
@@ -6980,7 +6980,7 @@ export declare function setVehicleCustomSecondaryColour(vehicle1: number | Vehic
  * Hash: 0x2B39128B
  * @deprecated Use vehicle.setDirtLevel(vehicle1, dirtLevel) instead
  */
-export declare function setVehicleDirtLevel(vehicle1: number | Vehicle, dirtLevel: number): void;
+export declare function setVehicleDirtLevel(vehicle1: number | IVehicle, dirtLevel: number): void;
 /**
  * Locks the doors of a specified vehicle to a defined lock state, affecting how players and NPCs can interact with the vehicle.
  *
@@ -7020,7 +7020,7 @@ export declare function setVehicleDirtLevel(vehicle1: number | Vehicle, dirtLeve
  * Hash: 0x4CDD35D0
  * @deprecated Use vehicle.setDoorsLocked(vehicle1, doorLockStatus) instead
  */
-export declare function setVehicleDoorsLocked(vehicle1: number | Vehicle, doorLockStatus: number): void;
+export declare function setVehicleDoorsLocked(vehicle1: number | IVehicle, doorLockStatus: number): void;
 /**
  * See eDoorId declared in [`SET_VEHICLE_DOOR_SHUT`](#\_0x93D9BD300D7789E5)
  *
@@ -7029,7 +7029,7 @@ export declare function setVehicleDoorsLocked(vehicle1: number | Vehicle, doorLo
  * Hash: 0x8147FEA7
  * @deprecated Use vehicle.setDoorBroken(vehicle1, doorIndex, deleteDoor) instead
  */
-export declare function setVehicleDoorBroken(vehicle1: number | Vehicle, doorIndex: number, deleteDoor: boolean): void;
+export declare function setVehicleDoorBroken(vehicle1: number | IVehicle, doorIndex: number, deleteDoor: boolean): void;
 /**
  * SET_VEHICLE_NUMBER_PLATE_TEXT
  *
@@ -7038,7 +7038,7 @@ export declare function setVehicleDoorBroken(vehicle1: number | Vehicle, doorInd
  * Hash: 0x400F9556
  * @deprecated Use vehicle.setNumberPlateText(vehicle1, plateText) instead
  */
-export declare function setVehicleNumberPlateText(vehicle1: number | Vehicle, plateText: string): void;
+export declare function setVehicleNumberPlateText(vehicle1: number | IVehicle, plateText: string): void;
 /**
  * Returns the type of the passed vehicle.
  *
@@ -7058,7 +7058,7 @@ export declare function setVehicleNumberPlateText(vehicle1: number | Vehicle, pl
  * Hash: 0xA273060E
  * @deprecated Use vehicle.getType(vehicle1) instead
  */
-export declare function getVehicleType(vehicle1: number | Vehicle): string;
+export declare function getVehicleType(vehicle1: number | IVehicle): string;
 /**
  * GIVE_WEAPON_COMPONENT_TO_PED
  *
@@ -7067,7 +7067,7 @@ export declare function getVehicleType(vehicle1: number | Vehicle): string;
  * Hash: 0x3E1E286D
  * @deprecated Use weapon.giveComponentToPed(ped, weaponHash, componentHash) instead
  */
-export declare function giveWeaponComponentToPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void;
+export declare function giveWeaponComponentToPed(ped: number | IPed, weaponHash: number | string, componentHash: number | string): void;
 /**
  * GIVE_WEAPON_TO_PED
  *
@@ -7076,7 +7076,7 @@ export declare function giveWeaponComponentToPed(ped: number | Ped, weaponHash: 
  * Hash: 0xC4D88A85
  * @deprecated Use weapon.giveToPed(ped, weaponHash, ammoCount, isHidden, bForceInHand) instead
  */
-export declare function giveWeaponToPed(ped: number | Ped, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void;
+export declare function giveWeaponToPed(ped: number | IPed, weaponHash: number | string, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void;
 /**
  * Parameter `p1` does not seem to be used or referenced in game binaries.\
  * **Note:** When called for networked entities, a `CRemoveAllWeaponsEvent` will be created per request.
@@ -7086,7 +7086,7 @@ export declare function giveWeaponToPed(ped: number | Ped, weaponHash: number | 
  * Hash: 0xA44CE817
  * @deprecated Use weapon.removeAllPeds(ped) instead
  */
-export declare function removeAllPedWeapons(ped: number | Ped): void;
+export declare function removeAllPedWeapons(ped: number | IPed): void;
 /**
  * REMOVE_WEAPON_COMPONENT_FROM_PED
  *
@@ -7095,7 +7095,7 @@ export declare function removeAllPedWeapons(ped: number | Ped): void;
  * Hash: 0x412AA00D
  * @deprecated Use weapon.removeComponentFromPed(ped, weaponHash, componentHash) instead
  */
-export declare function removeWeaponComponentFromPed(ped: number | Ped, weaponHash: number | string, componentHash: number | string): void;
+export declare function removeWeaponComponentFromPed(ped: number | IPed, weaponHash: number | string, componentHash: number | string): void;
 /**
  * ```
  * This native removes a specified weapon from your selected ped.
@@ -7113,7 +7113,7 @@ export declare function removeWeaponComponentFromPed(ped: number | Ped, weaponHa
  * Hash: 0x9C37F220
  * @deprecated Use weapon.removeFromPed(ped, weaponHash) instead
  */
-export declare function removeWeaponFromPed(ped: number | Ped, weaponHash: number | string): void;
+export declare function removeWeaponFromPed(ped: number | IPed, weaponHash: number | string): void;
 /**
  * No comment provided
  *
@@ -7127,14 +7127,14 @@ export declare function networkGetEntityFromNetworkId(netId: number): number;
  * Hash: 0x1E546224
  * @deprecated Use network.getFirstEntityOwner(entity) instead
  */
-export declare function networkGetFirstEntityOwner(entity: number | Entity): number;
+export declare function networkGetFirstEntityOwner(entity: number | IEntity): number;
 /**
  * No comment provided
  *
  * Hash: 0x9E35DAB6
  * @deprecated Use network.getNetworkIdFromEntity(entity) instead
  */
-export declare function networkGetNetworkIdFromEntity(entity: number | Entity): number;
+export declare function networkGetNetworkIdFromEntity(entity: number | IEntity): number;
 /**
  * No comment provided
  *
@@ -7148,7 +7148,7 @@ export declare function networkGetVoiceProximityOverrideForPlayer(playerSrc: str
  * Hash: 0x526FEE31
  * @deprecated Use network.getEntityOwner(entity) instead
  */
-export declare function networkGetEntityOwner(entity: number | Entity): number;
+export declare function networkGetEntityOwner(entity: number | IEntity): number;
 /**
  * No comment provided
  *
@@ -7479,7 +7479,7 @@ export declare function setResourceKvpNoSync(key: string, value: string): void;
  * Hash: 0xDE3316AB
  * @deprecated Use task.clearPeds(ped) instead
  */
-export declare function clearPedTasks(ped: number | Ped): void;
+export declare function clearPedTasks(ped: number | IPed): void;
 /**
  * Immediately stops the pedestrian from whatever it's doing. The difference between this and [CLEAR_PED_TASKS](#\_0xE1EF3C1216AFF2CD) is that this one teleports the ped but does not change the position of the ped.
  *
@@ -7488,7 +7488,7 @@ export declare function clearPedTasks(ped: number | Ped): void;
  * Hash: 0xBC045625
  * @deprecated Use task.clearPedsImmediately(ped) instead
  */
-export declare function clearPedTasksImmediately(ped: number | Ped): void;
+export declare function clearPedTasksImmediately(ped: number | IPed): void;
 /**
  * ```
  * Makes the specified ped attack the target ped.
@@ -7501,7 +7501,7 @@ export declare function clearPedTasksImmediately(ped: number | Ped): void;
  * Hash: 0xCB0D8932
  * @deprecated Use task.combatPed(ped, targetPed) instead
  */
-export declare function taskCombatPed(ped: number | Ped, targetPed: number | Ped): void;
+export declare function taskCombatPed(ped: number | IPed, targetPed: number | IPed): void;
 /**
  * ```
  * Example:
@@ -7517,7 +7517,7 @@ export declare function taskCombatPed(ped: number | Ped, targetPed: number | Ped
  * Hash: 0x2B84D1C4
  * @deprecated Use task.driveBy(driverPed, targetPed, targetVehicle, targetX, targetY, targetZ, distanceToShoot, pedAccuracy, firingPattern) instead
  */
-export declare function taskDriveBy(driverPed: number | Ped, targetPed: number | Ped, targetVehicle: number | Vehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void;
+export declare function taskDriveBy(driverPed: number | IPed, targetPed: number | IPed, targetVehicle: number | IVehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, firingPattern: number | string): void;
 /**
  * ```
  * speed 1.0 = walk, 2.0 = run
@@ -7530,7 +7530,7 @@ export declare function taskDriveBy(driverPed: number | Ped, targetPed: number |
  * Hash: 0xB8689B4E
  * @deprecated Use task.enterVehicle(ped, vehicle, timeout, seatIndex, speed, flag) instead
  */
-export declare function taskEnterVehicle(ped: number | Ped, vehicle: number | Vehicle, timeout: number, seatIndex: number, speed: number, flag: number): void;
+export declare function taskEnterVehicle(ped: number | IPed, vehicle: number | IVehicle, timeout: number, seatIndex: number, speed: number, flag: number): void;
 /**
  * TASK_EVERYONE_LEAVE_VEHICLE
  *
@@ -7539,7 +7539,7 @@ export declare function taskEnterVehicle(ped: number | Ped, vehicle: number | Ve
  * Hash: 0xC1971F30
  * @deprecated Use task.everyoneLeaveVehicle(vehicle) instead
  */
-export declare function taskEveryoneLeaveVehicle(vehicle: number | Vehicle): void;
+export declare function taskEveryoneLeaveVehicle(vehicle: number | IVehicle): void;
 /**
  * TASK_GO_STRAIGHT_TO_COORD
  *
@@ -7548,7 +7548,7 @@ export declare function taskEveryoneLeaveVehicle(vehicle: number | Vehicle): voi
  * Hash: 0x80A9E7A7
  * @deprecated Use task.goStraightToCoord(ped, pos, speed, timeout, targetHeading, distanceToSlide) instead
  */
-export declare function taskGoStraightToCoord(ped: number | Ped, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
+export declare function taskGoStraightToCoord(ped: number | IPed, pos: Vector3, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
 /**
  * Tells a ped to go to a coord by any means.
  *
@@ -7607,7 +7607,7 @@ export declare function taskGoStraightToCoord(ped: number | Ped, pos: Vector3, s
  * Hash: 0xF91DF93B
  * @deprecated Use task.goToCoordAnyMeans(ped, pos, fMoveBlendRatio, vehicle, bUseLongRangeVehiclePathing, drivingFlags, fMaxRangeToShootTargets) instead
  */
-export declare function taskGoToCoordAnyMeans(ped: number | Ped, pos: Vector3, fMoveBlendRatio: number, vehicle: number | Vehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void;
+export declare function taskGoToCoordAnyMeans(ped: number | IPed, pos: Vector3, fMoveBlendRatio: number, vehicle: number | IVehicle, bUseLongRangeVehiclePathing: boolean, drivingFlags: number, fMaxRangeToShootTargets: number): void;
 /**
  * ```
  * The entity will move towards the target until time is over (duration) or get in target's range (distance). p5 and p6 are unknown, but you could leave p5 = 1073741824 or 100 or even 0 (didn't see any difference but on the decompiled scripts, they use 1073741824 mostly) and p6 = 0
@@ -7621,7 +7621,7 @@ export declare function taskGoToCoordAnyMeans(ped: number | Ped, pos: Vector3, f
  * Hash: 0x374827C2
  * @deprecated Use task.goToEntity(entity, target, duration, distance, speed) instead
  */
-export declare function taskGoToEntity(entity: number | Entity, target: number | Entity, duration: number, distance: number, speed: number): void;
+export declare function taskGoToEntity(entity: number | IEntity, target: number | IEntity, duration: number, distance: number, speed: number): void;
 /**
  * ```
  * In the scripts, p3 was always -1.
@@ -7634,7 +7634,7 @@ export declare function taskGoToEntity(entity: number | Entity, target: number |
  * Hash: 0x8DCC19C5
  * @deprecated Use task.handsUp(ped, duration, facingPed) instead
  */
-export declare function taskHandsUp(ped: number | Ped, duration: number, facingPed: number | Ped): void;
+export declare function taskHandsUp(ped: number | IPed, duration: number, facingPed: number | IPed): void;
 /**
  * Flags are the same flags used in [`TASK_LEAVE_VEHICLE`](#\_0xD3DBCE61A490BE02)
  *
@@ -7643,7 +7643,7 @@ export declare function taskHandsUp(ped: number | Ped, duration: number, facingP
  * Hash: 0xDBDD79FA
  * @deprecated Use task.leaveAnyVehicle(ped, flags) instead
  */
-export declare function taskLeaveAnyVehicle(ped: number | Ped, flags: number): void;
+export declare function taskLeaveAnyVehicle(ped: number | IPed, flags: number): void;
 /**
  * ```
  * Flags from decompiled scripts:
@@ -7662,7 +7662,7 @@ export declare function taskLeaveAnyVehicle(ped: number | Ped, flags: number): v
  * Hash: 0x7B1141C6
  * @deprecated Use task.leaveVehicle(ped, vehicle, flags) instead
  */
-export declare function taskLeaveVehicle(ped: number | Ped, vehicle: number | Vehicle, flags: number): void;
+export declare function taskLeaveVehicle(ped: number | IPed, vehicle: number | IVehicle, flags: number): void;
 /**
  * [Animations list](https://alexguirre.github.io/animations-list/)
  *
@@ -7708,7 +7708,7 @@ export declare function taskLeaveVehicle(ped: number | Ped, vehicle: number | Ve
  * Hash: 0x5AB552C6
  * @deprecated Use task.playAnim(ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ) instead
  */
-export declare function taskPlayAnim(ped: number | Ped, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void;
+export declare function taskPlayAnim(ped: number | IPed, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void;
 /**
  * Similar in functionality to [`TASK_PLAY_ANIM`](#\_0xEA47FE3719165B94), except the position and rotation parameters let you specify the initial position and rotation of the task. The ped is teleported to the position specified.
  * [Animations list](https://alexguirre.github.io/animations-list/)
@@ -7718,7 +7718,7 @@ export declare function taskPlayAnim(ped: number | Ped, animDictionary: string, 
  * Hash: 0x3DDEB0E6
  * @deprecated Use task.playAnimAdvanced(ped, animDictionary, animationName, pos, rot, blendInSpeed, blendOutSpeed, duration, flag, animTime) instead
  */
-export declare function taskPlayAnimAdvanced(ped: number | Ped, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void;
+export declare function taskPlayAnimAdvanced(ped: number | IPed, animDictionary: string, animationName: string, pos: Vector3, rot: Vector3, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: any, animTime: number): void;
 /**
  * TASK_REACT_AND_FLEE_PED
  *
@@ -7727,7 +7727,7 @@ export declare function taskPlayAnimAdvanced(ped: number | Ped, animDictionary: 
  * Hash: 0x8A632BD8
  * @deprecated Use task.reactAndFleePed(ped, fleeTarget) instead
  */
-export declare function taskReactAndFleePed(ped: number | Ped, fleeTarget: number | Ped): void;
+export declare function taskReactAndFleePed(ped: number | IPed, fleeTarget: number | IPed): void;
 /**
  * ```
  * Firing Pattern Hash Information: https://pastebin.com/Px036isB
@@ -7738,7 +7738,7 @@ export declare function taskReactAndFleePed(ped: number | Ped, fleeTarget: numbe
  * Hash: 0x601C22E3
  * @deprecated Use task.shootAtCoord(ped, pos, duration, firingPattern) instead
  */
-export declare function taskShootAtCoord(ped: number | Ped, pos: Vector3, duration: number, firingPattern: number | string): void;
+export declare function taskShootAtCoord(ped: number | IPed, pos: Vector3, duration: number, firingPattern: number | string): void;
 /**
  * ```
  * //this part of the code is to determine at which entity the player is aiming, for example if you want to create a mod where you give orders to peds
@@ -7756,7 +7756,7 @@ export declare function taskShootAtCoord(ped: number | Ped, pos: Vector3, durati
  * Hash: 0xAC0631C9
  * @deprecated Use task.shootAtEntity(entity, target, duration, firingPattern) instead
  */
-export declare function taskShootAtEntity(entity: number | Entity, target: number | Entity, duration: number, firingPattern: number | string): void;
+export declare function taskShootAtEntity(entity: number | IEntity, target: number | IEntity, duration: number, firingPattern: number | string): void;
 /**
  * ```
  * NativeDB Introduced: v323
@@ -7770,7 +7770,7 @@ export declare function taskShootAtEntity(entity: number | Entity, target: numbe
  * Hash: 0x65D4A35D
  * @deprecated Use task.warpPedIntoVehicle(ped, vehicle, seatIndex) instead
  */
-export declare function taskWarpPedIntoVehicle(ped: number | Ped, vehicle: number | Vehicle, seatIndex: number): void;
+export declare function taskWarpPedIntoVehicle(ped: number | IPed, vehicle: number | IVehicle, seatIndex: number): void;
 /**
  * Scope entry for profiler.
  *
