@@ -1,5 +1,5 @@
 {
-  "name": "@risinglife/redm-server",
+  "name": "@risinglife/redm-client-bundled",
   "description": "This package contains the type definitions for the RedM JS module shared types",
   "version": "0.2.0",
   "repository": {

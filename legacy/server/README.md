@@ -8,11 +8,11 @@ For client access see [this package](https://www.npmjs.com/package/@risinglife/r
 The package must be included when compile the code for example with **esbuild**.
 
 ### Since v0.2.0
-All root methods (e.g. `server.taskShootAtEntity()`) were removed.
+All root methods (e.g. `server.taskShootAtEntity()`) are no longer supported.
 The reason for this is clearly that namespaced methods are better and clearer.
 
-If you want them, you must downgrade to version [0.1.0](https://www.npmjs.com/package/@risinglife/redm-server/v/0.1.0)
-Remind: Only the latest version contains the newest natives.
+This package can be used to support backward compatibility.
+**Note:** This package is no longer being updated, so it is recommended to upgrade to the latest version of the package.
 
 ### Contribute
 
