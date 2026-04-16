@@ -1,0 +1,92 @@
+import { IEntity } from '@risinglife/redm-shared';
+/**
+ * No comment provided
+ *
+ * Hash: 0xABE74510883C7950 | Since: 1207
+ */
+export function addTo(entity, itemset) {
+    const _entity = entity instanceof IEntity ? entity.handle() : entity;
+    return AddToItemset(_entity, itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0x85F3A86CA9021FB0 | Since: 1207
+ */
+export function clean(itemset) {
+    CleanItemset(itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0xA1AF16083320065A | Since: 1207
+ */
+export function create() {
+    return CreateItemset(false);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0x712BC69F10549B92 | Since: 1207
+ */
+export function destroy(itemset) {
+    DestroyItemset(itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0x275A2E2C0FAB7612 | Since: 1207
+ */
+export function getIndexedItemIn(index, itemset) {
+    return GetIndexedItemInItemset(index, itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0x9FC3CDB5CE815901 | Since: 1207
+ */
+export function getIndexedScenarioPointIndexIn(index, itemset) {
+    return GetIndexedScenarioPointIndexInItemset(index, itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0x55F2E375AC6018A9 | Since: 1207
+ */
+export function getSize(itemset) {
+    return GetItemsetSize(itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0xD1503C2EE2FE688C | Since: 1207
+ */
+export function isIn(entity, itemset) {
+    const _entity = entity instanceof IEntity ? entity.handle() : entity;
+    return IsInItemset(_entity, itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0xD30765D153EF5C76 | Since: 1207
+ */
+export function isValid(itemset) {
+    return IsItemsetValid(itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0xC5BAA432B429DC24 | Since: 1207
+ */
+export function removeFrom(entity, itemset) {
+    const _entity = entity instanceof IEntity ? entity.handle() : entity;
+    RemoveFromItemset(_entity, itemset);
+}
+/**
+ * No comment provided
+ *
+ * Hash: 0x20A4BF0E09BEE146 | Since: 1207
+ */
+export function clear(itemset) {
+    ClearItemset(itemset);
+}

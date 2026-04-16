@@ -1,4 +1,4 @@
-# FiveM NUI Event-Helper
+# RedM NUI Event-Helper
 
 This package contains an helpful code to listen to events (and sending them to the client-script) easier.
 
